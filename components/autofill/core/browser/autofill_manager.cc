@@ -192,7 +192,7 @@ void AutofillManager::RegisterProfilePrefs(
     user_prefs::PrefRegistrySyncable* registry) {
   registry->RegisterBooleanPref(
       prefs::kAutofillEnabled,
-      true,
+      false,
       user_prefs::PrefRegistrySyncable::SYNCABLE_PREF);
 #if defined(OS_MACOSX)
   registry->RegisterBooleanPref(
