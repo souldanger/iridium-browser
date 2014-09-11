@@ -151,10 +151,12 @@ AutofillManager::AutofillManager(
       external_delegate_(NULL),
       test_delegate_(NULL),
       weak_ptr_factory_(this) {
+#if 0
   if (enable_download_manager == ENABLE_AUTOFILL_DOWNLOAD_MANAGER) {
     download_manager_.reset(
         new AutofillDownloadManager(driver, client_->GetPrefs(), this));
   }
+#endif
 }
 
 AutofillManager::~AutofillManager() {}
