@@ -35,7 +35,7 @@ WebsiteSettingsRegistry::WebsiteSettingsRegistry() {
 
   // Content settings (those with allow/block/ask/etc. values).
   RegisterContentSetting(CONTENT_SETTINGS_TYPE_COOKIES, "cookies",
-                         CONTENT_SETTING_ALLOW, WebsiteSettingsInfo::SYNCABLE);
+                         CONTENT_SETTING_SESSION_ONLY, WebsiteSettingsInfo::SYNCABLE);
   RegisterContentSetting(CONTENT_SETTINGS_TYPE_IMAGES, "images",
                          CONTENT_SETTING_ALLOW, WebsiteSettingsInfo::SYNCABLE);
   RegisterContentSetting(CONTENT_SETTINGS_TYPE_JAVASCRIPT, "javascript",
