@@ -188,6 +188,9 @@ void ExtensionSystemImpl::Shared::Init(bool extensions_enabled) {
 
   bool autoupdate_enabled = !profile_->IsGuestSession() &&
                             !profile_->IsSystemProfile();
+  if (autoupdate_enabled)
+    fprintf(stderr, "*** autoupdate was enabled, overriding with false\n");
+  autoupdate_enabled = false;
 #if defined(OS_CHROMEOS)
   if (!extensions_enabled)
     autoupdate_enabled = false;
