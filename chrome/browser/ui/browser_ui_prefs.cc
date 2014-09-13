@@ -150,7 +150,7 @@ void RegisterBrowserUserPrefs(user_prefs::PrefRegistrySyncable* registry) {
       user_prefs::PrefRegistrySyncable::UNSYNCABLE_PREF);
   registry->RegisterBooleanPref(
       prefs::kEnableDoNotTrack,
-      false,
+      true,
       user_prefs::PrefRegistrySyncable::SYNCABLE_PREF);
 
   // Dictionaries to keep track of default tasks in the file browser.
