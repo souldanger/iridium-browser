@@ -153,7 +153,7 @@ void PasswordManager::RegisterProfilePrefs(
     user_prefs::PrefRegistrySyncable* registry) {
   registry->RegisterBooleanPref(
       prefs::kPasswordManagerSavingEnabled,
-      true,
+      false,
       user_prefs::PrefRegistrySyncable::SYNCABLE_PREF);
   registry->RegisterBooleanPref(
       prefs::kCredentialsEnableService, true,
