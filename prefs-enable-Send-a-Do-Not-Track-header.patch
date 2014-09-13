@@ -1,0 +1,26 @@
+From 2159ccc44d63cd6f7b0f27aadd9173433642673e Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Sat, 13 Sep 2014 15:06:39 +0200
+Subject: [PATCH 04/16] prefs: enable "Send a Do-Not-Track header"
+
+Set enable_do_not_track to true by default.
+---
+ chrome/browser/ui/browser_ui_prefs.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/chrome/browser/ui/browser_ui_prefs.cc b/chrome/browser/ui/browser_ui_prefs.cc
+index ec97d46..8001f96 100644
+--- a/chrome/browser/ui/browser_ui_prefs.cc
++++ b/chrome/browser/ui/browser_ui_prefs.cc
+@@ -150,7 +150,7 @@ void RegisterBrowserUserPrefs(user_prefs::PrefRegistrySyncable* registry) {
+       user_prefs::PrefRegistrySyncable::UNSYNCABLE_PREF);
+   registry->RegisterBooleanPref(
+       prefs::kEnableDoNotTrack,
+-      false,
++      true,
+       user_prefs::PrefRegistrySyncable::SYNCABLE_PREF);
+ 
+   // Dictionaries to keep track of default tasks in the file browser.
+-- 
+2.4.0
+

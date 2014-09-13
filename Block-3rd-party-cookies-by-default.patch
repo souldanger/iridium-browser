@@ -1,0 +1,25 @@
+From edf6df240124ee4bbdb0c1b9c57d271783103b04 Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Sat, 13 Sep 2014 16:43:55 +0200
+Subject: [PATCH 06/16] Block 3rd party cookies by default
+
+---
+ chrome/browser/content_settings/cookie_settings.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/chrome/browser/content_settings/cookie_settings.cc b/chrome/browser/content_settings/cookie_settings.cc
+index aea4961..8450738 100644
+--- a/chrome/browser/content_settings/cookie_settings.cc
++++ b/chrome/browser/content_settings/cookie_settings.cc
+@@ -70,7 +70,7 @@ void CookieSettings::Factory::RegisterProfilePrefs(
+     user_prefs::PrefRegistrySyncable* registry) {
+   registry->RegisterBooleanPref(
+       prefs::kBlockThirdPartyCookies,
+-      false,
++      true,
+       user_prefs::PrefRegistrySyncable::SYNCABLE_PREF);
+ }
+ 
+-- 
+2.4.0
+

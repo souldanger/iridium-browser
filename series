@@ -1,0 +1,16 @@
+prefs-disable-autofill-by-default.patch
+prefs-disable-Use-a-web-service-to-help-resolve-navi.patch
+prefs-disable-Use-a-prediction-service-to-help-compl.patch
+prefs-enable-Send-a-Do-Not-Track-header.patch
+prefs-disable-network-DNS-prediction.patch
+Block-3rd-party-cookies-by-default.patch
+prefs-disable-Cloud-Print.patch
+prefs-disable-background-mode.patch
+prefs-disable-hyperlink-auditing.patch
+prefs-do-not-store-passwords-by-default.patch
+prefs-only-keep-cookies-until-exit.patch
+Increase-default-key-length-for-newly-generated-RSA-.patch
+dns-send-IPv6-connectivity-probes-to-our-own-server.patch
+Disable-DNSv6-probing.patch
+check-if-metrics_reporting-is-inadvertently-activate.patch
+check-for-autoupdate_enabled.patch

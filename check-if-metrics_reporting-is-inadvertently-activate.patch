@@ -1,0 +1,32 @@
+From f0aad8fe91ea1735fbaa3d199f6dee857c24f9b6 Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Sat, 13 Sep 2014 16:40:17 +0200
+Subject: [PATCH 15/16] check if metrics_reporting is inadvertently activated
+
+---
+ chrome/browser/first_run/first_run_internal_posix.cc | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/chrome/browser/first_run/first_run_internal_posix.cc b/chrome/browser/first_run/first_run_internal_posix.cc
+index 2cd4b61..3c26a91 100644
+--- a/chrome/browser/first_run/first_run_internal_posix.cc
++++ b/chrome/browser/first_run/first_run_internal_posix.cc
+@@ -17,6 +17,7 @@
+ #include "chrome/installer/util/google_update_settings.h"
+ #include "chrome/installer/util/master_preferences.h"
+ #include "components/startup_metric_utils/startup_metric_utils.h"
++#include <cstdio>
+ 
+ namespace first_run {
+ namespace internal {
+@@ -37,6 +38,7 @@ void DoPostImportPlatformSpecificTasks(Profile* profile) {
+   // the pref (on Windows, the download is tagged with enable/disable stats so
+   // this is POSIX-specific).
+   if (GoogleUpdateSettings::GetCollectStatsConsent()) {
++    fprintf(stderr, "*** metrics_reporting = 1\n");
+     g_browser_process->local_state()->SetBoolean(
+         prefs::kMetricsReportingEnabled, true);
+   }
+-- 
+2.4.0
+

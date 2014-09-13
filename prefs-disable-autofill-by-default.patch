@@ -1,0 +1,25 @@
+From 6fbfd1d16184462f2f1afcbf22a7a7f22f260b58 Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Thu, 11 Sep 2014 16:37:32 +0200
+Subject: [PATCH 01/16] prefs: disable autofill by default
+
+---
+ components/autofill/core/browser/autofill_manager.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/components/autofill/core/browser/autofill_manager.cc b/components/autofill/core/browser/autofill_manager.cc
+index 177e2eb..5fbfefd 100644
+--- a/components/autofill/core/browser/autofill_manager.cc
++++ b/components/autofill/core/browser/autofill_manager.cc
+@@ -199,7 +199,7 @@ void AutofillManager::RegisterProfilePrefs(
+     user_prefs::PrefRegistrySyncable* registry) {
+   registry->RegisterBooleanPref(
+       prefs::kAutofillEnabled,
+-      true,
++      false,
+       user_prefs::PrefRegistrySyncable::SYNCABLE_PREF);
+ #if defined(OS_MACOSX) || defined(OS_ANDROID)
+   registry->RegisterBooleanPref(
+-- 
+2.4.0
+
