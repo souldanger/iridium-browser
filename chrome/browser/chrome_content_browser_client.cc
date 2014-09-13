@@ -620,7 +620,7 @@ void ChromeContentBrowserClient::RegisterProfilePrefs(
       user_prefs::PrefRegistrySyncable::UNSYNCABLE_PREF);
   registry->RegisterBooleanPref(
       prefs::kEnableHyperlinkAuditing,
-      true,
+      false, /* default setting for HL-A */
       user_prefs::PrefRegistrySyncable::UNSYNCABLE_PREF);
   registry->RegisterListPref(
       prefs::kEnableDeprecatedWebPlatformFeatures,
