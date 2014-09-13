@@ -17,6 +17,7 @@
 #include "components/metrics/metrics_pref_names.h"
 #include "components/prefs/pref_service.h"
 #include "components/startup_metric_utils/browser/startup_metric_utils.h"
+#include <cstdio>
 
 namespace first_run {
 namespace internal {
@@ -37,6 +38,7 @@ void DoPostImportPlatformSpecificTasks(Profile* profile) {
   // the pref (on Windows, the download is tagged with enable/disable stats so
   // this is POSIX-specific).
   if (GoogleUpdateSettings::GetCollectStatsConsent()) {
+    fprintf(stderr, "*** metrics_reporting = 1\n");
     g_browser_process->local_state()->SetBoolean(
         metrics::prefs::kMetricsReportingEnabled, true);
   }
