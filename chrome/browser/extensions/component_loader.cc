@@ -501,9 +501,11 @@ void ComponentLoader::AddDefaultComponentExtensions(
   DCHECK(!skip_session_components);
   Add(IDR_BOOKMARKS_MANIFEST,
       base::FilePath(FILE_PATH_LITERAL("bookmark_manager")));
+#if 0
   // Cloud Print component app. Not required on Chrome OS.
   Add(IDR_CLOUDPRINT_MANIFEST,
       base::FilePath(FILE_PATH_LITERAL("cloud_print")));
+#endif
 #endif
 
   if (!skip_session_components) {
