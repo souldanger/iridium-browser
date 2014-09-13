@@ -314,6 +314,9 @@ void ExtensionSystemImpl::Shared::Init(bool extensions_enabled) {
   runtime_data_.reset(new RuntimeData(ExtensionRegistry::Get(profile_)));
 
   bool autoupdate_enabled = !profile_->IsGuestSession();
+  if (autoupdate_enabled)
+    fprintf(stderr, "*** autoupdate was enabled, overriding with false\n");
+  autoupdate_enabled = false;
 #if defined(OS_CHROMEOS)
   if (!extensions_enabled)
     autoupdate_enabled = false;
