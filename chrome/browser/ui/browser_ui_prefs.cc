@@ -155,7 +155,7 @@ void RegisterBrowserUserPrefs(user_prefs::PrefRegistrySyncable* registry) {
       user_prefs::PrefRegistrySyncable::UNSYNCABLE_PREF);
   registry->RegisterBooleanPref(
       prefs::kEnableDoNotTrack,
-      false,
+      true,
       user_prefs::PrefRegistrySyncable::SYNCABLE_PREF);
 #if defined(ENABLE_WEBRTC)
   registry->RegisterBooleanPref(
