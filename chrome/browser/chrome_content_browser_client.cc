@@ -674,7 +674,7 @@ void ChromeContentBrowserClient::RegisterProfilePrefs(
       user_prefs::PrefRegistrySyncable::UNSYNCABLE_PREF);
   registry->RegisterBooleanPref(
       prefs::kEnableHyperlinkAuditing,
-      true,
+      false,
       user_prefs::PrefRegistrySyncable::UNSYNCABLE_PREF);
   registry->RegisterListPref(
       prefs::kEnableDeprecatedWebPlatformFeatures,
