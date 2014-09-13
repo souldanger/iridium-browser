@@ -114,7 +114,7 @@ void RegisterBrowserUserPrefs(user_prefs::PrefRegistrySyncable* registry) {
       user_prefs::PrefRegistrySyncable::UNSYNCABLE_PREF);
   registry->RegisterBooleanPref(
       prefs::kCloudPrintSubmitEnabled,
-      true,
+      false,
       user_prefs::PrefRegistrySyncable::UNSYNCABLE_PREF);
   registry->RegisterBooleanPref(
       prefs::kDevToolsDisabled,
