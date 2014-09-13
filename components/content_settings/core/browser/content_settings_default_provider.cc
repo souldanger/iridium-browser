@@ -39,7 +39,7 @@ struct DefaultContentSettingInfo {
 // default content setting. This array must be kept in sync with the enum
 // |ContentSettingsType|.
 const DefaultContentSettingInfo kDefaultSettings[] = {
-    {prefs::kDefaultCookiesSetting, CONTENT_SETTING_ALLOW, true},
+    {prefs::kDefaultCookiesSetting, CONTENT_SETTING_SESSION_ONLY, true},
     {prefs::kDefaultImagesSetting, CONTENT_SETTING_ALLOW, true},
     {prefs::kDefaultJavaScriptSetting, CONTENT_SETTING_ALLOW, true},
     {prefs::kDefaultPluginsSetting, CONTENT_SETTING_ALLOW, true},
