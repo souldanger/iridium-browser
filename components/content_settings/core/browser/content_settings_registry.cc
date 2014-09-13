@@ -109,7 +109,7 @@ void ContentSettingsRegistry::Init() {
   // generate preference names and should never be changed!
 
   // Content settings (those with allow/block/ask/etc. values).
-  Register(CONTENT_SETTINGS_TYPE_COOKIES, "cookies", CONTENT_SETTING_ALLOW,
+  Register(CONTENT_SETTINGS_TYPE_COOKIES, "cookies", CONTENT_SETTING_SESSION_ONLY,
            WebsiteSettingsInfo::SYNCABLE, WhitelistedForWebUI());
   Register(CONTENT_SETTINGS_TYPE_IMAGES, "images", CONTENT_SETTING_ALLOW,
            WebsiteSettingsInfo::SYNCABLE, WhitelistedForWebUIAndExtensions());
