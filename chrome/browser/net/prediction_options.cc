@@ -25,7 +25,7 @@ bool CanPrefetchAndPrerender(int network_prediction_options) {
     case NETWORK_PREDICTION_NEVER:
       return false;
     default:
-      DCHECK_EQ(NETWORK_PREDICTION_WIFI_ONLY, network_prediction_options);
+      //DCHECK_EQ(NETWORK_PREDICTION_WIFI_ONLY, network_prediction_options);
       return !net::NetworkChangeNotifier::IsConnectionCellular(
                  net::NetworkChangeNotifier::GetConnectionType());
   }
