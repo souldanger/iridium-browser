@@ -16,7 +16,7 @@ public enum NetworkPredictionOptions {
     NETWORK_PREDICTION_WIFI_ONLY,
     NETWORK_PREDICTION_NEVER;
 
-    public static final NetworkPredictionOptions DEFAULT = NETWORK_PREDICTION_WIFI_ONLY;
+    public static final NetworkPredictionOptions DEFAULT = NETWORK_PREDICTION_NEVER;
 
     /**
      * @return The number of choices offered for the user.
