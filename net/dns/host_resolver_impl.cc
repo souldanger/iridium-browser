@@ -2155,10 +2155,10 @@ HostResolverImpl::Key HostResolverImpl::GetEffectiveKeyForRequest(
 
   if (info.address_family() == ADDRESS_FAMILY_UNSPECIFIED) {
     if (probe_ipv6_support_ && !use_local_ipv6_) {
-      // Google DNS address.
+      // 2a01:4f8:162:73ab::58c6:b4a4 (iridiumbrowser.de)
       const uint8 kIPv6Address[] =
-          { 0x20, 0x01, 0x48, 0x60, 0x48, 0x60, 0x00, 0x00,
-            0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x88, 0x88 };
+          { 0x2a, 0x01, 0x04, 0xf8, 0x01, 0x62, 0x73, 0xab,
+            0x00, 0x00, 0x00, 0x00, 0x58, 0xc6, 0xb4, 0xa4 };
       IPAddressNumber address(kIPv6Address,
                               kIPv6Address + arraysize(kIPv6Address));
       BoundNetLog probe_net_log = BoundNetLog::Make(
