@@ -2162,10 +2162,10 @@ HostResolverImpl::Key HostResolverImpl::GetEffectiveKeyForRequest(
         // Don't bother IPv6 probing when resolving IPv4 literals.
         url::IPv4AddressToNumber(info.hostname().c_str(), host_comp, ip_number,
                                  &num_components) != url::CanonHostInfo::IPV4) {
-      // Google DNS address.
+      /* RIPE NCC k.root-servers.net. 2001:7fd::1 (anycasted) */
       const uint8 kIPv6Address[] =
-          { 0x20, 0x01, 0x48, 0x60, 0x48, 0x60, 0x00, 0x00,
-            0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x88, 0x88 };
+          { 0x20, 0x01, 0x07, 0xfd, 0x00, 0x00, 0x00, 0x00,
+            0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01 };
       IPAddressNumber address(kIPv6Address,
                               kIPv6Address + arraysize(kIPv6Address));
       BoundNetLog probe_net_log = BoundNetLog::Make(
