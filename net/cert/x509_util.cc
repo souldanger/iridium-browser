@@ -18,7 +18,7 @@ namespace net {
 namespace x509_util {
 
 // RSA keys created by CreateKeyAndSelfSignedCert will be of this length.
-static const uint16_t kRSAKeyLength = 1024;
+static const uint16_t kRSAKeyLength = 2048;
 
 // Certificates made by CreateKeyAndSelfSignedCert and
 //  CreateKeyAndChannelIDEC will be signed using this digest algorithm.
