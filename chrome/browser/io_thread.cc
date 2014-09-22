@@ -195,10 +195,9 @@ scoped_ptr<net::HostResolver> CreateGlobalHostResolver(net::NetLog* net_log) {
 #endif
 
   // Determine if we should disable IPv6 support.
+  global_host_resolver->SetDefaultAddressFamily(
+      net::ADDRESS_FAMILY_UNSPECIFIED); /* disable probing: use both v6 and v4 by default */
   if (command_line.HasSwitch(switches::kEnableIPv6)) {
-    // Disable IPv6 probing.
-    global_host_resolver->SetDefaultAddressFamily(
-        net::ADDRESS_FAMILY_UNSPECIFIED);
   } else if (command_line.HasSwitch(switches::kDisableIPv6)) {
     global_host_resolver->SetDefaultAddressFamily(net::ADDRESS_FAMILY_IPV4);
   }
