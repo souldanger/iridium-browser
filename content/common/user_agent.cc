@@ -181,16 +181,21 @@ std::string BuildUserAgentFromOSAndProduct(const std::string& os_info,
   // Derived from Safari's UA string.
   // This is done to expose our product name in a manner that is maximally
   // compatible with Safari, we hope!!
+  chrome::VersionInfo vi;
+  std::string ua2;
+  if (!vi.is_valid())
+  	ua2 = "IridiumCRV/" + vi.Version();
   std::string user_agent;
   base::StringAppendF(
       &user_agent,
-      "Mozilla/5.0 (%s) AppleWebKit/%d.%d (KHTML, like Gecko) %s Safari/%d.%d",
+      "Mozilla/5.0 (%s) AppleWebKit/%d.%d (KHTML, like Gecko) %s Safari/%d.%d %s",
       os_info.c_str(),
       WEBKIT_VERSION_MAJOR,
       WEBKIT_VERSION_MINOR,
       product.c_str(),
       WEBKIT_VERSION_MAJOR,
-      WEBKIT_VERSION_MINOR);
+      WEBKIT_VERSION_MINOR,
+      ua2);
   return user_agent;
 }
 
