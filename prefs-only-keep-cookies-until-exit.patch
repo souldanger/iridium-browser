@@ -1,14 +1,14 @@
-From bad21bfdeee8e17b654fd5cc555f1e8dd8b87a65 Mon Sep 17 00:00:00 2001
+From 574bbe6573b8b0f021fe2dd778e61d171a28447b Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sat, 13 Sep 2014 17:25:47 +0200
-Subject: [PATCH 11/16] prefs: only keep cookies until exit
+Subject: [PATCH 11/17] prefs: only keep cookies until exit
 
 ---
  chrome/browser/content_settings/content_settings_default_provider.cc | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/chrome/browser/content_settings/content_settings_default_provider.cc b/chrome/browser/content_settings/content_settings_default_provider.cc
-index c88f298..b934058 100644
+index 9f27879..65aeebb5 100644
 --- a/chrome/browser/content_settings/content_settings_default_provider.cc
 +++ b/chrome/browser/content_settings/content_settings_default_provider.cc
 @@ -33,7 +33,7 @@ namespace {

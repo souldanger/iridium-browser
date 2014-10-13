@@ -14,3 +14,4 @@ dns-send-IPv6-connectivity-probes-to-our-own-server.patch
 Disable-DNSv6-probing.patch
 check-if-metrics_reporting-is-inadvertently-activate.patch
 check-for-autoupdate_enabled.patch
+Extend-our-User-Agent-string.patch

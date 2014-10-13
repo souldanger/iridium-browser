@@ -1,17 +1,17 @@
-From 6df065b271713fb2b828983bab1c115fdc6f8b07 Mon Sep 17 00:00:00 2001
+From df4f369eda17248a0f229ace6e25dd25efb28f08 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sat, 13 Sep 2014 17:12:43 +0200
-Subject: [PATCH 16/16] check for autoupdate_enabled
+Subject: [PATCH 16/17] check for autoupdate_enabled
 
 ---
  chrome/browser/extensions/extension_system_impl.cc | 1 +
  1 file changed, 1 insertion(+)
 
 diff --git a/chrome/browser/extensions/extension_system_impl.cc b/chrome/browser/extensions/extension_system_impl.cc
-index 3e8d350..dc749e9 100644
+index a9d5dbb..d710800 100644
 --- a/chrome/browser/extensions/extension_system_impl.cc
 +++ b/chrome/browser/extensions/extension_system_impl.cc
-@@ -228,6 +228,7 @@ void ExtensionSystemImpl::Shared::Init(bool extensions_enabled) {
+@@ -230,6 +230,7 @@ void ExtensionSystemImpl::Shared::Init(bool extensions_enabled) {
    runtime_data_.reset(new RuntimeData(ExtensionRegistry::Get(profile_)));
  
    bool autoupdate_enabled = !profile_->IsGuestSession();

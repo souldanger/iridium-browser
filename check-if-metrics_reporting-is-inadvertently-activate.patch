@@ -1,7 +1,7 @@
-From f0aad8fe91ea1735fbaa3d199f6dee857c24f9b6 Mon Sep 17 00:00:00 2001
+From d95734791cb35e763d019a478109a192f639fb2b Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sat, 13 Sep 2014 16:40:17 +0200
-Subject: [PATCH 15/16] check if metrics_reporting is inadvertently activated
+Subject: [PATCH 15/17] check if metrics_reporting is inadvertently activated
 
 ---
  chrome/browser/first_run/first_run_internal_posix.cc | 2 ++
