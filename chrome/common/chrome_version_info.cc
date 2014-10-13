@@ -19,7 +19,7 @@ namespace chrome {
 std::string VersionInfo::ProductNameAndVersionForUserAgent() const {
   if (!is_valid())
     return std::string();
-  return "Chrome/" + Version();
+  return "Iridium/" + Version();
 }
 
 #if defined(OS_WIN) || defined(OS_MACOSX)
