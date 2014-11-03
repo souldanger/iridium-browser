@@ -4,10 +4,10 @@
   "monitored_domain": "googleads.g.doubleclick.net",
   "collectors": [
     {
-      "upload_url": "https://clients2.google.com/domainreliability/upload"
+      "upload_url": "https://47.trk.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
     },
     {
-      "upload_url": "https://beacons.gvt2.com/domainreliability/upload"
+      "upload_url": "https://48.trk.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
     }
   ],
   "monitored_resources": [

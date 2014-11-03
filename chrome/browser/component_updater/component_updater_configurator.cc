@@ -44,7 +44,7 @@ extern const char kSwitchDisablePings[] = "disable-pings";
 const char kSwitchUrlSource[] = "url-source";
 
 #define COMPONENT_UPDATER_SERVICE_ENDPOINT \
-  "//clients2.google.com/service/update2"
+  "//02.trk.iridiumbrowser.de/clients2.google.com/service/update2"
 
 // The default url for the v3 protocol service endpoint. Can be
 // overridden with --component-updater=url-source=someurl.

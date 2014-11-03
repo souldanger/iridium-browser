@@ -77,7 +77,7 @@ namespace breakpad {
 namespace {
 
 #if !defined(OS_CHROMEOS)
-const char kUploadURL[] = "https://clients2.google.com/cr/report";
+const char kUploadURL[] = "https://06.trk.iridiumbrowser.de/clients2.google.com/cr/report";
 #endif
 
 bool g_is_crash_reporter_enabled = false;

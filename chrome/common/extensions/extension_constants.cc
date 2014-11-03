@@ -49,12 +49,12 @@ GURL GetWebstoreSearchPageUrl(const std::string& query) {
 }
 
 const char kGalleryUpdateHttpsUrl[] =
-    "https://clients2.google.com/service/update2/crx";
+    "https://05.trk.iridiumbrowser.de/clients2.google.com/service/update2/crx";
 // TODO(battre): Delete the HTTP URL once the blacklist is downloaded via HTTPS.
 const char kExtensionBlocklistUrlPrefix[] =
-    "http://www.gstatic.com/chrome/extensions/blacklist";
+    "http://19.trk.iridiumbrowser.de/www.gstatic.com/chrome/extensions/blacklist";
 const char kExtensionBlocklistHttpsUrlPrefix[] =
-    "https://www.gstatic.com/chrome/extensions/blacklist";
+    "https://20.trk.iridiumbrowser.de/www.gstatic.com/chrome/extensions/blacklist";
 
 GURL GetWebstoreUpdateUrl() {
   CommandLine* cmdline = CommandLine::ForCurrentProcess();
