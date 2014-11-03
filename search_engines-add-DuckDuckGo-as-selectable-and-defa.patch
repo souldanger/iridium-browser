@@ -1,7 +1,7 @@
-From 574989d39c6cc13afdb828676fa362198a7438e0 Mon Sep 17 00:00:00 2001
+From 2b4787e3b86218dac6487f10c3733648c4171c7c Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sun, 19 Oct 2014 14:49:10 +0200
-Subject: [PATCH 22/55] search_engines: add DuckDuckGo as selectable and
+Subject: [PATCH 18/52] search_engines: add DuckDuckGo as selectable and
  default search engine
 
 There is a lot of code pertaining to DefaultSearchEngine,
@@ -17,7 +17,7 @@ prepending &duckduckgo yields the desired result, for now at least.
  3 files changed, 121 insertions(+), 109 deletions(-)
 
 diff --git a/components/search_engines/prepopulated_engines.json b/components/search_engines/prepopulated_engines.json
-index 2774895..5998de6 100644
+index 612eee4..c18e1b4 100644
 --- a/components/search_engines/prepopulated_engines.json
 +++ b/components/search_engines/prepopulated_engines.json
 @@ -36,6 +36,17 @@
@@ -39,19 +39,19 @@ index 2774895..5998de6 100644
        "name": "AOL",
        "keyword": "aol.com",
 diff --git a/components/search_engines/search_engine_type.h b/components/search_engines/search_engine_type.h
-index d49c046..7dba2a7 100644
+index f619714..4e8ba58 100644
 --- a/components/search_engines/search_engine_type.h
 +++ b/components/search_engines/search_engine_type.h
-@@ -58,6 +58,7 @@ enum SearchEngineType {
-   SEARCH_ENGINE_YAHOO,
+@@ -60,6 +60,7 @@ enum SearchEngineType {
    SEARCH_ENGINE_YANDEX,
    SEARCH_ENGINE_ZOZNAM,
+   SEARCH_ENGINE_360,
 +  SEARCH_ENGINE_DUCKDUCKGO,
    SEARCH_ENGINE_MAX          // Bounding value needed for UMA histogram macro.
  };
  
 diff --git a/components/search_engines/template_url_prepopulate_data.cc b/components/search_engines/template_url_prepopulate_data.cc
-index cff4ee7..750c350 100644
+index 8cf9d8d..9e13dec 100644
 --- a/components/search_engines/template_url_prepopulate_data.cc
 +++ b/components/search_engines/template_url_prepopulate_data.cc
 @@ -50,441 +50,441 @@ namespace {
@@ -153,8 +153,8 @@ index cff4ee7..750c350 100644
  
  // China
  const PrepopulatedEngine* engines_CN[] =
--    { &google, &baidu, &sogou, };
-+    { &duckduckgo, &google, &baidu, &sogou, };
+-    { &google, &baidu, &sogou, &so_360};
++    { &duckduckgo, &google, &baidu, &sogou, &so_360};
  
  // Colombia
  const PrepopulatedEngine* engines_CO[] =

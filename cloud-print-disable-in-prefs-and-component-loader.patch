@@ -1,7 +1,7 @@
-From daa9f4d432e7b8c6f39df343cbcc20274550a75f Mon Sep 17 00:00:00 2001
+From 7f126965e2dc36d1160e3241dc4c5316d5f84e51 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sat, 13 Sep 2014 16:55:12 +0200
-Subject: [PATCH 15/55] cloud-print: disable in prefs and component loader
+Subject: [PATCH 12/52] cloud-print: disable in prefs and component loader
 
 Cloud Print should normally be autodisabled if no printers are shared.
 But maybe that is not enough(?) Probably also needs to gain a checkbox
@@ -16,10 +16,10 @@ be off by default.
  3 files changed, 3 insertions(+), 5 deletions(-)
 
 diff --git a/chrome/browser/extensions/component_loader.cc b/chrome/browser/extensions/component_loader.cc
-index 932ebbd..dfcfcb9 100644
+index f61841e..05bf4e2 100644
 --- a/chrome/browser/extensions/component_loader.cc
 +++ b/chrome/browser/extensions/component_loader.cc
-@@ -554,10 +554,12 @@ void ComponentLoader::AddDefaultComponentExtensions(
+@@ -508,10 +508,12 @@ void ComponentLoader::AddDefaultComponentExtensions(
    DCHECK(!skip_session_components);
    Add(IDR_BOOKMARKS_MANIFEST,
        base::FilePath(FILE_PATH_LITERAL("bookmark_manager")));
@@ -33,10 +33,10 @@ index 932ebbd..dfcfcb9 100644
    if (!skip_session_components) {
      AddWebStoreApp();
 diff --git a/chrome/browser/ui/browser_ui_prefs.cc b/chrome/browser/ui/browser_ui_prefs.cc
-index 7fc4c5c..463c56c 100644
+index 8843a1f..d804e41 100644
 --- a/chrome/browser/ui/browser_ui_prefs.cc
 +++ b/chrome/browser/ui/browser_ui_prefs.cc
-@@ -89,7 +89,7 @@ void RegisterBrowserUserPrefs(user_prefs::PrefRegistrySyncable* registry) {
+@@ -95,7 +95,7 @@ void RegisterBrowserUserPrefs(user_prefs::PrefRegistrySyncable* registry) {
        user_prefs::PrefRegistrySyncable::SYNCABLE_PREF);
    registry->RegisterStringPref(prefs::kCloudPrintEmail, std::string());
    registry->RegisterBooleanPref(prefs::kCloudPrintProxyEnabled, true);

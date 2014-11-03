@@ -1,14 +1,14 @@
-From d4a9eed5caf7a13bbc15bd23316e3e77df83c9bf Mon Sep 17 00:00:00 2001
+From 170ed5fca33f2e4a77e12640f4549aa7a6173d27 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Fri, 29 May 2015 15:55:42 +0200
-Subject: [PATCH 36/55] spellchecker: flag downloading dictionary from Google
+Subject: [PATCH 32/52] spellchecker: flag downloading dictionary from Google
 
 ---
  chrome/browser/resources/options/language_options.js | 2 ++
  1 file changed, 2 insertions(+)
 
 diff --git a/chrome/browser/resources/options/language_options.js b/chrome/browser/resources/options/language_options.js
-index 4117c5c..a447ada 100644
+index 0e85622..41c9c5e 100644
 --- a/chrome/browser/resources/options/language_options.js
 +++ b/chrome/browser/resources/options/language_options.js
 @@ -1001,6 +1001,8 @@ cr.define('options', function() {

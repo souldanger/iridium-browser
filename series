@@ -1,8 +1,5 @@
 net-cert-increase-default-key-length-for-newly-gener.patch
-webrtc-disable-WebRTC-identity-store.patch
-webrtc-generate-real-ephemeral-keys.patch
 dns-send-IPv6-connectivity-probes-to-RIPE-DNS-rather.patch
-http-certificate-pinning-for-iridiumbrowser.de.patch
 profile-resetter-do-not-tick-send-settings-by-defaul.patch
 browser-ui-disable-warning-about-missing-API-keys.patch
 mime_util-force-text-x-suse-ymp-to-be-downloaded.patch
@@ -18,7 +15,6 @@ prefs-disable-hyperlink-auditing.patch
 prefs-do-not-store-passwords-by-default.patch
 prefs-only-keep-cookies-until-exit.patch
 prefs-always-prompt-for-download-directory-by-defaul.patch
-first_run-barf-if-metrics_reporting-is-activated.patch
 search_engines-add-DuckDuckGo-as-selectable-and-defa.patch
 search_engines-add-Qwant-as-selectable-and-default-s.patch
 prefs-disable-translation-service.patch
@@ -41,7 +37,6 @@ safe_browsing-disable-incident-reporting.patch
 safe_browsing-disable-reporting-of-safebrowsing-over.patch
 safe_browsing-support-trk-prefix.patch
 safe_browsing-disable-cookie-transmission.patch
-all-add-trk-prefixes-to-possibly-evil-connections.patch
 promo-disable-Google-promotion-fetching.patch
 hotword-disable-at-build-time-by-default.patch
 google_now-disable-this.patch
@@ -53,3 +48,5 @@ translate-disable-fetching-of-translate-languages-fr.patch
 build-use-Wl-no-keep-memory.patch
 icons-iridium-icons.patch
 common-set-Iridium-version-and-change-User-Agent-acc.patch
+first_run-barf-if-metrics_reporting-is-activated.patch
+all-add-trk-prefixes-to-possibly-evil-connections.patch

@@ -1,17 +1,17 @@
-From b7a627000d3209df00a722074b43f3023059fcb0 Mon Sep 17 00:00:00 2001
+From 8ee98c43ea1b3c9b76beea95c98f87b021c45a5b Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sun, 20 Dec 2015 11:12:00 +0100
-Subject: [PATCH 53/55] build: use -Wl,--no-keep-memory
+Subject: [PATCH 48/52] build: use -Wl,--no-keep-memory
 
 ---
  chrome/chrome_exe.gypi | 8 ++++++++
  1 file changed, 8 insertions(+)
 
 diff --git a/chrome/chrome_exe.gypi b/chrome/chrome_exe.gypi
-index 3d4701e..5c402bb 100644
+index e3663f9..59f783f 100644
 --- a/chrome/chrome_exe.gypi
 +++ b/chrome/chrome_exe.gypi
-@@ -76,6 +76,14 @@
+@@ -75,6 +75,14 @@
          'app/main_dll_loader_win.cc',
          'app/main_dll_loader_win.h',
        ],

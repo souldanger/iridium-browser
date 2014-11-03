@@ -1,22 +1,22 @@
-From bd90af0d3f507305bdd3d3e18a108e2a20b4aa33 Mon Sep 17 00:00:00 2001
+From aeb850ba52a9dd77c5a09326455e3bb6cc329ad2 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Wed, 10 Dec 2014 12:44:49 +0100
-Subject: [PATCH 27/55] ui/translation: update strings to read "Iridium"
+Subject: [PATCH 23/52] ui/translation: update strings to read "Iridium"
  instead
 
 ---
- chrome/app/chromium_strings.grd                | 370 ++++++++++++-------------
+ chrome/app/chromium_strings.grd                | 362 ++++++++++++-------------
  chrome/browser/resources/chrome-logo-faded.png | Bin 896 -> 1267 bytes
  components/components_chromium_strings.grd     |  18 +-
- 3 files changed, 194 insertions(+), 194 deletions(-)
+ 3 files changed, 190 insertions(+), 190 deletions(-)
 
 diff --git a/chrome/app/chromium_strings.grd b/chrome/app/chromium_strings.grd
-index 5afc96f..f20f6e8 100644
+index 925b598..96b48f1 100644
 --- a/chrome/app/chromium_strings.grd
 +++ b/chrome/app/chromium_strings.grd
-@@ -134,20 +134,20 @@ If you update this file, be sure also to update google_chrome_strings.grd. -->
-   <release seq="1" allow_pseudo="false">
-     <messages fallback_to_english="true">
+@@ -139,20 +139,20 @@ If you update this file, be sure also to update google_chrome_strings.grd. -->
+       </if>
+ 
        <message name="IDS_PROFILES_DISCONNECT_MANAGED_PROFILE_TEXT" desc="Message explaining to the user what will happen if they disconnect the managed profile.">
 -        Disconnecting <ph name="USERNAME">$1<ex>someone@example.com</ex></ph> will clear your history, bookmarks, settings, and other Chromium data stored on this device. Data stored in your Google Account will not be cleared and can be managed on <ph name="GOOGLE_DASHBOARD_LINK">&lt;a target="_blank" href="$2"&gt;</ph>Google Dashboard<ph name="END_GOOGLE_DASHBOARD_LINK">&lt;/a&gt;</ph>.
 +        Disconnecting <ph name="USERNAME">$1<ex>someone@example.com</ex></ph> will clear your history, bookmarks, settings, and other browser data stored on this device. Data stored in your Google Account will not be cleared and can be managed on <ph name="GOOGLE_DASHBOARD_LINK">&lt;a target="_blank" href="$2"&gt;</ph>Google Dashboard<ph name="END_GOOGLE_DASHBOARD_LINK">&lt;/a&gt;</ph>.
@@ -40,7 +40,7 @@ index 5afc96f..f20f6e8 100644
          </message>
        </if>
        <if expr="chromeos">
-@@ -160,10 +160,10 @@ If you update this file, be sure also to update google_chrome_strings.grd. -->
+@@ -165,10 +165,10 @@ If you update this file, be sure also to update google_chrome_strings.grd. -->
        </if>
        <if expr="is_win">
          <message name="IDS_PRODUCT_APP_LAUNCHER_NAME" desc="The Chrome App Launcher application name">
@@ -53,7 +53,7 @@ index 5afc96f..f20f6e8 100644
          </message>
          <message name="IDS_CHROME_FRAME_TURNDOWN_LEARN_MORE_URL" desc="Link to knowledge-base article about Chromium Frame's turndown">
            https://support.google.com/chrome/?p=ib_chromeframe
-@@ -179,21 +179,21 @@ If you update this file, be sure also to update google_chrome_strings.grd. -->
+@@ -184,10 +184,10 @@ If you update this file, be sure also to update google_chrome_strings.grd. -->
          </message>
        </if>
        <message name="IDS_BOOKMARK_SYNC_PROMO_LINK" desc="Text of the link to sign in from the bookmark sync promo.">
@@ -66,12 +66,14 @@ index 5afc96f..f20f6e8 100644
        </message>
        <message name="IDS_SESSION_CRASHED_VIEW_UMA_OPTIN" desc="Text besides the checkbox to let users optin to UMA in the restore from previous crash bubble.">
          Help make Chromium better by sending crash reports and <ph name="UMA_LINK">$1<ex>usage statistics</ex></ph> to Google
-       </message>
-       <!-- Browser Window Title Format -->
-       <message name="IDS_BROWSER_WINDOW_TITLE_FORMAT" desc="The format for titles displayed in tabs and popup windows">
--        <ph name="PAGE_TITLE">$1<ex>Google</ex></ph> - Chromium
-+        <ph name="PAGE_TITLE">$1<ex>Google</ex></ph> – Iridium
-       </message>
+@@ -201,12 +201,12 @@ If you update this file, be sure also to update google_chrome_strings.grd. -->
+       <if expr="chromeos">
+         <!-- Browser Window Title Format -->
+         <message name="IDS_BROWSER_WINDOW_TITLE_FORMAT" desc="The format for titles displayed in tabbed browser windows">
+-          Chromium - <ph name="PAGE_TITLE">$1<ex>Google</ex></ph>
++          Iridium - <ph name="PAGE_TITLE">$1<ex>Google</ex></ph>
+         </message>
+       </if>
        <if expr="not chromeos">
          <message name="IDS_GET_HELP_USING_CHROME" desc="Text of the button which takes the user to the Chrome help page.">
 -          Get help with using Chromium
@@ -79,7 +81,7 @@ index 5afc96f..f20f6e8 100644
          </message>
        </if>
        <if expr="chromeos">
-@@ -202,14 +202,14 @@ If you update this file, be sure also to update google_chrome_strings.grd. -->
+@@ -215,14 +215,14 @@ If you update this file, be sure also to update google_chrome_strings.grd. -->
          </message>
        </if>
        <message name="IDS_ABOUT_VERSION_COMPANY_NAME" desc="Company name on the about pages">
@@ -87,8 +89,8 @@ index 5afc96f..f20f6e8 100644
 +        The Authors
        </message>
        <message name="IDS_ABOUT_VERSION_COPYRIGHT" desc="Copyright information on the about pages">
--        Copyright <ph name="YEAR">$1</ph> The Chromium Authors. All rights reserved.
-+        Copyright <ph name="YEAR">$1</ph> all involved authors.
+-        Copyright <ph name="YEAR">{0,date,y}<ex>2016</ex></ph> The Chromium Authors. All rights reserved.
++        Copyright <ph name="YEAR">{0,date,y}<ex>2016</ex></ph> all involved authors.
        </message>
        <if expr="chromeos">
          <message name="IDS_ABOUT_VERSION_LICENSE_EULA" desc="The label below the copyright message, containing the URLs.">
@@ -97,7 +99,7 @@ index 5afc96f..f20f6e8 100644
          </message>
          <message name="IDS_ABOUT_CROS_VERSION_LICENSE" desc="Additional text displayed beneath the Chromium open source URLs for Chrome OS.">
            Chromium OS is made possible by additional <ph name="BEGIN_LINK_CROS_OSS">&lt;a target="_blank" href="$1"&gt;</ph>open source software<ph name="END_LINK_CROS_OSS">&lt;/a&gt;</ph>.
-@@ -219,41 +219,41 @@ If you update this file, be sure also to update google_chrome_strings.grd. -->
+@@ -232,41 +232,41 @@ If you update this file, be sure also to update google_chrome_strings.grd. -->
          </message>
        </if>
        <message name="IDS_ABOUT_TERMS_OF_SERVICE" desc="The terms of service label in the About box." translateable="false">
@@ -149,7 +151,7 @@ index 5afc96f..f20f6e8 100644
        </message>
        <message name="IDS_ACCNAME_TOOLBAR" desc="The accessible name for the application's toolbar.">
          main
-@@ -261,32 +261,32 @@ If you update this file, be sure also to update google_chrome_strings.grd. -->
+@@ -274,32 +274,32 @@ If you update this file, be sure also to update google_chrome_strings.grd. -->
        <!-- Hung Browser Detector -->
        <if expr="is_win">
          <message name="IDS_BROWSER_HUNGBROWSER_MESSAGE" desc="Content of the dialog box shown when the browser is hung">
@@ -191,7 +193,7 @@ index 5afc96f..f20f6e8 100644
        </message>
        <if expr="chromeos">
          <message name="IDS_NEW_TAB_CHROME_WELCOME_PAGE_TITLE"
-@@ -303,12 +303,12 @@ If you update this file, be sure also to update google_chrome_strings.grd. -->
+@@ -316,12 +316,12 @@ If you update this file, be sure also to update google_chrome_strings.grd. -->
        <if expr="not chromeos and not is_ios">
          <message name="IDS_NEW_TAB_CHROME_WELCOME_PAGE_TITLE"
                   desc="Title for the hard-coded thumbnail that represents the Google Chrome Welcome page.  This is used on the NTP when there aren't enough thumbnails to show.">
@@ -206,7 +208,7 @@ index 5afc96f..f20f6e8 100644
          </message>
        </if>
        <if expr="chromeos">
-@@ -319,12 +319,12 @@ If you update this file, be sure also to update google_chrome_strings.grd. -->
+@@ -332,12 +332,12 @@ If you update this file, be sure also to update google_chrome_strings.grd. -->
        <!-- Strings used to warn that an OS is not supported -->
        <if expr="is_win">
          <message name="IDS_UNSUPPORTED_OS_PRE_WIN_XP" desc="The text used to warn the user that Windows pre-XP is not supported">
@@ -221,7 +223,7 @@ index 5afc96f..f20f6e8 100644
          </message>
        </if>
        <if expr="chromeos">
-@@ -334,25 +334,25 @@ If you update this file, be sure also to update google_chrome_strings.grd. -->
+@@ -347,25 +347,25 @@ If you update this file, be sure also to update google_chrome_strings.grd. -->
        </if>
        <if expr="use_titlecase">
          <message name="IDS_STATUS_TRAY_KEEP_CHROME_RUNNING_IN_BACKGROUND" desc="In Title Case: The checkbox in the status tray context menu that controls whether chrome keeps running in the background after the last window is closed">
@@ -252,7 +254,7 @@ index 5afc96f..f20f6e8 100644
  
  <ph name="USER_DATA_DIRECTORY">$1<ex>C:\Documents and Settings\devint\Local Settings\Application Data\Google\Chrome</ex></ph>
        </message>
-@@ -362,9 +362,9 @@ Chromium cannot read and write to its data directory:
+@@ -375,9 +375,9 @@ Chromium cannot read and write to its data directory:
          </message>
        </if>
        <message name="IDS_PROFILE_TOO_NEW_ERROR" desc="Error displayed on startup when the profile is from a newer version of the product and can not be read">
@@ -264,7 +266,7 @@ index 5afc96f..f20f6e8 100644
        </message>
        <message name="IDS_PREFERENCES_UNREADABLE_ERROR" desc="Error displayed on startup when user preferences file can not be read">
  Your preferences can not be read.
-@@ -374,79 +374,79 @@ Some features may be unavailable and changes to preferences won't be saved.
+@@ -387,74 +387,74 @@ Some features may be unavailable and changes to preferences won't be saved.
        <message name="IDS_PREFERENCES_CORRUPT_ERROR" desc="Error displayed on startup when user preferences file can not be read">
  Your preferences file is corrupt or invalid.
  
@@ -327,8 +329,8 @@ index 5afc96f..f20f6e8 100644
 +          Installation failed due to unspecified error. Please download the browser again.
          </message>
          <message name="IDS_INSTALL_OS_NOT_SUPPORTED" desc="Error displayed if OS is not supported">
--          Chromium requires Windows Vista or Windows XP with SP2 or higher.
-+          The browser requires Windows Vista or Windows XP with SP2 or higher.
+-          Chromium requires Windows 7 or higher.
++          The browser requires Windows 7 or higher.
          </message>
          <message name="IDS_INSTALL_OS_ERROR" desc="Error displayed when any Windows API call fails and we do not have more specific information.">
 -          An operating system error occurred during installation. Please download Chromium again.
@@ -356,6 +358,9 @@ index 5afc96f..f20f6e8 100644
 -          A conflicting installation of Chromium was found on the system. Please uninstall it and try again.
 +          A conflicting installation of Iridium was found on the system. Please uninstall it and try again.
          </message>
+         <message name="IDS_INSTALL_EXISTING_VERSION_LAUNCHED" desc="A message shown to users who try to install Chrome in their user profile directory when their computer already has Chrome installed for all users. In this case, the installer silently launches the existing version of Chrome for all users rather than installing a second version of Chrome.">
+           Chromium is already installed for all users on your computer.
+@@ -462,7 +462,7 @@ Chromium is unable to recover your settings.
        </if>
        <!-- Options Dialog -->
        <message name="IDS_OPTIONS_IMPROVE_BROWSING_EXPERIENCE" desc="The text in the options panel that describes how we use web services to improve browsing experience.">
@@ -364,7 +369,7 @@ index 5afc96f..f20f6e8 100644
        </message>
        <if expr="is_win">
          <message name="IDS_SHORTCUT_TOOLTIP" desc="Text for the hover-on tooltip for the Chromium shortcuts.">
-@@ -463,7 +463,7 @@ Chromium is unable to recover your settings.
+@@ -479,7 +479,7 @@ Chromium is unable to recover your settings.
          </message>
        </if>
        <message name="IDS_DEFAULT_BROWSER_INFOBAR_SHORT_TEXT" desc="More compact text to show in the default browser query infobar.">
@@ -373,7 +378,7 @@ index 5afc96f..f20f6e8 100644
        </message>
        <if expr="chromeos">
          <message name="IDS_SYNC_OVERVIEW" desc="Chrome OS: The message that appears in the options dialog when sync has not been set up by the user.">
-@@ -475,25 +475,25 @@ Chromium is unable to recover your settings.
+@@ -491,25 +491,25 @@ Chromium is unable to recover your settings.
        </if>
        <if expr="not chromeos">
          <message name="IDS_ABOUT_BUTTON" desc="The label for the button to open the about page.">
@@ -405,7 +410,7 @@ index 5afc96f..f20f6e8 100644
          </message>
          <message name="IDS_TRY_TOAST_TRY_OPT" desc="First option radio button on the dialog to try chrome">
            Try it out, it's already installed
-@@ -506,52 +506,52 @@ Chromium is unable to recover your settings.
+@@ -522,52 +522,52 @@ Chromium is unable to recover your settings.
          </message>
          <!-- about:conflicts strings -->
          <message name="IDS_CONFLICTS_CHECK_PAGE_TITLE_LONG" desc="The long title on the compatibility page">
@@ -469,7 +474,7 @@ index 5afc96f..f20f6e8 100644
          </message>
        </if>
  
-@@ -562,18 +562,18 @@ Chromium is unable to recover your settings.
+@@ -578,18 +578,18 @@ Chromium is unable to recover your settings.
  
        <!-- Obsolete System info bar -->
        <message name="IDS_SYSTEM_OBSOLETE_MESSAGE" desc="Message shown when your OS is no longer supported. This message is followed by a 'Learn more' link.">
@@ -486,12 +491,12 @@ index 5afc96f..f20f6e8 100644
        <!-- About Chrome page -->
        <if expr="not chromeos">
          <message name="IDS_UPGRADE_SUCCESSFUL_RELAUNCH" desc="Status label: Successfully updated Chromium">
--          Nearly up-to-date! Relaunch Chromium to finish updating.
-+          Nearly up-to-date! Relaunch the browser to finish updating.
+-          Nearly up to date! Relaunch Chromium to finish updating.
++          Nearly up to date! Relaunch the browser to finish updating.
          </message>
        </if>
        <if expr="chromeos">
-@@ -588,7 +588,7 @@ Chromium is unable to recover your settings.
+@@ -604,7 +604,7 @@ Chromium is unable to recover your settings.
        </if>
        <if expr="not chromeos">
          <message name="IDS_UPGRADE_UP_TO_DATE" desc="Status label: Already up to date (Chromium)">
@@ -500,7 +505,7 @@ index 5afc96f..f20f6e8 100644
          </message>
        </if>
        <if expr="chromeos">
-@@ -598,7 +598,7 @@ Chromium is unable to recover your settings.
+@@ -614,7 +614,7 @@ Chromium is unable to recover your settings.
        </if>
        <if expr="not chromeos">
          <message name="IDS_UPGRADE_UPDATING" desc="Status label: Updating Chromium">
@@ -509,7 +514,7 @@ index 5afc96f..f20f6e8 100644
          </message>
        </if>
        <if expr="chromeos">
-@@ -614,30 +614,30 @@ Chromium is unable to recover your settings.
+@@ -630,30 +630,30 @@ Chromium is unable to recover your settings.
  
        <!-- Extension/App install prompt -->
        <message name="IDS_EXTENSION_INLINE_INSTALL_PROMPT_TITLE" desc="Titlebar of the extension or app inline installation prompt window">
@@ -545,7 +550,7 @@ index 5afc96f..f20f6e8 100644
            </message>
          </if>
        </if>
-@@ -649,40 +649,40 @@ Chromium is unable to recover your settings.
+@@ -665,10 +665,10 @@ Chromium is unable to recover your settings.
  
        <!-- chrome://settings/extensions page -->
        <message name="IDS_EXTENSIONS_INCOGNITO_WARNING" desc="Warns the user that Chromium cannot prevent extensions from recording history in incognito mode. Displayed in extensions management UI after an extension is selected to be run in incognito mode.">
@@ -556,6 +561,9 @@ index 5afc96f..f20f6e8 100644
 -        Remove from Chromium...
 +        Remove from browser…
        </message>
+       <message name="IDS_MD_EXTENSIONS_SHORTCUT_SCOPE_IN_CHROME" desc="The label to indicate that a shortcut will be triggerable only from within the Chrome application.">
+         In Chromium
+@@ -676,32 +676,32 @@ Chromium is unable to recover your settings.
  
        <if expr="enable_extensions">
          <message name="IDS_EXTENSIONS_MULTIPLE_UNSUPPORTED_DISABLED_BODY" desc="Body of the dialog shown when multiple unsupported extensions have been disabled.">
@@ -595,7 +603,7 @@ index 5afc96f..f20f6e8 100644
          </message>
        </if>
        <if expr="chromeos">
-@@ -696,7 +696,7 @@ Chromium is unable to recover your settings.
+@@ -715,7 +715,7 @@ Chromium is unable to recover your settings.
  
        <if expr="is_macosx">
          <message name="IDS_APP_MENU_PRODUCT_NAME" desc="The application's short name, used for the Mac's application menu, activity monitor, etc. This should be less than 16 characters. Example: Chrome, not Google Chrome.">
@@ -604,7 +612,7 @@ index 5afc96f..f20f6e8 100644
          </message>
          <message name="IDS_HELPER_NAME" desc="The helper application's name.  Should contain the Chrome application name (IDS_PRODUCT_NAME). Example: Google Chrome Helper.">
            Chromium Helper
-@@ -708,68 +708,68 @@ Chromium is unable to recover your settings.
+@@ -727,68 +727,68 @@ Chromium is unable to recover your settings.
  
        <!-- Chrome sign-in page -->
        <message name="IDS_CHROME_SIGNIN_TITLE" desc="Title on the about:chrome-signin page">
@@ -690,7 +698,7 @@ index 5afc96f..f20f6e8 100644
          </message>
        </if>
  
-@@ -777,35 +777,35 @@ Signing in anyway will merge Chromium information like bookmarks, history, and o
+@@ -796,35 +796,35 @@ Signing in anyway will merge Chromium information like bookmarks, history, and o
        <!-- TODO(dconnelly): remove "new-style" once the old dialog is gone. -->
        <if expr="toolkit_views or is_macosx">
          <message name="IDS_ENTERPRISE_SIGNIN_TITLE_NEW_STYLE" desc="The title of the dialog to confirm linking the browser profile with the signed-in enterprise account">
@@ -734,7 +742,7 @@ index 5afc96f..f20f6e8 100644
          </message>
        </if>
        <if expr="chromeos">
-@@ -825,54 +825,54 @@ Signing in anyway will merge Chromium information like bookmarks, history, and o
+@@ -844,54 +844,54 @@ Signing in anyway will merge Chromium information like bookmarks, history, and o
  
        <if expr="is_macosx">
          <message name="IDS_OPTIONS_PASSWORDS_MAC_WARNING" desc="The warning for OS X that passwords are shared across profiles in the keychain.">
@@ -801,7 +809,7 @@ index 5afc96f..f20f6e8 100644
            </message>
          </if>
          <if expr="not chromeos">
-@@ -887,16 +887,16 @@ Signing in anyway will merge Chromium information like bookmarks, history, and o
+@@ -906,16 +906,16 @@ Signing in anyway will merge Chromium information like bookmarks, history, and o
  
        <!-- App shortcuts -->
        <message name="IDS_APP_SHORTCUTS_SUBDIR_NAME" desc="Name for the Chromium Apps Start Menu folder name.">
@@ -821,27 +829,7 @@ index 5afc96f..f20f6e8 100644
          </message>
        </if>
  
-@@ -911,102 +911,102 @@ Signing in anyway will merge Chromium information like bookmarks, history, and o
-       <if expr="enable_notifications">
-         <if expr="is_win">
-           <message name="IDS_MESSAGE_CENTER_BALLOON_TITLE" desc="Title of the first run notification ballon describing the notification center.">
--            Chromium Notification Center
-+            Notification Center
-           </message>
-           <message name="IDS_MESSAGE_CENTER_BALLOON_TEXT" desc="Body text for the the first run notification ballon describing the notification center.">
--            You can see all your notifications from Chromium apps, extensions, and websites here.
-+            You can see all your notifications from browser applications, extensions, and websites here.
-           </message>
-         </if>
-         <message name="IDS_MESSAGE_CENTER_TOOLTIP" desc="Tooltip for notification tray icon without unread notifications">
--          Chromium - Notifications
-+          Iridium – Notifications
-         </message>
-         <message name="IDS_MESSAGE_CENTER_TOOLTIP_UNREAD" desc="Tooltip for notification tray icon with unread notifications">
--          Chromium - Notifications (<ph name="QUANTITY">$1<ex>3</ex></ph> unread)
-+          Iridium – Notifications (<ph name="QUANTITY">$1<ex>3</ex></ph> unread)
-         </message>
-       </if>
+@@ -928,40 +928,40 @@ Signing in anyway will merge Chromium information like bookmarks, history, and o
  
        <!-- MediaStream capture status tray icon -->
        <message name="IDS_MEDIA_STREAM_STATUS_TRAY_TEXT_AUDIO_AND_VIDEO" desc="Tool tip for the capture status tray icon when microphone and camera are being used">
@@ -889,8 +877,9 @@ index 5afc96f..f20f6e8 100644
          </message>
        </if>
  
-       <!-- User manager tutorial -->
-       <if expr="not is_android and not is_ios and not chromeos">
+@@ -997,46 +997,46 @@ Please check your email at <ph name="ACCOUNT_EMAIL">$2<ex>jane.doe@example.com</
+ 
+         <!-- Tutorial -->
          <message name="IDS_USER_MANAGER_TUTORIAL_SLIDE_INTRO_TITLE" desc="Title of the tutorial introduction slide">
 -          Chromium just got better
 +          Iridium just got better
@@ -948,7 +937,7 @@ index 5afc96f..f20f6e8 100644
        </message>
  
        <!-- Website Settings bubble -->
-@@ -1022,16 +1022,16 @@ Signing in anyway will merge Chromium information like bookmarks, history, and o
+@@ -1052,16 +1052,16 @@ Please check your email at <ph name="ACCOUNT_EMAIL">$2<ex>jane.doe@example.com</
        <!-- Windows firewall rule strings. -->
        <if expr="is_win">
          <message name="IDS_INBOUND_MDNS_RULE_NAME" desc="The name of the firewall rule allowing inbound mDNS traffic.">
@@ -969,7 +958,7 @@ index 5afc96f..f20f6e8 100644
          </message>
        </if>
  
-@@ -1066,37 +1066,37 @@ Signing in anyway will merge Chromium information like bookmarks, history, and o
+@@ -1117,26 +1117,26 @@ Please check your email at <ph name="ACCOUNT_EMAIL">$2<ex>jane.doe@example.com</
  
        <!-- Update bubble -->
        <message name="IDS_REINSTALL_APP" desc="Text for the button the user clicks to reinstall the app.">
@@ -1001,6 +990,9 @@ index 5afc96f..f20f6e8 100644
 +        The browser could not update itself to the latest version, so you are missing out on security fixes. You need to update it.
        </message>
  
+       <!-- User menu errors -->
+@@ -1152,13 +1152,13 @@ Please check your email at <ph name="ACCOUNT_EMAIL">$2<ex>jane.doe@example.com</
+ 
        <!-- Upgrade recovery bubble -->
        <message name="IDS_RUN_RECOVERY" desc="Text for the button the user clicks to recover chromium and its updater.">
 -        Update Chromium
@@ -1015,7 +1007,7 @@ index 5afc96f..f20f6e8 100644
        </message>
        <message name="IDS_RECOVERY_BUBBLE_TEXT" desc="Text for the chrome recovery bubble view full description.">
          Important security improvements and new features are available in the latest version.
-@@ -1112,7 +1112,7 @@ Signing in anyway will merge Chromium information like bookmarks, history, and o
+@@ -1193,7 +1193,7 @@ Please check your email at <ph name="ACCOUNT_EMAIL">$2<ex>jane.doe@example.com</
  
        <!-- Page Information Window -->
        <message name="IDS_PAGE_INFO_SECURITY_TAB_SECURE_IDENTITY_NO_CT" desc="The text of the identity section when the page is secure and no Certificate Transparency information is present.">
@@ -1024,7 +1016,7 @@ index 5afc96f..f20f6e8 100644
        </message>
        <message name="IDS_PAGE_INFO_SECURITY_TAB_SECURE_IDENTITY_CT_VERIFIED" desc="The text of the identity section when the page is secure and a Signed Certificate Timestamp from a known Certificate Transparency log is present and valid.">
          Chromium verified that <ph name="ISSUER">$1<ex>VeriSign</ex></ph> issued this website's certificate. The server supplied valid Certificate Transparency information.
-@@ -1146,13 +1146,13 @@ Signing in anyway will merge Chromium information like bookmarks, history, and o
+@@ -1232,13 +1232,13 @@ Please check your email at <ph name="ACCOUNT_EMAIL">$2<ex>jane.doe@example.com</
        <!-- OOBE -->
        <if expr="chromeos">
          <message name="IDS_INSTALLING_UPDATE" desc="Label shown on the updates installation screen during OOBE">
@@ -1041,7 +1033,7 @@ index 5afc96f..f20f6e8 100644
          </message>
          <message name="IDS_EULA_SCREEN_ACCESSIBLE_TITLE" desc="Title to be spoken on opening the OOBE EULA screen">
            Chromium OS terms
-@@ -1163,15 +1163,15 @@ Signing in anyway will merge Chromium information like bookmarks, history, and o
+@@ -1249,15 +1249,15 @@ Please check your email at <ph name="ACCOUNT_EMAIL">$2<ex>jane.doe@example.com</
        <if expr="is_win">
          <message name="IDS_METRO_FLOW_TAB_TITLE"
                   desc="The dialog window title.">
@@ -1111,7 +1103,7 @@ z?%=#u7dXiw2{R*NGROIn&zNJKb9~M*J#c4$t8}Q{OOh7e_W%F@07*qoM6N<$f&k#4
 A2LJ#7
 
 diff --git a/components/components_chromium_strings.grd b/components/components_chromium_strings.grd
-index 9ea2a3b..1490b3e 100644
+index e3019ed5..4a965a4 100644
 --- a/components/components_chromium_strings.grd
 +++ b/components/components_chromium_strings.grd
 @@ -136,7 +136,7 @@
@@ -1154,9 +1146,9 @@ index 9ea2a3b..1490b3e 100644
  
        <!-- About Flags UI -->
        <if expr="not chromeos">
--        <message name="IDS_FLAGS_UI_RELAUNCH_NOTICE" desc="Notifies the user that he needs to relaunch Chromium. Shown next to a button that says 'Relaunch Now'.">
+-        <message name="IDS_FLAGS_UI_RELAUNCH_NOTICE" desc="Notifies the user that they need to relaunch Chromium. Shown next to a button that says 'Relaunch Now'.">
 -          Your changes will take effect the next time you relaunch Chromium.
-+        <message name="IDS_FLAGS_UI_RELAUNCH_NOTICE" desc="Notifies the user that he needs to relaunch Iridium. Shown next to a button that says 'Relaunch Now'.">
++        <message name="IDS_FLAGS_UI_RELAUNCH_NOTICE" desc="Notifies the user that they need to relaunch Iridium. Shown next to a button that says 'Relaunch Now'.">
 +          Your changes will take effect the next time you relaunch the browser.
          </message>
        </if>

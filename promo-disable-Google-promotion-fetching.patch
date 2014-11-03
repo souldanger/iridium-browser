@@ -1,7 +1,7 @@
-From d207fc1a9321badd86b9d2699130d033f561059e Mon Sep 17 00:00:00 2001
+From 7fad4e95f0bca37d57bd79bd79fa33f4b7d454df Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sun, 9 Nov 2014 01:54:27 +0100
-Subject: [PATCH 45/55] promo: disable Google promotion fetching
+Subject: [PATCH 40/52] promo: disable Google promotion fetching
 
 Documentation is scarce, and sprinkled with misleading acronyms.
 NTP is not NTP, for example. FWIW:
@@ -17,15 +17,14 @@ Google.
 
 References: https://github.com/iridium-browser/iridium-browser/issues/33
 ---
- chrome/browser/signin/signin_promo.cc         | 5 +++--
- components/web_resource/notification_promo.cc | 2 +-
- 2 files changed, 4 insertions(+), 3 deletions(-)
+ chrome/browser/signin/signin_promo.cc | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
 diff --git a/chrome/browser/signin/signin_promo.cc b/chrome/browser/signin/signin_promo.cc
-index 80315d4..fb1d9ca 100644
+index ceb2054..3e22105 100644
 --- a/chrome/browser/signin/signin_promo.cc
 +++ b/chrome/browser/signin/signin_promo.cc
-@@ -108,6 +108,7 @@ bool ShouldShowPromo(Profile* profile) {
+@@ -85,6 +85,7 @@ namespace signin {
  
  bool ShouldShowPromoAtStartup(Profile* profile, bool is_new_profile) {
    DCHECK(profile);
@@ -33,7 +32,7 @@ index 80315d4..fb1d9ca 100644
  
    // Don't show if the profile is an incognito.
    if (profile->IsOffTheRecord())
-@@ -352,8 +353,8 @@ void ForceWebBasedSigninFlowForTesting(bool force) {
+@@ -329,8 +330,8 @@ void ForceWebBasedSigninFlowForTesting(bool force) {
  void RegisterProfilePrefs(
      user_prefs::PrefRegistrySyncable* registry) {
    registry->RegisterIntegerPref(prefs::kSignInPromoStartupCount, 0);
@@ -44,19 +43,6 @@ index 80315d4..fb1d9ca 100644
    registry->RegisterBooleanPref(prefs::kSignInPromoShowNTPBubble, false);
  }
  
-diff --git a/components/web_resource/notification_promo.cc b/components/web_resource/notification_promo.cc
-index e37c844..7527f18 100644
---- a/components/web_resource/notification_promo.cc
-+++ b/components/web_resource/notification_promo.cc
-@@ -34,7 +34,7 @@ namespace {
- 
- const int kDefaultGroupSize = 100;
- 
--const char promo_server_url[] = "https://clients3.google.com/crsignal/client";
-+const char promo_server_url[] = "trk:122:about:blank";
- 
- // The name of the preference that stores the promotion object.
- const char kPrefPromoObject[] = "promo";
 -- 
 2.6.6
 

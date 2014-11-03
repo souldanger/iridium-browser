@@ -1,7 +1,7 @@
-From 8872922031899469f09af41dca0349923a3707c0 Mon Sep 17 00:00:00 2001
+From dbe80f45270c3250d3045365d8458c4214edb68e Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sat, 8 Nov 2014 21:40:49 +0100
-Subject: [PATCH 25/55] prefs: use separate directory for config
+Subject: [PATCH 21/52] prefs: use separate directory for config
 
 Do not overwrite an existing Chromium configuration.
 ---
@@ -9,10 +9,10 @@ Do not overwrite an existing Chromium configuration.
  1 file changed, 1 insertion(+), 5 deletions(-)
 
 diff --git a/chrome/common/chrome_paths_linux.cc b/chrome/common/chrome_paths_linux.cc
-index ffeb6ef..f8389e6 100644
+index aa26cc9..2aa2899 100644
 --- a/chrome/common/chrome_paths_linux.cc
 +++ b/chrome/common/chrome_paths_linux.cc
-@@ -65,11 +65,7 @@ bool GetDefaultUserDataDirectory(base::FilePath* result) {
+@@ -66,11 +66,7 @@ bool GetDefaultUserDataDirectory(base::FilePath* result) {
    base::FilePath config_dir(GetXDGDirectory(env.get(),
                                              kXdgConfigHomeEnvVar,
                                              kDotConfigDir));

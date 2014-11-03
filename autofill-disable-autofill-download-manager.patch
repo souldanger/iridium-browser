@@ -1,7 +1,7 @@
-From d1ea83d29a868c891b3a75de56f37a387fec905f Mon Sep 17 00:00:00 2001
+From 2c2dd5bfdee513322436260aa031db4cac5fddf3 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Thu, 11 Sep 2014 16:37:32 +0200
-Subject: [PATCH 09/55] autofill: disable autofill download manager
+Subject: [PATCH 06/52] autofill: disable autofill download manager
 
 Disables the autofill download manager (trk:158).
 ---
@@ -10,7 +10,7 @@ Disables the autofill download manager (trk:158).
  2 files changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/components/autofill/core/browser/autofill_download_manager.cc b/components/autofill/core/browser/autofill_download_manager.cc
-index 4046a84..b634fa2 100644
+index 53ac081..ce869fd 100644
 --- a/components/autofill/core/browser/autofill_download_manager.cc
 +++ b/components/autofill/core/browser/autofill_download_manager.cc
 @@ -86,7 +86,7 @@ std::string RequestTypeToString(AutofillDownloadManager::RequestType type) {
@@ -23,12 +23,12 @@ index 4046a84..b634fa2 100644
  }
  
 diff --git a/components/autofill/core/browser/autofill_manager.cc b/components/autofill/core/browser/autofill_manager.cc
-index 6f4908c..5eb090a 100644
+index 1cef568..25f6e60 100644
 --- a/components/autofill/core/browser/autofill_manager.cc
 +++ b/components/autofill/core/browser/autofill_manager.cc
-@@ -203,9 +203,11 @@ AutofillManager::AutofillManager(
-       external_delegate_(NULL),
-       test_delegate_(NULL),
+@@ -214,9 +214,11 @@ AutofillManager::AutofillManager(
+       autofill_assistant_(this),
+ #endif
        weak_ptr_factory_(this) {
 +#if 0
    if (enable_download_manager == ENABLE_AUTOFILL_DOWNLOAD_MANAGER) {
@@ -36,8 +36,8 @@ index 6f4908c..5eb090a 100644
    }
 +#endif
    CountryNames::SetLocaleString(app_locale_);
- }
- 
+   if (personal_data_ && client_)
+     personal_data_->OnSyncServiceInitialized(client_->GetSyncService());
 -- 
 2.6.6
 
