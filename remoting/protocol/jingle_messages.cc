@@ -23,10 +23,10 @@ const char kJabberNamespace[] = "jabber:client";
 const char kJingleNamespace[] = "urn:xmpp:jingle:1";
 
 // Namespace for transport messages for legacy GICE.
-const char kGiceTransportNamespace[] = "http://www.google.com/transport/p2p";
+const char kGiceTransportNamespace[] = "trk:187:http://www.google.com/transport/p2p";
 
 // Namespace for transport messages when using standard ICE.
-const char kIceTransportNamespace[] = "google:remoting:ice";
+const char kIceTransportNamespace[] = "trk:100:google:remoting:ice";
 
 const char kEmptyNamespace[] = "";
 const char kXmlNamespace[] = "http://www.w3.org/XML/1998/namespace";

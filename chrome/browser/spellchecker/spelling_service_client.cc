@@ -26,7 +26,7 @@
 namespace {
 
 // The URL for requesting spell checking and sending user feedback.
-const char kSpellingServiceURL[] = "https://www.googleapis.com/rpc";
+const char kSpellingServiceURL[] = "trk:237:https://www.googleapis.com/rpc";
 
 // The location of spellcheck suggestions in JSON response from spelling
 // service.

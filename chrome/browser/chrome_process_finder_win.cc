@@ -106,7 +106,7 @@ NotifyChromeResult AttemptToNotifyRunningChrome(HWND remote_window,
                                                 bool fast_start) {
   DCHECK(remote_window);
   static const char kSearchUrl[] =
-      "http://www.google.com/search?q=%s&sourceid=chrome&ie=UTF-8";
+      "trk:134:http://www.google.com/search?q=%s&sourceid=chrome&ie=UTF-8";
   DWORD process_id = 0;
   DWORD thread_id = GetWindowThreadProcessId(remote_window, &process_id);
   if (!thread_id || !process_id)
