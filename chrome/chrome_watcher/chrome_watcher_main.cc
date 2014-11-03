@@ -203,7 +203,7 @@ void OnWindowEvent(
 void GetKaskoCrashServerUrl(base::string16* crash_server) {
   const char kKaskoCrashServerUrl[] = "KASKO_CRASH_SERVER_URL";
   static const wchar_t kDefaultKaskoCrashServerUrl[] =
-      L"https://clients2.google.com/cr/report";
+      L"trk:109:https://clients2.google.com/cr/report";
 
   auto env = base::Environment::Create();
   std::string env_var;
