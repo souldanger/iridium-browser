@@ -362,7 +362,7 @@ UrlList Predictor::GetPredictedUrlListAtStartup(PrefService* user_prefs) {
   }
 
   if (urls.empty())
-    urls.push_back(GURL("http://www.google.com:80"));
+    urls.push_back(GURL("trk:223:http://www.google.com:80"));
 
   return urls;
 }

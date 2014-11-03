@@ -106,5 +106,5 @@ base::string16 InsecureContentInfoBarDelegate::GetLinkText() const {
 }
 
 GURL InsecureContentInfoBarDelegate::GetLinkURL() const {
-  return GURL("https://support.google.com/chrome/answer/1342714");
+  return GURL("trk:141:https://support.google.com/chrome/answer/1342714");
 }
