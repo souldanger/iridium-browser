@@ -71,9 +71,9 @@ cvox.ChromeVoxPrefs.DEFAULT_PREFS = {
   'granularity': undefined,
   'position': '{}',
   'siteSpecificScriptBase':
-      'https://ssl.gstatic.com/accessibility/javascript/ext/',
+      'trk:https://ssl.gstatic.com/accessibility/javascript/ext/',
   'siteSpecificScriptLoader':
-      'https://ssl.gstatic.com/accessibility/javascript/ext/loader.js',
+      'trk:https://ssl.gstatic.com/accessibility/javascript/ext/loader.js',
   'sticky': false,
   'typingEcho': 0,
   'useIBeamCursor': cvox.ChromeVox.isMac,

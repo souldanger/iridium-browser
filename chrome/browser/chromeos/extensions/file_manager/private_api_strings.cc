@@ -19,26 +19,26 @@ namespace {
 
 // Location of the page to buy more storage for Google Drive.
 const char kGoogleDriveBuyStorageUrl[] =
-    "https://www.google.com/settings/storage";
+    "trk:https://www.google.com/settings/storage";
 
 // Location of the overview page about Google Drive.
 const char kGoogleDriveOverviewUrl[] =
-    "https://support.google.com/chromeos/?p=filemanager_drive";
+    "trk:https://support.google.com/chromeos/?p=filemanager_drive";
 
 // Location of Google drive redeem page.
 const char kGoogleDriveRedeemUrl[] =
-    "http://www.google.com/intl/en/chrome/devices/goodies.html"
+    "trk:http://www.google.com/intl/en/chrome/devices/goodies.html"
     "?utm_source=filesapp&utm_medium=banner&utm_campaign=gsg";
 
 // Location of Google Drive specific help.
 const char kGoogleDriveHelpUrl[] =
-    "https://support.google.com/chromeos/?p=filemanager_drivehelp";
+    "trk:https://support.google.com/chromeos/?p=filemanager_drivehelp";
 
 // Location of Google Drive root.
-const char kGoogleDriveRootUrl[] = "https://drive.google.com";
+const char kGoogleDriveRootUrl[] = "trk:https://drive.google.com";
 
 // Printf format
-const char kHelpURLFormat[] = "https://support.google.com/chromebook/answer/%d";
+const char kHelpURLFormat[] = "trk:https://support.google.com/chromebook/answer/%d";
 
 // Location of the help page for low space warning in the downloads directory.
 const int kDownloadsLowSpaceWarningHelpNumber = 1061547;

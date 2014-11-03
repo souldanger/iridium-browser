@@ -16,7 +16,7 @@ MockPermissionBubbleRequest::MockPermissionBubbleRequest()
   text_ = base::ASCIIToUTF16("test");
   accept_label_ = base::ASCIIToUTF16("button");
   deny_label_ = base::ASCIIToUTF16("button");
-  hostname_ = GURL("http://www.google.com");
+  hostname_ = GURL("trk:http://www.google.com");
 }
 
 MockPermissionBubbleRequest::MockPermissionBubbleRequest(
@@ -28,7 +28,7 @@ MockPermissionBubbleRequest::MockPermissionBubbleRequest(
   text_ = base::UTF8ToUTF16(text);
   accept_label_ = base::ASCIIToUTF16("button");
   deny_label_ = base::ASCIIToUTF16("button");
-  hostname_ = GURL("http://www.google.com");
+  hostname_ = GURL("trk:http://www.google.com");
 }
 
 MockPermissionBubbleRequest::MockPermissionBubbleRequest(
@@ -55,7 +55,7 @@ MockPermissionBubbleRequest::MockPermissionBubbleRequest(
   text_ = base::UTF8ToUTF16(text);
   accept_label_ = base::UTF8ToUTF16(accept_label);
   deny_label_ = base::UTF8ToUTF16(deny_label);
-  hostname_ = GURL("http://www.google.com");
+  hostname_ = GURL("trk:http://www.google.com");
 }
 
 MockPermissionBubbleRequest::~MockPermissionBubbleRequest() {}

@@ -19,7 +19,7 @@
 
 namespace syncer {
 
-const char kSyncP2PNotificationChannel[] = "http://www.google.com/chrome/sync";
+const char kSyncP2PNotificationChannel[] = "trk:http://www.google.com/chrome/sync";
 
 namespace {
 

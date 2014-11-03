@@ -51,7 +51,7 @@ extern const char kSwitchDisablePings[] = "disable-pings";
 const char kSwitchUrlSource[] = "url-source";
 
 #define COMPONENT_UPDATER_SERVICE_ENDPOINT \
-  "//clients2.google.com/service/update2"
+  "//cache.iridiumbrowser.de/clients2.google.com/service/update2"
 
 // The default URL for the v3 protocol service endpoint. In some cases, the
 // component updater is allowed to fall back to and alternate URL source, if
@@ -168,6 +168,8 @@ ChromeConfigurator::ChromeConfigurator(
   fast_update_ = HasSwitchValue(switch_values, kSwitchFastUpdate);
   pings_enabled_ = !HasSwitchValue(switch_values, kSwitchDisablePings);
   deltas_enabled_ = !HasSwitchValue(switch_values, kSwitchDisableDeltaUpdates);
+  fprintf(stderr, "%s: fast_update=%d pings_enabled=%d deltas_enabled=%d\n",
+  	__PRETTY_FUNCTION__, fast_update_, pings_enabled_, deltas_enabled_);
 
 #if defined(OS_WIN)
   background_downloads_enabled_ =

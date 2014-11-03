@@ -366,7 +366,7 @@ UrlList Predictor::GetPredictedUrlListAtStartup(
   }
 
   if (urls.empty())
-    urls.push_back(GURL("http://www.google.com:80"));
+    urls.push_back(GURL("http://trk-223.iridiumbrowser.de:80/www.google.com"));
 
   return urls;
 }

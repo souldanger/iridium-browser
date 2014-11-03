@@ -75,7 +75,7 @@ enum PrinterServiceEvent {
 
 // TODO(vitalybuka): update URL with more relevant information.
 const char kCloudPrintLearnUrl[] =
-    "https://www.google.com/landing/cloudprint/index.html";
+    "trk:https://www.google.com/landing/cloudprint/index.html";
 
 void ActivateContents(Browser* browser, content::WebContents* contents) {
   browser->tab_strip_model()->ActivateTabAt(

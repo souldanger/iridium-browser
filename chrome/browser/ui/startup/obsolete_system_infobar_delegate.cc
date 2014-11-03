@@ -61,7 +61,7 @@ bool ObsoleteSystemInfoBarDelegate::LinkClicked(
 #if defined(OS_MACOSX)
           GURL(chrome::kMac32BitDeprecationURL),
 #else
-          GURL("http://www.google.com/support/chrome/bin/"
+          GURL("trk:http://www.google.com/support/chrome/bin/"
                "answer.py?answer=95411"),
 #endif
           content::Referrer(),

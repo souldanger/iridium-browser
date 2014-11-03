@@ -63,13 +63,13 @@ DriveApiUrlGenerator::~DriveApiUrlGenerator() {
 }
 
 const char DriveApiUrlGenerator::kBaseUrlForProduction[] =
-    "https://www.googleapis.com";
+    "trk:https://www.googleapis.com";
 
 const char DriveApiUrlGenerator::kBaseDownloadUrlForProduction[] =
 #if defined(GOOGLE_CHROME_BUILD) || defined(USE_OFFICIAL_GOOGLE_API_KEYS)
-    "https://www.googledrive.com/p/";
+    "trk:https://www.googledrive.com/p/";
 #else
-    "https://www.googledrive.com";
+    "trk:https://www.googledrive.com";
 #endif
 
 GURL DriveApiUrlGenerator::GetAboutGetUrl() const {

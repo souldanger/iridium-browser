@@ -41,7 +41,7 @@ const char kSetDccResponseVariable[] = "set_dcc";
 //
 
 const char kFinancialPingPath[] = "/tools/pso/ping";
-const char kFinancialServer[]   = "clients1.google.com";
+const char kFinancialServer[]   = "trk-157.iridiumbrowser.de/clients1.google.com";
 const int kFinancialPort = 80;
 
 // Ping times in 100-nanosecond intervals.

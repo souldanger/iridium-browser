@@ -16,7 +16,7 @@ namespace feedback {
 namespace {
 
 const char kFeedbackPostUrl[] =
-    "https://www.google.com/tools/feedback/chrome/__submit";
+    "trk:https://www.google.com/tools/feedback/chrome/__submit";
 
 const int64 kRetryDelayMinutes = 60;
 

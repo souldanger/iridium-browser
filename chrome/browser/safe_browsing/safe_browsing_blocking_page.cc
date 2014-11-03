@@ -56,17 +56,17 @@ namespace {
 // diagnostic page.
 #if defined(GOOGLE_CHROME_BUILD)
 const char kSbDiagnosticUrl[] =
-    "http://safebrowsing.clients.google.com/safebrowsing/diagnostic?site=%s&client=googlechrome";
+    "trk:http://safebrowsing.clients.google.com/safebrowsing/diagnostic?site=%s&client=googlechrome";
 #else
 const char kSbDiagnosticUrl[] =
-    "http://safebrowsing.clients.google.com/safebrowsing/diagnostic?site=%s&client=chromium";
+    "trk:http://safebrowsing.clients.google.com/safebrowsing/diagnostic?site=%s&client=chromium";
 #endif
 
 // URL for malware and phishing, V2.
 const char kLearnMoreMalwareUrlV2[] =
-    "https://www.google.com/transparencyreport/safebrowsing/";
+    "trk:https://www.google.com/transparencyreport/safebrowsing/";
 const char kLearnMorePhishingUrlV2[] =
-    "https://www.google.com/transparencyreport/safebrowsing/";
+    "trk:https://www.google.com/transparencyreport/safebrowsing/";
 
 // After a malware interstitial where the user opted-in to the report
 // but clicked "proceed anyway", we delay the call to

@@ -108,6 +108,10 @@ bool UpdateCheckerImpl::CheckForUpdates(
     const std::string& additional_attributes,
     const UpdateCheckCallback& update_check_callback) {
   DCHECK(thread_checker_.CalledOnValidThread());
+  std::vector<GURL> zzz = config_.UpdateUrl();
+  fprintf(stderr, "%s: enter\n", __PRETTY_FUNCTION__);
+  if (zzz.size() > 0)
+  	fprintf(stderr, "%s: url=%s\n", __PRETTY_FUNCTION__, zzz[0].spec().c_str());
 
   if (request_sender_.get()) {
     NOTREACHED();
