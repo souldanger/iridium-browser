@@ -157,7 +157,7 @@ base::string16 ThreeDAPIInfoBarDelegate::GetLinkText() const {
 }
 
 GURL ThreeDAPIInfoBarDelegate::GetLinkURL() const {
-  return GURL("https://support.google.com/chrome/?p=ib_webgl");
+  return GURL("trk:137:https://support.google.com/chrome/?p=ib_webgl");
 }
 
 
