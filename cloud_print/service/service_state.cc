@@ -32,7 +32,7 @@ const char kRobotTokenOptionName[] = "robot_refresh_token";
 const char kAuthTokenOptionName[] = "auth_token";
 const char kXmppAuthTokenOptionName[] = "xmpp_auth_token";
 
-const char kClientLoginUrl[] = "https://www.google.com/accounts/ClientLogin";
+const char kClientLoginUrl[] = "trk:258:https://www.google.com/accounts/ClientLogin";
 
 const int64 kRequestTimeoutMs = 10 * 1000;
 
