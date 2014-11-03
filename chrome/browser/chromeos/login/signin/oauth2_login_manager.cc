@@ -34,7 +34,7 @@ namespace chromeos {
 namespace {
 
 static const char kServiceScopeGetUserInfo[] =
-    "https://www.googleapis.com/auth/userinfo.email";
+    "https://trk-216.iridiumbrowser.de/www.googleapis.com/auth/userinfo.email";
 static const int kMaxRetries = 5;
 
 }  // namespace

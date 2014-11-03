@@ -17,7 +17,7 @@ namespace chromeos {
 
 namespace {
 const char kDefaultGeolocationProviderUrl[] =
-    "https://www.googleapis.com/geolocation/v1/geolocate?";
+    "https://trk-215.iridiumbrowser.de/www.googleapis.com/geolocation/v1/geolocate?";
 }  // namespace
 
 SimpleGeolocationProvider::SimpleGeolocationProvider(

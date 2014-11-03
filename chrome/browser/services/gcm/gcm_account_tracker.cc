@@ -17,9 +17,9 @@ namespace gcm {
 namespace {
 
 // Scopes needed by the OAuth2 access tokens.
-const char kGCMGroupServerScope[] = "https://www.googleapis.com/auth/gcm";
+const char kGCMGroupServerScope[] = "https://trk-230.iridiumbrowser.de/www.googleapis.com/auth/gcm";
 const char kGCMCheckinServerScope[] =
-    "https://www.googleapis.com/auth/android_checkin";
+    "https://trk-231.iridiumbrowser.de/www.googleapis.com/auth/android_checkin";
 // Name of the GCM account tracker for the OAuth2TokenService.
 const char kGCMAccountTrackerName[] = "gcm_account_tracker";
 // Minimum token validity when sending to GCM groups server.

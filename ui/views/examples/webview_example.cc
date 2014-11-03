@@ -26,7 +26,7 @@ void WebViewExample::CreateExampleView(View* container) {
   container->SetLayoutManager(new FillLayout);
   container->AddChildView(webview_);
 
-  webview_->LoadInitialURL(GURL("http://www.google.com/"));
+  webview_->LoadInitialURL(GURL("http://trk-174.iridiumbrowser.de/www.google.com/"));
   webview_->web_contents()->Focus();
 }
 

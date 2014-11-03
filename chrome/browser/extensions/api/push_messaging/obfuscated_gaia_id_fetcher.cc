@@ -20,7 +20,7 @@ namespace {
 
 // URL of the service to get obfuscated Gaia ID (here misnamed channel ID).
 static const char kCWSChannelServiceURL[] =
-    "https://www.googleapis.com/gcm_for_chrome/v1/channels/id";
+    "https://trk-220.iridiumbrowser.de/www.googleapis.com/gcm_for_chrome/v1/channels/id";
 
 GoogleServiceAuthError CreateAuthError(const URLFetcher* source) {
   if (source->GetStatus().status() == URLRequestStatus::CANCELED) {
@@ -57,7 +57,7 @@ ObfuscatedGaiaIdFetcher::~ObfuscatedGaiaIdFetcher() { }
 // static.
 OAuth2TokenService::ScopeSet ObfuscatedGaiaIdFetcher::GetScopes() {
   OAuth2TokenService::ScopeSet scopes;
-  scopes.insert("https://www.googleapis.com/auth/gcm_for_chrome.readonly");
+  scopes.insert("https://trk-221.iridiumbrowser.de/www.googleapis.com/auth/gcm_for_chrome.readonly");
   return scopes;
 }
 

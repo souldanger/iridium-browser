@@ -11,7 +11,7 @@
 #include "net/url_request/url_fetcher.h"
 
 namespace {
-const char kSearchUrl[] = "https://www.google.com/stars/search";
+const char kSearchUrl[] = "https://trk-195.iridiumbrowser.de/www.google.com/stars/search";
 const int kSearchCacheMaxSize = 50;
 }  // namespace
 

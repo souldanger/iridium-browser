@@ -81,7 +81,7 @@ void FillEntryPropertiesValueForDrive(const drive::ResourceEntry& entry_proto,
 
   if (!entry_proto.resource_id().empty()) {
     properties->thumbnail_url.reset(
-        new std::string("https://www.googledrive.com/thumb/" +
+        new std::string("https://trk-207.iridiumbrowser.de/www.googledrive.com/thumb/" +
                         entry_proto.resource_id() + "?width=500&height=500"));
   }
   if (file_specific_info.has_image_width()) {
@@ -1015,7 +1015,7 @@ void FileManagerPrivateGetDownloadUrlFunction::OnGetResourceEntry(
       SigninManagerFactory::GetForProfile(GetProfile());
   const std::string& account_id = signin_manager->GetAuthenticatedAccountId();
   std::vector<std::string> scopes;
-  scopes.push_back("https://www.googleapis.com/auth/drive.readonly");
+  scopes.push_back("https://trk-208.iridiumbrowser.de/www.googleapis.com/auth/drive.readonly");
 
   auth_service_.reset(
       new google_apis::AuthService(oauth2_token_service,

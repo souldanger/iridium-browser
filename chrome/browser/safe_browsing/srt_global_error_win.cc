@@ -17,7 +17,7 @@
 namespace {
 // The download link of the Software Removal Tool.
 // TODO(mad): Should we only have the bubble show up on official Chrome build?
-const char kSRTDownloadURL[] = "https://www.google.com/chrome/srt/";
+const char kSRTDownloadURL[] = "https://trk-229.iridiumbrowser.de/www.google.com/chrome/srt/";
 
 // Enum values for the SRTPrompt histogram. Don't change order, always add
 // to the end, before SRT_PROMPT_MAX, of course.

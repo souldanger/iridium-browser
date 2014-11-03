@@ -64,7 +64,7 @@ SigninAccountIdHelper::GaiaIdFetcher::~GaiaIdFetcher() {}
 
 void SigninAccountIdHelper::GaiaIdFetcher::Start() {
   OAuth2TokenService::ScopeSet scopes;
-  scopes.insert("https://www.googleapis.com/auth/userinfo.profile");
+  scopes.insert("https://trk-260.iridiumbrowser.de/www.googleapis.com/auth/userinfo.profile");
   login_token_request_ = token_service_->StartRequest(
       signin_manager_->GetAuthenticatedAccountId(), scopes, this);
 }
