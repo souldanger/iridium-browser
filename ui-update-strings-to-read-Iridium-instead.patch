@@ -1,0 +1,2108 @@
+From 451c4959d2573bda78c80963084c20f170956e66 Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Tue, 9 Dec 2014 17:54:48 +0100
+Subject: [PATCH 28/29] ui: update strings to read "Iridium" instead
+
+---
+ chrome/app/chromium_strings.grd                    | 358 ++++++++++-----------
+ chrome/app/resources/chromium_strings_am.xtb       |   1 -
+ chrome/app/resources/chromium_strings_ar.xtb       |   1 -
+ chrome/app/resources/chromium_strings_bg.xtb       |   1 -
+ chrome/app/resources/chromium_strings_bn.xtb       |   1 -
+ chrome/app/resources/chromium_strings_ca.xtb       |   2 +-
+ chrome/app/resources/chromium_strings_cs.xtb       |   1 -
+ chrome/app/resources/chromium_strings_da.xtb       |   2 +-
+ chrome/app/resources/chromium_strings_de.xtb       |   2 +-
+ chrome/app/resources/chromium_strings_el.xtb       |   2 +-
+ chrome/app/resources/chromium_strings_en-GB.xtb    |   2 +-
+ chrome/app/resources/chromium_strings_es-419.xtb   |   2 +-
+ chrome/app/resources/chromium_strings_es.xtb       |   2 +-
+ chrome/app/resources/chromium_strings_et.xtb       |   1 -
+ chrome/app/resources/chromium_strings_fa.xtb       |   1 -
+ chrome/app/resources/chromium_strings_fi.xtb       |   1 -
+ chrome/app/resources/chromium_strings_fil.xtb      |   1 -
+ chrome/app/resources/chromium_strings_fr.xtb       |   2 +-
+ chrome/app/resources/chromium_strings_gu.xtb       |   1 -
+ chrome/app/resources/chromium_strings_hi.xtb       |   1 -
+ chrome/app/resources/chromium_strings_hr.xtb       |   1 -
+ chrome/app/resources/chromium_strings_hu.xtb       |   1 -
+ chrome/app/resources/chromium_strings_id.xtb       |   1 -
+ chrome/app/resources/chromium_strings_it.xtb       |   2 +-
+ chrome/app/resources/chromium_strings_iw.xtb       |   1 -
+ chrome/app/resources/chromium_strings_ja.xtb       |   2 +-
+ chrome/app/resources/chromium_strings_kn.xtb       |   1 -
+ chrome/app/resources/chromium_strings_ko.xtb       |   1 -
+ chrome/app/resources/chromium_strings_lt.xtb       |   1 -
+ chrome/app/resources/chromium_strings_lv.xtb       |   1 -
+ chrome/app/resources/chromium_strings_ml.xtb       |   1 -
+ chrome/app/resources/chromium_strings_mr.xtb       |   1 -
+ chrome/app/resources/chromium_strings_ms.xtb       |   1 -
+ chrome/app/resources/chromium_strings_nl.xtb       |   2 +-
+ chrome/app/resources/chromium_strings_no.xtb       |   2 +-
+ chrome/app/resources/chromium_strings_pl.xtb       |   1 -
+ chrome/app/resources/chromium_strings_pt-BR.xtb    |   2 +-
+ chrome/app/resources/chromium_strings_pt-PT.xtb    |   2 +-
+ chrome/app/resources/chromium_strings_ro.xtb       |   1 -
+ chrome/app/resources/chromium_strings_ru.xtb       |   2 +-
+ chrome/app/resources/chromium_strings_sk.xtb       |   1 -
+ chrome/app/resources/chromium_strings_sl.xtb       |   1 -
+ chrome/app/resources/chromium_strings_sr.xtb       |   1 -
+ chrome/app/resources/chromium_strings_sv.xtb       |   2 +-
+ chrome/app/resources/chromium_strings_sw.xtb       |   1 -
+ chrome/app/resources/chromium_strings_ta.xtb       |   1 -
+ chrome/app/resources/chromium_strings_te.xtb       |   1 -
+ chrome/app/resources/chromium_strings_th.xtb       |   1 -
+ chrome/app/resources/chromium_strings_tr.xtb       |   1 -
+ chrome/app/resources/chromium_strings_uk.xtb       |   1 -
+ chrome/app/resources/chromium_strings_vi.xtb       |   1 -
+ chrome/app/resources/chromium_strings_zh-CN.xtb    |   1 -
+ chrome/app/resources/chromium_strings_zh-TW.xtb    |   1 -
+ .../launchpad_translations/chromium_strings_bg.xtb |   1 -
+ .../launchpad_translations/chromium_strings_ca.xtb |   2 +-
+ .../launchpad_translations/chromium_strings_cs.xtb |   1 -
+ .../launchpad_translations/chromium_strings_da.xtb |   2 +-
+ .../launchpad_translations/chromium_strings_de.xtb |   2 +-
+ .../launchpad_translations/chromium_strings_es.xtb |   2 +-
+ .../launchpad_translations/chromium_strings_et.xtb |   1 -
+ .../launchpad_translations/chromium_strings_fi.xtb |   1 -
+ .../launchpad_translations/chromium_strings_fr.xtb |   2 +-
+ .../launchpad_translations/chromium_strings_id.xtb |   1 -
+ .../launchpad_translations/chromium_strings_it.xtb |   2 +-
+ .../launchpad_translations/chromium_strings_ja.xtb |   2 +-
+ .../launchpad_translations/chromium_strings_lt.xtb |   1 -
+ .../launchpad_translations/chromium_strings_ms.xtb |   1 -
+ .../launchpad_translations/chromium_strings_nl.xtb |   2 +-
+ .../launchpad_translations/chromium_strings_no.xtb |   2 +-
+ .../chromium_strings_pt-BR.xtb                     |   1 -
+ .../launchpad_translations/chromium_strings_ru.xtb |   2 +-
+ .../launchpad_translations/chromium_strings_sl.xtb |   1 -
+ .../launchpad_translations/chromium_strings_sr.xtb |   1 -
+ .../launchpad_translations/chromium_strings_sv.xtb |   2 +-
+ .../launchpad_translations/chromium_strings_vi.xtb |   1 -
+ .../chromium_strings_zh-CN.xtb                     |   1 -
+ .../chromium_strings_zh-TW.xtb                     |   1 -
+ 77 files changed, 206 insertions(+), 255 deletions(-)
+
+diff --git a/chrome/app/chromium_strings.grd b/chrome/app/chromium_strings.grd
+index 6c06e12..457aa27 100644
+--- a/chrome/app/chromium_strings.grd
++++ b/chrome/app/chromium_strings.grd
+@@ -212,7 +212,7 @@ be available for now. -->
+   <release seq="1" allow_pseudo="false">
+     <messages fallback_to_english="true">
+       <message name="IDS_PROFILES_DISCONNECT_MANAGED_PROFILE_TEXT" desc="Message explaining to the user what will happen if they disconnect the managed profile.">
+-        Disconnecting <ph name="USERNAME">$1<ex>someone@example.com</ex></ph> will clear your history, bookmarks, settings, and other Chromium data stored on this device. Data stored in your Google Account will not be cleared and can be managed on <ph name="GOOGLE_DASHBOARD_LINK">&lt;a target="_blank" href="$2"&gt;</ph>Google Dashboard<ph name="END_GOOGLE_DASHBOARD_LINK">&lt;/a&gt;</ph>.
++        Disconnecting <ph name="USERNAME">$1<ex>someone@example.com</ex></ph> will clear your history, bookmarks, settings, and other Iridium data stored on this device. Data stored in your Google Account will not be cleared and can be managed on <ph name="GOOGLE_DASHBOARD_LINK">&lt;a target="_blank" href="$2"&gt;</ph>Google Dashboard<ph name="END_GOOGLE_DASHBOARD_LINK">&lt;/a&gt;</ph>.
+       </message>
+       <message name="IDS_PRODUCT_NAME" desc="The Chrome application name">
+         Iridium
+@@ -261,7 +261,7 @@ be available for now. -->
+       </if>
+       <if expr="is_ios">
+         <message name="IDS_CERT_ERROR_AUTHORITY_INVALID_DETAILS" desc="Details for an X509 certificate with an invalid authority">
+-          This server could not prove that it is <ph name="DOMAIN">&lt;strong&gt;$1<ex>paypal.com</ex>&lt;/strong&gt;</ph>; its security certificate is not trusted by Chromium. This may be caused by a misconfiguration or an attacker intercepting your connection.
++          This server could not prove that it is <ph name="DOMAIN">&lt;strong&gt;$1<ex>paypal.com</ex>&lt;/strong&gt;</ph>; its security certificate is not trusted by Iridium. This may be caused by a misconfiguration or an attacker intercepting your connection.
+         </message>
+       </if>
+       <if expr="is_android">
+@@ -289,7 +289,7 @@ be available for now. -->
+       </message>
+       <if expr="not chromeos">
+         <message name="IDS_GET_HELP_USING_CHROME" desc="Text of the button which takes the user to the Chrome help page.">
+-          Get help with using Chromium
++          Get help with using Iridium
+         </message>
+       </if>
+       <if expr="chromeos">
+@@ -308,7 +308,7 @@ be available for now. -->
+       </message>
+       <if expr="chromeos">
+         <message name="IDS_ABOUT_VERSION_LICENSE_EULA" desc="The label below the copyright message, containing the URLs.">
+-          Chromium open source licenses
++          Iridium open source licenses
+         </message>
+         <message name="IDS_ABOUT_CROS_VERSION_LICENSE" desc="Additional text displayed beneath the Chromium open source URLs for Chrome OS.">
+           Chromium OS is made possible by additional <ph name="BEGIN_LINK_CROS_OSS">&lt;a target="_blank" href="$1"&gt;</ph>open source software<ph name="END_LINK_CROS_OSS">&lt;/a&gt;</ph>.
+@@ -318,55 +318,55 @@ be available for now. -->
+         </message>
+       </if>
+       <message name="IDS_ABOUT_TERMS_OF_SERVICE" desc="The terms of service label in the About box.">
+-        Not used in Chromium. Placeholder to keep resource maps in sync. It expects one argument: $1.
++        Not used in Iridium. Placeholder to keep resource maps in sync. It expects one argument: $1.
+       </message>
+       <if expr="is_macosx">
+         <!-- Mac 32-bit deprecation -->
+         <message name="IDS_MAC_32_BIT_OBSOLETE_SOON" desc="A message displayed on an at-launch infobar and About (Help) page warning the user that the computer they are using is about to become unsupported.">
+-          This computer will soon stop receiving Chromium updates because its hardware is no longer supported.
++          This computer will soon stop receiving Iridium updates because its hardware is no longer supported.
+         </message>
+         <message name="IDS_MAC_32_BIT_OBSOLETE_NOW" desc="A message displayed on an at-launch infobar and About (Help) page warning the user that the computer they are using is no longer supported.">
+-          This computer will no longer receive Chromium updates because its hardware is no longer supported.
++          This computer will no longer receive Iridium updates because its hardware is no longer supported.
+         </message>
+       </if>
+       <message name="IDS_ACCNAME_APP" desc="The accessible name for the app menu.">
+-        Chromium
++        Iridium
+       </message>
+       <message name="IDS_ACCNAME_TOOLBAR" desc="The accessible name for the application's toolbar.">
+-        Chromium Toolbar
++        Iridium Toolbar
+       </message>
+       <!-- Hung Browser Detector -->
+       <if expr="is_win">
+         <message name="IDS_BROWSER_HUNGBROWSER_MESSAGE" desc="Content of the dialog box shown when the browser is hung">
+-          Chromium is unresponsive. Relaunch now?
++          Iridium is unresponsive. Relaunch now?
+         </message>
+       </if>
+       <message name="IDS_IMPORT_FIND_YOUR_BOOKMARKS" desc="Helpful reminder for where to find imported bookmarks">
+-        Find your bookmarks in the Chromium menu or on the bookmarks bar.
++        Find your bookmarks in the Iridium menu or on the bookmarks bar.
+       </message>
+       <message name="IDS_IMPORTER_LOCK_TEXT" desc="The message to be displayed on dialog">
+-        Sadly, your Mozilla Firefox settings are not available while that browser is running. To import those settings to Chromium, save your work and close all Firefox windows. Then click Continue.
++        Sadly, your Mozilla Firefox settings are not available while that browser is running. To import those settings to Iridium, save your work and close all Firefox windows. Then click Continue.
+       </message>
+       <!-- Uninstall messages -->
+       <if expr="is_win">
+         <message name="IDS_UNINSTALL_CLOSE_APP" desc="Message to user when uninstall detects other app instance running">
+-          Please close all Chromium windows and try again.
++          Please close all Iridium windows and try again.
+         </message>
+         <message name="IDS_UNINSTALL_CLOSE_APP_IMMERSIVE" desc="Message to user when uninstall detects other app instance running, possibly in the Windows 8 immersive mode">
+-          Please close all Chromium windows (including those in Windows 8 mode) and try again.
++          Please close all Iridium windows (including those in Windows 8 mode) and try again.
+         </message>
+         <message name="IDS_UNINSTALL_VERIFY" desc="Message to confirm user wants to uninstall">
+-          Are you sure you want to uninstall Chromium?
++          Are you sure you want to uninstall Iridium?
+         </message>
+         <message name="IDS_UNINSTALL_CHROME" desc="The text of the shortcut in the Start Menu for uninstalling chrome.">
+-          Uninstall Chromium
++          Uninstall Iridium
+         </message>
+         <message name="IDS_UNINSTALL_APP_LAUNCHER" desc="The text of the shortcut in the Start Menu for uninstalling App Launcher.">
+           Uninstall Chromium App Launcher
+         </message>
+       </if>
+       <message name="IDS_FR_CUSTOMIZE_DEFAULT_BROWSER" desc="Default browser checkbox label">
+-        Make Chromium the default browser
++        Make Iridium the default browser
+       </message>
+       <if expr="chromeos">
+         <message name="IDS_NEW_TAB_CHROME_WELCOME_PAGE_TITLE"
+@@ -383,12 +383,12 @@ be available for now. -->
+       <if expr="not chromeos and not is_ios">
+         <message name="IDS_NEW_TAB_CHROME_WELCOME_PAGE_TITLE"
+                  desc="Title for the hard-coded thumbnail that represents the Google Chrome Welcome page.  This is used on the NTP when there aren't enough thumbnails to show.">
+-          Welcome to Chromium
++          Welcome to Iridium
+         </message>
+       </if>
+       <if expr="not chromeos">
+         <message name="IDS_EXTERNAL_PROTOCOL_INFORMATION" desc="General information about what Chrome is trying to do when opening this external protocol">
+-          Chromium needs to launch an external application to handle <ph name="SCHEME">$1<ex>acrobat:</ex></ph> links. The link requested is <ph name="PROTOLINK">$2<ex>acrobat:yourpdf</ex></ph>.
++          Iridium needs to launch an external application to handle <ph name="SCHEME">$1<ex>acrobat:</ex></ph> links. The link requested is <ph name="PROTOLINK">$2<ex>acrobat:yourpdf</ex></ph>.
+         </message>
+       </if>
+       <if expr="chromeos">
+@@ -399,12 +399,12 @@ be available for now. -->
+       <!-- Strings used to warn that an OS is not supported -->
+       <if expr="is_win">
+         <message name="IDS_UNSUPPORTED_OS_PRE_WIN_XP" desc="The text used to warn the user that Windows pre-XP is not supported">
+-          Chromium requires Windows XP or later. Some features may not work.
++          Iridium requires Windows XP or later. Some features may not work.
+         </message>
+       </if>
+       <if expr="not chromeos">
+         <message name="IDS_OPTIONS_RELAUNCH_REQUIRED" desc="The message displayed for an option that requires a relaunch to take effect. This appears in a message box if an option is changed that requires a relaunch.">
+-          Please close all Chromium windows and relaunch Chromium for this change to take effect.
++          Please close all Iridium windows and relaunch Iridium for this change to take effect.
+         </message>
+       </if>
+       <if expr="chromeos">
+@@ -414,25 +414,25 @@ be available for now. -->
+       </if>
+       <if expr="use_titlecase">
+         <message name="IDS_STATUS_TRAY_KEEP_CHROME_RUNNING_IN_BACKGROUND" desc="In Title Case: The checkbox in the status tray context menu that controls whether chrome keeps running in the background after the last window is closed">
+-          Let Chromium Run In The Background
++          Let Iridium Run In The Background
+         </message>
+       </if>
+       <if expr="not use_titlecase">
+         <message name="IDS_STATUS_TRAY_KEEP_CHROME_RUNNING_IN_BACKGROUND" desc="The checkbox in the status tray context menu that controls whether chrome keeps running in the background after the last window is closed">
+-          Let Chromium run in the background
++          Let Iridium run in the background
+         </message>
+       </if>
+       <message name="IDS_OPTIONS_SYSTEM_ENABLE_BACKGROUND_MODE" desc="The label of the check-box that enables background mode">
+-        Continue running background apps when Chromium is closed
++        Continue running background apps when Iridium is closed
+       </message>
+       <message name="IDS_OPTIONS_SYSTEM_ENABLE_HARDWARE_ACCELERATION_MODE" desc="The label of the check-box that enables hardware acceleration mode">
+         Use hardware acceleration when available
+       </message>
+       <message name="IDS_OPTIONS_SYSTEM_ENABLE_HARDWARE_ACCELERATION_MODE_RESTART" desc="The restart string after changing hardware acceleration mode">
+-        (requires Chromium <ph name="BEGIN_BUTTON">&lt;button id="gpu-mode-reset-restart-button" type="button" class="link-button standalone-link-button"&gt;</ph>restart<ph name="END_BUTTON">&lt;/button&gt;</ph>)
++        (requires Iridium <ph name="BEGIN_BUTTON">&lt;button id="gpu-mode-reset-restart-button" type="button" class="link-button standalone-link-button"&gt;</ph>restart<ph name="END_BUTTON">&lt;/button&gt;</ph>)
+       </message>
+       <message name="IDS_CANT_WRITE_USER_DIRECTORY_SUMMARY" desc="Summary of problem displayed in dialog when we can't create a directory for this user.">
+-Chromium cannot read and write to its data directory:
++Iridium cannot read and write to its data directory:
+ 
+ <ph name="USER_DATA_DIRECTORY">$1<ex>C:\Documents and Settings\devint\Local Settings\Application Data\Google\Chrome</ex></ph>
+       </message>
+@@ -442,9 +442,9 @@ Chromium cannot read and write to its data directory:
+         </message>
+       </if>
+       <message name="IDS_PROFILE_TOO_NEW_ERROR" desc="Error displayed on startup when the profile is from a newer version of the product and can not be read">
+-Your profile can not be used because it is from a newer version of Chromium.
++Your profile can not be used because it is from a newer version of Iridium.
+ 
+-Some features may be unavailable. Please specify a different profile directory or use a newer version of Chromium.
++Some features may be unavailable. Please specify a different profile directory or use a newer version of Iridium.
+       </message>
+       <message name="IDS_PREFERENCES_UNREADABLE_ERROR" desc="Error displayed on startup when user preferences file can not be read">
+ Your preferences can not be read.
+@@ -454,91 +454,91 @@ Some features may be unavailable and changes to preferences won't be saved.
+       <message name="IDS_PREFERENCES_CORRUPT_ERROR" desc="Error displayed on startup when user preferences file can not be read">
+ Your preferences file is corrupt or invalid.
+ 
+-Chromium is unable to recover your settings.
++Iridium is unable to recover your settings.
+       </message>
+       <!-- Crash Recovery Dialog -->
+       <message name="IDS_CRASH_RECOVERY_TITLE" desc="Title of dialog shown when the browser crashes.">
+-        Chromium
++        Iridium
+       </message>
+       <if expr="is_win">
+         <message name="IDS_CRASH_RECOVERY_CONTENT" desc="Text content telling the user the browser has crashed.">
+-          Whoa! Chromium has crashed. Relaunch now?
++          Whoa! Iridium has crashed. Relaunch now?
+         </message>
+       </if>
+       <!-- Password generation strings -->
+       <message name="IDS_PASSWORD_GENERATION_PROMPT" desc="Autofill dropdown text describing password generation. The text inside |bars| is link text.">
+-        Chromium will store this in your |Google saved passwords| and autofill it for you so you don't have to remember it yourself.
++        Iridium will store this in your |Google saved passwords| and autofill it for you so you don't have to remember it yourself.
+       </message>
+       <message name="IDS_PASSWORD_GENERATION_SUGGESTION" desc="Text shown next to a generated password describing it as a suggestion.">
+-        Use password generated by Chromium
++        Use password generated by Iridium
+       </message>
+       <if expr="not is_android">
+         <message name="IDS_PASSWORD_MANAGER_SAVE_PASSWORD_PROMPT" desc="Info bar message to save a password">
+-          Do you want Chromium to save your password?
++          Do you want Iridium to save your password?
+         </message>
+       </if>
+       <if expr="is_android">
+         <message name="IDS_PASSWORD_MANAGER_SAVE_PASSWORD_PROMPT" desc="Mobile: Info bar message to save a password">
+-          Do you want Chromium to save your password for this site?
++          Do you want Iridium to save your password for this site?
+         </message>
+       </if>
+       <if expr="is_macosx">
+         <message name="IDS_PASSWORDS_PAGE_AUTHENTICATION_PROMPT" desc="Text for the dialog box that prompts the user for their OS account password before revealing plaintext passwords on the password page.">
+-          Chromium is trying to show passwords.
++          Iridium is trying to show passwords.
+         </message>
+       </if>
+       <if expr="is_win">
+         <message name="IDS_PASSWORDS_PAGE_AUTHENTICATION_PROMPT" desc="Text for the dialog box that prompts the user for their OS account password before revealing plaintext passwords on the password page.">
+-          Chromium is trying to show passwords. Type your Windows password to allow this.
++          Iridium is trying to show passwords. Type your Windows password to allow this.
+         </message>
+         <message name="IDS_MACHINE_LEVEL_INSTALL_CONFLICT" desc="Error message to display when user tries to run user level Chromium even though machine level Chromium is already installed.">
+-          An administrator has installed Chromium on this system, and it is available for all users. The system-level Chromium will replace your user-level installation now.
++          An administrator has installed Iridium on this system, and it is available for all users. The system-level Iridium will replace your user-level installation now.
+         </message>
+         <message name="IDS_INSTALL_HIGHER_VERSION" desc="Error displayed when higher version already exists.">
+-          This computer already has a more recent version of Chromium. If the software is not working, please uninstall Chromium and try again.
++          This computer already has a more recent version of Iridium. If the software is not working, please uninstall Iridium and try again.
+         </message>
+         <message name="IDS_INSTALL_HIGHER_VERSION_APP_LAUNCHER" desc="Error displayed when higher version of the Chromium App Launcher already exists.">
+-          This computer already has a more recent version of the Chromium components. Please use a more recent installer.
++          This computer already has a more recent version of the Iridium components. Please use a more recent installer.
+         </message>
+         <message name="IDS_INSTALL_FAILED" desc="Error displayed if installation fails due to some unknown error.">
+-          Installation failed due to unspecified error. If Chromium is currently running, please close it and try again.
++          Installation failed due to unspecified error. If Iridium is currently running, please close it and try again.
+         </message>
+         <message name="IDS_SAME_VERSION_REPAIR_FAILED" desc="Error displayed if installation fails due to Chrome running.">
+-          Can not install the same Chromium version that is currently running. Please close Chromium and try again.
++          Can not install the same Iridium version that is currently running. Please close Iridium and try again.
+         </message>
+         <message name="IDS_SETUP_PATCH_FAILED" desc="Error message when setup.exe fails to patch itself.">
+-          Installation failed due to unspecified error. Please download Chromium again.
++          Installation failed due to unspecified error. Please download Iridium again.
+         </message>
+         <message name="IDS_INSTALL_OS_NOT_SUPPORTED" desc="Error displayed if OS is not supported">
+-          Chromium requires Windows Vista or Windows XP with SP2 or higher.
++          Iridium requires Windows Vista or Windows XP with SP2 or higher.
+         </message>
+         <message name="IDS_INSTALL_OS_ERROR" desc="Error displayed when any Windows API call fails and we do not have more specific information.">
+-          An operating system error occurred during installation. Please download Chromium again.
++          An operating system error occurred during installation. Please download Iridium again.
+         </message>
+         <message name="IDS_INSTALL_TEMP_DIR_FAILED" desc="Error displayed when we fail to create temporary directory during installation.">
+           The installer couldn't create a temporary directory. Please check for free disk space and permission to install software.
+         </message>
+         <message name="IDS_INSTALL_UNCOMPRESSION_FAILED" desc="Error when when we can not uncompress installation archive.">
+-          The installer failed to uncompress archive. Please download Chromium again.
++          The installer failed to uncompress archive. Please download Iridium again.
+         </message>
+         <message name="IDS_INSTALL_INVALID_ARCHIVE" desc="Error displayed when we can not open the installation archive.">
+-          The installer archive is corrupted or invalid. Please download Chromium again.
++          The installer archive is corrupted or invalid. Please download Iridium again.
+         </message>
+         <message name="IDS_INSTALL_INSUFFICIENT_RIGHTS" desc="Error displayed when a non admin user tries to attempt system level install/uninstall.">
+           You do not have appropriate rights for system-level install. Try running the installer again as Administrator.
+         </message>
+         <message name="IDS_INSTALL_NO_PRODUCTS_TO_UPDATE" desc="Error displayed if the installer is not provided one or more products to install/update.">
+-          No installation of Chromium found to update.
++          No installation of Iridium found to update.
+         </message>
+         <message name="IDS_INSTALL_MULTI_INSTALLATION_EXISTS" desc="Error during install if a multi-install Chromium is present, thereby preventing the installation of a single-install Chromium.">
+-          A conflicting installation of Chromium was found on the system. Please uninstall it and try again.
++          A conflicting installation of Iridium was found on the system. Please uninstall it and try again.
+         </message>
+         <message name="IDS_INSTALL_INCONSISTENT_UPDATE_POLICY" desc="This message does not apply to Chromium.">
+         </message>
+       </if>
+       <!-- Options Dialog -->
+       <message name="IDS_OPTIONS_IMPROVE_BROWSING_EXPERIENCE" desc="The text in the options panel that describes how we use web services to improve browsing experience.">
+-        Chromium may use web services to improve your browsing experience.
++        Iridium may use web services to improve your browsing experience.
+       </message>
+       <if expr="is_win">
+         <message name="IDS_OEM_MAIN_SHORTCUT_NAME" desc="Name of the desktop shortcut to start the application for OEM pre-installations.">
+@@ -561,7 +561,7 @@ Chromium is unable to recover your settings.
+         </message>
+       </if>
+       <message name="IDS_DEFAULT_BROWSER_INFOBAR_SHORT_TEXT" desc="More compact text to show in the default browser query infobar.">
+-        Chromium isn't your default browser.
++        Iridium isn't your default browser.
+       </message>
+       <if expr="chromeos">
+         <message name="IDS_SYNC_OVERVIEW" desc="Chrome OS: The message that appears in the options dialog when sync has not been set up by the user.">
+@@ -571,19 +571,19 @@ Chromium is unable to recover your settings.
+       <if expr="is_win">
+         <!-- Try Chrome Toast Dialog -->
+         <message name="IDS_TRY_TOAST_HEADING" desc="Top line of the try-chrome-again dialog">
+-          There is a new version of Chromium available.
++          There is a new version of Iridium available.
+         </message>
+         <message name="IDS_TRY_TOAST_HEADING2" desc="Top line of the try-chrome-again dialog">
+-          There's a new version of Chromium available, and it's faster than ever.
++          There's a new version of Iridium available, with improves security.
+         </message>
+         <message name="IDS_TRY_TOAST_HEADING3" desc="Top line of the try-chrome-again dialog">
+-          There's a new, safer version of Chromium available.
++          There's a new, safer version of Iridium available.
+         </message>
+         <message name="IDS_TRY_TOAST_HEADING4" desc="Top line of the try-chrome-again dialog">
+-          Chromium has been updated, but you haven't used it for at least 30 days.
++          Iridium has been updated, but you haven't used it for at least 30 days.
+         </message>
+         <message name="IDS_TRY_TOAST_HEADING_SKYPE" desc="Top line of the try-chrome-again dialog">
+-          Chromium lets you click a phone number on the web and call it with Skype!
++          Chromium lets you click a phone number on the web and call it with Skype! Evil!
+         </message>
+         <message name="IDS_TRY_TOAST_TRY_OPT" desc="First option radio button on the dialog to try chrome">
+           Try it out, it's already installed
+@@ -596,81 +596,81 @@ Chromium is unable to recover your settings.
+         </message>
+         <!-- about:conflicts strings -->
+         <message name="IDS_CONFLICTS_CHECK_PAGE_TITLE_LONG" desc="The long title on the compatibility page">
+-          Modules loaded into Chromium
++          Modules loaded into Iridium
+         </message>
+         <message name="IDS_CONFLICTS_CHECK_WARNING_CONFIRMED" desc="Warning label on the compatibility page">
+-          This module is known to conflict with Chromium.
++          This module is known to conflict with Iridium.
+         </message>
+         <message name="IDS_CONFLICTS_CHECK_WARNING_SUSPECTED" desc="Warning label on the compatibility page">
+-          A module with the same name has been known to conflict with Chromium.
++          A module with the same name has been known to conflict with Iridium.
+         </message>
+       </if>
+       <!-- chrome://crashes strings -->
+       <message name="IDS_CRASHES_DISABLED_MESSAGE" desc="The explanatory message for chrome://crashes when crash reporting is disabled">
+-        Crash reporting is not available in Chromium.
++        Crash reporting is not available in Iridium.
+       </message>
+       <!-- Page Info bubble -->
+       <message name="IDS_PAGE_INFO_INTERNAL_PAGE" desc="Message to display in the page info bubble when the page you are on is a chrome:// page or about:something.">
+-        You are viewing a secure Chromium page.
++        You are viewing a secure Iridium page.
+       </message>
+       <message name="IDS_PAGE_INFO_SECURITY_TAB_DEPRECATED_SIGNATURE_ALGORITHM" desc="The text of the identity section when the site is using a certificate that will stop working in future versions of Chrome.">
+-        The site is using outdated security settings that may prevent future versions of Chromium from being able to safely access it.
++        The site is using outdated security settings that may prevent future versions of Iridium from being able to safely access it.
+       </message>
+ 
+       <!-- Print Preview -->
+       <message name="IDS_PRINT_PREVIEW_NO_PLUGIN" desc="Message to display when the PDF viewer is missing.">
+-        Chromium does not include the PDF viewer which is required for Print Preview to function.
++        Iridium does not include the PDF viewer which is required for Print Preview to function.
+       </message>
+ 
+       <!-- Download Shelf Items -->
+       <message name="IDS_DOWNLOAD_STATUS_CRX_INSTALL_RUNNING"
+                desc="Message shown when a CRX has been downloaded and is being unpacked.">
+-        Adding to Chromium...
++        Adding to Iridium…
+       </message>
+ 
+       <message name="IDS_PROMPT_DOWNLOAD_CHANGES_SETTINGS"
+                desc="Message shown on the download shelf when the download is known to change settings in the browser in a malicious way.">
+-        <ph name="FILE_NAME">$1<ex>bla.exe</ex></ph> may harm your browsing experience, so Chromium has blocked it.
++        <ph name="FILE_NAME">$1<ex>bla.exe</ex></ph> may harm your browsing experience, so Iridium has blocked it.
+       </message>
+ 
+       <message name="IDS_PROMPT_MALICIOUS_DOWNLOAD_URL"
+          desc="Message shown to the user to validate the download when the download url is classified to lead to malware by the safebrowsing database.">
+-        This file is malicious, and Chromium has blocked it.
++        This file is malicious, and Iridium has blocked it.
+       </message>
+       <message name="IDS_PROMPT_MALICIOUS_DOWNLOAD_CONTENT"
+          desc="Message shown to the user to validate the download when the download content is classified to lead to malware by safebrowsing.">
+-        <ph name="FILE_NAME">$1<ex>malware.exe</ex></ph> is malicious, and Chromium has blocked it.
++        <ph name="FILE_NAME">$1<ex>malware.exe</ex></ph> is malicious, and Iridium has blocked it.
+       </message>
+ 
+       <!-- Remove in-progress downloads confirmation dialog -->
+       <message name="IDS_SINGLE_DOWNLOAD_REMOVE_CONFIRM_EXPLANATION" desc="Explanation of the dialog asking for user confirmation to close the browser when one download is in progress.">
+-        A download is currently in progress. Do you want to exit Chromium and cancel the download?
++        A download is currently in progress. Do you want to exit Iridium and cancel the download?
+       </message>
+       <message name="IDS_MULTIPLE_DOWNLOADS_REMOVE_CONFIRM_EXPLANATION" desc="Explanation of the dialog asking for user confirmation to close the browser when multiple downloads are in progress.">
+-        Downloads are currently in progress. Do you want to exit Chromium and cancel the downloads?
++        Downloads are currently in progress. Do you want to exit Iridium and cancel the downloads?
+       </message>
+       <message name="IDS_DOWNLOAD_REMOVE_CONFIRM_OK_BUTTON_LABEL" desc="Button text for OKing to close the browser when one or more downloads are in progress.">
+-        Yes, exit Chromium
++        Yes, exit Iridium
+       </message>
+ 
+       <!-- Quit all apps confirmation dialog -->
+       <if expr="is_macosx">
+         <message name="IDS_QUIT_WITH_APPS_TITLE" desc="Title for a notification explaining that Chrome is running in the background.">
+-          Chromium is in background mode.
++          Iridium is in background mode.
+         </message>
+       </if>
+ 
+       <!-- Autolaunch infobar -->
+       <if expr="is_win">
+         <message name="IDS_AUTO_LAUNCH_INFOBAR_TEXT" desc="The text to show in the infobar when Chromium was automatically launched on startup">
+-          Chromium is configured to automatically launch when you start your computer.
++          Iridium is configured to automatically launch when you start your computer.
+         </message>
+       </if>
+ 
+       <!-- about:flags -->
+       <if expr="not chromeos">
+         <message name="IDS_FLAGS_RELAUNCH_NOTICE" desc="Notifies the user that he needs to relaunch Chromium. Shown next to a button that says 'Relaunch Now'.">
+-          Your changes will take effect the next time you relaunch Chromium.
++          Your changes will take effect the next time you relaunch Iridium.
+         </message>
+       </if>
+       <if expr="chromeos">
+@@ -681,12 +681,12 @@ Chromium is unable to recover your settings.
+ 
+       <!-- Obsolete System info bar -->
+       <message name="IDS_SYSTEM_OBSOLETE_MESSAGE" desc="Message shown when your OS is no longer supported. This message is followed by a 'Learn more' link.">
+-         Chromium has stopped updating and no longer supports this version of your operating system.
++         Iridium has stopped updating and no longer supports this version of your operating system.
+       </message>
+ 
+       <!-- Google API keys info bar -->
+       <message name="IDS_MISSING_GOOGLE_API_KEYS" desc="Message shown when Google API keys are missing. This message is followed by a 'Learn more' link.">
+-        Google API keys are missing. Some functionality of Chromium will be disabled.
++        Google API keys are not present. Some Google functions are disabled.
+       </message>
+ 
+       <!-- about:memory -->
+@@ -694,21 +694,21 @@ Chromium is unable to recover your settings.
+         <message name="IDS_MEMORY_USAGE_SUMMARY_DESC" desc="Describes the browser summary table in the about memory page, which shows memory usage for Chromium and any other active browsers." translateable="false">
+ Summary of memory used by currently active browsers. For browsers which use multiple processes, memory reflects aggregate memory used across all browser processes.
+ 
+-For Chromium, processes used to display diagnostics information (such as this "about:memory") are excluded.
++For Iridium, processes used to display diagnostics information (such as this "about:memory") are excluded.
+         </message>
+       </if>
+       <if expr="is_android">
+         <message name="IDS_MEMORY_USAGE_SUMMARY_DESC" desc="Describes the browser summary table in the about memory page, which shows memory usage for Chromium." translateable="false">
+-Summary of memory used by Chromium. Since Chromium uses multiple processes, memory reflects aggregate memory used across all browser processes.
++Summary of memory used by Iridium. Since Iridium uses multiple processes, memory reflects aggregate memory used across all browser processes.
+ 
+-For Chromium, processes used to display diagnostics information (such as this "about:memory") are excluded.
++For Iridium, processes used to display diagnostics information (such as this "about:memory") are excluded.
+         </message>
+       </if>
+ 
+       <!-- About Chrome page -->
+       <if expr="not chromeos">
+         <message name="IDS_UPGRADE_SUCCESSFUL_RELAUNCH" desc="Status label: Successfully updated Chromium">
+-          Nearly up-to-date! Relaunch Chromium to finish updating.
++          Nearly up-to-date! Relaunch Iridium to finish updating.
+         </message>
+       </if>
+       <if expr="chromeos">
+@@ -723,7 +723,7 @@ For Chromium, processes used to display diagnostics information (such as this "a
+       </if>
+       <if expr="not chromeos">
+         <message name="IDS_UPGRADE_UP_TO_DATE" desc="Status label: Already up to date (Chromium)">
+-          Chromium is up to date.
++          Iridium is up to date.
+         </message>
+       </if>
+       <if expr="chromeos">
+@@ -733,7 +733,7 @@ For Chromium, processes used to display diagnostics information (such as this "a
+       </if>
+       <if expr="not chromeos">
+         <message name="IDS_UPGRADE_UPDATING" desc="Status label: Updating Chromium">
+-          Updating Chromium...
++          Updating Iridium…
+         </message>
+       </if>
+       <if expr="chromeos">
+@@ -750,7 +750,7 @@ For Chromium, processes used to display diagnostics information (such as this "a
+       <!-- iOS Upgrade available info bar-->
+       <if expr="is_ios">
+         <message name="IDS_UPGRADE_AVAILABLE" desc="Text to inform the user of the presence of a new version of the application">
+-          Chromium just got better! A new version is available.
++          Iridium just got better! A new version is available.
+         </message>
+         <message name="IDS_UPGRADE_AVAILABLE_BUTTON" desc="Diplayed on a button the user can use to upgrade the a more recent version of the application. [Length: 10em]">
+           Update
+@@ -759,36 +759,36 @@ For Chromium, processes used to display diagnostics information (such as this "a
+ 
+       <!-- Extension/App install prompt -->
+       <message name="IDS_EXTENSION_INLINE_INSTALL_PROMPT_TITLE" desc="Titlebar of the extension or app inline installation prompt window">
+-        Add to Chromium
++        Add to Iridium
+       </message>
+ 
+       <!-- Extension installed bubble -->
+       <if expr="enable_extensions">
+         <message name="IDS_EXTENSION_INSTALLED_HEADING" desc="First line in the content area of the extension installed bubble. Instructs that the extension was installed.">
+-          <ph name="EXTENSION_NAME">$1<ex>Gmail Checker</ex></ph> has been added to Chromium.
++          <ph name="EXTENSION_NAME">$1<ex>Gmail Checker</ex></ph> has been added to Iridium.
+         </message>
+         <message name="IDS_EXTENSION_INSTALLED_SIGNIN_PROMO_LINK" desc="The first part of the sign-in promo paragraph. This part will be converted to a link and will get more text appended to it (see IDS_EXTENSION_INSTALLED_SIGNIN_PROMO). Keep this text short.">
+-          Sign in to Chromium
++          Sign in to Iridium/Google
+         </message>
+       </if>
+ 
+       <!-- chrome://settings/extensions page -->
+       <message name="IDS_EXTENSIONS_INCOGNITO_WARNING" desc="Warns the user that Chromium cannot prevent extensions from recording history in incognito mode. Displayed in extensions management UI after an extension is selected to be run in incognito mode.">
+-        <ph name="BEGIN_BOLD">&lt;b&gt;</ph>Warning:<ph name="END_BOLD">&lt;/b&gt;</ph> Chromium cannot prevent extensions from recording your browsing history. To disable this extension in incognito mode, unselect this option.
++        <ph name="BEGIN_BOLD">&lt;b&gt;</ph>Warning:<ph name="END_BOLD">&lt;/b&gt;</ph> Iridium cannot prevent extensions from recording your browsing history. To disable this extension in incognito mode, unselect this option.
+       </message>
+       <message name="IDS_EXTENSIONS_UNINSTALL" desc="The link for uninstalling extensions.">
+-        Remove from Chromium
++        Remove from Iridium
+       </message>
+ 
+       <if expr="enable_extensions">
+         <message name="IDS_EXTENSIONS_UNSUPPORTED_DISABLED_BODY" desc="Body of the dialog shown when unsupported extensions have been disabled">
+-          To make Chromium safer, we disabled some extensions that aren't listed in the <ph name="IDS_EXTENSION_WEB_STORE_TITLE">$1<ex>Chrome Web Store</ex></ph> and may have been added without your knowledge.
++          To make Iridium safer, we disabled some extensions that aren't listed in the <ph name="IDS_EXTENSION_WEB_STORE_TITLE">$1<ex>Chrome Web Store</ex></ph> and may have been added without your knowledge.
+         </message>
+       </if>
+ 
+       <!-- Main Chrome menu -->
+       <message name="IDS_APPMENU_TOOLTIP" desc="The tooltip to show for the browser menu">
+-        Customize and control Chromium
++        Customize and control Iridium
+       </message>
+ 
+       <if expr="use_titlecase and not chromeos">
+@@ -796,7 +796,7 @@ For Chromium, processes used to display diagnostics information (such as this "a
+           About &amp;Iridium
+         </message>
+         <message name="IDS_UPDATE_NOW" desc="In Title Case: The text label of the Update Chrome Now menu item">
+-          Update &amp;Chromium
++          Update &amp;browser
+         </message>
+       </if>
+       <if expr="not use_titlecase and not chromeos">
+@@ -804,7 +804,7 @@ For Chromium, processes used to display diagnostics information (such as this "a
+           About &amp;Iridium
+         </message>
+         <message name="IDS_UPDATE_NOW" desc="The text label of the Update Chrome Now menu item">
+-          Update &amp;Chromium
++          Update &amp;browser
+         </message>
+       </if>
+       <if expr="chromeos">
+@@ -830,68 +830,68 @@ For Chromium, processes used to display diagnostics information (such as this "a
+ 
+       <!-- Chrome sign-in page -->
+       <message name="IDS_CHROME_SIGNIN_TITLE" desc="Title on the about:chrome-signin page">
+-        Chromium
++        Iridium/Google
+       </message>
+ 
+       <!-- Tutorial card in the avatar menu bubble -->
+       <message name="IDS_PROFILES_CONFIRM_SIGNIN_TUTORIAL_TITLE" desc="The title of the tutorial card in the avatar menu bubble view shown when a user signs in to Chromium.">
+-        You're now signed in to Chromium
++        You're now signed in to Iridium/Google
+       </message>
+       <message name="IDS_PROFILES_WELCOME_UPGRADE_TUTORIAL_TITLE" desc="Title of the tutorial card in the avatar menu bubble view that introduces an upgrade user to the new profile management UI.">
+-        This is your Chromium
++        This is your Iridium
+       </message>
+       <message name="IDS_PROFILES_WELCOME_UPGRADE_TUTORIAL_CONTENT_TEXT" desc="The main content of the tutorial card in the avatar menu bubble view that introduces an upgrade user to the new profile management UI.">
+-        Share a computer? Now you can set up Chromium just the way you like it.
++        Share a computer? Now you can set up Iridium just the way you like it.
+       </message>
+ 
+       <!-- Account removal view in the avatar menu bubble -->
+       <message name="IDS_PROFILES_ACCOUNT_REMOVAL_TEXT" desc="Main text of the account removal view when removing a secondary account.">
+-        After removing your account from Chromium, you may need to reload your open tabs to take effect.
++        After removing your account from Iridium, you may need to reload your open tabs to take effect.
+       </message>
+       <message name="IDS_PROFILES_PRIMARY_ACCOUNT_REMOVAL_TEXT" desc="Main text of the account removal view when removing a primary account.">
+-        You're using <ph name="PROFILE_EMAIL">$1<ex>jessica@gmail.com</ex></ph> to sync your Chromium stuff. To update your sync preference or to use Chromium without a Google account, visit <ph name="SETTINGS_LINK">$2<ex>settings</ex></ph>.
++        You're using <ph name="PROFILE_EMAIL">$1<ex>jessica@gmail.com</ex></ph> to sync your Iridium data. To update your sync preference or to use Iridium without a Google account, visit <ph name="SETTINGS_LINK">$2<ex>settings</ex></ph>.
+       </message>
+ 
+       <!-- Switch user view in the avatar menu bubble -->
+       <message name="IDS_PROFILES_NOT_YOU_CONTENT_TEXT" desc="Main text of the switch user view. for an upgrade user">
+-        If you share this computer with <ph name="PROFILE_NAME">$1<ex>Claire</ex></ph>, add yourself to Chromium to browse separately. Otherwise disconnect their Google Account.
++        If you share this computer with <ph name="PROFILE_NAME">$1<ex>Claire</ex></ph>, add yourself to Iridium to browse separately. Otherwise disconnect their Google Account.
+       </message>
+ 
+       <!-- One click sign-in infobar -->
+       <if expr="not chromeos">
+         <!-- New one-click sign-in dialog contents for SAML support -->
+         <message name="IDS_ONE_CLICK_SIGNIN_DIALOG_TITLE_NEW" desc="The title of the modal dialog window that opens when the user chooses to use one click sign-in.">
+-          You're signed in to Chromium!
++          You're signed in to Iridium/Google!
+         </message>
+         <message name="IDS_ONE_CLICK_SIGNIN_DIALOG_MESSAGE_NEW" desc="The message of the one click sign-in dialog.">
+           You're signed in as <ph name="USER_EMAIL_ADDRESS">$1<ex>foo@gmail.com</ex></ph>. Now you can access your bookmarks, history, and other settings on all your signed in devices.
+         </message>
+         <message name="IDS_ONE_CLICK_SIGNIN_BUBBLE_SYNC_DISABLED_MESSAGE" desc="The body of the sign-in bubble, when sync has been disabled.">
+-          You're now signed in to Chromium! Sync is disabled by your administrator.
++          You're now signed in to Iridium/Google! Sync is disabled by your administrator.
+         </message>
+         <message name="IDS_SYNC_WRONG_EMAIL" desc="Message shown when sync setup failed due to the user entering the wrong email address for sign-in.">
+-          You were signed in to Chromium as <ph name="USER_EMAIL_ADDRESS">$1<ex>foo@gmail.com</ex></ph>. Please use the same account to sign in again.
++          You were signed in to Iridium/Google as <ph name="USER_EMAIL_ADDRESS">$1<ex>foo@gmail.com</ex></ph>. Please use the same account to sign in again.
+         </message>
+         <message name="IDS_ONE_CLICK_SIGNIN_CONFIRM_EMAIL_DIALOG_MESSAGE" desc="Error message to display when setting up sync for a second time and the user name is different from the previous user name.">
+-          Someone previously signed in to Chromium on this computer as <ph name="ACCOUNT_EMAIL_LAST">$1<ex>user@example.com</ex></ph>. If that isn't your account, create a new Chromium user to keep your information separate.
++          Someone previously signed in to Iridium/Google on this computer as <ph name="ACCOUNT_EMAIL_LAST">$1<ex>user@example.com</ex></ph>. If that isn't your account, create a new Chromium user to keep your information separate.
+ 
+-Signing in anyway will merge Chromium information like bookmarks, history, and other settings to <ph name="ACCOUNT_EMAIL_NEW">$2<ex>user@example.com</ex></ph>.
++Signing in anyway will merge Iridium information like bookmarks, history, and other settings to <ph name="ACCOUNT_EMAIL_NEW">$2<ex>user@example.com</ex></ph>.
+         </message>
+       </if>
+ 
+       <!-- Enterprise sign-in profile linking -->
+       <if expr="not is_android">
+         <message name="IDS_ENTERPRISE_SIGNIN_TITLE" desc="The title of the dialog to confirm linking the browser profile with the signed-in enterprise account">
+-          Important information regarding your Chromium data
++          Important information regarding your Iridium data
+         </message>
+         <message name="IDS_ENTERPRISE_SIGNIN_EXPLANATION" desc="The warning message displayed to an enterprise user about to link their profile to their Google account. This message is followed by a 'Learn more' link.">
+-          You are signing in with a managed account and giving its administrator control over your Chromium profile. Your Chromium data, such as your apps, bookmarks, history, passwords, and other settings will become permanently tied to <ph name="USER_NAME">$1<ex>pat@example.com</ex></ph>. You will be able to delete this data via the Google Accounts Dashboard, but you will not be able to associate this data with another account.
++          You are signing in with a managed account and giving its administrator control over your Iridium profile. Your Iridium data, such as your apps, bookmarks, history, passwords, and other settings will become permanently tied to <ph name="USER_NAME">$1<ex>pat@example.com</ex></ph>. You will be able to delete this data via the Google Accounts Dashboard, but you will not be able to associate this data with another account.
+         </message>
+         <message name="IDS_ENTERPRISE_SIGNIN_CREATE_NEW_PROFILE_MESSAGE" desc="The text of the prompt to create a new profile after signing in to an enterprise account">
+-          If you prefer to keep your existing Chromium data separate, you can create a new Chromium user for <ph name="USER_NAME">$1<ex>pat@example.com</ex></ph>.
++          If you prefer to keep your existing Iridium data separate, you can create a new Iridium user for <ph name="USER_NAME">$1<ex>pat@example.com</ex></ph>.
+         </message>
+         <message name="IDS_ENTERPRISE_SIGNIN_CONTINUE" desc="Text of the button to link the current profile with the signed-in enterprise account">
+-          Link my Chromium data to this account
++          Link my Iridium data to this account
+         </message>
+       </if>
+ 
+@@ -899,13 +899,13 @@ Signing in anyway will merge Chromium information like bookmarks, history, and o
+       <!-- TODO(dconnelly): remove "new-style" once the old dialog is gone. -->
+       <if expr="toolkit_views or is_macosx">
+         <message name="IDS_ENTERPRISE_SIGNIN_TITLE_NEW_STYLE" desc="The title of the dialog to confirm linking the browser profile with the signed-in enterprise account">
+-          Link your Chromium data to this account?
++          Link your Iridium data to this account?
+         </message>
+         <message name="IDS_ENTERPRISE_SIGNIN_EXPLANATION_WITHOUT_PROFILE_CREATION_NEW_STYLE" desc="The warning message displayed to an enterprise user about to link their profile to their Google account. This message is followed by a 'Learn more' link.">
+-          You are signing in with a managed account and giving its administrator control over your Chromium profile. Your Chromium data, such as your apps, bookmarks, history, passwords, and other settings will become permanently tied to <ph name="USER_NAME">$1<ex>pat@example.com</ex></ph>. You will be able to delete this data via the Google Accounts Dashboard, but you will not be able to associate this data with another account. <ph name="LEARN_MORE">$2<ex>Learn more</ex></ph>
++          You are signing in with a managed account and giving its administrator control over your Iridium profile. Your Iridium data, such as your apps, bookmarks, history, passwords, and other settings will become permanently tied to <ph name="USER_NAME">$1<ex>pat@example.com</ex></ph>. You will be able to delete this data via the Google Accounts Dashboard, but you will not be able to associate this data with another account. <ph name="LEARN_MORE">$2<ex>Learn more</ex></ph>
+         </message>
+         <message name="IDS_ENTERPRISE_SIGNIN_EXPLANATION_WITH_PROFILE_CREATION_NEW_STYLE" desc="The warning message displayed to an enterprise user about to link their profile to their Google account. Additionally notifies the user that they can create a new profile instead. This message is followed by a 'Learn more' link.">
+-          You are signing in with a managed account and giving its administrator control over your Chromium profile. Your Chromium data, such as your apps, bookmarks, history, passwords, and other settings will become permanently tied to <ph name="USER_NAME">$1<ex>pat@example.com</ex></ph>. You will be able to delete this data via the Google Accounts Dashboard, but you will not be able to associate this data with another account. You can optionally create a new profile to keep your existing Chromium data separate. <ph name="LEARN_MORE">$2<ex>Learn more</ex></ph>
++          You are signing in with a managed account and giving its administrator control over your Iridium profile. Your Iridium data, such as your apps, bookmarks, history, passwords, and other settings will become permanently tied to <ph name="USER_NAME">$1<ex>pat@example.com</ex></ph>. You will be able to delete this data via the Google Accounts Dashboard, but you will not be able to associate this data with another account. You can optionally create a new profile to keep your existing Iridium data separate. <ph name="LEARN_MORE">$2<ex>Learn more</ex></ph>
+         </message>
+       </if>
+ 
+@@ -913,34 +913,34 @@ Signing in anyway will merge Chromium information like bookmarks, history, and o
+       <if expr="is_win">
+         <if expr="use_titlecase">
+           <message name="IDS_SRT_MENU_ITEM" desc="In Title Case: Text for the Chrome menu option replacing Update required.">
+-            Chromium Behaving Strangely?
++            Iridium Behaving Strangely?
+           </message>
+         </if>
+         <if expr="not use_titlecase">
+           <message name="IDS_SRT_MENU_ITEM" desc="Text for the Chrome menu option replacing Update required.">
+-            Chromium behaving strangely?
++            Iridium behaving strangely?
+           </message>
+         </if>
+         <message name="IDS_SRT_BUBBLE_TITLE" desc="Text for the title of the software removal tool bubble view.">
+-            Chromium behaving strangely?
++            Iridium behaving strangely?
+         </message>
+         <message name="IDS_SRT_BUBBLE_TEXT" desc="Text for the software removal tool bubble view full description.">
+-          Chromium detected that your browser settings may have been changed by a program on your computer without your knowledge. You can use  Google's Software Removal Tool to remove that program.
++          Iridium detected that your browser settings may have been changed by a program on your computer without your knowledge. You can use  Google's Software Removal Tool to remove that program.
+         </message>
+       </if>
+       <!-- Sync/sign-in error messages -->
+       <if expr="not chromeos">
+         <message name="IDS_SYNC_PASSPHRASE_ERROR_BUBBLE_VIEW_MESSAGE" desc="Message in the sync error bubble view when the user needs to update their sync passphrase.">
+-          Chromium could not sync your data. Please update your Sync passphrase.
++          Iridium could not sync your data. Please update your Sync passphrase.
+         </message>
+         <message name="IDS_SYNC_SIGN_IN_ERROR_BUBBLE_VIEW_MESSAGE" desc="Message in the sign-in error bubble view when the user's sign-in credentials are out of date.">
+-          Chromium could not sync your data because your account sign-in details are out of date.
++          Iridium could not sync your data because your account sign-in details are out of date.
+         </message>
+         <message name="IDS_SYNC_UNAVAILABLE_ERROR_BUBBLE_VIEW_MESSAGE" desc="Message in the sign-in error bubble view when sync is not available for their domain.">
+-          Chromium could not sync your data because Sync is not available for your domain.
++          Iridium could not sync your data because Sync is not available for your domain.
+         </message>
+         <message name="IDS_SYNC_OTHER_SIGN_IN_ERROR_BUBBLE_VIEW_MESSAGE" desc="Message in the sign-in error bubble view when there's an error signing in.">
+-          Chromium could not sync your data due to an error signing in.
++          Iridium could not sync your data due to an error signing in.
+         </message>
+       </if>
+       <if expr="chromeos">
+@@ -960,32 +960,32 @@ Signing in anyway will merge Chromium information like bookmarks, history, and o
+ 
+       <if expr="is_macosx">
+         <message name="IDS_OPTIONS_PASSWORDS_MAC_WARNING" desc="The warning for OS X that passwords are shared across profiles in the keychain.">
+-          On Mac, passwords are saved to your Keychain and may be accessed or synced by other Chromium users sharing this OS X account.
++          On Mac, passwords are saved to your Keychain and may be accessed or synced by other Iridium users sharing this OS X account.
+         </message>
+         <message name="IDS_AUTOFILL_ADDRESS_BOOK_PROMPT_DESCRIPTION" desc="Text to show in dialog requesting permission to access the user's Address Book contents.">
+-          Details from your contacts can help you fill out forms more quickly in Chromium.
++          Details from your contacts can help you fill out forms more quickly in Iridium.
+         </message>
+       </if>
+       <message name="IDS_AUTOFILL_CC_INFOBAR_TEXT" desc="Text to show in the Autofill credit card request infobar.">
+-        Do you want Chromium to save this credit card information for completing web forms?
++        Do you want Iridium to save this credit card information for completing web forms? Srsly?
+       </message>
+       <message name="IDS_AUTOFILL_DIALOG_SAVE_LOCALLY_CHECKBOX" desc="Checkbox that controls whether info the user types into the autofill dialog is saved by chrome.">
+-        Save details in Chromium
++        Save details in Iridium
+       </message>
+       <message name="IDS_AUTOFILL_DIALOG_SAVE_LOCALLY_TOOLTIP" desc="Tooltip which explains function of checkbox that controls whether info the user types into the autofill dialog is saved by chrome.">
+-        Chromium will securely store your information so you don't need to type it in again, but you will still need to verify your card's security code for future payments.
++        Iridium will store your information so you don't need to type it in again, but you will still need to verify your card's security code for future payments.
+       </message>
+       <message name="IDS_AUTOFILL_NEW_CREDIT_CARD_BUBBLE_TITLE" desc="Title text of the new credit card bubble informing a user their billing information has been saved in chrome.">
+-        Your billing details have been saved in Chromium.
++        Your billing details have been saved in Iridium.
+       </message>
+       <message name="IDS_AUTOFILL_WALLET_UPGRADE_CHROME_ERROR" desc="Text explaining that user must upgrade Chrome to use Wallet.">
+-        You must upgrade Chromium to use Google Wallet [<ph name="ERROR_CODE">$1<ex>54</ex></ph>].
++        You must upgrade Iridium to use Google Wallet [<ph name="ERROR_CODE">$1<ex>54</ex></ph>].
+       </message>
+ 
+       <!-- Network Error Pages -->
+       <message name="IDS_ERRORPAGES_SUGGESTION_NETWORK_PREDICTION_BODY" desc="When a page fails to load, sometimes we suggest disabling predicting network actions.  These are details below a header.">
+         Go to
+-        the Chromium menu &gt;
++        the Iridium menu &gt;
+         <ph name="SETTINGS_TITLE">&lt;span jscontent="settingsTitle"&gt;&lt;/span&gt;<ex>Settings</ex></ph>
+         &gt;
+         <ph name="ADVANCED_TITLE">&lt;span jscontent="advancedTitle"&gt;&lt;/span&gt;<ex>Under the Hood</ex></ph>
+@@ -994,7 +994,7 @@ Signing in anyway will merge Chromium information like bookmarks, history, and o
+         again for improved performance.
+       </message>
+       <message name="IDS_ERRORPAGES_SUGGESTION_FIREWALL_CONFIG_HEADER" desc="When a webpage fails to load, in some cases we suggest reconfiguring the firewall.  This is a header above some details.">
+-        Allow Chromium to access the network in your firewall or antivirus
++        Allow Iridium to access the network in your firewall or antivirus
+         settings.
+       </message>
+       <if expr="is_macosx">
+@@ -1011,7 +1011,7 @@ Signing in anyway will merge Chromium information like bookmarks, history, and o
+       <if expr="not chromeos and is_posix and not is_macosx and not is_android and not is_ios">
+         <message name="IDS_ERRORPAGES_SUGGESTION_PROXY_DISABLE_PLATFORM" desc="Linux instructions for disabling use of a proxy server.">
+           Go to
+-          the Chromium menu &gt;
++          the Iridium menu &gt;
+           <ph name="SETTINGS_TITLE">&lt;span jscontent="settingsTitle"&gt;&lt;/span&gt;<ex>Settings</ex></ph>
+           &gt;
+           <ph name="ADVANCED_TITLE">&lt;span jscontent="advancedTitle"&gt;&lt;/span&gt;<ex>Under the Hood</ex></ph>
+@@ -1023,7 +1023,7 @@ Signing in anyway will merge Chromium information like bookmarks, history, and o
+       <if expr="is_win">
+         <message name="IDS_ERRORPAGES_SUGGESTION_PROXY_DISABLE_PLATFORM" desc="Windows instructions for disabling use of a proxy server.">
+           Go to
+-          the Chromium menu &gt;
++          the Iridium menu &gt;
+           <ph name="SETTINGS_TITLE">&lt;span jscontent="settingsTitle"&gt;&lt;/span&gt;<ex>Settings</ex></ph>
+           &gt;
+           <ph name="ADVANCED_TITLE">&lt;span jscontent="advancedTitle"&gt;&lt;/span&gt;<ex>Under the Hood</ex></ph>
+@@ -1038,7 +1038,7 @@ Signing in anyway will merge Chromium information like bookmarks, history, and o
+       <!-- Chrome OS keyboard overlay-->
+       <if expr="chromeos">
+         <message name="IDS_KEYBOARD_OVERLAY_SHOW_WRENCH_MENU" desc="The text in the keyboard overlay to explain the shortcut that opens the main Chrome menu.">
+-          Show Chromium menu
++          Show Iridium menu
+         </message>
+       </if>
+ 
+@@ -1053,32 +1053,32 @@ Signing in anyway will merge Chromium information like bookmarks, history, and o
+           </message>
+         </if>
+         <message name="IDS_APP_LIST_SIGNIN_HEADING" desc="Heading for when the launcher needs to sign in.">
+-          Sign in to Chromium
++          Sign in to Iridium/Google
+         </message>
+         <message name="IDS_APP_LIST_SIGNIN_TEXT" desc="Text for when the launcher needs to sign in.">
+-          You need to be signed in to Chromium to use apps. This allows Chromium to sync your apps, bookmarks, history, passwords and other settings across devices.
++          You need to be signed in to Iridium/Google to use apps. This allows Iridium to sync your apps, bookmarks, history, passwords and other settings across devices.
+         </message>
+         <if expr="not use_titlecase">
+           <if expr="is_macosx">
+             <message name="IDS_APP_LIST_EXTENSIONS_UNINSTALL" desc="Title text for the context menu item of a non-platform-app app list item that removes the app.">
+-              Remove from Chromium
++              Remove from Iridium
+             </message>
+           </if>
+           <if expr="not is_macosx">
+             <message name="IDS_APP_LIST_EXTENSIONS_UNINSTALL" desc="Title text for the context menu item of a non-platform-app app list item that removes the app.">
+-              Remove from Chromium...
++              Remove from Iridium…
+             </message>
+           </if>
+         </if>
+         <if expr="use_titlecase">
+           <if expr="is_macosx">
+             <message name="IDS_APP_LIST_EXTENSIONS_UNINSTALL" desc="In Title Case: Title text for the context menu item of a non-platform-app app list item that removes the app.">
+-              Remove From Chromium
++              Remove From Iridium
+             </message>
+           </if>
+           <if expr="not is_macosx">
+             <message name="IDS_APP_LIST_EXTENSIONS_UNINSTALL" desc="In Title Case: Title text for the context menu item of a non-platform-app app list item that removes the app.">
+-              Remove From Chromium...
++              Remove From Iridium…
+             </message>
+           </if>
+         </if>
+@@ -1095,7 +1095,7 @@ Signing in anyway will merge Chromium information like bookmarks, history, and o
+       <!-- Chrome Conflicts bubble -->
+       <if expr="is_win">
+         <message name="IDS_OPTIONS_CONFLICTING_MODULE" desc="Shown in a bubble when a conflict has been detected.">
+-          Software running on your computer is incompatible with Chromium.
++          Software running on your computer is incompatible with Iridium.
+         </message>
+       </if>
+ 
+@@ -1113,114 +1113,114 @@ Signing in anyway will merge Chromium information like bookmarks, history, and o
+             Chromium Notification Center
+           </message>
+           <message name="IDS_MESSAGE_CENTER_BALLOON_TEXT" desc="Body text for the the first run notification ballon describing the notification center.">
+-            You can see all your notifications from Chromium apps, extensions, and websites here.
++            You can see all your notifications from Iridium apps, extensions, and websites here.
+           </message>
+         </if>
+         <message name="IDS_MESSAGE_CENTER_TOOLTIP" desc="Tooltip for notification tray icon without unread notifications">
+-          Chromium - Notifications
++          Iridium – Notifications
+         </message>
+         <message name="IDS_MESSAGE_CENTER_TOOLTIP_UNREAD" desc="Tooltip for notification tray icon with unread notifications">
+-          Chromium - Notifications (<ph name="QUANTITY">$1<ex>3</ex></ph> unread)
++          Iridium – Notifications (<ph name="QUANTITY">$1<ex>3</ex></ph> unread)
+         </message>
+       </if>
+ 
+       <!-- MediaStream capture status tray icon -->
+       <message name="IDS_MEDIA_STREAM_STATUS_TRAY_TEXT_AUDIO_AND_VIDEO" desc="Tool tip for the capture status tray icon when microphone and camera are being used">
+-        Chromium is using your camera and microphone.
++        Iridium is using your camera and microphone.
+       </message>
+       <message name="IDS_MEDIA_STREAM_STATUS_TRAY_TEXT_AUDIO_ONLY" desc="Tool tip for the capture status tray icon when microphone is being used">
+-        Chromium is using your microphone.
++        Iridium is using your microphone.
+       </message>
+       <message name="IDS_MEDIA_STREAM_STATUS_TRAY_TEXT_VIDEO_ONLY" desc="Tool tip for the capture status tray icon when camera is being used">
+-        Chromium is using your camera.
++        Iridium is using your camera.
+       </message>
+ 
+       <!-- ProcessSingleton -->
+       <if expr="is_linux or is_macosx">
+         <message name="IDS_PROFILE_IN_USE_POSIX" desc="Message shown when the browser cannot start because the profile is in use on a different host.">
+-          The profile appears to be in use by another Chromium process (<ph name="PROCESS_ID">$1<ex>12345</ex></ph>) on another computer (<ph name="HOST_NAME">$2<ex>example.com</ex></ph>). Chromium has locked the profile so that it doesn't get corrupted. If you are sure no other processes are using this profile, you can unlock the profile and relaunch Chromium.
++          The profile appears to be in use by another Iridium process (<ph name="PROCESS_ID">$1<ex>12345</ex></ph>) on another computer (<ph name="HOST_NAME">$2<ex>example.com</ex></ph>). Iridium has locked the profile so that it doesn't get corrupted. If you are sure no other processes are using this profile, you can unlock the profile and relaunch Iridium.
+         </message>
+       </if>
+ 
+       <!-- Mac First-run dialog messages -->
+       <if expr="is_macosx">
+         <message name="IDS_FIRSTRUN_DLG_MAC_SET_DEFAULT_BROWSER_LABEL" desc="Label for checkbox that sets the default browser">
+-          Set Chromium as your default browser
++          Set Iridium as your default browser
+         </message>
+       </if>
+ 
+       <!-- chrome://settings. Android uses native UI for settings -->
+       <if expr="not is_android">
+         <message name="IDS_AUTOLAUNCH_TEXT" desc="The text displayed in settings to explain whether Chromium is set to auto-launch on startup or not.">
+-          Launch Chromium automatically when your computer starts
++          Launch Iridium automatically when your computer starts
+         </message>
+         <message name="IDS_OPTIONS_DEFAULTBROWSER_USEASDEFAULT" desc="The label of the 'Use Chromium as default' browser button">
+-          Make Chromium the default browser
++          Make Iridium the default browser
+         </message>
+       </if>
+ 
+       <!-- Toast experiment. -->
+       <if expr="is_win">
+         <message name="IDS_TRY_TOAST_SET_DEFAULT" desc="Text of the checkbox to make Chromium the default browser">
+-          Make Chromium the default browser
++          Make Iridium the default browser
+         </message>
+       </if>
+ 
+       <!-- User manager tutorial -->
+       <if expr="not is_android and not is_ios and not chromeos">
+         <message name="IDS_USER_MANAGER_TUTORIAL_SLIDE_INTRO_TITLE" desc="Title of the tutorial introduction slide">
+-          Chromium just got better
++          Iridium just got better
+         </message>
+         <message name="IDS_USER_MANAGER_TUTORIAL_SLIDE_INTRO_TEXT" desc="Main text of the tutorial introduction slide">
+-          Now it's easier to use Chromium with your Google Account and on shared computers.
++          Now it's easier to use Iridium with your Google Account and on shared computers.
+         </message>
+         <message name="IDS_USER_MANAGER_TUTORIAL_SLIDE_YOUR_CHROME_TITLE" desc="Title of the slide about personalizing the browser">
+-          This is your Chromium
++          This is your Iridium
+         </message>
+         <message name="IDS_USER_MANAGER_TUTORIAL_SLIDE_YOUR_CHROME_TEXT" desc="Main text of the slide about personalizing the browser">
+-          Your web, bookmarks, and other Chromium stuff live here.
++          Your web, bookmarks, and other Iridium stuff live here.
+         </message>
+         <message name="IDS_USER_MANAGER_TUTORIAL_SLIDE_GUEST_TEXT" desc="Main text of the guest user slide">
+-          Guests can use Chromium without leaving anything behind.
++          Guests can use Iridium without leaving anything behind.
+         </message>
+         <message name="IDS_USER_MANAGER_TUTORIAL_SLIDE_FRIENDS_TEXT" desc="Main text of the friends and family slide">
+-          If you share a computer, friends and family can browse separately and set up Chromium just the way they want.
++          If you share a computer, friends and family can browse separately and set up Iridium just the way they want.
+         </message>
+         <message name="IDS_USER_MANAGER_TUTORIAL_SLIDE_OUTRO_TEXT" desc="Main text of the tutorial completion slide">
+-          Click your name to open Chromium and start browsing.
++          Click your name to open Iridium and start browsing.
+         </message>
+         <message name="IDS_USER_MANAGER_TUTORIAL_SLIDE_OUTRO_ADD_USER" desc="Text of the add a new user button">
+-          Add yourself to Chromium
++          Add yourself to Iridium
+         </message>
+       </if>
+ 
+       <!-- Settings API bubble -->
+       <message name="IDS_EXTENSIONS_SETTINGS_API_FIRST_LINE_START_PAGES" desc="Text displayed in the Settings API bubble as first line when an extension has changed the start pages.">
+-        An extension has changed what page is shown when you start Chromium.
++        An extension has changed what page is shown when you start Iridium.
+       </message>
+       <message name="IDS_EXTENSIONS_SETTINGS_API_SECOND_LINE_START_PAGES" desc="Second line in the Settings API bubble. Only shown if the secondary change by the extension was just the start pages. The triple single quotes are needed to preserve the space before and after the sentence which is needed when the language (Chrome is being translated to) uses space as word separator. Please preserve them, unless the language being translated to does not use space as word separator.">
+-        ''' It also controls what page is shown when you start Chromium. '''
++        ''' It also controls what page is shown when you start Iridium. '''
+       </message>
+       <message name="IDS_EXTENSIONS_SETTINGS_API_SECOND_LINE_START_AND_HOME" desc="Second line in the Settings API bubble. Only shown if the secondary change by the extension was both the start page and the home page. See IDS_EXTENSIONS_SETTINGS_API_SECOND_LINE_START_PAGES for reason for triple quotes.">
+-        ''' It also controls what page is shown when you start Chromium or click the Home button. '''
++        ''' It also controls what page is shown when you start Iridium or click the Home button. '''
+       </message>
+       <message name="IDS_EXTENSIONS_SETTINGS_API_SECOND_LINE_START_AND_SEARCH" desc="Second line in the Settings API bubble. Only shown if the secondary change by the extension was both the start page and the search engine. See IDS_EXTENSIONS_SETTINGS_API_SECOND_LINE_START_PAGES for reason for triple quotes.">
+-        ''' It also controls what page is shown when you start Chromium or search from the Omnibox. '''
++        ''' It also controls what page is shown when you start Iridium or search from the Omnibox. '''
+       </message>
+ 
+       <!-- Windows firewall rule strings. -->
+       <if expr="is_win">
+         <message name="IDS_INBOUND_MDNS_RULE_NAME" desc="The name of the firewall rule allowing inbound mDNS traffic.">
+-          Chromium (mDNS-In)
++          Iridium (mDNS-In)
+         </message>
+         <message name="IDS_INBOUND_MDNS_RULE_NAME_CANARY" desc="The name of the firewall rule allowing inbound mDNS traffic for canary.">
+-          Chromium (mDNS-In)
++          Iridium (mDNS-In)
+         </message>
+         <message name="IDS_INBOUND_MDNS_RULE_DESCRIPTION" desc="The description of the firewall rule allowing inbound mDNS traffic.">
+-          Inbound rule for Chromium to allow mDNS traffic.
++          Inbound rule for Iridium to allow mDNS traffic.
+         </message>
+         <message name="IDS_INBOUND_MDNS_RULE_DESCRIPTION_CANARY" desc="The description of the firewall rule allowing inbound mDNS traffic canary.">
+-          Inbound rule for Chromium to allow mDNS traffic.
++          Inbound rule for Iridium to allow mDNS traffic.
+         </message>
+       </if>
+ 
+@@ -1246,26 +1246,26 @@ Signing in anyway will merge Chromium information like bookmarks, history, and o
+ 
+       <!-- Update bubble -->
+       <message name="IDS_REINSTALL_APP" desc="Text for the button the user clicks to reinstall the app.">
+-        Reinstall Chromium
++        Reinstall Iridium
+       </message>
+       <if expr="use_titlecase">
+         <message name="IDS_UPGRADE_BUBBLE_MENU_ITEM" desc="In Title Case: Text for the Chrome menu option replacing Update required.">
+-          Chromium is Out of Date
++          Iridium is Out of Date
+         </message>
+       </if>
+       <if expr="not use_titlecase">
+         <message name="IDS_UPGRADE_BUBBLE_MENU_ITEM" desc="Text for the Chrome menu option replacing Update required.">
+-          Chromium is out of date
++          Iridium is out of date
+         </message>
+       </if>
+       <message name="IDS_UPGRADE_BUBBLE_TITLE" desc="Text for the title of the upgrade bubble view.">
+-        Chromium is out of date
++        Iridium is out of date
+       </message>
+       <message name="IDS_UPGRADE_BUBBLE_TEXT" desc="Text for the upgrade bubble view full description.">
+-        Chromium could not update itself to the latest version, so you are missing out on awesome new features and security fixes. You need to manually reinstall Chromium.
++        Iridium could not update itself to the latest version, so you are missing out on security fixes. You need to manually reinstall Iridium.
+       </message>
+       <message name="IDS_UPGRADE_BUBBLE_REENABLE_TEXT" desc="Text for the upgrade bubble view full description.">
+-        Chromium could not update itself to the latest version, so you are missing out on awesome new features and security fixes. You need to update Chromium.
++        Iridium could not update itself to the latest version, so you are missing out on security fixes. You need to update Iridium.
+       </message>
+ 
+       <!-- Dialog that asks whether user wants to participate in Safe Browsing Extended Reporting -->
+@@ -1279,42 +1279,42 @@ Signing in anyway will merge Chromium information like bookmarks, history, and o
+       <!-- SSL Interstitial V2 strings -->
+       <if expr="is_android or is_ios">
+         <message name="IDS_SSL_CLOCK_ERROR" desc="Paragraph explaining that the SSL interstitial is probably caused by an incorrect clock.">
+-          Chromium can't establish a private connection to &lt;strong&gt;<ph name="DOMAIN">$1<ex>paypal.com</ex></ph>&lt;/strong&gt;. This is probably because your device's date is set incorrectly. (Your device has the date set to <ph name="DATE">$2<ex>Jan 1, 1970</ex></ph>.) You should refresh this page after <ph name="BEGIN_LINK">&lt;a href="#" id="clock-link"&gt;</ph>you update your device's date and time<ph name="END_LINK">&lt;/a&gt;</ph>.
++          Iridium can't establish a private connection to &lt;strong&gt;<ph name="DOMAIN">$1<ex>paypal.com</ex></ph>&lt;/strong&gt;. This is probably because your device's date is set incorrectly. (Your device has the date set to <ph name="DATE">$2<ex>Jan 1, 1970</ex></ph>.) You should refresh this page after <ph name="BEGIN_LINK">&lt;a href="#" id="clock-link"&gt;</ph>you update your device's date and time<ph name="END_LINK">&lt;/a&gt;</ph>.
+         </message>
+         <message name="IDS_SSL_CLOCK_ERROR_EXPLANATION" desc="Body text for the explanation shown for when the computer's clock is wrong.">
+-        To establish a secure network connection, your device needs a correct clock. This is because the certificates websites use to identify themselves when establishing a secure connection are only valid for a specific time period. Since your device's clock is wrong, Chromium cannot properly check certificates.
++        To establish a secure network connection, your device needs a correct clock. This is because the certificates websites use to identify themselves when establishing a secure connection are only valid for a specific time period. Since your device's clock is wrong, Iridium cannot properly check certificates.
+         </message>
+       </if>
+       <if expr="not is_android and not is_ios">
+         <message name="IDS_SSL_CLOCK_ERROR" desc="Paragraph explaining that the SSL interstitial is probably caused by an incorrect clock.">
+-          Chromium can't establish a private connection to &lt;strong&gt;<ph name="DOMAIN">$1<ex>paypal.com</ex></ph>&lt;/strong&gt;. This is probably because your computer's date is set incorrectly. (Your computer has the date set to <ph name="DATE">$2<ex>Jan 1, 1970</ex></ph>.) You should refresh this page after <ph name="BEGIN_LINK">&lt;a href="#" id="clock-link"&gt;</ph>you update your computer's date and time<ph name="END_LINK">&lt;/a&gt;</ph>.
++          Iridium can't establish a private connection to &lt;strong&gt;<ph name="DOMAIN">$1<ex>paypal.com</ex></ph>&lt;/strong&gt;. This is probably because your computer's date is set incorrectly. (Your computer has the date set to <ph name="DATE">$2<ex>Jan 1, 1970</ex></ph>.) You should refresh this page after <ph name="BEGIN_LINK">&lt;a href="#" id="clock-link"&gt;</ph>you update your computer's date and time<ph name="END_LINK">&lt;/a&gt;</ph>.
+         </message>
+         <message name="IDS_SSL_CLOCK_ERROR_EXPLANATION" desc="Body text for the explanation shown for when the computer's clock is wrong.">
+-        To establish a secure network connection, your computer needs a correct clock. This is because the certificates websites use to identify themselves when establishing a secure connection are only valid for a specific time period. Since your computer's clock is wrong, Chromium cannot properly check certificates.
++        To establish a secure network connection, your computer needs a correct clock. This is because the certificates websites use to identify themselves when establishing a secure connection are only valid for a specific time period. Since your computer's clock is wrong, Iridium cannot properly check certificates.
+         </message>
+       </if>
+ 
+       <message name="IDS_SSL_NONOVERRIDABLE_MORE_INVALID_SP3" desc="Body text for the explanation shown if the user clicks on the details windows, the certificate is invalid and the user has an old version of Windows (before WINDOWS XP SP3) running.">
+-      Your computer is running an old version of Microsoft Windows that cannot process this website's security certificate. Because of this problem, Chromium can't tell whether the certificate came from <ph name="SITE">$1<ex>google.com</ex></ph> or from someone on your network pretending to be <ph name="SITE">$1<ex>google.com</ex></ph>. Please update your computer to a more recent version of Windows.
++      Your computer is running an old version of Microsoft Windows that cannot process this website's security certificate. Because of this problem, Iridium can't tell whether the certificate came from <ph name="SITE">$1<ex>google.com</ex></ph> or from someone on your network pretending to be <ph name="SITE">$1<ex>google.com</ex></ph>. Please update your computer to a more recent version of Windows.
+       </message>
+ 
+       <!-- Offline interstitial  -->
+       <if expr="not is_android and not is_ios">
+         <message name="IDS_ERRORPAGES_SUMMARY_INTERNET_DISCONNECTED" desc="Summary of the error page when the network connection failed. May be followed by platform dependent instructions.">
+-        Chromium can’t display the webpage because your computer isn’t connected to the Internet.
++        Iridium can’t display the webpage because your computer isn’t connected to the Internet.
+         </message>
+       </if>
+ 
+       <!-- OOBE -->
+       <if expr="chromeos">
+         <message name="IDS_INSTALLING_UPDATE" desc="Label shown on the updates installation screen during OOBE">
+-          Please wait while Chromium installs the latest system updates.
++          Please wait while Iridium installs the latest system updates.
+         </message>
+         <message name="IDS_CHECKING_FOR_UPDATE_MSG" desc="Chrome OS OOBE: message shown during checking for update stage.">
+-          Chromium updates automatically so you always have the freshest version.
++          Iridium updates automatically so you always have the freshest version.
+         </message>
+         <message name="IDS_UPDATE_MSG" desc="Chrome OS OOBE: message shown during update stage.">
+-          Chromium updates automatically so you always have the freshest version. When this download completes, Chromium will restart and you'll be on your way.
++          Iridium updates automatically so you always have the freshest version. When this download completes, Iridium will restart and you'll be on your way.
+         </message>
+         <message name="IDS_EULA_SCREEN_ACCESSIBLE_TITLE" desc="Title to be spoken on opening the OOBE EULA screen">
+           Chromium OS terms
+diff --git a/chrome/app/resources/chromium_strings_am.xtb b/chrome/app/resources/chromium_strings_am.xtb
+index 659810b..b264784 100644
+--- a/chrome/app/resources/chromium_strings_am.xtb
++++ b/chrome/app/resources/chromium_strings_am.xtb
+@@ -265,7 +265,6 @@ Chromium ቅንብሮችዎን ማስመለስ አልቻለም።</translation>
+ <translation id="8823523095753232532">የChromium ውሂቤን ከዚህ መለያ ጋር አገናኝ</translation>
+ <translation id="1808667845054772817">Chromiumን ዳግም ጫን</translation>
+ <translation id="1221340462641866827">Chromium ስርዓተ ክወና የ<ph name="SCHEME"/> አገናኞችን ለማስተናገድ የውጫዊ መተግበሪያዎችን ማስጀመር አይደግፍም። የተጠየቀው አገናኝ <ph name="PROTOLINK"/> ነው።</translation>
+-<translation id="328888136576916638">የGoogle ኤ ፒ አይ ቁልፎች ይጎድላሉ። አንዳንድ የChromium ተግባራት ይሰናከላሉ።</translation>
+ <translation id="2602806952220118310">Chromium - ማሳወቂያዎች</translation>
+ <translation id="5032989939245619637">ዝርዝሮችን Chromium ውስጥ አስቀምጥ</translation>
+ <translation id="8803635938069941624">የChromium OS ውል</translation>
+diff --git a/chrome/app/resources/chromium_strings_ar.xtb b/chrome/app/resources/chromium_strings_ar.xtb
+index e88e297..9c05182 100644
+--- a/chrome/app/resources/chromium_strings_ar.xtb
++++ b/chrome/app/resources/chromium_strings_ar.xtb
+@@ -262,7 +262,6 @@
+ <translation id="8823523095753232532">‏ربط بياناتي في Chromium بهذا الحساب</translation>
+ <translation id="1808667845054772817">‏إعادة تثبيت Chromium</translation>
+ <translation id="1221340462641866827">‏لا يتيح نظام التشغيل Chromium إمكانية تشغيل تطبيق خارجي للتعامل مع روابط <ph name="SCHEME"/>. والرابط المطلوب هو <ph name="PROTOLINK"/>.</translation>
+-<translation id="328888136576916638">‏مفاتيح واجهة برمجة تطبيقات Google مفقودة. وسيترتب على ذلك توقف بعض وظائف Chromium عن العمل.</translation>
+ <translation id="2602806952220118310">‏Chromium - الإشعارات</translation>
+ <translation id="5032989939245619637">‏حفظ التفاصيل في Chromium</translation>
+ <translation id="8803635938069941624">‏بنود نظام تشغيل Chromium</translation>
+diff --git a/chrome/app/resources/chromium_strings_bg.xtb b/chrome/app/resources/chromium_strings_bg.xtb
+index 5f594b7..2ce655b 100644
+--- a/chrome/app/resources/chromium_strings_bg.xtb
++++ b/chrome/app/resources/chromium_strings_bg.xtb
+@@ -238,7 +238,6 @@
+ <translation id="8823523095753232532">Свързване на данните ми в Chromium с този профил</translation>
+ <translation id="1808667845054772817">Повторно инсталиране на Chromium</translation>
+ <translation id="1221340462641866827">Chromium OS не поддържа стартирането на външно приложение, за да обработва връзки от тип <ph name="SCHEME"/>. Заявената връзка е <ph name="PROTOLINK"/>.</translation>
+-<translation id="328888136576916638">Ключовете на приложния програмен интерфейс (API) на Google липсват. Някои функции на Chromium ще бъдат деактивирани.</translation>
+ <translation id="2602806952220118310">Chromium – Известия</translation>
+ <translation id="5032989939245619637">Подробностите да се запазват в Chromium</translation>
+ </translationbundle>
+\ No newline at end of file
+diff --git a/chrome/app/resources/chromium_strings_bn.xtb b/chrome/app/resources/chromium_strings_bn.xtb
+index be6d637..5827775 100644
+--- a/chrome/app/resources/chromium_strings_bn.xtb
++++ b/chrome/app/resources/chromium_strings_bn.xtb
+@@ -260,7 +260,6 @@ Chromium আপনার সেটিংস পুনরুদ্ধার ক
+ <translation id="8823523095753232532">এই অ্যাকাউন্টে আমার Chromium ডেটা লিঙ্ক করুন</translation>
+ <translation id="1808667845054772817">Chromium পুনরায় ইন্সটল করুন</translation>
+ <translation id="1221340462641866827">Chromium OS  <ph name="SCHEME"/> সংযোগগুলি নিয়ন্ত্রণে একটি বহিঃস্থ অ্যাপ্লিকেশন চালু করা সমর্থন করে না৷ অনুরোধকৃত লিংকটি হল <ph name="PROTOLINK"/>৷</translation>
+-<translation id="328888136576916638">Google API কীগুলি অনুপস্থিত৷ Chromium এর কিছু বৈশিষ্ট্য নিষ্ক্রিয় হয়ে যাবে৷</translation>
+ <translation id="2602806952220118310">Chromium - বিজ্ঞপ্তিগুলি</translation>
+ <translation id="5032989939245619637">Chromium এ বিবরণ সংরক্ষণ করুন</translation>
+ <translation id="8803635938069941624">Chromium OS শর্তাদি</translation>
+diff --git a/chrome/app/resources/chromium_strings_ca.xtb b/chrome/app/resources/chromium_strings_ca.xtb
+index 6aba256..f5ba77a 100644
+--- a/chrome/app/resources/chromium_strings_ca.xtb
++++ b/chrome/app/resources/chromium_strings_ca.xtb
+@@ -244,7 +244,7 @@ Chromium no pot recuperar la configuració.</translation>
+ <translation id="8823523095753232532">Enllaça les meves dades de Chromium amb aquest compte</translation>
+ <translation id="1808667845054772817">Torna a instal·lar Chromium</translation>
+ <translation id="1221340462641866827">Chromium OS no és compatible amb l'inici d'una aplicació externa per gestionar els enllaços <ph name="SCHEME"/>. L'enllaç sol·licitat és <ph name="PROTOLINK"/>.</translation>
+-<translation id="328888136576916638">Falten les claus de l'API de Google. Es desactivaran algunes de les funcions de Chromium.</translation>
++<translation id="328888136576916638">Falten les claus de l'API de Google. Es desactivaran algunes de les funcions de Google.</translation>
+ <translation id="2602806952220118310">Chromium: notificacions</translation>
+ <translation id="5032989939245619637">Desa els detalls a Chromium</translation>
+ </translationbundle>
+\ No newline at end of file
+diff --git a/chrome/app/resources/chromium_strings_cs.xtb b/chrome/app/resources/chromium_strings_cs.xtb
+index c3358e2..e6c7968 100644
+--- a/chrome/app/resources/chromium_strings_cs.xtb
++++ b/chrome/app/resources/chromium_strings_cs.xtb
+@@ -247,7 +247,6 @@ Chromium nemůže vaše nastavení obnovit.</translation>
+ <translation id="8823523095753232532">Propojit má data prohlížeče Chromium s tímto účtem</translation>
+ <translation id="1808667845054772817">Přeinstalovat Chromium</translation>
+ <translation id="1221340462641866827">Chromium OS nepodporuje spouštění externích aplikací pro práci s odkazy typu <ph name="SCHEME"/>. Požadovaný odkaz je <ph name="PROTOLINK"/>.</translation>
+-<translation id="328888136576916638">Chybí klíče rozhraní Google API. Některé funkce Chromium nebudou k dispozici.</translation>
+ <translation id="2602806952220118310">Chromium – oznámení</translation>
+ <translation id="5032989939245619637">Ukládat údaje do prohlížeče Chromium</translation>
+ </translationbundle>
+\ No newline at end of file
+diff --git a/chrome/app/resources/chromium_strings_da.xtb b/chrome/app/resources/chromium_strings_da.xtb
+index 1a5c113..01ed7fa 100644
+--- a/chrome/app/resources/chromium_strings_da.xtb
++++ b/chrome/app/resources/chromium_strings_da.xtb
+@@ -245,7 +245,7 @@ Chromium kan ikke gendanne dine præferencer.</translation>
+ <translation id="8823523095753232532">Knyt mine Chromium-data til denne konto</translation>
+ <translation id="1808667845054772817">Geninstaller Chromium</translation>
+ <translation id="1221340462641866827">Chromium OS understøtter ikke start af en ekstern applikation til at håndtere <ph name="SCHEME"/>-links. Det link, der er anmodet om, er <ph name="PROTOLINK"/>.</translation>
+-<translation id="328888136576916638">Der mangler Google API-nøgler. Nogle funktioner i Chromium deaktiveres.</translation>
++<translation id="328888136576916638">Der mangler Google API-nøgler. Nogle funktioner av Google deaktiveres.</translation>
+ <translation id="2602806952220118310">Chromium – Underretninger</translation>
+ <translation id="5032989939245619637">Gem oplysninger i Chromium</translation>
+ </translationbundle>
+\ No newline at end of file
+diff --git a/chrome/app/resources/chromium_strings_de.xtb b/chrome/app/resources/chromium_strings_de.xtb
+index cf49724..739e0ae 100644
+--- a/chrome/app/resources/chromium_strings_de.xtb
++++ b/chrome/app/resources/chromium_strings_de.xtb
+@@ -219,7 +219,7 @@ Chromium kann Ihre Einstellungen nicht wiederherstellen.</translation>
+ <translation id="8823523095753232532">Meine Chromium-Daten mit diesem Konto verknüpfen</translation>
+ <translation id="1808667845054772817">Chromium neu installieren</translation>
+ <translation id="1221340462641866827">Chromium unterstützt keine externe App zur Verarbeitung von <ph name="SCHEME"/>-Links. Der angeforderte Link ist <ph name="PROTOLINK"/>.</translation>
+-<translation id="328888136576916638">Google API-Schlüssel fehlen. Einige Funktionen von Chromium sind deaktiviert.</translation>
++<translation id="328888136576916638">Google API-Schlüssel sind nicht eingetragen. Einige Google-Funktionen sind deaktiviert.</translation>
+ <translation id="2602806952220118310">Chromium – Benachrichtigungen</translation>
+ <translation id="5032989939245619637">Details in Chromium speichern</translation>
+ </translationbundle>
+\ No newline at end of file
+diff --git a/chrome/app/resources/chromium_strings_el.xtb b/chrome/app/resources/chromium_strings_el.xtb
+index cb2e56d..1b4251d 100644
+--- a/chrome/app/resources/chromium_strings_el.xtb
++++ b/chrome/app/resources/chromium_strings_el.xtb
+@@ -269,7 +269,7 @@
+ <translation id="8823523095753232532">Σύνδεση των δεδομένων μου στο Chromium σε αυτόν το λογαριασμό</translation>
+ <translation id="1808667845054772817">Επανεγκατάσταση του Chromium</translation>
+ <translation id="1221340462641866827">Το Chromium OS δεν υποστηρίζει την εκκίνηση μιας εξωτερικής εφαρμογής για τον χειρισμό συνδέσμων <ph name="SCHEME"/>. Ο σύνδεσμος που απαιτείται είναι ο <ph name="PROTOLINK"/>.</translation>
+-<translation id="328888136576916638">Λείπουν κλειδιά του Google API. Ορισμένες λειτουργίες του Google Chromium θα απενεργοποιηθούν.</translation>
++<translation id="328888136576916638">Λείπουν κλειδιά του Google API. Ορισμένες λειτουργίες του Google θα απενεργοποιηθούν.</translation>
+ <translation id="2602806952220118310">Chromium - Ειδοποιήσεις</translation>
+ <translation id="5032989939245619637">Αποθήκευση λεπτομερειών στο Chromium</translation>
+ <translation id="8803635938069941624">Όροι του Chromium OS</translation>
+diff --git a/chrome/app/resources/chromium_strings_en-GB.xtb b/chrome/app/resources/chromium_strings_en-GB.xtb
+index 897a44d..519402c 100644
+--- a/chrome/app/resources/chromium_strings_en-GB.xtb
++++ b/chrome/app/resources/chromium_strings_en-GB.xtb
+@@ -266,7 +266,7 @@ Google Chrome is unable to recover your settings.</translation>
+ <translation id="8823523095753232532">Link my Chromium data to this account</translation>
+ <translation id="1808667845054772817">Reinstall Chromium</translation>
+ <translation id="1221340462641866827">Chromium OS does not support launching an external application to handle <ph name="SCHEME"/> links. The link requested is <ph name="PROTOLINK"/>.</translation>
+-<translation id="328888136576916638">Google API keys are missing. Some functionality of Chromium will be disabled.</translation>
++<translation id="328888136576916638">Google API keys are not present. Some Google functions will be disabled.</translation>
+ <translation id="2602806952220118310">Chromium - Notifications</translation>
+ <translation id="5032989939245619637">Save details in Chromium</translation>
+ <translation id="8803635938069941624">Chromium OS terms</translation>
+diff --git a/chrome/app/resources/chromium_strings_es-419.xtb b/chrome/app/resources/chromium_strings_es-419.xtb
+index 8dae759..896e556 100644
+--- a/chrome/app/resources/chromium_strings_es-419.xtb
++++ b/chrome/app/resources/chromium_strings_es-419.xtb
+@@ -257,7 +257,7 @@ Si accedes de todos modos, se fusionará la información de Chromium, como los m
+ <translation id="8823523095753232532">Vincular mis datos de Chromium con esta cuenta</translation>
+ <translation id="1808667845054772817">Reinstalar Chromium</translation>
+ <translation id="1221340462641866827">Chromium OS no admite la inicialización de una aplicación externa para utilizar vínculos <ph name="SCHEME"/>. El vínculo solicitado es <ph name="PROTOLINK"/>.</translation>
+-<translation id="328888136576916638">Faltan las claves de la API de Google. Se inhabilitarán algunas funciones de Chromium.</translation>
++<translation id="328888136576916638">Faltan las claves de la API de Google. Se inhabilitarán algunas funciones de Google.</translation>
+ <translation id="2602806952220118310">Chromium: notificaciones</translation>
+ <translation id="5032989939245619637">Guardar los detalles en Chromium</translation>
+ <translation id="8803635938069941624">Condiciones del Sistema operativo Chromium</translation>
+diff --git a/chrome/app/resources/chromium_strings_es.xtb b/chrome/app/resources/chromium_strings_es.xtb
+index 1e9e8a8..658fea9 100644
+--- a/chrome/app/resources/chromium_strings_es.xtb
++++ b/chrome/app/resources/chromium_strings_es.xtb
+@@ -248,7 +248,7 @@ Chromium no puede recuperar tu configuración.</translation>
+ <translation id="8823523095753232532">Vincular mis datos de Chromium a esta cuenta</translation>
+ <translation id="1808667845054772817">Reinstalar Chromium</translation>
+ <translation id="1221340462641866827">Chromium OS no puede iniciar una aplicación externa para gestionar enlaces <ph name="SCHEME"/>. El enlace solicitado es <ph name="PROTOLINK"/>.</translation>
+-<translation id="328888136576916638">Faltan las claves de la API de Google. Se inhabilitarán algunas funciones de Chromium.</translation>
++<translation id="328888136576916638">Faltan las claves de la API de Google. Se inhabilitarán algunas funciones de Google.</translation>
+ <translation id="2602806952220118310">Chromium - Notificaciones</translation>
+ <translation id="5032989939245619637">Guardar detalles en Chromium</translation>
+ </translationbundle>
+\ No newline at end of file
+diff --git a/chrome/app/resources/chromium_strings_et.xtb b/chrome/app/resources/chromium_strings_et.xtb
+index a93083a..9bb0b80 100644
+--- a/chrome/app/resources/chromium_strings_et.xtb
++++ b/chrome/app/resources/chromium_strings_et.xtb
+@@ -245,7 +245,6 @@ Chromium ei saa teie seadeid taastada.</translation>
+ <translation id="8823523095753232532">Lingi minu Chromiumi andmed selle kontoga</translation>
+ <translation id="1808667845054772817">Installi Chromium uuesti</translation>
+ <translation id="1221340462641866827">Chromium OS ei toeta rakenduse <ph name="SCHEME"/> linkide käsitlemiseks välisrakenduste käivitamist. Taotletud link on <ph name="PROTOLINK"/>.</translation>
+-<translation id="328888136576916638">Google API võtmed on puudu. Teatud Chromiumi funktsioonid keelatakse.</translation>
+ <translation id="2602806952220118310">Chromium – märguanded</translation>
+ <translation id="5032989939245619637">Salvesta üksikasjad Chromiumi</translation>
+ </translationbundle>
+\ No newline at end of file
+diff --git a/chrome/app/resources/chromium_strings_fa.xtb b/chrome/app/resources/chromium_strings_fa.xtb
+index 28cc721..54893f2 100644
+--- a/chrome/app/resources/chromium_strings_fa.xtb
++++ b/chrome/app/resources/chromium_strings_fa.xtb
+@@ -261,7 +261,6 @@ Chromium قادر به بازیابی تنظیمات شما نیست.</translati
+ <translation id="8823523095753232532">‏مرتبط کردن داده‌های Chromium به این حساب</translation>
+ <translation id="1808667845054772817">‏نصب مجدد Chromium</translation>
+ <translation id="1221340462641866827">‏سیستم عامل Chromium از راه‌اندازی یک برنامهٔ کاربردی خارجی برای کار با پیوندهای <ph name="SCHEME"/> پشتیبانی نمی‌کند. پیوند موردنیاز، <ph name="PROTOLINK"/> است.</translation>
+-<translation id="328888136576916638">‏کلیدهای Google API وجود ندارند. برخی از عملکردهای Chromium از کار خواهند افتاد.</translation>
+ <translation id="2602806952220118310">‏Chromium - اعلان‌ها</translation>
+ <translation id="5032989939245619637">‏ذخیره جزئیات در Chromium</translation>
+ <translation id="8803635938069941624">‏شرایط Chromium OS</translation>
+diff --git a/chrome/app/resources/chromium_strings_fi.xtb b/chrome/app/resources/chromium_strings_fi.xtb
+index b7ea071..af4eb32 100644
+--- a/chrome/app/resources/chromium_strings_fi.xtb
++++ b/chrome/app/resources/chromium_strings_fi.xtb
+@@ -244,7 +244,6 @@ Chromium ei voi palauttaa asetuksiasi.</translation>
+ <translation id="8823523095753232532">Linkitä Chromium-tietoni tähän tiliin</translation>
+ <translation id="1808667845054772817">Asenna Chromium uudelleen</translation>
+ <translation id="1221340462641866827">Chromium-käyttöjärjestelmä ei tue ulkopuolisten sovellusten käynnistämistä <ph name="SCHEME"/>-linkkien käsittelyä varten. Pyyntöön liittyvä linkki on <ph name="PROTOLINK"/>.</translation>
+-<translation id="328888136576916638">Googlen sovellusliittymän avaimet puuttuvat. Jotkin Chromiumin toiminnoista poistetaan käytöstä.</translation>
+ <translation id="2602806952220118310">Chromium – ilmoitukset</translation>
+ <translation id="5032989939245619637">Tallenna tiedot Chromiumiin</translation>
+ </translationbundle>
+\ No newline at end of file
+diff --git a/chrome/app/resources/chromium_strings_fil.xtb b/chrome/app/resources/chromium_strings_fil.xtb
+index 2967d50..30b9b1a 100644
+--- a/chrome/app/resources/chromium_strings_fil.xtb
++++ b/chrome/app/resources/chromium_strings_fil.xtb
+@@ -266,7 +266,6 @@ Hindi mabawi ng Chromium ang iyong mga setting.</translation>
+ <translation id="8823523095753232532">I-link ang aking data sa Chromium sa account na ito</translation>
+ <translation id="1808667845054772817">Muling i-install ang Chromium</translation>
+ <translation id="1221340462641866827">Hindi sinusuportahan ng Chromium OS ang paglulunsad ng panlabas na application upang mangasiwa ng mga <ph name="SCHEME"/> na link. Ang hinihiling na link ay <ph name="PROTOLINK"/>.</translation>
+-<translation id="328888136576916638">Nawawala ang mga Google API key. Madi-disable ang ilang pagpapagana ng Chromium.</translation>
+ <translation id="2602806952220118310">Chromium - Mga Notification</translation>
+ <translation id="5032989939245619637">I-save ang mga detalye sa Chromium</translation>
+ <translation id="8803635938069941624">Mga tuntunin ng Chromium OS</translation>
+diff --git a/chrome/app/resources/chromium_strings_fr.xtb b/chrome/app/resources/chromium_strings_fr.xtb
+index e62e830..0f76af8 100644
+--- a/chrome/app/resources/chromium_strings_fr.xtb
++++ b/chrome/app/resources/chromium_strings_fr.xtb
+@@ -246,7 +246,7 @@ Chromium ne peut pas récupérer vos paramètres.</translation>
+ <translation id="8823523095753232532">Lier mes données Chromium à ce compte</translation>
+ <translation id="1808667845054772817">Réinstaller Chromium</translation>
+ <translation id="1221340462641866827">Chromium OS ne permet pas le lancement d'une application externe pour gérer les liens <ph name="SCHEME"/>. Le lien requis est <ph name="PROTOLINK"/>.</translation>
+-<translation id="328888136576916638">Les clés d'API Google sont manquantes. Certaines fonctionnalités de Chromium vont être désactivées.</translation>
++<translation id="328888136576916638">Les clés d'API Google sont manquantes. Certaines fonctionnalités de Google vont être désactivées.</translation>
+ <translation id="2602806952220118310">Notifications – Chromium</translation>
+ <translation id="5032989939245619637">Enregistrer les détails dans Chromium</translation>
+ </translationbundle>
+\ No newline at end of file
+diff --git a/chrome/app/resources/chromium_strings_gu.xtb b/chrome/app/resources/chromium_strings_gu.xtb
+index c5f4810..0189275 100644
+--- a/chrome/app/resources/chromium_strings_gu.xtb
++++ b/chrome/app/resources/chromium_strings_gu.xtb
+@@ -263,7 +263,6 @@ Chromium તમારી સેટિંગ્સને પુનઃપ્રા
+ <translation id="8823523095753232532">આ એકાઉન્ટ સાથે મારા Chromium ડેટાને લિંક કરો</translation>
+ <translation id="1808667845054772817">Chromium ફરીથી ઇન્સ્ટોલ કરો</translation>
+ <translation id="1221340462641866827">Chromium OS <ph name="SCHEME"/> લિંક્સને હેન્ડલ કરવા માટે કોઈ બાહ્ય એપ્લિકેશન શરૂ કરવાને સપોર્ટ કરતું નથી. વિનંતી કરેલી લિંક <ph name="PROTOLINK"/> છે.</translation>
+-<translation id="328888136576916638">Google API કીઝ ખૂટે છે. Chromium ની કેટલીક કાર્યક્ષમતા અક્ષમ થશે.</translation>
+ <translation id="2602806952220118310">Chromium - સૂચનાઓ</translation>
+ <translation id="5032989939245619637">Chromium માં વિગતો સાચવો</translation>
+ <translation id="8803635938069941624">Chromium OS શરતો</translation>
+diff --git a/chrome/app/resources/chromium_strings_hi.xtb b/chrome/app/resources/chromium_strings_hi.xtb
+index 73a91a4..a0fd367 100644
+--- a/chrome/app/resources/chromium_strings_hi.xtb
++++ b/chrome/app/resources/chromium_strings_hi.xtb
+@@ -264,7 +264,6 @@
+ <translation id="8823523095753232532">मेरे क्रोमियम डेटा को इस खाते से लिंक करें</translation>
+ <translation id="1808667845054772817">क्रोमियम को फिर से इंस्टॉल करें</translation>
+ <translation id="1221340462641866827">क्रोमियम OS <ph name="SCHEME"/> लिंक प्रबंधित करने के लिए बाहरी ऐप्‍लिकेशन लॉन्‍च करने का समर्थन नहीं करता है. अनुरोध की गई लिंक <ph name="PROTOLINK"/> है.</translation>
+-<translation id="328888136576916638">Google API कुंजियां अनुपलब्ध हैं. क्रोमियम की कुछ कार्यक्षमता अक्षम कर दी जाएगी.</translation>
+ <translation id="2602806952220118310">Chromium - सूचनाएं</translation>
+ <translation id="5032989939245619637">क्रोमियम में विवरण सहेजें</translation>
+ <translation id="8803635938069941624">क्रोमियम OS शर्तें</translation>
+diff --git a/chrome/app/resources/chromium_strings_hr.xtb b/chrome/app/resources/chromium_strings_hr.xtb
+index f9cb3af..f85301e 100644
+--- a/chrome/app/resources/chromium_strings_hr.xtb
++++ b/chrome/app/resources/chromium_strings_hr.xtb
+@@ -263,7 +263,6 @@ Chromium ne može oporaviti vaše postavke.</translation>
+ <translation id="8823523095753232532">Poveži moje podatke sustava Chromium s ovim računom</translation>
+ <translation id="1808667845054772817">Ponovo instaliraj Chromium</translation>
+ <translation id="1221340462641866827">OS Chromium ne podržava pokretanje vanjske aplikacije za obradu veza <ph name="SCHEME"/>. Zatražena je veza <ph name="PROTOLINK"/>.</translation>
+-<translation id="328888136576916638">Nedostaju ključevi Google API-ja. Neke funkcije Chromiuma bit će onemogućene.</translation>
+ <translation id="2602806952220118310">Chromium – obavijesti</translation>
+ <translation id="5032989939245619637">Spremi pojedinosti u sustavu Chromium</translation>
+ <translation id="8803635938069941624">Uvjeti OS-a Chromium</translation>
+diff --git a/chrome/app/resources/chromium_strings_hu.xtb b/chrome/app/resources/chromium_strings_hu.xtb
+index c7a6135..1f8e7fe 100644
+--- a/chrome/app/resources/chromium_strings_hu.xtb
++++ b/chrome/app/resources/chromium_strings_hu.xtb
+@@ -259,7 +259,6 @@ A Chromium nem tudja visszaállítani a beállításait.</translation>
+ <translation id="8823523095753232532">Chromium-adataim társítása ehhez a fiókhoz</translation>
+ <translation id="1808667845054772817">A Chromium újratelepítése</translation>
+ <translation id="1221340462641866827">A Chromium OS nem támogatja külső alkalmazás indítását a(z) <ph name="SCHEME"/> linkek kezeléséhez. A kért link: <ph name="PROTOLINK"/>.</translation>
+-<translation id="328888136576916638">Hiányoznak Google API-kulcsok. A Chromium egyes funkciói kikapcsolnak.</translation>
+ <translation id="2602806952220118310">Chromium – Értesítések</translation>
+ <translation id="5032989939245619637">Részletek mentése a Chromiumban</translation>
+ <translation id="8803635938069941624">Chromium OS – Szerződési Feltételek</translation>
+diff --git a/chrome/app/resources/chromium_strings_id.xtb b/chrome/app/resources/chromium_strings_id.xtb
+index e1faa95..0f5864e 100644
+--- a/chrome/app/resources/chromium_strings_id.xtb
++++ b/chrome/app/resources/chromium_strings_id.xtb
+@@ -245,7 +245,6 @@ Chromium tidak dapat memulihkan setelan Anda.</translation>
+ <translation id="8823523095753232532">Tautkan data Chromium saya ke akun ini</translation>
+ <translation id="1808667845054772817">Pasang ulang Chromium</translation>
+ <translation id="1221340462641866827">OS Chromium tidak mendukung peluncuran aplikasi eksternal untuk menangani tautan <ph name="SCHEME"/>. Tautan yang diminta adalah <ph name="PROTOLINK"/>.</translation>
+-<translation id="328888136576916638">Kunci API Google tidak ada. Beberapa fungsi Chromium tidak akan berfungsi.</translation>
+ <translation id="2602806952220118310">Chromium - Pemberitahuan</translation>
+ <translation id="5032989939245619637">Simpan detail di Chromium</translation>
+ </translationbundle>
+\ No newline at end of file
+diff --git a/chrome/app/resources/chromium_strings_it.xtb b/chrome/app/resources/chromium_strings_it.xtb
+index 4534057..0ffae1a 100644
+--- a/chrome/app/resources/chromium_strings_it.xtb
++++ b/chrome/app/resources/chromium_strings_it.xtb
+@@ -245,7 +245,7 @@ Chromium non è in grado di recuperare le impostazioni.</translation>
+ <translation id="8823523095753232532">Collega i miei dati Chromium a questo account</translation>
+ <translation id="1808667845054772817">Reinstalla Chromium</translation>
+ <translation id="1221340462641866827">Chromium OS non supporta l'avvio di un'applicazione esterna per la gestione dei link <ph name="SCHEME"/>. Il link richiesto è <ph name="PROTOLINK"/>.</translation>
+-<translation id="328888136576916638">Mancano le chiavi dell'API di Google. Alcune funzionalità di Chromium verranno disattivate.</translation>
++<translation id="328888136576916638">Mancano le chiavi dell'API di Google. Alcune funzionalità di Google verranno disattivate.</translation>
+ <translation id="2602806952220118310">Chromium - Notifiche</translation>
+ <translation id="5032989939245619637">Salva dati in Chromium</translation>
+ </translationbundle>
+\ No newline at end of file
+diff --git a/chrome/app/resources/chromium_strings_iw.xtb b/chrome/app/resources/chromium_strings_iw.xtb
+index 2839c76..b5aeab3 100644
+--- a/chrome/app/resources/chromium_strings_iw.xtb
++++ b/chrome/app/resources/chromium_strings_iw.xtb
+@@ -242,7 +242,6 @@ Chromium לא יכול לשחזר את ההגדרות שלך.</translation>
+ <translation id="8823523095753232532">‏קשר את הנתונים שלי ב-Chromium לחשבון הזה</translation>
+ <translation id="1808667845054772817">‏התקן מחדש את Chromium</translation>
+ <translation id="1221340462641866827">‏מערכת ההפעלה של Chromium אינה תומכת בהפעלת יישום חיצוני כדי לטפל בקישורים של <ph name="SCHEME"/>. הקישור הנדרש הוא <ph name="PROTOLINK"/>.</translation>
+-<translation id="328888136576916638">‏המפתחות של Google API חסרים. פונקציונליות מסוימת של Chromium תהיה מושבתת.</translation>
+ <translation id="2602806952220118310">‏Chromium - הודעות</translation>
+ <translation id="5032989939245619637">‏שמור פרטים ב-Chromium</translation>
+ </translationbundle>
+\ No newline at end of file
+diff --git a/chrome/app/resources/chromium_strings_ja.xtb b/chrome/app/resources/chromium_strings_ja.xtb
+index 6930b08..9c09e3b 100644
+--- a/chrome/app/resources/chromium_strings_ja.xtb
++++ b/chrome/app/resources/chromium_strings_ja.xtb
+@@ -245,7 +245,7 @@
+ <translation id="8823523095753232532">Chromium データをこのアカウントにリンクする</translation>
+ <translation id="1808667845054772817">Chromium を再インストール</translation>
+ <translation id="1221340462641866827">Chromium OS では、<ph name="SCHEME"/> リンクの処理に必要な外部アプリケーションの起動がサポートされていません。リクエストされたリンクは <ph name="PROTOLINK"/> です。</translation>
+-<translation id="328888136576916638">Google API キーが欠落しています。Chromium の一部の機能は無効になります。</translation>
++<translation id="328888136576916638">Google API キーが欠落してあります。</translation>
+ <translation id="2602806952220118310">Chromium - お知らせ</translation>
+ <translation id="5032989939245619637">Chromium で詳細を保存する</translation>
+ </translationbundle>
+\ No newline at end of file
+diff --git a/chrome/app/resources/chromium_strings_kn.xtb b/chrome/app/resources/chromium_strings_kn.xtb
+index 3bf40a5..124391b 100644
+--- a/chrome/app/resources/chromium_strings_kn.xtb
++++ b/chrome/app/resources/chromium_strings_kn.xtb
+@@ -258,7 +258,6 @@
+ <translation id="8823523095753232532">ಈ ಖಾತೆಗೆ ನನ್ನ Chromium ಡೇಟಾವನ್ನು ಲಿಂಕ್ ಮಾಡಿ</translation>
+ <translation id="1808667845054772817">Chromium ಅನ್ನು ಮರುಸ್ಥಾಪಿಸು</translation>
+ <translation id="1221340462641866827"><ph name="SCHEME"/> ಲಿಂಕ್‌ಗಳನ್ನು ನಿರ್ವಹಿಸಲು ಹೆಚ್ಚುವರಿ ಅಪ್ಲಿಕೇಶನ್ ಅನ್ನು ಸ್ಥಾಪಿಸುವುದಕ್ಕೆ Chromium OS ಬೆಂಬಲ ನೀಡುತ್ತಿಲ್ಲ. <ph name="PROTOLINK"/> ಲಿಂಕ್‌ನ ವಿನಂತಿಯಾಗಿದೆ.</translation>
+-<translation id="328888136576916638">Google API ಕೀಗಳು ಕಾಣೆಯಾಗಿವೆ. Chromium ನ ಕೆಲವು ಕಾರ್ಯವಿಧಾನಗಳನ್ನು ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಲಾಗುತ್ತದೆ.</translation>
+ <translation id="2602806952220118310">Chromium - ಅಧಿಸೂಚನೆಗಳು</translation>
+ <translation id="5032989939245619637">Chromium ನಲ್ಲಿ ವಿವರಣೆಗಳನ್ನು ಉಳಿಸಿ</translation>
+ <translation id="8803635938069941624">Chromium OS ನಿಯಮಗಳು</translation>
+diff --git a/chrome/app/resources/chromium_strings_ko.xtb b/chrome/app/resources/chromium_strings_ko.xtb
+index 1a915e6..771a854 100644
+--- a/chrome/app/resources/chromium_strings_ko.xtb
++++ b/chrome/app/resources/chromium_strings_ko.xtb
+@@ -262,7 +262,6 @@ Chromium에서 설정을 복구할 수 없습니다.</translation>
+ <translation id="8823523095753232532">내 Chromium 데이터를 이 계정에 연결</translation>
+ <translation id="1808667845054772817">Chromium 재설치</translation>
+ <translation id="1221340462641866827">Chromium OS는 외부 애플리케이션 실행을 통한 <ph name="SCHEME"/> 링크 처리를 지원하지 않습니다. 요청된 링크는 <ph name="PROTOLINK"/>입니다.</translation>
+-<translation id="328888136576916638">Google API 키가 누락되었습니다. Chromium의 일부 기능이 사용 중지됩니다.</translation>
+ <translation id="2602806952220118310">Chromium - 알림</translation>
+ <translation id="5032989939245619637">Chromium에 세부정보 저장</translation>
+ <translation id="8803635938069941624">Chromium OS 용어</translation>
+diff --git a/chrome/app/resources/chromium_strings_lt.xtb b/chrome/app/resources/chromium_strings_lt.xtb
+index 8ed58d7..e67c30f 100644
+--- a/chrome/app/resources/chromium_strings_lt.xtb
++++ b/chrome/app/resources/chromium_strings_lt.xtb
+@@ -247,7 +247,6 @@ Prisijungus bet kuriuo būdu, „Chromium“ informacija, pvz., žymės, istorij
+ <translation id="8823523095753232532">Susisieti mano „Chromium“ duomenis su šia paskyra</translation>
+ <translation id="1808667845054772817">Iš naujo įdiegti „Chromium“</translation>
+ <translation id="1221340462641866827">„Chromium“ OS nepalaikomas išorinės programos, skirtos „<ph name="SCHEME"/>“ nuorodoms tvarkyti, paleidimas. Nuoroda, dėl kurios pateikta užklausa, yra <ph name="PROTOLINK"/>.</translation>
+-<translation id="328888136576916638">Trūksta „Google“ API raktų. Bus išjungtos kai kurios „Chromium“ funkcijos.</translation>
+ <translation id="2602806952220118310">„Chromium“ – pranešimai</translation>
+ <translation id="5032989939245619637">Išsaugoti išsamią informaciją „Chromium“</translation>
+ </translationbundle>
+\ No newline at end of file
+diff --git a/chrome/app/resources/chromium_strings_lv.xtb b/chrome/app/resources/chromium_strings_lv.xtb
+index 88c9de7..ce89c2f 100644
+--- a/chrome/app/resources/chromium_strings_lv.xtb
++++ b/chrome/app/resources/chromium_strings_lv.xtb
+@@ -262,7 +262,6 @@ Ja pierakstīsieties tik un tā, Chromium informācija, piemēram, grāmatzīmes
+ <translation id="8823523095753232532">Saistīt manus Chromium datus ar šo kontu</translation>
+ <translation id="1808667845054772817">Pārinstalēt Chromium</translation>
+ <translation id="1221340462641866827">Chromium OS neatbalsta ārējas lietojumprogrammas palaišanu, lai rīkotos ar <ph name="SCHEME"/> saitēm. Pieprasītā saite ir <ph name="PROTOLINK"/>.</translation>
+-<translation id="328888136576916638">Trūkst Google API atslēgu. Tiks atspējotas dažas Chromium funkcijas.</translation>
+ <translation id="2602806952220118310">Chromium — paziņojumi</translation>
+ <translation id="5032989939245619637">Saglabāt informāciju operētājsistēmā Chromium</translation>
+ <translation id="8803635938069941624">Chromium OS noteikumi</translation>
+diff --git a/chrome/app/resources/chromium_strings_ml.xtb b/chrome/app/resources/chromium_strings_ml.xtb
+index dcc482c..f98ff3d 100644
+--- a/chrome/app/resources/chromium_strings_ml.xtb
++++ b/chrome/app/resources/chromium_strings_ml.xtb
+@@ -265,7 +265,6 @@
+ <translation id="8823523095753232532">എന്റെ Chromium ഡാറ്റ ഈ അക്കൗണ്ടുമായി ലിങ്കുചെയ്യുക</translation>
+ <translation id="1808667845054772817">Chromium വീണ്ടും ഇൻസ്‌റ്റാളുചെയ്യുക</translation>
+ <translation id="1221340462641866827"><ph name="SCHEME"/> ലിങ്കുകൾ കൈകാര്യം ചെയ്യുന്നതിന് ഒരു ബാഹ്യ അപ്ലിക്കേഷൻ സമാരംഭിക്കുന്നതിനെ Chromium OS പിന്തുണയ്‌ക്കുന്നില്ല. ലിങ്ക് അഭ്യർത്ഥിച്ചത് <ph name="PROTOLINK"/> ആണ്.</translation>
+-<translation id="328888136576916638">Google API കീകൾ നഷ്‌ടമായി. Chromium-ന്റെ ചില പ്രവർത്തനങ്ങൾ പ്രവർത്തനരഹിതമാകും.</translation>
+ <translation id="2602806952220118310">Chromium - അറിയിപ്പുകൾ</translation>
+ <translation id="5032989939245619637">Chromium-ൽ വിശദാംശങ്ങൾ സംരക്ഷിക്കുക</translation>
+ <translation id="8803635938069941624">Chromium OS നിബന്ധനകൾ</translation>
+diff --git a/chrome/app/resources/chromium_strings_mr.xtb b/chrome/app/resources/chromium_strings_mr.xtb
+index d614554..00667ca 100644
+--- a/chrome/app/resources/chromium_strings_mr.xtb
++++ b/chrome/app/resources/chromium_strings_mr.xtb
+@@ -260,7 +260,6 @@ Chromium आपली सेटिंग्ज पुनर्प्राप्
+ <translation id="8823523095753232532">या खात्यावर माझ्या Chromium डेटा चा दुवा साधा</translation>
+ <translation id="1808667845054772817">Chromium पुनर्स्थापित करा</translation>
+ <translation id="1221340462641866827">Chromium OS ला <ph name="SCHEME"/> दुवे हाताळण्‍यासाठी बाह्य अनुप्रयोग लाँच करणे आवश्‍यक आहे. विनंती केलेला दुवा <ph name="PROTOLINK"/> हा आहे.</translation>
+-<translation id="328888136576916638">Google API की गहाळ आहेत. Chromium ची काही कार्यक्षमता अक्षम केली जाईल.</translation>
+ <translation id="2602806952220118310">Chromium - सूचना</translation>
+ <translation id="5032989939245619637">Chromium मध्ये तपशील जतन करा</translation>
+ <translation id="8803635938069941624">Chromium OS अटी</translation>
+diff --git a/chrome/app/resources/chromium_strings_ms.xtb b/chrome/app/resources/chromium_strings_ms.xtb
+index a674987..c3321f8 100644
+--- a/chrome/app/resources/chromium_strings_ms.xtb
++++ b/chrome/app/resources/chromium_strings_ms.xtb
+@@ -244,7 +244,6 @@ Chromium tidak dapat mengembalikan tetapan anda.</translation>
+ <translation id="8823523095753232532">Pautkan data Chromium saya ke akaun ini</translation>
+ <translation id="1808667845054772817">Pasang semula Chromium</translation>
+ <translation id="1221340462641866827">Chromium OS tidak menyokong pelancaran aplikasi luaran untuk mengendalikan pautan <ph name="SCHEME"/>. Pautan yang diminta adalah <ph name="PROTOLINK"/>.</translation>
+-<translation id="328888136576916638">Kunci API Google tiada. Sesetengah fungsi Chromium akan dilumpuhkan.</translation>
+ <translation id="2602806952220118310">Chromium - Pemberitahuan</translation>
+ <translation id="5032989939245619637">Simpan butiran di Chromium</translation>
+ </translationbundle>
+\ No newline at end of file
+diff --git a/chrome/app/resources/chromium_strings_nl.xtb b/chrome/app/resources/chromium_strings_nl.xtb
+index 8d1c643..0bc0d87 100644
+--- a/chrome/app/resources/chromium_strings_nl.xtb
++++ b/chrome/app/resources/chromium_strings_nl.xtb
+@@ -244,7 +244,7 @@ Chromium kan je instellingen niet herstellen.</translation>
+ <translation id="8823523095753232532">Mijn Chromium-gegevens koppelen aan dit account</translation>
+ <translation id="1808667845054772817">Chromium opnieuw installeren</translation>
+ <translation id="1221340462641866827">Chromium OS ondersteunt het starten van een externe applicatie voor het verwerken van <ph name="SCHEME"/>-links niet. De opgevraagde link is <ph name="PROTOLINK"/>.</translation>
+-<translation id="328888136576916638">Google API-sleutels ontbreken. Sommige functies van Chromium worden uitgeschakeld.</translation>
++<translation id="328888136576916638">Google API-sleutels ontbreken. Sommige functies van Google worden uitgeschakeld.</translation>
+ <translation id="2602806952220118310">Chromium - Meldingen</translation>
+ <translation id="5032989939245619637">Details opslaan in Chromium</translation>
+ </translationbundle>
+\ No newline at end of file
+diff --git a/chrome/app/resources/chromium_strings_no.xtb b/chrome/app/resources/chromium_strings_no.xtb
+index c6bff8a..9e89bcc 100644
+--- a/chrome/app/resources/chromium_strings_no.xtb
++++ b/chrome/app/resources/chromium_strings_no.xtb
+@@ -242,7 +242,7 @@ Chromium kan ikke gjenopprette innstillingen dine.</translation>
+ <translation id="8823523095753232532">Koble Chromium-dataene mine til denne kontoen.</translation>
+ <translation id="1808667845054772817">Installer Chromium på nytt</translation>
+ <translation id="1221340462641866827">Chromium OS støtter ikke start av et eksternt program for å håndtere <ph name="SCHEME"/>-linker. Den påkrevde linken er <ph name="PROTOLINK"/>.</translation>
+-<translation id="328888136576916638">API-nøkler for Google mangler. Noe funksjonalitet i Chromium blir deaktivert.</translation>
++<translation id="328888136576916638">API-nøkler for Google mangler. Noe funksjonalitet av Google blir deaktivert.</translation>
+ <translation id="2602806952220118310">Chromium – varsler</translation>
+ <translation id="5032989939245619637">Lagre detaljer i Chromium</translation>
+ </translationbundle>
+\ No newline at end of file
+diff --git a/chrome/app/resources/chromium_strings_pl.xtb b/chrome/app/resources/chromium_strings_pl.xtb
+index 54699d9..0c9658f 100644
+--- a/chrome/app/resources/chromium_strings_pl.xtb
++++ b/chrome/app/resources/chromium_strings_pl.xtb
+@@ -262,7 +262,6 @@ Chromium nie może odzyskać ustawień.</translation>
+ <translation id="8823523095753232532">Połącz moje dane Chromium z tym kontem</translation>
+ <translation id="1808667845054772817">Ponownie zainstaluj Chromium</translation>
+ <translation id="1221340462641866827">System operacyjny Chromium nie umożliwia uruchamiania zewnętrznej aplikacji w celu obsługi linków typu <ph name="SCHEME"/>. Żądany link to <ph name="PROTOLINK"/>.</translation>
+-<translation id="328888136576916638">Brakuje kluczy interfejsu Google API. Niektóre funkcje Chromium będą wyłączone.</translation>
+ <translation id="2602806952220118310">Chromium – powiadomienia</translation>
+ <translation id="5032989939245619637">Zapisz szczegóły w Chromium</translation>
+ <translation id="8803635938069941624">Warunki korzystania z Chromium OS</translation>
+diff --git a/chrome/app/resources/chromium_strings_pt-BR.xtb b/chrome/app/resources/chromium_strings_pt-BR.xtb
+index fc16d66..8aa57f7 100644
+--- a/chrome/app/resources/chromium_strings_pt-BR.xtb
++++ b/chrome/app/resources/chromium_strings_pt-BR.xtb
+@@ -239,7 +239,7 @@ Se você decidir fazer login assim mesmo, as informações do Chromium, como fav
+ <translation id="8823523095753232532">Vincular meus dados do Chromium a esta conta</translation>
+ <translation id="1808667845054772817">Reinstalar o Chromium</translation>
+ <translation id="1221340462641866827">O Chromium OS não suporta a inicialização de um aplicativo externo para lidar com links <ph name="SCHEME"/>. O link solicitado é <ph name="PROTOLINK"/>.</translation>
+-<translation id="328888136576916638">As chaves da API do Google não foram encontradas. Algumas funcionalidades do Chromium serão desativadas.</translation>
++<translation id="328888136576916638">As chaves da API do Google não foram encontradas. Algumas funcionalidades do Google serão desativadas.</translation>
+ <translation id="2602806952220118310">Chromium – Notificações</translation>
+ <translation id="5032989939245619637">Salvar detalhes no Chromium</translation>
+ </translationbundle>
+\ No newline at end of file
+diff --git a/chrome/app/resources/chromium_strings_pt-PT.xtb b/chrome/app/resources/chromium_strings_pt-PT.xtb
+index 767e6dd..337e23a 100644
+--- a/chrome/app/resources/chromium_strings_pt-PT.xtb
++++ b/chrome/app/resources/chromium_strings_pt-PT.xtb
+@@ -261,7 +261,7 @@ O Chromium não consegue recuperar as suas definições.</translation>
+ <translation id="8823523095753232532">Associar os meus dados do Chromium a esta conta</translation>
+ <translation id="1808667845054772817">Reinstalar Chromium</translation>
+ <translation id="1221340462641866827">O SO Chromium não suporta a abertura de uma aplicação externa para processar links de <ph name="SCHEME"/>. O link solicitado é <ph name="PROTOLINK"/>.</translation>
+-<translation id="328888136576916638">As chaves da API do Google estão em falta. Algumas funcionalidades do Chromium serão desativadas.</translation>
++<translation id="328888136576916638">As chaves da API do Google estão em falta. Algumas funcionalidades do Google serão desativadas.</translation>
+ <translation id="2602806952220118310">Chromium – Notificações</translation>
+ <translation id="5032989939245619637">Guardar os detalhes no Chromium</translation>
+ <translation id="8803635938069941624">Termos do SO Chromium</translation>
+diff --git a/chrome/app/resources/chromium_strings_ro.xtb b/chrome/app/resources/chromium_strings_ro.xtb
+index f1bb6b9..6d90444 100644
+--- a/chrome/app/resources/chromium_strings_ro.xtb
++++ b/chrome/app/resources/chromium_strings_ro.xtb
+@@ -264,7 +264,6 @@ Chromium nu poate recupera setările.</translation>
+ <translation id="8823523095753232532">Conectați-vă datele Chromium cu acest cont</translation>
+ <translation id="1808667845054772817">Reinstalați Chromium</translation>
+ <translation id="1221340462641866827">Sistemul de operare Chromium nu acceptă lansarea unei aplicații externe pentru a gestiona linkuri <ph name="SCHEME"/>. Linkul solicitat este <ph name="PROTOLINK"/>.</translation>
+-<translation id="328888136576916638">Lipsesc chei pentru API-ul Google. Unele funcționalități Chromium vor fi dezactivate.</translation>
+ <translation id="2602806952220118310">Chromium – Notificări</translation>
+ <translation id="5032989939245619637">Salvați detaliile în Chromium</translation>
+ <translation id="8803635938069941624">Termeni pentru sistemul de operare Chromium</translation>
+diff --git a/chrome/app/resources/chromium_strings_ru.xtb b/chrome/app/resources/chromium_strings_ru.xtb
+index 3deb02e..e6941cd 100644
+--- a/chrome/app/resources/chromium_strings_ru.xtb
++++ b/chrome/app/resources/chromium_strings_ru.xtb
+@@ -240,7 +240,7 @@
+ <translation id="8823523095753232532">Связать данные Chromium с этим аккаунтом</translation>
+ <translation id="1808667845054772817">Переустановить Chromium</translation>
+ <translation id="1221340462641866827">Chromium OS не поддерживает внешних приложений для обработки ссылок <ph name="SCHEME"/>. Запрашиваемая ссылка: <ph name="PROTOLINK"/>.</translation>
+-<translation id="328888136576916638">Отсутствуют ключи API Google. Некоторые функции Chromium могут не работать.</translation>
++<translation id="328888136576916638">Отсутствуют ключи API Google. Некоторые функции Google могут не работать.</translation>
+ <translation id="2602806952220118310">Chromium - Оповещения</translation>
+ <translation id="5032989939245619637">Сохранять данные в Chromium</translation>
+ </translationbundle>
+\ No newline at end of file
+diff --git a/chrome/app/resources/chromium_strings_sk.xtb b/chrome/app/resources/chromium_strings_sk.xtb
+index 119b91b..f7e5f59 100644
+--- a/chrome/app/resources/chromium_strings_sk.xtb
++++ b/chrome/app/resources/chromium_strings_sk.xtb
+@@ -265,7 +265,6 @@ Prehliadač Chromium nedokáže obnoviť vaše nastavenia.</translation>
+ <translation id="8823523095753232532">Prepojiť moje údaje prehliadača Chromium s týmto účtom</translation>
+ <translation id="1808667845054772817">Preinštalovať prehliadač Chromium</translation>
+ <translation id="1221340462641866827">Systém Chromium OS nepodporuje spustenie externej aplikácie na spracovanie odkazov typu <ph name="SCHEME"/>. Typ požadovaného odkazu: <ph name="PROTOLINK"/>.</translation>
+-<translation id="328888136576916638">Chýbajú kľúče rozhrania Google API. Niektoré funkcie prehliadača Google Chromium budú zakázané.</translation>
+ <translation id="2602806952220118310">Chromium – upozornenia</translation>
+ <translation id="5032989939245619637">Uložiť podrobnosti v prehliadači Chromium</translation>
+ <translation id="8803635938069941624">Zmluvné podmienky systému OS Chromium</translation>
+diff --git a/chrome/app/resources/chromium_strings_sl.xtb b/chrome/app/resources/chromium_strings_sl.xtb
+index 2fa80d9..0b3f8e9 100644
+--- a/chrome/app/resources/chromium_strings_sl.xtb
++++ b/chrome/app/resources/chromium_strings_sl.xtb
+@@ -247,7 +247,6 @@ Chromium ne more obnoviti vaših nastavitev.</translation>
+ <translation id="8823523095753232532">Poveži moje podatke v Chromiumu s tem računom</translation>
+ <translation id="1808667845054772817">Vnovična namestitev Chromiuma</translation>
+ <translation id="1221340462641866827">Chromium OS ne podpira zagona zunanjega programa za obdelavo povezav <ph name="SCHEME"/>. Zahtevana povezava je <ph name="PROTOLINK"/>.</translation>
+-<translation id="328888136576916638">Manjkajo ključi za Google API. Nekatere funkcije Chromiuma bodo onemogočene.</translation>
+ <translation id="2602806952220118310">Chrome – Obvestila</translation>
+ <translation id="5032989939245619637">Shrani podrobnosti v Chromium</translation>
+ </translationbundle>
+\ No newline at end of file
+diff --git a/chrome/app/resources/chromium_strings_sr.xtb b/chrome/app/resources/chromium_strings_sr.xtb
+index 78aa87c..d261046 100644
+--- a/chrome/app/resources/chromium_strings_sr.xtb
++++ b/chrome/app/resources/chromium_strings_sr.xtb
+@@ -245,7 +245,6 @@ Chromium не може да врати подешавања.</translation>
+ <translation id="8823523095753232532">Повежи моје Chromium податке са овим налогом</translation>
+ <translation id="1808667845054772817">Поново инсталирај Chromium</translation>
+ <translation id="1221340462641866827">Chromium ОС не подржава покретање спољне апликације за обраду <ph name="SCHEME"/> веза. Захтевана веза је <ph name="PROTOLINK"/>.</translation>
+-<translation id="328888136576916638">Недостају шифре за Google API. Неке функције Chromium-а ће бити онемогућене.</translation>
+ <translation id="2602806952220118310">Chromium – Обавештења</translation>
+ <translation id="5032989939245619637">Сачувај детаље у Chromium-у</translation>
+ </translationbundle>
+\ No newline at end of file
+diff --git a/chrome/app/resources/chromium_strings_sv.xtb b/chrome/app/resources/chromium_strings_sv.xtb
+index 3085369..bd8dc6a 100644
+--- a/chrome/app/resources/chromium_strings_sv.xtb
++++ b/chrome/app/resources/chromium_strings_sv.xtb
+@@ -247,7 +247,7 @@ Chromium kan inte återställa dina inställningar.</translation>
+ <translation id="8823523095753232532">Koppla mina uppgifter i Chromium till det här kontot</translation>
+ <translation id="1808667845054772817">Installera om Chromium</translation>
+ <translation id="1221340462641866827">Chromium OS stöder inte att ett externt program startas för att hantera <ph name="SCHEME"/>-länkar. Den länk som efterfrågas är <ph name="PROTOLINK"/>.</translation>
+-<translation id="328888136576916638">Googles API-nycklar saknas. Vissa funktioner i Google Chromium kommer att vara inaktiverade.</translation>
++<translation id="328888136576916638">Googles API-nycklar saknas. Vissa funktioner av Google kommer att vara inaktiverade.</translation>
+ <translation id="2602806952220118310">Chromium – meddelanden</translation>
+ <translation id="5032989939245619637">Spara information i Chromium</translation>
+ </translationbundle>
+\ No newline at end of file
+diff --git a/chrome/app/resources/chromium_strings_sw.xtb b/chrome/app/resources/chromium_strings_sw.xtb
+index ebe4015..dbb66c6 100644
+--- a/chrome/app/resources/chromium_strings_sw.xtb
++++ b/chrome/app/resources/chromium_strings_sw.xtb
+@@ -263,7 +263,6 @@ Chromium haiwezi kufufua mipangilio yako.</translation>
+ <translation id="8823523095753232532">Unganisha data yangu ya Chromium kwenye akaunti hii</translation>
+ <translation id="1808667845054772817">Sakinisha Chromium Upya</translation>
+ <translation id="1221340462641866827">Chromium OS haihimili kuzindua programu ya nje ili kushughulikia viungo vya <ph name="SCHEME"/>. Kiungo kilichoombwa ni <ph name="PROTOLINK"/>.</translation>
+-<translation id="328888136576916638">Funguo za Google API zinakosekana. Utendaji fulani wa Chromium utazimwa.</translation>
+ <translation id="2602806952220118310">Chromium - Arifa</translation>
+ <translation id="5032989939245619637">Hifadhi maelezo katika Chromium</translation>
+ <translation id="8803635938069941624">Masharti ya Chromium OS</translation>
+diff --git a/chrome/app/resources/chromium_strings_ta.xtb b/chrome/app/resources/chromium_strings_ta.xtb
+index a1dc2aa..d052634 100644
+--- a/chrome/app/resources/chromium_strings_ta.xtb
++++ b/chrome/app/resources/chromium_strings_ta.xtb
+@@ -258,7 +258,6 @@
+ <translation id="8823523095753232532">எனது Chromium தரவை இந்தக் கணக்குடன் இணை</translation>
+ <translation id="1808667845054772817">Chromium ஐ மீண்டும்நிறுவு</translation>
+ <translation id="1221340462641866827"><ph name="SCHEME"/> இணைப்புகளைக் கையாள ஒரு வெளிப்புற பயன்பாட்டை தொடங்குவதை Chromium ஆதரிக்காது. கோரப்பட்ட இணைப்பு <ph name="PROTOLINK"/> ஆகும்.</translation>
+-<translation id="328888136576916638">Google API விசைகள் காணப்படவில்லை. Chromium இன் சில செயல்பாடுகள் முடக்கப்படும்.</translation>
+ <translation id="2602806952220118310">Chromium - அறிவிப்புகள்</translation>
+ <translation id="5032989939245619637">விவரங்களை Chromium இல் சேமி</translation>
+ <translation id="8803635938069941624">Chromium OS விதிமுறைகள்</translation>
+diff --git a/chrome/app/resources/chromium_strings_te.xtb b/chrome/app/resources/chromium_strings_te.xtb
+index aed7afc..a16677d 100644
+--- a/chrome/app/resources/chromium_strings_te.xtb
++++ b/chrome/app/resources/chromium_strings_te.xtb
+@@ -256,7 +256,6 @@
+ <translation id="8823523095753232532">నా Chromium డేటాను ఈ ఖాతాకు లింక్ చేయి</translation>
+ <translation id="1808667845054772817">Chromiumను మళ్లీ ఇన్‌స్టాల్ చేయి</translation>
+ <translation id="1221340462641866827"><ph name="SCHEME"/> లింక్‌లను నిర్వహించడానికి బాహ్య అనువర్తనాన్ని ప్రారంభించడానికి Chromium OS మద్దతు ఇవ్వదు. అభ్యర్థించిన లింక్ <ph name="PROTOLINK"/>.</translation>
+-<translation id="328888136576916638">Google API కీలు లేవు. Chromium కార్యాచరణలో కొంత భాగం నిలిపివేయబడుతుంది.</translation>
+ <translation id="2602806952220118310">Chromium - నోటిఫికేషన్‌లు</translation>
+ <translation id="5032989939245619637">వివరాలను Chromiumలో సేవ్ చేయి</translation>
+ <translation id="8803635938069941624">Chromium OS నిబంధనలు</translation>
+diff --git a/chrome/app/resources/chromium_strings_th.xtb b/chrome/app/resources/chromium_strings_th.xtb
+index 4fdcf5f..fbbaa71 100644
+--- a/chrome/app/resources/chromium_strings_th.xtb
++++ b/chrome/app/resources/chromium_strings_th.xtb
+@@ -264,7 +264,6 @@ Chromium ไม่สามารถกู้คืนการตั้งค
+ <translation id="8823523095753232532">เชื่อมโยงข้อมูล Chromium ของฉันกับบัญชีนี้</translation>
+ <translation id="1808667845054772817">ติดตั้ง Chromium ใหม่</translation>
+ <translation id="1221340462641866827">Chromium OS ไม่สนับสนุนการเปิดแอปพลิเคชันภายนอกเพื่อจัดการกับลิงก์ <ph name="SCHEME"/> ลิงก์ที่ร้องขอคือ <ph name="PROTOLINK"/></translation>
+-<translation id="328888136576916638">คีย์ API ของ Google หายไป การทำงานบางอย่างของ Chromium จะถูกปิดใช้งาน</translation>
+ <translation id="2602806952220118310">Chromium - การแจ้งเตือน</translation>
+ <translation id="5032989939245619637">บันทึกรายละเอียดใน Chromium</translation>
+ <translation id="8803635938069941624">ข้อกำหนดของ Chromium OS</translation>
+diff --git a/chrome/app/resources/chromium_strings_tr.xtb b/chrome/app/resources/chromium_strings_tr.xtb
+index 1f81eda..8419f8f 100644
+--- a/chrome/app/resources/chromium_strings_tr.xtb
++++ b/chrome/app/resources/chromium_strings_tr.xtb
+@@ -258,7 +258,6 @@ Chromium ayarlarınızı kurtaramıyor.</translation>
+ <translation id="8823523095753232532">Chromium verilerimi bu hesaba bağla</translation>
+ <translation id="1808667845054772817">Chromium'u yeniden yükle</translation>
+ <translation id="1221340462641866827">Chromium OS, <ph name="SCHEME"/> bağlantılarını kullanmak için harici uygulama başlatmayı desteklemiyor. İstenen bağlantı: <ph name="PROTOLINK"/>.</translation>
+-<translation id="328888136576916638">Google API anahtarları eksik. Chromium'un bazı işlevleri devre dışı bırakılacak.</translation>
+ <translation id="2602806952220118310">Chromium - Bildirimler</translation>
+ <translation id="5032989939245619637">Ayrıntıları Chromium'a kaydet</translation>
+ <translation id="8803635938069941624">Chromium OS şartları</translation>
+diff --git a/chrome/app/resources/chromium_strings_uk.xtb b/chrome/app/resources/chromium_strings_uk.xtb
+index 2e87f4a..98239d8 100644
+--- a/chrome/app/resources/chromium_strings_uk.xtb
++++ b/chrome/app/resources/chromium_strings_uk.xtb
+@@ -264,7 +264,6 @@ Chromium не може відновити ваші налаштування.</tr
+ <translation id="8823523095753232532">Пов’язати мої дані Chromium із цим обліковим записом</translation>
+ <translation id="1808667845054772817">Перевстановити Chromium</translation>
+ <translation id="1221340462641866827">ОС Chromium не підтримує запуск зовнішньої програми обробки посилань типу <ph name="SCHEME"/>. Потрібний тип посилання: <ph name="PROTOLINK"/>.</translation>
+-<translation id="328888136576916638">Ключі API Google відсутні. Деякі функції Chromium буде вимкнено.</translation>
+ <translation id="2602806952220118310">Chromium – сповіщення</translation>
+ <translation id="5032989939245619637">Зберігати дані в Chromium</translation>
+ <translation id="8803635938069941624">Умови ОС Chromium</translation>
+diff --git a/chrome/app/resources/chromium_strings_vi.xtb b/chrome/app/resources/chromium_strings_vi.xtb
+index 8b3e9a9..b03a5d4 100644
+--- a/chrome/app/resources/chromium_strings_vi.xtb
++++ b/chrome/app/resources/chromium_strings_vi.xtb
+@@ -245,7 +245,6 @@ Chromium không thể khôi phục cài đặt của bạn.</translation>
+ <translation id="8823523095753232532">Liên kết dữ liệu Chromium của tôi với tài khoản này</translation>
+ <translation id="1808667845054772817">Cài đặt lại Chromium</translation>
+ <translation id="1221340462641866827">Chromium OS không hỗ trợ chạy ứng dụng bên ngoài để xử lý các liên kết <ph name="SCHEME"/>. Liên kết được yêu cầu là <ph name="PROTOLINK"/>.</translation>
+-<translation id="328888136576916638">Khóa API của Google bị thiếu. Một số chức năng của Chromium sẽ bị tắt.</translation>
+ <translation id="2602806952220118310">Chromium - Thông báo</translation>
+ <translation id="5032989939245619637">Lưu chi tiết trong Chromium</translation>
+ </translationbundle>
+\ No newline at end of file
+diff --git a/chrome/app/resources/chromium_strings_zh-CN.xtb b/chrome/app/resources/chromium_strings_zh-CN.xtb
+index 26e4a0f..d219015 100644
+--- a/chrome/app/resources/chromium_strings_zh-CN.xtb
++++ b/chrome/app/resources/chromium_strings_zh-CN.xtb
+@@ -219,7 +219,6 @@ Chromium 无法恢复您的设置。</translation>
+ <translation id="8823523095753232532">将我的 Chromium 数据与此帐户关联</translation>
+ <translation id="1808667845054772817">重新安装Chromium</translation>
+ <translation id="1221340462641866827">Chromium 操作系统不支持启动外部应用处理 <ph name="SCHEME"/> 链接。请求的链接是 <ph name="PROTOLINK"/>。</translation>
+-<translation id="328888136576916638">缺少 Google API 密钥，因此 Chromium 的部分功能将无法使用。</translation>
+ <translation id="2602806952220118310">Chromium - 通知</translation>
+ <translation id="5032989939245619637">在 Chromium 中保存详细信息</translation>
+ </translationbundle>
+\ No newline at end of file
+diff --git a/chrome/app/resources/chromium_strings_zh-TW.xtb b/chrome/app/resources/chromium_strings_zh-TW.xtb
+index b7e8cf5..b177bef 100644
+--- a/chrome/app/resources/chromium_strings_zh-TW.xtb
++++ b/chrome/app/resources/chromium_strings_zh-TW.xtb
+@@ -245,7 +245,6 @@ Chromium 無法復原您的設定。</translation>
+ <translation id="8823523095753232532">將我的 Chromium 資料連結至這個帳戶</translation>
+ <translation id="1808667845054772817">重新安裝 Chromium</translation>
+ <translation id="1221340462641866827">Chromium 作業系統不支援啟用外部應用程式以處理 <ph name="SCHEME"/> 連結。所要求的連結為 <ph name="PROTOLINK"/>。</translation>
+-<translation id="328888136576916638">缺少 Google API 金鑰，系統將停用 Chromium 的部分功能。</translation>
+ <translation id="2602806952220118310">Chromium - 通知</translation>
+ <translation id="5032989939245619637">在 Chromium 中儲存詳細資料</translation>
+ </translationbundle>
+\ No newline at end of file
+diff --git a/third_party/launchpad_translations/chromium_strings_bg.xtb b/third_party/launchpad_translations/chromium_strings_bg.xtb
+index 011c314..0405586 100644
+--- a/third_party/launchpad_translations/chromium_strings_bg.xtb
++++ b/third_party/launchpad_translations/chromium_strings_bg.xtb
+@@ -257,7 +257,6 @@
+ <translation id="8823523095753232532">Свързване на данните ми в Chromium с този профил</translation>
+ <translation id="1808667845054772817">Повторно инсталиране на Chromium</translation>
+ <translation id="1221340462641866827">Chromium OS не поддържа стартирането на външно приложение, за да обработва връзки от тип <ph name="SCHEME"/>. Заявената връзка е <ph name="PROTOLINK"/>.</translation>
+-<translation id="328888136576916638">Ключовете на приложния програмен интерфейс (API) на Google липсват. Някои функции на Chromium ще бъдат деактивирани.</translation>
+ <translation id="2602806952220118310">Chromium – Известия</translation>
+ <translation id="5032989939245619637">Подробностите да се запазват в Chromium</translation>
+ <translation id="8803635938069941624">Общи условия на Chromium OS</translation>
+diff --git a/third_party/launchpad_translations/chromium_strings_ca.xtb b/third_party/launchpad_translations/chromium_strings_ca.xtb
+index cb59cc5..48d06bf 100644
+--- a/third_party/launchpad_translations/chromium_strings_ca.xtb
++++ b/third_party/launchpad_translations/chromium_strings_ca.xtb
+@@ -263,7 +263,7 @@ Chromium no pot recuperar la configuració.</translation>
+ <translation id="8823523095753232532">Enllaça les meves dades de Chromium amb aquest compte</translation>
+ <translation id="1808667845054772817">Torna a instal·lar Chromium</translation>
+ <translation id="1221340462641866827">Chromium OS no és compatible amb l'inici d'una aplicació externa per gestionar els enllaços <ph name="SCHEME"/>. L'enllaç sol·licitat és <ph name="PROTOLINK"/>.</translation>
+-<translation id="328888136576916638">Falten les claus de l'API de Google. Es desactivaran algunes de les funcions de Chromium.</translation>
++<translation id="328888136576916638">Falten les claus de l'API de Google. Es desactivaran algunes de les funcions de Google.</translation>
+ <translation id="2602806952220118310">Chromium: notificacions</translation>
+ <translation id="5032989939245619637">Desa els detalls a Chromium</translation>
+ <translation id="8803635938069941624">Condicions de Chromium OS</translation>
+diff --git a/third_party/launchpad_translations/chromium_strings_cs.xtb b/third_party/launchpad_translations/chromium_strings_cs.xtb
+index d1cd544..ecf9c96 100644
+--- a/third_party/launchpad_translations/chromium_strings_cs.xtb
++++ b/third_party/launchpad_translations/chromium_strings_cs.xtb
+@@ -266,7 +266,6 @@ Chromium nemůže vaše nastavení obnovit.</translation>
+ <translation id="8823523095753232532">Propojit má data prohlížeče Chromium s tímto účtem</translation>
+ <translation id="1808667845054772817">Přeinstalovat Chromium</translation>
+ <translation id="1221340462641866827">Chromium OS nepodporuje spouštění externích aplikací pro práci s odkazy typu <ph name="SCHEME"/>. Požadovaný odkaz je <ph name="PROTOLINK"/>.</translation>
+-<translation id="328888136576916638">Chybí klíče rozhraní Google API. Některé funkce Chromium nebudou k dispozici.</translation>
+ <translation id="2602806952220118310">Chromium – oznámení</translation>
+ <translation id="5032989939245619637">Ukládat údaje do prohlížeče Chromium</translation>
+ <translation id="8803635938069941624">Smluvní podmínky systému Chromium OS</translation>
+diff --git a/third_party/launchpad_translations/chromium_strings_da.xtb b/third_party/launchpad_translations/chromium_strings_da.xtb
+index ed2003b..3f820ff 100644
+--- a/third_party/launchpad_translations/chromium_strings_da.xtb
++++ b/third_party/launchpad_translations/chromium_strings_da.xtb
+@@ -264,7 +264,7 @@ Chromium kan ikke gendanne dine præferencer.</translation>
+ <translation id="8823523095753232532">Knyt mine Chromium-data til denne konto</translation>
+ <translation id="1808667845054772817">Geninstaller Chromium</translation>
+ <translation id="1221340462641866827">Chromium OS understøtter ikke start af en ekstern applikation til at håndtere <ph name="SCHEME"/>-links. Det link, der er anmodet om, er <ph name="PROTOLINK"/>.</translation>
+-<translation id="328888136576916638">Der mangler Google API-nøgler. Nogle funktioner i Chromium deaktiveres.</translation>
++<translation id="328888136576916638">Der mangler Google API-nøgler. Nogle funktioner av Google deaktiveres.</translation>
+ <translation id="2602806952220118310">Chromium – Underretninger</translation>
+ <translation id="5032989939245619637">Gem oplysninger i Chromium</translation>
+ <translation id="8803635938069941624">Vilkår for Chromium OS</translation>
+diff --git a/third_party/launchpad_translations/chromium_strings_de.xtb b/third_party/launchpad_translations/chromium_strings_de.xtb
+index a6a9a45..e17253a 100644
+--- a/third_party/launchpad_translations/chromium_strings_de.xtb
++++ b/third_party/launchpad_translations/chromium_strings_de.xtb
+@@ -238,7 +238,7 @@ Chromium kann Ihre Einstellungen nicht wiederherstellen.</translation>
+ <translation id="8823523095753232532">Meine Chromium-Daten mit diesem Konto verknüpfen</translation>
+ <translation id="1808667845054772817">Chromium neu installieren</translation>
+ <translation id="1221340462641866827">Chromium unterstützt keine externe App zur Verarbeitung von <ph name="SCHEME"/>-Links. Der angeforderte Link ist <ph name="PROTOLINK"/>.</translation>
+-<translation id="328888136576916638">Google API-Schlüssel fehlen. Einige Funktionen von Chromium sind deaktiviert.</translation>
++<translation id="328888136576916638">Google API-Schlüssel sind nicht eingetragen. Einige Google-Funktionen sind deaktiviert.</translation>
+ <translation id="2602806952220118310">Chromium – Benachrichtigungen</translation>
+ <translation id="5032989939245619637">Details in Chromium speichern</translation>
+ <translation id="8803635938069941624">Chromium OS-Nutzungsbedingungen</translation>
+diff --git a/third_party/launchpad_translations/chromium_strings_es.xtb b/third_party/launchpad_translations/chromium_strings_es.xtb
+index c2bd31e..ec2029d 100644
+--- a/third_party/launchpad_translations/chromium_strings_es.xtb
++++ b/third_party/launchpad_translations/chromium_strings_es.xtb
+@@ -267,7 +267,7 @@ Chromium no puede recuperar tu configuración.</translation>
+ <translation id="8823523095753232532">Vincular mis datos de Chromium a esta cuenta</translation>
+ <translation id="1808667845054772817">Reinstalar Chromium</translation>
+ <translation id="1221340462641866827">Chromium OS no puede iniciar una aplicación externa para gestionar enlaces <ph name="SCHEME"/>. El enlace solicitado es <ph name="PROTOLINK"/>.</translation>
+-<translation id="328888136576916638">Faltan las claves de la API de Google. Se inhabilitarán algunas funciones de Chromium.</translation>
++<translation id="328888136576916638">Faltan las claves de la API de Google. Se inhabilitarán algunas funciones de Google.</translation>
+ <translation id="2602806952220118310">Chromium - Notificaciones</translation>
+ <translation id="5032989939245619637">Guardar detalles en Chromium</translation>
+ <translation id="8803635938069941624">Condiciones de Chromium OS</translation>
+diff --git a/third_party/launchpad_translations/chromium_strings_et.xtb b/third_party/launchpad_translations/chromium_strings_et.xtb
+index ff6e186..e5482f5 100644
+--- a/third_party/launchpad_translations/chromium_strings_et.xtb
++++ b/third_party/launchpad_translations/chromium_strings_et.xtb
+@@ -264,7 +264,6 @@ Chromium ei saa teie seadeid taastada.</translation>
+ <translation id="8823523095753232532">Lingi minu Chromiumi andmed selle kontoga</translation>
+ <translation id="1808667845054772817">Installi Chromium uuesti</translation>
+ <translation id="1221340462641866827">Chromium OS ei toeta rakenduse <ph name="SCHEME"/> linkide käsitlemiseks välisrakenduste käivitamist. Taotletud link on <ph name="PROTOLINK"/>.</translation>
+-<translation id="328888136576916638">Google API võtmed on puudu. Teatud Chromiumi funktsioonid keelatakse.</translation>
+ <translation id="2602806952220118310">Chromium – märguanded</translation>
+ <translation id="5032989939245619637">Salvesta üksikasjad Chromiumi</translation>
+ <translation id="8803635938069941624">Chromium OS-i tingimused</translation>
+diff --git a/third_party/launchpad_translations/chromium_strings_fi.xtb b/third_party/launchpad_translations/chromium_strings_fi.xtb
+index f7b9ff0..26fd58e 100644
+--- a/third_party/launchpad_translations/chromium_strings_fi.xtb
++++ b/third_party/launchpad_translations/chromium_strings_fi.xtb
+@@ -263,7 +263,6 @@ Chromium ei voi palauttaa asetuksiasi.</translation>
+ <translation id="8823523095753232532">Linkitä Chromium-tietoni tähän tiliin</translation>
+ <translation id="1808667845054772817">Asenna Chromium uudelleen</translation>
+ <translation id="1221340462641866827">Chromium-käyttöjärjestelmä ei tue ulkopuolisten sovellusten käynnistämistä <ph name="SCHEME"/>-linkkien käsittelyä varten. Pyyntöön liittyvä linkki on <ph name="PROTOLINK"/>.</translation>
+-<translation id="328888136576916638">Googlen sovellusliittymän avaimet puuttuvat. Jotkin Chromiumin toiminnoista poistetaan käytöstä.</translation>
+ <translation id="2602806952220118310">Chromium – ilmoitukset</translation>
+ <translation id="5032989939245619637">Tallenna tiedot Chromiumiin</translation>
+ <translation id="8803635938069941624">Chromium-käyttöjärjestelmän käyttöehdot</translation>
+diff --git a/third_party/launchpad_translations/chromium_strings_fr.xtb b/third_party/launchpad_translations/chromium_strings_fr.xtb
+index 6c9145f..aca6c5d 100644
+--- a/third_party/launchpad_translations/chromium_strings_fr.xtb
++++ b/third_party/launchpad_translations/chromium_strings_fr.xtb
+@@ -265,7 +265,7 @@ Chromium ne peut pas récupérer vos paramètres.</translation>
+ <translation id="8823523095753232532">Lier mes données Chromium à ce compte</translation>
+ <translation id="1808667845054772817">Réinstaller Chromium</translation>
+ <translation id="1221340462641866827">Chromium OS ne permet pas le lancement d'une application externe pour gérer les liens <ph name="SCHEME"/>. Le lien requis est <ph name="PROTOLINK"/>.</translation>
+-<translation id="328888136576916638">Les clés d'API Google sont manquantes. Certaines fonctionnalités de Chromium vont être désactivées.</translation>
++<translation id="328888136576916638">Les clés d'API Google sont manquantes. Certaines fonctionnalités de Google vont être désactivées.</translation>
+ <translation id="2602806952220118310">Notifications – Chromium</translation>
+ <translation id="5032989939245619637">Enregistrer les détails dans Chromium</translation>
+ <translation id="8803635938069941624">Conditions d'utilisation de Chromium OS</translation>
+diff --git a/third_party/launchpad_translations/chromium_strings_id.xtb b/third_party/launchpad_translations/chromium_strings_id.xtb
+index 64498e9..7148bf2 100644
+--- a/third_party/launchpad_translations/chromium_strings_id.xtb
++++ b/third_party/launchpad_translations/chromium_strings_id.xtb
+@@ -264,7 +264,6 @@ Chromium tidak dapat memulihkan setelan Anda.</translation>
+ <translation id="8823523095753232532">Tautkan data Chromium saya ke akun ini</translation>
+ <translation id="1808667845054772817">Pasang ulang Chromium</translation>
+ <translation id="1221340462641866827">OS Chromium tidak mendukung peluncuran aplikasi eksternal untuk menangani tautan <ph name="SCHEME"/>. Tautan yang diminta adalah <ph name="PROTOLINK"/>.</translation>
+-<translation id="328888136576916638">Kunci API Google tidak ada. Beberapa fungsi Chromium tidak akan berfungsi.</translation>
+ <translation id="2602806952220118310">Chromium - Pemberitahuan</translation>
+ <translation id="5032989939245619637">Simpan detail di Chromium</translation>
+ <translation id="8803635938069941624">Persyaratan Chromium OS</translation>
+diff --git a/third_party/launchpad_translations/chromium_strings_it.xtb b/third_party/launchpad_translations/chromium_strings_it.xtb
+index 75905e4..b04101a 100644
+--- a/third_party/launchpad_translations/chromium_strings_it.xtb
++++ b/third_party/launchpad_translations/chromium_strings_it.xtb
+@@ -264,7 +264,7 @@ Chromium non è in grado di recuperare le impostazioni.</translation>
+ <translation id="8823523095753232532">Collega i miei dati Chromium a questo account</translation>
+ <translation id="1808667845054772817">Reinstalla Chromium</translation>
+ <translation id="1221340462641866827">Chromium OS non supporta l'avvio di un'applicazione esterna per la gestione dei link <ph name="SCHEME"/>. Il link richiesto è <ph name="PROTOLINK"/>.</translation>
+-<translation id="328888136576916638">Mancano le chiavi dell'API di Google. Alcune funzionalità di Chromium verranno disattivate.</translation>
++<translation id="328888136576916638">Mancano le chiavi dell'API di Google. Alcune funzionalità di Google verranno disattivate.</translation>
+ <translation id="2602806952220118310">Chromium - Notifiche</translation>
+ <translation id="5032989939245619637">Salva dati in Chromium</translation>
+ <translation id="8803635938069941624">Termini di Chromium OS</translation>
+diff --git a/third_party/launchpad_translations/chromium_strings_ja.xtb b/third_party/launchpad_translations/chromium_strings_ja.xtb
+index c506a70..07c5d65 100644
+--- a/third_party/launchpad_translations/chromium_strings_ja.xtb
++++ b/third_party/launchpad_translations/chromium_strings_ja.xtb
+@@ -264,7 +264,7 @@
+ <translation id="8823523095753232532">Chromium データをこのアカウントにリンクする</translation>
+ <translation id="1808667845054772817">Chromium を再インストール</translation>
+ <translation id="1221340462641866827">Chromium OS では、<ph name="SCHEME"/> リンクの処理に必要な外部アプリケーションの起動がサポートされていません。リクエストされたリンクは <ph name="PROTOLINK"/> です。</translation>
+-<translation id="328888136576916638">Google API キーが欠落しています。Chromium の一部の機能は無効になります。</translation>
++<translation id="328888136576916638">Google API キーが欠落してあります。</translation>
+ <translation id="2602806952220118310">Chromium - お知らせ</translation>
+ <translation id="5032989939245619637">Chromium で詳細を保存する</translation>
+ <translation id="8803635938069941624">Chromium OS 利用規約</translation>
+diff --git a/third_party/launchpad_translations/chromium_strings_lt.xtb b/third_party/launchpad_translations/chromium_strings_lt.xtb
+index 1f5c168..dd1f4e2 100644
+--- a/third_party/launchpad_translations/chromium_strings_lt.xtb
++++ b/third_party/launchpad_translations/chromium_strings_lt.xtb
+@@ -266,7 +266,6 @@ Prisijungus bet kuriuo būdu, „Chromium“ informacija, pvz., žymės, istorij
+ <translation id="8823523095753232532">Susisieti mano „Chromium“ duomenis su šia paskyra</translation>
+ <translation id="1808667845054772817">Iš naujo įdiegti „Chromium“</translation>
+ <translation id="1221340462641866827">„Chromium“ OS nepalaikomas išorinės programos, skirtos „<ph name="SCHEME"/>“ nuorodoms tvarkyti, paleidimas. Nuoroda, dėl kurios pateikta užklausa, yra <ph name="PROTOLINK"/>.</translation>
+-<translation id="328888136576916638">Trūksta „Google“ API raktų. Bus išjungtos kai kurios „Chromium“ funkcijos.</translation>
+ <translation id="2602806952220118310">„Chromium“ – pranešimai</translation>
+ <translation id="5032989939245619637">Išsaugoti išsamią informaciją „Chromium“</translation>
+ <translation id="8803635938069941624">„Chromium“ OS sąlygos</translation>
+diff --git a/third_party/launchpad_translations/chromium_strings_ms.xtb b/third_party/launchpad_translations/chromium_strings_ms.xtb
+index 969ecf3..40be584 100644
+--- a/third_party/launchpad_translations/chromium_strings_ms.xtb
++++ b/third_party/launchpad_translations/chromium_strings_ms.xtb
+@@ -263,7 +263,6 @@ Chromium tidak dapat mengembalikan tetapan anda.</translation>
+ <translation id="8823523095753232532">Pautkan data Chromium saya ke akaun ini</translation>
+ <translation id="1808667845054772817">Pasang semula Chromium</translation>
+ <translation id="1221340462641866827">Chromium OS tidak menyokong pelancaran aplikasi luaran untuk mengendalikan pautan <ph name="SCHEME"/>. Pautan yang diminta adalah <ph name="PROTOLINK"/>.</translation>
+-<translation id="328888136576916638">Kunci API Google tiada. Sesetengah fungsi Chromium akan dilumpuhkan.</translation>
+ <translation id="2602806952220118310">Chromium - Pemberitahuan</translation>
+ <translation id="5032989939245619637">Simpan butiran di Chromium</translation>
+ <translation id="8803635938069941624">Syarat Chromium OS</translation>
+diff --git a/third_party/launchpad_translations/chromium_strings_nl.xtb b/third_party/launchpad_translations/chromium_strings_nl.xtb
+index 972eb43..5181841 100644
+--- a/third_party/launchpad_translations/chromium_strings_nl.xtb
++++ b/third_party/launchpad_translations/chromium_strings_nl.xtb
+@@ -263,7 +263,7 @@ Chromium kan je instellingen niet herstellen.</translation>
+ <translation id="8823523095753232532">Mijn Chromium-gegevens koppelen aan dit account</translation>
+ <translation id="1808667845054772817">Chromium opnieuw installeren</translation>
+ <translation id="1221340462641866827">Chromium OS ondersteunt het starten van een externe applicatie voor het verwerken van <ph name="SCHEME"/>-links niet. De opgevraagde link is <ph name="PROTOLINK"/>.</translation>
+-<translation id="328888136576916638">Google API-sleutels ontbreken. Sommige functies van Chromium worden uitgeschakeld.</translation>
++<translation id="328888136576916638">Google API-sleutels ontbreken. Sommige functies van Google worden uitgeschakeld.</translation>
+ <translation id="2602806952220118310">Chromium - Meldingen</translation>
+ <translation id="5032989939245619637">Details opslaan in Chromium</translation>
+ <translation id="8803635938069941624">Voorwaarden van Chromium OS</translation>
+diff --git a/third_party/launchpad_translations/chromium_strings_no.xtb b/third_party/launchpad_translations/chromium_strings_no.xtb
+index 570cb39..f0f7edd 100644
+--- a/third_party/launchpad_translations/chromium_strings_no.xtb
++++ b/third_party/launchpad_translations/chromium_strings_no.xtb
+@@ -261,7 +261,7 @@ Chromium kan ikke gjenopprette innstillingen dine.</translation>
+ <translation id="8823523095753232532">Koble Chromium-dataene mine til denne kontoen.</translation>
+ <translation id="1808667845054772817">Installer Chromium på nytt</translation>
+ <translation id="1221340462641866827">Chromium OS støtter ikke start av et eksternt program for å håndtere <ph name="SCHEME"/>-linker. Den påkrevde linken er <ph name="PROTOLINK"/>.</translation>
+-<translation id="328888136576916638">API-nøkler for Google mangler. Noe funksjonalitet i Chromium blir deaktivert.</translation>
++<translation id="328888136576916638">API-nøkler for Google mangler. Noe funksjonalitet av Google blir deaktivert.</translation>
+ <translation id="2602806952220118310">Chromium – varsler</translation>
+ <translation id="5032989939245619637">Lagre detaljer i Chromium</translation>
+ <translation id="8803635938069941624">Vilkår for Chromium OS</translation>
+diff --git a/third_party/launchpad_translations/chromium_strings_pt-BR.xtb b/third_party/launchpad_translations/chromium_strings_pt-BR.xtb
+index 72023f3..20ca13c 100644
+--- a/third_party/launchpad_translations/chromium_strings_pt-BR.xtb
++++ b/third_party/launchpad_translations/chromium_strings_pt-BR.xtb
+@@ -258,7 +258,6 @@ Se você decidir fazer login assim mesmo, as informações do Chromium, como fav
+ <translation id="8823523095753232532">Vincular meus dados do Chromium a esta conta</translation>
+ <translation id="1808667845054772817">Reinstalar o Chromium</translation>
+ <translation id="1221340462641866827">O Chromium OS não suporta a inicialização de um aplicativo externo para lidar com links <ph name="SCHEME"/>. O link solicitado é <ph name="PROTOLINK"/>.</translation>
+-<translation id="328888136576916638">As chaves da API do Google não foram encontradas. Algumas funcionalidades do Chromium serão desativadas.</translation>
+ <translation id="2602806952220118310">Chromium – Notificações</translation>
+ <translation id="5032989939245619637">Salvar detalhes no Chromium</translation>
+ <translation id="8803635938069941624">Termos do Chromium OS</translation>
+diff --git a/third_party/launchpad_translations/chromium_strings_ru.xtb b/third_party/launchpad_translations/chromium_strings_ru.xtb
+index 0c1dae5..9370eb5 100644
+--- a/third_party/launchpad_translations/chromium_strings_ru.xtb
++++ b/third_party/launchpad_translations/chromium_strings_ru.xtb
+@@ -259,7 +259,7 @@
+ <translation id="8823523095753232532">Связать данные Chromium с этим аккаунтом</translation>
+ <translation id="1808667845054772817">Переустановить Chromium</translation>
+ <translation id="1221340462641866827">Chromium OS не поддерживает внешних приложений для обработки ссылок <ph name="SCHEME"/>. Запрашиваемая ссылка: <ph name="PROTOLINK"/>.</translation>
+-<translation id="328888136576916638">Отсутствуют ключи API Google. Некоторые функции Chromium могут не работать.</translation>
++<translation id="328888136576916638">Отсутствуют ключи API Google. Некоторые функции Google могут не работать.</translation>
+ <translation id="2602806952220118310">Chromium - Оповещения</translation>
+ <translation id="5032989939245619637">Сохранять данные в Chromium</translation>
+ <translation id="8803635938069941624">Условия использования Chromium OS</translation>
+diff --git a/third_party/launchpad_translations/chromium_strings_sl.xtb b/third_party/launchpad_translations/chromium_strings_sl.xtb
+index e876153..9caf662 100644
+--- a/third_party/launchpad_translations/chromium_strings_sl.xtb
++++ b/third_party/launchpad_translations/chromium_strings_sl.xtb
+@@ -266,7 +266,6 @@ Chromium ne more obnoviti vaših nastavitev.</translation>
+ <translation id="8823523095753232532">Poveži moje podatke v Chromiumu s tem računom</translation>
+ <translation id="1808667845054772817">Vnovična namestitev Chromiuma</translation>
+ <translation id="1221340462641866827">Chromium OS ne podpira zagona zunanjega programa za obdelavo povezav <ph name="SCHEME"/>. Zahtevana povezava je <ph name="PROTOLINK"/>.</translation>
+-<translation id="328888136576916638">Manjkajo ključi za Google API. Nekatere funkcije Chromiuma bodo onemogočene.</translation>
+ <translation id="2602806952220118310">Chrome – Obvestila</translation>
+ <translation id="5032989939245619637">Shrani podrobnosti v Chromium</translation>
+ <translation id="8803635938069941624">Pogoji za Chromium OS</translation>
+diff --git a/third_party/launchpad_translations/chromium_strings_sr.xtb b/third_party/launchpad_translations/chromium_strings_sr.xtb
+index 648f6ac..cb1b9b2 100644
+--- a/third_party/launchpad_translations/chromium_strings_sr.xtb
++++ b/third_party/launchpad_translations/chromium_strings_sr.xtb
+@@ -264,7 +264,6 @@ Chromium не може да врати подешавања.</translation>
+ <translation id="8823523095753232532">Повежи моје Chromium податке са овим налогом</translation>
+ <translation id="1808667845054772817">Поново инсталирај Chromium</translation>
+ <translation id="1221340462641866827">Chromium ОС не подржава покретање спољне апликације за обраду <ph name="SCHEME"/> веза. Захтевана веза је <ph name="PROTOLINK"/>.</translation>
+-<translation id="328888136576916638">Недостају шифре за Google API. Неке функције Chromium-а ће бити онемогућене.</translation>
+ <translation id="2602806952220118310">Chromium – Обавештења</translation>
+ <translation id="5032989939245619637">Сачувај детаље у Chromium-у</translation>
+ <translation id="8803635938069941624">Chromium ОС услови</translation>
+diff --git a/third_party/launchpad_translations/chromium_strings_sv.xtb b/third_party/launchpad_translations/chromium_strings_sv.xtb
+index a2bcb08..2920a26 100644
+--- a/third_party/launchpad_translations/chromium_strings_sv.xtb
++++ b/third_party/launchpad_translations/chromium_strings_sv.xtb
+@@ -266,7 +266,7 @@ Chromium kan inte återställa dina inställningar.</translation>
+ <translation id="8823523095753232532">Koppla mina uppgifter i Chromium till det här kontot</translation>
+ <translation id="1808667845054772817">Installera om Chromium</translation>
+ <translation id="1221340462641866827">Chromium OS stöder inte att ett externt program startas för att hantera <ph name="SCHEME"/>-länkar. Den länk som efterfrågas är <ph name="PROTOLINK"/>.</translation>
+-<translation id="328888136576916638">Googles API-nycklar saknas. Vissa funktioner i Google Chromium kommer att vara inaktiverade.</translation>
++<translation id="328888136576916638">Googles API-nycklar saknas. Vissa funktioner av Google kommer att vara inaktiverade.</translation>
+ <translation id="2602806952220118310">Chromium – meddelanden</translation>
+ <translation id="5032989939245619637">Spara information i Chromium</translation>
+ <translation id="8803635938069941624">Villkor för Chromium OS</translation>
+diff --git a/third_party/launchpad_translations/chromium_strings_vi.xtb b/third_party/launchpad_translations/chromium_strings_vi.xtb
+index 1e31fb8..7175deb 100644
+--- a/third_party/launchpad_translations/chromium_strings_vi.xtb
++++ b/third_party/launchpad_translations/chromium_strings_vi.xtb
+@@ -264,7 +264,6 @@ Chromium không thể khôi phục cài đặt của bạn.</translation>
+ <translation id="8823523095753232532">Liên kết dữ liệu Chromium của tôi với tài khoản này</translation>
+ <translation id="1808667845054772817">Cài đặt lại Chromium</translation>
+ <translation id="1221340462641866827">Chromium OS không hỗ trợ chạy ứng dụng bên ngoài để xử lý các liên kết <ph name="SCHEME"/>. Liên kết được yêu cầu là <ph name="PROTOLINK"/>.</translation>
+-<translation id="328888136576916638">Khóa API của Google bị thiếu. Một số chức năng của Chromium sẽ bị tắt.</translation>
+ <translation id="2602806952220118310">Chromium - Thông báo</translation>
+ <translation id="5032989939245619637">Lưu chi tiết trong Chromium</translation>
+ <translation id="8803635938069941624">Điều khoản Chromium OS</translation>
+diff --git a/third_party/launchpad_translations/chromium_strings_zh-CN.xtb b/third_party/launchpad_translations/chromium_strings_zh-CN.xtb
+index 7bb34c7..6291a5e 100644
+--- a/third_party/launchpad_translations/chromium_strings_zh-CN.xtb
++++ b/third_party/launchpad_translations/chromium_strings_zh-CN.xtb
+@@ -238,7 +238,6 @@ Chromium 无法恢复您的设置。</translation>
+ <translation id="8823523095753232532">将我的 Chromium 数据与此帐户关联</translation>
+ <translation id="1808667845054772817">重新安装Chromium</translation>
+ <translation id="1221340462641866827">Chromium 操作系统不支持启动外部应用处理 <ph name="SCHEME"/> 链接。请求的链接是 <ph name="PROTOLINK"/>。</translation>
+-<translation id="328888136576916638">缺少 Google API 密钥，因此 Chromium 的部分功能将无法使用。</translation>
+ <translation id="2602806952220118310">Chromium - 通知</translation>
+ <translation id="5032989939245619637">在 Chromium 中保存详细信息</translation>
+ <translation id="8803635938069941624">Chromium操作系统条款</translation>
+diff --git a/third_party/launchpad_translations/chromium_strings_zh-TW.xtb b/third_party/launchpad_translations/chromium_strings_zh-TW.xtb
+index 241a05f..5ddc32d 100644
+--- a/third_party/launchpad_translations/chromium_strings_zh-TW.xtb
++++ b/third_party/launchpad_translations/chromium_strings_zh-TW.xtb
+@@ -264,7 +264,6 @@ Chromium 無法復原您的設定。</translation>
+ <translation id="8823523095753232532">將我的 Chromium 資料連結至這個帳戶</translation>
+ <translation id="1808667845054772817">重新安裝 Chromium</translation>
+ <translation id="1221340462641866827">Chromium 作業系統不支援啟用外部應用程式以處理 <ph name="SCHEME"/> 連結。所要求的連結為 <ph name="PROTOLINK"/>。</translation>
+-<translation id="328888136576916638">缺少 Google API 金鑰，系統將停用 Chromium 的部分功能。</translation>
+ <translation id="2602806952220118310">Chromium - 通知</translation>
+ <translation id="5032989939245619637">在 Chromium 中儲存詳細資料</translation>
+ <translation id="8803635938069941624">Chromium 作業系統條款</translation>
+-- 
+2.4.0
+

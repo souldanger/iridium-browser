@@ -22,4 +22,8 @@ first_run-deactivate-autoupdate-globally.patch
 promo-deactivate-default-Google-promotion-fetching.patch
 webrtc-disable-WebRTC-identity-store.patch
 webrtc-generate-real-ephemeral-keys.patch
+http-certificate-pinning-for-iridiumbrowser.de.patch
+browser-ui-disable-warning-about-missing-API-keys.patch
+ui-update-product-description-for-Iridium.patch
+ui-update-strings-to-read-Iridium-instead.patch
 src-flag-evil-connections.patch

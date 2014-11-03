@@ -1,7 +1,7 @@
 From 8643c57c7ea29ec03fff568f56d33502415aaf44 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Thu, 11 Sep 2014 16:35:12 +0200
-Subject: [PATCH 02/25] prefs: disable "Use a web service to help resolve
+Subject: [PATCH 02/29] prefs: disable "Use a web service to help resolve
  navigation errors"
 
 Set alternate_error_pages to be disabled by default.

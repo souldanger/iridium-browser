@@ -1,0 +1,123 @@
+From acc460f93d40c39e7df61ed9780723cf9026a125 Mon Sep 17 00:00:00 2001
+From: Joachim Bauch <bauch@struktur.de>
+Date: Tue, 9 Dec 2014 16:51:31 +0100
+Subject: [PATCH 25/29] http: certificate pinning for iridiumbrowser.de
+
+The second pin is a backup pin as per
+https://tools.ietf.org/html/draft-ietf-websec-key-pinning-21#section-4.3
+---
+ net/http/transport_security_state.cc           |  2 ++
+ net/http/transport_security_state_static.certs |  6 ++++++
+ net/http/transport_security_state_static.h     | 23 +++++++++++++++++++++++
+ net/http/transport_security_state_static.json  |  8 ++++++++
+ 4 files changed, 39 insertions(+)
+
+diff --git a/net/http/transport_security_state.cc b/net/http/transport_security_state.cc
+index b00bc57..7c0dfcd 100644
+--- a/net/http/transport_security_state.cc
++++ b/net/http/transport_security_state.cc
+@@ -540,6 +540,8 @@ enum SecondLevelDomainName {
+   DOMAIN_YOUTUBE_NOCOOKIE_COM,
+   DOMAIN_2MDN_NET,
+ 
++  DOMAIN_IRIDIUMBROWSER_DE,
++
+   // Boundary value for UMA_HISTOGRAM_ENUMERATION:
+   DOMAIN_NUM_EVENTS
+ };
+diff --git a/net/http/transport_security_state_static.certs b/net/http/transport_security_state_static.certs
+index a6ca35b..2c4f947 100644
+--- a/net/http/transport_security_state_static.certs
++++ b/net/http/transport_security_state_static.certs
+@@ -1448,3 +1448,9 @@ xPcW6cTYcvnIc3zfFi8VqT79aie2oetaupgf1eNNZAqdE8hhuvU5HIe6uL17In/2
+ LHbTY5xZ3Y+m4Q6gLkH3LpVHz7z9M/P2C2F+fpErgUfCJzDupxBdN49cOSvkBPB7
+ jVaMaA==
+ -----END CERTIFICATE-----
++
++IridiumBrowser1
++sha1/8jDwkteGdHm3TvMUuu6ZloHzg7A=
++
++IridiumBrowser2
++sha1/7vd0QIg2mD6JF95+7hY/+T8r2uA=
+diff --git a/net/http/transport_security_state_static.h b/net/http/transport_security_state_static.h
+index 8de890a..81d6bb7 100644
+--- a/net/http/transport_security_state_static.h
++++ b/net/http/transport_security_state_static.h
+@@ -258,6 +258,14 @@ static const char kSPKIHash_ThawtePrimaryRootCA[] =
+     "\x6c\xca\xbd\x7d\xb4\x7e\x94\xa5\x75\x99"
+     "\x01\xb6\xa7\xdf\xd4\x5d\x1c\x09\x1c\xcc";
+ 
++static const char kSPKIHash_IridiumBrowser1[] =
++    "\xf2\x30\xf0\x92\xd7\x86\x74\x79\xb7\x4e"
++    "\xf3\x14\xba\xee\x99\x96\x81\xf3\x83\xb0";
++
++static const char kSPKIHash_IridiumBrowser2[] =
++    "\xee\xf7\x74\x40\x88\x36\x98\x3e\x89\x17"
++    "\xde\x7e\xee\x16\x3f\xf9\x3f\x2b\xda\xe0";
++
+ // The following is static data describing the hosts that are hardcoded with
+ // certificate pins or HSTS information.
+ 
+@@ -434,6 +442,16 @@ static const char* const kDropboxAcceptableCerts[] = {
+   kNoRejectedPublicKeys, \
+ }
+ 
++static const char* const kIridiumbrowserAcceptableCerts[] = {
++  kSPKIHash_IridiumBrowser1,
++  kSPKIHash_IridiumBrowser2,
++  NULL,
++};
++#define kIridiumbrowserPins { \
++  kIridiumbrowserAcceptableCerts, \
++  kNoRejectedPublicKeys, \
++}
++
+ #define kNoPins {\
+   NULL, NULL, \
+ }
+@@ -740,6 +758,7 @@ static const struct HSTSPreload kPreloadedSTS[] = {
+   {11, true, "\006" "google" "\002" "vu", false, kGooglePins, DOMAIN_GOOGLE_VU },
+   {11, true, "\006" "google" "\002" "ws", false, kGooglePins, DOMAIN_GOOGLE_WS },
+   {23, true, "\005" "learn" "\013" "doubleclick" "\003" "net", false, kNoPins, DOMAIN_NOT_PINNED },
++  {19, true, "\016" "iridiumbrowser" "\002" "de", true, kIridiumbrowserPins, DOMAIN_IRIDIUMBROWSER_DE },
+   {16, false, "\003" "www" "\006" "paypal" "\003" "com", true, kNoPins, DOMAIN_NOT_PINNED },
+   {12, false, "\006" "paypal" "\003" "com", true, kNoPins, DOMAIN_NOT_PINNED },
+   {16, false, "\003" "www" "\006" "elanex" "\003" "biz", true, kNoPins, DOMAIN_NOT_PINNED },
+@@ -1470,4 +1489,8 @@ static const struct HSTSPreload kPreloadedSTS[] = {
+ };
+ static const size_t kNumPreloadedSTS = ARRAYSIZE_UNSAFE(kPreloadedSTS);
+ 
++static const struct HSTSPreload kPreloadedSNISTS[] = {
++};
++static const size_t kNumPreloadedSNISTS = ARRAYSIZE_UNSAFE(kPreloadedSNISTS);
++
+ #endif // NET_HTTP_TRANSPORT_SECURITY_STATE_STATIC_H_
+diff --git a/net/http/transport_security_state_static.json b/net/http/transport_security_state_static.json
+index c13b8ca..cfc51ef 100644
+--- a/net/http/transport_security_state_static.json
++++ b/net/http/transport_security_state_static.json
+@@ -177,6 +177,13 @@
+         "ThawtePrimaryRootCA_G3",
+         "ThawtePrimaryRootCA"
+       ]
++    },
++    {
++      "name": "iridiumbrowser",
++      "static_spki_hashes": [
++        "IridiumBrowser1",
++        "IridiumBrowser2"
++      ]
+     }
+   ],
+ 
+@@ -500,6 +507,7 @@
+     // Exclude the learn.doubleclick.net subdomain because it uses a different
+     // CA.
+     { "name": "learn.doubleclick.net", "include_subdomains": true },
++    { "name": "iridiumbrowser.de", "include_subdomains": true, "mode": "force-https", "pins": "iridiumbrowser" },
+ 
+     // Force HTTPS for sites that have requested it.
+     { "name": "www.paypal.com", "mode": "force-https" },
+-- 
+2.4.0
+

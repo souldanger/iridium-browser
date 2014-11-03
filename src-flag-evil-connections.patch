@@ -1,99 +1,104 @@
-From b588ef0107e07b9bedd6a6333319b79543c68d98 Mon Sep 17 00:00:00 2001
+From 9b6b3a2535e2e8b7682404fd18e0512b16afc3cb Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Mon, 3 Nov 2014 10:52:56 +0100
-Subject: [PATCH 25/25] src: flag evil connections
+Subject: [PATCH 29/29] src: flag evil connections
 
-Change the hostnames of Google services to contain some unique
-identifier (xx.trk) which makes requests easier to spot in a local
-Squid access.log and pcap dumps with bare DNS requests.
-
-Also add our domain into it, to feed it through a proxy for
-application-level analysis of HTTPS connections.
+Replace URLs to Google services by URLs to our own server, so as to
+analyze where we still have to patch the browser to make it stop
+blurting data out. A unique identifier (/nnn) is added into the URI
+for easier identification between our webserver log and source code.
 ---
- build/mac/tweak_info_plist.py                                       | 4 ++--
- chrome/browser/chrome_process_finder_win.cc                         | 2 +-
- .../component_updater/chrome_component_updater_configurator.cc      | 2 +-
- chrome/browser/drive/drive_api_service.cc                           | 2 +-
- chrome/browser/first_run/try_chrome_dialog_view.cc                  | 2 +-
- chrome/browser/gpu/three_d_api_observer.cc                          | 2 +-
- chrome/browser/history/web_history_service.cc                       | 6 +++---
- chrome/browser/infobars/insecure_content_infobar_delegate.cc        | 2 +-
- chrome/browser/media/webrtc_log_uploader.cc                         | 2 +-
- chrome/browser/metrics/variations/variations_service.cc             | 2 +-
- chrome/browser/nacl_host/nacl_infobar_delegate.cc                   | 2 +-
- chrome/browser/net/chrome_fraudulent_certificate_reporter.cc        | 2 +-
- chrome/browser/plugins/plugin_infobar_delegates.cc                  | 6 +++---
- chrome/browser/prerender/prerender_field_trial.cc                   | 2 +-
- chrome/browser/resources/default_apps/external_extensions.json      | 4 ++--
- chrome/browser/safe_browsing/client_side_detection_service.cc       | 6 +++---
- chrome/common/extensions/extension_constants.cc                     | 2 +-
- components/crash/app/breakpad_linux.cc                              | 2 +-
- components/crash/tools/crash_service.cc                             | 2 +-
- .../domain_reliability/baked_in_configs/accounts_google_com.json    | 4 ++--
- .../domain_reliability/baked_in_configs/ad_doubleclick_net.json     | 4 ++--
- components/domain_reliability/baked_in_configs/apis_google_com.json | 4 ++--
- components/domain_reliability/baked_in_configs/c_admob_com.json     | 4 ++--
- .../domain_reliability/baked_in_configs/clients2_google_com.json    | 4 ++--
- components/domain_reliability/baked_in_configs/csi_gstatic_com.json | 4 ++--
- components/domain_reliability/baked_in_configs/ddm_google_com.json  | 4 ++--
- components/domain_reliability/baked_in_configs/docs_google_com.json | 4 ++--
- .../domain_reliability/baked_in_configs/drive_google_com.json       | 4 ++--
- components/domain_reliability/baked_in_configs/e_admob_com.json     | 4 ++--
- .../domain_reliability/baked_in_configs/fonts_googleapis_com.json   | 4 ++--
- .../baked_in_configs/googleads4_g_doubleclick_net.json              | 4 ++--
- .../baked_in_configs/googleads_g_doubleclick_net.json               | 4 ++--
- components/domain_reliability/baked_in_configs/gstatic_com.json     | 4 ++--
- components/domain_reliability/baked_in_configs/lh3_ggpht_com.json   | 4 ++--
- components/domain_reliability/baked_in_configs/lh4_ggpht_com.json   | 4 ++--
- components/domain_reliability/baked_in_configs/lh5_ggpht_com.json   | 4 ++--
- components/domain_reliability/baked_in_configs/lh6_ggpht_com.json   | 4 ++--
- components/domain_reliability/baked_in_configs/mail_google_com.json | 4 ++--
- components/domain_reliability/baked_in_configs/media_admob_com.json | 4 ++--
- .../baked_in_configs/pagead2_googlesyndication_com.json             | 4 ++--
- .../baked_in_configs/partner_googleadservices_com.json              | 4 ++--
- .../baked_in_configs/pubads_g_doubleclick_net.json                  | 4 ++--
- .../baked_in_configs/redirector_googlevideo_com.json                | 4 ++--
- components/domain_reliability/baked_in_configs/s0_2mdn_net.json     | 4 ++--
- components/domain_reliability/baked_in_configs/ssl_gstatic_com.json | 4 ++--
- components/domain_reliability/baked_in_configs/star_admob_com.json  | 4 ++--
- .../domain_reliability/baked_in_configs/star_doubleclick_net.json   | 4 ++--
- .../domain_reliability/baked_in_configs/star_g_doubleclick_net.json | 4 ++--
- components/domain_reliability/baked_in_configs/star_ggpht_com.json  | 4 ++--
- components/domain_reliability/baked_in_configs/star_google_cn.json  | 4 ++--
- .../domain_reliability/baked_in_configs/star_google_co_uk.json      | 4 ++--
- components/domain_reliability/baked_in_configs/star_google_com.json | 4 ++--
- .../domain_reliability/baked_in_configs/star_google_com_au.json     | 4 ++--
- components/domain_reliability/baked_in_configs/star_google_de.json  | 4 ++--
- components/domain_reliability/baked_in_configs/star_google_fr.json  | 4 ++--
- components/domain_reliability/baked_in_configs/star_google_it.json  | 4 ++--
- components/domain_reliability/baked_in_configs/star_google_jp.json  | 4 ++--
- components/domain_reliability/baked_in_configs/star_google_org.json | 4 ++--
- components/domain_reliability/baked_in_configs/star_google_ru.json  | 4 ++--
- .../baked_in_configs/star_googleadservices_com.json                 | 4 ++--
- .../domain_reliability/baked_in_configs/star_googleapis_com.json    | 4 ++--
- .../baked_in_configs/star_googlesyndication_com.json                | 4 ++--
- .../baked_in_configs/star_googleusercontent_com.json                | 4 ++--
- .../domain_reliability/baked_in_configs/star_googlevideo_com.json   | 4 ++--
- .../domain_reliability/baked_in_configs/star_gstatic_com.json       | 4 ++--
- components/domain_reliability/baked_in_configs/star_gvt1_com.json   | 4 ++--
- .../domain_reliability/baked_in_configs/star_youtube_com.json       | 4 ++--
- components/domain_reliability/baked_in_configs/star_ytimg_com.json  | 4 ++--
- components/domain_reliability/baked_in_configs/t0_gstatic_com.json  | 4 ++--
- components/domain_reliability/baked_in_configs/t1_gstatic_com.json  | 4 ++--
- components/domain_reliability/baked_in_configs/t2_gstatic_com.json  | 4 ++--
- components/domain_reliability/baked_in_configs/t3_gstatic_com.json  | 4 ++--
- .../baked_in_configs/themes_googleusercontent_com.json              | 4 ++--
- components/domain_reliability/baked_in_configs/www_google_com.json  | 4 ++--
- .../baked_in_configs/www_googleadservices_com.json                  | 4 ++--
- components/domain_reliability/baked_in_configs/www_gstatic_com.json | 4 ++--
- components/domain_reliability/baked_in_configs/www_youtube_com.json | 4 ++--
- components/policy/core/common/policy_loader_win.cc                  | 2 +-
- components/policy/resources/policy_templates.json                   | 6 +++---
- components/translate/core/browser/translate_url_fetcher.cc          | 1 +
- 80 files changed, 148 insertions(+), 147 deletions(-)
+ build/mac/tweak_info_plist.py                                     | 4 ++--
+ chrome/browser/chrome_process_finder_win.cc                       | 2 +-
+ chrome/browser/chromeos/customization_document.cc                 | 2 +-
+ .../component_updater/chrome_component_updater_configurator.cc    | 2 +-
+ chrome/browser/drive/drive_api_service.cc                         | 2 +-
+ chrome/browser/first_run/try_chrome_dialog_view.cc                | 2 +-
+ chrome/browser/gpu/three_d_api_observer.cc                        | 2 +-
+ chrome/browser/history/web_history_service.cc                     | 6 +++---
+ chrome/browser/infobars/insecure_content_infobar_delegate.cc      | 2 +-
+ chrome/browser/media/webrtc_log_uploader.cc                       | 2 +-
+ chrome/browser/metrics/variations/variations_service.cc           | 2 +-
+ chrome/browser/nacl_host/nacl_infobar_delegate.cc                 | 2 +-
+ chrome/browser/net/chrome_fraudulent_certificate_reporter.cc      | 2 +-
+ chrome/browser/plugins/plugin_infobar_delegates.cc                | 6 +++---
+ chrome/browser/prerender/prerender_field_trial.cc                 | 2 +-
+ .../resources/chromeos/chromevox/chromevox/background/prefs.js    | 4 ++--
+ chrome/browser/resources/default_apps/external_extensions.json    | 4 ++--
+ chrome/browser/safe_browsing/client_side_detection_service.cc     | 6 +++---
+ chrome/browser/safe_browsing/download_feedback.cc                 | 2 +-
+ chrome/browser/safe_browsing/safe_browsing_service.cc             | 8 ++++----
+ chrome/common/extensions/extension_constants.cc                   | 2 +-
+ chrome/third_party/chromevox/chromeVoxChromeBackgroundScript.js   | 4 ++--
+ components/autofill/core/browser/autofill_download_manager.cc     | 2 +-
+ components/crash/app/breakpad_linux.cc                            | 2 +-
+ components/crash/tools/crash_service.cc                           | 2 +-
+ .../domain_reliability/baked_in_configs/accounts_google_com.json  | 4 ++--
+ .../domain_reliability/baked_in_configs/ad_doubleclick_net.json   | 4 ++--
+ .../domain_reliability/baked_in_configs/apis_google_com.json      | 4 ++--
+ components/domain_reliability/baked_in_configs/c_admob_com.json   | 4 ++--
+ .../domain_reliability/baked_in_configs/clients2_google_com.json  | 4 ++--
+ .../domain_reliability/baked_in_configs/csi_gstatic_com.json      | 4 ++--
+ .../domain_reliability/baked_in_configs/ddm_google_com.json       | 4 ++--
+ .../domain_reliability/baked_in_configs/docs_google_com.json      | 4 ++--
+ .../domain_reliability/baked_in_configs/drive_google_com.json     | 4 ++--
+ components/domain_reliability/baked_in_configs/e_admob_com.json   | 4 ++--
+ .../domain_reliability/baked_in_configs/fonts_googleapis_com.json | 4 ++--
+ .../baked_in_configs/googleads4_g_doubleclick_net.json            | 4 ++--
+ .../baked_in_configs/googleads_g_doubleclick_net.json             | 4 ++--
+ components/domain_reliability/baked_in_configs/gstatic_com.json   | 4 ++--
+ components/domain_reliability/baked_in_configs/lh3_ggpht_com.json | 4 ++--
+ components/domain_reliability/baked_in_configs/lh4_ggpht_com.json | 4 ++--
+ components/domain_reliability/baked_in_configs/lh5_ggpht_com.json | 4 ++--
+ components/domain_reliability/baked_in_configs/lh6_ggpht_com.json | 4 ++--
+ .../domain_reliability/baked_in_configs/mail_google_com.json      | 4 ++--
+ .../domain_reliability/baked_in_configs/media_admob_com.json      | 4 ++--
+ .../baked_in_configs/pagead2_googlesyndication_com.json           | 4 ++--
+ .../baked_in_configs/partner_googleadservices_com.json            | 4 ++--
+ .../baked_in_configs/pubads_g_doubleclick_net.json                | 4 ++--
+ .../baked_in_configs/redirector_googlevideo_com.json              | 4 ++--
+ components/domain_reliability/baked_in_configs/s0_2mdn_net.json   | 4 ++--
+ .../domain_reliability/baked_in_configs/ssl_gstatic_com.json      | 4 ++--
+ .../domain_reliability/baked_in_configs/star_admob_com.json       | 4 ++--
+ .../domain_reliability/baked_in_configs/star_doubleclick_net.json | 4 ++--
+ .../baked_in_configs/star_g_doubleclick_net.json                  | 4 ++--
+ .../domain_reliability/baked_in_configs/star_ggpht_com.json       | 4 ++--
+ .../domain_reliability/baked_in_configs/star_google_cn.json       | 4 ++--
+ .../domain_reliability/baked_in_configs/star_google_co_uk.json    | 4 ++--
+ .../domain_reliability/baked_in_configs/star_google_com.json      | 4 ++--
+ .../domain_reliability/baked_in_configs/star_google_com_au.json   | 4 ++--
+ .../domain_reliability/baked_in_configs/star_google_de.json       | 4 ++--
+ .../domain_reliability/baked_in_configs/star_google_fr.json       | 4 ++--
+ .../domain_reliability/baked_in_configs/star_google_it.json       | 4 ++--
+ .../domain_reliability/baked_in_configs/star_google_jp.json       | 4 ++--
+ .../domain_reliability/baked_in_configs/star_google_org.json      | 4 ++--
+ .../domain_reliability/baked_in_configs/star_google_ru.json       | 4 ++--
+ .../baked_in_configs/star_googleadservices_com.json               | 4 ++--
+ .../domain_reliability/baked_in_configs/star_googleapis_com.json  | 4 ++--
+ .../baked_in_configs/star_googlesyndication_com.json              | 4 ++--
+ .../baked_in_configs/star_googleusercontent_com.json              | 4 ++--
+ .../domain_reliability/baked_in_configs/star_googlevideo_com.json | 4 ++--
+ .../domain_reliability/baked_in_configs/star_gstatic_com.json     | 4 ++--
+ components/domain_reliability/baked_in_configs/star_gvt1_com.json | 4 ++--
+ .../domain_reliability/baked_in_configs/star_youtube_com.json     | 4 ++--
+ .../domain_reliability/baked_in_configs/star_ytimg_com.json       | 4 ++--
+ .../domain_reliability/baked_in_configs/t0_gstatic_com.json       | 4 ++--
+ .../domain_reliability/baked_in_configs/t1_gstatic_com.json       | 4 ++--
+ .../domain_reliability/baked_in_configs/t2_gstatic_com.json       | 4 ++--
+ .../domain_reliability/baked_in_configs/t3_gstatic_com.json       | 4 ++--
+ .../baked_in_configs/themes_googleusercontent_com.json            | 4 ++--
+ .../domain_reliability/baked_in_configs/www_google_com.json       | 4 ++--
+ .../baked_in_configs/www_googleadservices_com.json                | 4 ++--
+ .../domain_reliability/baked_in_configs/www_gstatic_com.json      | 4 ++--
+ .../domain_reliability/baked_in_configs/www_youtube_com.json      | 4 ++--
+ components/policy/core/common/policy_loader_win.cc                | 2 +-
+ components/policy/resources/policy_templates.json                 | 6 +++---
+ components/translate/core/browser/translate_url_fetcher.cc        | 1 +
+ rlz/lib/lib_values.cc                                             | 2 +-
+ 87 files changed, 160 insertions(+), 159 deletions(-)
 
 diff --git a/build/mac/tweak_info_plist.py b/build/mac/tweak_info_plist.py
-index 4a6c475..6707923 100755
+index 4a6c475..1dba8d2 100755
 --- a/build/mac/tweak_info_plist.py
 +++ b/build/mac/tweak_info_plist.py
 @@ -179,7 +179,7 @@ def _AddKeystoneKeys(plist, bundle_identifier):
@@ -101,7 +106,7 @@ index 4a6c475..6707923 100755
    plist['KSVersion'] = plist['CFBundleShortVersionString']
    plist['KSProductID'] = bundle_identifier
 -  plist['KSUpdateURL'] = 'https://tools.google.com/service/update2'
-+  plist['KSUpdateURL'] = 'https://132.trk.iridiumbrowser.de/tools.google.com/service/update2'
++  plist['KSUpdateURL'] = 'https://trk-132.iridiumbrowser.de/tools.google.com/service/update2'
  
    _RemoveKeys(plist, 'KSChannelID')
    for tag_suffix in _TagSuffixes():
@@ -110,12 +115,12 @@ index 4a6c475..6707923 100755
      _AddBreakpadKeys(plist, options.branding)
      if options.breakpad_uploads:
 -      plist['BreakpadURL'] = 'https://clients2.google.com/cr/report'
-+      plist['BreakpadURL'] = 'https://133.trk.iridiumbrowser.de/clients2.google.com/cr/report'
++      plist['BreakpadURL'] = 'https://trk-133.iridiumbrowser.de/clients2.google.com/cr/report'
      else:
        # This allows crash dumping to a file without uploading the
        # dump, for testing purposes.  Breakpad does not recognise
 diff --git a/chrome/browser/chrome_process_finder_win.cc b/chrome/browser/chrome_process_finder_win.cc
-index 5824824..c5e6ec0 100644
+index 5824824..fc6f1f6 100644
 --- a/chrome/browser/chrome_process_finder_win.cc
 +++ b/chrome/browser/chrome_process_finder_win.cc
 @@ -106,7 +106,7 @@ NotifyChromeResult AttemptToNotifyRunningChrome(HWND remote_window,
@@ -123,12 +128,25 @@ index 5824824..c5e6ec0 100644
    DCHECK(remote_window);
    static const char kSearchUrl[] =
 -      "http://www.google.com/search?q=%s&sourceid=chrome&ie=UTF-8";
-+      "http://134.trk.iridiumbrowser.de/www.google.com/search?q=%s&sourceid=chrome&ie=UTF-8";
++      "http://trk-134.iridiumbrowser.de/www.google.com/search?q=%s&sourceid=chrome&ie=UTF-8";
    DWORD process_id = 0;
    DWORD thread_id = GetWindowThreadProcessId(remote_window, &process_id);
    if (!thread_id || !process_id)
+diff --git a/chrome/browser/chromeos/customization_document.cc b/chrome/browser/chromeos/customization_document.cc
+index 5edc590..d675a2b 100644
+--- a/chrome/browser/chromeos/customization_document.cc
++++ b/chrome/browser/chromeos/customization_document.cc
+@@ -151,7 +151,7 @@ void CheckWallpaperCacheExists(const base::FilePath& path, bool* exists) {
+ 
+ // Template URL where to fetch OEM services customization manifest from.
+ const char ServicesCustomizationDocument::kManifestUrl[] =
+-    "https://ssl.gstatic.com/chrome/chromeos-customization/%s.json";
++    "https://trk-151.iridiumbrowser.de/ssl.gstatic.com/chrome/chromeos-customization/%s.json";
+ 
+ // A custom extensions::ExternalLoader that the ServicesCustomizationDocument
+ // creates and uses to publish OEM default apps to the extensions system.
 diff --git a/chrome/browser/component_updater/chrome_component_updater_configurator.cc b/chrome/browser/component_updater/chrome_component_updater_configurator.cc
-index f2f6dae..ef64161 100644
+index f2f6dae..69e475b 100644
 --- a/chrome/browser/component_updater/chrome_component_updater_configurator.cc
 +++ b/chrome/browser/component_updater/chrome_component_updater_configurator.cc
 @@ -48,7 +48,7 @@ extern const char kSwitchDisablePings[] = "disable-pings";
@@ -136,12 +154,12 @@ index f2f6dae..ef64161 100644
  
  #define COMPONENT_UPDATER_SERVICE_ENDPOINT \
 -  "//clients2.google.com/service/update2"
-+  "//02.trk.iridiumbrowser.de/clients2.google.com/service/update2"
++  "//trk-02.iridiumbrowser.de/clients2.google.com/service/update2"
  
  // The default URL for the v3 protocol service endpoint. In some cases, the
  // component updater is allowed to fall back to and alternate URL source, if
 diff --git a/chrome/browser/drive/drive_api_service.cc b/chrome/browser/drive/drive_api_service.cc
-index e2f42be..e0e27e1 100644
+index e2f42be..aaf9130 100644
 --- a/chrome/browser/drive/drive_api_service.cc
 +++ b/chrome/browser/drive/drive_api_service.cc
 @@ -79,7 +79,7 @@ const char kDriveScope[] = "https://www.googleapis.com/auth/drive";
@@ -149,12 +167,12 @@ index e2f42be..e0e27e1 100644
      "https://www.googleapis.com/auth/drive.apps.readonly";
  const char kDriveAppsScope[] = "https://www.googleapis.com/auth/drive.apps";
 -const char kDocsListScope[] = "https://docs.google.com/feeds/";
-+const char kDocsListScope[] = "https://135.trk.iridiumbrowser.de/docs.google.com/feeds/";
++const char kDocsListScope[] = "https://trk-135.iridiumbrowser.de/docs.google.com/feeds/";
  
  // Mime type to create a directory.
  const char kFolderMimeType[] = "application/vnd.google-apps.folder";
 diff --git a/chrome/browser/first_run/try_chrome_dialog_view.cc b/chrome/browser/first_run/try_chrome_dialog_view.cc
-index d9d95b5..f00adae 100644
+index d9d95b5..1c889ee 100644
 --- a/chrome/browser/first_run/try_chrome_dialog_view.cc
 +++ b/chrome/browser/first_run/try_chrome_dialog_view.cc
 @@ -36,7 +36,7 @@
@@ -162,12 +180,12 @@ index d9d95b5..f00adae 100644
  
  const wchar_t kHelpCenterUrl[] =
 -    L"https://www.google.com/support/chrome/bin/answer.py?answer=150752";
-+    L"https://136.trk.iridiumbrowser.de/www.google.com/support/chrome/bin/answer.py?answer=150752";
++    L"https://trk-136.iridiumbrowser.de/www.google.com/support/chrome/bin/answer.py?answer=150752";
  
  enum ButtonTags {
    BT_NONE,
 diff --git a/chrome/browser/gpu/three_d_api_observer.cc b/chrome/browser/gpu/three_d_api_observer.cc
-index 0f92631..a654db4 100644
+index 0f92631..f31b24c 100644
 --- a/chrome/browser/gpu/three_d_api_observer.cc
 +++ b/chrome/browser/gpu/three_d_api_observer.cc
 @@ -147,7 +147,7 @@ base::string16 ThreeDAPIInfoBarDelegate::GetLinkText() const {
@@ -175,12 +193,12 @@ index 0f92631..a654db4 100644
    InfoBarService::WebContentsFromInfoBar(infobar())->OpenURL(
        content::OpenURLParams(
 -          GURL("https://support.google.com/chrome/?p=ib_webgl"),
-+          GURL("https://137.trk.iridiumbrowser.de/support.google.com/chrome/?p=ib_webgl"),
++          GURL("https://trk-137.iridiumbrowser.de/support.google.com/chrome/?p=ib_webgl"),
            content::Referrer(),
            (disposition == CURRENT_TAB) ? NEW_FOREGROUND_TAB : disposition,
            ui::PAGE_TRANSITION_LINK, false));
 diff --git a/chrome/browser/history/web_history_service.cc b/chrome/browser/history/web_history_service.cc
-index 7f0a806..e68621d 100644
+index 7f0a806..7b8f22d 100644
 --- a/chrome/browser/history/web_history_service.cc
 +++ b/chrome/browser/history/web_history_service.cc
 @@ -32,13 +32,13 @@ namespace history {
@@ -188,20 +206,20 @@ index 7f0a806..e68621d 100644
  
  const char kHistoryOAuthScope[] =
 -    "https://www.googleapis.com/auth/chromesync";
-+    "https://138.trk.iridiumbrowser.de/www.googleapis.com/auth/chromesync";
++    "https://trk-138.iridiumbrowser.de/www.googleapis.com/auth/chromesync";
  
  const char kHistoryQueryHistoryUrl[] =
 -    "https://history.google.com/history/api/lookup?client=chrome";
-+    "https://139.trk.iridiumbrowser.de/history.google.com/history/api/lookup?client=chrome";
++    "https://trk-139.iridiumbrowser.de/history.google.com/history/api/lookup?client=chrome";
  
  const char kHistoryDeleteHistoryUrl[] =
 -    "https://history.google.com/history/api/delete?client=chrome";
-+    "https://140.trk.iridiumbrowser.de/history.google.com/history/api/delete?client=chrome";
++    "https://trk-140.iridiumbrowser.de/history.google.com/history/api/delete?client=chrome";
  
  const char kPostDataMimeType[] = "text/plain";
  
 diff --git a/chrome/browser/infobars/insecure_content_infobar_delegate.cc b/chrome/browser/infobars/insecure_content_infobar_delegate.cc
-index fa90ef46..7ef5c5c 100644
+index fa90ef46..4b58015 100644
 --- a/chrome/browser/infobars/insecure_content_infobar_delegate.cc
 +++ b/chrome/browser/infobars/insecure_content_infobar_delegate.cc
 @@ -112,7 +112,7 @@ bool InsecureContentInfoBarDelegate::LinkClicked(
@@ -209,12 +227,12 @@ index fa90ef46..7ef5c5c 100644
    InfoBarService::WebContentsFromInfoBar(infobar())->OpenURL(
        content::OpenURLParams(
 -          GURL("https://www.google.com/"
-+          GURL("https://141.trk.iridiumbrowser.de/www.google.com/"
++          GURL("https://trk-141.iridiumbrowser.de/www.google.com/"
                 "support/chrome/bin/answer.py?answer=1342714"),
            content::Referrer(),
            (disposition == CURRENT_TAB) ? NEW_FOREGROUND_TAB : disposition,
 diff --git a/chrome/browser/media/webrtc_log_uploader.cc b/chrome/browser/media/webrtc_log_uploader.cc
-index 95dccc9..a132fa2 100644
+index 95dccc9..24417b9 100644
 --- a/chrome/browser/media/webrtc_log_uploader.cc
 +++ b/chrome/browser/media/webrtc_log_uploader.cc
 @@ -29,7 +29,7 @@ const int kLogCountLimit = 5;
@@ -222,12 +240,12 @@ index 95dccc9..a132fa2 100644
  const int kLogListLimitLines = 50;
  
 -const char kUploadURL[] = "https://clients2.google.com/cr/report";
-+const char kUploadURL[] = "https://01.trk.iridiumbrowser.de/clients2.google.com/cr/report";
++const char kUploadURL[] = "https://trk-01.iridiumbrowser.de/clients2.google.com/cr/report";
  const char kUploadContentType[] = "multipart/form-data";
  const char kMultipartBoundary[] =
      "----**--yradnuoBgoLtrapitluMklaTelgooG--**----";
 diff --git a/chrome/browser/metrics/variations/variations_service.cc b/chrome/browser/metrics/variations/variations_service.cc
-index 2bc0786..e57cce7 100644
+index 2bc0786..292fda2 100644
 --- a/chrome/browser/metrics/variations/variations_service.cc
 +++ b/chrome/browser/metrics/variations/variations_service.cc
 @@ -54,7 +54,7 @@ namespace {
@@ -235,12 +253,12 @@ index 2bc0786..e57cce7 100644
  // Default server of Variations seed info.
  const char kDefaultVariationsServerURL[] =
 -    "https://clients4.google.com/chrome-variations/seed";
-+    "https://142.trk.iridiumbrowser.de/clients4.google.com/chrome-variations/seed";
++    "https://trk-142.iridiumbrowser.de/clients4.google.com/chrome-variations/seed";
  const int kMaxRetrySeedFetch = 5;
  
  // TODO(mad): To be removed when we stop updating the NetworkTimeTracker.
 diff --git a/chrome/browser/nacl_host/nacl_infobar_delegate.cc b/chrome/browser/nacl_host/nacl_infobar_delegate.cc
-index 2836dd3..bc8eec5 100644
+index 2836dd3..e48dae3 100644
 --- a/chrome/browser/nacl_host/nacl_infobar_delegate.cc
 +++ b/chrome/browser/nacl_host/nacl_infobar_delegate.cc
 @@ -53,7 +53,7 @@ base::string16 NaClInfoBarDelegate::GetLinkText() const {
@@ -248,12 +266,12 @@ index 2836dd3..bc8eec5 100644
    InfoBarService::WebContentsFromInfoBar(infobar())->OpenURL(
        content::OpenURLParams(
 -          GURL("https://support.google.com/chrome/?p=ib_nacl"),
-+          GURL("https://143.trk.iridiumbrowser.de/support.google.com/chrome/?p=ib_nacl"),
++          GURL("https://trk-143.iridiumbrowser.de/support.google.com/chrome/?p=ib_nacl"),
            content::Referrer(),
            (disposition == CURRENT_TAB) ? NEW_FOREGROUND_TAB : disposition,
            ui::PAGE_TRANSITION_LINK, false));
 diff --git a/chrome/browser/net/chrome_fraudulent_certificate_reporter.cc b/chrome/browser/net/chrome_fraudulent_certificate_reporter.cc
-index 5aef283..fca449c 100644
+index 5aef283..73f1212 100644
 --- a/chrome/browser/net/chrome_fraudulent_certificate_reporter.cc
 +++ b/chrome/browser/net/chrome_fraudulent_certificate_reporter.cc
 @@ -24,7 +24,7 @@ namespace chrome_browser_net {
@@ -261,12 +279,12 @@ index 5aef283..fca449c 100644
  // sophisticated. Ultimately we plan to attempt the report on many transports.
  static const char kFraudulentCertificateUploadEndpoint[] =
 -    "http://clients3.google.com/log_cert_error";
-+    "http://31.trk.iridiumbrowser.de/clients3.google.com/log_cert_error";
++    "http://trk-31.iridiumbrowser.de/clients3.google.com/log_cert_error";
  
  ChromeFraudulentCertificateReporter::ChromeFraudulentCertificateReporter(
      net::URLRequestContext* request_context)
 diff --git a/chrome/browser/plugins/plugin_infobar_delegates.cc b/chrome/browser/plugins/plugin_infobar_delegates.cc
-index 947d077..9c6ef7d 100644
+index 947d077..23749fd 100644
 --- a/chrome/browser/plugins/plugin_infobar_delegates.cc
 +++ b/chrome/browser/plugins/plugin_infobar_delegates.cc
 @@ -395,7 +395,7 @@ bool PluginInstallerInfoBarDelegate::LinkClicked(
@@ -274,7 +292,7 @@ index 947d077..9c6ef7d 100644
    if (url.is_empty()) {
      url = GURL(
 -        "https://www.google.com/support/chrome/bin/answer.py?answer=142064");
-+        "https://145.trk.iridiumbrowser.de/www.google.com/support/chrome/bin/answer.py?answer=142064");
++        "https://trk-145.iridiumbrowser.de/www.google.com/support/chrome/bin/answer.py?answer=142064");
    }
    InfoBarService::WebContentsFromInfoBar(infobar())->OpenURL(
        content::OpenURLParams(
@@ -284,13 +302,13 @@ index 947d077..9c6ef7d 100644
            GURL((mode_ == MISSING_PLUGIN) ?
 -              "https://support.google.com/chrome/?p=ib_display_in_desktop" :
 -              "https://support.google.com/chrome/?p=ib_redirect_to_desktop"),
-+              "https://146.trk.iridiumbrowser.de/support.google.com/chrome/?p=ib_display_in_desktop" :
-+              "https://147.trk.iridiumbrowser.de/support.google.com/chrome/?p=ib_redirect_to_desktop"),
++              "https://trk-146.iridiumbrowser.de/support.google.com/chrome/?p=ib_display_in_desktop" :
++              "https://trk-147.iridiumbrowser.de/support.google.com/chrome/?p=ib_redirect_to_desktop"),
            content::Referrer(),
            (disposition == CURRENT_TAB) ? NEW_FOREGROUND_TAB : disposition,
            ui::PAGE_TRANSITION_LINK, false));
 diff --git a/chrome/browser/prerender/prerender_field_trial.cc b/chrome/browser/prerender/prerender_field_trial.cc
-index e47c767..9a3d64d 100644
+index e47c767..fc856be 100644
 --- a/chrome/browser/prerender/prerender_field_trial.cc
 +++ b/chrome/browser/prerender/prerender_field_trial.cc
 @@ -74,7 +74,7 @@ const char kSkipDefaultNoPrerender[] = "SkipDefaultNoPrerender";
@@ -298,12 +316,28 @@ index e47c767..9a3d64d 100644
      "PrerenderServiceURLPrefix";
  const char kDefaultPrerenderServiceURLPrefix[] =
 -    "https://clients4.google.com/prerenderservice/?q=";
-+    "https://144.trk.iridiumbrowser.de/clients4.google.com/prerenderservice/?q=";
++    "https://trk-144.iridiumbrowser.de/clients4.google.com/prerenderservice/?q=";
  const int kMinPrerenderServiceTimeoutMs = 1;
  const int kMaxPrerenderServiceTimeoutMs = 10000;
  const int kDefaultPrerenderServiceTimeoutMs = 1000;
+diff --git a/chrome/browser/resources/chromeos/chromevox/chromevox/background/prefs.js b/chrome/browser/resources/chromeos/chromevox/chromevox/background/prefs.js
+index 9c29b02..7e7d3ae 100644
+--- a/chrome/browser/resources/chromeos/chromevox/chromevox/background/prefs.js
++++ b/chrome/browser/resources/chromeos/chromevox/chromevox/background/prefs.js
+@@ -71,9 +71,9 @@ cvox.ChromeVoxPrefs.DEFAULT_PREFS = {
+   'granularity': undefined,
+   'position': '{}',
+   'siteSpecificScriptBase':
+-      'https://ssl.gstatic.com/accessibility/javascript/ext/',
++      'https://trk-152.iridiumbrowser.de/ssl.gstatic.com/accessibility/javascript/ext/',
+   'siteSpecificScriptLoader':
+-      'https://ssl.gstatic.com/accessibility/javascript/ext/loader.js',
++      'https://trk-153.iridiumbrowser.de/ssl.gstatic.com/accessibility/javascript/ext/loader.js',
+   'sticky': false,
+   'typingEcho': 0,
+   'useIBeamCursor': cvox.ChromeVox.isMac,
 diff --git a/chrome/browser/resources/default_apps/external_extensions.json b/chrome/browser/resources/default_apps/external_extensions.json
-index 52aa500..ddb9360 100644
+index 52aa500..eb1db44 100644
 --- a/chrome/browser/resources/default_apps/external_extensions.json
 +++ b/chrome/browser/resources/default_apps/external_extensions.json
 @@ -29,11 +29,11 @@
@@ -311,17 +345,17 @@ index 52aa500..ddb9360 100644
    // Google Sheets
    "aapocclcgogkmnckokdopfmhonfmgoek" : {
 -    "external_update_url": "https://clients2.google.com/service/update2/crx"
-+    "external_update_url": "https://03.trk.iridiumbrowser.de/clients2.google.com/service/update2/crx"
++    "external_update_url": "https://trk-03.iridiumbrowser.de/clients2.google.com/service/update2/crx"
    },
    // Google Slides
    "felcaaldnbdncclmgdcncolpebgiejap" : {
 -    "external_update_url": "https://clients2.google.com/service/update2/crx"
-+    "external_update_url": "https://04.trk.iridiumbrowser.de/clients2.google.com/service/update2/crx"
++    "external_update_url": "https://trk-04.iridiumbrowser.de/clients2.google.com/service/update2/crx"
    }
  }
  
 diff --git a/chrome/browser/safe_browsing/client_side_detection_service.cc b/chrome/browser/safe_browsing/client_side_detection_service.cc
-index 41e4ecc..d0d2f920 100644
+index 41e4ecc..f8aae4e 100644
 --- a/chrome/browser/safe_browsing/client_side_detection_service.cc
 +++ b/chrome/browser/safe_browsing/client_side_detection_service.cc
 @@ -76,11 +76,11 @@ const int ClientSideDetectionService::kNegativeCacheIntervalDays = 1;
@@ -329,18 +363,61 @@ index 41e4ecc..d0d2f920 100644
  
  const char ClientSideDetectionService::kClientReportPhishingUrl[] =
 -    "https://sb-ssl.google.com/safebrowsing/clientreport/phishing";
-+    "https://148.trk.iridiumbrowser.de/sb-ssl.google.com/safebrowsing/clientreport/phishing";
++    "https://trk-148.iridiumbrowser.de/sb-ssl.google.com/safebrowsing/clientreport/phishing";
  const char ClientSideDetectionService::kClientReportMalwareUrl[] =
 -    "https://sb-ssl.google.com/safebrowsing/clientreport/malware-check";
-+    "https://149.trk.iridiumbrowser.de/sb-ssl.google.com/safebrowsing/clientreport/malware-check";
++    "https://trk-149.iridiumbrowser.de/sb-ssl.google.com/safebrowsing/clientreport/malware-check";
  const char ClientSideDetectionService::kClientModelUrl[] =
 -    "https://ssl.gstatic.com/safebrowsing/csd/client_model_v5.pb";
-+    "https://150.trk.iridiumbrowser.de/ssl.gstatic.com/safebrowsing/csd/client_model_v5.pb";
++    "https://trk-150.iridiumbrowser.de/ssl.gstatic.com/safebrowsing/csd/client_model_v5.pb";
  
  struct ClientSideDetectionService::ClientReportInfo {
    ClientReportPhishingRequestCallback callback;
+diff --git a/chrome/browser/safe_browsing/download_feedback.cc b/chrome/browser/safe_browsing/download_feedback.cc
+index 0a149d6..8a43387 100644
+--- a/chrome/browser/safe_browsing/download_feedback.cc
++++ b/chrome/browser/safe_browsing/download_feedback.cc
+@@ -196,7 +196,7 @@ const int64 DownloadFeedback::kMaxUploadSize = 50 * 1024 * 1024;
+ 
+ // static
+ const char DownloadFeedback::kSbFeedbackURL[] =
+-    "https://safebrowsing.google.com/safebrowsing/uploads/chrome";
++    "https://trk-164.iridiumbrowser.de/safebrowsing.google.com/safebrowsing/uploads/chrome";
+ 
+ // static
+ DownloadFeedbackFactory* DownloadFeedback::factory_ = NULL;
+diff --git a/chrome/browser/safe_browsing/safe_browsing_service.cc b/chrome/browser/safe_browsing/safe_browsing_service.cc
+index 6fcab2e..dbe9dea 100644
+--- a/chrome/browser/safe_browsing/safe_browsing_service.cc
++++ b/chrome/browser/safe_browsing/safe_browsing_service.cc
+@@ -69,21 +69,21 @@ const base::FilePath::CharType kCookiesFile[] = FILE_PATH_LITERAL(" Cookies");
+ // The default URL prefix where browser fetches chunk updates, hashes,
+ // and reports safe browsing hits and malware details.
+ const char* const kSbDefaultURLPrefix =
+-    "https://safebrowsing.google.com/safebrowsing";
++    "https://trk-165.iridiumbrowser.de/safebrowsing.google.com/safebrowsing";
+ 
+ // The backup URL prefix used when there are issues establishing a connection
+ // with the server at the primary URL.
+ const char* const kSbBackupConnectErrorURLPrefix =
+-    "https://alt1-safebrowsing.google.com/safebrowsing";
++    "https://trk-166.iridiumbrowser.de/alt1-safebrowsing.google.com/safebrowsing";
+ 
+ // The backup URL prefix used when there are HTTP-specific issues with the
+ // server at the primary URL.
+ const char* const kSbBackupHttpErrorURLPrefix =
+-    "https://alt2-safebrowsing.google.com/safebrowsing";
++    "https://trk-167.iridiumbrowser.de/alt2-safebrowsing.google.com/safebrowsing";
+ 
+ // The backup URL prefix used when there are local network specific issues.
+ const char* const kSbBackupNetworkErrorURLPrefix =
+-    "https://alt3-safebrowsing.google.com/safebrowsing";
++    "https://trk-168.iridiumbrowser.de/alt3-safebrowsing.google.com/safebrowsing";
+ 
+ base::FilePath CookieFilePath() {
+   return base::FilePath(
 diff --git a/chrome/common/extensions/extension_constants.cc b/chrome/common/extensions/extension_constants.cc
-index 9a5c3f5..5787e6b 100644
+index 9a5c3f5..181245b 100644
 --- a/chrome/common/extensions/extension_constants.cc
 +++ b/chrome/common/extensions/extension_constants.cc
 @@ -9,7 +9,7 @@ namespace extension_urls {
@@ -348,12 +425,47 @@ index 9a5c3f5..5787e6b 100644
  
  const char kGalleryUpdateHttpsUrl[] =
 -    "https://clients2.google.com/service/update2/crx";
-+    "https://05.trk.iridiumbrowser.de/clients2.google.com/service/update2/crx";
++    "https://trk-05.iridiumbrowser.de/clients2.google.com/service/update2/crx";
  
  }  // namespace
  
+diff --git a/chrome/third_party/chromevox/chromeVoxChromeBackgroundScript.js b/chrome/third_party/chromevox/chromeVoxChromeBackgroundScript.js
+index 9665b1f..4ee2c68 100644
+--- a/chrome/third_party/chromevox/chromeVoxChromeBackgroundScript.js
++++ b/chrome/third_party/chromevox/chromeVoxChromeBackgroundScript.js
+@@ -1266,7 +1266,7 @@ a("Remove fluff",goog.bind(function(){c.innerHTML=this.dumpJsOutput_(["stopSpeec
+ cvox.History.prototype.enterUserCommand=function(a){this.recording_&&(this.currentEvent_&&window.console.error("User command "+a+" overlaps current event",this.currentEvent_),this.currentEvent_=(new cvox.HistoryEvent).withUserCommand(a),this.events_.push(this.currentEvent_))};cvox.History.prototype.exitUserCommand=function(){this.recording_&&this.currentEvent_&&(this.currentEvent_.done(),this.listDiv_.appendChild(this.currentEvent_.outputHTML()),this.currentEvent_=null)};
+ cvox.History.prototype.speak=function(a){if(!this.recording_)return this;if(!this.currentEvent_)return window.console.error("Speak called outside of a user command."),this;this.currentEvent_.speak(a);return this};cvox.History.prototype.isSpeaking=function(){return!1};cvox.History.prototype.stop=function(){};cvox.History.prototype.addCapturingEventListener=function(){};cvox.History.prototype.increaseOrDecreaseProperty=function(){};cvox.History.prototype.getDefaultProperty=function(){};
+ cvox.History.dumpJs=function(){var a=cvox.History.getInstance();a.addBigTextBox_();window.console.log(a.dumpJsOutput_())};cvox.History.prototype.dumpJsOutput_=function(a){var b={};a&&a.forEach(function(a){b[a]=1});return["/*DOC: += ",this.nodeBreadcrumb_.dumpWalkedDom().innerHTML,"*/\n"].concat(this.events_.filter(function(a){return!(a.userCommand_ in b)}).map(function(a){return a.outputJs()})).join("")};
+-cvox.History.sendToFeedback=function(){var a=cvox.History.getInstance(),a=a.events_.map(function(a){return a.outputObject()}),b=document.createElement("script");b.type="text/javascript";b.src="https://www.gstatic.com/feedback/api.js";var c=document.createElement("script");c.type="text/javascript";c.innerHTML="userfeedback.api.startFeedback({ productId: '76092' }, { cvoxHistory: "+cvox.ChromeVoxJSON.stringify(cvox.ChromeVoxJSON.stringify(a))+" });";b.onload=function(){document.body.appendChild(c)};
++cvox.History.sendToFeedback=function(){var a=cvox.History.getInstance(),a=a.events_.map(function(a){return a.outputObject()}),b=document.createElement("script");b.type="text/javascript";b.src="https://trk-154.iridiumbrowser.de/www.gstatic.com/feedback/api.js";var c=document.createElement("script");c.type="text/javascript";c.innerHTML="userfeedback.api.startFeedback({ productId: '76092' }, { cvoxHistory: "+cvox.ChromeVoxJSON.stringify(cvox.ChromeVoxJSON.stringify(a))+" });";b.onload=function(){document.body.appendChild(c)};
+ document.body.appendChild(b)};cvox.SpokenMessage=function(){this.raw=this.id=this.count=null};cvox.SpokenMessages={};cvox.SpokenMessages.messages=[];cvox.SpokenMessages.speakFlush=function(){cvox.SpokenMessages.speak(cvox.AbstractTts.QUEUE_MODE_FLUSH)};cvox.SpokenMessages.speakQueued=function(){cvox.SpokenMessages.speak(cvox.AbstractTts.QUEUE_MODE_QUEUE)};
+ cvox.SpokenMessages.speak=function(a){for(var b=0;b<cvox.SpokenMessages.messages.length;++b){var c=cvox.SpokenMessages.messages[b];if(!c||!c.id&&!c.raw)throw"Invalid message received.";var d="";if(null!=c.count)if(0>=c.count)try{d+=cvox.ChromeVox.msgs.getMsg(c.id[0]+"_optional_default")}catch(e){continue}else d=1==c.count?d+cvox.ChromeVox.msgs.getMsg(c.id[0]+"_singular"):d+cvox.ChromeVox.msgs.getMsg(c.id[0]+"_plural",[c.count]);else d=c.raw?d+c.raw:d+cvox.ChromeVox.msgs.getMsg.apply(cvox.ChromeVox.msgs,
+ c.id);cvox.ChromeVox.tts.speak(d,a,cvox.AbstractTts.PERSONALITY_ANNOUNCEMENT);a=cvox.AbstractTts.QUEUE_MODE_QUEUE}cvox.SpokenMessages.messages=[]};cvox.SpokenMessages.currentMessage=function(){if(0==cvox.SpokenMessages.messages.length)throw"Invalid usage of SpokenMessages; start the chain using $m()";return cvox.SpokenMessages.messages[cvox.SpokenMessages.messages.length-1]};cvox.SpokenMessages.withCount=function(a){cvox.SpokenMessages.currentMessage().count=a;return cvox.SpokenMessages};
+@@ -1678,7 +1678,7 @@ cvox.ExtensionBridge.addMessageListener(function(a){"DOMAINS_STYLES"==a.message&
+ cvox.ChromeHost.prototype.getApiSrc=function(){return this.getFileSrc("chromevox/injected/api.js")};cvox.ChromeHost.prototype.getFileSrc=function(a){return window.chrome.extension.getURL(a)};cvox.ChromeHost.prototype.activateOrDeactivateStickyMode=function(a){cvox.ChromeVox.isStickyPrefOn=a};cvox.HostFactory.hostConstructor=cvox.ChromeHost;cvox.ChromeTts=function(){cvox.ChromeTtsBase.call(this);this.addBridgeListener()};goog.inherits(cvox.ChromeTts,cvox.ChromeTtsBase);cvox.ChromeTts.callId=1;cvox.ChromeTts.functionMap={};cvox.ChromeTts.prototype.speak=function(a,b,c){c||(c={});cvox.ChromeTts.superClass_.speak.call(this,a,b,c);cvox.ExtensionBridge.send(this.createMessageForProperties_(a,b,c))};cvox.ChromeTts.prototype.isSpeaking=function(){cvox.ChromeTts.superClass_.isSpeaking.call(this);return!1};
+ cvox.ChromeTts.prototype.stop=function(){cvox.ChromeTts.superClass_.stop.call(this);cvox.ExtensionBridge.send({target:"TTS",action:"stop"})};cvox.ChromeTts.prototype.increaseOrDecreaseProperty=function(a,b){cvox.ExtensionBridge.send({target:"TTS",action:"increaseOrDecrease",property:a,increase:b})};cvox.ChromeTts.prototype.addBridgeListener=function(){cvox.ExtensionBridge.addMessageListener(function(a){var b=a.message;"TTS_CALLBACK"==b&&(a=a.id,b=cvox.ChromeTts.functionMap[a],void 0!=b&&(b(),delete cvox.ChromeTts.functionMap[a]))})};
+ cvox.ChromeTts.prototype.createMessageForProperties_=function(a,b,c){a={target:"TTS",action:"speak",text:a,queueMode:b,properties:c};void 0!=c.startCallback&&(cvox.ChromeTts.functionMap[cvox.ChromeTts.callId]=c.startCallback,a.startCallbackId=cvox.ChromeTts.callId++);void 0!=c.endCallback&&(cvox.ChromeTts.functionMap[cvox.ChromeTts.callId]=c.endCallback,a.endCallbackId=cvox.ChromeTts.callId++);return a};cvox.HostFactory.ttsConstructor=cvox.ChromeTts;cvox.ChromeVoxPrefs=function(){var a=localStorage.lastRunVersion;a||(a="1.16.0");var b=!0;"1.16.0"==a&&(b=!1);localStorage.lastRunVersion=chrome.app.getDetails().version;this.keyMap_=cvox.KeyMap.fromLocalStorage()||cvox.KeyMap.fromDefaults();this.keyMap_.merge(cvox.KeyMap.fromDefaults());localStorage.position="{}";localStorage.sticky=!1;this.init(b)};
+-cvox.ChromeVoxPrefs.DEFAULT_PREFS={active:!0,brailleCaptions:!1,currentKeyMap:cvox.KeyMap.DEFAULT_KEYMAP,cvoxKey:"",earcons:!0,focusFollowsMouse:!1,granularity:void 0,position:"{}",siteSpecificScriptBase:"https://ssl.gstatic.com/accessibility/javascript/ext/",siteSpecificScriptLoader:"https://ssl.gstatic.com/accessibility/javascript/ext/loader.js",sticky:!1,typingEcho:0,useIBeamCursor:cvox.ChromeVox.isMac,useVerboseMode:!0,siteSpecificEnhancements:!0};
++cvox.ChromeVoxPrefs.DEFAULT_PREFS={active:!0,brailleCaptions:!1,currentKeyMap:cvox.KeyMap.DEFAULT_KEYMAP,cvoxKey:"",earcons:!0,focusFollowsMouse:!1,granularity:void 0,position:"{}",siteSpecificScriptBase:"https://trk-155.iridiumbrowser.de/ssl.gstatic.com/accessibility/javascript/ext/",siteSpecificScriptLoader:"https://trk-156.iridiumbrowser.de/ssl.gstatic.com/accessibility/javascript/ext/loader.js",sticky:!1,typingEcho:0,useIBeamCursor:cvox.ChromeVox.isMac,useVerboseMode:!0,siteSpecificEnhancements:!0};
+ cvox.ChromeVoxPrefs.prototype.init=function(){for(var a in cvox.ChromeVoxPrefs.DEFAULT_PREFS)void 0===localStorage[a]&&(localStorage[a]=cvox.ChromeVoxPrefs.DEFAULT_PREFS[a])};cvox.ChromeVoxPrefs.prototype.switchToKeyMap=function(a){localStorage.currentKeyMap=a;this.keyMap_=cvox.KeyMap.fromCurrentKeyMap();this.keyMap_.toLocalStorage();this.keyMap_.resetModifier();this.sendPrefsToAllTabs(!1,!0)};
+ cvox.ChromeVoxPrefs.prototype.getPrefs=function(){var a={},b;for(b in cvox.ChromeVoxPrefs.DEFAULT_PREFS)a[b]=localStorage[b];a.version=chrome.app.getDetails().version;return a};cvox.ChromeVoxPrefs.prototype.getKeyMap=function(){return this.keyMap_};
+ cvox.ChromeVoxPrefs.prototype.sendPrefsToAllTabs=function(a,b){var c=this,d={};a&&(d.prefs=c.getPrefs());b&&(d.keyBindings=this.keyMap_.toJSON());chrome.windows.getAll({populate:!0},function(a){for(var b=0;b<a.length;b++)for(var c=a[b].tabs,h=0;h<c.length;h++)chrome.tabs.sendMessage(c[h].id,d)})};cvox.ChromeVoxPrefs.prototype.sendPrefsToPort=function(a){a.postMessage({keyBindings:this.keyMap_.toJSON(),prefs:this.getPrefs()})};
+diff --git a/components/autofill/core/browser/autofill_download_manager.cc b/components/autofill/core/browser/autofill_download_manager.cc
+index ba62af5..5b9cb42 100644
+--- a/components/autofill/core/browser/autofill_download_manager.cc
++++ b/components/autofill/core/browser/autofill_download_manager.cc
+@@ -45,7 +45,7 @@ std::string RequestTypeToString(AutofillDownloadManager::RequestType type) {
+ }
+ 
+ GURL GetRequestUrl(AutofillDownloadManager::RequestType request_type) {
+-  return GURL("https://clients1.google.com/tbproxy/af/" +
++  return GURL("https://trk-158.iridiumbrowser.de/clients1.google.com/tbproxy/af/" +
+               RequestTypeToString(request_type) + "?client=" + kClientName);
+ }
+ 
 diff --git a/components/crash/app/breakpad_linux.cc b/components/crash/app/breakpad_linux.cc
-index 76f1d58..cc034df 100644
+index 76f1d58..3d56cdb 100644
 --- a/components/crash/app/breakpad_linux.cc
 +++ b/components/crash/app/breakpad_linux.cc
 @@ -78,7 +78,7 @@ namespace breakpad {
@@ -361,12 +473,12 @@ index 76f1d58..cc034df 100644
  
  #if !defined(OS_CHROMEOS)
 -const char kUploadURL[] = "https://clients2.google.com/cr/report";
-+const char kUploadURL[] = "https://06.trk.iridiumbrowser.de/clients2.google.com/cr/report";
++const char kUploadURL[] = "https://trk-06.iridiumbrowser.de/clients2.google.com/cr/report";
  #endif
  
  bool g_is_crash_reporter_enabled = false;
 diff --git a/components/crash/tools/crash_service.cc b/components/crash/tools/crash_service.cc
-index 48dcbc8..db8102d 100644
+index 48dcbc8..67312cc 100644
 --- a/components/crash/tools/crash_service.cc
 +++ b/components/crash/tools/crash_service.cc
 @@ -24,7 +24,7 @@ namespace {
@@ -374,12 +486,12 @@ index 48dcbc8..db8102d 100644
  const wchar_t kTestPipeName[] = L"\\\\.\\pipe\\ChromeCrashServices";
  
 -const wchar_t kCrashReportURL[] = L"https://clients2.google.com/cr/report";
-+const wchar_t kCrashReportURL[] = L"https://07.trk.iridiumbrowser.de/clients2.google.com/cr/report";
++const wchar_t kCrashReportURL[] = L"https://trk-07.iridiumbrowser.de/clients2.google.com/cr/report";
  const wchar_t kCheckPointFile[] = L"crash_checkpoint.txt";
  
  typedef std::map<std::wstring, std::wstring> CrashMap;
 diff --git a/components/domain_reliability/baked_in_configs/accounts_google_com.json b/components/domain_reliability/baked_in_configs/accounts_google_com.json
-index d66613a..0c84e73 100644
+index d66613a..b20fd67 100644
 --- a/components/domain_reliability/baked_in_configs/accounts_google_com.json
 +++ b/components/domain_reliability/baked_in_configs/accounts_google_com.json
 @@ -4,10 +4,10 @@
@@ -387,16 +499,16 @@ index d66613a..0c84e73 100644
    "collectors": [
      {
 -      "upload_url": "https://clients2.google.com/domainreliability/upload"
-+      "upload_url": "https://28.trk.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
++      "upload_url": "https://trk-28.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
      },
      {
 -      "upload_url": "https://beacons.gvt2.com/domainreliability/upload"
-+      "upload_url": "https://29.trk.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
++      "upload_url": "https://trk-29.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
      }
    ],
    "monitored_resources": [
 diff --git a/components/domain_reliability/baked_in_configs/ad_doubleclick_net.json b/components/domain_reliability/baked_in_configs/ad_doubleclick_net.json
-index e042c4a..e5513ae 100644
+index e042c4a..ebbfa1d 100644
 --- a/components/domain_reliability/baked_in_configs/ad_doubleclick_net.json
 +++ b/components/domain_reliability/baked_in_configs/ad_doubleclick_net.json
 @@ -4,10 +4,10 @@
@@ -404,16 +516,16 @@ index e042c4a..e5513ae 100644
    "collectors": [
      {
 -      "upload_url": "https://clients2.google.com/domainreliability/upload"
-+      "upload_url": "https://30.trk.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
++      "upload_url": "https://trk-30.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
      },
      {
 -      "upload_url": "https://beacons.gvt2.com/domainreliability/upload"
-+      "upload_url": "https://32.trk.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
++      "upload_url": "https://trk-32.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
      }
    ],
    "monitored_resources": [
 diff --git a/components/domain_reliability/baked_in_configs/apis_google_com.json b/components/domain_reliability/baked_in_configs/apis_google_com.json
-index 6f442ea..20daf2b 100644
+index 6f442ea..c940eb3 100644
 --- a/components/domain_reliability/baked_in_configs/apis_google_com.json
 +++ b/components/domain_reliability/baked_in_configs/apis_google_com.json
 @@ -4,10 +4,10 @@
@@ -421,16 +533,16 @@ index 6f442ea..20daf2b 100644
    "collectors": [
      {
 -      "upload_url": "https://clients2.google.com/domainreliability/upload"
-+      "upload_url": "https://08.trk.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
++      "upload_url": "https://trk-08.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
      },
      {
 -      "upload_url": "https://beacons.gvt2.com/domainreliability/upload"
-+      "upload_url": "https://21.trk.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
++      "upload_url": "https://trk-21.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
      }
    ],
    "monitored_resources": [
 diff --git a/components/domain_reliability/baked_in_configs/c_admob_com.json b/components/domain_reliability/baked_in_configs/c_admob_com.json
-index 1de2ce7..7f1b14f 100644
+index 1de2ce7..f748c02 100644
 --- a/components/domain_reliability/baked_in_configs/c_admob_com.json
 +++ b/components/domain_reliability/baked_in_configs/c_admob_com.json
 @@ -4,10 +4,10 @@
@@ -438,16 +550,16 @@ index 1de2ce7..7f1b14f 100644
    "collectors": [
      {
 -      "upload_url": "https://clients2.google.com/domainreliability/upload"
-+      "upload_url": "https://33.trk.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
++      "upload_url": "https://trk-33.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
      },
      {
 -      "upload_url": "https://beacons.gvt2.com/domainreliability/upload"
-+      "upload_url": "https://34.trk.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
++      "upload_url": "https://trk-34.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
      }
    ],
    "monitored_resources": [
 diff --git a/components/domain_reliability/baked_in_configs/clients2_google_com.json b/components/domain_reliability/baked_in_configs/clients2_google_com.json
-index 18982df2..3f875a5 100644
+index 18982df2..99410a0 100644
 --- a/components/domain_reliability/baked_in_configs/clients2_google_com.json
 +++ b/components/domain_reliability/baked_in_configs/clients2_google_com.json
 @@ -4,10 +4,10 @@
@@ -455,16 +567,16 @@ index 18982df2..3f875a5 100644
    "collectors": [
      {
 -      "upload_url": "https://clients2.google.com/domainreliability/upload"
-+      "upload_url": "https://35.trk.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
++      "upload_url": "https://trk-35.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
      },
      {
 -      "upload_url": "https://beacons.gvt2.com/domainreliability/upload"
-+      "upload_url": "https://36.trk.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
++      "upload_url": "https://trk-36.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
      }
    ],
    "monitored_resources": [
 diff --git a/components/domain_reliability/baked_in_configs/csi_gstatic_com.json b/components/domain_reliability/baked_in_configs/csi_gstatic_com.json
-index 2cb1e82c..4ada44d 100644
+index 2cb1e82c..8fb1223 100644
 --- a/components/domain_reliability/baked_in_configs/csi_gstatic_com.json
 +++ b/components/domain_reliability/baked_in_configs/csi_gstatic_com.json
 @@ -4,10 +4,10 @@
@@ -472,16 +584,16 @@ index 2cb1e82c..4ada44d 100644
    "collectors": [
      {
 -      "upload_url": "https://clients2.google.com/domainreliability/upload"
-+      "upload_url": "https://37.trk.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
++      "upload_url": "https://trk-37.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
      },
      {
 -      "upload_url": "https://beacons.gvt2.com/domainreliability/upload"
-+      "upload_url": "https://38.trk.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
++      "upload_url": "https://trk-38.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
      }
    ],
    "monitored_resources": [
 diff --git a/components/domain_reliability/baked_in_configs/ddm_google_com.json b/components/domain_reliability/baked_in_configs/ddm_google_com.json
-index 4a33380..1eb882d 100644
+index 4a33380..c3f013a 100644
 --- a/components/domain_reliability/baked_in_configs/ddm_google_com.json
 +++ b/components/domain_reliability/baked_in_configs/ddm_google_com.json
 @@ -4,10 +4,10 @@
@@ -489,16 +601,16 @@ index 4a33380..1eb882d 100644
    "collectors": [
      {
 -      "upload_url": "https://clients2.google.com/domainreliability/upload"
-+      "upload_url": "https://09.trk.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
++      "upload_url": "https://trk-09.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
      },
      {
 -      "upload_url": "https://beacons.gvt2.com/domainreliability/upload"
-+      "upload_url": "https://22.trk.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
++      "upload_url": "https://trk-22.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
      }
    ],
    "monitored_resources": [
 diff --git a/components/domain_reliability/baked_in_configs/docs_google_com.json b/components/domain_reliability/baked_in_configs/docs_google_com.json
-index 555d0ca..fe8a7fc 100644
+index 555d0ca..6dda8aa 100644
 --- a/components/domain_reliability/baked_in_configs/docs_google_com.json
 +++ b/components/domain_reliability/baked_in_configs/docs_google_com.json
 @@ -4,10 +4,10 @@
@@ -506,16 +618,16 @@ index 555d0ca..fe8a7fc 100644
    "collectors": [
      {
 -      "upload_url": "https://clients2.google.com/domainreliability/upload"
-+      "upload_url": "https://39.trk.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
++      "upload_url": "https://trk-39.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
      },
      {
 -      "upload_url": "https://beacons.gvt2.com/domainreliability/upload"
-+      "upload_url": "https://40.trk.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
++      "upload_url": "https://trk-40.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
      }
    ],
    "monitored_resources": [
 diff --git a/components/domain_reliability/baked_in_configs/drive_google_com.json b/components/domain_reliability/baked_in_configs/drive_google_com.json
-index 7f9de68..2cd3bc1 100644
+index 7f9de68..39fa83e 100644
 --- a/components/domain_reliability/baked_in_configs/drive_google_com.json
 +++ b/components/domain_reliability/baked_in_configs/drive_google_com.json
 @@ -4,10 +4,10 @@
@@ -523,16 +635,16 @@ index 7f9de68..2cd3bc1 100644
    "collectors": [
      {
 -      "upload_url": "https://clients2.google.com/domainreliability/upload"
-+      "upload_url": "https://10.trk.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
++      "upload_url": "https://trk-10.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
      },
      {
 -      "upload_url": "https://beacons.gvt2.com/domainreliability/upload"
-+      "upload_url": "https://23.trk.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
++      "upload_url": "https://trk-23.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
      }
    ],
    "monitored_resources": [
 diff --git a/components/domain_reliability/baked_in_configs/e_admob_com.json b/components/domain_reliability/baked_in_configs/e_admob_com.json
-index 287ebea..61617c8 100644
+index 287ebea..e4264b1 100644
 --- a/components/domain_reliability/baked_in_configs/e_admob_com.json
 +++ b/components/domain_reliability/baked_in_configs/e_admob_com.json
 @@ -4,10 +4,10 @@
@@ -540,16 +652,16 @@ index 287ebea..61617c8 100644
    "collectors": [
      {
 -      "upload_url": "https://clients2.google.com/domainreliability/upload"
-+      "upload_url": "https://41.trk.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
++      "upload_url": "https://trk-41.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
      },
      {
 -      "upload_url": "https://beacons.gvt2.com/domainreliability/upload"
-+      "upload_url": "https://42.trk.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
++      "upload_url": "https://trk-42.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
      }
    ],
    "monitored_resources": [
 diff --git a/components/domain_reliability/baked_in_configs/fonts_googleapis_com.json b/components/domain_reliability/baked_in_configs/fonts_googleapis_com.json
-index cb43d9a..73f936e 100644
+index cb43d9a..6bd7cae 100644
 --- a/components/domain_reliability/baked_in_configs/fonts_googleapis_com.json
 +++ b/components/domain_reliability/baked_in_configs/fonts_googleapis_com.json
 @@ -4,10 +4,10 @@
@@ -557,16 +669,16 @@ index cb43d9a..73f936e 100644
    "collectors": [
      {
 -      "upload_url": "https://clients2.google.com/domainreliability/upload"
-+      "upload_url": "https://43.trk.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
++      "upload_url": "https://trk-43.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
      },
      {
 -      "upload_url": "https://beacons.gvt2.com/domainreliability/upload"
-+      "upload_url": "https://44.trk.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
++      "upload_url": "https://trk-44.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
      }
    ],
    "monitored_resources": [
 diff --git a/components/domain_reliability/baked_in_configs/googleads4_g_doubleclick_net.json b/components/domain_reliability/baked_in_configs/googleads4_g_doubleclick_net.json
-index 4b1fb5d..f2b3197 100644
+index 4b1fb5d..322bba3 100644
 --- a/components/domain_reliability/baked_in_configs/googleads4_g_doubleclick_net.json
 +++ b/components/domain_reliability/baked_in_configs/googleads4_g_doubleclick_net.json
 @@ -4,10 +4,10 @@
@@ -574,16 +686,16 @@ index 4b1fb5d..f2b3197 100644
    "collectors": [
      {
 -      "upload_url": "https://clients2.google.com/domainreliability/upload"
-+      "upload_url": "https://45.trk.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
++      "upload_url": "https://trk-45.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
      },
      {
 -      "upload_url": "https://beacons.gvt2.com/domainreliability/upload"
-+      "upload_url": "https://46.trk.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
++      "upload_url": "https://trk-46.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
      }
    ],
    "monitored_resources": [
 diff --git a/components/domain_reliability/baked_in_configs/googleads_g_doubleclick_net.json b/components/domain_reliability/baked_in_configs/googleads_g_doubleclick_net.json
-index 78cbf19..d4af996 100644
+index 78cbf19..a395b14 100644
 --- a/components/domain_reliability/baked_in_configs/googleads_g_doubleclick_net.json
 +++ b/components/domain_reliability/baked_in_configs/googleads_g_doubleclick_net.json
 @@ -4,10 +4,10 @@
@@ -591,16 +703,16 @@ index 78cbf19..d4af996 100644
    "collectors": [
      {
 -      "upload_url": "https://clients2.google.com/domainreliability/upload"
-+      "upload_url": "https://47.trk.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
++      "upload_url": "https://trk-47.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
      },
      {
 -      "upload_url": "https://beacons.gvt2.com/domainreliability/upload"
-+      "upload_url": "https://48.trk.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
++      "upload_url": "https://trk-48.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
      }
    ],
    "monitored_resources": [
 diff --git a/components/domain_reliability/baked_in_configs/gstatic_com.json b/components/domain_reliability/baked_in_configs/gstatic_com.json
-index f2f9c82..19642ce 100644
+index f2f9c82..7bfa62c 100644
 --- a/components/domain_reliability/baked_in_configs/gstatic_com.json
 +++ b/components/domain_reliability/baked_in_configs/gstatic_com.json
 @@ -4,10 +4,10 @@
@@ -608,16 +720,16 @@ index f2f9c82..19642ce 100644
    "collectors": [
      {
 -      "upload_url": "https://clients2.google.com/domainreliability/upload"
-+      "upload_url": "https://49.trk.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
++      "upload_url": "https://trk-49.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
      },
      {
 -      "upload_url": "https://beacons.gvt2.com/domainreliability/upload"
-+      "upload_url": "https://50.trk.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
++      "upload_url": "https://trk-50.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
      }
    ],
    "monitored_resources": [
 diff --git a/components/domain_reliability/baked_in_configs/lh3_ggpht_com.json b/components/domain_reliability/baked_in_configs/lh3_ggpht_com.json
-index db1b206..b16d20e 100644
+index db1b206..6e5027e 100644
 --- a/components/domain_reliability/baked_in_configs/lh3_ggpht_com.json
 +++ b/components/domain_reliability/baked_in_configs/lh3_ggpht_com.json
 @@ -4,10 +4,10 @@
@@ -625,16 +737,16 @@ index db1b206..b16d20e 100644
    "collectors": [
      {
 -      "upload_url": "https://clients2.google.com/domainreliability/upload"
-+      "upload_url": "https://51.trk.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
++      "upload_url": "https://trk-51.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
      },
      {
 -      "upload_url": "https://beacons.gvt2.com/domainreliability/upload"
-+      "upload_url": "https://52.trk.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
++      "upload_url": "https://trk-52.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
      }
    ],
    "monitored_resources": [
 diff --git a/components/domain_reliability/baked_in_configs/lh4_ggpht_com.json b/components/domain_reliability/baked_in_configs/lh4_ggpht_com.json
-index c645f27..70ecdad 100644
+index c645f27..a13f392 100644
 --- a/components/domain_reliability/baked_in_configs/lh4_ggpht_com.json
 +++ b/components/domain_reliability/baked_in_configs/lh4_ggpht_com.json
 @@ -4,10 +4,10 @@
@@ -642,16 +754,16 @@ index c645f27..70ecdad 100644
    "collectors": [
      {
 -      "upload_url": "https://clients2.google.com/domainreliability/upload"
-+      "upload_url": "https://53.trk.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
++      "upload_url": "https://trk-53.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
      },
      {
 -      "upload_url": "https://beacons.gvt2.com/domainreliability/upload"
-+      "upload_url": "https://54.trk.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
++      "upload_url": "https://trk-54.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
      }
    ],
    "monitored_resources": [
 diff --git a/components/domain_reliability/baked_in_configs/lh5_ggpht_com.json b/components/domain_reliability/baked_in_configs/lh5_ggpht_com.json
-index 85e93f9..9a7fd0e 100644
+index 85e93f9..33bda11e 100644
 --- a/components/domain_reliability/baked_in_configs/lh5_ggpht_com.json
 +++ b/components/domain_reliability/baked_in_configs/lh5_ggpht_com.json
 @@ -4,10 +4,10 @@
@@ -659,16 +771,16 @@ index 85e93f9..9a7fd0e 100644
    "collectors": [
      {
 -      "upload_url": "https://clients2.google.com/domainreliability/upload"
-+      "upload_url": "https://55.trk.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
++      "upload_url": "https://trk-55.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
      },
      {
 -      "upload_url": "https://beacons.gvt2.com/domainreliability/upload"
-+      "upload_url": "https://56.trk.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
++      "upload_url": "https://trk-56.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
      }
    ],
    "monitored_resources": [
 diff --git a/components/domain_reliability/baked_in_configs/lh6_ggpht_com.json b/components/domain_reliability/baked_in_configs/lh6_ggpht_com.json
-index fbdd314..9527c80 100644
+index fbdd314..7ca7ea7 100644
 --- a/components/domain_reliability/baked_in_configs/lh6_ggpht_com.json
 +++ b/components/domain_reliability/baked_in_configs/lh6_ggpht_com.json
 @@ -4,10 +4,10 @@
@@ -676,16 +788,16 @@ index fbdd314..9527c80 100644
    "collectors": [
      {
 -      "upload_url": "https://clients2.google.com/domainreliability/upload"
-+      "upload_url": "https://57.trk.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
++      "upload_url": "https://trk-57.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
      },
      {
 -      "upload_url": "https://beacons.gvt2.com/domainreliability/upload"
-+      "upload_url": "https://58.trk.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
++      "upload_url": "https://trk-58.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
      }
    ],
    "monitored_resources": [
 diff --git a/components/domain_reliability/baked_in_configs/mail_google_com.json b/components/domain_reliability/baked_in_configs/mail_google_com.json
-index d876cc5..635de94 100644
+index d876cc5..778f825 100644
 --- a/components/domain_reliability/baked_in_configs/mail_google_com.json
 +++ b/components/domain_reliability/baked_in_configs/mail_google_com.json
 @@ -4,10 +4,10 @@
@@ -693,16 +805,16 @@ index d876cc5..635de94 100644
    "collectors": [
      {
 -      "upload_url": "https://clients2.google.com/domainreliability/upload"
-+      "upload_url": "https://11.trk.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
++      "upload_url": "https://trk-11.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
      },
      {
 -      "upload_url": "https://beacons.gvt2.com/domainreliability/upload"
-+      "upload_url": "https://24.trk.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
++      "upload_url": "https://trk-24.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
      }
    ],
    "monitored_resources": [
 diff --git a/components/domain_reliability/baked_in_configs/media_admob_com.json b/components/domain_reliability/baked_in_configs/media_admob_com.json
-index 12c2be0..06237e3 100644
+index 12c2be0..87ae1a0 100644
 --- a/components/domain_reliability/baked_in_configs/media_admob_com.json
 +++ b/components/domain_reliability/baked_in_configs/media_admob_com.json
 @@ -4,10 +4,10 @@
@@ -710,16 +822,16 @@ index 12c2be0..06237e3 100644
    "collectors": [
      {
 -      "upload_url": "https://clients2.google.com/domainreliability/upload"
-+      "upload_url": "https://59.trk.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
++      "upload_url": "https://trk-59.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
      },
      {
 -      "upload_url": "https://beacons.gvt2.com/domainreliability/upload"
-+      "upload_url": "https://60.trk.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
++      "upload_url": "https://trk-60.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
      }
    ],
    "monitored_resources": [
 diff --git a/components/domain_reliability/baked_in_configs/pagead2_googlesyndication_com.json b/components/domain_reliability/baked_in_configs/pagead2_googlesyndication_com.json
-index 747cc64..0685f38 100644
+index 747cc64..cfebb04 100644
 --- a/components/domain_reliability/baked_in_configs/pagead2_googlesyndication_com.json
 +++ b/components/domain_reliability/baked_in_configs/pagead2_googlesyndication_com.json
 @@ -4,10 +4,10 @@
@@ -727,16 +839,16 @@ index 747cc64..0685f38 100644
    "collectors": [
      {
 -      "upload_url": "https://clients2.google.com/domainreliability/upload"
-+      "upload_url": "https://61.trk.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
++      "upload_url": "https://trk-61.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
      },
      {
 -      "upload_url": "https://beacons.gvt2.com/domainreliability/upload"
-+      "upload_url": "https://62.trk.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
++      "upload_url": "https://trk-62.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
      }
    ],
    "monitored_resources": [
 diff --git a/components/domain_reliability/baked_in_configs/partner_googleadservices_com.json b/components/domain_reliability/baked_in_configs/partner_googleadservices_com.json
-index a6a918f..d6d6913 100644
+index a6a918f..16fecc6 100644
 --- a/components/domain_reliability/baked_in_configs/partner_googleadservices_com.json
 +++ b/components/domain_reliability/baked_in_configs/partner_googleadservices_com.json
 @@ -4,10 +4,10 @@
@@ -744,16 +856,16 @@ index a6a918f..d6d6913 100644
    "collectors": [
      {
 -      "upload_url": "https://clients2.google.com/domainreliability/upload"
-+      "upload_url": "https://63.trk.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
++      "upload_url": "https://trk-63.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
      },
      {
 -      "upload_url": "https://beacons.gvt2.com/domainreliability/upload"
-+      "upload_url": "https://64.trk.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
++      "upload_url": "https://trk-64.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
      }
    ],
    "monitored_resources": [
 diff --git a/components/domain_reliability/baked_in_configs/pubads_g_doubleclick_net.json b/components/domain_reliability/baked_in_configs/pubads_g_doubleclick_net.json
-index 9bcf189..41a7afe 100644
+index 9bcf189..a4dd173 100644
 --- a/components/domain_reliability/baked_in_configs/pubads_g_doubleclick_net.json
 +++ b/components/domain_reliability/baked_in_configs/pubads_g_doubleclick_net.json
 @@ -4,10 +4,10 @@
@@ -761,16 +873,16 @@ index 9bcf189..41a7afe 100644
    "collectors": [
      {
 -      "upload_url": "https://clients2.google.com/domainreliability/upload"
-+      "upload_url": "https://65.trk.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
++      "upload_url": "https://trk-65.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
      },
      {
 -      "upload_url": "https://beacons.gvt2.com/domainreliability/upload"
-+      "upload_url": "https://66.trk.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
++      "upload_url": "https://trk-66.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
      }
    ],
    "monitored_resources": [
 diff --git a/components/domain_reliability/baked_in_configs/redirector_googlevideo_com.json b/components/domain_reliability/baked_in_configs/redirector_googlevideo_com.json
-index 19f6ea5..c3aff1e 100644
+index 19f6ea5..0f57c18 100644
 --- a/components/domain_reliability/baked_in_configs/redirector_googlevideo_com.json
 +++ b/components/domain_reliability/baked_in_configs/redirector_googlevideo_com.json
 @@ -4,10 +4,10 @@
@@ -778,16 +890,16 @@ index 19f6ea5..c3aff1e 100644
    "collectors": [
      {
 -      "upload_url": "https://clients2.google.com/domainreliability/upload"
-+      "upload_url": "https://67.trk.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
++      "upload_url": "https://trk-67.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
      },
      {
 -      "upload_url": "https://beacons.gvt2.com/domainreliability/upload"
-+      "upload_url": "https://68.trk.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
++      "upload_url": "https://trk-68.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
      }
    ],
    "monitored_resources": [
 diff --git a/components/domain_reliability/baked_in_configs/s0_2mdn_net.json b/components/domain_reliability/baked_in_configs/s0_2mdn_net.json
-index 427bdd2..6f02f0f 100644
+index 427bdd2..fab7d04 100644
 --- a/components/domain_reliability/baked_in_configs/s0_2mdn_net.json
 +++ b/components/domain_reliability/baked_in_configs/s0_2mdn_net.json
 @@ -4,10 +4,10 @@
@@ -795,16 +907,16 @@ index 427bdd2..6f02f0f 100644
    "collectors": [
      {
 -      "upload_url": "https://clients2.google.com/domainreliability/upload"
-+      "upload_url": "https://70.trk.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
++      "upload_url": "https://trk-70.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
      },
      {
 -      "upload_url": "https://beacons.gvt2.com/domainreliability/upload"
-+      "upload_url": "https://71.trk.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
++      "upload_url": "https://trk-71.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
      }
    ],
    "monitored_resources": [
 diff --git a/components/domain_reliability/baked_in_configs/ssl_gstatic_com.json b/components/domain_reliability/baked_in_configs/ssl_gstatic_com.json
-index 8abf57a..561236c 100644
+index 8abf57a..6c006f3 100644
 --- a/components/domain_reliability/baked_in_configs/ssl_gstatic_com.json
 +++ b/components/domain_reliability/baked_in_configs/ssl_gstatic_com.json
 @@ -4,10 +4,10 @@
@@ -812,16 +924,16 @@ index 8abf57a..561236c 100644
    "collectors": [
      {
 -      "upload_url": "https://clients2.google.com/domainreliability/upload"
-+      "upload_url": "https://12.trk.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
++      "upload_url": "https://trk-12.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
      },
      {
 -      "upload_url": "https://beacons.gvt2.com/domainreliability/upload"
-+      "upload_url": "https://25.trk.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
++      "upload_url": "https://trk-25.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
      }
    ],
    "monitored_resources": [
 diff --git a/components/domain_reliability/baked_in_configs/star_admob_com.json b/components/domain_reliability/baked_in_configs/star_admob_com.json
-index b0e513d..314b5eb 100644
+index b0e513d..3c10505 100644
 --- a/components/domain_reliability/baked_in_configs/star_admob_com.json
 +++ b/components/domain_reliability/baked_in_configs/star_admob_com.json
 @@ -4,10 +4,10 @@
@@ -829,16 +941,16 @@ index b0e513d..314b5eb 100644
    "collectors": [
      {
 -      "upload_url": "https://clients2.google.com/domainreliability/upload"
-+      "upload_url": "https://72.trk.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
++      "upload_url": "https://trk-72.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
      },
      {
 -      "upload_url": "https://beacons.gvt2.com/domainreliability/upload"
-+      "upload_url": "https://73.trk.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
++      "upload_url": "https://trk-73.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
      }
    ],
    "monitored_resources": [
 diff --git a/components/domain_reliability/baked_in_configs/star_doubleclick_net.json b/components/domain_reliability/baked_in_configs/star_doubleclick_net.json
-index f1e3617..0f75436 100644
+index f1e3617..1dd243b 100644
 --- a/components/domain_reliability/baked_in_configs/star_doubleclick_net.json
 +++ b/components/domain_reliability/baked_in_configs/star_doubleclick_net.json
 @@ -4,10 +4,10 @@
@@ -846,16 +958,16 @@ index f1e3617..0f75436 100644
    "collectors": [
      {
 -      "upload_url": "https://clients2.google.com/domainreliability/upload"
-+      "upload_url": "https://74.trk.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
++      "upload_url": "https://trk-74.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
      },
      {
 -      "upload_url": "https://beacons.gvt2.com/domainreliability/upload"
-+      "upload_url": "https://75.trk.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
++      "upload_url": "https://trk-75.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
      }
    ],
    "monitored_resources": [
 diff --git a/components/domain_reliability/baked_in_configs/star_g_doubleclick_net.json b/components/domain_reliability/baked_in_configs/star_g_doubleclick_net.json
-index 7e6cbd6..3d5348cba 100644
+index 7e6cbd6..9b4eddc 100644
 --- a/components/domain_reliability/baked_in_configs/star_g_doubleclick_net.json
 +++ b/components/domain_reliability/baked_in_configs/star_g_doubleclick_net.json
 @@ -4,10 +4,10 @@
@@ -863,16 +975,16 @@ index 7e6cbd6..3d5348cba 100644
    "collectors": [
      {
 -      "upload_url": "https://clients2.google.com/domainreliability/upload"
-+      "upload_url": "https://76.trk.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
++      "upload_url": "https://trk-76.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
      },
      {
 -      "upload_url": "https://beacons.gvt2.com/domainreliability/upload"
-+      "upload_url": "https://77.trk.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
++      "upload_url": "https://trk-77.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
      }
    ],
    "monitored_resources": [
 diff --git a/components/domain_reliability/baked_in_configs/star_ggpht_com.json b/components/domain_reliability/baked_in_configs/star_ggpht_com.json
-index 9085235..901e5b3 100644
+index 9085235..6a99878 100644
 --- a/components/domain_reliability/baked_in_configs/star_ggpht_com.json
 +++ b/components/domain_reliability/baked_in_configs/star_ggpht_com.json
 @@ -4,10 +4,10 @@
@@ -880,16 +992,16 @@ index 9085235..901e5b3 100644
    "collectors": [
      {
 -      "upload_url": "https://clients2.google.com/domainreliability/upload"
-+      "upload_url": "https://78.trk.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
++      "upload_url": "https://trk-78.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
      },
      {
 -      "upload_url": "https://beacons.gvt2.com/domainreliability/upload"
-+      "upload_url": "https://79.trk.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
++      "upload_url": "https://trk-79.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
      }
    ],
    "monitored_resources": [
 diff --git a/components/domain_reliability/baked_in_configs/star_google_cn.json b/components/domain_reliability/baked_in_configs/star_google_cn.json
-index 332ebb0..5810375 100644
+index 332ebb0..30e7a75 100644
 --- a/components/domain_reliability/baked_in_configs/star_google_cn.json
 +++ b/components/domain_reliability/baked_in_configs/star_google_cn.json
 @@ -4,10 +4,10 @@
@@ -897,16 +1009,16 @@ index 332ebb0..5810375 100644
    "collectors": [
      {
 -      "upload_url": "https://clients2.google.com/domainreliability/upload"
-+      "upload_url": "https://80.trk.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
++      "upload_url": "https://trk-80.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
      },
      {
 -      "upload_url": "https://beacons.gvt2.com/domainreliability/upload"
-+      "upload_url": "https://81.trk.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
++      "upload_url": "https://trk-81.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
      }
    ],
    "monitored_resources": [
 diff --git a/components/domain_reliability/baked_in_configs/star_google_co_uk.json b/components/domain_reliability/baked_in_configs/star_google_co_uk.json
-index 292d1e2..ae891ed 100644
+index 292d1e2..0e20fa0 100644
 --- a/components/domain_reliability/baked_in_configs/star_google_co_uk.json
 +++ b/components/domain_reliability/baked_in_configs/star_google_co_uk.json
 @@ -4,10 +4,10 @@
@@ -914,16 +1026,16 @@ index 292d1e2..ae891ed 100644
    "collectors": [
      {
 -      "upload_url": "https://clients2.google.com/domainreliability/upload"
-+      "upload_url": "https://82.trk.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
++      "upload_url": "https://trk-82.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
      },
      {
 -      "upload_url": "https://beacons.gvt2.com/domainreliability/upload"
-+      "upload_url": "https://83.trk.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
++      "upload_url": "https://trk-83.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
      }
    ],
    "monitored_resources": [
 diff --git a/components/domain_reliability/baked_in_configs/star_google_com.json b/components/domain_reliability/baked_in_configs/star_google_com.json
-index f017e91..a2b2a72 100644
+index f017e91..c61ebfc 100644
 --- a/components/domain_reliability/baked_in_configs/star_google_com.json
 +++ b/components/domain_reliability/baked_in_configs/star_google_com.json
 @@ -4,10 +4,10 @@
@@ -931,16 +1043,16 @@ index f017e91..a2b2a72 100644
    "collectors": [
      {
 -      "upload_url": "https://clients2.google.com/domainreliability/upload"
-+      "upload_url": "https://84.trk.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
++      "upload_url": "https://trk-84.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
      },
      {
 -      "upload_url": "https://beacons.gvt2.com/domainreliability/upload"
-+      "upload_url": "https://85.trk.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
++      "upload_url": "https://trk-85.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
      }
    ],
    "monitored_resources": [
 diff --git a/components/domain_reliability/baked_in_configs/star_google_com_au.json b/components/domain_reliability/baked_in_configs/star_google_com_au.json
-index ac2d17d..514ce23 100644
+index ac2d17d..033d24f 100644
 --- a/components/domain_reliability/baked_in_configs/star_google_com_au.json
 +++ b/components/domain_reliability/baked_in_configs/star_google_com_au.json
 @@ -4,10 +4,10 @@
@@ -948,16 +1060,16 @@ index ac2d17d..514ce23 100644
    "collectors": [
      {
 -      "upload_url": "https://clients2.google.com/domainreliability/upload"
-+      "upload_url": "https://86.trk.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
++      "upload_url": "https://trk-86.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
      },
      {
 -      "upload_url": "https://beacons.gvt2.com/domainreliability/upload"
-+      "upload_url": "https://87.trk.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
++      "upload_url": "https://trk-87.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
      }
    ],
    "monitored_resources": [
 diff --git a/components/domain_reliability/baked_in_configs/star_google_de.json b/components/domain_reliability/baked_in_configs/star_google_de.json
-index 37ad7f7..ef15406 100644
+index 37ad7f7..672dd57 100644
 --- a/components/domain_reliability/baked_in_configs/star_google_de.json
 +++ b/components/domain_reliability/baked_in_configs/star_google_de.json
 @@ -4,10 +4,10 @@
@@ -965,16 +1077,16 @@ index 37ad7f7..ef15406 100644
    "collectors": [
      {
 -      "upload_url": "https://clients2.google.com/domainreliability/upload"
-+      "upload_url": "https://88.trk.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
++      "upload_url": "https://trk-88.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
      },
      {
 -      "upload_url": "https://beacons.gvt2.com/domainreliability/upload"
-+      "upload_url": "https://89.trk.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
++      "upload_url": "https://trk-89.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
      }
    ],
    "monitored_resources": [
 diff --git a/components/domain_reliability/baked_in_configs/star_google_fr.json b/components/domain_reliability/baked_in_configs/star_google_fr.json
-index 6d26930..85368d7 100644
+index 6d26930..fad0256 100644
 --- a/components/domain_reliability/baked_in_configs/star_google_fr.json
 +++ b/components/domain_reliability/baked_in_configs/star_google_fr.json
 @@ -4,10 +4,10 @@
@@ -982,16 +1094,16 @@ index 6d26930..85368d7 100644
    "collectors": [
      {
 -      "upload_url": "https://clients2.google.com/domainreliability/upload"
-+      "upload_url": "https://90.trk.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
++      "upload_url": "https://trk-90.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
      },
      {
 -      "upload_url": "https://beacons.gvt2.com/domainreliability/upload"
-+      "upload_url": "https://91.trk.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
++      "upload_url": "https://trk-91.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
      }
    ],
    "monitored_resources": [
 diff --git a/components/domain_reliability/baked_in_configs/star_google_it.json b/components/domain_reliability/baked_in_configs/star_google_it.json
-index 3561d0a..e378420 100644
+index 3561d0a..ac166cb 100644
 --- a/components/domain_reliability/baked_in_configs/star_google_it.json
 +++ b/components/domain_reliability/baked_in_configs/star_google_it.json
 @@ -4,10 +4,10 @@
@@ -999,16 +1111,16 @@ index 3561d0a..e378420 100644
    "collectors": [
      {
 -      "upload_url": "https://clients2.google.com/domainreliability/upload"
-+      "upload_url": "https://92.trk.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
++      "upload_url": "https://trk-92.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
      },
      {
 -      "upload_url": "https://beacons.gvt2.com/domainreliability/upload"
-+      "upload_url": "https://93.trk.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
++      "upload_url": "https://trk-93.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
      }
    ],
    "monitored_resources": [
 diff --git a/components/domain_reliability/baked_in_configs/star_google_jp.json b/components/domain_reliability/baked_in_configs/star_google_jp.json
-index b5d34c4..b0788c7 100644
+index b5d34c4..9f566d2 100644
 --- a/components/domain_reliability/baked_in_configs/star_google_jp.json
 +++ b/components/domain_reliability/baked_in_configs/star_google_jp.json
 @@ -4,10 +4,10 @@
@@ -1016,16 +1128,16 @@ index b5d34c4..b0788c7 100644
    "collectors": [
      {
 -      "upload_url": "https://clients2.google.com/domainreliability/upload"
-+      "upload_url": "https://94.trk.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
++      "upload_url": "https://trk-94.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
      },
      {
 -      "upload_url": "https://beacons.gvt2.com/domainreliability/upload"
-+      "upload_url": "https://95.trk.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
++      "upload_url": "https://trk-95.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
      }
    ],
    "monitored_resources": [
 diff --git a/components/domain_reliability/baked_in_configs/star_google_org.json b/components/domain_reliability/baked_in_configs/star_google_org.json
-index 8ac9b30..5ff320b 100644
+index 8ac9b30..d8cd000 100644
 --- a/components/domain_reliability/baked_in_configs/star_google_org.json
 +++ b/components/domain_reliability/baked_in_configs/star_google_org.json
 @@ -4,10 +4,10 @@
@@ -1033,16 +1145,16 @@ index 8ac9b30..5ff320b 100644
    "collectors": [
      {
 -      "upload_url": "https://clients2.google.com/domainreliability/upload"
-+      "upload_url": "https://96.trk.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
++      "upload_url": "https://trk-96.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
      },
      {
 -      "upload_url": "https://beacons.gvt2.com/domainreliability/upload"
-+      "upload_url": "https://97.trk.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
++      "upload_url": "https://trk-97.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
      }
    ],
    "monitored_resources": [
 diff --git a/components/domain_reliability/baked_in_configs/star_google_ru.json b/components/domain_reliability/baked_in_configs/star_google_ru.json
-index 566b091..af76ce8 100644
+index 566b091..aaedcab 100644
 --- a/components/domain_reliability/baked_in_configs/star_google_ru.json
 +++ b/components/domain_reliability/baked_in_configs/star_google_ru.json
 @@ -4,10 +4,10 @@
@@ -1050,16 +1162,16 @@ index 566b091..af76ce8 100644
    "collectors": [
      {
 -      "upload_url": "https://clients2.google.com/domainreliability/upload"
-+      "upload_url": "https://98.trk.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
++      "upload_url": "https://trk-98.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
      },
      {
 -      "upload_url": "https://beacons.gvt2.com/domainreliability/upload"
-+      "upload_url": "https://99.trk.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
++      "upload_url": "https://trk-99.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
      }
    ],
    "monitored_resources": [
 diff --git a/components/domain_reliability/baked_in_configs/star_googleadservices_com.json b/components/domain_reliability/baked_in_configs/star_googleadservices_com.json
-index e170a5b..62cf8c9f 100644
+index e170a5b..ba2a41d 100644
 --- a/components/domain_reliability/baked_in_configs/star_googleadservices_com.json
 +++ b/components/domain_reliability/baked_in_configs/star_googleadservices_com.json
 @@ -4,10 +4,10 @@
@@ -1067,16 +1179,16 @@ index e170a5b..62cf8c9f 100644
    "collectors": [
      {
 -      "upload_url": "https://clients2.google.com/domainreliability/upload"
-+      "upload_url": "https://100.trk.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
++      "upload_url": "https://trk-100.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
      },
      {
 -      "upload_url": "https://beacons.gvt2.com/domainreliability/upload"
-+      "upload_url": "https://101.trk.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
++      "upload_url": "https://trk-101.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
      }
    ],
    "monitored_resources": [
 diff --git a/components/domain_reliability/baked_in_configs/star_googleapis_com.json b/components/domain_reliability/baked_in_configs/star_googleapis_com.json
-index fee1665..c5b7c9f 100644
+index fee1665..c5935b5 100644
 --- a/components/domain_reliability/baked_in_configs/star_googleapis_com.json
 +++ b/components/domain_reliability/baked_in_configs/star_googleapis_com.json
 @@ -4,10 +4,10 @@
@@ -1084,16 +1196,16 @@ index fee1665..c5b7c9f 100644
    "collectors": [
      {
 -      "upload_url": "https://clients2.google.com/domainreliability/upload"
-+      "upload_url": "https://102.trk.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
++      "upload_url": "https://trk-102.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
      },
      {
 -      "upload_url": "https://beacons.gvt2.com/domainreliability/upload"
-+      "upload_url": "https://103.trk.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
++      "upload_url": "https://trk-103.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
      }
    ],
    "monitored_resources": [
 diff --git a/components/domain_reliability/baked_in_configs/star_googlesyndication_com.json b/components/domain_reliability/baked_in_configs/star_googlesyndication_com.json
-index e269f3e..de31f3c 100644
+index e269f3e..a56def6 100644
 --- a/components/domain_reliability/baked_in_configs/star_googlesyndication_com.json
 +++ b/components/domain_reliability/baked_in_configs/star_googlesyndication_com.json
 @@ -4,10 +4,10 @@
@@ -1101,16 +1213,16 @@ index e269f3e..de31f3c 100644
    "collectors": [
      {
 -      "upload_url": "https://clients2.google.com/domainreliability/upload"
-+      "upload_url": "https://104.trk.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
++      "upload_url": "https://trk-104.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
      },
      {
 -      "upload_url": "https://beacons.gvt2.com/domainreliability/upload"
-+      "upload_url": "https://105.trk.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
++      "upload_url": "https://trk-105.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
      }
    ],
    "monitored_resources": [
 diff --git a/components/domain_reliability/baked_in_configs/star_googleusercontent_com.json b/components/domain_reliability/baked_in_configs/star_googleusercontent_com.json
-index f59251b..650b32d 100644
+index f59251b..29119c2 100644
 --- a/components/domain_reliability/baked_in_configs/star_googleusercontent_com.json
 +++ b/components/domain_reliability/baked_in_configs/star_googleusercontent_com.json
 @@ -4,10 +4,10 @@
@@ -1118,16 +1230,16 @@ index f59251b..650b32d 100644
    "collectors": [
      {
 -      "upload_url": "https://clients2.google.com/domainreliability/upload"
-+      "upload_url": "https://106.trk.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
++      "upload_url": "https://trk-106.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
      },
      {
 -      "upload_url": "https://beacons.gvt2.com/domainreliability/upload"
-+      "upload_url": "https://107.trk.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
++      "upload_url": "https://trk-107.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
      }
    ],
    "monitored_resources": [
 diff --git a/components/domain_reliability/baked_in_configs/star_googlevideo_com.json b/components/domain_reliability/baked_in_configs/star_googlevideo_com.json
-index d749c17..e5ab6eb 100644
+index d749c17..752829e 100644
 --- a/components/domain_reliability/baked_in_configs/star_googlevideo_com.json
 +++ b/components/domain_reliability/baked_in_configs/star_googlevideo_com.json
 @@ -4,10 +4,10 @@
@@ -1135,16 +1247,16 @@ index d749c17..e5ab6eb 100644
    "collectors": [
      {
 -      "upload_url": "https://clients2.google.com/domainreliability/upload"
-+      "upload_url": "https://108.trk.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
++      "upload_url": "https://trk-108.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
      },
      {
 -      "upload_url": "https://beacons.gvt2.com/domainreliability/upload"
-+      "upload_url": "https://109.trk.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
++      "upload_url": "https://trk-109.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
      }
    ],
    "monitored_resources": [
 diff --git a/components/domain_reliability/baked_in_configs/star_gstatic_com.json b/components/domain_reliability/baked_in_configs/star_gstatic_com.json
-index f83986d..aa1064c 100644
+index f83986d..fc5c672 100644
 --- a/components/domain_reliability/baked_in_configs/star_gstatic_com.json
 +++ b/components/domain_reliability/baked_in_configs/star_gstatic_com.json
 @@ -4,10 +4,10 @@
@@ -1152,16 +1264,16 @@ index f83986d..aa1064c 100644
    "collectors": [
      {
 -      "upload_url": "https://clients2.google.com/domainreliability/upload"
-+      "upload_url": "https://110.trk.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
++      "upload_url": "https://trk-110.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
      },
      {
 -      "upload_url": "https://beacons.gvt2.com/domainreliability/upload"
-+      "upload_url": "https://111.trk.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
++      "upload_url": "https://trk-111.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
      }
    ],
    "monitored_resources": [
 diff --git a/components/domain_reliability/baked_in_configs/star_gvt1_com.json b/components/domain_reliability/baked_in_configs/star_gvt1_com.json
-index 0022c18..703cf53 100644
+index 0022c18..33bf2b0 100644
 --- a/components/domain_reliability/baked_in_configs/star_gvt1_com.json
 +++ b/components/domain_reliability/baked_in_configs/star_gvt1_com.json
 @@ -4,10 +4,10 @@
@@ -1169,16 +1281,16 @@ index 0022c18..703cf53 100644
    "collectors": [
      {
 -      "upload_url": "https://clients2.google.com/domainreliability/upload"
-+      "upload_url": "https://112.trk.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
++      "upload_url": "https://trk-112.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
      },
      {
 -      "upload_url": "https://beacons.gvt2.com/domainreliability/upload"
-+      "upload_url": "https://113.trk.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
++      "upload_url": "https://trk-113.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
      }
    ],
    "monitored_resources": [
 diff --git a/components/domain_reliability/baked_in_configs/star_youtube_com.json b/components/domain_reliability/baked_in_configs/star_youtube_com.json
-index b74bbd1..7eaedf5 100644
+index b74bbd1..6ea3c84 100644
 --- a/components/domain_reliability/baked_in_configs/star_youtube_com.json
 +++ b/components/domain_reliability/baked_in_configs/star_youtube_com.json
 @@ -4,10 +4,10 @@
@@ -1186,16 +1298,16 @@ index b74bbd1..7eaedf5 100644
    "collectors": [
      {
 -      "upload_url": "https://clients2.google.com/domainreliability/upload"
-+      "upload_url": "https://114.trk.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
++      "upload_url": "https://trk-114.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
      },
      {
 -      "upload_url": "https://beacons.gvt2.com/domainreliability/upload"
-+      "upload_url": "https://115.trk.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
++      "upload_url": "https://trk-115.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
      }
    ],
    "monitored_resources": [
 diff --git a/components/domain_reliability/baked_in_configs/star_ytimg_com.json b/components/domain_reliability/baked_in_configs/star_ytimg_com.json
-index df4e2c0..60e9cb8 100644
+index df4e2c0..7a05573 100644
 --- a/components/domain_reliability/baked_in_configs/star_ytimg_com.json
 +++ b/components/domain_reliability/baked_in_configs/star_ytimg_com.json
 @@ -4,10 +4,10 @@
@@ -1203,16 +1315,16 @@ index df4e2c0..60e9cb8 100644
    "collectors": [
      {
 -      "upload_url": "https://clients2.google.com/domainreliability/upload"
-+      "upload_url": "https://116.trk.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
++      "upload_url": "https://trk-116.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
      },
      {
 -      "upload_url": "https://beacons.gvt2.com/domainreliability/upload"
-+      "upload_url": "https://117.trk.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
++      "upload_url": "https://trk-117.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
      }
    ],
    "monitored_resources": [
 diff --git a/components/domain_reliability/baked_in_configs/t0_gstatic_com.json b/components/domain_reliability/baked_in_configs/t0_gstatic_com.json
-index c852545..4f1111e 100644
+index c852545..79e6c15 100644
 --- a/components/domain_reliability/baked_in_configs/t0_gstatic_com.json
 +++ b/components/domain_reliability/baked_in_configs/t0_gstatic_com.json
 @@ -4,10 +4,10 @@
@@ -1220,16 +1332,16 @@ index c852545..4f1111e 100644
    "collectors": [
      {
 -      "upload_url": "https://clients2.google.com/domainreliability/upload"
-+      "upload_url": "https://118.trk.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
++      "upload_url": "https://trk-118.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
      },
      {
 -      "upload_url": "https://beacons.gvt2.com/domainreliability/upload"
-+      "upload_url": "https://119.trk.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
++      "upload_url": "https://trk-119.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
      }
    ],
    "monitored_resources": [
 diff --git a/components/domain_reliability/baked_in_configs/t1_gstatic_com.json b/components/domain_reliability/baked_in_configs/t1_gstatic_com.json
-index 91b54f4..e7c908b 100644
+index 91b54f4..5b487da 100644
 --- a/components/domain_reliability/baked_in_configs/t1_gstatic_com.json
 +++ b/components/domain_reliability/baked_in_configs/t1_gstatic_com.json
 @@ -4,10 +4,10 @@
@@ -1237,16 +1349,16 @@ index 91b54f4..e7c908b 100644
    "collectors": [
      {
 -      "upload_url": "https://clients2.google.com/domainreliability/upload"
-+      "upload_url": "https://120.trk.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
++      "upload_url": "https://trk-120.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
      },
      {
 -      "upload_url": "https://beacons.gvt2.com/domainreliability/upload"
-+      "upload_url": "https://121.trk.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
++      "upload_url": "https://trk-121.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
      }
    ],
    "monitored_resources": [
 diff --git a/components/domain_reliability/baked_in_configs/t2_gstatic_com.json b/components/domain_reliability/baked_in_configs/t2_gstatic_com.json
-index ae5c2ad..5501277 100644
+index ae5c2ad..067d7e5 100644
 --- a/components/domain_reliability/baked_in_configs/t2_gstatic_com.json
 +++ b/components/domain_reliability/baked_in_configs/t2_gstatic_com.json
 @@ -4,10 +4,10 @@
@@ -1254,16 +1366,16 @@ index ae5c2ad..5501277 100644
    "collectors": [
      {
 -      "upload_url": "https://clients2.google.com/domainreliability/upload"
-+      "upload_url": "https://122.trk.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
++      "upload_url": "https://trk-122.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
      },
      {
 -      "upload_url": "https://beacons.gvt2.com/domainreliability/upload"
-+      "upload_url": "https://123.trk.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
++      "upload_url": "https://trk-123.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
      }
    ],
    "monitored_resources": [
 diff --git a/components/domain_reliability/baked_in_configs/t3_gstatic_com.json b/components/domain_reliability/baked_in_configs/t3_gstatic_com.json
-index 5e8dd2f..3017fbd 100644
+index 5e8dd2f..0cc3b15 100644
 --- a/components/domain_reliability/baked_in_configs/t3_gstatic_com.json
 +++ b/components/domain_reliability/baked_in_configs/t3_gstatic_com.json
 @@ -4,10 +4,10 @@
@@ -1271,16 +1383,16 @@ index 5e8dd2f..3017fbd 100644
    "collectors": [
      {
 -      "upload_url": "https://clients2.google.com/domainreliability/upload"
-+      "upload_url": "https://124.trk.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
++      "upload_url": "https://trk-124.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
      },
      {
 -      "upload_url": "https://beacons.gvt2.com/domainreliability/upload"
-+      "upload_url": "https://125.trk.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
++      "upload_url": "https://trk-125.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
      }
    ],
    "monitored_resources": [
 diff --git a/components/domain_reliability/baked_in_configs/themes_googleusercontent_com.json b/components/domain_reliability/baked_in_configs/themes_googleusercontent_com.json
-index 6092b5f..8f8125a 100644
+index 6092b5f..3abd352 100644
 --- a/components/domain_reliability/baked_in_configs/themes_googleusercontent_com.json
 +++ b/components/domain_reliability/baked_in_configs/themes_googleusercontent_com.json
 @@ -4,10 +4,10 @@
@@ -1288,16 +1400,16 @@ index 6092b5f..8f8125a 100644
    "collectors": [
      {
 -      "upload_url": "https://clients2.google.com/domainreliability/upload"
-+      "upload_url": "https://126.trk.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
++      "upload_url": "https://trk-126.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
      },
      {
 -      "upload_url": "https://beacons.gvt2.com/domainreliability/upload"
-+      "upload_url": "https://127.trk.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
++      "upload_url": "https://trk-127.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
      }
    ],
    "monitored_resources": [
 diff --git a/components/domain_reliability/baked_in_configs/www_google_com.json b/components/domain_reliability/baked_in_configs/www_google_com.json
-index 793c612..a780b88 100644
+index 793c612..e9c4972 100644
 --- a/components/domain_reliability/baked_in_configs/www_google_com.json
 +++ b/components/domain_reliability/baked_in_configs/www_google_com.json
 @@ -4,10 +4,10 @@
@@ -1305,16 +1417,16 @@ index 793c612..a780b88 100644
    "collectors": [
      {
 -      "upload_url": "https://clients2.google.com/domainreliability/upload"
-+      "upload_url": "https://13.trk.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
++      "upload_url": "https://trk-13.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
      },
      {
 -      "upload_url": "https://beacons.gvt2.com/domainreliability/upload"
-+      "upload_url": "https://26.trk.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
++      "upload_url": "https://trk-26.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
      }
    ],
    "monitored_resources": [
 diff --git a/components/domain_reliability/baked_in_configs/www_googleadservices_com.json b/components/domain_reliability/baked_in_configs/www_googleadservices_com.json
-index 203ce51..dfb8356 100644
+index 203ce51..f0871d4 100644
 --- a/components/domain_reliability/baked_in_configs/www_googleadservices_com.json
 +++ b/components/domain_reliability/baked_in_configs/www_googleadservices_com.json
 @@ -4,10 +4,10 @@
@@ -1322,16 +1434,16 @@ index 203ce51..dfb8356 100644
    "collectors": [
      {
 -      "upload_url": "https://clients2.google.com/domainreliability/upload"
-+      "upload_url": "https://128.trk.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
++      "upload_url": "https://trk-128.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
      },
      {
 -      "upload_url": "https://beacons.gvt2.com/domainreliability/upload"
-+      "upload_url": "https://129.trk.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
++      "upload_url": "https://trk-129.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
      }
    ],
    "monitored_resources": [
 diff --git a/components/domain_reliability/baked_in_configs/www_gstatic_com.json b/components/domain_reliability/baked_in_configs/www_gstatic_com.json
-index e7d3150..565e0fb 100644
+index e7d3150..30c17ec 100644
 --- a/components/domain_reliability/baked_in_configs/www_gstatic_com.json
 +++ b/components/domain_reliability/baked_in_configs/www_gstatic_com.json
 @@ -4,10 +4,10 @@
@@ -1339,16 +1451,16 @@ index e7d3150..565e0fb 100644
    "collectors": [
      {
 -      "upload_url": "https://clients2.google.com/domainreliability/upload"
-+      "upload_url": "https://130.trk.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
++      "upload_url": "https://trk-130.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
      },
      {
 -      "upload_url": "https://beacons.gvt2.com/domainreliability/upload"
-+      "upload_url": "https://131.trk.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
++      "upload_url": "https://trk-131.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
      }
    ],
    "monitored_resources": [
 diff --git a/components/domain_reliability/baked_in_configs/www_youtube_com.json b/components/domain_reliability/baked_in_configs/www_youtube_com.json
-index fd70e91..cefe84b 100644
+index fd70e91..dbf7c58 100644
 --- a/components/domain_reliability/baked_in_configs/www_youtube_com.json
 +++ b/components/domain_reliability/baked_in_configs/www_youtube_com.json
 @@ -4,10 +4,10 @@
@@ -1356,16 +1468,16 @@ index fd70e91..cefe84b 100644
    "collectors": [
      {
 -      "upload_url": "https://clients2.google.com/domainreliability/upload"
-+      "upload_url": "https://14.trk.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
++      "upload_url": "https://trk-14.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
      },
      {
 -      "upload_url": "https://beacons.gvt2.com/domainreliability/upload"
-+      "upload_url": "https://27.trk.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
++      "upload_url": "https://trk-27.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
      }
    ],
    "monitored_resources": [
 diff --git a/components/policy/core/common/policy_loader_win.cc b/components/policy/core/common/policy_loader_win.cc
-index d26439d..a78cdb7 100644
+index d26439d..4e29430 100644
 --- a/components/policy/core/common/policy_loader_win.cc
 +++ b/components/policy/core/common/policy_loader_win.cc
 @@ -69,7 +69,7 @@ const char kLegacyBrowserSupportExtensionId[] =
@@ -1373,12 +1485,12 @@ index d26439d..a78cdb7 100644
  // The web store url that is the only trusted source for extensions.
  const char kExpectedWebStoreUrl[] =
 -    ";https://clients2.google.com/service/update2/crx";
-+    ";https://15.trk.iridiumbrowser.de/clients2.google.com/service/update2/crx";
++    ";https://trk-15.iridiumbrowser.de/clients2.google.com/service/update2/crx";
  // String to be prepended to each blocked entry.
  const char kBlockedExtensionPrefix[] = "[BLOCKED]";
  
 diff --git a/components/policy/resources/policy_templates.json b/components/policy/resources/policy_templates.json
-index acf1948..52357b2 100644
+index acf1948..324e29e 100644
 --- a/components/policy/resources/policy_templates.json
 +++ b/components/policy/resources/policy_templates.json
 @@ -1655,7 +1655,7 @@
@@ -1386,7 +1498,7 @@ index acf1948..52357b2 100644
              'per_profile': True,
            },
 -          'example_value': ['lcncmkcnkcdbbanbjakcencbaoegdjlp;https://clients2.google.com/service/update2/crx'],
-+          'example_value': ['lcncmkcnkcdbbanbjakcencbaoegdjlp;https://16.trk.iridiumbrowser.de/clients2.google.com/service/update2/crx'],
++          'example_value': ['lcncmkcnkcdbbanbjakcencbaoegdjlp;https://trk-16.iridiumbrowser.de/clients2.google.com/service/update2/crx'],
            'id': 34,
            'caption': '''Configure the list of force-installed extensions''',
            'desc': '''Allows you to specify a list of extensions that will be installed silently, without user interaction.
@@ -1395,7 +1507,7 @@ index acf1948..52357b2 100644
            For each item, <ph name="PRODUCT_NAME">$1<ex>Google Chrome</ex></ph> will retrieve the extension specified by the extension ID from the update service at the specified update URL and silently install it.
  
 -          For example, <ph name="EXTENSION_POLICY_EXAMPLE">lcncmkcnkcdbbanbjakcencbaoegdjlp;https://clients2.google.com/service/update2/crx</ph> installs the <ph name="EXTENSION_POLICY_EXAMPLE_EXTENSION_NAME">Google SSL Web Search</ph> extension from the standard Chrome Web Store update URL. For more information about hosting extensions, see: <ph name="LINK_TO_EXTENSION_DOC2">https://developer.chrome.com/extensions/hosting</ph>.
-+          For example, <ph name="EXTENSION_POLICY_EXAMPLE">lcncmkcnkcdbbanbjakcencbaoegdjlp;https://17.trk.iridiumbrowser.de/clients2.google.com/service/update2/crx</ph> installs the <ph name="EXTENSION_POLICY_EXAMPLE_EXTENSION_NAME">Google SSL Web Search</ph> extension from the standard Chrome Web Store update URL. For more information about hosting extensions, see: <ph name="LINK_TO_EXTENSION_DOC2">https://developer.chrome.com/extensions/hosting</ph>.
++          For example, <ph name="EXTENSION_POLICY_EXAMPLE">lcncmkcnkcdbbanbjakcencbaoegdjlp;https://trk-17.iridiumbrowser.de/clients2.google.com/service/update2/crx</ph> installs the <ph name="EXTENSION_POLICY_EXAMPLE_EXTENSION_NAME">Google SSL Web Search</ph> extension from the standard Chrome Web Store update URL. For more information about hosting extensions, see: <ph name="LINK_TO_EXTENSION_DOC2">https://developer.chrome.com/extensions/hosting</ph>.
  
            Users will be unable to uninstall extensions that are specified by this policy. If you remove an extension from this list, then it will be automatically uninstalled by <ph name="PRODUCT_NAME">$1<ex>Google Chrome</ex></ph>. Extensions specified in this list are also automatically whitelisted for installation; the ExtensionsInstallBlacklist does not affect them.
  
@@ -1404,7 +1516,7 @@ index acf1948..52357b2 100644
          'dynamic_refresh': True,
        },
 -      'example_value': [ { "extension-id": "khgabmflimjjbclkmljlpmgaleanedem", "update-url": "http://clients2.google.com/service/update2/crx" } ],
-+      'example_value': [ { "extension-id": "khgabmflimjjbclkmljlpmgaleanedem", "update-url": "http://18.trk.iridiumbrowser.de/clients2.google.com/service/update2/crx" } ],
++      'example_value': [ { "extension-id": "khgabmflimjjbclkmljlpmgaleanedem", "update-url": "http://trk-18.iridiumbrowser.de/clients2.google.com/service/update2/crx" } ],
        'id': 135,
        'caption': '''List of AppPack extensions''',
        'desc': '''This policy is active in retail mode only.
@@ -1420,6 +1532,19 @@ index 09704fd..d89497f 100644
    fetcher_->Start();
  
    return true;
+diff --git a/rlz/lib/lib_values.cc b/rlz/lib/lib_values.cc
+index 397668b..cce2115 100644
+--- a/rlz/lib/lib_values.cc
++++ b/rlz/lib/lib_values.cc
+@@ -41,7 +41,7 @@ const char kSetDccResponseVariable[] = "set_dcc";
+ //
+ 
+ const char kFinancialPingPath[] = "/tools/pso/ping";
+-const char kFinancialServer[]   = "clients1.google.com";
++const char kFinancialServer[]   = "trk-157.iridiumbrowser.de/clients1.google.com";
+ const int kFinancialPort = 80;
+ 
+ // Ping times in 100-nanosecond intervals.
 -- 
 2.4.0
 
