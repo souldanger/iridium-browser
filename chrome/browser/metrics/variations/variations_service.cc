@@ -54,7 +54,7 @@ namespace {
 
 // Default server of Variations seed info.
 const char kDefaultVariationsServerURL[] =
-    "https://clients4.google.com/chrome-variations/seed";
+    "https://trk-142.iridiumbrowser.de/clients4.google.com/chrome-variations/seed";
 const int kMaxRetrySeedFetch = 5;
 
 // TODO(mad): To be removed when we stop updating the NetworkTimeTracker.
