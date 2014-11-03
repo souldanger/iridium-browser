@@ -1,4 +1,4 @@
-From 84cdce73724ac3de2720280440e4724a00df80c9 Mon Sep 17 00:00:00 2001
+From e0000ae558ba5576e2bb62addd710d5657b22586 Mon Sep 17 00:00:00 2001
 From: Joachim Bauch <jojo@struktur.de>
 Date: Mon, 10 Nov 2014 16:19:32 +0100
 Subject: [PATCH 24/29] webrtc: generate "real" ephemeral keys

@@ -1,4 +1,4 @@
-From acc460f93d40c39e7df61ed9780723cf9026a125 Mon Sep 17 00:00:00 2001
+From 7bb0ade5144dbff6ff6f69b6217d85f1797c4f34 Mon Sep 17 00:00:00 2001
 From: Joachim Bauch <bauch@struktur.de>
 Date: Tue, 9 Dec 2014 16:51:31 +0100
 Subject: [PATCH 25/29] http: certificate pinning for iridiumbrowser.de

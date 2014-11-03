@@ -1,4 +1,4 @@
-From e5b9e596ba5b9e7f4a1b6081b3ba4f3f6a127e3e Mon Sep 17 00:00:00 2001
+From 3d96b0708498fa61b5eaa7ee0bdbec5eba1ca7eb Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sat, 13 Sep 2014 17:03:17 +0200
 Subject: [PATCH 09/29] prefs: disable hyperlink auditing

@@ -1,4 +1,4 @@
-From 84c56f8c8764609b7e30579d71b6b74fd542436b Mon Sep 17 00:00:00 2001
+From a459ee3ee32b2757d759d48be6185c3d5a4dbbbb Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sat, 13 Sep 2014 16:55:12 +0200
 Subject: [PATCH 07/29] prefs: disable Cloud Print

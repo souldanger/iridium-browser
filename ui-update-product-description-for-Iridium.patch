@@ -1,4 +1,4 @@
-From 19f1d33e162da5822a7f5652ecf17bcf68e0e0f4 Mon Sep 17 00:00:00 2001
+From 08b070be343c6eb794c7261e55a2839fe57b47d5 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Wed, 10 Dec 2014 12:44:49 +0100
 Subject: [PATCH 27/29] ui: update product description for Iridium

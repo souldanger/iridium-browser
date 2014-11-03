@@ -1,4 +1,4 @@
-From 1eb8ca594273a16bc7f1df87bf4501b32b40eddb Mon Sep 17 00:00:00 2001
+From a0b9086dc36fa3e3f780c204a8b29da6c9cdd01e Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sat, 13 Sep 2014 16:43:55 +0200
 Subject: [PATCH 06/29] Block 3rd party cookies by default

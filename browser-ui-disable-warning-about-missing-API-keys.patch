@@ -1,4 +1,4 @@
-From f4bd151a18f860d5d9fdab47f0b37ea7c3812d30 Mon Sep 17 00:00:00 2001
+From d97f9eb3735b2a27a18008bb0aa1e5b23a60cd62 Mon Sep 17 00:00:00 2001
 From: Joachim Bauch <bauch@struktur.de>
 Date: Tue, 9 Dec 2014 17:19:41 +0100
 Subject: [PATCH 26/29] browser-ui: disable warning about missing API keys

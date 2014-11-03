@@ -1,4 +1,4 @@
-From 451c4959d2573bda78c80963084c20f170956e66 Mon Sep 17 00:00:00 2001
+From 413f0ee8fd48d38f4d879b64f520b020aa082be6 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Tue, 9 Dec 2014 17:54:48 +0100
 Subject: [PATCH 28/29] ui: update strings to read "Iridium" instead
