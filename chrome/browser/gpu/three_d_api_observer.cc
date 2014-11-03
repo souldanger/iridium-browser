@@ -152,7 +152,7 @@ base::string16 ThreeDAPIInfoBarDelegate::GetLinkText() const {
 bool ThreeDAPIInfoBarDelegate::LinkClicked(WindowOpenDisposition disposition) {
   InfoBarService::WebContentsFromInfoBar(infobar())->OpenURL(
       content::OpenURLParams(
-          GURL("https://support.google.com/chrome/?p=ib_webgl"),
+          GURL("trk:137:https://support.google.com/chrome/?p=ib_webgl"),
           content::Referrer(),
           (disposition == CURRENT_TAB) ? NEW_FOREGROUND_TAB : disposition,
           ui::PAGE_TRANSITION_LINK, false));
