@@ -71,21 +71,21 @@ const base::FilePath::CharType kCookiesFile[] = FILE_PATH_LITERAL(" Cookies");
 // The default URL prefix where browser fetches chunk updates, hashes,
 // and reports safe browsing hits and malware details.
 const char* const kSbDefaultURLPrefix =
-    "https://safebrowsing.google.com/safebrowsing";
+    "trk:165:https://safebrowsing.google.com/safebrowsing";
 
 // The backup URL prefix used when there are issues establishing a connection
 // with the server at the primary URL.
 const char* const kSbBackupConnectErrorURLPrefix =
-    "https://alt1-safebrowsing.google.com/safebrowsing";
+    "trk:166:https://alt1-safebrowsing.google.com/safebrowsing";
 
 // The backup URL prefix used when there are HTTP-specific issues with the
 // server at the primary URL.
 const char* const kSbBackupHttpErrorURLPrefix =
-    "https://alt2-safebrowsing.google.com/safebrowsing";
+    "trk:167:https://alt2-safebrowsing.google.com/safebrowsing";
 
 // The backup URL prefix used when there are local network specific issues.
 const char* const kSbBackupNetworkErrorURLPrefix =
-    "https://alt3-safebrowsing.google.com/safebrowsing";
+    "trk:168:https://alt3-safebrowsing.google.com/safebrowsing";
 
 base::FilePath CookieFilePath() {
   return base::FilePath(
