@@ -21,7 +21,7 @@ namespace prerender {
 namespace {
 
 const char kDefaultPrerenderServiceURLPrefix[] =
-    "https://clients4.google.com/prerenderservice/?q=";
+    "trk:144:https://clients4.google.com/prerenderservice/?q=";
 const int kDefaultPrerenderServiceTimeoutMs = 1000;
 const int kDefaultPrefetchListTimeoutSeconds = 300;
 
