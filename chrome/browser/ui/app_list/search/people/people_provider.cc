@@ -34,11 +34,11 @@ const char kKeyItems[] = "items";
 const char kAccessTokenField[] = "access_token";
 const char kQueryField[] = "query";
 const char kPeopleSearchUrl[] =
-    "https://www.googleapis.com/plus/v2whitelisted/people/autocomplete";
+    "trk:239:https://www.googleapis.com/plus/v2whitelisted/people/autocomplete";
 
 // OAuth2 scope for access to the Google+ People Search API.
 const char kPeopleSearchOAuth2Scope[] =
-    "https://www.googleapis.com/auth/plus.peopleapi.readwrite";
+    "trk:240:https://www.googleapis.com/auth/plus.peopleapi.readwrite";
 
 }  // namespace
 
