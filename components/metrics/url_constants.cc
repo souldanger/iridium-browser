@@ -6,7 +6,7 @@
 
 namespace metrics {
 
-const char kDefaultMetricsServerUrl[] = "https://clients4.google.com/uma/v2";
+const char kDefaultMetricsServerUrl[] = "trk:265:https://clients4.google.com/uma/v2";
 const char kDefaultMetricsMimeType[] = "application/vnd.chrome.uma";
 
 } // namespace metrics
