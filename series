@@ -17,5 +17,7 @@ profile-resetter-do-not-tick-send-settings-by-defaul.patch
 common-change-the-User-Agent-string-to-read-Iridium.patch
 search_engines-add-DuckDuckGo-as-selectable-and-defa.patch
 prefs-disable-translation-service.patch
-first_run-barf-if-autoupdate-is-activated.patch
-Flag-all-clients2.googleclients.com.patch
+prefs-use-separate-directory-for-config.patch
+first_run-deactivate-autoupdate-globally.patch
+promo-deactivate-default-Google-promotion-fetching.patch
+src-flag-Google-connections.patch

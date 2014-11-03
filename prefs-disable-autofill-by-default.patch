@@ -1,7 +1,7 @@
 From f797b0f840f812ab44326dcbe7b465e2a04e639b Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Thu, 11 Sep 2014 16:37:32 +0200
-Subject: [PATCH 01/21] prefs: disable autofill by default
+Subject: [PATCH 01/23] prefs: disable autofill by default
 
 ---
  components/autofill/core/browser/autofill_manager.cc | 2 +-

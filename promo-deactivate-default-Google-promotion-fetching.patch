@@ -1,0 +1,41 @@
+From c111dd7440d78d58fd5e2f5eb7b18a980ab26dcf Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Sun, 9 Nov 2014 01:54:27 +0100
+Subject: [PATCH 22/23] promo: deactivate default Google promotion fetching
+
+Documentation is scarce, and sprinkled with misleading acronyms.
+NTP is not NTP, for example. FWIW:
+
+// A PromoResourceService fetches data from a web resource server to
+// be used to dynamically change the appearance of the New Tab Page.
+// For example, it has been used to fetch "tips" to be displayed on
+// the NTP, or to display promotional messages to certain groups of
+// Chrome users.
+
+Whatever it is that it downloads, deactivate the one that leads to
+Google.
+
+Use about:blank, because an invalid GURL object leads to an assert
+
+[12128:12128:1109/091605:FATAL:url_fetcher_core.cc(99)]
+Check failed: original_url_.is_valid().
+---
+ chrome/browser/web_resource/notification_promo.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/chrome/browser/web_resource/notification_promo.cc b/chrome/browser/web_resource/notification_promo.cc
+index d6972b9..fd638dc 100644
+--- a/chrome/browser/web_resource/notification_promo.cc
++++ b/chrome/browser/web_resource/notification_promo.cc
+@@ -33,7 +33,7 @@ namespace {
+ 
+ const int kDefaultGroupSize = 100;
+ 
+-const char promo_server_url[] = "https://clients3.google.com/crsignal/client";
++const char promo_server_url[] = "about:blank";
+ 
+ // The name of the preference that stores the promotion object.
+ const char kPrefPromoObject[] = "promo";
+-- 
+2.4.0
+

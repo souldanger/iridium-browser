@@ -1,7 +1,7 @@
 From 574bbe6573b8b0f021fe2dd778e61d171a28447b Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sat, 13 Sep 2014 17:25:47 +0200
-Subject: [PATCH 11/21] prefs: only keep cookies until exit
+Subject: [PATCH 11/23] prefs: only keep cookies until exit
 
 ---
  chrome/browser/content_settings/content_settings_default_provider.cc | 2 +-

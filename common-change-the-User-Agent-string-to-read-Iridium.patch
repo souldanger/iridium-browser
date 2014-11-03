@@ -1,7 +1,7 @@
 From 5f0bb4dc7d3abaea81ad5ea06bcf061313537b2d Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Mon, 13 Oct 2014 12:28:51 +0200
-Subject: [PATCH 17/21] common: change the User-Agent string to read Iridium
+Subject: [PATCH 17/23] common: change the User-Agent string to read Iridium
 
 Continue providing Chrome/* for possible compatibility checks by the browser
 and/or websites, since we really are still Chromium.

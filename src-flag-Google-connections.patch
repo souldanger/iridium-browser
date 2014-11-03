@@ -1,15 +1,20 @@
-From 07090b7456e14c183320dfff49573222bed82417 Mon Sep 17 00:00:00 2001
+From 73d02a8c892e6c95d513d9cc35905d1ae84c7b26 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Mon, 3 Nov 2014 10:52:56 +0100
-Subject: [PATCH 21/21] Flag all clients2.googleclients.com
+Subject: [PATCH 23/23] src: flag Google connections
 
-Make it possible to distinguish the different connections in wireshark.
+Change the hostnames of Google services to contain some unique
+identifier with which we can more easily distinguish HTTP CONNECT
+requests appearing in Squid logs and bare DNS requests in a pcap
+stream from one another.
+
+As a side effect, most Google services are now defunct and not
+usable, even if activated in preferences.
 ---
  chrome/browser/component_updater/component_updater_configurator.cc  | 2 +-
  chrome/browser/media/webrtc_log_uploader.cc                         | 2 +-
  chrome/browser/net/chrome_fraudulent_certificate_reporter.cc        | 2 +-
  chrome/browser/resources/default_apps/external_extensions.json      | 4 ++--
- chrome/browser/web_resource/notification_promo.cc                   | 2 +-
  chrome/common/extensions/extension_constants.cc                     | 2 +-
  components/breakpad/app/breakpad_linux.cc                           | 2 +-
  components/breakpad/tools/crash_service.cc                          | 2 +-
@@ -23,7 +28,7 @@ Make it possible to distinguish the different connections in wireshark.
  components/policy/core/common/policy_loader_win.cc                  | 2 +-
  components/policy/resources/policy_templates.json                   | 6 +++---
  components/translate/core/browser/translate_url_fetcher.cc          | 1 +
- 18 files changed, 21 insertions(+), 20 deletions(-)
+ 17 files changed, 20 insertions(+), 19 deletions(-)
 
 diff --git a/chrome/browser/component_updater/component_updater_configurator.cc b/chrome/browser/component_updater/component_updater_configurator.cc
 index 269dea1..2e9513f 100644
@@ -82,19 +87,6 @@ index 52aa500..251d5cf 100644
    }
  }
  
-diff --git a/chrome/browser/web_resource/notification_promo.cc b/chrome/browser/web_resource/notification_promo.cc
-index d6972b9..b2c12a0 100644
---- a/chrome/browser/web_resource/notification_promo.cc
-+++ b/chrome/browser/web_resource/notification_promo.cc
-@@ -33,7 +33,7 @@ namespace {
- 
- const int kDefaultGroupSize = 100;
- 
--const char promo_server_url[] = "https://clients3.google.com/crsignal/client";
-+const char promo_server_url[] = "https://trk30.clients3.google.com/crsignal/client";
- 
- // The name of the preference that stores the promotion object.
- const char kPrefPromoObject[] = "promo";
 diff --git a/chrome/common/extensions/extension_constants.cc b/chrome/common/extensions/extension_constants.cc
 index c21de09..bde4e85 100644
 --- a/chrome/common/extensions/extension_constants.cc

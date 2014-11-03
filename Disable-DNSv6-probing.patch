@@ -1,7 +1,7 @@
 From b8ef6feb7bf47232bd58b4328097dc9422b5715e Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Mon, 22 Sep 2014 10:36:32 +0200
-Subject: [PATCH 14/21] Disable DNSv6 probing
+Subject: [PATCH 14/23] Disable DNSv6 probing
 
 Default to using system defaults regarding IPv6 and IPv4.
 No new options to switch autodetection on again are added,
