@@ -14,25 +14,25 @@
 namespace cloud_devices {
 
 const char kCloudPrintAuthScope[] =
-    "https://www.googleapis.com/auth/cloudprint";
+    "trk:197:https://www.googleapis.com/auth/cloudprint";
 
 const char kCloudDevicesAuthScope[] =
-    "https://www.googleapis.com/auth/clouddevices";
+    "trk:198:https://www.googleapis.com/auth/clouddevices";
 
 const char kCloudPrintLearnMoreURL[] =
-    "https://www.google.com/support/cloudprint";
+    "trk:199:https://www.google.com/support/cloudprint";
 
 const char kCloudPrintTestPageURL[] =
-    "http://www.google.com/landing/cloudprint/enable.html?print=true";
+    "trk:200:http://www.google.com/landing/cloudprint/enable.html?print=true";
 
 namespace {
 
 // Url must not be matched by "urls" section of
 // cloud_print_app/manifest.json. If it's matched, print driver dialog will
 // open sign-in page in separate window.
-const char kCloudPrintURL[] = "https://www.google.com/cloudprint";
+const char kCloudPrintURL[] = "trk:201:https://www.google.com/cloudprint";
 
-const char kCloudDevicesUrl[] = "https://www.googleapis.com/clouddevices/v1";
+const char kCloudDevicesUrl[] = "trk:202:https://www.googleapis.com/clouddevices/v1";
 
 }
 
