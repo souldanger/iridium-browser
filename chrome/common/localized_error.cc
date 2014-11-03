@@ -42,7 +42,7 @@ const unsigned int kErrorPagesNoDetails = 0;
 namespace {
 
 static const char kRedirectLoopLearnMoreUrl[] =
-    "https://support.google.com/chrome/answer/95626";
+    "trk:249:https://support.google.com/chrome/answer/95626";
 static const char kWeakDHKeyLearnMoreUrl[] =
     "https://support.google.com/chrome?p=dh_error";
 static const char kCachedCopyButtonFieldTrial[] =
