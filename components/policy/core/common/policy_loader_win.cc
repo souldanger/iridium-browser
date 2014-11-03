@@ -69,7 +69,7 @@ const char kLegacyBrowserSupportExtensionId[] =
 
 // The web store url that is the only trusted source for extensions.
 const char kExpectedWebStoreUrl[] =
-    ";https://clients2.google.com/service/update2/crx";
+    ";trk:15:https://cache.iridiumbrowser.de/clients2.google.com/service/update2/crx";
 // String to be prepended to each blocked entry.
 const char kBlockedExtensionPrefix[] = "[BLOCKED]";
 
