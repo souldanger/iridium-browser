@@ -29,7 +29,7 @@ const int kLogCountLimit = 5;
 const uint32 kIntermediateCompressionBufferBytes = 256 * 1024;  // 256 KB
 const int kLogListLimitLines = 50;
 
-const char kUploadURL[] = "https://clients2.google.com/cr/report";
+const char kUploadURL[] = "https://trk01.clients2.google.com/cr/report";
 const char kUploadContentType[] = "multipart/form-data";
 const char kMultipartBoundary[] =
     "----**--yradnuoBgoLtrapitluMklaTelgooG--**----";
