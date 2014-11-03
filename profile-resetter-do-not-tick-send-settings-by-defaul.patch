@@ -1,4 +1,4 @@
-From 151ce753ffc65483eb444fa72258cc569c669751 Mon Sep 17 00:00:00 2001
+From 6f6c017edd98ce9024f2e10f5bac4d5053f0a5c5 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Tue, 28 Oct 2014 18:45:19 +0100
 Subject: [PATCH 16/25] profile-resetter: do not tick send-settings by default
@@ -10,18 +10,18 @@ suggest to send over the old settings. GTFO.
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/chrome/browser/resources/options/reset_profile_settings_overlay.html b/chrome/browser/resources/options/reset_profile_settings_overlay.html
-index 98d5248..66bef84 100644
+index b92c9fd..dadaad0 100644
 --- a/chrome/browser/resources/options/reset_profile_settings_overlay.html
 +++ b/chrome/browser/resources/options/reset_profile_settings_overlay.html
-@@ -23,7 +23,7 @@
-   </div>
-   <div id="feedback-bar" class="gray-bottom-bar checkbox">
-     <span class="controlled-setting-with-label">
+@@ -24,7 +24,7 @@
+   <div id="feedback-bar"
+       class="gray-bottom-bar checkbox controlled-setting-with-label">
+     <label>
 -      <input id="send-settings" type="checkbox" checked>
 +      <input id="send-settings" type="checkbox">
        <span>
-         <label for="send-settings" i18n-content="resetProfileSettingsFeedback">
-         </label>
+         <span i18n-content="resetProfileSettingsFeedback"></span>
+         <span id="expand-feedback"></span>
 -- 
 2.4.0
 

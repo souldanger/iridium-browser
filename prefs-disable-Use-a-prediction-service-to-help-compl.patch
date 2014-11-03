@@ -1,4 +1,4 @@
-From 01867ae0380977a95a8a2c85a6619b6123ed767e Mon Sep 17 00:00:00 2001
+From 0759246d571c7d2961e9093272159b77a3f6725f Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sat, 13 Sep 2014 15:06:39 +0200
 Subject: [PATCH 03/25] prefs: disable "Use a prediction service to help
@@ -10,7 +10,7 @@ Set suggest_enabled to false by default.
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/chrome/browser/profiles/profile.cc b/chrome/browser/profiles/profile.cc
-index 5b6162d..1fec43e 100644
+index 86326aa..41b550a 100644
 --- a/chrome/browser/profiles/profile.cc
 +++ b/chrome/browser/profiles/profile.cc
 @@ -70,7 +70,7 @@ const char Profile::kProfileKey[] = "__PROFILE__";

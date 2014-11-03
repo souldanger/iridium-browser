@@ -21,5 +21,5 @@ prefs-use-separate-directory-for-config.patch
 first_run-deactivate-autoupdate-globally.patch
 promo-deactivate-default-Google-promotion-fetching.patch
 webrtc-disable-WebRTC-identity-store.patch
-src-flag-evil-connections.patch
 webrtc-generate-real-ephemeral-keys.patch
+src-flag-evil-connections.patch

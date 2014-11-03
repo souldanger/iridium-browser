@@ -1,4 +1,4 @@
-From a934d07519cb8d10629ca6b02fa40a50397584ae Mon Sep 17 00:00:00 2001
+From e71c686476babe3a9322ca482944c71c42649ec0 Mon Sep 17 00:00:00 2001
 From: Joachim Bauch <jojo@struktur.de>
 Date: Mon, 10 Nov 2014 10:54:29 +0100
 Subject: [PATCH 23/25] webrtc: disable WebRTC identity store
@@ -19,7 +19,7 @@ connection.
  1 file changed, 8 insertions(+), 13 deletions(-)
 
 diff --git a/content/browser/media/webrtc_identity_store.cc b/content/browser/media/webrtc_identity_store.cc
-index 4a02b71..3943b60 100644
+index 419cb96..4225acd 100644
 --- a/content/browser/media/webrtc_identity_store.cc
 +++ b/content/browser/media/webrtc_identity_store.cc
 @@ -192,13 +192,13 @@ base::Closure WebRTCIdentityStore::RequestIdentity(

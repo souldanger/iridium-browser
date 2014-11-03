@@ -1,4 +1,4 @@
-From 42a325f370bea29c7390a9b0979f93b6821662d2 Mon Sep 17 00:00:00 2001
+From eaa63cc5847b376560037590fa931c399df5cdfa Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Mon, 15 Sep 2014 10:52:32 +0200
 Subject: [PATCH 12/25] Increase default key length for newly-generated RSA

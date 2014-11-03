@@ -1,4 +1,4 @@
-From 82123a5dcbca56759a5647261b43fabbf8f32861 Mon Sep 17 00:00:00 2001
+From 6e2eb64213bfcc8dafaaf03baefb6724678e789b Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Mon, 22 Sep 2014 10:36:32 +0200
 Subject: [PATCH 14/25] Disable DNSv6 probing
@@ -11,10 +11,10 @@ and you can use the existing --disable-ipv6 if need be.
  1 file changed, 2 insertions(+), 3 deletions(-)
 
 diff --git a/chrome/browser/io_thread.cc b/chrome/browser/io_thread.cc
-index 3c462c7a..7ce72ca 100644
+index ec04faf..d365c29 100644
 --- a/chrome/browser/io_thread.cc
 +++ b/chrome/browser/io_thread.cc
-@@ -208,10 +208,9 @@ scoped_ptr<net::HostResolver> CreateGlobalHostResolver(net::NetLog* net_log) {
+@@ -209,10 +209,9 @@ scoped_ptr<net::HostResolver> CreateGlobalHostResolver(net::NetLog* net_log) {
  #endif
  
    // Determine if we should disable IPv6 support.

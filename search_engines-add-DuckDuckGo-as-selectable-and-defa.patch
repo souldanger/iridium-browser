@@ -1,4 +1,4 @@
-From 0e760f501bd6cda64ae65fd45f5bc4efdfc562f5 Mon Sep 17 00:00:00 2001
+From 1f2ff41f3806ae9cb71d5d95488cc2e8e4e2e570 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sun, 19 Oct 2014 14:49:10 +0200
 Subject: [PATCH 18/25] search_engines: add DuckDuckGo as selectable and
@@ -17,7 +17,7 @@ prepending &duckduckgo yields the desired result, for now at least.
  3 files changed, 121 insertions(+), 108 deletions(-)
 
 diff --git a/components/search_engines/prepopulated_engines.json b/components/search_engines/prepopulated_engines.json
-index c4feb4b..4b8d65e 100644
+index bb99ad3..cb04124 100644
 --- a/components/search_engines/prepopulated_engines.json
 +++ b/components/search_engines/prepopulated_engines.json
 @@ -36,6 +36,17 @@

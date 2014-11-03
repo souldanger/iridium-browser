@@ -1,4 +1,4 @@
-From ea25ccd07b7042d0a4ec7404b2c811c8b43c5058 Mon Sep 17 00:00:00 2001
+From cd6be6650c29011b75218924d45272477758b9a0 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sat, 13 Sep 2014 16:40:17 +0200
 Subject: [PATCH 15/25] first_run: barf if metrics_reporting is activated
@@ -17,7 +17,7 @@ disabled, as no message is emitted.
  1 file changed, 2 insertions(+)
 
 diff --git a/chrome/browser/first_run/first_run_internal_posix.cc b/chrome/browser/first_run/first_run_internal_posix.cc
-index 2cd4b61..3c26a91 100644
+index 683b937..d7ead91 100644
 --- a/chrome/browser/first_run/first_run_internal_posix.cc
 +++ b/chrome/browser/first_run/first_run_internal_posix.cc
 @@ -17,6 +17,7 @@

@@ -1,4 +1,4 @@
-From 3719fbd66e4c55de0072e014e5dc44db6026cc96 Mon Sep 17 00:00:00 2001
+From 84c56f8c8764609b7e30579d71b6b74fd542436b Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sat, 13 Sep 2014 16:55:12 +0200
 Subject: [PATCH 07/25] prefs: disable Cloud Print
@@ -12,10 +12,10 @@ Probably also needs to gain a checkbox in the settings.
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/chrome/browser/ui/browser_ui_prefs.cc b/chrome/browser/ui/browser_ui_prefs.cc
-index fb30809..b9e0fc9 100644
+index 4733c2f..1b16df6 100644
 --- a/chrome/browser/ui/browser_ui_prefs.cc
 +++ b/chrome/browser/ui/browser_ui_prefs.cc
-@@ -113,7 +113,7 @@ void RegisterBrowserUserPrefs(user_prefs::PrefRegistrySyncable* registry) {
+@@ -114,7 +114,7 @@ void RegisterBrowserUserPrefs(user_prefs::PrefRegistrySyncable* registry) {
        user_prefs::PrefRegistrySyncable::UNSYNCABLE_PREF);
    registry->RegisterBooleanPref(
        prefs::kCloudPrintSubmitEnabled,

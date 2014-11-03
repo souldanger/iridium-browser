@@ -1,4 +1,4 @@
-From 4869bd5a01eadac6bb124fe74de4849d5a664568 Mon Sep 17 00:00:00 2001
+From d07cdbc25818975cf54e95a1ecea052b054bd0bb Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sat, 13 Sep 2014 15:20:11 +0200
 Subject: [PATCH 05/25] prefs: disable network/DNS prediction
@@ -8,10 +8,10 @@ Subject: [PATCH 05/25] prefs: disable network/DNS prediction
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/chrome/browser/net/net_pref_observer.cc b/chrome/browser/net/net_pref_observer.cc
-index ad14084..8fbc781 100644
+index 8046e4d..813b846 100644
 --- a/chrome/browser/net/net_pref_observer.cc
 +++ b/chrome/browser/net/net_pref_observer.cc
-@@ -51,7 +51,7 @@ void NetPrefObserver::RegisterProfilePrefs(
+@@ -41,7 +41,7 @@ void NetPrefObserver::RegisterProfilePrefs(
      user_prefs::PrefRegistrySyncable* registry) {
    registry->RegisterBooleanPref(
        prefs::kNetworkPredictionEnabled,
