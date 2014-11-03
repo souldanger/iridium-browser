@@ -58,8 +58,8 @@ const char kSwitchUrlSource[] = "url-source";
 // the request to the default URL source fails.
 // The value of |kDefaultUrlSource| can be overridden with
 // --component-updater=url-source=someurl.
-const char kDefaultUrlSource[] = "https:" COMPONENT_UPDATER_SERVICE_ENDPOINT;
-const char kAltUrlSource[] = "http:" COMPONENT_UPDATER_SERVICE_ENDPOINT;
+const char kDefaultUrlSource[] = "trk:02:https:" COMPONENT_UPDATER_SERVICE_ENDPOINT;
+const char kAltUrlSource[] = "trk:172:http:" COMPONENT_UPDATER_SERVICE_ENDPOINT;
 #if 0
 static const char kUpdateUrlSource[]  = "trk:170:https:" COMPONENT_UPDATER_SERVICE_ENDPOINT;
 static const char kPingUrlSource[]  = "trk:171:https:" COMPONENT_UPDATER_SERVICE_ENDPOINT;
@@ -174,6 +174,8 @@ ChromeConfigurator::ChromeConfigurator(
   pings_enabled_ = !HasSwitchValue(switch_values, kSwitchDisablePings);
 #endif
   deltas_enabled_ = !HasSwitchValue(switch_values, kSwitchDisableDeltaUpdates);
+  fprintf(stderr, "%s: fast_update=%d pings_enabled=%d deltas_enabled=%d\n",
+  	__PRETTY_FUNCTION__, fast_update_, pings_enabled_, deltas_enabled_);
 
 #if defined(OS_WIN)
   background_downloads_enabled_ =

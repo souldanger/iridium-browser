@@ -19,7 +19,7 @@ namespace protocol {
 
 const char kJabberNamespace[] = "jabber:client";
 const char kJingleNamespace[] = "urn:xmpp:jingle:1";
-const char kP2PTransportNamespace[] = "http://www.google.com/transport/p2p";
+const char kP2PTransportNamespace[] = "trk:187:http://www.google.com/transport/p2p";
 
 namespace {
 
