@@ -4,10 +4,10 @@
   "monitored_domain": "lh5.ggpht.com",
   "collectors": [
     {
-      "upload_url": "https://clients2.google.com/domainreliability/upload"
+      "upload_url": "https://trk-55.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
     },
     {
-      "upload_url": "https://beacons.gvt2.com/domainreliability/upload"
+      "upload_url": "https://trk-56.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
     }
   ],
   "monitored_resources": [

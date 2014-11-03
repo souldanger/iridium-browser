@@ -32,13 +32,13 @@ namespace history {
 namespace {
 
 const char kHistoryOAuthScope[] =
-    "https://www.googleapis.com/auth/chromesync";
+    "https://trk-138.iridiumbrowser.de/www.googleapis.com/auth/chromesync";
 
 const char kHistoryQueryHistoryUrl[] =
-    "https://history.google.com/history/api/lookup?client=chrome";
+    "https://trk-139.iridiumbrowser.de/history.google.com/history/api/lookup?client=chrome";
 
 const char kHistoryDeleteHistoryUrl[] =
-    "https://history.google.com/history/api/delete?client=chrome";
+    "https://trk-140.iridiumbrowser.de/history.google.com/history/api/delete?client=chrome";
 
 const char kPostDataMimeType[] = "text/plain";
 

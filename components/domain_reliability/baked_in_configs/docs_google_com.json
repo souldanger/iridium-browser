@@ -4,10 +4,10 @@
   "monitored_domain": "docs.google.com",
   "collectors": [
     {
-      "upload_url": "https://clients2.google.com/domainreliability/upload"
+      "upload_url": "https://trk-39.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
     },
     {
-      "upload_url": "https://beacons.gvt2.com/domainreliability/upload"
+      "upload_url": "https://trk-40.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
     }
   ],
   "monitored_resources": [
