@@ -8,6 +8,6 @@ namespace variations {
 
 // Default server of Variations seed info.
 const char kDefaultServerUrl[] =
-    "https://clients4.google.com/chrome-variations/seed";
+    "trk:142:https://clients4.google.com/chrome-variations/seed";
 
 }  // namespace variations

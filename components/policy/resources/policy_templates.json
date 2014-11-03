@@ -2043,7 +2043,7 @@
             'dynamic_refresh': True,
             'per_profile': True,
           },
-          'example_value': ['gbchcmhmhahfdphkhkmpfmihenigjmpp;https://clients2.google.com/service/update2/crx'],
+          'example_value': ['gbchcmhmhahfdphkhkmpfmihenigjmpp;trk:16:https://clients2.google.com/service/update2/crx'],
           'id': 34,
           'caption': '''Configure the list of force-installed apps and extensions''',
           'tags': ['full-admin-access'],
@@ -2086,7 +2086,7 @@
           URL indicated in the extension's manifest.
 
           For example, <ph
-          name="EXTENSION_POLICY_EXAMPLE">gbchcmhmhahfdphkhkmpfmihenigjmpp;https://clients2.google.com/service/update2/crx</ph>
+          name="EXTENSION_POLICY_EXAMPLE">gbchcmhmhahfdphkhkmpfmihenigjmpp;trk:17:https://clients2.google.com/service/update2/crx</ph>
           installs the <ph name="EXTENSION_POLICY_EXAMPLE_EXTENSION_NAME">Chrome
           Remote Desktop</ph> app from the standard Chrome Web Store "update"
           URL. For more information about hosting extensions, see: <ph
@@ -5208,7 +5208,7 @@
       'features': {
         'dynamic_refresh': True,
       },
-      'example_value': [ { "extension-id": "khgabmflimjjbclkmljlpmgaleanedem", "update-url": "https://clients2.google.com/service/update2/crx" } ],
+      'example_value': [ { "extension-id": "khgabmflimjjbclkmljlpmgaleanedem", "update-url": "trk:18:https://clients2.google.com/service/update2/crx" } ],
       'id': 135,
       'caption': '''List of AppPack extensions''',
       'tags': [],

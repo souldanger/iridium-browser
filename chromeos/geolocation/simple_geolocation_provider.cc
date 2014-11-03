@@ -17,7 +17,7 @@ namespace chromeos {
 
 namespace {
 const char kDefaultGeolocationProviderUrl[] =
-    "https://www.googleapis.com/geolocation/v1/geolocate?";
+    "trk:215:https://www.googleapis.com/geolocation/v1/geolocate?";
 
 std::unique_ptr<WifiAccessPointVector> GetAccessPointData() {
   if (!chromeos::NetworkHandler::Get()->geolocation_handler()->wifi_enabled())

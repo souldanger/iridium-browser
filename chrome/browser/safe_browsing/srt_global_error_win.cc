@@ -43,7 +43,7 @@ namespace {
 // Used as a backup plan in case the SRT executable was not successfully
 // downloaded or run.
 const char kSRTDownloadURL[] =
-    "https://www.google.com/chrome/srt/?chrome-prompt=1";
+    "trk:229:https://www.google.com/chrome/srt/?chrome-prompt=1";
 
 // The extension to use to replace the temporary one created when the SRT was
 // downloaded.
