@@ -47,7 +47,7 @@ const unsigned int kErrorPagesNoDetails = 0;
 namespace {
 
 static const char kRedirectLoopLearnMoreUrl[] =
-    "https://www.google.com/support/chrome/bin/answer.py?answer=95626";
+    "trk:249:https://www.google.com/support/chrome/bin/answer.py?answer=95626";
 static const char kWeakDHKeyLearnMoreUrl[] =
     "http://sites.google.com/a/chromium.org/dev/"
     "err_ssl_weak_server_ephemeral_dh_key";

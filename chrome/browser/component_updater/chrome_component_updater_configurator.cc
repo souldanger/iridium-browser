@@ -61,8 +61,8 @@ const char kSwitchUrlSource[] = "url-source";
 // The value of |kDefaultUrlSource| can be overridden with
 // --component-updater=url-source=someurl.
 #if 0
-const char kDefaultUrlSource[] = "https:" COMPONENT_UPDATER_SERVICE_ENDPOINT;
-const char kAltUrlSource[] = "http:" COMPONENT_UPDATER_SERVICE_ENDPOINT;
+const char kDefaultUrlSource[] = "trk:02:https:" COMPONENT_UPDATER_SERVICE_ENDPOINT;
+const char kAltUrlSource[] = "trk:172:http:" COMPONENT_UPDATER_SERVICE_ENDPOINT;
 static const char kUpdateUrlSource[]  = "trk:170:https:" COMPONENT_UPDATER_SERVICE_ENDPOINT;
 static const char kPingUrlSource[]  = "trk:171:https:" COMPONENT_UPDATER_SERVICE_ENDPOINT;
 #endif
