@@ -36,7 +36,7 @@
 namespace {
 
 const wchar_t kHelpCenterUrl[] =
-    L"https://www.google.com/support/chrome/bin/answer.py?answer=150752";
+    L"trk:136:https://www.google.com/support/chrome/bin/answer.py?answer=150752";
 
 enum ButtonTags {
   BT_NONE,

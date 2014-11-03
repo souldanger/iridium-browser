@@ -23,7 +23,7 @@
 using bookmarks::BookmarkNode;
 
 namespace {
-const char kClusterUrl[] = "https://www.google.com/stars/cluster";
+const char kClusterUrl[] = "trk:196:https://www.google.com/stars/cluster";
 const int kPrefServiceVersion = 1;
 const char kPrefServiceVersionKey[] = "version";
 const char kPrefServiceDataKey[] = "data";
