@@ -1,0 +1,43 @@
+From 5f0bb4dc7d3abaea81ad5ea06bcf061313537b2d Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Mon, 13 Oct 2014 12:28:51 +0200
+Subject: [PATCH 17/21] common: change the User-Agent string to read Iridium
+
+Continue providing Chrome/* for possible compatibility checks by the browser
+and/or websites, since we really are still Chromium.
+---
+ chrome/common/chrome_version_info.cc | 2 +-
+ content/common/user_agent.cc         | 4 ++++
+ 2 files changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/chrome/common/chrome_version_info.cc b/chrome/common/chrome_version_info.cc
+index 5daa6d1..302dfda 100644
+--- a/chrome/common/chrome_version_info.cc
++++ b/chrome/common/chrome_version_info.cc
+@@ -19,7 +19,7 @@ namespace chrome {
+ std::string VersionInfo::ProductNameAndVersionForUserAgent() const {
+   if (!is_valid())
+     return std::string();
+-  return "Chrome/" + Version();
++  return "Iridium/" + Version();
+ }
+ 
+ #if defined(OS_WIN) || defined(OS_MACOSX)
+diff --git a/content/common/user_agent.cc b/content/common/user_agent.cc
+index 2255bad..4f08d15 100644
+--- a/content/common/user_agent.cc
++++ b/content/common/user_agent.cc
+@@ -191,6 +191,10 @@ std::string BuildUserAgentFromOSAndProduct(const std::string& os_info,
+       product.c_str(),
+       WEBKIT_VERSION_MAJOR,
+       WEBKIT_VERSION_MINOR);
++  if (strncmp(product.c_str(), "Iridium/", 8) == 0) {
++  	const char *p = strchr(product.c_str(), '/') + 1;
++  	base::StringAppendF(&user_agent, " Chrome/%s", p);
++  }
+   return user_agent;
+ }
+ 
+-- 
+2.4.0
+

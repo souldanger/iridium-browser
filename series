@@ -12,6 +12,10 @@ prefs-only-keep-cookies-until-exit.patch
 Increase-default-key-length-for-newly-generated-RSA-.patch
 dns-send-IPv6-connectivity-probes-to-our-own-server.patch
 Disable-DNSv6-probing.patch
-check-if-metrics_reporting-is-inadvertently-activate.patch
-check-for-autoupdate_enabled.patch
-Extend-our-User-Agent-string.patch
+first_run-barf-if-metrics_reporting-is-activated.patch
+profile-resetter-do-not-tick-send-settings-by-defaul.patch
+common-change-the-User-Agent-string-to-read-Iridium.patch
+search_engines-add-DuckDuckGo-as-selectable-and-defa.patch
+prefs-disable-translation-service.patch
+first_run-barf-if-autoupdate-is-activated.patch
+Flag-all-clients2.googleclients.com.patch

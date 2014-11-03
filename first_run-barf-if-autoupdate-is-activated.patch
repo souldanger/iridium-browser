@@ -1,8 +1,17 @@
-From df4f369eda17248a0f229ace6e25dd25efb28f08 Mon Sep 17 00:00:00 2001
+From 292df56c579d31479755f5bc8c3dbe3fe935a041 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sat, 13 Sep 2014 17:12:43 +0200
-Subject: [PATCH 16/17] check for autoupdate_enabled
+Subject: [PATCH 20/21] first_run: barf if autoupdate is activated
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 
+This patch is for debugging purposes and is meant for discovering
+whether — despite our patching efforts — autoupdate is still
+enabled somehow, and if so, say so on stderr.
+
+Result: As of October 2014, autoupdate_enabled still is enabled
+and a message emitted.
 ---
  chrome/browser/extensions/extension_system_impl.cc | 1 +
  1 file changed, 1 insertion(+)

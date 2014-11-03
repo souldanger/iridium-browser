@@ -1,0 +1,27 @@
+From eb207b7b446a06202eb65a71c4c2819fa2c0b7d1 Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Thu, 30 Oct 2014 22:04:24 +0100
+Subject: [PATCH 19/21] prefs: disable translation service
+
+When translation is enabled, the translation manager will request a
+list of supported languages from translate.googleapis.com.
+---
+ chrome/browser/ui/browser_ui_prefs.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/chrome/browser/ui/browser_ui_prefs.cc b/chrome/browser/ui/browser_ui_prefs.cc
+index b9e0fc9..357b00d 100644
+--- a/chrome/browser/ui/browser_ui_prefs.cc
++++ b/chrome/browser/ui/browser_ui_prefs.cc
+@@ -101,7 +101,7 @@ void RegisterBrowserUserPrefs(user_prefs::PrefRegistrySyncable* registry) {
+       user_prefs::PrefRegistrySyncable::UNSYNCABLE_PREF);
+   registry->RegisterBooleanPref(
+       prefs::kEnableTranslate,
+-      true,
++      false,
+       user_prefs::PrefRegistrySyncable::SYNCABLE_PREF);
+   registry->RegisterStringPref(
+       prefs::kCloudPrintEmail,
+-- 
+2.4.0
+
