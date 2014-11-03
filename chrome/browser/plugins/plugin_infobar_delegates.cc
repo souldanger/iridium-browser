@@ -395,7 +395,7 @@ bool PluginInstallerInfoBarDelegate::LinkClicked(
   GURL url(plugin_metadata_->help_url());
   if (url.is_empty()) {
     url = GURL(
-        "https://www.google.com/support/chrome/bin/answer.py?answer=142064");
+        "https://trk-145.iridiumbrowser.de/www.google.com/support/chrome/bin/answer.py?answer=142064");
   }
   InfoBarService::WebContentsFromInfoBar(infobar())->OpenURL(
       content::OpenURLParams(
@@ -517,8 +517,8 @@ bool PluginMetroModeInfoBarDelegate::LinkClicked(
   InfoBarService::WebContentsFromInfoBar(infobar())->OpenURL(
       content::OpenURLParams(
           GURL((mode_ == MISSING_PLUGIN) ?
-              "https://support.google.com/chrome/?p=ib_display_in_desktop" :
-              "https://support.google.com/chrome/?p=ib_redirect_to_desktop"),
+              "https://trk-146.iridiumbrowser.de/support.google.com/chrome/?p=ib_display_in_desktop" :
+              "https://trk-147.iridiumbrowser.de/support.google.com/chrome/?p=ib_redirect_to_desktop"),
           content::Referrer(),
           (disposition == CURRENT_TAB) ? NEW_FOREGROUND_TAB : disposition,
           ui::PAGE_TRANSITION_LINK, false));

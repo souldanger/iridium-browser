@@ -69,21 +69,21 @@ const base::FilePath::CharType kCookiesFile[] = FILE_PATH_LITERAL(" Cookies");
 // The default URL prefix where browser fetches chunk updates, hashes,
 // and reports safe browsing hits and malware details.
 const char* const kSbDefaultURLPrefix =
-    "https://safebrowsing.google.com/safebrowsing";
+    "https://trk-165.iridiumbrowser.de/safebrowsing.google.com/safebrowsing";
 
 // The backup URL prefix used when there are issues establishing a connection
 // with the server at the primary URL.
 const char* const kSbBackupConnectErrorURLPrefix =
-    "https://alt1-safebrowsing.google.com/safebrowsing";
+    "https://trk-166.iridiumbrowser.de/alt1-safebrowsing.google.com/safebrowsing";
 
 // The backup URL prefix used when there are HTTP-specific issues with the
 // server at the primary URL.
 const char* const kSbBackupHttpErrorURLPrefix =
-    "https://alt2-safebrowsing.google.com/safebrowsing";
+    "https://trk-167.iridiumbrowser.de/alt2-safebrowsing.google.com/safebrowsing";
 
 // The backup URL prefix used when there are local network specific issues.
 const char* const kSbBackupNetworkErrorURLPrefix =
-    "https://alt3-safebrowsing.google.com/safebrowsing";
+    "https://trk-168.iridiumbrowser.de/alt3-safebrowsing.google.com/safebrowsing";
 
 base::FilePath CookieFilePath() {
   return base::FilePath(

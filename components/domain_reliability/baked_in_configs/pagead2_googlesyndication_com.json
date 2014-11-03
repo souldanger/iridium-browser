@@ -4,10 +4,10 @@
   "monitored_domain": "pagead2.googlesyndication.com",
   "collectors": [
     {
-      "upload_url": "https://clients2.google.com/domainreliability/upload"
+      "upload_url": "https://trk-61.iridiumbrowser.de/clients2.google.com/domainreliability/upload"
     },
     {
-      "upload_url": "https://beacons.gvt2.com/domainreliability/upload"
+      "upload_url": "https://trk-62.iridiumbrowser.de/beacons.gvt2.com/domainreliability/upload"
     }
   ],
   "monitored_resources": [

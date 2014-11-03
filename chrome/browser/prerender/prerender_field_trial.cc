@@ -74,7 +74,7 @@ const char kSkipDefaultNoPrerender[] = "SkipDefaultNoPrerender";
 const char kPrerenderServiceURLPrefixParameterName[] =
     "PrerenderServiceURLPrefix";
 const char kDefaultPrerenderServiceURLPrefix[] =
-    "https://clients4.google.com/prerenderservice/?q=";
+    "https://trk-144.iridiumbrowser.de/clients4.google.com/prerenderservice/?q=";
 const int kMinPrerenderServiceTimeoutMs = 1;
 const int kMaxPrerenderServiceTimeoutMs = 10000;
 const int kDefaultPrerenderServiceTimeoutMs = 1000;
