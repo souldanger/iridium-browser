@@ -58,6 +58,6 @@ GURL ObsoleteSystemInfoBarDelegate::GetLinkURL() const {
 #if defined(OS_MACOSX)
   return GURL(chrome::kMac32BitDeprecationURL);
 #else
-  return GURL("https://support.google.com/chrome/answer/95411");
+  return GURL("trk:241:https://support.google.com/chrome/answer/95411");
 #endif
 }

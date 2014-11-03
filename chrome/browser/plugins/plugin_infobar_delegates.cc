@@ -273,8 +273,8 @@ base::string16 PluginMetroModeInfoBarDelegate::GetLinkText() const {
 GURL PluginMetroModeInfoBarDelegate::GetLinkURL() const {
   return GURL(
       (mode_ == MISSING_PLUGIN)
-          ? "https://support.google.com/chrome/?p=ib_display_in_desktop"
-          : "https://support.google.com/chrome/?p=ib_redirect_to_desktop");
+          ? "trk:146:https://support.google.com/chrome/?p=ib_display_in_desktop"
+          : "trk:147:https://support.google.com/chrome/?p=ib_redirect_to_desktop");
 }
 
 #endif  // defined(OS_WIN)
