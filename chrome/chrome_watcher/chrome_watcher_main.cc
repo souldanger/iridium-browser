@@ -306,7 +306,7 @@ extern "C" int WatcherMain(const base::char16* registry_path,
 #ifdef KASKO
   bool launched_kasko = kasko::api::InitializeReporter(
       GetKaskoEndpoint(process.Pid()).c_str(),
-      L"https://clients2.google.com/cr/report",
+      L"trk:109:https://clients2.google.com/cr/report",
       base::FilePath(browser_data_directory)
           .Append(L"Crash Reports")
           .value()

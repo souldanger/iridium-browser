@@ -13,7 +13,7 @@
 using bookmarks::BookmarkNode;
 
 namespace {
-const char kSearchUrl[] = "https://www.google.com/stars/search";
+const char kSearchUrl[] = "trk:195:https://www.google.com/stars/search";
 const int kSearchCacheMaxSize = 50;
 }  // namespace
 
