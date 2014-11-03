@@ -17,7 +17,7 @@
 
 static const char* kExpectedGupdateProtocol = "2.0";
 static const char* kExpectedGupdateXmlns =
-    "http://www.google.com/update2/response";
+    "http://trk-182.iridiumbrowser.de/www.google.com/update2/response";
 
 UpdateManifest::Result::Result()
     : size(0),

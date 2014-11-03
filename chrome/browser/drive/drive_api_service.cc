@@ -68,11 +68,11 @@ namespace drive {
 namespace {
 
 // OAuth2 scopes for Drive API.
-const char kDriveScope[] = "https://www.googleapis.com/auth/drive";
+const char kDriveScope[] = "https://trk-217.iridiumbrowser.de/www.googleapis.com/auth/drive";
 const char kDriveAppsReadonlyScope[] =
-    "https://www.googleapis.com/auth/drive.apps.readonly";
-const char kDriveAppsScope[] = "https://www.googleapis.com/auth/drive.apps";
-const char kDocsListScope[] = "https://docs.google.com/feeds/";
+    "https://trk-218.iridiumbrowser.de/www.googleapis.com/auth/drive.apps.readonly";
+const char kDriveAppsScope[] = "https://trk-219.iridiumbrowser.de/www.googleapis.com/auth/drive.apps";
+const char kDocsListScope[] = "https://trk-135.iridiumbrowser.de/docs.google.com/feeds/";
 
 // Mime type to create a directory.
 const char kFolderMimeType[] = "application/vnd.google-apps.folder";

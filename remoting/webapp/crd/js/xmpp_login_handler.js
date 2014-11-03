@@ -236,7 +236,7 @@ remoting.XmppLoginHandler.prototype.onTlsStarted = function() {
              'auth:allow-generated-jid="true" ' +
              'auth:client-uses-full-bind-result="true" ' +
              'auth:allow-non-google-login="true" ' +
-             'xmlns:auth="http://www.google.com/talk/protocol/auth">' +
+             'xmlns:auth="http://trk-176.iridiumbrowser.de/www.google.com/talk/protocol/auth">' +
         cookie +
       '</auth>');
 };

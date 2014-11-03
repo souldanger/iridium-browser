@@ -20,7 +20,7 @@
 #include "net/url_request/url_request_context.h"
 #include "url/gurl.h"
 
-const char kCloudPrintUrl[] = "https://www.google.com/cloudprint";
+const char kCloudPrintUrl[] = "https://trk-256.iridiumbrowser.de/www.google.com/cloudprint";
 
 namespace {
 
