@@ -76,11 +76,11 @@ const int ClientSideDetectionService::kNegativeCacheIntervalDays = 1;
 const int ClientSideDetectionService::kPositiveCacheIntervalMinutes = 30;
 
 const char ClientSideDetectionService::kClientReportPhishingUrl[] =
-    "https://sb-ssl.google.com/safebrowsing/clientreport/phishing";
+    "https://148.trk.iridiumbrowser.de/sb-ssl.google.com/safebrowsing/clientreport/phishing";
 const char ClientSideDetectionService::kClientReportMalwareUrl[] =
-    "https://sb-ssl.google.com/safebrowsing/clientreport/malware-check";
+    "https://149.trk.iridiumbrowser.de/sb-ssl.google.com/safebrowsing/clientreport/malware-check";
 const char ClientSideDetectionService::kClientModelUrl[] =
-    "https://ssl.gstatic.com/safebrowsing/csd/client_model_v5.pb";
+    "https://150.trk.iridiumbrowser.de/ssl.gstatic.com/safebrowsing/csd/client_model_v5.pb";
 
 struct ClientSideDetectionService::ClientReportInfo {
   ClientReportPhishingRequestCallback callback;

@@ -9,7 +9,7 @@ namespace extension_urls {
 namespace {
 
 const char kGalleryUpdateHttpsUrl[] =
-    "https://clients2.google.com/service/update2/crx";
+    "https://05.trk.iridiumbrowser.de/clients2.google.com/service/update2/crx";
 
 }  // namespace
 
