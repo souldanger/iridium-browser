@@ -16,7 +16,7 @@ var remoting = remoting || {};
  */
 remoting.manageHelpAndFeedback = function(container) {
   var showHelp = function() {
-    window.open('https://www.google.com/support/chrome/bin/answer.py?' +
+    window.open('trk:177:https://www.google.com/support/chrome/bin/answer.py?' +
                 'answer=1649523');
   }
   var helpButton = container.querySelector('.menu-help');

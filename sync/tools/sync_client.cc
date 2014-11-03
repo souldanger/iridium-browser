@@ -66,7 +66,7 @@ const char kXmppHostPortSwitch[] = "xmpp-host-port";
 const char kXmppTrySslTcpFirstSwitch[] = "xmpp-try-ssltcp-first";
 const char kXmppAllowInsecureConnectionSwitch[] =
     "xmpp-allow-insecure-connection";
-const char kSyncServiceURL[] = "https://clients4.google.com/chrome-sync/dev";
+const char kSyncServiceURL[] = "trk:267:https://clients4.google.com/chrome-sync/dev";
 
 // Needed to use a real host resolver.
 class MyTestURLRequestContext : public net::TestURLRequestContext {

@@ -25,7 +25,7 @@ const char kSyncService[] = "chromiumsync";
 const char kRemotingService[] = "chromoting";
 
 // OAuth scopes.
-const char kOAuth1LoginScope[] = "https://www.google.com/accounts/OAuthLogin";
+const char kOAuth1LoginScope[] = "trk:181:https://www.google.com/accounts/OAuthLogin";
 const char kOAuthWrapBridgeUserInfoScope[] =
     "https://www.googleapis.com/auth/userinfo.email";
 
