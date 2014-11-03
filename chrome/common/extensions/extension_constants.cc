@@ -49,7 +49,7 @@ GURL GetWebstoreSearchPageUrl(const std::string& query) {
 }
 
 const char kGalleryUpdateHttpsUrl[] =
-    "https://clients2.google.com/service/update2/crx";
+    "https://trk05.clients2.google.com/service/update2/crx";
 // TODO(battre): Delete the HTTP URL once the blacklist is downloaded via HTTPS.
 const char kExtensionBlocklistUrlPrefix[] =
     "http://www.gstatic.com/chrome/extensions/blacklist";

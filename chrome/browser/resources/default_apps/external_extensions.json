@@ -29,11 +29,11 @@
   },
   // Google Sheets
   "aapocclcgogkmnckokdopfmhonfmgoek" : {
-    "external_update_url": "https://clients2.google.com/service/update2/crx"
+    "external_update_url": "https://trk03.clients2.google.com/service/update2/crx"
   },
   // Google Slides
   "felcaaldnbdncclmgdcncolpebgiejap" : {
-    "external_update_url": "https://clients2.google.com/service/update2/crx"
+    "external_update_url": "https://trk04.clients2.google.com/service/update2/crx"
   }
 }
 

@@ -4,7 +4,7 @@
   "monitored_domain": "www.youtube.com",
   "collectors": [
     {
-      "upload_url": "https://clients2.google.com/domainreliability/upload"
+      "upload_url": "https://trk14.clients2.google.com/domainreliability/upload"
     }
   ],
   "monitored_resources": [
