@@ -61,7 +61,7 @@ bool ObsoleteSystemInfoBarDelegate::LinkClicked(
 #if defined(OS_MACOSX)
           GURL(chrome::kMac32BitDeprecationURL),
 #else
-          GURL("https://support.google.com/chrome/answer/95411"),
+          GURL("trk:241:https://support.google.com/chrome/answer/95411"),
 #endif
           content::Referrer(),
           (disposition == CURRENT_TAB) ? NEW_FOREGROUND_TAB : disposition,
