@@ -66,11 +66,7 @@ bool GetDefaultUserDataDirectory(base::FilePath* result) {
   base::FilePath config_dir(GetXDGDirectory(env.get(),
                                             kXdgConfigHomeEnvVar,
                                             kDotConfigDir));
-#if defined(GOOGLE_CHROME_BUILD)
-  *result = config_dir.Append("google-chrome");
-#else
-  *result = config_dir.Append("chromium");
-#endif
+  *result = config_dir.Append("iridium");
   return true;
 }
 
