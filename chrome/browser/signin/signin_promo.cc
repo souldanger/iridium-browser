@@ -102,6 +102,7 @@ bool ShouldShowPromo(Profile* profile) {
 
 bool ShouldShowPromoAtStartup(Profile* profile, bool is_new_profile) {
   DCHECK(profile);
+  return false;
 
   // Don't show if the profile is an incognito.
   if (profile->IsOffTheRecord())
@@ -258,11 +259,11 @@ void RegisterProfilePrefs(
       user_prefs::PrefRegistrySyncable::UNSYNCABLE_PREF);
   registry->RegisterBooleanPref(
       prefs::kSignInPromoUserSkipped,
-      false,
+      true,
       user_prefs::PrefRegistrySyncable::UNSYNCABLE_PREF);
   registry->RegisterBooleanPref(
       prefs::kSignInPromoShowOnFirstRunAllowed,
-      true,
+      false,
       user_prefs::PrefRegistrySyncable::UNSYNCABLE_PREF);
   registry->RegisterBooleanPref(
       prefs::kSignInPromoShowNTPBubble,
