@@ -1063,7 +1063,9 @@ void BrowserProcessImpl::PreMainMessageLoopRun() {
   if (!command_line.HasSwitch(switches::kDisableWebResources)) {
     DCHECK(!promo_resource_service_.get());
     promo_resource_service_.reset(new PromoResourceService);
+#if 0
     promo_resource_service_->StartAfterDelay();
+#endif
   }
 
 #if !defined(OS_ANDROID) && !defined(OS_IOS)
