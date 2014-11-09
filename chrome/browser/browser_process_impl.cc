@@ -1082,7 +1082,9 @@ void BrowserProcessImpl::PreMainMessageLoopRun() {
         local_state(), chrome::GetChannel(), GetApplicationLocale(),
         system_request_context(), switches::kDisableBackgroundNetworking,
         base::Bind(safe_json::SafeJsonParser::Parse)));
+#if 0
     promo_resource_service_->StartAfterDelay();
+#endif
   }
 
 #if !defined(OS_ANDROID) && !defined(OS_IOS)
