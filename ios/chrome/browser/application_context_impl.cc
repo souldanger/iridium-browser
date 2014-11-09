@@ -1,4 +1,4 @@
-// Copyright 2014 The Chromium Authors. All rights reserved.
+\// Copyright 2014 The Chromium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -116,7 +116,9 @@ void ApplicationContextImpl::PreMainMessageLoopRun() {
         GetLocalState(), ::GetChannel(), GetApplicationLocale(),
         GetSystemURLRequestContext(), kDummyDisableBackgroundNetworking,
         web_resource::GetIOSChromeParseJSONCallback()));
+#if 0
     promo_resource_service_->StartAfterDelay();
+#endif
   }
 }
 

@@ -34,7 +34,7 @@ namespace {
 
 const int kDefaultGroupSize = 100;
 
-const char promo_server_url[] = "https://clients3.google.com/crsignal/client";
+const char promo_server_url[] = "trk:122:about:blank";
 
 // The name of the preference that stores the promotion object.
 const char kPrefPromoObject[] = "promo";
