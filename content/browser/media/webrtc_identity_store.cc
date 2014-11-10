@@ -192,13 +192,13 @@ base::Closure WebRTCIdentityStore::RequestIdentity(
   if (!request) {
     request = new WebRTCIdentityRequest(origin, identity_name, common_name);
     // |request| will delete itself after the result is posted.
-    if (!backend_->FindIdentity(
-            origin,
-            identity_name,
-            common_name,
-            base::Bind(
-                &WebRTCIdentityStore::BackendFindCallback, this, request))) {
-      // Bail out if the backend failed to start the task.
+    if (!BrowserThread::PostTask(
+          BrowserThread::IO,
+          FROM_HERE,
+          base::Bind(base::Bind(
+                &WebRTCIdentityStore::BackendFindCallback, this, request),
+                net::ERR_FILE_NOT_FOUND, "", ""))) {
+      // Bail out if the task could not be started.
       delete request;
       return base::Closure();
     }
@@ -272,12 +272,7 @@ void WebRTCIdentityStore::GenerateIdentityCallback(
     WebRTCIdentityRequestResult* result) {
   DCHECK_CURRENTLY_ON(BrowserThread::IO);
   if (result->error == net::OK) {
-    DVLOG(2) << "New identity generated and added to the backend.";
-    backend_->AddIdentity(request->origin_,
-                          request->identity_name_,
-                          request->common_name_,
-                          result->certificate,
-                          result->private_key);
+    DVLOG(2) << "New identity generated.";
   }
   PostRequestResult(request, *result);
 }
