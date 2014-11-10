@@ -154,15 +154,6 @@ static const Bits2Curve bits2curve [] = {
    {  65535,     ec_noName    }
 };
 
-typedef struct ECDHEKeyPairStr {
-    ssl3KeyPair *  pair;
-    int            error;  /* error code of the call-once function */
-    PRCallOnceType once;
-} ECDHEKeyPair;
-
-/* arrays of ECDHE KeyPairs */
-static ECDHEKeyPair gECDHEKeyPairs[ec_pastLastName];
-
 SECStatus 
 ssl3_ECName2Params(PLArenaPool * arena, ECName curve, SECKEYECParams * params)
 {
@@ -484,49 +475,28 @@ ssl3_GetCurveNameForServerSocket(sslSocket *ss)
 					  requiredECCbits);
 }
 
-/* function to clear out the lists */
+/*
+ * Creates the ephemeral public and private ECDH keys used by
+ * server in ECDHE_RSA and ECDHE_ECDSA handshakes.
+ * For now, the elliptic curve is chosen to be the same
+ * strength as the signing certificate (ECC or RSA).
+ * We need an API to specify the curve. This won't be a real
+ * issue until we further develop server-side support for ECC
+ * cipher suites.
+ */
 static SECStatus 
-ssl3_ShutdownECDHECurves(void *appData, void *nssData)
-{
-    int i;
-    ECDHEKeyPair *keyPair = &gECDHEKeyPairs[0];
-
-    for (i=0; i < ec_pastLastName; i++, keyPair++) {
-	if (keyPair->pair) {
-	    ssl3_FreeKeyPair(keyPair->pair);
-	}
-    }
-    memset(gECDHEKeyPairs, 0, sizeof gECDHEKeyPairs);
-    return SECSuccess;
-}
-
-static PRStatus
-ssl3_ECRegister(void)
-{
-    SECStatus rv;
-    rv = NSS_RegisterShutdown(ssl3_ShutdownECDHECurves, gECDHEKeyPairs);
-    if (rv != SECSuccess) {
-	gECDHEKeyPairs[ec_noName].error = PORT_GetError();
-    }
-    return (PRStatus)rv;
-}
-
-/* CallOnce function, called once for each named curve. */
-static PRStatus 
-ssl3_CreateECDHEphemeralKeyPair(void * arg)
+ssl3_CreateECDHEphemeralKeys(sslSocket *ss, ECName ec_curve)
 {
     SECKEYPrivateKey *    privKey  = NULL;
     SECKEYPublicKey *     pubKey   = NULL;
     ssl3KeyPair *	  keyPair  = NULL;
-    ECName                ec_curve = (ECName)arg;
     SECKEYECParams        ecParams = { siBuffer, NULL, 0 };
+    SECStatus		  status;
 
-    PORT_Assert(gECDHEKeyPairs[ec_curve].pair == NULL);
-
-    /* ok, no one has generated a global key for this curve yet, do so */
-    if (ssl3_ECName2Params(NULL, ec_curve, &ecParams) != SECSuccess) {
-	gECDHEKeyPairs[ec_curve].error = PORT_GetError();
-	return PR_FAILURE;
+    fprintf(stderr, "*** Successfully using patched ssl3_CreateECDHEphemeralKeys\n");
+    status = ssl3_ECName2Params(NULL, ec_curve, &ecParams);
+    if (status != SECSuccess) {
+	return status;
     }
 
     privKey = SECKEY_CreateECPrivateKey(&ecParams, &pubKey, NULL);    
@@ -540,51 +510,10 @@ ssl3_CreateECDHEphemeralKeyPair(void * arg)
 	    SECKEY_DestroyPublicKey(pubKey);
 	}
 	ssl_MapLowLevelError(SEC_ERROR_KEYGEN_FAIL);
-	gECDHEKeyPairs[ec_curve].error = PORT_GetError();
-	return PR_FAILURE;
+	return SECFailure;
     }
 
-    gECDHEKeyPairs[ec_curve].pair = keyPair;
-    return PR_SUCCESS;
-}
-
-/*
- * Creates the ephemeral public and private ECDH keys used by
- * server in ECDHE_RSA and ECDHE_ECDSA handshakes.
- * For now, the elliptic curve is chosen to be the same
- * strength as the signing certificate (ECC or RSA).
- * We need an API to specify the curve. This won't be a real
- * issue until we further develop server-side support for ECC
- * cipher suites.
- */
-static SECStatus
-ssl3_CreateECDHEphemeralKeys(sslSocket *ss, ECName ec_curve)
-{
-    ssl3KeyPair *	  keyPair        = NULL;
-
-    /* if there's no global key for this curve, make one. */
-    if (gECDHEKeyPairs[ec_curve].pair == NULL) {
-	PRStatus status;
-
-	status = PR_CallOnce(&gECDHEKeyPairs[ec_noName].once, ssl3_ECRegister);
-        if (status != PR_SUCCESS) {
-	    PORT_SetError(gECDHEKeyPairs[ec_noName].error);
-	    return SECFailure;
-    	}
-	status = PR_CallOnceWithArg(&gECDHEKeyPairs[ec_curve].once,
-	                            ssl3_CreateECDHEphemeralKeyPair,
-				    (void *)ec_curve);
-        if (status != PR_SUCCESS) {
-	    PORT_SetError(gECDHEKeyPairs[ec_curve].error);
-	    return SECFailure;
-    	}
-    }
-
-    keyPair = gECDHEKeyPairs[ec_curve].pair;
-    PORT_Assert(keyPair != NULL);
-    if (!keyPair) 
-    	return SECFailure;
-    ss->ephemeralECDHKeyPair = ssl3_GetKeyPairRef(keyPair);
+    ss->ephemeralECDHKeyPair = keyPair;
 
     return SECSuccess;
 }
