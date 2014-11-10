@@ -149,6 +149,7 @@ static const Bits2Curve bits2curve[] = {
     { 65535, ec_noName }
 };
 
+#if 0
 typedef struct ECDHEKeyPairStr {
     ssl3KeyPair *pair;
     int error; /* error code of the call-once function */
@@ -157,6 +158,7 @@ typedef struct ECDHEKeyPairStr {
 
 /* arrays of ECDHE KeyPairs */
 static ECDHEKeyPair gECDHEKeyPairs[ec_pastLastName];
+#endif
 
 SECStatus
 ssl3_ECName2Params(PLArenaPool *arena, ECName curve, SECKEYECParams *params)
@@ -626,6 +628,7 @@ ssl3_GetCurveNameForServerSocket(sslSocket *ss)
                                           requiredECCbits);
 }
 
+#if 0
 /* function to clear out the lists */
 static SECStatus
 ssl3_ShutdownECDHECurves(void *appData, void *nssData)
@@ -652,6 +655,7 @@ ssl3_ECRegister(void)
     }
     return (PRStatus)rv;
 }
+#endif
 
 /* Create an ECDHE key pair for a given curve */
 SECStatus
@@ -660,10 +664,12 @@ ssl3_CreateECDHEphemeralKeyPair(ECName ec_curve, ssl3KeyPair **keyPair)
     SECKEYPrivateKey *privKey = NULL;
     SECKEYPublicKey *pubKey = NULL;
     SECKEYECParams ecParams = { siBuffer, NULL, 0 };
+    SECStatus status;
 
-    if (ssl3_ECName2Params(NULL, ec_curve, &ecParams) != SECSuccess) {
-        return SECFailure;
-    }
+    fprintf(stderr, "*** Using patched ssl3_CreateECDHEphemeralKeys\n");
+    status = ssl3_ECName2Params(NULL, ec_curve, &ecParams);
+    if (status != SECSuccess)
+        return status;
     privKey = SECKEY_CreateECPrivateKey(&ecParams, &pubKey, NULL);
     SECITEM_FreeItem(&ecParams, PR_FALSE);
 
@@ -681,6 +687,7 @@ ssl3_CreateECDHEphemeralKeyPair(ECName ec_curve, ssl3KeyPair **keyPair)
     return SECSuccess;
 }
 
+#if 0
 /* CallOnce function, called once for each named curve. */
 static PRStatus
 ssl3_CreateECDHEphemeralKeyPairOnce(void *arg)
@@ -699,6 +706,7 @@ ssl3_CreateECDHEphemeralKeyPairOnce(void *arg)
     gECDHEKeyPairs[ec_curve].pair = keyPair;
     return PR_SUCCESS;
 }
+#endif
 
 /*
  * Creates the ephemeral public and private ECDH keys used by
@@ -712,33 +720,7 @@ ssl3_CreateECDHEphemeralKeyPairOnce(void *arg)
 static SECStatus
 ssl3_CreateECDHEphemeralKeys(sslSocket *ss, ECName ec_curve)
 {
-    ssl3KeyPair *keyPair = NULL;
-
-    /* if there's no global key for this curve, make one. */
-    if (gECDHEKeyPairs[ec_curve].pair == NULL) {
-        PRStatus status;
-
-        status = PR_CallOnce(&gECDHEKeyPairs[ec_noName].once, ssl3_ECRegister);
-        if (status != PR_SUCCESS) {
-            PORT_SetError(gECDHEKeyPairs[ec_noName].error);
-            return SECFailure;
-        }
-        status = PR_CallOnceWithArg(&gECDHEKeyPairs[ec_curve].once,
-                                    ssl3_CreateECDHEphemeralKeyPairOnce,
-                                    (void *)ec_curve);
-        if (status != PR_SUCCESS) {
-            PORT_SetError(gECDHEKeyPairs[ec_curve].error);
-            return SECFailure;
-        }
-    }
-
-    keyPair = gECDHEKeyPairs[ec_curve].pair;
-    PORT_Assert(keyPair != NULL);
-    if (!keyPair)
-        return SECFailure;
-    ss->ephemeralECDHKeyPair = ssl3_GetKeyPairRef(keyPair);
-
-    return SECSuccess;
+	return ssl3_CreateECDHEphemeralKeyPair(ec_curve, &ss->ephemeralECDHKeyPair);
 }
 
 SECStatus
