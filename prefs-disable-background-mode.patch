@@ -1,17 +1,17 @@
-From 9c3dde049b0a7fccac553d003d8289801e83f8b9 Mon Sep 17 00:00:00 2001
+From 7334347fbb805319a6ff185f495fac4af4379586 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sat, 13 Sep 2014 16:59:10 +0200
-Subject: [PATCH 08/24] prefs: disable background mode
+Subject: [PATCH 08/25] prefs: disable background mode
 
 ---
  chrome/browser/background/background_mode_manager.cc | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/chrome/browser/background/background_mode_manager.cc b/chrome/browser/background/background_mode_manager.cc
-index d2c79d2..aace3b6 100644
+index d446626..6452a7c 100644
 --- a/chrome/browser/background/background_mode_manager.cc
 +++ b/chrome/browser/background/background_mode_manager.cc
-@@ -255,7 +255,7 @@ void BackgroundModeManager::RegisterPrefs(PrefRegistrySimple* registry) {
+@@ -278,7 +278,7 @@ void BackgroundModeManager::RegisterPrefs(PrefRegistrySimple* registry) {
    registry->RegisterBooleanPref(prefs::kChromeCreatedLoginItem, false);
    registry->RegisterBooleanPref(prefs::kMigratedLoginItemPref, false);
  #endif

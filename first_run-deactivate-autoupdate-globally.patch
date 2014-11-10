@@ -1,7 +1,7 @@
-From 91f2dd8fd8ebce00c362168b789a25712cb4fa97 Mon Sep 17 00:00:00 2001
+From a88a28b0c930ee78ee4c0e65175ef047e99bd22e Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sat, 13 Sep 2014 17:12:43 +0200
-Subject: [PATCH 21/24] first_run: deactivate autoupdate globally
+Subject: [PATCH 21/25] first_run: deactivate autoupdate globally
 
 We do not have a tunable in chrome://settings (or similar) to
 turn it back on.
@@ -10,10 +10,10 @@ turn it back on.
  1 file changed, 3 insertions(+)
 
 diff --git a/chrome/browser/extensions/extension_system_impl.cc b/chrome/browser/extensions/extension_system_impl.cc
-index a9d5dbb..cf0ef27 100644
+index 36f3894..2956270 100644
 --- a/chrome/browser/extensions/extension_system_impl.cc
 +++ b/chrome/browser/extensions/extension_system_impl.cc
-@@ -230,6 +230,9 @@ void ExtensionSystemImpl::Shared::Init(bool extensions_enabled) {
+@@ -313,6 +313,9 @@ void ExtensionSystemImpl::Shared::Init(bool extensions_enabled) {
    runtime_data_.reset(new RuntimeData(ExtensionRegistry::Get(profile_)));
  
    bool autoupdate_enabled = !profile_->IsGuestSession();

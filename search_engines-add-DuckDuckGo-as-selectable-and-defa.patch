@@ -1,7 +1,7 @@
-From 1fee4074139c8cc8ab0f57a218e6da32920a491a Mon Sep 17 00:00:00 2001
+From 0e760f501bd6cda64ae65fd45f5bc4efdfc562f5 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sun, 19 Oct 2014 14:49:10 +0200
-Subject: [PATCH 18/24] search_engines: add DuckDuckGo as selectable and
+Subject: [PATCH 18/25] search_engines: add DuckDuckGo as selectable and
  default search engine
 
 There is a lot of code pertaining to DefaultSearchEngine,
@@ -11,16 +11,50 @@ The default default's seem to default to index 0 in the
 "engines_default" (or language-specific engines_XX) array, so
 prepending &duckduckgo yields the desired result, for now at least.
 ---
- .../template_url_prepopulate_data.cc               | 217 +++++++++++----------
  .../search_engines/prepopulated_engines.json       |  11 ++
  components/search_engines/search_engine_type.h     |   1 +
+ .../template_url_prepopulate_data.cc               | 217 +++++++++++----------
  3 files changed, 121 insertions(+), 108 deletions(-)
 
-diff --git a/chrome/browser/search_engines/template_url_prepopulate_data.cc b/chrome/browser/search_engines/template_url_prepopulate_data.cc
-index fe2af17..b52b586 100644
---- a/chrome/browser/search_engines/template_url_prepopulate_data.cc
-+++ b/chrome/browser/search_engines/template_url_prepopulate_data.cc
-@@ -49,435 +49,435 @@ namespace {
+diff --git a/components/search_engines/prepopulated_engines.json b/components/search_engines/prepopulated_engines.json
+index c4feb4b..4b8d65e 100644
+--- a/components/search_engines/prepopulated_engines.json
++++ b/components/search_engines/prepopulated_engines.json
+@@ -36,6 +36,17 @@
+   // The following engines are included in country lists and are added to the
+   // list of search engines on the first run depending on user's country.
+   "elements": {
++    "duckduckgo": {
++      "name": "DuckDuckGo",
++      "keyword": "duckduckgo.com",
++      "favicon_url": "https://duckduckgo.com/favicon.ico",
++      "search_url": "https://duckduckgo.com/?q={searchTerms}",
++      "suggest_url": "https://duckduckgo.com/?q={searchTerms}&language={language}&kac=1",
++      "new_tab_url": "https://duckduckgo.com/",
++      "type": "SEARCH_ENGINE_DUCKDUCKGO",
++      "id": 11
++    },
++
+     "aol": {
+       "name": "AOL",
+       "keyword": "aol.com",
+diff --git a/components/search_engines/search_engine_type.h b/components/search_engines/search_engine_type.h
+index d49c046..7dba2a7 100644
+--- a/components/search_engines/search_engine_type.h
++++ b/components/search_engines/search_engine_type.h
+@@ -58,6 +58,7 @@ enum SearchEngineType {
+   SEARCH_ENGINE_YAHOO,
+   SEARCH_ENGINE_YANDEX,
+   SEARCH_ENGINE_ZOZNAM,
++  SEARCH_ENGINE_DUCKDUCKGO,
+   SEARCH_ENGINE_MAX          // Bounding value needed for UMA histogram macro.
+ };
+ 
+diff --git a/components/search_engines/template_url_prepopulate_data.cc b/components/search_engines/template_url_prepopulate_data.cc
+index e63a58c..2564d43 100644
+--- a/components/search_engines/template_url_prepopulate_data.cc
++++ b/components/search_engines/template_url_prepopulate_data.cc
+@@ -45,435 +45,435 @@ namespace {
  
  // Default (for countries with no better engine set)
  const PrepopulatedEngine* engines_default[] =
@@ -564,7 +598,7 @@ index fe2af17..b52b586 100644
  
  // A list of all the engines that we know about.
  const PrepopulatedEngine* kAllEngines[] = {
-@@ -491,6 +491,7 @@ const PrepopulatedEngine* kAllEngines[] = {
+@@ -487,6 +487,7 @@ const PrepopulatedEngine* kAllEngines[] = {
    &bing_fr_FR,   &bing_it_IT,   &bing_ja_JP,   &bing_lv_LV,   &bing_nb_NO,
    &bing_nl_BE,   &bing_pl_PL,   &bing_pt_BR,   &bing_pt_PT,   &bing_ru_RU,
    &bing_sv_SE,   &bing_tr_TR,   &bing_zh_HK,   &bing_zh_TW,   &daum,
@@ -572,40 +606,6 @@ index fe2af17..b52b586 100644
    &google,       &kvasir,       &mail_ru,      &najdi,        &naver,
    &onet,         &seznam,       &sogou,        &vinden,       &virgilio,
    &yahoo,        &yahoo_ar,     &yahoo_at,     &yahoo_au,     &yahoo_br,
-diff --git a/components/search_engines/prepopulated_engines.json b/components/search_engines/prepopulated_engines.json
-index 4b7f720..5cbf016 100644
---- a/components/search_engines/prepopulated_engines.json
-+++ b/components/search_engines/prepopulated_engines.json
-@@ -33,6 +33,17 @@
-   // The following engines are included in country lists and are added to the
-   // list of search engines on the first run depending on user's country.
-   "elements": {
-+    "duckduckgo": {
-+      "name": "DuckDuckGo",
-+      "keyword": "duckduckgo.com",
-+      "favicon_url": "https://duckduckgo.com/favicon.ico",
-+      "search_url": "https://duckduckgo.com/?q={searchTerms}",
-+      "suggest_url": "https://duckduckgo.com/?q={searchTerms}&language={language}&kac=1",
-+      "new_tab_url": "https://duckduckgo.com/",
-+      "type": "SEARCH_ENGINE_DUCKDUCKGO",
-+      "id": 11
-+    },
-+
-     "aol": {
-       "name": "AOL",
-       "keyword": "aol.com",
-diff --git a/components/search_engines/search_engine_type.h b/components/search_engines/search_engine_type.h
-index d49c046..7dba2a7 100644
---- a/components/search_engines/search_engine_type.h
-+++ b/components/search_engines/search_engine_type.h
-@@ -58,6 +58,7 @@ enum SearchEngineType {
-   SEARCH_ENGINE_YAHOO,
-   SEARCH_ENGINE_YANDEX,
-   SEARCH_ENGINE_ZOZNAM,
-+  SEARCH_ENGINE_DUCKDUCKGO,
-   SEARCH_ENGINE_MAX          // Bounding value needed for UMA histogram macro.
- };
- 
 -- 
 2.4.0
 

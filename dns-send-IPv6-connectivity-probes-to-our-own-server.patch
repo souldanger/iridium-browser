@@ -1,17 +1,17 @@
-From 8f43ac1dd3dbb459db3835ef66e391ec4521f031 Mon Sep 17 00:00:00 2001
+From 2f1052e85eb20376eccd823af13ca06edae9eedb Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Mon, 15 Sep 2014 10:58:42 +0200
-Subject: [PATCH 13/24] dns: send IPv6 connectivity probes to our own server
+Subject: [PATCH 13/25] dns: send IPv6 connectivity probes to our own server
 
 ---
  net/dns/host_resolver_impl.cc | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/net/dns/host_resolver_impl.cc b/net/dns/host_resolver_impl.cc
-index d5602a4..558c8af 100644
+index 136941d..0f319d2 100644
 --- a/net/dns/host_resolver_impl.cc
 +++ b/net/dns/host_resolver_impl.cc
-@@ -2149,8 +2149,8 @@ HostResolverImpl::Key HostResolverImpl::GetEffectiveKeyForRequest(
+@@ -2158,8 +2158,8 @@ HostResolverImpl::Key HostResolverImpl::GetEffectiveKeyForRequest(
        base::TimeTicks start_time = base::TimeTicks::Now();
        // Google DNS address.
        const uint8 kIPv6Address[] =
