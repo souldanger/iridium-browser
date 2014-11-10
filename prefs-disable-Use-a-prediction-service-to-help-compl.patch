@@ -1,7 +1,7 @@
 From 3f59973f4f649ab13727ed2958f6332137d280e8 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sat, 13 Sep 2014 15:06:39 +0200
-Subject: [PATCH 03/23] prefs: disable "Use a prediction service to help
+Subject: [PATCH 03/24] prefs: disable "Use a prediction service to help
  complete searches..."
 
 Set suggest_enabled to false by default.

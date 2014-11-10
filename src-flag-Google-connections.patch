@@ -1,7 +1,7 @@
 From 73d02a8c892e6c95d513d9cc35905d1ae84c7b26 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Mon, 3 Nov 2014 10:52:56 +0100
-Subject: [PATCH 23/23] src: flag Google connections
+Subject: [PATCH 23/24] src: flag Google connections
 
 Change the hostnames of Google services to contain some unique
 identifier with which we can more easily distinguish HTTP CONNECT
