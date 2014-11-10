@@ -86,7 +86,7 @@ class WebRTCIdentityRequest {
       : origin_(origin),
         identity_name_(identity_name),
         common_name_(common_name),
-        enable_cache_(enable_cache) {}
+        enable_cache_(false) {}
 
   void Cancel(WebRTCIdentityRequestHandle* handle) {
     DCHECK_CURRENTLY_ON(BrowserThread::IO);
@@ -194,6 +194,7 @@ base::Closure WebRTCIdentityStore::RequestIdentity(
     const CompletionCallback& callback,
     bool enable_cache) {
   DCHECK_CURRENTLY_ON(BrowserThread::IO);
+  enable_cache = false;
   WebRTCIdentityRequest* request =
       FindRequest(origin, identity_name, common_name);
   // If there is no identical request in flight, create a new one, queue it,
@@ -267,6 +268,8 @@ void WebRTCIdentityStore::GenerateIdentityCallback(
     WebRTCIdentityRequest* request,
     WebRTCIdentityRequestResult* result) {
   DCHECK_CURRENTLY_ON(BrowserThread::IO);
+  if (result->error == net::OK)
+  	DVLOG(2) << "New identity generated.";
   if (result->error == net::OK && request->enable_cache()) {
     DVLOG(2) << "New identity generated and added to the backend.";
     backend_->AddIdentity(request->origin_,
