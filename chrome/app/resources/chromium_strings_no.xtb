@@ -242,7 +242,7 @@ Chromium kan ikke gjenopprette innstillingen dine.</translation>
 <translation id="8823523095753232532">Koble Chromium-dataene mine til denne kontoen.</translation>
 <translation id="1808667845054772817">Installer Chromium på nytt</translation>
 <translation id="1221340462641866827">Chromium OS støtter ikke start av et eksternt program for å håndtere <ph name="SCHEME"/>-linker. Den påkrevde linken er <ph name="PROTOLINK"/>.</translation>
-<translation id="328888136576916638">API-nøkler for Google mangler. Noe funksjonalitet i Chromium blir deaktivert.</translation>
+<translation id="328888136576916638">API-nøkler for Google mangler. Noe funksjonalitet av Google blir deaktivert.</translation>
 <translation id="2602806952220118310">Chromium – varsler</translation>
 <translation id="5032989939245619637">Lagre detaljer i Chromium</translation>
 </translationbundle>
