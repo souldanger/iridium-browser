@@ -240,7 +240,7 @@
 <translation id="8823523095753232532">Связать данные Chromium с этим аккаунтом</translation>
 <translation id="1808667845054772817">Переустановить Chromium</translation>
 <translation id="1221340462641866827">Chromium OS не поддерживает внешних приложений для обработки ссылок <ph name="SCHEME"/>. Запрашиваемая ссылка: <ph name="PROTOLINK"/>.</translation>
-<translation id="328888136576916638">Отсутствуют ключи API Google. Некоторые функции Chromium могут не работать.</translation>
+<translation id="328888136576916638">Отсутствуют ключи API Google. Некоторые функции Google могут не работать.</translation>
 <translation id="2602806952220118310">Chromium - Оповещения</translation>
 <translation id="5032989939245619637">Сохранять данные в Chromium</translation>
 </translationbundle>
