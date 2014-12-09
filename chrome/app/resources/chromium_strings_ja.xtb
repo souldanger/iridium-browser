@@ -245,7 +245,7 @@
 <translation id="8823523095753232532">Chromium データをこのアカウントにリンクする</translation>
 <translation id="1808667845054772817">Chromium を再インストール</translation>
 <translation id="1221340462641866827">Chromium OS では、<ph name="SCHEME"/> リンクの処理に必要な外部アプリケーションの起動がサポートされていません。リクエストされたリンクは <ph name="PROTOLINK"/> です。</translation>
-<translation id="328888136576916638">Google API キーが欠落しています。Chromium の一部の機能は無効になります。</translation>
+<translation id="328888136576916638">Google API キーが欠落してあります。</translation>
 <translation id="2602806952220118310">Chromium - お知らせ</translation>
 <translation id="5032989939245619637">Chromium で詳細を保存する</translation>
 </translationbundle>
