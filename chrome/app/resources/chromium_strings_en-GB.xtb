@@ -269,7 +269,7 @@ Google Chrome is unable to recover your settings.</translation>
 <translation id="8823523095753232532">Link my Chromium data to this account</translation>
 <translation id="1808667845054772817">Reinstall Chromium</translation>
 <translation id="1221340462641866827">Chromium OS does not support launching an external application to handle <ph name="SCHEME"/> links. The link requested is <ph name="PROTOLINK"/>.</translation>
-<translation id="328888136576916638">Google API keys are missing. Some functionality of Chromium will be disabled.</translation>
+<translation id="328888136576916638">Google API keys are not present. Some Google functions will be disabled.</translation>
 <translation id="2602806952220118310">Chromium - Notifications</translation>
 <translation id="5032989939245619637">Save details in Chromium</translation>
 <translation id="8803635938069941624">Chromium OS terms</translation>
