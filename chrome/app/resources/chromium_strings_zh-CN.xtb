@@ -219,7 +219,6 @@ Chromium 无法恢复您的设置。</translation>
 <translation id="8823523095753232532">将我的 Chromium 数据与此帐户关联</translation>
 <translation id="1808667845054772817">重新安装Chromium</translation>
 <translation id="1221340462641866827">Chromium 操作系统不支持启动外部应用处理 <ph name="SCHEME"/> 链接。请求的链接是 <ph name="PROTOLINK"/>。</translation>
-<translation id="328888136576916638">缺少 Google API 密钥，因此 Chromium 的部分功能将无法使用。</translation>
 <translation id="2602806952220118310">Chromium - 通知</translation>
 <translation id="5032989939245619637">在 Chromium 中保存详细信息</translation>
 </translationbundle>
