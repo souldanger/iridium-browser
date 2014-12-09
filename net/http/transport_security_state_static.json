@@ -36,6 +36,13 @@
       ]
     },
     {
+      "name": "iridiumbrowser",
+      "static_spki_hashes": [
+        "IridiumBrowser1",
+        "IridiumBrowser2"
+      ]
+    },
+    {
       "name": "google",
       "static_spki_hashes": [
         "GoogleBackup2048",
@@ -175,6 +182,8 @@
   "entries": [
     // Dummy entry to test certificate pinning.
     { "name": "pinningtest.appspot.com", "include_subdomains": true, "pins": "test" },
+
+    { "name": "iridiumbrowser.de", "include_subdomains": true, "mode": "force-https", "pins": "iridiumbrowser" },
 
     // (*.)google.com, iff using SSL, must use an acceptable certificate.
     { "name": "google.com", "include_subdomains": true, "pins": "google" },
@@ -1740,7 +1749,6 @@
     { "name": "hicoria.com", "include_subdomains": true, "mode": "force-https" },
     { "name": "id-conf.com", "include_subdomains": true, "mode": "force-https" },
     { "name": "ikkatsu-satei.jp", "include_subdomains": true, "mode": "force-https" },
-    { "name": "iridiumbrowser.de", "include_subdomains": true, "mode": "force-https" },
     { "name": "jira.com", "include_subdomains": true, "mode": "force-https" },
     { "name": "kirei.se", "include_subdomains": true, "mode": "force-https" },
     { "name": "kuppingercole.com", "include_subdomains": true, "mode": "force-https" },
@@ -2628,6 +2636,7 @@
   // domains at the END of the array.
   "domain_ids": [
     "NOT_PINNED",
+    "IRIDIUMBROWSER_DE",
     "GOOGLE_COM",
     "ANDROID_COM",
     "GOOGLE_ANALYTICS_COM",
