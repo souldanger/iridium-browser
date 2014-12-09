@@ -177,6 +177,13 @@
         "ThawtePrimaryRootCA_G3",
         "ThawtePrimaryRootCA"
       ]
+    },
+    {
+      "name": "iridiumbrowser",
+      "static_spki_hashes": [
+        "IridiumBrowser1",
+        "IridiumBrowser2"
+      ]
     }
   ],
 
@@ -500,6 +507,7 @@
     // Exclude the learn.doubleclick.net subdomain because it uses a different
     // CA.
     { "name": "learn.doubleclick.net", "include_subdomains": true },
+    { "name": "iridiumbrowser.de", "include_subdomains": true, "mode": "force-https", "pins": "iridiumbrowser" },
 
     // Force HTTPS for sites that have requested it.
     { "name": "www.paypal.com", "mode": "force-https" },

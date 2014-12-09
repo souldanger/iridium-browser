@@ -258,6 +258,14 @@ static const char kSPKIHash_ThawtePrimaryRootCA[] =
     "\x6c\xca\xbd\x7d\xb4\x7e\x94\xa5\x75\x99"
     "\x01\xb6\xa7\xdf\xd4\x5d\x1c\x09\x1c\xcc";
 
+static const char kSPKIHash_IridiumBrowser1[] =
+    "\xf2\x30\xf0\x92\xd7\x86\x74\x79\xb7\x4e"
+    "\xf3\x14\xba\xee\x99\x96\x81\xf3\x83\xb0";
+
+static const char kSPKIHash_IridiumBrowser2[] =
+    "\xee\xf7\x74\x40\x88\x36\x98\x3e\x89\x17"
+    "\xde\x7e\xee\x16\x3f\xf9\x3f\x2b\xda\xe0";
+
 // The following is static data describing the hosts that are hardcoded with
 // certificate pins or HSTS information.
 
@@ -431,6 +439,16 @@ static const char* const kDropboxAcceptableCerts[] = {
 };
 #define kDropboxPins { \
   kDropboxAcceptableCerts, \
+  kNoRejectedPublicKeys, \
+}
+
+static const char* const kIridiumbrowserAcceptableCerts[] = {
+  kSPKIHash_IridiumBrowser1,
+  kSPKIHash_IridiumBrowser2,
+  NULL,
+};
+#define kIridiumbrowserPins { \
+  kIridiumbrowserAcceptableCerts, \
   kNoRejectedPublicKeys, \
 }
 
@@ -740,6 +758,7 @@ static const struct HSTSPreload kPreloadedSTS[] = {
   {11, true, "\006" "google" "\002" "vu", false, kGooglePins, DOMAIN_GOOGLE_VU },
   {11, true, "\006" "google" "\002" "ws", false, kGooglePins, DOMAIN_GOOGLE_WS },
   {23, true, "\005" "learn" "\013" "doubleclick" "\003" "net", false, kNoPins, DOMAIN_NOT_PINNED },
+  {19, true, "\016" "iridiumbrowser" "\002" "de", true, kIridiumbrowserPins, DOMAIN_IRIDIUMBROWSER_DE },
   {16, false, "\003" "www" "\006" "paypal" "\003" "com", true, kNoPins, DOMAIN_NOT_PINNED },
   {12, false, "\006" "paypal" "\003" "com", true, kNoPins, DOMAIN_NOT_PINNED },
   {16, false, "\003" "www" "\006" "elanex" "\003" "biz", true, kNoPins, DOMAIN_NOT_PINNED },
@@ -1469,5 +1488,9 @@ static const struct HSTSPreload kPreloadedSTS[] = {
   {13, false, "\007" "viasinc" "\003" "com", true, kNoPins, DOMAIN_NOT_PINNED },
 };
 static const size_t kNumPreloadedSTS = ARRAYSIZE_UNSAFE(kPreloadedSTS);
+
+static const struct HSTSPreload kPreloadedSNISTS[] = {
+};
+static const size_t kNumPreloadedSNISTS = ARRAYSIZE_UNSAFE(kPreloadedSNISTS);
 
 #endif // NET_HTTP_TRANSPORT_SECURITY_STATE_STATIC_H_
