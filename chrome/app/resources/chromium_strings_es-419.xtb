@@ -259,7 +259,7 @@ Si accedes de todos modos, se fusionará la información de Chromium, como los m
 <translation id="8823523095753232532">Vincular mis datos de Chromium con esta cuenta</translation>
 <translation id="1808667845054772817">Reinstalar Chromium</translation>
 <translation id="1221340462641866827">Chromium OS no admite la inicialización de una aplicación externa para utilizar vínculos <ph name="SCHEME"/>. El vínculo solicitado es <ph name="PROTOLINK"/>.</translation>
-<translation id="328888136576916638">Faltan las claves de la API de Google. Se inhabilitarán algunas funciones de Chromium.</translation>
+<translation id="328888136576916638">Faltan las claves de la API de Google. Se inhabilitarán algunas funciones de Google.</translation>
 <translation id="2602806952220118310">Chromium: notificaciones</translation>
 <translation id="5032989939245619637">Guardar los detalles en Chromium</translation>
 <translation id="8803635938069941624">Condiciones del Sistema operativo Chromium</translation>

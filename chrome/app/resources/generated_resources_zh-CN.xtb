@@ -524,7 +524,7 @@
           <ph name="LINE_BREAK"/>
           这可能是因为您的防火墙或防病毒软件误将 <ph name="PRODUCT_NAME"/> 当作了设备入侵程序，因此阻止它连接到互联网。</translation>
 <translation id="3873139305050062481">审查元素(&amp;N)</translation>
-<translation id="3076677906922146425">允许任何人向 Chrome 添加用户</translation>
+<translation id="3076677906922146425">允许任何人向 Iridium 添加用户</translation>
 <translation id="7445762425076701745">无法完全验证您所连接到的服务器的身份。您在连接服务器时使用的服务器名称仅在您的网络中有效，而外部证书授权中心无法验证该名称的所有权。由于一些证书授权中心仍然会为这些名称颁发证书，因此无法确保您连接到想要访问的网站而不是攻击网站。</translation>
 <translation id="1556537182262721003">无法将扩展程序目录移动到个人资料中。</translation>
 <translation id="2946640296642327832">启用蓝牙</translation>

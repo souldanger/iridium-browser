@@ -14635,11 +14635,11 @@ After you create a new supervised user, you can manage their settings at any tim
       <if expr="is_win">
         <message name="IDS_METRO_FLOW_TAB_TITLE"
                  desc="The dialog window title.">
-          Welcome to Chrome
+          Welcome to Iridium
         </message>
         <message name="IDS_METRO_FLOW_TITLE_SHORT"
                  desc="The title at the top of the window guiding user through making Chrome default in Metro.">
-          Chrome is almost ready.
+          Iridium is almost ready.
         </message>
         <message name="IDS_METRO_FLOW_DESCRIPTION"
                  desc="Wordy description of what the set-Chrome-as-Metro flow is all about.">
@@ -14651,7 +14651,7 @@ After you create a new supervised user, you can manage their settings at any tim
         </message>
         <message name="IDS_METRO_FLOW_LOGO_STRING_ALT"
                  desc="Alt text for the faded Chrome logo image.">
-            Chrome logo
+            Iridium logo
         </message>
         <message name="IDS_METRO_MISSING_PLUGIN_PROMPT"
                  desc="Info Bar message to let user do something about the missing plugin">
@@ -14671,31 +14671,31 @@ After you create a new supervised user, you can manage their settings at any tim
         </message>
         <message name="IDS_WIN_DESKTOP_OPEN"
                  desc="Text for the infobar button to open Chrome in desktop mode.">
-          Open Chrome on the desktop
+          Open Iridium on the desktop
         </message>
         <message name="IDS_WIN_DESKTOP_RESTART"
                  desc="Text for the menu item to restart Chrome in desktop mode. Applies to Windows 8 only">
-          Relaunch Chrome on the desktop
+          Relaunch Iridium on the desktop
         </message>
         <message name="IDS_WIN8_METRO_RESTART"
                  desc="Text for the menu item to restart Chrome in metro. Applies to Windows 8 only">
-          Relaunch Chrome in Windows 8 mode
+          Relaunch Iridium in Windows 8 mode
         </message>
         <message name="IDS_WIN8_PROMPT_TO_CLOSE_APPS_FOR_METRO"
                  desc="Modal message box prompt shown to the user after requesting to relaunch in Windows 8 mode while packaged apps are running, which will require all packaged apps to be closed and then restarted. Dialog is shown with choices: OK, Cancel.">
-          Relaunching in Windows 8 mode will close and relaunch your Chrome apps.
+          Relaunching in Windows 8 mode will close and relaunch your Iridium apps.
         </message>
         <message name="IDS_WIN_CHROMEOS_RESTART"
                  desc="Text for the menu item to restart chrome in chrome os. Aplies to Windows 7 only">
-          Relaunch in Chrome immersive mode
+          Relaunch in Iridium immersive mode
         </message>
         <message name="IDS_WIN_PROMPT_TO_CLOSE_APPS_FOR_CHROMEOS"
                  desc="Modal message box prompt shown to the user after requesting to relaunch in Windows Chrome OS mode while packaged apps are running, which will require all packaged apps to be closed and then restarted. Dialog is shown with choices: OK, Cancel.">
-          Relaunching in Chrome immersive mode will close and relaunch your Chrome apps.
+          Relaunching in Iridium immersive mode will close and relaunch your Iridium apps.
         </message>
         <message name="IDS_WIN_PROMPT_TO_CLOSE_APPS_FOR_DESKTOP"
                  desc="Modal message box prompt shown to the user after requesting to relaunch in Desktop mode while packaged apps are running, which will require all packaged apps to be closed and then restarted. Dialog is shown with choices: OK, Cancel.">
-          Relaunching in Desktop mode will close and relaunch your Chrome apps.
+          Relaunching in Desktop mode will close and relaunch your Iridium apps.
         </message>
       </if>
 

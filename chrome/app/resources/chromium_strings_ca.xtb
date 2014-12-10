@@ -244,7 +244,7 @@ Chromium no pot recuperar la configuració.</translation>
 <translation id="8823523095753232532">Enllaça les meves dades de Chromium amb aquest compte</translation>
 <translation id="1808667845054772817">Torna a instal·lar Chromium</translation>
 <translation id="1221340462641866827">Chromium OS no és compatible amb l'inici d'una aplicació externa per gestionar els enllaços <ph name="SCHEME"/>. L'enllaç sol·licitat és <ph name="PROTOLINK"/>.</translation>
-<translation id="328888136576916638">Falten les claus de l'API de Google. Es desactivaran algunes de les funcions de Chromium.</translation>
+<translation id="328888136576916638">Falten les claus de l'API de Google. Es desactivaran algunes de les funcions de Google.</translation>
 <translation id="2602806952220118310">Chromium: notificacions</translation>
 <translation id="5032989939245619637">Desa els detalls a Chromium</translation>
 </translationbundle>

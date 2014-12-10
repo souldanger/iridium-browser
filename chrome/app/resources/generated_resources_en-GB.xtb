@@ -540,7 +540,7 @@
           <ph name="PRODUCT_NAME"/>
           is an intruder on your device and is blocking it from connecting to the Internet.</translation>
 <translation id="3873139305050062481">I&amp;nspect Element</translation>
-<translation id="3076677906922146425">Let anyone add a person to Chrome</translation>
+<translation id="3076677906922146425">Let anyone add a person to Iridium</translation>
 <translation id="7445762425076701745">The identity of the server to which you are connected cannot be fully validated. You are connected to a server using a name valid only within your network, and an external certificate authority has no way to validate ownership. As some certificate authorities will issue certificates for these names regardless, there is no way to ensure that you are connected to the intended website and not to an attacker.</translation>
 <translation id="1556537182262721003">Could not move extension directory into profile.</translation>
 <translation id="2946640296642327832">Enable Bluetooth</translation>
