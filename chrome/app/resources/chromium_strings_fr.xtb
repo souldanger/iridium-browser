@@ -246,7 +246,7 @@ Chromium ne peut pas récupérer vos paramètres.</translation>
 <translation id="8823523095753232532">Lier mes données Chromium à ce compte</translation>
 <translation id="1808667845054772817">Réinstaller Chromium</translation>
 <translation id="1221340462641866827">Chromium OS ne permet pas le lancement d'une application externe pour gérer les liens <ph name="SCHEME"/>. Le lien requis est <ph name="PROTOLINK"/>.</translation>
-<translation id="328888136576916638">Les clés d'API Google sont manquantes. Certaines fonctionnalités de Chromium vont être désactivées.</translation>
+<translation id="328888136576916638">Les clés d'API Google sont manquantes. Certaines fonctionnalités de Google vont être désactivées.</translation>
 <translation id="2602806952220118310">Notifications – Chromium</translation>
 <translation id="5032989939245619637">Enregistrer les détails dans Chromium</translation>
 </translationbundle>

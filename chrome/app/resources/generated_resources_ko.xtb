@@ -541,7 +541,7 @@
           <ph name="PRODUCT_NAME"/>에서
           사용자의 기기에 침입하여 인터넷 연결을 차단하고 있다고 잘못 인식했기 때문일 수 있습니다.</translation>
 <translation id="3873139305050062481">요소 검사(&amp;N)</translation>
-<translation id="3076677906922146425">누구나 사용자를 Chrome에 추가할 수 있도록 합니다.</translation>
+<translation id="3076677906922146425">누구나 사용자를 Iridium에 추가할 수 있도록 합니다.</translation>
 <translation id="7445762425076701745">연결하려는 서버 ID를 확인할 수 없습니다. 외부 인증 기관에서 소유권을 확인할 수 없으므로 네트워크에서 유효한 이름을 사용하여 서버에 연결됩니다. 일부 인증 기관에서는 이러한 이름에 대해 관계없이 인증서를 발급하기 때문에 공격자가 아니라 의도한 웹사이트에 연결되어 있는지 확인할 수 없습니다.</translation>
 <translation id="1556537182262721003">확장 프로그램 디렉토리를 프로필로 이동하지 못했습니다.</translation>
 <translation id="2946640296642327832">블루투스 사용</translation>

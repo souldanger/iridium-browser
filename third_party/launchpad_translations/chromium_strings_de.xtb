@@ -247,7 +247,7 @@ Chromium kann Ihre Einstellungen nicht wiederherstellen.</translation>
 <translation id="8823523095753232532">Meine Chromium-Daten mit diesem Konto verknüpfen</translation>
 <translation id="1808667845054772817">Chromium neu installieren</translation>
 <translation id="1221340462641866827">Chromium unterstützt keine externe App zur Verarbeitung von <ph name="SCHEME"/>-Links. Der angeforderte Link ist <ph name="PROTOLINK"/>.</translation>
-<translation id="328888136576916638">Google API-Schlüssel fehlen. Einige Funktionen von Chromium sind deaktiviert.</translation>
+<translation id="328888136576916638">Google API-Schlüssel sind nicht eingetragen. Einige Google-Funktionen sind deaktiviert.</translation>
 <translation id="2602806952220118310">Chromium – Benachrichtigungen</translation>
 <translation id="5032989939245619637">Details in Chromium speichern</translation>
 <translation id="8803635938069941624">Chromium OS-Nutzungsbedingungen</translation>

@@ -544,7 +544,7 @@ Läs din e-post på <ph name="ACCOUNT_EMAIL"/>. Där finns dessa och andra anvis
           <ph name="PRODUCT_NAME"/>
           som en inkräktare på enheten och hindrar den från att ansluta till internet.</translation>
 <translation id="3873139305050062481">&amp;Granska komponent</translation>
-<translation id="3076677906922146425">Låt vem som helst lägga till en person i Chrome</translation>
+<translation id="3076677906922146425">Låt vem som helst lägga till en person i Iridium</translation>
 <translation id="7445762425076701745">Det går inte att fastställa identiteten hos servern som du är ansluten till. Servernamnet som du angav vid anslutningen är bara giltigt inom ditt nätverk och externa certifikatutfärdare kan inte fastställa dess ägarskap. Vissa certifikatutfärdare utfärdar certifikat oavsett namn och därför går det inte att säkerställa att du är ansluten till den avsedda webbplatsen och inte till en skadlig server.</translation>
 <translation id="1556537182262721003">Det gick inte att flytta tilläggskatalogen till profilen.</translation>
 <translation id="2946640296642327832">Aktivera Bluetooth</translation>
