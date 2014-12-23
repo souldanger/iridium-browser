@@ -1956,7 +1956,7 @@
           ['branding=="Chrome"', {
             'mac_product_name%': 'Google Chrome',
           }, { # else: branding!="Chrome"
-            'mac_product_name%': 'Chromium',
+            'mac_product_name%': 'Iridium',
           }],
           # Official mac builds require a specific OS X SDK, but iOS and
           # non-official mac builds do not.
