@@ -215,7 +215,10 @@
       ],
       'cflags': [
         # For ULLONG_MAX
-        '-std=gnu99',
+        '-std=gnu99 -fPIE',
+      ],
+      'ldflags': [
+        '-pie',
       ],
       'include_dirs': [
         '../..',
