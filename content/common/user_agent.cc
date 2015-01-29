@@ -209,6 +209,8 @@ std::string BuildUserAgentFromOSAndProduct(const std::string& os_info,
       product.c_str(),
       WEBKIT_VERSION_MAJOR,
       WEBKIT_VERSION_MINOR);
+  if (strncmp(product.c_str(), "Iridium/", 8) == 0)
+  	base::StringAppendF(&user_agent, " Chrome/41.0.2272.118");
   return user_agent;
 }
 
