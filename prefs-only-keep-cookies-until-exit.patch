@@ -1,22 +1,22 @@
-From 00668e2b3d2916be380cfb0e186573aa9d19d352 Mon Sep 17 00:00:00 2001
+From 047442b951f50b570818352cd35f367e89f0b7af Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sat, 13 Sep 2014 17:25:47 +0200
-Subject: [PATCH 11/29] prefs: only keep cookies until exit
+Subject: [PATCH 12/38] prefs: only keep cookies until exit
 
 ---
- chrome/browser/content_settings/content_settings_default_provider.cc | 2 +-
+ .../content_settings/core/browser/content_settings_default_provider.cc  | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/chrome/browser/content_settings/content_settings_default_provider.cc b/chrome/browser/content_settings/content_settings_default_provider.cc
-index 7e80236..bebd8d4 100644
---- a/chrome/browser/content_settings/content_settings_default_provider.cc
-+++ b/chrome/browser/content_settings/content_settings_default_provider.cc
-@@ -33,7 +33,7 @@ namespace {
+diff --git a/components/content_settings/core/browser/content_settings_default_provider.cc b/components/content_settings/core/browser/content_settings_default_provider.cc
+index 90b91a3..cc563d1 100644
+--- a/components/content_settings/core/browser/content_settings_default_provider.cc
++++ b/components/content_settings/core/browser/content_settings_default_provider.cc
+@@ -26,7 +26,7 @@ namespace {
  
  // The default setting for each content type.
  const ContentSetting kDefaultSettings[] = {
 -  CONTENT_SETTING_ALLOW,    // CONTENT_SETTINGS_TYPE_COOKIES
-+  CONTENT_SETTING_SESSION_ONLY,// CONTENT_SETTINGS_TYPE_COOKIES
++  CONTENT_SETTING_SESSION_ONLY,    // CONTENT_SETTINGS_TYPE_COOKIES
    CONTENT_SETTING_ALLOW,    // CONTENT_SETTINGS_TYPE_IMAGES
    CONTENT_SETTING_ALLOW,    // CONTENT_SETTINGS_TYPE_JAVASCRIPT
    CONTENT_SETTING_ALLOW,    // CONTENT_SETTINGS_TYPE_PLUGINS

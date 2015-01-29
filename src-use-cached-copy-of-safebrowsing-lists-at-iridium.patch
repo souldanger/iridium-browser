@@ -1,0 +1,34 @@
+From 13a4bfcf79d834a4cb36a51c59c2fbc765ba78b3 Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Mon, 26 Jan 2015 13:57:44 +0100
+Subject: [PATCH 34/38] src: use cached copy of safebrowsing lists at
+ iridiumbrowser.de
+
+---
+ chrome/browser/safe_browsing/client_side_detection_service.cc | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/chrome/browser/safe_browsing/client_side_detection_service.cc b/chrome/browser/safe_browsing/client_side_detection_service.cc
+index 6d9f2fa..ae1c571 100644
+--- a/chrome/browser/safe_browsing/client_side_detection_service.cc
++++ b/chrome/browser/safe_browsing/client_side_detection_service.cc
+@@ -75,12 +75,12 @@ const int ClientSideDetectionService::kReportsIntervalDays = 1;
+ const int ClientSideDetectionService::kNegativeCacheIntervalDays = 1;
+ const int ClientSideDetectionService::kPositiveCacheIntervalMinutes = 30;
+ 
+-const char ClientSideDetectionService::kClientReportPhishingUrl[] =
++const char ClientSideDetectionService::kClientReportPhishingUrl[] = /* POST */
+     "https://trk-148.iridiumbrowser.de/sb-ssl.google.com/safebrowsing/clientreport/phishing";
+-const char ClientSideDetectionService::kClientReportMalwareUrl[] =
++const char ClientSideDetectionService::kClientReportMalwareUrl[] = /* POST */
+     "https://trk-149.iridiumbrowser.de/sb-ssl.google.com/safebrowsing/clientreport/malware-check";
+-const char ClientSideDetectionService::kClientModelUrl[] =
+-    "https://trk-150.iridiumbrowser.de/ssl.gstatic.com/safebrowsing/csd/client_model_v5.pb";
++const char ClientSideDetectionService::kClientModelUrl[] = /* GET */
++    "https://safebrowsing.iridiumbrowser.de/client_model_v5.pb";
+ 
+ struct ClientSideDetectionService::ClientReportInfo {
+   ClientReportPhishingRequestCallback callback;
+-- 
+2.4.0
+

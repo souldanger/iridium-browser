@@ -1,3 +1,4 @@
+Set-iridium-version.patch
 prefs-disable-autofill-by-default.patch
 prefs-disable-Use-a-web-service-to-help-resolve-navi.patch
 prefs-disable-Use-a-prediction-service-to-help-compl.patch
@@ -15,6 +16,7 @@ Disable-DNSv6-probing.patch
 first_run-barf-if-metrics_reporting-is-activated.patch
 profile-resetter-do-not-tick-send-settings-by-defaul.patch
 common-change-the-User-Agent-string-to-read-Iridium.patch
+build-reduced-version-number.patch
 search_engines-add-DuckDuckGo-as-selectable-and-defa.patch
 prefs-disable-translation-service.patch
 prefs-use-separate-directory-for-config.patch
@@ -27,3 +29,10 @@ browser-ui-disable-warning-about-missing-API-keys.patch
 ui-update-product-description-for-Iridium.patch
 ui-update-strings-to-read-Iridium-instead.patch
 src-flag-evil-connections.patch
+build-fix-OSX-branded-build-crashes-on-OSX.patch
+icons-change-sad-plugin-icon.patch
+src-use-cached-copy-of-safebrowsing-lists-at-iridium.patch
+openSUSE-patch-adjust-ldflags-no-keep-memory.patch.patch
+prefs-use-system-provided-pereference-skeleton.patch
+openSUSE-patch-chromium-sandbox-pie.patch.patch
+openSUSE-patch-exclude_ymp.diff.patch

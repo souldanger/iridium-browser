@@ -1,40 +1,38 @@
-From 0a6284bbc3a7c5ded6397a9e95d36cb90670e0a8 Mon Sep 17 00:00:00 2001
+From b2e65ba074e35cdd494b61d2353b4f283473aa8a Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Mon, 13 Oct 2014 12:28:51 +0200
-Subject: [PATCH 17/29] common: change the User-Agent string to read Iridium
+Subject: [PATCH 18/38] common: change the User-Agent string to read Iridium
 
 Continue providing Chrome/* for possible compatibility checks by the browser
 and/or websites, since we really are still Chromium.
 ---
  chrome/common/chrome_version_info.cc | 2 +-
- content/common/user_agent.cc         | 4 ++++
- 2 files changed, 5 insertions(+), 1 deletion(-)
+ content/common/user_agent.cc         | 2 ++
+ 2 files changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/chrome/common/chrome_version_info.cc b/chrome/common/chrome_version_info.cc
-index e197bd0..df1c1ba 100644
+index 4562bfd..4c3030d 100644
 --- a/chrome/common/chrome_version_info.cc
 +++ b/chrome/common/chrome_version_info.cc
-@@ -18,7 +18,7 @@ namespace chrome {
+@@ -17,7 +17,7 @@
+ namespace chrome {
+ 
  std::string VersionInfo::ProductNameAndVersionForUserAgent() const {
-   if (!is_valid())
-     return std::string();
 -  return "Chrome/" + Version();
 +  return "Iridium/" + Version();
  }
  
- #if defined(OS_WIN) || defined(OS_MACOSX)
+ VersionInfo::VersionInfo() {
 diff --git a/content/common/user_agent.cc b/content/common/user_agent.cc
-index 1176c48..38f2d9f 100644
+index 1176c48..c2af41a 100644
 --- a/content/common/user_agent.cc
 +++ b/content/common/user_agent.cc
-@@ -191,6 +191,10 @@ std::string BuildUserAgentFromOSAndProduct(const std::string& os_info,
+@@ -191,6 +191,8 @@ std::string BuildUserAgentFromOSAndProduct(const std::string& os_info,
        product.c_str(),
        WEBKIT_VERSION_MAJOR,
        WEBKIT_VERSION_MINOR);
-+  if (strncmp(product.c_str(), "Iridium/", 8) == 0) {
-+  	const char *p = strchr(product.c_str(), '/') + 1;
-+  	base::StringAppendF(&user_agent, " Chrome/%s", p);
-+  }
++  if (strncmp(product.c_str(), "Iridium/", 8) == 0)
++  	base::StringAppendF(&user_agent, " Chrome/40.0.2214.93");
    return user_agent;
  }
  

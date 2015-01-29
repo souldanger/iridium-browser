@@ -1,7 +1,7 @@
-From a3fda30c29734d9ea6c02315255afe48c2d8720c Mon Sep 17 00:00:00 2001
+From 240f6e6698cf72ea40925b12b59e57f867ff2dec Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Mon, 15 Sep 2014 10:52:32 +0200
-Subject: [PATCH 12/29] Increase default key length for newly-generated RSA
+Subject: [PATCH 13/38] Increase default key length for newly-generated RSA
  keys
 
 Should we add something for chrome://settings, or just leave

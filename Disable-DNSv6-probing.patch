@@ -1,7 +1,7 @@
-From 468d9105f21ecab8974db7de317196b0c286b184 Mon Sep 17 00:00:00 2001
+From da24985724db3cd76c4d59e81cc28424942ca387 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Mon, 22 Sep 2014 10:36:32 +0200
-Subject: [PATCH 14/29] Disable DNSv6 probing
+Subject: [PATCH 15/38] Disable DNSv6 probing
 
 Default to using system defaults regarding IPv6 and IPv4.
 No new options to switch autodetection on again are added,
@@ -11,10 +11,10 @@ and you can use the existing --disable-ipv6 if need be.
  1 file changed, 2 insertions(+), 3 deletions(-)
 
 diff --git a/chrome/browser/io_thread.cc b/chrome/browser/io_thread.cc
-index ec04faf..d365c29 100644
+index 4ead3fc..561505c 100644
 --- a/chrome/browser/io_thread.cc
 +++ b/chrome/browser/io_thread.cc
-@@ -209,10 +209,9 @@ scoped_ptr<net::HostResolver> CreateGlobalHostResolver(net::NetLog* net_log) {
+@@ -210,10 +210,9 @@ scoped_ptr<net::HostResolver> CreateGlobalHostResolver(net::NetLog* net_log) {
  #endif
  
    // Determine if we should disable IPv6 support.

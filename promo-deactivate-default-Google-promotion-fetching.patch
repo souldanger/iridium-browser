@@ -1,7 +1,7 @@
-From 0d39859bbdb18d4100a4877d0fab7d7e4e8ca074 Mon Sep 17 00:00:00 2001
+From 1ca212e80b2056050adf0479b9062f60060b3c11 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sun, 9 Nov 2014 01:54:27 +0100
-Subject: [PATCH 22/29] promo: deactivate default Google promotion fetching
+Subject: [PATCH 24/38] promo: deactivate default Google promotion fetching
 
 Documentation is scarce, and sprinkled with misleading acronyms.
 NTP is not NTP, for example. FWIW:

@@ -1,0 +1,31 @@
+From fbb634be20aeafc0a0d80182e86b359db2cc7b8a Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Thu, 29 Jan 2015 10:30:59 +0100
+Subject: [PATCH 35/38] openSUSE patch adjust-ldflags-no-keep-memory.patch
+
+---
+ chrome/chrome_exe.gypi | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/chrome/chrome_exe.gypi b/chrome/chrome_exe.gypi
+index 3fe83f1..72a6034 100644
+--- a/chrome/chrome_exe.gypi
++++ b/chrome/chrome_exe.gypi
+@@ -71,6 +71,14 @@
+         '<(DEPTH)/content/app/startup_helper_win.cc',
+         '<(DEPTH)/content/public/common/content_switches.cc',
+       ],
++      # Hey, I know what would be an awesome idea.
++      # Let us statically compile EVERYTHING into one giant
++      # freaking executable. Too bad this means we can't build
++      # natively on an IA32 machine. If only someone would
++      # invent shared library objects. Idiots.
++      'ldflags': [
++        '-Wl,--no-keep-memory'
++      ],
+       'mac_bundle_resources': [
+         'app/app-Info.plist',
+       ],
+-- 
+2.4.0
+

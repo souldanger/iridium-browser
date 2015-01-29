@@ -1,14 +1,14 @@
-From 08b070be343c6eb794c7261e55a2839fe57b47d5 Mon Sep 17 00:00:00 2001
+From a2dcbd533e4656e0dbbe386f9be700a96223f2a5 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Wed, 10 Dec 2014 12:44:49 +0100
-Subject: [PATCH 27/29] ui: update product description for Iridium
+Subject: [PATCH 29/38] ui: update product description for Iridium
 
 ---
  chrome/app/chromium_strings.grd | 22 +++++++++++-----------
  1 file changed, 11 insertions(+), 11 deletions(-)
 
 diff --git a/chrome/app/chromium_strings.grd b/chrome/app/chromium_strings.grd
-index 113345a..6c06e12 100644
+index 88717a2..cce759a 100644
 --- a/chrome/app/chromium_strings.grd
 +++ b/chrome/app/chromium_strings.grd
 @@ -215,17 +215,17 @@ be available for now. -->
@@ -41,7 +41,7 @@ index 113345a..6c06e12 100644
 +          Iridium Binaries
          </message>
          <message name="IDS_CHROME_FRAME_TURNDOWN_LEARN_MORE_URL" desc="Link to knowledge-base article about Chromium Frame's turndown">
-           http://support.google.com/chrome/?p=ib_chromeframe
+           https://support.google.com/chrome/?p=ib_chromeframe
 @@ -275,17 +275,17 @@ be available for now. -->
          </message>
        </if>
@@ -50,8 +50,8 @@ index 113345a..6c06e12 100644
 +        Task Manager - Iridium
        </message>
        <message name="IDS_SESSION_CRASHED_VIEW_MESSAGE" desc="Message shown when the last session didn't exit cleanly.">
--        Chromium didn't shut down correctly. To reopen the pages you had open, click Restore.
-+        Iridium didn't shut down correctly. To reopen the pages you had open, click Restore.
+-        Chromium didn't shut down correctly.
++        Iridium did not shut down correctly.
        </message>
        <message name="IDS_SESSION_CRASHED_VIEW_UMA_OPTIN" desc="Text besides the checkbox to let users optin to UMA in the restore from previous crash bubble.">
          Help make Chromium better by sending crash reports and <ph name="UMA_LINK">$1<ex>usage statistics</ex></ph> to Google
@@ -63,7 +63,7 @@ index 113345a..6c06e12 100644
        </message>
        <if expr="not chromeos">
          <message name="IDS_GET_HELP_USING_CHROME" desc="Text of the button which takes the user to the Chrome help page.">
-@@ -793,7 +793,7 @@ For Chromium, processes used to display diagnostics information (such as this "a
+@@ -801,7 +801,7 @@ For Chromium, processes used to display diagnostics information (such as this "a
  
        <if expr="use_titlecase and not chromeos">
          <message name="IDS_ABOUT" desc="In Title Case: The text label of the About Chrome menu item">
@@ -72,7 +72,7 @@ index 113345a..6c06e12 100644
          </message>
          <message name="IDS_UPDATE_NOW" desc="In Title Case: The text label of the Update Chrome Now menu item">
            Update &amp;Chromium
-@@ -801,7 +801,7 @@ For Chromium, processes used to display diagnostics information (such as this "a
+@@ -809,7 +809,7 @@ For Chromium, processes used to display diagnostics information (such as this "a
        </if>
        <if expr="not use_titlecase and not chromeos">
          <message name="IDS_ABOUT" desc="The text label of the About Chrome menu item">
@@ -81,7 +81,7 @@ index 113345a..6c06e12 100644
          </message>
          <message name="IDS_UPDATE_NOW" desc="The text label of the Update Chrome Now menu item">
            Update &amp;Chromium
-@@ -818,7 +818,7 @@ For Chromium, processes used to display diagnostics information (such as this "a
+@@ -826,7 +826,7 @@ For Chromium, processes used to display diagnostics information (such as this "a
  
        <if expr="is_macosx">
          <message name="IDS_APP_MENU_PRODUCT_NAME" desc="The application's short name, used for the Mac's application menu, activity monitor, etc. This should be less than 16 characters. Example: Chrome, not Google Chrome.">

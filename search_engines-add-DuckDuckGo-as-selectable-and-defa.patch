@@ -1,7 +1,7 @@
-From a2a7df6dbe517cb54d4777af480da0ea7c9b5a77 Mon Sep 17 00:00:00 2001
+From 0108e6a50a6ffc5625cb42832bf0f889cd686619 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sun, 19 Oct 2014 14:49:10 +0200
-Subject: [PATCH 18/29] search_engines: add DuckDuckGo as selectable and
+Subject: [PATCH 20/38] search_engines: add DuckDuckGo as selectable and
  default search engine
 
 There is a lot of code pertaining to DefaultSearchEngine,
@@ -51,10 +51,10 @@ index d49c046..7dba2a7 100644
  };
  
 diff --git a/components/search_engines/template_url_prepopulate_data.cc b/components/search_engines/template_url_prepopulate_data.cc
-index e63a58c..2564d43 100644
+index 35e2fd1..38f5120 100644
 --- a/components/search_engines/template_url_prepopulate_data.cc
 +++ b/components/search_engines/template_url_prepopulate_data.cc
-@@ -45,435 +45,435 @@ namespace {
+@@ -49,435 +49,435 @@ namespace {
  
  // Default (for countries with no better engine set)
  const PrepopulatedEngine* engines_default[] =
@@ -598,7 +598,7 @@ index e63a58c..2564d43 100644
  
  // A list of all the engines that we know about.
  const PrepopulatedEngine* kAllEngines[] = {
-@@ -487,6 +487,7 @@ const PrepopulatedEngine* kAllEngines[] = {
+@@ -491,6 +491,7 @@ const PrepopulatedEngine* kAllEngines[] = {
    &bing_fr_FR,   &bing_it_IT,   &bing_ja_JP,   &bing_lv_LV,   &bing_nb_NO,
    &bing_nl_BE,   &bing_pl_PL,   &bing_pt_BR,   &bing_pt_PT,   &bing_ru_RU,
    &bing_sv_SE,   &bing_tr_TR,   &bing_zh_HK,   &bing_zh_TW,   &daum,

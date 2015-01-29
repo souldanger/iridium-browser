@@ -1,7 +1,7 @@
-From e0000ae558ba5576e2bb62addd710d5657b22586 Mon Sep 17 00:00:00 2001
+From 89854e20e8df2e20b1e5ac4c003113c4eaba7223 Mon Sep 17 00:00:00 2001
 From: Joachim Bauch <jojo@struktur.de>
 Date: Mon, 10 Nov 2014 16:19:32 +0100
-Subject: [PATCH 24/29] webrtc: generate "real" ephemeral keys
+Subject: [PATCH 26/38] webrtc: generate "real" ephemeral keys
 
 By default, the browser caches generated keypairs for ECDHE key
 exchange for the lifetime of the application. This means the same

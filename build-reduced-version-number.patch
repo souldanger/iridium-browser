@@ -1,0 +1,53 @@
+From ad039a5ecc548b0966712fa306132fa6a7c82bab Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Thu, 29 Jan 2015 09:41:41 +0100
+Subject: [PATCH 19/38] build: reduced version number
+
+We do not use @BUILD@ or @PATCH@, in particular not in the User-Agent string.
+---
+ android_webview/common/aw_version_info_values.h.version | 2 +-
+ chrome/common/chrome_version_info_values.h.version      | 2 +-
+ extensions/shell/common/version.h.in                    | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/android_webview/common/aw_version_info_values.h.version b/android_webview/common/aw_version_info_values.h.version
+index 72faf97..7c0f43d 100644
+--- a/android_webview/common/aw_version_info_values.h.version
++++ b/android_webview/common/aw_version_info_values.h.version
+@@ -5,6 +5,6 @@
+ #ifndef ANDROID_WEBVIEW_COMMON_AW_VERSION_INFO_VALUES_H_
+ #define ANDROID_WEBVIEW_COMMON_AW_VERSION_INFO_VALUES_H_
+ 
+-#define PRODUCT_VERSION "@MAJOR@.@MINOR@.@BUILD@.@PATCH@"
++#define PRODUCT_VERSION "@MAJOR@.@MINOR@"
+ 
+ #endif  // ANDROID_WEBVIEW_COMMON_AW_VERSION_INFO_VALUES_H_
+diff --git a/chrome/common/chrome_version_info_values.h.version b/chrome/common/chrome_version_info_values.h.version
+index dde5a42..26f350a 100644
+--- a/chrome/common/chrome_version_info_values.h.version
++++ b/chrome/common/chrome_version_info_values.h.version
+@@ -6,7 +6,7 @@
+ #define CHROME_COMMON_CHROME_VERSION_INFO_VALUES_H_
+ 
+ #define PRODUCT_NAME "@PRODUCT_FULLNAME@"
+-#define PRODUCT_VERSION "@MAJOR@.@MINOR@.@BUILD@.@PATCH@"
++#define PRODUCT_VERSION "@MAJOR@.@MINOR@"
+ #define LAST_CHANGE "@LASTCHANGE@"
+ #define IS_OFFICIAL_BUILD @OFFICIAL_BUILD@
+ 
+diff --git a/extensions/shell/common/version.h.in b/extensions/shell/common/version.h.in
+index c4627fe..bf7d274 100644
+--- a/extensions/shell/common/version.h.in
++++ b/extensions/shell/common/version.h.in
+@@ -7,7 +7,7 @@
+ #ifndef EXTENSIONS_SHELL_COMMON_VERSION_H_
+ #define EXTENSIONS_SHELL_COMMON_VERSION_H_
+ 
+-#define PRODUCT_VERSION "@MAJOR@.@MINOR@.@BUILD@.@PATCH@"
++#define PRODUCT_VERSION "@MAJOR@.@MINOR@"
+ #define LAST_CHANGE "@LASTCHANGE@"
+ 
+ #endif  // EXTENSIONS_SHELL_COMMON_VERSION_H_
+-- 
+2.4.0
+

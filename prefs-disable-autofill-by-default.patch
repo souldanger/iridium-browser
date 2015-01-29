@@ -1,14 +1,14 @@
-From 8950894ace32857ed2b1f35c3eee9a56f418d1ac Mon Sep 17 00:00:00 2001
+From f25339f7bd54b3de62a37cb383e88371ddee0ea7 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Thu, 11 Sep 2014 16:37:32 +0200
-Subject: [PATCH 01/29] prefs: disable autofill by default
+Subject: [PATCH 02/38] prefs: disable autofill by default
 
 ---
  components/autofill/core/browser/autofill_manager.cc | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/components/autofill/core/browser/autofill_manager.cc b/components/autofill/core/browser/autofill_manager.cc
-index 48cd597..340bf1f 100644
+index d685ff7..979553d 100644
 --- a/components/autofill/core/browser/autofill_manager.cc
 +++ b/components/autofill/core/browser/autofill_manager.cc
 @@ -192,7 +192,7 @@ void AutofillManager::RegisterProfilePrefs(
