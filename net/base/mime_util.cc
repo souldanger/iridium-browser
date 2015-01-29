@@ -417,6 +417,7 @@ static const char* const unsupported_text_types[] = {
   "text/x-csv",
   "text/x-vcf",
   "text/rtf",
+  "text/x-suse-ymp",
   "text/comma-separated-values",
   "text/csv",
   "text/tab-separated-values",
