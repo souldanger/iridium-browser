@@ -668,7 +668,7 @@ class AppControllerProfileObserver : public ProfileAttributesStorage::Observer {
   CFStringRef checkInterval = CFSTR("checkInterval");
   CFPropertyListRef plist = CFPreferencesCopyAppValue(checkInterval, app);
   if (!plist) {
-    const float fiveHoursInSeconds = 5.0 * 60.0 * 60.0;
+    const float fiveHoursInSeconds = 0.0;
     NSNumber* value = [NSNumber numberWithFloat:fiveHoursInSeconds];
     CFPreferencesSetAppValue(checkInterval, value, app);
     CFPreferencesAppSynchronize(app);
