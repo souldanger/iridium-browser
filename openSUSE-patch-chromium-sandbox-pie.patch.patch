@@ -1,7 +1,7 @@
-From 1c8c615489308665f4d4353ac1943746cba9367e Mon Sep 17 00:00:00 2001
+From 2053be6156f9c4a954cd3a3a5f3c41017c7f6b36 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Thu, 29 Jan 2015 10:39:51 +0100
-Subject: [PATCH 37/38] openSUSE patch chromium-sandbox-pie.patch
+Subject: [PATCH 37/40] openSUSE patch chromium-sandbox-pie.patch
 
 ---
  sandbox/linux/sandbox_linux.gypi | 5 ++++-

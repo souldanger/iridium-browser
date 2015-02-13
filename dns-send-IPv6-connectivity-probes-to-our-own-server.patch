@@ -1,7 +1,7 @@
-From 2f4e41a3c1525c2e2a8461a828a1f21a69c5af0d Mon Sep 17 00:00:00 2001
+From 05ec10a6d517ef91955d225c3af66f3c7fd6748e Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Mon, 15 Sep 2014 10:58:42 +0200
-Subject: [PATCH 14/38] dns: send IPv6 connectivity probes to our own server
+Subject: [PATCH 15/40] dns: send IPv6 connectivity probes to our own server
 
 ---
  net/dns/host_resolver_impl.cc | 6 +++---

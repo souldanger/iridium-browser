@@ -1,7 +1,7 @@
-From 5dd0b561bd39aef8da27bac5dd17e63de4eb12bf Mon Sep 17 00:00:00 2001
+From 5fff6a0cc2dbbde779f32d9b6dba0f2b09d8cca6 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sat, 13 Sep 2014 16:55:12 +0200
-Subject: [PATCH 08/38] prefs: disable Cloud Print
+Subject: [PATCH 08/40] prefs: disable Cloud Print
 
 Cloud Print is usually autodisabled if no printers are shared.
 So what exactly am I turning off?

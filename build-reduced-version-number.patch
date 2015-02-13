@@ -1,7 +1,7 @@
-From ad039a5ecc548b0966712fa306132fa6a7c82bab Mon Sep 17 00:00:00 2001
+From 0e45cfe613783c2f82d8f802ef6ceb6da45ca4d4 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Thu, 29 Jan 2015 09:41:41 +0100
-Subject: [PATCH 19/38] build: reduced version number
+Subject: [PATCH 20/40] build: reduced version number
 
 We do not use @BUILD@ or @PATCH@, in particular not in the User-Agent string.
 ---

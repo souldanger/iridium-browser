@@ -1,7 +1,7 @@
-From fe2ca895861c733e94c7333a37bb8a72ef2d7f46 Mon Sep 17 00:00:00 2001
+From eba5e2626b346bcc9670a02840e20d4956b692ce Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sat, 13 Sep 2014 16:43:55 +0200
-Subject: [PATCH 07/38] Block 3rd party cookies by default
+Subject: [PATCH 07/40] prefs: block third-party cookies by default
 
 ---
  chrome/browser/content_settings/cookie_settings.cc | 2 +-

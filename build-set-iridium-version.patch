@@ -1,0 +1,24 @@
+From 60296b5363a5816526f42f76d2695a51559e62ed Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Thu, 29 Jan 2015 09:26:30 +0100
+Subject: [PATCH 01/40] build: set iridium version
+
+---
+ chrome/VERSION | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/chrome/VERSION b/chrome/VERSION
+index 2d85aaa..445d084 100644
+--- a/chrome/VERSION
++++ b/chrome/VERSION
+@@ -1,4 +1,4 @@
+ MAJOR=40
+-MINOR=0
+-BUILD=2214
+-PATCH=111
++MINOR=1
++BUILD=0
++PATCH=0
+-- 
+2.4.0
+

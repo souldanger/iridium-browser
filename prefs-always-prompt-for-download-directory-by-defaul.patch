@@ -1,0 +1,45 @@
+From c0a01256230a23a5388a375516af4714b4b3137a Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Fri, 13 Feb 2015 01:04:21 +0100
+Subject: [PATCH 13/40] prefs: always prompt for download directory by default
+
+If the user opens a link, one of two things might happen. The URI
+resolves to a "web page" and will be displayed, then everything is
+good. Or it has a MIME type like application/* or so that causes the
+browser to consider it a file download instead.
+
+In that case, one of two things might happen. The browser may display
+a dialog box asking explicitly for an action, then everything is
+good. Or it does not and instead readily stores the file on disk.
+
+(Modern browsers also download the file in the background when waiting
+for the dialog box confirmation, but that is a separate tuning knob.)
+
+When the file is chosen to be immediately stored on disk without user
+interaction, the visual feedback for this may be rather miniscule.
+
+And then, you have to open a terminal or file manager again just to
+move the file to the location you wanted it to be in in the first
+place.
+
+TLDR: Do not let files sneak onto the disk too easily.
+---
+ chrome/browser/download/download_dir_policy_handler.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/chrome/browser/download/download_dir_policy_handler.cc b/chrome/browser/download/download_dir_policy_handler.cc
+index be9ea9d..0a1c63f 100644
+--- a/chrome/browser/download/download_dir_policy_handler.cc
++++ b/chrome/browser/download/download_dir_policy_handler.cc
+@@ -105,7 +105,7 @@ void DownloadDirPolicyHandler::ApplyPolicySettingsWithParameters(
+   // Otherwise, it would enable a user to bypass the mandatory policy.
+   if (policies.Get(policy_name())->level == policy::POLICY_LEVEL_MANDATORY) {
+     prefs->SetValue(prefs::kPromptForDownload,
+-                    new base::FundamentalValue(false));
++                    new base::FundamentalValue(true));
+ #if defined(OS_CHROMEOS)
+     if (download_to_drive) {
+       prefs->SetValue(prefs::kDisableDrive,
+-- 
+2.4.0
+
