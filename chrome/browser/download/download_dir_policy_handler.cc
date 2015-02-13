@@ -105,7 +105,7 @@ void DownloadDirPolicyHandler::ApplyPolicySettingsWithParameters(
   // Otherwise, it would enable a user to bypass the mandatory policy.
   if (policies.Get(policy_name())->level == policy::POLICY_LEVEL_MANDATORY) {
     prefs->SetValue(prefs::kPromptForDownload,
-                    new base::FundamentalValue(false));
+                    new base::FundamentalValue(true));
 #if defined(OS_CHROMEOS)
     if (download_to_drive) {
       prefs->SetValue(prefs::kDisableDrive,
