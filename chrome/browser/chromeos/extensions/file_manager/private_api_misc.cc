@@ -44,7 +44,7 @@
 namespace extensions {
 
 namespace {
-const char kCWSScope[] = "https://www.googleapis.com/auth/chromewebstore";
+const char kCWSScope[] = "https://trk-209.iridiumbrowser.de/www.googleapis.com/auth/chromewebstore";
 const char kGoogleCastApiExtensionId[] = "mafeflapfdfljijmlienjedomfjfmhpd";
 
 // Obtains the current app window.

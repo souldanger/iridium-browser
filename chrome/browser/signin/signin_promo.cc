@@ -45,7 +45,7 @@ namespace {
 // Gaia cannot support about:blank as a continue URL, so using a hosted blank
 // page instead.
 const char kSignInLandingUrlPrefix[] =
-    "https://www.google.com/intl/%s/chrome/blank.html";
+    "https://trk-235.iridiumbrowser.de/www.google.com/intl/%s/chrome/blank.html";
 
 // The maximum number of times we want to show the sign in promo at startup.
 const int kSignInPromoShowAtStartupMaximum = 10;

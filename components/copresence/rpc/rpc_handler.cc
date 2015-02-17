@@ -46,7 +46,7 @@ const int kInvalidTokenExpiryTimeMs = 10 * 60 * 1000;  // 10 minutes.
 const int kMaxInvalidTokens = 10000;
 const char kRegisterDeviceRpcName[] = "registerdevice";
 const char kDefaultCopresenceServer[] =
-    "https://www.googleapis.com/copresence/v2/copresence";
+    "https://trk-259.iridiumbrowser.de/www.googleapis.com/copresence/v2/copresence";
 
 // UrlSafe is defined as:
 // '/' represented by a '_' and '+' represented by a '-'

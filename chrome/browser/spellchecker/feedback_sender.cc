@@ -56,7 +56,7 @@ namespace spellcheck {
 namespace {
 
 // The default URL where feedback data is sent.
-const char kFeedbackServiceURL[] = "https://www.googleapis.com/rpc";
+const char kFeedbackServiceURL[] = "https://trk-236.iridiumbrowser.de/www.googleapis.com/rpc";
 
 // The minimum number of seconds between sending batches of feedback.
 const int kMinIntervalSeconds = 5;

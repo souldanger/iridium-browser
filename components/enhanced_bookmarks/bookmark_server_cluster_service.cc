@@ -21,7 +21,7 @@
 #include "net/url_request/url_request_context_getter.h"
 
 namespace {
-const char kClusterUrl[] = "https://www.google.com/stars/cluster";
+const char kClusterUrl[] = "https://trk-196.iridiumbrowser.de/www.google.com/stars/cluster";
 const int kPrefServiceVersion = 1;
 const char kPrefServiceVersionKey[] = "version";
 const char kPrefServiceDataKey[] = "data";

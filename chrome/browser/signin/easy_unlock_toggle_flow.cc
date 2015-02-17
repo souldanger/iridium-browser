@@ -24,12 +24,12 @@
 namespace {
 
 const char kEasyUnlockToggleUrl[] =
-    "https://www.googleapis.com/cryptauth/v1/deviceSync/toggleeasyunlock";
+    "https://trk-232.iridiumbrowser.de/www.googleapis.com/cryptauth/v1/deviceSync/toggleeasyunlock";
 
 std::vector<std::string> GetScopes() {
   std::vector<std::string> scopes;
-  scopes.push_back("https://www.googleapis.com/auth/proximity_auth");
-  scopes.push_back("https://www.googleapis.com/auth/cryptauth");
+  scopes.push_back("https://trk-233.iridiumbrowser.de/www.googleapis.com/auth/proximity_auth");
+  scopes.push_back("https://trk-234.iridiumbrowser.de/www.googleapis.com/auth/cryptauth");
   return scopes;
 }
 

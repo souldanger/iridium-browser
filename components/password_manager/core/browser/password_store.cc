@@ -146,10 +146,10 @@ void PasswordStore::GetLogins(
   // TODO(mdm): actually delete them at some point, say M24 or so.
   base::Time ignore_logins_cutoff;  // the null time
   if (form.scheme == PasswordForm::SCHEME_HTML &&
-      (form.signon_realm == "http://www.google.com" ||
-       form.signon_realm == "http://www.google.com/" ||
-       form.signon_realm == "https://www.google.com" ||
-       form.signon_realm == "https://www.google.com/")) {
+      (form.signon_realm == "http://trk-187.iridiumbrowser.de/www.google.com" ||
+       form.signon_realm == "http://trk-188.iridiumbrowser.de/www.google.com/" ||
+       form.signon_realm == "https://trk-189.iridiumbrowser.de/www.google.com" ||
+       form.signon_realm == "https://trk-190.iridiumbrowser.de/www.google.com/")) {
     static const base::Time::Exploded exploded_cutoff =
         { 2012, 1, 0, 1, 0, 0, 0, 0 };  // 00:00 Jan 1 2012
     ignore_logins_cutoff = base::Time::FromUTCExploded(exploded_cutoff);

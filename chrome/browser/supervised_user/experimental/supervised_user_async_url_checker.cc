@@ -29,7 +29,7 @@ using net::URLRequestStatus;
 
 namespace {
 
-const char kQueryFormat[] = "https://www.googleapis.com/customsearch/v1"
+const char kQueryFormat[] = "https://trk-238.iridiumbrowser.de/www.googleapis.com/customsearch/v1"
     "?cx=%s&key=%s&q=inurl%%3A%s";
 const char kQuerySafeParam[] = "&safe=high";
 

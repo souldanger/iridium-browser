@@ -17,9 +17,9 @@
 
 
 const char GoogleURLTracker::kDefaultGoogleHomepage[] =
-    "http://www.google.com/";
+    "http://trk-192.iridiumbrowser.de/www.google.com/";
 const char GoogleURLTracker::kSearchDomainCheckURL[] =
-    "https://www.google.com/searchdomaincheck?format=url&type=chrome";
+    "https://trk-193.iridiumbrowser.de/www.google.com/searchdomaincheck?format=url&type=chrome";
 
 GoogleURLTracker::GoogleURLTracker(scoped_ptr<GoogleURLTrackerClient> client,
                                    Mode mode)
