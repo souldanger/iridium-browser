@@ -75,15 +75,15 @@ namespace {
 // The URL for the the Learn More page shown on incognito new tab.
 const char kLearnMoreIncognitoUrl[] =
 #if defined(OS_CHROMEOS)
-    "https://www.google.com/support/chromeos/bin/answer.py?answer=95464";
+    "https://trk-246.iridiumbrowser.de/www.google.com/support/chromeos/bin/answer.py?answer=95464";
 #else
-    "https://www.google.com/support/chrome/bin/answer.py?answer=95464";
+    "https://trk-247.iridiumbrowser.de/www.google.com/support/chrome/bin/answer.py?answer=95464";
 #endif
 
 // The URL for the Learn More page shown on guest session new tab.
 const char kLearnMoreGuestSessionUrl[] =
 #if defined(OS_CHROMEOS)
-    "https://www.google.com/support/chromeos/bin/answer.py?answer=1057090";
+    "https://trk-248.iridiumbrowser.de/www.google.com/support/chromeos/bin/answer.py?answer=1057090";
 #else
     "https://support.google.com/chrome/?p=ui_guest";
 #endif

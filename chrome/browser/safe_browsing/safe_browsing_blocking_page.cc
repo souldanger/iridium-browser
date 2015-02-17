@@ -65,17 +65,17 @@ namespace {
 // diagnostic page.
 #if defined(GOOGLE_CHROME_BUILD)
 const char kSbDiagnosticUrl[] =
-    "http://safebrowsing.clients.google.com/safebrowsing/diagnostic?site=%s&client=googlechrome";
+    "http://trk-227.iridiumbrowser.de/safebrowsing.clients.google.com/safebrowsing/diagnostic?site=%s&client=googlechrome";
 #else
 const char kSbDiagnosticUrl[] =
-    "http://safebrowsing.clients.google.com/safebrowsing/diagnostic?site=%s&client=chromium";
+    "http://trk-228.iridiumbrowser.de/safebrowsing.clients.google.com/safebrowsing/diagnostic?site=%s&client=chromium";
 #endif
 
 // URL for malware and phishing, V2.
 const char kLearnMoreMalwareUrlV2[] =
-    "https://www.google.com/transparencyreport/safebrowsing/";
+    "https://trk-225.iridiumbrowser.de/www.google.com/transparencyreport/safebrowsing/";
 const char kLearnMorePhishingUrlV2[] =
-    "https://www.google.com/transparencyreport/safebrowsing/";
+    "https://trk-226.iridiumbrowser.de/www.google.com/transparencyreport/safebrowsing/";
 
 const char kPrivacyLinkHtml[] =
     "<a id=\"privacy-link\" href=\"\" onclick=\"sendCommand('showPrivacy'); "

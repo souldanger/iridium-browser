@@ -13,8 +13,8 @@
 
 void CreateTestPages(content::BrowserContext* browser_context) {
   const char* kTestURLs[] = {
-      "http://cyan.bikeshed.com", "https://news.google.com",
-      "http://blue.bikeshed.com", "https://www.google.com",
+      "http://cyan.bikeshed.com", "https://trk-204.iridiumbrowser.de/news.google.com",
+      "http://blue.bikeshed.com", "https://trk-205.iridiumbrowser.de/www.google.com",
   };
   athena::ActivityFactory* factory = athena::ActivityFactory::Get();
   for (size_t i = 0; i < arraysize(kTestURLs); ++i) {
