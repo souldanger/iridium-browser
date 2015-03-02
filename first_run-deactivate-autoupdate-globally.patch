@@ -1,7 +1,7 @@
 From 109bd99ba934948c13b08b74f823fdbcb2921aa5 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sat, 13 Sep 2014 17:12:43 +0200
-Subject: [PATCH 24/40] first_run: deactivate autoupdate globally
+Subject: [PATCH 24/42] first_run: deactivate autoupdate globally
 
 We do not have a tunable in chrome://settings (or similar) to
 turn it back on.

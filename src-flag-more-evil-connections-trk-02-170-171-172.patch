@@ -1,11 +1,12 @@
-From ecebf86b898cb02d2b02d17e41dcef628b2eba32 Mon Sep 17 00:00:00 2001
+From 1dafa2adbdb796a0f8419c2b583f3a9d04912e1f Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Fri, 13 Feb 2015 10:51:20 +0100
-Subject: [PATCH 40/40] src: flag more evil connections trk-02/170/171/172
+Subject: [PATCH 40/42] src: flag more evil connections trk-02/170/171/172
 
 ---
  .../chrome_component_updater_configurator.cc       | 27 +++++++++++++++-------
- 1 file changed, 19 insertions(+), 8 deletions(-)
+ components/component_updater/update_checker.cc     |  4 ++++
+ 2 files changed, 23 insertions(+), 8 deletions(-)
 
 diff --git a/chrome/browser/component_updater/chrome_component_updater_configurator.cc b/chrome/browser/component_updater/chrome_component_updater_configurator.cc
 index c1e3127..b95afd8 100644
@@ -71,6 +72,21 @@ index c1e3127..b95afd8 100644
  }
  
  base::Version ChromeConfigurator::GetBrowserVersion() const {
+diff --git a/components/component_updater/update_checker.cc b/components/component_updater/update_checker.cc
+index f14263c..72c30b2 100644
+--- a/components/component_updater/update_checker.cc
++++ b/components/component_updater/update_checker.cc
+@@ -112,6 +112,10 @@ bool UpdateCheckerImpl::CheckForUpdates(
+     const std::string& additional_attributes,
+     const UpdateCheckCallback& update_check_callback) {
+   DCHECK(thread_checker_.CalledOnValidThread());
++  std::vector<GURL> zzz = config_.UpdateUrl();
++  fprintf(stderr, "%s: enter\n", __PRETTY_FUNCTION__);
++  if (zzz.size() > 0)
++  	fprintf(stderr, "%s: url=%s\n", __PRETTY_FUNCTION__, zzz[0].spec().c_str());
+ 
+   if (request_sender_.get()) {
+     NOTREACHED();
 -- 
 2.4.0
 

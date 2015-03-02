@@ -1,7 +1,7 @@
 From 256407fadc3b064126122f309765d38afff9caf2 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sun, 19 Oct 2014 14:49:10 +0200
-Subject: [PATCH 21/40] search_engines: add DuckDuckGo as selectable and
+Subject: [PATCH 21/42] search_engines: add DuckDuckGo as selectable and
  default search engine
 
 There is a lot of code pertaining to DefaultSearchEngine,

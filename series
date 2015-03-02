@@ -38,3 +38,5 @@ openSUSE-patch-chromium-sandbox-pie.patch.patch
 openSUSE-patch-exclude_ymp.diff.patch
 updater-disable-auto-update.patch
 src-flag-more-evil-connections-trk-02-170-171-172.patch
+src-flag-more-evil-connections-173.260.patch
+iridium-browser-40.2.patch

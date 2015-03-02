@@ -1,7 +1,7 @@
 From f297b06516c08f7b767753ba51c9b15cfd8c7dce Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Tue, 9 Dec 2014 17:54:48 +0100
-Subject: [PATCH 31/40] ui: update strings to read "Iridium" instead
+Subject: [PATCH 31/42] ui: update strings to read "Iridium" instead
 
 ---
  chrome/app/chromium_strings.grd                    | 369 +++++++++++----------
