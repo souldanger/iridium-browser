@@ -15,7 +15,9 @@
 #import "media/video/capture/mac/video_capture_device_avfoundation_mac.h"
 #import "media/video/capture/mac/video_capture_device_decklink_mac.h"
 #include "media/video/capture/mac/video_capture_device_mac.h"
+#ifndef MAC_APP_STORE
 #import "media/video/capture/mac/video_capture_device_qtkit_mac.h"
+#endif
 
 namespace media {
 
@@ -53,6 +55,7 @@ EnumerateDevicesUsingQTKit() {
 
   scoped_ptr<VideoCaptureDevice::Names> device_names(
         new VideoCaptureDevice::Names());
+#ifndef MAC_APP_STORE
   NSMutableDictionary* capture_devices =
       [[[NSMutableDictionary alloc] init] autorelease];
   [VideoCaptureDeviceQTKit getDeviceNames:capture_devices];
@@ -64,6 +67,7 @@ EnumerateDevicesUsingQTKit() {
       name.set_is_blacklisted(true);
     device_names->push_back(name);
   }
+#endif
   return device_names.Pass();
 }
 
@@ -178,6 +182,7 @@ void VideoCaptureDeviceFactoryMac::GetDeviceSupportedFormats(
                              supportedFormats:supported_formats];
     break;
   case VideoCaptureDevice::Name::QTKIT:
+#ifndef MAC_APP_STORE
     // Blacklisted cameras provide their own supported format(s), otherwise no
     // such information is provided for QTKit devices.
     if (device.is_blacklisted()) {
@@ -194,6 +199,7 @@ void VideoCaptureDeviceFactoryMac::GetDeviceSupportedFormats(
         }
       }
     }
+#endif
     break;
   case VideoCaptureDevice::Name::DECKLINK:
     DVLOG(1) << "Enumerating video capture capabilities " << device.name();

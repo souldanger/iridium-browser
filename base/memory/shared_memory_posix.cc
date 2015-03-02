@@ -455,7 +455,7 @@ bool SharedMemory::FilePathForMemoryName(const std::string& mem_name,
 #if defined(GOOGLE_CHROME_BUILD)
   std::string name_base = std::string("com.google.Chrome");
 #else
-  std::string name_base = std::string("org.chromium.Chromium");
+  std::string name_base = std::string("de.iridiumbrowser");
 #endif
   *path = temp_dir.AppendASCII(name_base + ".shmem." + mem_name);
   return true;

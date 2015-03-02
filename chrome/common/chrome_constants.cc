@@ -175,7 +175,12 @@ const base::FilePath::CharType kSingletonCookieFilename[] =
     FPL("SingletonCookie");
 const base::FilePath::CharType kSingletonLockFilename[] = FPL("SingletonLock");
 const base::FilePath::CharType kSingletonSocketFilename[] =
+#ifndef MAC_APP_STORE
     FPL("SingletonSocket");
+#else
+    FPL("S");
+#endif
+
 const base::FilePath::CharType kSupervisedUserSettingsFilename[] =
     FPL("Managed Mode Settings");
 const base::FilePath::CharType kThemePackFilename[] = FPL("Cached Theme.pak");
