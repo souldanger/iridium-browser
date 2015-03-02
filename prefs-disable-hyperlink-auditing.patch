@@ -1,4 +1,4 @@
-From ab59b6dbf70a38e28c077030b2014cbb1b3f9785 Mon Sep 17 00:00:00 2001
+From d8ead03d7125f1dd2cf3be75b4834657a5dd705d Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sat, 13 Sep 2014 17:03:17 +0200
 Subject: [PATCH 10/42] prefs: disable hyperlink auditing
@@ -9,10 +9,10 @@ Switchable through chrome://flags.
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/chrome/browser/chrome_content_browser_client.cc b/chrome/browser/chrome_content_browser_client.cc
-index aa49609..cd336e4 100644
+index 66324b4..2f3422b 100644
 --- a/chrome/browser/chrome_content_browser_client.cc
 +++ b/chrome/browser/chrome_content_browser_client.cc
-@@ -630,7 +630,7 @@ void ChromeContentBrowserClient::RegisterProfilePrefs(
+@@ -665,7 +665,7 @@ void ChromeContentBrowserClient::RegisterProfilePrefs(
        user_prefs::PrefRegistrySyncable::UNSYNCABLE_PREF);
    registry->RegisterBooleanPref(
        prefs::kEnableHyperlinkAuditing,

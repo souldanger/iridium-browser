@@ -1,4 +1,4 @@
-From 8b03858098dc3770aacdb2993939d949533a430b Mon Sep 17 00:00:00 2001
+From 31b5f76b476d97b17f1924b7a7d10b712bd480f6 Mon Sep 17 00:00:00 2001
 From: Joachim Bauch <jojo@struktur.de>
 Date: Mon, 10 Nov 2014 10:54:29 +0100
 Subject: [PATCH 26/42] webrtc: disable WebRTC identity store

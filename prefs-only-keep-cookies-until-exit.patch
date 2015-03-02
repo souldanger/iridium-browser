@@ -1,4 +1,4 @@
-From a35094fb71c53972d23c77eb4bccdf6c2f657893 Mon Sep 17 00:00:00 2001
+From 95c581605aa281ae2ca2db3fc9a7c57ca494bf3e Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sat, 13 Sep 2014 17:25:47 +0200
 Subject: [PATCH 12/42] prefs: only keep cookies until exit
@@ -8,7 +8,7 @@ Subject: [PATCH 12/42] prefs: only keep cookies until exit
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/components/content_settings/core/browser/content_settings_default_provider.cc b/components/content_settings/core/browser/content_settings_default_provider.cc
-index 90b91a3..cc563d1 100644
+index 53e9f8d..c3fa4b6 100644
 --- a/components/content_settings/core/browser/content_settings_default_provider.cc
 +++ b/components/content_settings/core/browser/content_settings_default_provider.cc
 @@ -26,7 +26,7 @@ namespace {

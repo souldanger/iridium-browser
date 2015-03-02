@@ -1,4 +1,4 @@
-From 79e2aa494bf8892354f3098c78e71bca8dc77b56 Mon Sep 17 00:00:00 2001
+From 96d45e81db70dec3f556e119c42a254785a0722e Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Fri, 13 Feb 2015 00:59:04 +0100
 Subject: [PATCH 39/42] updater: disable auto-update
@@ -14,10 +14,10 @@ the case anyway, since we are based off Chromium, not Chrome.
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/chrome/browser/app_controller_mac.mm b/chrome/browser/app_controller_mac.mm
-index 3a433d7..230ddb2 100644
+index 2b8bbfa..17cc160 100644
 --- a/chrome/browser/app_controller_mac.mm
 +++ b/chrome/browser/app_controller_mac.mm
-@@ -666,7 +666,7 @@ class AppControllerProfileObserver : public ProfileInfoCacheObserver {
+@@ -702,7 +702,7 @@ class AppControllerProfileObserver : public ProfileInfoCacheObserver {
    CFStringRef checkInterval = CFSTR("checkInterval");
    CFPropertyListRef plist = CFPreferencesCopyAppValue(checkInterval, app);
    if (!plist) {

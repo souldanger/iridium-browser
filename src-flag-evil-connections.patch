@@ -1,4 +1,4 @@
-From a36672b2b82d525f2d0ceb62c84c977994ddaefd Mon Sep 17 00:00:00 2001
+From 7e6693e708be6b6284969633f6ea20028f32d8b9 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Mon, 3 Nov 2014 10:52:56 +0100
 Subject: [PATCH 32/42] src: flag evil connections
@@ -10,7 +10,7 @@ for easier identification between our webserver log and source code.
 ---
  build/mac/tweak_info_plist.py                                     | 4 ++--
  chrome/browser/chrome_process_finder_win.cc                       | 2 +-
- chrome/browser/chromeos/customization_document.cc                 | 2 +-
+ chrome/browser/chromeos/customization/customization_document.cc   | 2 +-
  .../component_updater/chrome_component_updater_configurator.cc    | 2 +-
  chrome/browser/drive/drive_api_service.cc                         | 2 +-
  chrome/browser/first_run/try_chrome_dialog_view.cc                | 2 +-
@@ -61,7 +61,7 @@ index 2057bac..af49e63 100755
        # This allows crash dumping to a file without uploading the
        # dump, for testing purposes.  Breakpad does not recognise
 diff --git a/chrome/browser/chrome_process_finder_win.cc b/chrome/browser/chrome_process_finder_win.cc
-index 5824824..fc6f1f6 100644
+index 52efec5..0c9d86e 100644
 --- a/chrome/browser/chrome_process_finder_win.cc
 +++ b/chrome/browser/chrome_process_finder_win.cc
 @@ -106,7 +106,7 @@ NotifyChromeResult AttemptToNotifyRunningChrome(HWND remote_window,
@@ -73,10 +73,10 @@ index 5824824..fc6f1f6 100644
    DWORD process_id = 0;
    DWORD thread_id = GetWindowThreadProcessId(remote_window, &process_id);
    if (!thread_id || !process_id)
-diff --git a/chrome/browser/chromeos/customization_document.cc b/chrome/browser/chromeos/customization_document.cc
-index 992bdf7..f1ddb06 100644
---- a/chrome/browser/chromeos/customization_document.cc
-+++ b/chrome/browser/chromeos/customization_document.cc
+diff --git a/chrome/browser/chromeos/customization/customization_document.cc b/chrome/browser/chromeos/customization/customization_document.cc
+index 29ffe68..5c245a9 100644
+--- a/chrome/browser/chromeos/customization/customization_document.cc
++++ b/chrome/browser/chromeos/customization/customization_document.cc
 @@ -154,7 +154,7 @@ void CheckWallpaperCacheExists(const base::FilePath& path, bool* exists) {
  
  // Template URL where to fetch OEM services customization manifest from.
@@ -87,7 +87,7 @@ index 992bdf7..f1ddb06 100644
  // A custom extensions::ExternalLoader that the ServicesCustomizationDocument
  // creates and uses to publish OEM default apps to the extensions system.
 diff --git a/chrome/browser/component_updater/chrome_component_updater_configurator.cc b/chrome/browser/component_updater/chrome_component_updater_configurator.cc
-index 6bb751dc..c1e3127 100644
+index efaa772..8dd3e9b 100644
 --- a/chrome/browser/component_updater/chrome_component_updater_configurator.cc
 +++ b/chrome/browser/component_updater/chrome_component_updater_configurator.cc
 @@ -48,7 +48,7 @@ extern const char kSwitchDisablePings[] = "disable-pings";
@@ -100,10 +100,10 @@ index 6bb751dc..c1e3127 100644
  // The default URL for the v3 protocol service endpoint. In some cases, the
  // component updater is allowed to fall back to and alternate URL source, if
 diff --git a/chrome/browser/drive/drive_api_service.cc b/chrome/browser/drive/drive_api_service.cc
-index e2f42be..aaf9130 100644
+index c3df4b6..cc682ba 100644
 --- a/chrome/browser/drive/drive_api_service.cc
 +++ b/chrome/browser/drive/drive_api_service.cc
-@@ -79,7 +79,7 @@ const char kDriveScope[] = "https://www.googleapis.com/auth/drive";
+@@ -77,7 +77,7 @@ const char kDriveScope[] = "https://www.googleapis.com/auth/drive";
  const char kDriveAppsReadonlyScope[] =
      "https://www.googleapis.com/auth/drive.apps.readonly";
  const char kDriveAppsScope[] = "https://www.googleapis.com/auth/drive.apps";
@@ -126,7 +126,7 @@ index d9d95b5..1c889ee 100644
  enum ButtonTags {
    BT_NONE,
 diff --git a/chrome/browser/gpu/three_d_api_observer.cc b/chrome/browser/gpu/three_d_api_observer.cc
-index d2f8d8e..fcf3571 100644
+index 7396f85..b3a7d1f 100644
 --- a/chrome/browser/gpu/three_d_api_observer.cc
 +++ b/chrome/browser/gpu/three_d_api_observer.cc
 @@ -146,7 +146,7 @@ base::string16 ThreeDAPIInfoBarDelegate::GetLinkText() const {
@@ -139,7 +139,7 @@ index d2f8d8e..fcf3571 100644
            (disposition == CURRENT_TAB) ? NEW_FOREGROUND_TAB : disposition,
            ui::PAGE_TRANSITION_LINK, false));
 diff --git a/chrome/browser/history/web_history_service.cc b/chrome/browser/history/web_history_service.cc
-index e5a8014..21fe727 100644
+index 58c42d6..2faec66 100644
 --- a/chrome/browser/history/web_history_service.cc
 +++ b/chrome/browser/history/web_history_service.cc
 @@ -32,13 +32,13 @@ namespace history {
@@ -157,10 +157,10 @@ index e5a8014..21fe727 100644
 -    "https://history.google.com/history/api/delete?client=chrome";
 +    "https://trk-140.iridiumbrowser.de/history.google.com/history/api/delete?client=chrome";
  
- const char kPostDataMimeType[] = "text/plain";
- 
+ const char kHistoryAudioHistoryUrl[] =
+     "https://history.google.com/history/api/lookup?client=audio";
 diff --git a/chrome/browser/infobars/insecure_content_infobar_delegate.cc b/chrome/browser/infobars/insecure_content_infobar_delegate.cc
-index fa90ef46..4b58015 100644
+index f95bd13..e6a7b40 100644
 --- a/chrome/browser/infobars/insecure_content_infobar_delegate.cc
 +++ b/chrome/browser/infobars/insecure_content_infobar_delegate.cc
 @@ -112,7 +112,7 @@ bool InsecureContentInfoBarDelegate::LinkClicked(
@@ -186,7 +186,7 @@ index cb2e138..0d60f4f 100644
  const char kMultipartBoundary[] =
      "----**--yradnuoBgoLtrapitluMklaTelgooG--**----";
 diff --git a/chrome/browser/metrics/variations/variations_service.cc b/chrome/browser/metrics/variations/variations_service.cc
-index ff7a511..2b211ac 100644
+index 56df926..1502f3f 100644
 --- a/chrome/browser/metrics/variations/variations_service.cc
 +++ b/chrome/browser/metrics/variations/variations_service.cc
 @@ -54,7 +54,7 @@ namespace {
@@ -199,7 +199,7 @@ index ff7a511..2b211ac 100644
  
  // TODO(mad): To be removed when we stop updating the NetworkTimeTracker.
 diff --git a/chrome/browser/nacl_host/nacl_infobar_delegate.cc b/chrome/browser/nacl_host/nacl_infobar_delegate.cc
-index 2836dd3..e48dae3 100644
+index c7047e2..4043eb1 100644
 --- a/chrome/browser/nacl_host/nacl_infobar_delegate.cc
 +++ b/chrome/browser/nacl_host/nacl_infobar_delegate.cc
 @@ -53,7 +53,7 @@ base::string16 NaClInfoBarDelegate::GetLinkText() const {
@@ -212,10 +212,10 @@ index 2836dd3..e48dae3 100644
            (disposition == CURRENT_TAB) ? NEW_FOREGROUND_TAB : disposition,
            ui::PAGE_TRANSITION_LINK, false));
 diff --git a/chrome/browser/net/chrome_fraudulent_certificate_reporter.cc b/chrome/browser/net/chrome_fraudulent_certificate_reporter.cc
-index b95d0fc..1cc11dd 100644
+index d558493..076b596 100644
 --- a/chrome/browser/net/chrome_fraudulent_certificate_reporter.cc
 +++ b/chrome/browser/net/chrome_fraudulent_certificate_reporter.cc
-@@ -24,7 +24,7 @@ namespace chrome_browser_net {
+@@ -25,7 +25,7 @@ namespace chrome_browser_net {
  // TODO(palmer): Switch to HTTPS when the error handling delegate is more
  // sophisticated. Ultimately we plan to attempt the report on many transports.
  static const char kFraudulentCertificateUploadEndpoint[] =
@@ -225,10 +225,10 @@ index b95d0fc..1cc11dd 100644
  ChromeFraudulentCertificateReporter::ChromeFraudulentCertificateReporter(
      net::URLRequestContext* request_context)
 diff --git a/chrome/browser/plugins/plugin_infobar_delegates.cc b/chrome/browser/plugins/plugin_infobar_delegates.cc
-index 789b278..b83ec1f 100644
+index ead6040..ef6c43c 100644
 --- a/chrome/browser/plugins/plugin_infobar_delegates.cc
 +++ b/chrome/browser/plugins/plugin_infobar_delegates.cc
-@@ -308,7 +308,7 @@ bool PluginInstallerInfoBarDelegate::LinkClicked(
+@@ -310,7 +310,7 @@ bool PluginInstallerInfoBarDelegate::LinkClicked(
    GURL url(plugin_metadata_->help_url());
    if (url.is_empty()) {
      url = GURL(
@@ -237,7 +237,7 @@ index 789b278..b83ec1f 100644
    }
    InfoBarService::WebContentsFromInfoBar(infobar())->OpenURL(
        content::OpenURLParams(
-@@ -430,8 +430,8 @@ bool PluginMetroModeInfoBarDelegate::LinkClicked(
+@@ -432,8 +432,8 @@ bool PluginMetroModeInfoBarDelegate::LinkClicked(
    InfoBarService::WebContentsFromInfoBar(infobar())->OpenURL(
        content::OpenURLParams(
            GURL((mode_ == MISSING_PLUGIN) ?
@@ -249,7 +249,7 @@ index 789b278..b83ec1f 100644
            (disposition == CURRENT_TAB) ? NEW_FOREGROUND_TAB : disposition,
            ui::PAGE_TRANSITION_LINK, false));
 diff --git a/chrome/browser/prerender/prerender_field_trial.cc b/chrome/browser/prerender/prerender_field_trial.cc
-index 02ed022..8fa9f15 100644
+index d505582..3280cfc 100644
 --- a/chrome/browser/prerender/prerender_field_trial.cc
 +++ b/chrome/browser/prerender/prerender_field_trial.cc
 @@ -70,7 +70,7 @@ const char kSkipDefaultNoPrerender[] = "SkipDefaultNoPrerender";
@@ -296,7 +296,7 @@ index 52aa500..eb1db44 100644
  }
  
 diff --git a/chrome/browser/safe_browsing/client_side_detection_service.cc b/chrome/browser/safe_browsing/client_side_detection_service.cc
-index 31ead23..6d9f2fa 100644
+index 09f44b9..b5e2e75 100644
 --- a/chrome/browser/safe_browsing/client_side_detection_service.cc
 +++ b/chrome/browser/safe_browsing/client_side_detection_service.cc
 @@ -76,11 +76,11 @@ const int ClientSideDetectionService::kNegativeCacheIntervalDays = 1;
@@ -328,7 +328,7 @@ index 27f4008..e95cc92 100644
  // static
  DownloadFeedbackFactory* DownloadFeedback::factory_ = NULL;
 diff --git a/chrome/browser/safe_browsing/safe_browsing_service.cc b/chrome/browser/safe_browsing/safe_browsing_service.cc
-index 3a244c1..0fad61a 100644
+index e5c8fd5..b26bc33 100644
 --- a/chrome/browser/safe_browsing/safe_browsing_service.cc
 +++ b/chrome/browser/safe_browsing/safe_browsing_service.cc
 @@ -69,21 +69,21 @@ const base::FilePath::CharType kCookiesFile[] = FILE_PATH_LITERAL(" Cookies");
@@ -358,7 +358,7 @@ index 3a244c1..0fad61a 100644
  base::FilePath CookieFilePath() {
    return base::FilePath(
 diff --git a/chrome/common/extensions/extension_constants.cc b/chrome/common/extensions/extension_constants.cc
-index 63dabf1..9560576 100644
+index 4f73429..3d712fb 100644
 --- a/chrome/common/extensions/extension_constants.cc
 +++ b/chrome/common/extensions/extension_constants.cc
 @@ -9,7 +9,7 @@ namespace extension_urls {
@@ -371,7 +371,7 @@ index 63dabf1..9560576 100644
  }  // namespace
  
 diff --git a/components/autofill/core/browser/autofill_download_manager.cc b/components/autofill/core/browser/autofill_download_manager.cc
-index ba62af5..5b9cb42 100644
+index 9331282..81610ac 100644
 --- a/components/autofill/core/browser/autofill_download_manager.cc
 +++ b/components/autofill/core/browser/autofill_download_manager.cc
 @@ -45,7 +45,7 @@ std::string RequestTypeToString(AutofillDownloadManager::RequestType type) {
@@ -384,10 +384,10 @@ index ba62af5..5b9cb42 100644
  }
  
 diff --git a/components/crash/app/breakpad_linux.cc b/components/crash/app/breakpad_linux.cc
-index 6c86220..479469f 100644
+index 09a9251..fb02dbf 100644
 --- a/components/crash/app/breakpad_linux.cc
 +++ b/components/crash/app/breakpad_linux.cc
-@@ -78,7 +78,7 @@ namespace breakpad {
+@@ -79,7 +79,7 @@ namespace breakpad {
  namespace {
  
  #if !defined(OS_CHROMEOS)
@@ -397,7 +397,7 @@ index 6c86220..479469f 100644
  
  bool g_is_crash_reporter_enabled = false;
 diff --git a/components/crash/tools/crash_service.cc b/components/crash/tools/crash_service.cc
-index 7e1798f..9882769 100644
+index 23d5ec66..5fd013d 100644
 --- a/components/crash/tools/crash_service.cc
 +++ b/components/crash/tools/crash_service.cc
 @@ -24,7 +24,7 @@ namespace {
@@ -410,7 +410,7 @@ index 7e1798f..9882769 100644
  
  typedef std::map<std::wstring, std::wstring> CrashMap;
 diff --git a/components/policy/core/common/policy_loader_win.cc b/components/policy/core/common/policy_loader_win.cc
-index 69320db..a45d381 100644
+index 2989a36..fc6d38e 100644
 --- a/components/policy/core/common/policy_loader_win.cc
 +++ b/components/policy/core/common/policy_loader_win.cc
 @@ -70,7 +70,7 @@ const char kLegacyBrowserSupportExtensionId[] =
@@ -423,10 +423,10 @@ index 69320db..a45d381 100644
  const char kBlockedExtensionPrefix[] = "[BLOCKED]";
  
 diff --git a/components/policy/resources/policy_templates.json b/components/policy/resources/policy_templates.json
-index 32be334..a218026 100644
+index e989038..5dafd08 100644
 --- a/components/policy/resources/policy_templates.json
 +++ b/components/policy/resources/policy_templates.json
-@@ -1658,7 +1658,7 @@
+@@ -1703,7 +1703,7 @@
              'dynamic_refresh': True,
              'per_profile': True,
            },
@@ -435,7 +435,7 @@ index 32be334..a218026 100644
            'id': 34,
            'caption': '''Configure the list of force-installed extensions''',
            'desc': '''Allows you to specify a list of extensions that will be installed silently, without user interaction.
-@@ -1667,7 +1667,7 @@
+@@ -1712,7 +1712,7 @@
  
            For each item, <ph name="PRODUCT_NAME">$1<ex>Google Chrome</ex></ph> will retrieve the extension specified by the extension ID from the update service at the specified update URL and silently install it.
  
@@ -444,7 +444,7 @@ index 32be334..a218026 100644
  
            Users will be unable to uninstall extensions that are specified by this policy. If you remove an extension from this list, then it will be automatically uninstalled by <ph name="PRODUCT_NAME">$1<ex>Google Chrome</ex></ph>. Extensions specified in this list are also automatically whitelisted for installation; the ExtensionsInstallBlacklist does not affect them.
  
-@@ -4354,7 +4354,7 @@
+@@ -4406,7 +4406,7 @@
        'features': {
          'dynamic_refresh': True,
        },

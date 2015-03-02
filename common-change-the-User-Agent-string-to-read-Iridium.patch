@@ -1,4 +1,4 @@
-From bff610e74f6f3fc640a521e8254c8ff6bf62957a Mon Sep 17 00:00:00 2001
+From 0430302e83f876c2ab8996192242256fa342b975 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Mon, 13 Oct 2014 12:28:51 +0200
 Subject: [PATCH 19/42] common: change the User-Agent string to read Iridium

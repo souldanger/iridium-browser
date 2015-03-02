@@ -1,4 +1,4 @@
-From e62dee15771493b9e93965bed9693ee0e4218ec6 Mon Sep 17 00:00:00 2001
+From ce4be3affa789c0f852e4b231987d43c2ea04f50 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Thu, 29 Jan 2015 10:36:43 +0100
 Subject: [PATCH 36/42] prefs: use system-provided pereference skeleton

@@ -1,4 +1,4 @@
-From 458849dc20d88594339ba1e98faee3dcc7b588db Mon Sep 17 00:00:00 2001
+From 8b1fd477d683f9eb455d4741fa2695e496fa066b Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Thu, 29 Jan 2015 10:46:40 +0100
 Subject: [PATCH 38/42] openSUSE patch exclude_ymp.diff
@@ -8,10 +8,10 @@ Subject: [PATCH 38/42] openSUSE patch exclude_ymp.diff
  1 file changed, 1 insertion(+)
 
 diff --git a/net/base/mime_util.cc b/net/base/mime_util.cc
-index 2005e83..7a5f02f 100644
+index cba37a4..29f233f 100644
 --- a/net/base/mime_util.cc
 +++ b/net/base/mime_util.cc
-@@ -435,6 +435,7 @@ static const char* const unsupported_text_types[] = {
+@@ -436,6 +436,7 @@ static const char* const unsupported_text_types[] = {
    "text/x-csv",
    "text/x-vcf",
    "text/rtf",

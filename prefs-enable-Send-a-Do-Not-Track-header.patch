@@ -1,4 +1,4 @@
-From c9fee32d35421c1311e4eb0564e69938799680ee Mon Sep 17 00:00:00 2001
+From 3ee5a14b7e1edb53d83b96226f0d6ff295580d9d Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sat, 13 Sep 2014 15:06:39 +0200
 Subject: [PATCH 05/42] prefs: enable "Send a Do-Not-Track header"

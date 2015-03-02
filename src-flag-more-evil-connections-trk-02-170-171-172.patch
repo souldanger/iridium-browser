@@ -1,4 +1,4 @@
-From 1dafa2adbdb796a0f8419c2b583f3a9d04912e1f Mon Sep 17 00:00:00 2001
+From a1136f5cfd3ac16ebddb6a1a77e2ae621302d616 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Fri, 13 Feb 2015 10:51:20 +0100
 Subject: [PATCH 40/42] src: flag more evil connections trk-02/170/171/172
@@ -9,7 +9,7 @@ Subject: [PATCH 40/42] src: flag more evil connections trk-02/170/171/172
  2 files changed, 23 insertions(+), 8 deletions(-)
 
 diff --git a/chrome/browser/component_updater/chrome_component_updater_configurator.cc b/chrome/browser/component_updater/chrome_component_updater_configurator.cc
-index c1e3127..b95afd8 100644
+index 8dd3e9b..be3bf22 100644
 --- a/chrome/browser/component_updater/chrome_component_updater_configurator.cc
 +++ b/chrome/browser/component_updater/chrome_component_updater_configurator.cc
 @@ -47,16 +47,20 @@ extern const char kSwitchDisablePings[] = "disable-pings";

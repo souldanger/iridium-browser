@@ -1,4 +1,4 @@
-From 05ec10a6d517ef91955d225c3af66f3c7fd6748e Mon Sep 17 00:00:00 2001
+From df38ed8f94aecdaeaf32a83ce7893b9625a0df62 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Mon, 15 Sep 2014 10:58:42 +0200
 Subject: [PATCH 15/42] dns: send IPv6 connectivity probes to our own server
@@ -8,20 +8,20 @@ Subject: [PATCH 15/42] dns: send IPv6 connectivity probes to our own server
  1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/net/dns/host_resolver_impl.cc b/net/dns/host_resolver_impl.cc
-index 8913f17..81a3d01 100644
+index 98e4105..c2a3161 100644
 --- a/net/dns/host_resolver_impl.cc
 +++ b/net/dns/host_resolver_impl.cc
-@@ -2156,10 +2156,10 @@ HostResolverImpl::Key HostResolverImpl::GetEffectiveKeyForRequest(
+@@ -2155,10 +2155,10 @@ HostResolverImpl::Key HostResolverImpl::GetEffectiveKeyForRequest(
+ 
    if (info.address_family() == ADDRESS_FAMILY_UNSPECIFIED) {
      if (probe_ipv6_support_ && !use_local_ipv6_) {
-       base::TimeTicks start_time = base::TimeTicks::Now();
 -      // Google DNS address.
-+      // 2a01:4f8:a0:73eb::4 (iridiumbrowser.de)
++      // 2a01:4f8:162:73ab::58c6:b4a4 (iridiumbrowser.de)
        const uint8 kIPv6Address[] =
 -          { 0x20, 0x01, 0x48, 0x60, 0x48, 0x60, 0x00, 0x00,
 -            0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x88, 0x88 };
-+          { 0x2a, 0x01, 0x04, 0xf8, 0x00, 0xa0, 0x73, 0xeb,
-+            0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x04 };
++          { 0x2a, 0x01, 0x04, 0xf8, 0x01, 0x62, 0x73, 0xab,
++            0x00, 0x00, 0x00, 0x00, 0x58, 0xc6, 0xb4, 0xa4 };
        IPAddressNumber address(kIPv6Address,
                                kIPv6Address + arraysize(kIPv6Address));
        BoundNetLog probe_net_log = BoundNetLog::Make(

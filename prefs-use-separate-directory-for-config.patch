@@ -1,4 +1,4 @@
-From 06d88da5e97d2b29765cfae7163f047f4f492b1b Mon Sep 17 00:00:00 2001
+From e4bd4857600ba6bdc13671f2cf3fe1a286e04a8b Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sat, 8 Nov 2014 21:40:49 +0100
 Subject: [PATCH 23/42] prefs: use separate directory for config

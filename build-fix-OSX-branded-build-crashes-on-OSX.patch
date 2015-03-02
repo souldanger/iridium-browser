@@ -1,4 +1,4 @@
-From cd8a6611101d619bee6e091672d61064cca1cb56 Mon Sep 17 00:00:00 2001
+From ac7e2a343f2e0f0025d9df6d12f7b4fe007f86b3 Mon Sep 17 00:00:00 2001
 From: Yuriy Shevchuk <yuriy@struktur.de>
 Date: Tue, 23 Dec 2014 16:54:56 +0100
 Subject: [PATCH 33/42] build: fix OSX branded build crashes on OSX
@@ -10,10 +10,10 @@ Subject: [PATCH 33/42] build: fix OSX branded build crashes on OSX
  3 files changed, 7 insertions(+), 7 deletions(-)
 
 diff --git a/build/common.gypi b/build/common.gypi
-index 7ec5ae2..a425624 100644
+index f984984..17943cd 100644
 --- a/build/common.gypi
 +++ b/build/common.gypi
-@@ -1908,7 +1908,7 @@
+@@ -1889,7 +1889,7 @@
            ['branding=="Chrome"', {
              'mac_product_name%': 'Google Chrome',
            }, { # else: branding!="Chrome"
@@ -39,7 +39,7 @@ index c5659ff..9ad44a9 100644
 +PRODUCT_INSTALLER_SHORTNAME=Iridium Installer
  COPYRIGHT=Copyright 2014 The Chromium Authors. All rights reserved.
 diff --git a/chrome/common/chrome_constants.cc b/chrome/common/chrome_constants.cc
-index 721ba13..d721002 100644
+index aa08394..d097cf4 100644
 --- a/chrome/common/chrome_constants.cc
 +++ b/chrome/common/chrome_constants.cc
 @@ -9,11 +9,11 @@

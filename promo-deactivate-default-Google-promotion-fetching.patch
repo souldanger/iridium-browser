@@ -1,4 +1,4 @@
-From 006efeeebd1caeb63606b1a0cb0e335e5d504860 Mon Sep 17 00:00:00 2001
+From 5e8a3894a044cf20e07a14b462caa1b2b026cbc8 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sun, 9 Nov 2014 01:54:27 +0100
 Subject: [PATCH 25/42] promo: deactivate default Google promotion fetching

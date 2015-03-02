@@ -1,4 +1,4 @@
-From 480739f4ced47fabf695277dd654018fceaf4346 Mon Sep 17 00:00:00 2001
+From e55376af1fe1818e2b4a14bddc92869f71bf4660 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Mon, 26 Jan 2015 13:57:44 +0100
 Subject: [PATCH 35/42] src: use cached copy of safebrowsing lists at
@@ -9,7 +9,7 @@ Subject: [PATCH 35/42] src: use cached copy of safebrowsing lists at
  1 file changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/chrome/browser/safe_browsing/client_side_detection_service.cc b/chrome/browser/safe_browsing/client_side_detection_service.cc
-index 6d9f2fa..ae1c571 100644
+index b5e2e75..321369e 100644
 --- a/chrome/browser/safe_browsing/client_side_detection_service.cc
 +++ b/chrome/browser/safe_browsing/client_side_detection_service.cc
 @@ -75,12 +75,12 @@ const int ClientSideDetectionService::kReportsIntervalDays = 1;
