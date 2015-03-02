@@ -742,7 +742,23 @@ ProcessSingleton::ProcessSingleton(
     : notification_callback_(notification_callback),
       current_pid_(base::GetCurrentProcId()),
       watcher_(new LinuxWatcher(this)) {
+#if defined(OS_MACOSX)
+#ifndef MAC_APP_STORE
   socket_path_ = user_data_dir.Append(chrome::kSingletonSocketFilename);
+#else // not def MAC_APP_STORE
+  // We do this to mitigate the problem with 104 chars max socket path in OSX
+  bool gotCachesDir = base::GetCachesDir(&socket_path_);
+  if (gotCachesDir) {
+    socket_path_ = socket_path_.Append(chrome::kSingletonSocketFilename);
+  } else {
+    socket_path_ = user_data_dir.Append(chrome::kSingletonSocketFilename);
+  }
+#endif // not def MAC_APP_STORE
+
+#else // defined(OS_MACOSX)
+  socket_path_ = user_data_dir.Append(chrome::kSingletonSocketFilename);
+#endif // defined(OS_MACOSX)
+
   lock_path_ = user_data_dir.Append(chrome::kSingletonLockFilename);
   cookie_path_ = user_data_dir.Append(chrome::kSingletonCookieFilename);
 
@@ -983,14 +999,21 @@ bool ProcessSingleton::Create() {
       << "Temp directory mode is not 700: " << std::oct << dir_mode;
 
   // Setup the socket symlink and the two cookies.
+#ifndef MAC_APP_STORE
   base::FilePath socket_target_path =
       socket_dir_.path().Append(chrome::kSingletonSocketFilename);
+#endif
   base::FilePath cookie(GenerateCookie());
   base::FilePath remote_cookie_path =
       socket_dir_.path().Append(chrome::kSingletonCookieFilename);
   UnlinkPath(socket_path_);
   UnlinkPath(cookie_path_);
-  if (!SymlinkPath(socket_target_path, socket_path_) ||
+
+
+  if (
+#ifndef MAC_APP_STORE
+      !SymlinkPath(socket_target_path, socket_path_) ||
+#endif
       !SymlinkPath(cookie, cookie_path_) ||
       !SymlinkPath(cookie, remote_cookie_path)) {
     // We've already locked things, so we can't have lost the startup race,
@@ -1001,10 +1024,18 @@ bool ProcessSingleton::Create() {
     return false;
   }
 
+#ifndef MAC_APP_STORE
   SetupSocket(socket_target_path.value(), &sock, &addr);
+#else
+  SetupSocket(socket_path_.value(), &sock, &addr);
+#endif
 
   if (bind(sock, reinterpret_cast<sockaddr*>(&addr), sizeof(addr)) < 0) {
+#ifndef MAC_APP_STORE
     PLOG(ERROR) << "Failed to bind() " << socket_target_path.value();
+#else
+    PLOG(ERROR) << "Failed to bind() " << socket_path_.value();
+#endif
     CloseSocket(sock);
     return false;
   }
