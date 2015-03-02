@@ -41,6 +41,17 @@ struct EVMetadata {
 };
 
 static const EVMetadata ev_root_ca_metadata[] = {
+  // need some dummy thing to make compiler happy, because
+  // arraysize() is implemented as a convoluted template rather than
+  // the traditional sizeof(x)/sizeof(*x)
+  { { { 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+        0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff } },
+    {
+      "0",
+    }
+  },
+
+#if 0
   // AC Camerfirma S.A. Chambers of Commerce Root - 2008
   // https://www.camerfirma.com
   { { { 0x78, 0x6a, 0x74, 0xac, 0x76, 0xab, 0x14, 0x7f, 0x9c, 0x6a,
@@ -496,6 +507,7 @@ static const EVMetadata ev_root_ca_metadata[] = {
         0xcf, 0x30, 0x54, 0xf3, 0x4c, 0x52, 0xb7, 0xe5, 0x58, 0xc6 } },
     {"2.16.840.1.114404.1.1.2.4.1", ""},
   }
+#endif
 };
 
 #endif  // defined(USE_NSS_CERTS) || defined(OS_IOS) || defined(OS_WIN)
