@@ -1,7 +1,7 @@
-From 7f579317f1a82d85f5dc4da04ef46ef69bc39f5c Mon Sep 17 00:00:00 2001
+From 9791239c307e89c5759f4eea0c6d7c067f1b5b82 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Thu, 29 Jan 2015 09:26:30 +0100
-Subject: [PATCH 01/42] common: set Iridium version and change User-Agent
+Subject: [PATCH 01/43] common: set Iridium version and change User-Agent
  accordingly
 
 Reduced version number:
@@ -13,12 +13,12 @@ compatibility checks by the browser and/or websites, since we
 really are still Chromium.
 ---
  android_webview/common/aw_version_info_values.h.version | 2 +-
- chrome/VERSION                                          | 6 +++---
+ chrome/VERSION                                          | 4 ++--
  chrome/common/chrome_version_info.cc                    | 2 +-
  chrome/common/chrome_version_info_values.h.version      | 2 +-
  content/common/user_agent.cc                            | 2 ++
  extensions/shell/common/version.h.in                    | 2 +-
- 6 files changed, 9 insertions(+), 7 deletions(-)
+ 6 files changed, 8 insertions(+), 6 deletions(-)
 
 diff --git a/android_webview/common/aw_version_info_values.h.version b/android_webview/common/aw_version_info_values.h.version
 index 72faf97..7c0f43d 100644
@@ -33,15 +33,14 @@ index 72faf97..7c0f43d 100644
  
  #endif  // ANDROID_WEBVIEW_COMMON_AW_VERSION_INFO_VALUES_H_
 diff --git a/chrome/VERSION b/chrome/VERSION
-index 3183355..70ced78 100644
+index aa03697..41ed027 100644
 --- a/chrome/VERSION
 +++ b/chrome/VERSION
 @@ -1,4 +1,4 @@
- MAJOR=41
--MINOR=0
--BUILD=2272
--PATCH=118
-+MINOR=2
+ MAJOR=42
+ MINOR=0
+-BUILD=2311
+-PATCH=138
 +BUILD=0
 +PATCH=0
 diff --git a/chrome/common/chrome_version_info.cc b/chrome/common/chrome_version_info.cc
@@ -71,10 +70,10 @@ index dde5a42..26f350a 100644
  #define IS_OFFICIAL_BUILD @OFFICIAL_BUILD@
  
 diff --git a/content/common/user_agent.cc b/content/common/user_agent.cc
-index 1176c48..254626a 100644
+index f3e113d..7e58e45 100644
 --- a/content/common/user_agent.cc
 +++ b/content/common/user_agent.cc
-@@ -191,6 +191,8 @@ std::string BuildUserAgentFromOSAndProduct(const std::string& os_info,
+@@ -209,6 +209,8 @@ std::string BuildUserAgentFromOSAndProduct(const std::string& os_info,
        product.c_str(),
        WEBKIT_VERSION_MAJOR,
        WEBKIT_VERSION_MINOR);

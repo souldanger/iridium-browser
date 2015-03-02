@@ -1,10 +1,13 @@
-From 10f1e163955f5a9bc4cefff57b31e18b0723d9a2 Mon Sep 17 00:00:00 2001
+From 2bd55680d35a44504d47133e4c45f1235aaaff9c Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Mon, 5 Jan 2015 22:04:26 +0100
-Subject: [PATCH 33/42] icons: change sad plugin icon
+Subject: [PATCH 34/43] icons: change sad plugin icon
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 
 Security loves plugins that do not run anymore
-...aaaand it's gone.
+“...aaaand it's gone.”
 ---
  .../resources/default_100_percent/common/sadplugin.png  | Bin 238 -> 448 bytes
  .../resources/default_200_percent/common/sadplugin.png  | Bin 321 -> 431 bytes

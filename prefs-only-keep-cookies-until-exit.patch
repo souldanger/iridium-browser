@@ -1,14 +1,15 @@
-From 314e14de7d88dd86c92d8f0aa4cf72a22629e712 Mon Sep 17 00:00:00 2001
+From a278b9152e4e9349d8f774568deba9f3814002d7 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sat, 13 Sep 2014 17:25:47 +0200
-Subject: [PATCH 13/42] prefs: only keep cookies until exit
+Subject: [PATCH 13/43] prefs: only keep cookies until exit
 
+Out with all those tracking cookies!
 ---
  .../content_settings/core/browser/content_settings_default_provider.cc  | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/components/content_settings/core/browser/content_settings_default_provider.cc b/components/content_settings/core/browser/content_settings_default_provider.cc
-index 53e9f8d..c3fa4b6 100644
+index bd0f474..e00966c 100644
 --- a/components/content_settings/core/browser/content_settings_default_provider.cc
 +++ b/components/content_settings/core/browser/content_settings_default_provider.cc
 @@ -26,7 +26,7 @@ namespace {

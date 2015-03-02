@@ -1,16 +1,19 @@
-From e490a42ab469fd325b9afb7f6211f4cf20b7c9f8 Mon Sep 17 00:00:00 2001
+From 239f0c0120700161d4fd9756ce8ba083d1675a17 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Thu, 2 Apr 2015 11:39:20 +0200
-Subject: [PATCH 02/42] base: make MSVC happy with __PRETTY_FUNCTION__
+Subject: [PATCH 02/43] base: make MSVC happy with __PRETTY_FUNCTION__
 
-We will be printing some few debug lines to stdout/stderr for
-_developer_ benefit.
+In patches further down the line, we emit some debug statements to
+stdout/stderr for developers, and do so with the function name in it.
+To cope with compilation under the Microsoft compiler, add an alias
+from __PRETTY_FUNCTION__ to the respective constructs cl.exe
+understands.
 ---
  base/logging.h | 5 +++++
  1 file changed, 5 insertions(+)
 
 diff --git a/base/logging.h b/base/logging.h
-index aa243a9..9dae516 100644
+index cc0a5aa..9cf8102 100644
 --- a/base/logging.h
 +++ b/base/logging.h
 @@ -912,6 +912,11 @@ inline std::ostream& operator<<(std::ostream& out, const std::wstring& wstr) {

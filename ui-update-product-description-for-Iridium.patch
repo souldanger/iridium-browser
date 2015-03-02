@@ -1,14 +1,14 @@
-From 4c3cd8f0f96c3fc9491e0a26cfc81343f14ab47c Mon Sep 17 00:00:00 2001
+From f390376c4f4548f0c9e8c85b1a4478d0c53386bf Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Wed, 10 Dec 2014 12:44:49 +0100
-Subject: [PATCH 29/42] ui: update product description for Iridium
+Subject: [PATCH 30/43] ui: update product description for Iridium
 
 ---
  chrome/app/chromium_strings.grd | 22 +++++++++++-----------
  1 file changed, 11 insertions(+), 11 deletions(-)
 
 diff --git a/chrome/app/chromium_strings.grd b/chrome/app/chromium_strings.grd
-index e498059..af2c274 100644
+index 67cbffe..5824a11 100644
 --- a/chrome/app/chromium_strings.grd
 +++ b/chrome/app/chromium_strings.grd
 @@ -215,17 +215,17 @@ be available for now. -->
@@ -31,9 +31,9 @@ index e498059..af2c274 100644
 -          Chromium is a web browser that runs webpages and applications with lightning speed. It's fast, stable, and easy to use. Browse the web more safely with malware and phishing protection built into Chromium.
 +          Iridium is a free, open, and libre browser modification of the Chromium code base, with privacy being enhanced in several key areas. Automatic transmission of partial queries, keywords, metrics to central services inhibited and only occurs with consent. In addition, all our builds are reproducible, and modifications are auditable, setting the project ahead of other secure browser providers.
          </message>
-         <message name="IDS_APP_LAUNCHER_PRODUCT_DESCRIPTION" desc="App Launcher description">
-           Chromium App Launcher is a standalone platform for Chromium apps.
-@@ -244,7 +244,7 @@ be available for now. -->
+       </if>
+       <if expr="chromeos">
+@@ -241,7 +241,7 @@ be available for now. -->
            Chromium App Launcher
          </message>
          <message name="IDS_PRODUCT_BINARIES_NAME" desc="The Chrome Binaries application name">
@@ -42,7 +42,7 @@ index e498059..af2c274 100644
          </message>
          <message name="IDS_CHROME_FRAME_TURNDOWN_LEARN_MORE_URL" desc="Link to knowledge-base article about Chromium Frame's turndown">
            https://support.google.com/chrome/?p=ib_chromeframe
-@@ -275,17 +275,17 @@ be available for now. -->
+@@ -272,17 +272,17 @@ be available for now. -->
          </message>
        </if>
        <message name="IDS_TASK_MANAGER_TITLE" desc="The title of the Task Manager window">
@@ -63,7 +63,7 @@ index e498059..af2c274 100644
        </message>
        <if expr="not chromeos">
          <message name="IDS_GET_HELP_USING_CHROME" desc="Text of the button which takes the user to the Chrome help page.">
-@@ -801,7 +801,7 @@ For Chromium, processes used to display diagnostics information (such as this "a
+@@ -787,7 +787,7 @@ For Chromium, processes used to display diagnostics information (such as this "a
  
        <if expr="use_titlecase and not chromeos">
          <message name="IDS_ABOUT" desc="In Title Case: The text label of the About Chrome menu item">
@@ -72,7 +72,7 @@ index e498059..af2c274 100644
          </message>
          <message name="IDS_UPDATE_NOW" desc="In Title Case: The text label of the Update Chrome Now menu item">
            Update &amp;Chromium
-@@ -809,7 +809,7 @@ For Chromium, processes used to display diagnostics information (such as this "a
+@@ -795,7 +795,7 @@ For Chromium, processes used to display diagnostics information (such as this "a
        </if>
        <if expr="not use_titlecase and not chromeos">
          <message name="IDS_ABOUT" desc="The text label of the About Chrome menu item">
@@ -81,7 +81,7 @@ index e498059..af2c274 100644
          </message>
          <message name="IDS_UPDATE_NOW" desc="The text label of the Update Chrome Now menu item">
            Update &amp;Chromium
-@@ -826,7 +826,7 @@ For Chromium, processes used to display diagnostics information (such as this "a
+@@ -812,7 +812,7 @@ For Chromium, processes used to display diagnostics information (such as this "a
  
        <if expr="is_macosx">
          <message name="IDS_APP_MENU_PRODUCT_NAME" desc="The application's short name, used for the Mac's application menu, activity monitor, etc. This should be less than 16 characters. Example: Chrome, not Google Chrome.">

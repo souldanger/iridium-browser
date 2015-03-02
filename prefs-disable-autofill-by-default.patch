@@ -1,25 +1,32 @@
-From 3664918cb1d8bff518266c27cef489aa6ecfc9b2 Mon Sep 17 00:00:00 2001
+From f11f558b6e5033885f4e7c2b6b0208ee64910f93 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Thu, 11 Sep 2014 16:37:32 +0200
-Subject: [PATCH 03/42] prefs: disable autofill by default
+Subject: [PATCH 03/43] prefs: disable autofill by default
 
+With Autofill, I argue, users are tempted to be lazy and fill forms
+with more data than is perhaps really required for a particular
+service.
+
+The thought here is that the user should be readily subconciously
+reminded about it through every keystroke of information he is about
+to enter.
 ---
  components/autofill/core/browser/autofill_manager.cc | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/components/autofill/core/browser/autofill_manager.cc b/components/autofill/core/browser/autofill_manager.cc
-index 3b8fa2e..7242ad7 100644
+index ca6399a..9cdb132 100644
 --- a/components/autofill/core/browser/autofill_manager.cc
 +++ b/components/autofill/core/browser/autofill_manager.cc
-@@ -171,7 +171,7 @@ void AutofillManager::RegisterProfilePrefs(
+@@ -176,7 +176,7 @@ void AutofillManager::RegisterProfilePrefs(
      user_prefs::PrefRegistrySyncable* registry) {
    registry->RegisterBooleanPref(
        prefs::kAutofillEnabled,
 -      true,
 +      false,
        user_prefs::PrefRegistrySyncable::SYNCABLE_PREF);
- #if defined(OS_MACOSX)
    registry->RegisterBooleanPref(
+       prefs::kAutofillWalletSyncExperimentEnabled,
 -- 
 2.4.0
 

@@ -1,9 +1,12 @@
-From 9e05b0561c2e02e349b2693b73fec977ad63fca2 Mon Sep 17 00:00:00 2001
+From 11284573330f31de53e0f2507d9f1d588b52d5e3 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Mon, 26 Jan 2015 13:57:44 +0100
-Subject: [PATCH 34/42] src: use cached copy of safebrowsing lists at
+Subject: [PATCH 35/43] src: use cached copy of safebrowsing lists at
  iridiumbrowser.de
 
+To avoid contacing Google, let the UA use safebrowsing lists hosted at
+iridiumbrowser. The Iridium project re-gathers these lists on a
+regular basis.
 ---
  chrome/browser/safe_browsing/client_side_detection_service.cc | 8 ++++----
  1 file changed, 4 insertions(+), 4 deletions(-)

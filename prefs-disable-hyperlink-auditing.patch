@@ -1,23 +1,29 @@
-From 411e31b4bcefdff1e93704c5c4ff76572d0c2596 Mon Sep 17 00:00:00 2001
+From 1d4a48b6841a1b225a47d97cf9a2621218755f07 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sat, 13 Sep 2014 17:03:17 +0200
-Subject: [PATCH 11/42] prefs: disable hyperlink auditing
+Subject: [PATCH 11/43] prefs: disable hyperlink auditing
 
-Switchable through chrome://flags.
+"Disable sending hyperlink auditing pings", i.e. pings to
+URLs in <a ping="..."> when clicked.
+
+The feature is already switchable through chrome://flags, so no
+new UI elements need to be added.
+
+https://html.spec.whatwg.org/multipage/semantics.html#hyperlink-auditing .
 ---
  chrome/browser/chrome_content_browser_client.cc | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/chrome/browser/chrome_content_browser_client.cc b/chrome/browser/chrome_content_browser_client.cc
-index 66324b4..2f3422b 100644
+index 4b4d4e4..e94fc00 100644
 --- a/chrome/browser/chrome_content_browser_client.cc
 +++ b/chrome/browser/chrome_content_browser_client.cc
-@@ -665,7 +665,7 @@ void ChromeContentBrowserClient::RegisterProfilePrefs(
+@@ -725,7 +725,7 @@ void ChromeContentBrowserClient::RegisterProfilePrefs(
        user_prefs::PrefRegistrySyncable::UNSYNCABLE_PREF);
    registry->RegisterBooleanPref(
        prefs::kEnableHyperlinkAuditing,
 -      true,
-+      false,
++      false, /* default setting for HL-A */
        user_prefs::PrefRegistrySyncable::UNSYNCABLE_PREF);
    registry->RegisterListPref(
        prefs::kEnableDeprecatedWebPlatformFeatures,

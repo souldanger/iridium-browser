@@ -1,8 +1,10 @@
-From c8457004d7876f9f311b6e216f12e7df0995c417 Mon Sep 17 00:00:00 2001
+From e6774846ba27042c976aac90c6e2d984590f7441 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sat, 13 Sep 2014 16:59:10 +0200
-Subject: [PATCH 10/42] prefs: disable background mode
+Subject: [PATCH 10/43] prefs: disable background mode by default
 
+If I tell the browser to quit, I mean it. Relinquish the memory,
+do not linger around, do not possibly collect data somewhere.
 ---
  chrome/browser/background/background_mode_manager.cc | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
