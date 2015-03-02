@@ -605,6 +605,7 @@ bool Sandbox::EnableSandbox(int sandbox_type,
     return false;
   }
 
+#ifndef MAC_APP_STORE
   // Initialize sandbox.
   char* error_buff = NULL;
   int error = sandbox_init(final_sandbox_profile_str.c_str(), 0, &error_buff);
@@ -614,6 +615,10 @@ bool Sandbox::EnableSandbox(int sandbox_type,
                            << " "
                            << error_buff;
   sandbox_free_error(error_buff);
+#else
+  // We are already sandboxed.
+  bool success = true;
+#endif
   gSandboxIsActive = success;
   return success;
 }

@@ -243,7 +243,7 @@ bool AppShimHostManagerBrowserTestSocketFiles::SetUpUserDataDirectory() {
   symlink_path_ = user_data_dir.Append(app_mode::kAppShimSocketSymlinkName);
   base::FilePath temp_dir;
   PathService::Get(base::DIR_TEMP, &temp_dir);
-  EXPECT_TRUE(base::CreateSymbolicLink(temp_dir.Append("chrome-XXXXXX"),
+  EXPECT_TRUE(base::CreateSymbolicLink(temp_dir.Append("ir-XXXXXX"),
                                        symlink_path_));
 
   // Create an invalid RunningChromeVersion file.

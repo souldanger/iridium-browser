@@ -160,7 +160,7 @@ CFStringRef BaseBundleID_CFString() {
   return base::mac::NSToCFCast(base_bundle_id);
 }
 
-// This callback synchronizes preferences (under "org.chromium.Chromium" or
+// This callback synchronizes preferences (under "de.iridiumbrowser" or
 // "com.google.Chrome"), in particular, writes them out to disk.
 void PrefsSyncCallback() {
   if (!CFPreferencesAppSynchronize(BaseBundleID_CFString()))
