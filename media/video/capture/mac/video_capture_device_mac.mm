@@ -19,7 +19,9 @@
 #import "media/base/mac/avfoundation_glue.h"
 #import "media/video/capture/mac/platform_video_capturing_mac.h"
 #import "media/video/capture/mac/video_capture_device_avfoundation_mac.h"
+#ifndef MAC_APP_STORE
 #import "media/video/capture/mac/video_capture_device_qtkit_mac.h"
+#endif
 #include "ui/gfx/geometry/size.h"
 
 @implementation DeviceNameAndTransportType
@@ -333,6 +335,7 @@ const std::string VideoCaptureDevice::Name::GetModel() const {
   if (unique_id_.size() < 2 * kVidPidSize)
     return "";
 
+#ifndef MAC_APP_STORE
   // The last characters of device id is a concatenation of VID and then PID.
   const size_t vid_location = unique_id_.size() - 2 * kVidPidSize;
   std::string id_vendor = unique_id_.substr(vid_location, kVidPidSize);
@@ -340,6 +343,9 @@ const std::string VideoCaptureDevice::Name::GetModel() const {
   std::string id_product = unique_id_.substr(pid_location, kVidPidSize);
 
   return id_vendor + ":" + id_product;
+#else
+  return "";
+#endif
 }
 
 VideoCaptureDeviceMac::VideoCaptureDeviceMac(const Name& device_name)
@@ -454,7 +460,11 @@ bool VideoCaptureDeviceMac::Init(
         [[VideoCaptureDeviceAVFoundation alloc] initWithFrameReceiver:this];
   } else {
     capture_device_ =
+#ifndef MAC_APP_STORE
         [[VideoCaptureDeviceQTKit alloc] initWithFrameReceiver:this];
+#else
+        NULL;
+#endif
   }
 
   if (!capture_device_)
