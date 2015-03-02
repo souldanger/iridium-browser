@@ -2,6 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+#ifndef MAC_APP_STORE
+
 #import "media/video/capture/mac/video_capture_device_qtkit_mac.h"
 
 #import <QTKit/QTKit.h>
@@ -355,3 +357,5 @@
 }
 
 @end
+
+#endif
