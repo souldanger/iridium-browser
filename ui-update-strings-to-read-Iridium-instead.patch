@@ -1,10 +1,10 @@
-From a1f36dab0a5d38ec2de72215a5d3c0005053aa3d Mon Sep 17 00:00:00 2001
+From afa5281a2b155577cece5f470eb8fb2ecdea38a9 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Tue, 9 Dec 2014 17:54:48 +0100
-Subject: [PATCH 31/48] ui: update strings to read "Iridium" instead
+Subject: [PATCH 30/42] ui: update strings to read "Iridium" instead
 
 ---
- chrome/app/chromium_strings.grd                    | 367 +++++++++++----------
+ chrome/app/chromium_strings.grd                    | 350 ++++++++++-----------
  chrome/app/resources/chromium_strings_am.xtb       |   1 -
  chrome/app/resources/chromium_strings_ar.xtb       |   1 -
  chrome/app/resources/chromium_strings_bg.xtb       |   1 -
@@ -81,10 +81,10 @@ Subject: [PATCH 31/48] ui: update strings to read "Iridium" instead
  .../launchpad_translations/chromium_strings_vi.xtb |   1 -
  .../chromium_strings_zh-CN.xtb                     |   1 -
  .../chromium_strings_zh-TW.xtb                     |   1 -
- 77 files changed, 219 insertions(+), 251 deletions(-)
+ 77 files changed, 202 insertions(+), 251 deletions(-)
 
 diff --git a/chrome/app/chromium_strings.grd b/chrome/app/chromium_strings.grd
-index af2c274..0d0137c 100644
+index af2c274..b1decb6 100644
 --- a/chrome/app/chromium_strings.grd
 +++ b/chrome/app/chromium_strings.grd
 @@ -212,7 +212,7 @@ be available for now. -->
@@ -1095,34 +1095,16 @@ index af2c274..0d0137c 100644
        </message>
  
        <!-- Upgrade recovery bubble -->
-@@ -1309,8 +1309,25 @@ Signing in anyway will merge Chromium information like bookmarks, history, and o
-       </message>
+@@ -1310,7 +1310,7 @@ Signing in anyway will merge Chromium information like bookmarks, history, and o
  
        <!-- SSL Interstitial V2 strings -->
-+      <if expr="is_android or is_ios">
-+        <message name="IDS_SSL_CLOCK_ERROR" desc="Paragraph explaining that the SSL interstitial is probably caused by an incorrect clock.">
-+          Iridium can't establish a private connection to &lt;strong&gt;<ph name="DOMAIN">$1<ex>paypal.com</ex></ph>&lt;/strong&gt;. This is probably because your device's date is set incorrectly. (Your device has the date set to <ph name="DATE">$2<ex>Jan 1, 1970</ex></ph>.) You should refresh this page after <ph name="BEGIN_LINK">&lt;a href="#" id="clock-link"&gt;</ph>you update your device's date and time<ph name="END_LINK">&lt;/a&gt;</ph>.
-+        </message>
-+        <message name="IDS_SSL_CLOCK_ERROR_EXPLANATION" desc="Body text for the explanation shown for when the computer's clock is wrong.">
-+        To establish a secure network connection, your device needs a correct clock. This is because the certificates websites use to identify themselves when establishing a secure connection are only valid for a specific time period. Since your device's clock is wrong, Iridium cannot properly check certificates.
-+        </message>
-+      </if>
-+      <if expr="not is_android and not is_ios">
-+        <message name="IDS_SSL_CLOCK_ERROR" desc="Paragraph explaining that the SSL interstitial is probably caused by an incorrect clock.">
-+          Iridium can't establish a private connection to &lt;strong&gt;<ph name="DOMAIN">$1<ex>paypal.com</ex></ph>&lt;/strong&gt;. This is probably because your computer's date is set incorrectly. (Your computer has the date set to <ph name="DATE">$2<ex>Jan 1, 1970</ex></ph>.) You should refresh this page after <ph name="BEGIN_LINK">&lt;a href="#" id="clock-link"&gt;</ph>you update your computer's date and time<ph name="END_LINK">&lt;/a&gt;</ph>.
-+        </message>
-+        <message name="IDS_SSL_CLOCK_ERROR_EXPLANATION" desc="Body text for the explanation shown for when the computer's clock is wrong.">
-+        To establish a secure network connection, your computer needs a correct clock. This is because the certificates websites use to identify themselves when establishing a secure connection are only valid for a specific time period. Since your computer's clock is wrong, Iridium cannot properly check certificates.
-+        </message>
-+      </if>
-+
        <message name="IDS_SSL_NONOVERRIDABLE_MORE_INVALID_SP3" desc="Body text for the explanation shown if the user clicks on the details windows, the certificate is invalid and the user has an old version of Windows (before WINDOWS XP SP3) running.">
 -      Your computer is running an old version of Microsoft Windows that cannot process this website's security certificate. Because of this problem, Chromium can't tell whether the certificate came from <ph name="SITE">$1<ex>google.com</ex></ph> or from someone on your network pretending to be <ph name="SITE">$1<ex>google.com</ex></ph>. Please update your computer to a more recent version of Windows.
 +      Your computer is running an old version of Microsoft Windows that cannot process this website's security certificate. Because of this problem, Iridium can't tell whether the certificate came from <ph name="SITE">$1<ex>google.com</ex></ph> or from someone on your network pretending to be <ph name="SITE">$1<ex>google.com</ex></ph>. Please update your computer to a more recent version of Windows.
        </message>
        <message name="IDS_SSL_NONOVERRIDABLE_MORE" desc="Body text for the explanation shown if user clicks on the Details button.">
          <ph name="SITE">$1<ex>google.com</ex></ph> normally uses encryption to protect your information. When Chromium tried to connect to <ph name="SITE">$1<ex>google.com</ex></ph> this time, the website sent back unusual
-@@ -1326,20 +1343,20 @@ and incorrect credentials. Either an attacker is trying to pretend to be <ph nam
+@@ -1326,20 +1326,20 @@ and incorrect credentials. Either an attacker is trying to pretend to be <ph nam
        <!-- Offline interstitial  -->
        <if expr="not is_android and not is_ios">
          <message name="IDS_ERRORPAGES_SUMMARY_INTERNET_DISCONNECTED" desc="Summary of the error page when the network connection failed. May be followed by platform dependent instructions.">

@@ -1,4 +1,5 @@
-build-set-iridium-version.patch
+common-set-Iridium-version-and-change-User-Agent-acc.patch
+base-make-MSVC-happy-with-__PRETTY_FUNCTION__.patch
 prefs-disable-autofill-by-default.patch
 prefs-disable-Use-a-web-service-to-help-resolve-navi.patch
 prefs-disable-Use-a-prediction-service-to-help-compl.patch
@@ -16,8 +17,6 @@ dns-send-IPv6-connectivity-probes-to-our-own-server.patch
 browser-disable-DNSv6-probing.patch
 first_run-barf-if-metrics_reporting-is-activated.patch
 profile-resetter-do-not-tick-send-settings-by-defaul.patch
-common-change-the-User-Agent-string-to-read-Iridium.patch
-build-reduced-version-number.patch
 search_engines-add-DuckDuckGo-as-selectable-and-defa.patch
 prefs-disable-translation-service.patch
 prefs-use-separate-directory-for-config.patch
@@ -37,12 +36,7 @@ prefs-use-system-provided-pereference-skeleton.patch
 openSUSE-patch-chromium-sandbox-pie.patch.patch
 openSUSE-patch-exclude_ymp.diff.patch
 updater-disable-auto-update.patch
-src-flag-more-evil-connections-trk-02-170-171-172.patch
-src-flag-more-evil-connections-173.260.patch
-Remove-EV-certificates.patch
 plugin-only-load-plugins-from-user-s-domain-on-Mac-O.patch
 MacOS-updates.patch
-Merge-chromium-41.0.2272.118.patch
-base-make-MSVC-happy-with-__PRETTY_FUNCTION__.patch
 plugins-use-cached-copy-of-plugin-description-list-a.patch
-iridium-browser-41.1.patch
+Remove-EV-certificates.patch

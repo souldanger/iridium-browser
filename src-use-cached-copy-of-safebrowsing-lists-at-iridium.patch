@@ -1,7 +1,7 @@
-From e55376af1fe1818e2b4a14bddc92869f71bf4660 Mon Sep 17 00:00:00 2001
+From 9e05b0561c2e02e349b2693b73fec977ad63fca2 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Mon, 26 Jan 2015 13:57:44 +0100
-Subject: [PATCH 35/48] src: use cached copy of safebrowsing lists at
+Subject: [PATCH 34/42] src: use cached copy of safebrowsing lists at
  iridiumbrowser.de
 
 ---

@@ -1,7 +1,7 @@
-From ae377c0f8ce571a8bffc6dc3690c7b2c5f85139d Mon Sep 17 00:00:00 2001
+From d263f55b45dea5421b81822eaed3c320fdc33a63 Mon Sep 17 00:00:00 2001
 From: Yuriy Shevchuk <yuriy@struktur.de>
 Date: Mon, 2 Mar 2015 14:42:10 +0100
-Subject: [PATCH 44/48] MacOS updates
+Subject: [PATCH 40/42] MacOS updates
 
 - changes for first launch start page
 - some OS X related branding

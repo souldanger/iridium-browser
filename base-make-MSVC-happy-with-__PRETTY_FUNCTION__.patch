@@ -1,8 +1,10 @@
-From 007e2707ff51644d65c9496f28a89148bce50333 Mon Sep 17 00:00:00 2001
+From e490a42ab469fd325b9afb7f6211f4cf20b7c9f8 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Thu, 2 Apr 2015 11:39:20 +0200
-Subject: [PATCH 46/48] base: make MSVC happy with __PRETTY_FUNCTION__
+Subject: [PATCH 02/42] base: make MSVC happy with __PRETTY_FUNCTION__
 
+We will be printing some few debug lines to stdout/stderr for
+_developer_ benefit.
 ---
  base/logging.h | 5 +++++
  1 file changed, 5 insertions(+)
