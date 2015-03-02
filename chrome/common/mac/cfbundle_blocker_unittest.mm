@@ -26,7 +26,7 @@ TEST(CFBundleBlockerTest, IsBundleAllowed) {
     { nil, nil, false },
 
     // Block bundle IDs that aren't in the whitelist.
-    { @"org.chromium.Chromium.evil", nil, false },
+    { @"de.iridiumbrowser.evil", nil, false },
 
     // The AllowedBundle structure for Google Authetnicator BT doesn't
     // require a version, so this should work equally well with any version

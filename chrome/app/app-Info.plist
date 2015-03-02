@@ -244,6 +244,8 @@
 			<string>Viewer</string>
 		</dict>
 		<dict>
+			<key>CFBundleTypeName</key>
+			<string>Extension viewer</string>
 			<key>CFBundleTypeRole</key>
 			<string>Viewer</string>
 			<key>LSItemContentTypes</key>
@@ -348,5 +350,7 @@
 			</dict>
 		</dict>
 	</array>
+	<key>LSApplicationCategoryType</key>
+	<string>public.app-category.utilities</string>
 </dict>
 </plist>

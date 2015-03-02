@@ -24,10 +24,40 @@ bool CopyFile(const FilePath& from_path, const FilePath& to_path) {
 }
 
 bool GetTempDir(base::FilePath* path) {
+#ifndef MAC_APP_STORE
   NSString* tmp = NSTemporaryDirectory();
   if (tmp == nil)
     return false;
   *path = base::mac::NSStringToFilePath(tmp);
+  return true;
+#else // MAC_APP_STORE
+  // Chromium uses temp directories to store a lot of UNIX socket files.
+  // In sandboxed applications socket files can only be used if they are
+  // inside of app container -
+  // https://stackoverflow.com/questions/17753222/sandboxd-deny-network-bind-error-message-when-binds-socket
+  // That is why it is easier to put the whole tmp dir on mac
+  // in app container rather than fix it all over the places.
+  base::FilePath cachesDir;
+  if (!GetCachesDir(&cachesDir)) {
+    return false;
+  }
+  cachesDir = cachesDir.Append("tmp");
+  if (!DirectoryExists(cachesDir)) {
+    if (mkdir(cachesDir.value().c_str(), 0700) != 0) {
+      return false;
+    }
+  }
+  *path = cachesDir;
+  return true;
+#endif
+}
+
+bool GetCachesDir(base::FilePath* path) {
+  NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+  NSString *cachesDirectory = [paths objectAtIndex:0];
+  if (cachesDirectory == nil)
+    return false;
+  *path = base::mac::NSStringToFilePath(cachesDirectory);
   return true;
 }
 
