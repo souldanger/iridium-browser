@@ -238,7 +238,7 @@ const char* BaseBundleID() {
 #if defined(GOOGLE_CHROME_BUILD)
   return "com.google.Chrome";
 #else
-  return "org.chromium.Chromium";
+  return "de.iridiumbrowser";
 #endif
 }
 

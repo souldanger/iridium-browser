@@ -885,9 +885,10 @@ void StartupBrowserCreatorImpl::AddStartupURLs(
   // is the first time the browser is being started), or the set of URLs
   // specified on the command line.
   if (startup_urls->empty()) {
-    startup_urls->push_back(GURL(chrome::kChromeUINewTabURL));
-    if (first_run::ShouldShowWelcomePage())
-      startup_urls->push_back(internals::GetWelcomePageURL());
+    startup_urls->push_back(GURL("about:blank"));
+    // Don't show welcome page for Iridium (uncomment to show)
+    //if (first_run::ShouldShowWelcomePage())
+      //startup_urls->push_back(internals::GetWelcomePageURL());
   }
 
   if (signin::ShouldShowPromoAtStartup(profile_, is_first_run_)) {
