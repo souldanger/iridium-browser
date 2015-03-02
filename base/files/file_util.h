@@ -221,6 +221,11 @@ BASE_EXPORT bool GetTempDir(FilePath* path);
 // Path service may also override DIR_HOME.
 BASE_EXPORT FilePath GetHomeDir();
 
+// Get the caches directory. Basically is used only for OS X.
+//
+// At the moment returns 'false' on any other system than Mac OS.
+BASE_EXPORT bool GetCachesDir(FilePath* path);
+
 // Creates a temporary file. The full path is placed in |path|, and the
 // function returns true if was successful in creating the file. The file will
 // be empty and all handles closed after this function returns.

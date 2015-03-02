@@ -80,7 +80,7 @@ def _AddVersionKeys(plist, version=None):
     VERSION_FILE = os.path.join(TOP, 'chrome/VERSION')
 
     (stdout, retval1) = _GetOutput([VERSION_TOOL, '-f', VERSION_FILE, '-t',
-                                    '@MAJOR@.@MINOR@.@BUILD@.@PATCH@'])
+                                    '@MAJOR@.@MINOR@.@BUILD@'])
     full_version = stdout.rstrip()
 
     (stdout, retval2) = _GetOutput([VERSION_TOOL, '-f', VERSION_FILE, '-t',
@@ -102,7 +102,7 @@ def _AddVersionKeys(plist, version=None):
   # http://lists.apple.com/archives/carbon-dev/2006/Jun/msg00139.html
   # BUILD will always be an increasing value, so BUILD_PATH gives us something
   # unique that meetings what LS wants.
-  plist['CFBundleVersion'] = bundle_version
+  plist['CFBundleVersion'] = full_version
 
   # Return with no error.
   return True
