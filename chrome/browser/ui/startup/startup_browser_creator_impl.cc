@@ -914,11 +914,15 @@ void StartupBrowserCreatorImpl::AddStartupURLs(
   // at the front or back as indicated by welcome_run_type_), or the set of URLs
   // specified on the command line.
   if (startup_urls->empty()) {
+#if 0
+    // Don't show welcome page for Iridium (uncomment to show)
     if (welcome_run_type_ == WelcomeRunType::FIRST_TAB)
       startup_urls->push_back(internals::GetWelcomePageURL());
     startup_urls->push_back(GURL(chrome::kChromeUINewTabURL));
     if (welcome_run_type_ == WelcomeRunType::FIRST_RUN_LAST_TAB)
       startup_urls->push_back(internals::GetWelcomePageURL());
+#endif
+    startup_urls->push_back(GURL("about:blank"));
   }
 
   if (signin::ShouldShowPromoAtStartup(profile_, is_first_run_)) {

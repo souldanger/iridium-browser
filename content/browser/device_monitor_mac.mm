@@ -4,7 +4,10 @@
 
 #include "content/browser/device_monitor_mac.h"
 
+#ifndef MAC_APP_STORE
 #import <QTKit/QTKit.h>
+#endif
+#import <Foundation/Foundation.h>
 
 #include <set>
 
@@ -150,6 +153,7 @@ class QTKitMonitorImpl : public DeviceMonitorMacImpl {
 
 QTKitMonitorImpl::QTKitMonitorImpl(content::DeviceMonitorMac* monitor)
     : DeviceMonitorMacImpl(monitor) {
+#ifndef MAC_APP_STORE
   NSNotificationCenter* nc = [NSNotificationCenter defaultCenter];
   device_arrival_ =
       [nc addObserverForName:QTCaptureDeviceWasConnectedNotification
@@ -169,27 +173,32 @@ QTKitMonitorImpl::QTKitMonitorImpl(content::DeviceMonitorMac* monitor)
                        queue:nil
                   usingBlock:^(NSNotification* notification) {
                       OnAttributeChanged(notification);}];
+#endif
 }
 
 QTKitMonitorImpl::~QTKitMonitorImpl() {
+#ifndef MAC_APP_STORE
   NSNotificationCenter* nc = [NSNotificationCenter defaultCenter];
   [nc removeObserver:device_arrival_];
   [nc removeObserver:device_removal_];
   [nc removeObserver:device_change_];
+#endif
 }
 
 void QTKitMonitorImpl::OnAttributeChanged(
     NSNotification* notification) {
+#ifndef MAC_APP_STORE
   if ([[[notification userInfo]
          objectForKey:QTCaptureDeviceChangedAttributeKey]
       isEqualToString:QTCaptureDeviceSuspendedAttribute]) {
     OnDeviceChanged();
   }
+#endif
 }
 
 void QTKitMonitorImpl::OnDeviceChanged() {
   std::vector<DeviceInfo> snapshot_devices;
-
+#ifndef MAC_APP_STORE
   NSArray* devices = [QTCaptureDevice inputDevices];
   for (QTCaptureDevice* device in devices) {
     DeviceInfo::DeviceType device_type = DeviceInfo::kUnknown;
@@ -211,6 +220,7 @@ void QTKitMonitorImpl::OnDeviceChanged() {
     snapshot_devices.push_back(
         DeviceInfo([[device uniqueID] UTF8String], device_type));
   }
+#endif
   ConsolidateDevicesListAndNotify(snapshot_devices);
 }
 
@@ -555,7 +565,9 @@ void DeviceMonitorMac::NotifyDeviceChanged(
     base::SystemMonitor::DeviceType type) {
   DCHECK(thread_checker_.CalledOnValidThread());
   // TODO(xians): Remove the global variable for SystemMonitor.
+#ifndef MAC_APP_STORE
   base::SystemMonitor::Get()->ProcessDevicesChanged(type);
+#endif
 }
 
 }  // namespace content

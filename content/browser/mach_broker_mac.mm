@@ -253,7 +253,13 @@ std::string MachBroker::GetMachPortName() {
 
   // In non-browser (child) processes, use the parent's pid.
   const pid_t pid = is_child ? getppid() : getpid();
+#ifndef MAC_APP_STORE
   return base::StringPrintf("%s.rohitfork.%d", base::mac::BaseBundleID(), pid);
+#else
+  // @APPLE_TEAM_ID@ should be set before building and should be the same as in signing script!!!
+  // We rely on it to be correct in order to setup mach based IPC in sandboxed environment.
+  return base::StringPrintf("@APPLE_TEAM_ID@.%s.rohitfork.%d", base::mac::BaseBundleID(), pid);
+#endif
 }
 
 void MachBroker::RegisterNotifications() {

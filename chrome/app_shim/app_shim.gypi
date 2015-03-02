@@ -61,7 +61,10 @@
       ],
       'xcode_settings': {
         'INFOPLIST_FILE': 'app_shim/app_mode-Info.plist',
-        'APP_MODE_APP_BUNDLE_ID': '<(mac_bundle_id).app.@APP_MODE_SHORTCUT_ID@',
+        # There is no other mentions of @APP_MODE_SHORTCUT_ID@ for substitution.
+        # Temporary replace @APP_MODE_SHORTCUT_ID@ in next line with correct bundleID
+        #'APP_MODE_APP_BUNDLE_ID': '<(mac_bundle_id).app.@APP_MODE_SHORTCUT_ID@',
+        'APP_MODE_APP_BUNDLE_ID': '<(mac_bundle_id).app.app-mode-loader',
       },
       'postbuilds' : [
         {

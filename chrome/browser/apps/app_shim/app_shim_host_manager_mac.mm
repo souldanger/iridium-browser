@@ -36,9 +36,9 @@ base::FilePath GetDirectoryInTmpTemplate(const base::FilePath& user_data_dir) {
   base::FilePath temp_dir;
   CHECK(PathService::Get(base::DIR_TEMP, &temp_dir));
   // Check that it's shorter than the IPC socket length (104) minus the
-  // intermediate folder ("/chrome-XXXXXX/") and kAppShimSocketShortName.
-  DCHECK_GT(83u, temp_dir.value().length());
-  return temp_dir.Append("chrome-XXXXXX");
+  // intermediate folder ("/ir-XXXXXX/") and kAppShimSocketShortName.
+  DCHECK_GT(87u, temp_dir.value().length());
+  return temp_dir.Append("ir-XXXXXX");
 }
 
 void DeleteSocketFiles(const base::FilePath& directory_in_tmp,
