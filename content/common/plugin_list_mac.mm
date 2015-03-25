@@ -279,9 +279,6 @@ void PluginList::GetPluginDirectories(
 
   // Load from the user's area
   GetPluginCommonDirectory(plugin_dirs, true);
-
-  // Load from the machine-wide area
-  GetPluginCommonDirectory(plugin_dirs, false);
 }
 
 void PluginList::GetPluginsInDir(
