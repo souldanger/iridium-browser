@@ -912,6 +912,11 @@ inline std::ostream& operator<<(std::ostream& out, const std::wstring& wstr) {
 #define NOTIMPLEMENTED_MSG "NOT IMPLEMENTED"
 #endif
 
+#ifdef _MSC_VER
+#	define __PRETTY_FUNCTION__ __FUNCSIG__
+#	define __func__ __FUNCSIG__
+#endif
+
 #if NOTIMPLEMENTED_POLICY == 0
 #define NOTIMPLEMENTED() EAT_STREAM_PARAMETERS
 #elif NOTIMPLEMENTED_POLICY == 1
