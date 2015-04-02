@@ -7,7 +7,7 @@ vars = {
     'eyes-free':
          'http://eyes-free.googlecode.com/svn',
     'webkit_rev':
-         '@4cce46af7a3c2a6b9fc7d9214ab5f5bc50da5d83',
+         '@3cb178f86d9875fed2022c8adc274a9305d952b9',
     'blink':
          'http://src.chromium.org/blink',
     'skia':
@@ -230,7 +230,7 @@ deps = {
     'src/third_party/sfntly/cpp/src':
         Var('git_url') + '/external/sfntly/cpp/src.git@1bdaae8fc788a5ac8936d68bf24f37d977a13dac',
     'src/third_party/skia':
-        Var('git_url') + '/skia.git@aa7b421902ec33245cb1f4b65d76860187dec7ef',
+        Var('git_url') + '/skia.git@865ac46c515e2b574a79cacc399e2d08bb9acde8',
     'src/third_party/smhasher/src':
         Var('git_url') + '/external/smhasher.git@e87738e57558e0ec472b2fc3a643b838e5b6e88f',
     'src/third_party/snappy/src':
@@ -262,7 +262,7 @@ deps = {
     'src/tools/swarming_client':
         Var('git_url') + '/external/swarming.client.git@c44f5725d2243ada2d8b63adf85ca76acb50fee6',
     'src/v8':
-        Var('git_url') + '/v8/v8.git@164d5a72d0ecdb4379d14a50dabcc2ac0e7e8b8f',
+        Var('git_url') + '/v8/v8.git@901b67916dc2626158f42af5b5c520ede8752da2',
 }
 
 deps_os = {
