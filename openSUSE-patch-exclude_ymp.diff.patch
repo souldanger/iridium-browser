@@ -1,7 +1,7 @@
 From 8b1fd477d683f9eb455d4741fa2695e496fa066b Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Thu, 29 Jan 2015 10:46:40 +0100
-Subject: [PATCH 38/42] openSUSE patch exclude_ymp.diff
+Subject: [PATCH 38/48] openSUSE patch exclude_ymp.diff
 
 ---
  net/base/mime_util.cc | 1 +

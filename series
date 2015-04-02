@@ -40,3 +40,9 @@ updater-disable-auto-update.patch
 src-flag-more-evil-connections-trk-02-170-171-172.patch
 src-flag-more-evil-connections-173.260.patch
 Remove-EV-certificates.patch
+plugin-only-load-plugins-from-user-s-domain-on-Mac-O.patch
+MacOS-updates.patch
+Merge-chromium-41.0.2272.118.patch
+base-make-MSVC-happy-with-__PRETTY_FUNCTION__.patch
+plugins-use-cached-copy-of-plugin-description-list-a.patch
+iridium-browser-41.1.patch

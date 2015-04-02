@@ -1,7 +1,7 @@
 From 1ff9e6a119f32ce3b64f579310bfb481999dbd7a Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sat, 13 Sep 2014 16:59:10 +0200
-Subject: [PATCH 09/42] prefs: disable background mode
+Subject: [PATCH 09/48] prefs: disable background mode
 
 ---
  chrome/browser/background/background_mode_manager.cc | 2 +-

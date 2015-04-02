@@ -1,7 +1,7 @@
 From 5127959aa88208537dd37921faa9fa27afde7731 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Mon, 2 Mar 2015 11:28:26 +0100
-Subject: [PATCH 42/42] Remove EV certificates
+Subject: [PATCH 42/48] Remove EV certificates
 
 ---
  net/cert/ev_root_ca_metadata.cc | 2 ++

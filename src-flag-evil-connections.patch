@@ -1,7 +1,7 @@
 From 7e6693e708be6b6284969633f6ea20028f32d8b9 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Mon, 3 Nov 2014 10:52:56 +0100
-Subject: [PATCH 32/42] src: flag evil connections
+Subject: [PATCH 32/48] src: flag evil connections
 
 Replace URLs to Google services by URLs to our own server, so as to
 analyze where we still have to patch the browser to make it stop

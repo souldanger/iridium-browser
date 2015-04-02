@@ -1,7 +1,7 @@
 From 779f14ab783c6e7c4f90322deab4f3b6e22efb52 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Tue, 17 Feb 2015 16:30:18 +0100
-Subject: [PATCH 41/42] src: flag more evil connections 173..260
+Subject: [PATCH 41/48] src: flag more evil connections 173..260
 
 www.google.com / and some of googleapis
 ---

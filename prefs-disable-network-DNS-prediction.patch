@@ -1,7 +1,7 @@
 From 4fa4e1be4b19fffa6914dcaff681e2cf4f399bf5 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sat, 13 Sep 2014 15:20:11 +0200
-Subject: [PATCH 06/42] prefs: disable network/DNS prediction
+Subject: [PATCH 06/48] prefs: disable network/DNS prediction
 
 ---
  chrome/browser/net/net_pref_observer.cc | 2 +-

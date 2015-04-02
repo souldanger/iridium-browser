@@ -1,7 +1,7 @@
 From a1136f5cfd3ac16ebddb6a1a77e2ae621302d616 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Fri, 13 Feb 2015 10:51:20 +0100
-Subject: [PATCH 40/42] src: flag more evil connections trk-02/170/171/172
+Subject: [PATCH 40/48] src: flag more evil connections trk-02/170/171/172
 
 ---
  .../chrome_component_updater_configurator.cc       | 27 +++++++++++++++-------

@@ -1,7 +1,7 @@
 From 95c581605aa281ae2ca2db3fc9a7c57ca494bf3e Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sat, 13 Sep 2014 17:25:47 +0200
-Subject: [PATCH 12/42] prefs: only keep cookies until exit
+Subject: [PATCH 12/48] prefs: only keep cookies until exit
 
 ---
  .../content_settings/core/browser/content_settings_default_provider.cc  | 2 +-
