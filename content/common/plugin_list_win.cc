@@ -316,6 +316,7 @@ void PluginList::GetPluginDirectories(
   // Load from the executable area
   GetExeDirectory(&dirs);
 
+#if 0 /* NOTE: Iridium is not to load any system-provided plugins */
   // Load Java
   GetJavaDirectory(&dirs);
 
@@ -328,6 +329,7 @@ void PluginList::GetPluginDirectories(
   GetAcrobatDirectory(&dirs);
   GetQuicktimeDirectory(&dirs);
   GetWindowsMediaDirectory(&dirs);
+#endif
 
   for (std::set<base::FilePath>::iterator i = dirs.begin(); i != dirs.end(); ++i)
     plugin_dirs->push_back(*i);
@@ -364,6 +366,7 @@ void PluginList::GetPluginPathsFromRegistry(
 
   std::set<base::FilePath> plugin_dirs;
 
+#if 0 /* NOTE: Iridium is not to load any system-provided plugins */
   // Search for plugins from HKCU and HKLM.  THis will only find plugins that
   // are correctly registered in the correct WOW64 registry hive.
   GetPluginsInRegistryDirectory(HKEY_CURRENT_USER,
@@ -374,6 +377,7 @@ void PluginList::GetPluginPathsFromRegistry(
                                 kRegistryMozillaPlugins,
                                 0,
                                 &plugin_dirs);
+#endif
 
   for (std::set<base::FilePath>::iterator i = plugin_dirs.begin();
        i != plugin_dirs.end(); ++i) {
