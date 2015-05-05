@@ -1,0 +1,25 @@
+#!/bin/sh
+
+if ! which mmv >/dev/null 2>/dev/null || ! which git >/dev/null 2>/dev/null; then
+	echo "mmv and git need to be installed."
+	exit 1
+fi
+if [ -z "$1" ]; then
+	echo "Need the crbase revision as first argument."
+	exit 1
+fi
+if [ -z "$2" ]; then
+	echo "Need the iridium revision as second argument."
+	exit 1
+fi
+if [ ! -e series ]; then
+	echo "Refusing to operate due to lack of \"series\" file (safety measure)."
+	exit 1
+fi
+rm -fv ./*.patch series
+git format-patch "$1..$2"
+ls -1 *.patch | perl -lpe 's{^\d+-}{}' >series
+mmv "????-*.patch" "#5.patch"
+git add -A .
+tagdate=$(git show -s --pretty="format:%ad" "$2" | tail -n1)
+GIT_AUTHOR_DATE="$tagdate" git commit -m "$2"
