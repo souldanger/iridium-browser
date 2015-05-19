@@ -320,6 +320,7 @@ ChildProcessSecurityPolicyImpl::ChildProcessSecurityPolicyImpl() {
   RegisterPseudoScheme(url::kAboutScheme);
   RegisterPseudoScheme(url::kJavaScriptScheme);
   RegisterPseudoScheme(kViewSourceScheme);
+  RegisterPseudoScheme(url::kTraceScheme);
 }
 
 ChildProcessSecurityPolicyImpl::~ChildProcessSecurityPolicyImpl() {
@@ -408,7 +409,7 @@ void ChildProcessSecurityPolicyImpl::GrantRequestURL(
   if (IsPseudoScheme(url.scheme())) {
     // The view-source scheme is a special case of a pseudo-URL that eventually
     // results in requesting its embedded URL.
-    if (url.SchemeIs(kViewSourceScheme)) {
+    if (url.SchemeIs(kViewSourceScheme) || url.SchemeIs(url::kTraceScheme)) {
       // URLs with the view-source scheme typically look like:
       //   view-source:http://www.google.com/a
       // In order to request these URLs, the child_id needs to be able to
@@ -607,12 +608,14 @@ bool ChildProcessSecurityPolicyImpl::CanRequestURL(
   if (IsPseudoScheme(url.scheme())) {
     // There are a number of special cases for pseudo schemes.
 
-    if (url.SchemeIs(kViewSourceScheme)) {
+    if (url.SchemeIs(kViewSourceScheme) || url.SchemeIs(url::kTraceScheme)) {
       // A view-source URL is allowed if the child process is permitted to
       // request the embedded URL. Careful to avoid pointless recursion.
       GURL child_url(url.GetContent());
       if (child_url.SchemeIs(kViewSourceScheme) &&
           url.SchemeIs(kViewSourceScheme))
+          return false;
+      if (child_url.SchemeIs(url::kTraceScheme) && url.SchemeIs(url::kTraceScheme))
           return false;
 
       return CanRequestURL(child_id, child_url);
