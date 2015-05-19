@@ -346,6 +346,7 @@ ChildProcessSecurityPolicyImpl::ChildProcessSecurityPolicyImpl() {
   RegisterPseudoScheme(kViewSourceScheme);
   RegisterPseudoScheme(url::kHttpSuboriginScheme);
   RegisterPseudoScheme(url::kHttpsSuboriginScheme);
+  RegisterPseudoScheme(url::kTraceScheme);
 }
 
 ChildProcessSecurityPolicyImpl::~ChildProcessSecurityPolicyImpl() {
