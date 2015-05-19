@@ -18,6 +18,7 @@ namespace {
 
 // Hardcode constant to avoid any dependencies on content/.
 const char kViewSourceScheme[] = "view-source";
+const char kTraceScheme[] = "trk";
 
 void AdjustCursorPositionIfNecessary(size_t num_leading_chars_removed,
                                      size_t* cursor_position) {
@@ -421,7 +422,8 @@ void AutocompleteInput::ParseForEmphasizeComponents(
   int after_scheme_and_colon = parts.scheme.end() + 1;
   // For the view-source scheme, we should emphasize the scheme and host of the
   // URL qualified by the view-source prefix.
-  if (LowerCaseEqualsASCII(scheme_str, kViewSourceScheme) &&
+  if ((LowerCaseEqualsASCII(scheme_str, kViewSourceScheme) ||
+       LowerCaseEqualsASCII(scheme_str, kTraceScheme)) &&
       (static_cast<int>(text.length()) > after_scheme_and_colon)) {
     // Obtain the URL prefixed by view-source and parse it.
     base::string16 real_url(text.substr(after_scheme_and_colon));
@@ -488,7 +490,8 @@ int AutocompleteInput::NumNonHostComponents(const url::Parsed& parts) {
 bool AutocompleteInput::HasHTTPScheme(const base::string16& input) {
   std::string utf8_input(base::UTF16ToUTF8(input));
   url::Component scheme;
-  if (url::FindAndCompareScheme(utf8_input, kViewSourceScheme, &scheme)) {
+  if (url::FindAndCompareScheme(utf8_input, kViewSourceScheme, &scheme) ||
+      url::FindAndCompareScheme(utf8_input, kTraceScheme, &scheme)) {
     utf8_input.erase(0, scheme.end() + 1);
   }
   return url::FindAndCompareScheme(utf8_input, url::kHttpScheme, NULL);

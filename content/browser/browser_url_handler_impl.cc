@@ -13,6 +13,27 @@
 
 namespace content {
 
+/* Since the URL Fixer removes the trk: prefix, this code is unused for now. */
+static bool handle_trace_scheme(GURL *url, BrowserContext *)
+{
+	if (!url->SchemeIs(kTraceScheme))
+		return false;
+	fprintf(stderr, "*** WARNING: Seen traced URL in HandleTrkScheme: %s\n",
+	        url->possibly_invalid_spec().c_str());
+	*url = GURL(url->spec().substr(strlen(kTraceScheme) + 1));
+	fprintf(stderr, "*** INFO: Replaced by %s\n",
+	        url->possibly_invalid_spec().c_str());
+	return false;
+}
+
+static bool trace_scheme_revlookup(GURL *url, BrowserContext *)
+{
+	if (url->SchemeIs(kTraceScheme))
+		return false;
+	*url = GURL(kTraceScheme + std::string(":") + url->spec());
+	return true;
+}
+
 // Handles rewriting view-source URLs for what we'll actually load.
 static bool HandleViewSource(GURL* url, BrowserContext* browser_context) {
   if (url->SchemeIs(kViewSourceScheme)) {
@@ -96,6 +117,7 @@ BrowserURLHandlerImpl::BrowserURLHandlerImpl() :
 
   // view-source:
   AddHandlerPair(&HandleViewSource, &ReverseViewSource);
+  AddHandlerPair(&handle_trace_scheme, &trace_scheme_revlookup);
 }
 
 BrowserURLHandlerImpl::~BrowserURLHandlerImpl() {

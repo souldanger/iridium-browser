@@ -732,6 +732,17 @@ bool IsURLAllowedInIncognito(const GURL& url,
     return stripped_url.is_valid() &&
         IsURLAllowedInIncognito(stripped_url, browser_context);
   }
+
+	if (url.scheme() == content::kTraceScheme) {
+		/* Same as view-source:, strip prefix and re-check. */
+		std::string spec = url.spec();
+		DCHECK_GT(spec.size(), strlen(content::kTraceScheme));
+		spec.erase(0, strlen(content::kTraceScheme) + 1);
+		GURL url(spec);
+		return url.is_valid() &&
+		       IsURLAllowedInIncognito(url, browser_context);
+	}
+
   // Most URLs are allowed in incognito; the following are exceptions.
   // chrome://extensions is on the list because it redirects to
   // chrome://settings.

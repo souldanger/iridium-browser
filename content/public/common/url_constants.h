@@ -20,7 +20,7 @@ CONTENT_EXPORT extern const char kChromeUIScheme[];  // Used for WebUIs.
 CONTENT_EXPORT extern const char kGuestScheme[];
 CONTENT_EXPORT extern const char kMetadataScheme[];
 CONTENT_EXPORT extern const char kSwappedOutScheme[];
-CONTENT_EXPORT extern const char kViewSourceScheme[];
+CONTENT_EXPORT extern const char kViewSourceScheme[], kTraceScheme[];
 #if defined(OS_CHROMEOS)
 CONTENT_EXPORT extern const char kExternalFileScheme[];
 #endif

@@ -30,6 +30,7 @@ namespace {
 const char kChromeUIScheme[] = "chrome";
 const char kChromeUIDefaultHost[] = "version";
 const char kViewSourceScheme[] = "view-source";
+const char kTraceScheme[] = "trk";
 
 // TODO(estade): Remove these ugly, ugly functions. They are only used in
 // SegmentURL. A url::Parsed object keeps track of a bunch of indices into
@@ -521,6 +522,13 @@ GURL url_fixer::FixupURL(const std::string& text,
   // Segment the URL.
   url::Parsed parts;
   std::string scheme(SegmentURLInternal(&trimmed, &parts));
+
+	if (scheme == kTraceScheme) {
+		fprintf(stderr, "TRK: Seen traced URL in fixer: %s\n",
+		        text.c_str());
+		return GURL(FixupURL(trimmed.substr(scheme.length() + 1),
+		            desired_tld).possibly_invalid_spec());
+	}
 
   // For view-source: URLs, we strip "view-source:", do fixup, and stick it back
   // on.  This allows us to handle things like "view-source:google.com".
