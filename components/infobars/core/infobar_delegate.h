@@ -124,7 +124,8 @@ class InfoBarDelegate {
     SHOW_PASSKIT_INFOBAR_ERROR_DELEGATE = 56,
     READER_MODE_INFOBAR_DELEGATE = 57,
     SYNC_ERROR_INFOBAR_DELEGATE = 58,
-    UPGRADE_INFOBAR_DELEGATE = 59
+    UPGRADE_INFOBAR_DELEGATE = 59,
+    TRACKING_ALERT_INFOBAR_DELEGATE = 60,
   };
 
   // Describes navigation events, used to decide whether infobars should be
