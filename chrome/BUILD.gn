@@ -210,6 +210,7 @@ if (!is_android && !is_mac) {
       deps += [
         # On Linux, link the dependencies (libraries) that make up actual
         # Chromium functionality directly into the executable.
+        "//iridium:trknotify",
         ":browser_dependencies",
         ":child_dependencies",
         ":manpage",
@@ -435,7 +436,7 @@ if (is_win) {
         }
       }
 
-      deps += [ "//chrome/browser/policy:path_parser" ]
+      deps += [ "//chrome/browser/policy:path_parser", "//iridium:trknotify" ]
 
       if (enable_plugins && enable_pdf) {
         deps += [ "//pdf" ]

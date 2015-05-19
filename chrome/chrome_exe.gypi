@@ -177,6 +177,7 @@
             'app/chrome_main_delegate.h',
           ],
           'dependencies': [
+            '../iridium/iridium.gyp:trknotify',
             # On Linux, link the dependencies (libraries) that make up actual
             # Chromium functionality directly into the executable.
             '<@(chromium_browser_dependencies)',

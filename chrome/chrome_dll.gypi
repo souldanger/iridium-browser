@@ -118,6 +118,7 @@
             'app/chrome_main_mac.mm',
           ],
           'dependencies': [
+            '../iridium/iridium.gyp:trknotify',
             '<@(chromium_browser_dependencies)',
             'chrome_features.gyp:chrome_common_features',
             'policy_path_parser',

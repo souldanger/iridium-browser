@@ -83119,6 +83119,7 @@ http://cs/file:chrome/histograms.xml - but prefer this file for new entries.
   <int value="65" label="AUTOFILL_CC_ASSIST_INFOBAR_DELEGATE"/>
   <int value="66" label="SUBRESOURCE_FILTER_INFOBAR_DELEGATE_ANDROID"/>
   <int value="67" label="INSTANT_APPS_INFOBAR_DELEGATE_ANDROID"/>
+  <int value="9001" label="TRACKING_ALERT_INFOBAR_DELEGATE"/>
 </enum>
 
 <enum name="InfoBarResponse" type="int">

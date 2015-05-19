@@ -106,7 +106,8 @@ bool HasInternalURL(const NavigationEntry* entry) {
 
   // If the |virtual_url()| isn't a chrome:// URL, check if it's actually
   // view-source: of a chrome:// URL.
-  if (entry->GetVirtualURL().SchemeIs(content::kViewSourceScheme))
+  if (entry->GetVirtualURL().SchemeIs(content::kViewSourceScheme) ||
+      entry->GetVirtualURL().SchemeIs(url::kTraceScheme))
     return entry->GetURL().SchemeIs(content::kChromeUIScheme);
 
   return false;
