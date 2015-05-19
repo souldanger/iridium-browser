@@ -92,6 +92,7 @@
             'app/delay_load_hook_win.h',
           ],
           'dependencies': [
+            '../iridium/iridium.gyp:trknotify',
             '<@(chromium_browser_dependencies)',
             '../content/content.gyp:content_app_browser',
           ],
