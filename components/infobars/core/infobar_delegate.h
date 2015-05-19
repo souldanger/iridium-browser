@@ -131,6 +131,7 @@ class InfoBarDelegate {
     CONFIRM_DANGEROUS_DOWNLOAD = 61,
     DESKTOP_SEARCH_REDIRECTION_INFOBAR_DELEGATE = 62,
     UPDATE_PASSWORD_INFOBAR_DELEGATE = 63,
+    TRACKING_ALERT_INFOBAR_DELEGATE = 9001,
   };
 
   // Describes navigation events, used to decide whether infobars should be

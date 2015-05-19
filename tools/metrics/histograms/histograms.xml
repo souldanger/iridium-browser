@@ -70853,6 +70853,7 @@ http://cs/file:chrome/histograms.xml - but prefer this file for new entries.
   <int value="60" label="CHROME_WINDOW_ERROR"/>
   <int value="61" label="CONFIRM_DANGEROUS_DOWNLOAD"/>
   <int value="62" label="WINDOWS_DESKTOP_SEARCH_INFOBAR_DELEGATE"/>
+  <int value="9001" label="TRACKING_ALERT_INFOBAR_DELEGATE"/>
 </enum>
 
 <enum name="InfoBarResponse" type="int">
