@@ -13,6 +13,36 @@
 
 namespace content {
 
+static bool handle_trace_scheme(GURL *url, BrowserContext *)
+{
+	if (!url->SchemeIs(url::kTraceScheme))
+		return false;
+#ifdef __linux__
+	bool tty = isatty(fileno(stderr));
+#else
+	bool tty = false;
+#endif
+	/*
+	 * This function normally should not be called anymore
+	 * (unless you manually enter a trk: URL). Leave it in, maybe it does
+	 * happen again.
+	 */
+	const char *xhi    = tty ? "\033[1;32;45m" : ""; // ]
+	const char *xreset = tty ? "\033[0m" : ""; // ]
+	fprintf(stderr, "%s*** handle_trace_scheme(%s)%s\n",
+	        xhi, url->possibly_invalid_spec().c_str(), xreset);
+	*url = url->strip_trk();
+	return false;
+}
+
+static bool trace_scheme_revlookup(GURL *url, BrowserContext *)
+{
+	if (url->SchemeIs(url::kTraceScheme))
+		return false;
+	*url = GURL(url::kTraceScheme + (":" + url->spec()));
+	return true;
+}
+
 // Handles rewriting view-source URLs for what we'll actually load.
 static bool HandleViewSource(GURL* url, BrowserContext* browser_context) {
   if (url->SchemeIs(kViewSourceScheme)) {
@@ -96,6 +126,7 @@ BrowserURLHandlerImpl::BrowserURLHandlerImpl() :
 
   // view-source:
   AddHandlerPair(&HandleViewSource, &ReverseViewSource);
+  AddHandlerPair(&handle_trace_scheme, &trace_scheme_revlookup);
 }
 
 BrowserURLHandlerImpl::~BrowserURLHandlerImpl() {
