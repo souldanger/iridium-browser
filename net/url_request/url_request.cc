@@ -552,6 +552,24 @@ URLRequest::URLRequest(const GURL& url,
   DCHECK(base::MessageLoop::current())
       << "The current base::MessageLoop must exist";
 
+#ifdef __linux__
+	bool tty = isatty(fileno(stderr));
+#else
+	bool tty = false;
+#endif
+	const char *xred   = tty ? "\e[1;37;41m" : ""; // ]
+	const char *xfruit = tty ? "\e[33m" : ""; // ]
+	const char *xdark  = tty ? "\e[1;30m" : ""; // ]
+	const char *xreset = tty ? "\e[0m" : ""; //]
+	if (url.scheme() == url::kTraceScheme) {
+		fprintf(stderr, "%s*** URLRequest(%s)%s\n",
+			xred, url.possibly_invalid_spec().c_str(), xreset);
+		url_chain_ = {1, url.strip_trk()};
+	} else {
+		fprintf(stderr, "%s***%s URLRequest(%s)%s\n",
+		        xfruit, xdark, url.possibly_invalid_spec().c_str(), xreset);
+	}
+
   context->url_requests()->insert(this);
   net_log_.BeginEvent(NetLog::TYPE_REQUEST_ALIVE);
 }
