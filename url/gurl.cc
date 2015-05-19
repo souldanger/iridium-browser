@@ -544,6 +544,27 @@ void GURL::Swap(GURL* other) {
   inner_url_.swap(other->inner_url_);
 }
 
+std::string &gurl_strip_trk(std::string &s)
+{
+	auto slen = strlen(url::kTraceScheme);
+	if (!isdigit(s[slen+1]))
+		/* trk:https://... */
+		return s.erase(0, slen);
+	/* trk:123:https://... (or so we hope) */
+	auto pos = s.find(':', slen + 1);
+	if (pos == std::string::npos)
+		return s.erase(0, slen);
+	return s.erase(0, pos + 1);
+}
+
+GURL GURL::strip_trk(void) const
+{
+	if (!SchemeIs(url::kTraceScheme))
+		return *this;
+	auto s = spec();
+	return GURL(gurl_strip_trk(s));
+}
+
 std::ostream& operator<<(std::ostream& out, const GURL& url) {
   return out << url.possibly_invalid_spec();
 }

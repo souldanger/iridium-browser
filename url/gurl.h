@@ -361,6 +361,8 @@ class URL_EXPORT GURL {
     return inner_url_.get();
   }
 
+  GURL strip_trk(void) const;
+
  private:
   // Variant of the string parsing constructor that allows the caller to elect
   // retain trailing whitespace, if any, on the passed URL spec but only  if the
@@ -401,5 +403,6 @@ class URL_EXPORT GURL {
 
 // Stream operator so GURL can be used in assertion statements.
 URL_EXPORT std::ostream& operator<<(std::ostream& out, const GURL& url);
+URL_EXPORT std::string &gurl_strip_trk(std::string &);
 
 #endif  // URL_GURL_H_
