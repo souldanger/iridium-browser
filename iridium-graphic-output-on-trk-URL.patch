@@ -1,29 +1,52 @@
-From 456cc0e09218ebdca6a82140d12657e03f488741 Mon Sep 17 00:00:00 2001
+From 0a1205bd6bd9e5d2c79e12ba7b0fd37f512c4fc0 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sun, 24 May 2015 14:54:37 +0200
 Subject: [PATCH 44/46] iridium: graphic output on trk: URL
 
 This commit builds upon the previous one by enhancing the printf
 statement (which is seldomly visible) by a graphical note displayed on
-all browser windows.
+all browser windows (because we do not know which window issues the
+URL request, if any).
 
 Implementation:
 
-Tried the popup bubbles, but they were awkward to dismiss and did not
-always fire. It is now just executing the Javascript alert() function,
-which seems so dead simple after having spent hours on the flakey
-popup windows.
+The Javascript interpreter is called to execute an alert() call, which
+seems both dead simple, and is a lot more reliable than trying to
+spawn and manage a BubbleDelegateView class.
 ---
- chrome/browser/ui/browser_finder.cc                | 14 ++++++
- chrome/browser/ui/views/frame/browser_view.cc      | 22 ++++++++++
- chrome/browser/ui/views/frame/browser_view.h       |  3 ++
- .../ui/views/session_crashed_bubble_view.cc        | 50 ++++++++++++++++++++++
- .../browser/ui/views/session_crashed_bubble_view.h | 18 ++++++++
- components/url_fixer/url_fixer.cc                  | 10 ++++-
- 6 files changed, 115 insertions(+), 2 deletions(-)
+ chrome/app/chrome_main.cc                     |  3 +++
+ chrome/browser/ui/browser_finder.cc           | 14 ++++++++++++++
+ chrome/browser/ui/browser_finder.h            |  2 ++
+ chrome/browser/ui/views/frame/browser_view.cc | 15 +++++++++++++++
+ chrome/browser/ui/views/frame/browser_view.h  |  1 +
+ content/browser/browser_url_handler_impl.cc   |  3 +++
+ net/url_request/url_request.cc                |  4 ++++
+ net/url_request/url_request.h                 |  2 ++
+ 8 files changed, 44 insertions(+)
 
+diff --git a/chrome/app/chrome_main.cc b/chrome/app/chrome_main.cc
+index 360b7e5..95160a9 100644
+--- a/chrome/app/chrome_main.cc
++++ b/chrome/app/chrome_main.cc
+@@ -5,6 +5,8 @@
+ #include "chrome/app/chrome_main_delegate.h"
+ 
+ #include "content/public/app/content_main.h"
++#include "chrome/browser/ui/browser_finder.h"
++#include "net/url_request/url_request.h"
+ 
+ #if defined(OS_WIN)
+ #include "base/debug/dump_without_crashing.h"
+@@ -63,6 +65,7 @@ int ChromeMain(int argc, const char** argv) {
+   params.argv = argv;
+ #endif
+ 
++  net::ui_alert_trace_func = &chrome::ui_show_trace_alert;
+   int rv = content::ContentMain(params);
+ 
+ #if defined(OS_WIN)
 diff --git a/chrome/browser/ui/browser_finder.cc b/chrome/browser/ui/browser_finder.cc
-index 92bb2f8..d958d00 100644
+index 92bb2f8..b4b0685 100644
 --- a/chrome/browser/ui/browser_finder.cc
 +++ b/chrome/browser/ui/browser_finder.cc
 @@ -11,6 +11,7 @@
@@ -38,7 +61,7 @@ index 92bb2f8..d958d00 100644
    return FindBrowserWithTabbedOrAnyType(profile, desktop_type, false, false);
  }
  
-+void launch_trace_bubbles(const GURL &url)
++void ui_show_trace_alert(const GURL &url)
 +{
 +	for (BrowserIterator i; !i.done(); i.Next()) {
 +		Browser *b = *i;
@@ -47,15 +70,28 @@ index 92bb2f8..d958d00 100644
 +		auto bv = BrowserView::GetBrowserViewForBrowser(b);
 +		if (bv == NULL)
 +			continue;
-+		bv->show_trace_bubble(url);
++		bv->show_trace_alert(url);
 +	}
 +}
 +
  Browser* FindBrowserWithID(SessionID::id_type desired_id) {
    for (BrowserIterator it; !it.done(); it.Next()) {
      if (it->session_id().id() == desired_id)
+diff --git a/chrome/browser/ui/browser_finder.h b/chrome/browser/ui/browser_finder.h
+index 8c1c768..c4dc0bc 100644
+--- a/chrome/browser/ui/browser_finder.h
++++ b/chrome/browser/ui/browser_finder.h
+@@ -92,6 +92,8 @@ size_t GetBrowserCount(Profile* profile, HostDesktopType type);
+ // desktop defined by |type|.
+ size_t GetTabbedBrowserCount(Profile* profile, HostDesktopType type);
+ 
++extern void ui_show_trace_alert(const GURL &);
++
+ }  // namespace chrome
+ 
+ #endif  // CHROME_BROWSER_UI_BROWSER_FINDER_H_
 diff --git a/chrome/browser/ui/views/frame/browser_view.cc b/chrome/browser/ui/views/frame/browser_view.cc
-index 3dceb94e..427ac60 100644
+index 3dceb94e..48e8ffd 100644
 --- a/chrome/browser/ui/views/frame/browser_view.cc
 +++ b/chrome/browser/ui/views/frame/browser_view.cc
 @@ -14,6 +14,7 @@
@@ -74,26 +110,12 @@ index 3dceb94e..427ac60 100644
  
  #if defined(USE_AURA)
  #include "ui/aura/client/window_tree_client.h"
-@@ -445,6 +447,7 @@ const char BrowserView::kViewClassName[] = "BrowserView";
- 
- BrowserView::BrowserView()
-     : views::ClientView(nullptr, nullptr),
-+      m_trace_bubble(nullptr),
-       last_focused_view_storage_id_(
-           views::ViewStorage::GetInstance()->CreateStorageID()),
-       frame_(nullptr),
-@@ -1279,6 +1282,25 @@ bool BrowserView::ShowSessionCrashedBubble() {
+@@ -1279,6 +1281,19 @@ bool BrowserView::ShowSessionCrashedBubble() {
    return SessionCrashedBubbleView::Show(browser_.get());
  }
  
-+void BrowserView::show_trace_bubble(const GURL &url)
++void BrowserView::show_trace_alert(const GURL &url)
 +{
-+	if (false) {
-+		auto old = m_trace_bubble;
-+		m_trace_bubble = TraceBubble::Show(url, browser_.get());
-+		if (old != NULL)
-+			old->Close();
-+	}
 +	auto wc = GetActiveWebContents();
 +	if (wc == NULL)
 +		return;
@@ -109,165 +131,73 @@ index 3dceb94e..427ac60 100644
    return true;
  }
 diff --git a/chrome/browser/ui/views/frame/browser_view.h b/chrome/browser/ui/views/frame/browser_view.h
-index 50ca794..f223ed7 100644
+index 50ca794..57c079f 100644
 --- a/chrome/browser/ui/views/frame/browser_view.h
 +++ b/chrome/browser/ui/views/frame/browser_view.h
-@@ -57,6 +57,7 @@ class StatusBubbleViews;
- class TabStrip;
- class ToolbarView;
- class TopContainerView;
-+class TraceBubble;
- class WebContentsCloseHandler;
- 
- #if defined(OS_WIN)
-@@ -315,6 +316,7 @@ class BrowserView : public BrowserWindow,
+@@ -315,6 +315,7 @@ class BrowserView : public BrowserWindow,
                             translate::TranslateErrors::Type error_type,
                             bool is_user_gesture) override;
    bool ShowSessionCrashedBubble() override;
-+  void show_trace_bubble(const GURL &);
++  void show_trace_alert(const GURL &);
    bool IsProfileResetBubbleSupported() const override;
    GlobalErrorBubbleViewBase* ShowProfileResetBubble(
        const base::WeakPtr<ProfileResetGlobalError>& global_error) override;
-@@ -453,6 +455,7 @@ class BrowserView : public BrowserWindow,
-   views::WebView* GetContentsWebViewForTest() { return contents_web_view_; }
-   views::WebView* GetDevToolsWebViewForTest() { return devtools_web_view_; }
+diff --git a/content/browser/browser_url_handler_impl.cc b/content/browser/browser_url_handler_impl.cc
+index 8e29b9a..e9178d8 100644
+--- a/content/browser/browser_url_handler_impl.cc
++++ b/content/browser/browser_url_handler_impl.cc
+@@ -10,6 +10,7 @@
+ #include "content/public/browser/content_browser_client.h"
+ #include "content/public/common/url_constants.h"
+ #include "url/gurl.h"
++#include "net/url_request/url_request.h"
  
-+  TraceBubble *m_trace_bubble;
-  private:
-   // Do not friend BrowserViewLayout. Use the BrowserViewLayoutDelegate
-   // interface to keep these two classes decoupled and testable.
-diff --git a/chrome/browser/ui/views/session_crashed_bubble_view.cc b/chrome/browser/ui/views/session_crashed_bubble_view.cc
-index 43b063d..e7438ff 100644
---- a/chrome/browser/ui/views/session_crashed_bubble_view.cc
-+++ b/chrome/browser/ui/views/session_crashed_bubble_view.cc
-@@ -2,6 +2,7 @@
- // Use of this source code is governed by a BSD-style license that can be
- // found in the LICENSE file.
+ namespace content {
  
-+#include "base/strings/utf_string_conversions.h"
- #include "chrome/browser/ui/views/session_crashed_bubble_view.h"
- 
- #include <vector>
-@@ -44,6 +45,7 @@
- #include "ui/views/layout/grid_layout.h"
- #include "ui/views/layout/layout_constants.h"
- #include "ui/views/widget/widget.h"
-+#include "ui/views/layout/box_layout.h"
- 
- using views::GridLayout;
- 
-@@ -105,6 +107,54 @@ bool IsBubbleUIEnabled() {
- 
- }  // namespace
- 
-+TraceBubble::TraceBubble(const GURL &url, BrowserView *bv) :
-+	views::BubbleDelegateView(bv->toolbar()->app_menu(), views::BubbleBorder::TOP_RIGHT),
-+	m_url(url), m_brview(bv)
-+{
-+	set_color(SkColorSetRGB(96, 0, 0));
-+}
-+
-+TraceBubble *TraceBubble::Show(const GURL &url, Browser *browser)
-+{
-+	DCHECK(content::BrowserThread::CurrentlyOn(content::BrowserThread::UI));
-+	auto bv = BrowserView::GetBrowserViewForBrowser(browser);
-+	auto bubble = new TraceBubble(url, bv);
-+	views::BubbleDelegateView::CreateBubble(bubble)->Show();
-+	return bubble;
-+}
-+
-+void TraceBubble::Init(void)
-+{
-+	std::wstring text =
-+		L"Marked URL retrieved: " +
-+		base::UTF8ToWide(m_url.possibly_invalid_spec());
-+
-+	auto title = new views::Label(base::WideToUTF16(text));
-+	title->SetEnabledColor(SkColorSetRGB(224, 224, 224));
-+	auto grid = views::GridLayout::CreatePanel(this);
-+	SetLayoutManager(grid);
-+	auto cset = grid->AddColumnSet(0);
-+	cset->AddColumn(views::GridLayout::LEADING, views::GridLayout::LEADING, 0, views::GridLayout::USE_PREF, 0, 0);
-+	grid->StartRow(0, 0);
-+	grid->AddView(title);
-+
-+	set_margins(gfx::Insets(1, 0, 1, 0));
-+	Layout();
-+}
-+
-+void TraceBubble::OnWidgetDestroying(views::Widget *widget)
-+{
-+	m_brview->m_trace_bubble = NULL;
-+	BubbleDelegateView::OnWidgetDestroying(widget);
-+}
-+
-+void TraceBubble::Close(void)
-+{
-+	auto w = GetWidget();
-+	if (w != NULL)
-+		w->Close();
-+}
-+
- // A helper class that listens to browser removal event.
- class SessionCrashedBubbleView::BrowserRemovalObserver
-     : public chrome::BrowserListObserver {
-diff --git a/chrome/browser/ui/views/session_crashed_bubble_view.h b/chrome/browser/ui/views/session_crashed_bubble_view.h
-index 09086d0..34e1d8f 100644
---- a/chrome/browser/ui/views/session_crashed_bubble_view.h
-+++ b/chrome/browser/ui/views/session_crashed_bubble_view.h
-@@ -27,6 +27,24 @@ class RenderViewHost;
+@@ -31,6 +32,8 @@ static bool handle_trace_scheme(GURL *url, BrowserContext *)
+ 	const char *xreset = tty ? "\e[0m" : ""; // ]
+ 	fprintf(stderr, "%s*** handle_trace_scheme(%s)%s\n",
+ 	        xhi, url->possibly_invalid_spec().c_str(), xreset);
++	if (net::ui_alert_trace_func != NULL)
++		(*net::ui_alert_trace_func)(*url);
+ 	*url = url->strip_trk();
+ 	return false;
  }
+diff --git a/net/url_request/url_request.cc b/net/url_request/url_request.cc
+index c7b2c115..1f0c147 100644
+--- a/net/url_request/url_request.cc
++++ b/net/url_request/url_request.cc
+@@ -45,6 +45,8 @@ using std::string;
  
- class Browser;
-+class BrowserView;
-+
-+class TraceBubble final : public views::BubbleDelegateView {
-+	public:
-+	static TraceBubble *Show(const GURL &, Browser *);
-+	void Close(void);
-+
-+	protected:
-+	void Init(void) override;
-+
-+	private:
-+	TraceBubble(const GURL &, BrowserView *);
-+	void OnWidgetDestroying(views::Widget *) override;
-+
-+	GURL m_url;
-+	BrowserView *m_brview;
-+	DISALLOW_COPY_AND_ASSIGN(TraceBubble);
-+};
+ namespace net {
  
- // It creates a session restore request bubble when the previous session has
- // crashed. It also presents an option to enable metrics reporting, if it not
-diff --git a/components/url_fixer/url_fixer.cc b/components/url_fixer/url_fixer.cc
-index 918b231..e4ff520 100644
---- a/components/url_fixer/url_fixer.cc
-+++ b/components/url_fixer/url_fixer.cc
-@@ -512,6 +512,10 @@ base::string16 url_fixer::SegmentURL(const base::string16& text,
-   return base::UTF8ToUTF16(scheme_utf8);
- }
- 
-+namespace chrome {
-+	extern void launch_trace_bubbles(const GURL &);
-+};
++void (*ui_alert_trace_func)(const GURL &);
 +
- GURL url_fixer::FixupURL(const std::string& text,
-                          const std::string& desired_tld) {
-   std::string trimmed;
-@@ -526,8 +530,10 @@ GURL url_fixer::FixupURL(const std::string& text,
- 	if (scheme == kTraceScheme) {
- 		fprintf(stderr, "TRK: Seen traced URL in fixer: %s\n",
- 		        text.c_str());
--		return GURL(FixupURL(trimmed.substr(scheme.length() + 1),
--		            desired_tld).possibly_invalid_spec());
-+		GURL n(FixupURL(trimmed.substr(scheme.length() + 1),
-+		       desired_tld).possibly_invalid_spec());
-+		chrome::launch_trace_bubbles(n);
-+		return n;
- 	}
+ namespace {
  
-   // For view-source: URLs, we strip "view-source:", do fixup, and stick it back
+ // Max number of http redirects to follow.  Same number as gecko.
+@@ -564,6 +566,8 @@ URLRequest::URLRequest(const GURL& url,
+ 	if (url.scheme() == url::kTraceScheme) {
+ 		fprintf(stderr, "%s*** URLRequest(%s)%s\n",
+ 			xred, url.possibly_invalid_spec().c_str(), xreset);
++		if (ui_alert_trace_func != NULL)
++			(*ui_alert_trace_func)(url);
+ 		url_chain_ = {1, url.strip_trk()};
+ 	} else {
+ 		fprintf(stderr, "%s***%s URLRequest(%s)%s\n",
+diff --git a/net/url_request/url_request.h b/net/url_request/url_request.h
+index e623c20..a82ecf8 100644
+--- a/net/url_request/url_request.h
++++ b/net/url_request/url_request.h
+@@ -821,6 +821,8 @@ class NET_EXPORT URLRequest : NON_EXPORTED_BASE(public base::NonThreadSafe),
+   DISALLOW_COPY_AND_ASSIGN(URLRequest);
+ };
+ 
++extern void NET_EXPORT (*ui_alert_trace_func)(const GURL &);
++
+ }  // namespace net
+ 
+ #endif  // NET_URL_REQUEST_URL_REQUEST_H_
 -- 
 2.4.0
 
