@@ -1,0 +1,30 @@
+From cae1b002a302f4c0fc5833ff959901c69d267bb2 Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Mon, 6 Jul 2015 04:24:35 +0200
+Subject: [PATCH 50/53] search: show blank tab for new tab page
+
+Since the New Tab Page prefers to show Search somehow,
+use a blank page for new tabs.
+
+References: https://github.com/iridium-browser/iridium-browser/issues/32
+References: https://github.com/iridium-browser/iridium-browser/issues/33
+---
+ chrome/browser/search/search.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/chrome/browser/search/search.cc b/chrome/browser/search/search.cc
+index 21254bc..18d3515 100644
+--- a/chrome/browser/search/search.cc
++++ b/chrome/browser/search/search.cc
+@@ -296,7 +296,7 @@ struct NewTabURLDetails {
+         return NewTabURLDetails(GURL(), state);
+       default:
+         // Use the local New Tab otherwise.
+-        return NewTabURLDetails(local_url, state);
++        return NewTabURLDetails(GURL("about:blank"), state);
+     }
+   }
+ 
+-- 
+2.4.3
+

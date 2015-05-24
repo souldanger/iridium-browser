@@ -1,7 +1,7 @@
-From 2bd078811504769414913db841e2975b3cc0e23c Mon Sep 17 00:00:00 2001
+From e1971a232ac9476eefdd4382d54965c5bea162ab Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Wed, 20 May 2015 01:34:50 +0200
-Subject: [PATCH 45/50] net: help identify URLs being retrieved
+Subject: [PATCH 45/53] net: help identify URLs being retrieved
 
 The Chromium codebase has left us with a number of suspect URLs, and
 we want to know if the browser attempts to contact those sites.

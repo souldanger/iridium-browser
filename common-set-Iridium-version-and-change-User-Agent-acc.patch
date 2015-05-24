@@ -1,7 +1,7 @@
-From 56a1504a796e4c8827fe59e1642bff65e9a8be24 Mon Sep 17 00:00:00 2001
+From 4098c19baa39d83a534c4ff7e867353502387806 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sun, 24 May 2015 15:08:18 +0200
-Subject: [PATCH 50/50] common: set Iridium version and change User-Agent
+Subject: [PATCH 53/53] common: set Iridium version and change User-Agent
  accordingly
 
 Reduced version number:
@@ -36,7 +36,7 @@ index 72faf97..7c0f43d 100644
  
  #endif  // ANDROID_WEBVIEW_COMMON_AW_VERSION_INFO_VALUES_H_
 diff --git a/chrome/VERSION b/chrome/VERSION
-index f436125..c6ac6ef 100644
+index f436125..4fec23a 100644
 --- a/chrome/VERSION
 +++ b/chrome/VERSION
 @@ -1,4 +1,4 @@
@@ -44,7 +44,7 @@ index f436125..c6ac6ef 100644
 -MINOR=0
 -BUILD=2357
 -PATCH=130
-+MINOR=6
++MINOR=7
 +BUILD=0
 +PATCH=0
 diff --git a/chrome/common/chrome_version_info.cc b/chrome/common/chrome_version_info.cc

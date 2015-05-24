@@ -1,7 +1,7 @@
-From a4c735a6047bc9e23a9b77bc0187253919c732d2 Mon Sep 17 00:00:00 2001
+From c80e27d180791063c2e483a6732f449682a829b2 Mon Sep 17 00:00:00 2001
 From: Joachim Bauch <bauch@struktur.de>
 Date: Wed, 15 Apr 2015 15:19:21 +0200
-Subject: [PATCH 37/50] plugin: do not load any system-provided plugins on
+Subject: [PATCH 37/53] plugin: do not load any system-provided plugins on
  Windows
 
 ---

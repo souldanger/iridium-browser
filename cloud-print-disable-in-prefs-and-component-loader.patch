@@ -1,15 +1,19 @@
-From d3e167b870e13ee12c7c198762018d72e8f982d1 Mon Sep 17 00:00:00 2001
+From ce480e04ec12250136b4eddc8dec93e339a09ac3 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sat, 13 Sep 2014 16:55:12 +0200
-Subject: [PATCH 17/50] cloud-print: disable in prefs and component loader
+Subject: [PATCH 17/53] cloud-print: disable in prefs and component loader
 
-Cloud Print is usually autodisabled if no printers are shared.
-So what exactly am I turning off?
-Probably also needs to gain a checkbox in the settings. Revisit..
+Cloud Print should normally be autodisabled if no printers are shared.
+But maybe that is not enough(?) Probably also needs to gain a checkbox
+in the settings. Revisit..]
+
+Also changes the setting for notifications about new cloud printers to
+be off by default.
 ---
- chrome/browser/extensions/component_loader.cc | 2 ++
- chrome/browser/ui/browser_ui_prefs.cc         | 2 +-
- 2 files changed, 3 insertions(+), 1 deletion(-)
+ chrome/browser/extensions/component_loader.cc                 | 2 ++
+ chrome/browser/ui/browser_ui_prefs.cc                         | 2 +-
+ chrome/browser/ui/webui/local_discovery/local_discovery_ui.cc | 4 ----
+ 3 files changed, 3 insertions(+), 5 deletions(-)
 
 diff --git a/chrome/browser/extensions/component_loader.cc b/chrome/browser/extensions/component_loader.cc
 index 2362e12..af44282 100644
@@ -41,6 +45,21 @@ index 20848f0..5c70c06 100644
        user_prefs::PrefRegistrySyncable::UNSYNCABLE_PREF);
    registry->RegisterBooleanPref(
        prefs::kDevToolsDisabled,
+diff --git a/chrome/browser/ui/webui/local_discovery/local_discovery_ui.cc b/chrome/browser/ui/webui/local_discovery/local_discovery_ui.cc
+index eda0cdc..15cde3c 100644
+--- a/chrome/browser/ui/webui/local_discovery/local_discovery_ui.cc
++++ b/chrome/browser/ui/webui/local_discovery/local_discovery_ui.cc
+@@ -140,10 +140,6 @@ void LocalDiscoveryUI::RegisterProfilePrefs(
+     user_prefs::PrefRegistrySyncable* registry) {
+   registry->RegisterBooleanPref(
+       prefs::kLocalDiscoveryNotificationsEnabled,
+-#if defined(OS_WIN)
+       false,
+-#else
+-      true,
+-#endif
+       user_prefs::PrefRegistrySyncable::SYNCABLE_PREF);
+ }
 -- 
 2.4.3
 
