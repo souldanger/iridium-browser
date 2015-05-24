@@ -1,7 +1,7 @@
 From 3c91ffc82c2737c5bc062341c226ea1a7844ce3e Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Mon, 3 Nov 2014 10:52:56 +0100
-Subject: [PATCH 48/49] src: flag evil connections
+Subject: [PATCH 48/50] src: flag evil connections
 
 Prefix URLs to Google services with trk: so that whenever something
 tries to load them, the developer will be informed via printf and

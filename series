@@ -46,4 +46,5 @@ spellchecker-flag-downloading-dictionary-from-Google.patch
 google-cloud-messaging-disable-experiment-status-che.patch
 net-help-identify-URLs-being-retrieved.patch
 src-flag-evil-connections.patch
+hotword-disable-at-build-time-by-default.patch
 common-set-Iridium-version-and-change-User-Agent-acc.patch

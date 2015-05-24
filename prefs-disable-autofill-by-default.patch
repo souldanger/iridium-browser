@@ -1,7 +1,7 @@
 From 3a5772b0cbac78c129ff1230d5f090806476021d Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Thu, 11 Sep 2014 16:37:32 +0200
-Subject: [PATCH 02/49] prefs: disable autofill by default
+Subject: [PATCH 02/50] prefs: disable autofill by default
 
 With Autofill, I argue, users are tempted to be lazy and fill forms
 with more data than is perhaps really required for a particular
