@@ -1,7 +1,7 @@
-From 838a401035acdac0ab9d12fa8702eeac59ed5d93 Mon Sep 17 00:00:00 2001
+From ccac51bafd21312d271698ca965480d0440f9d3d Mon Sep 17 00:00:00 2001
 From: Yuriy Shevchuk <yuriy@struktur.de>
 Date: Tue, 23 Dec 2014 16:54:56 +0100
-Subject: [PATCH 31/50] build: fix OSX branded build crashes on OSX
+Subject: [PATCH 31/49] build: fix OSX branded build crashes on OSX
 
 ---
  build/common.gypi                  | 2 +-
@@ -57,5 +57,5 @@ index 7a92eee..bc39298 100644
  #error Unknown branding
  #endif
 -- 
-2.4.0
+2.4.3
 

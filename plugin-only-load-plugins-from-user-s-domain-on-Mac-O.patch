@@ -1,7 +1,7 @@
-From a22ff847188f6786e597eee92a6d46c1c5706649 Mon Sep 17 00:00:00 2001
+From f5e62390853f9201bd060565ab7b20e960ce77bf Mon Sep 17 00:00:00 2001
 From: Ivan Sein <ivan@struktur.de>
 Date: Wed, 25 Mar 2015 17:00:59 +0100
-Subject: [PATCH 40/50] plugin: only load plugins from user's domain on Mac OS
+Subject: [PATCH 40/49] plugin: only load plugins from user's domain on Mac OS
 
 This patch prevents Iridium from loading plugins that are already
 installed on your machine (/Library/Internet Plug-Ins).
@@ -26,5 +26,5 @@ index 8400dce..3dc5a82 100644
  
  void PluginList::GetPluginsInDir(
 -- 
-2.4.0
+2.4.3
 

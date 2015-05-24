@@ -1,7 +1,7 @@
-From 3170eb72c1aa7597c80d660b03814a699618612a Mon Sep 17 00:00:00 2001
+From 16324e0a5271d60539527ec4f038ea77b9015c02 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Wed, 20 May 2015 01:34:50 +0200
-Subject: [PATCH 47/50] iridium: help identify possibly evil hardcoded URLs
+Subject: [PATCH 47/49] net: help identify URLs being retrieved
 
 The Chromium codebase has left us with a number of suspect URLs, and
 we want to know if the browser attempts to contact those sites.
@@ -14,10 +14,10 @@ prepending the new scheme to an existing URL:
 	trk:1234:https://clients4.google.com/ (or)
 	trk:https://clients4.google.com/
 
-At seeing a warning, we then know that investigation needs to be done,
-either to (a) whitelist the URL, that is, remove the trk: prefix and
-not show the warning, and/or (b) disable the particular feature which
-caused the loading of the URL in the first place, by default.
+Upon seeing a warning, we then know to investigate further, and either
+(a) whitelist the URL, that is, remove the trk: prefix and not show
+the warning, and/or (b) disable the particular feature which caused
+the loading of the URL in the first place, by default.
 
 Implementation:
 
@@ -27,21 +27,78 @@ stripped and processing continues with the inner URL. There is also a
 browser-level scheme handler for trk:, not sure if we still need it
 (relict from 43.0~test2). It might trigger.
 ---
+ chrome/app/chrome_main.cc                          | 18 +++++++
  .../chrome_autocomplete_scheme_classifier.cc       |  1 +
  chrome/browser/history/history_utils.cc            |  1 +
- chrome/browser/ui/browser_command_controller.cc    |  3 ++-
- chrome/browser/ui/browser_navigator.cc             |  8 ++++++
- chrome/browser/ui/singleton_tabs.cc                |  3 ++-
- components/omnibox/autocomplete_input.cc           |  8 +++---
- content/browser/browser_url_handler_impl.cc        | 31 ++++++++++++++++++++++
- .../browser/child_process_security_policy_impl.cc  |  7 +++--
- net/url_request/url_request.cc                     | 18 +++++++++++++
- url/gurl.cc                                        | 21 +++++++++++++++
- url/gurl.h                                         |  3 +++
+ chrome/browser/ui/browser_command_controller.cc    |  3 +-
+ chrome/browser/ui/browser_navigator.cc             |  8 +++
+ chrome/browser/ui/singleton_tabs.cc                |  3 +-
+ chrome/chrome_dll.gypi                             |  1 +
+ chrome/chrome_exe.gypi                             |  1 +
+ components/omnibox/autocomplete_input.cc           |  8 +--
+ content/browser/browser_url_handler_impl.cc        | 20 ++++++++
+ .../browser/child_process_security_policy_impl.cc  |  7 ++-
+ iridium/iridium.gyp                                | 19 +++++++
+ iridium/trkbar.cpp                                 | 40 +++++++++++++++
+ iridium/trkbar.h                                   | 32 ++++++++++++
+ iridium/trknotify.cpp                              | 59 ++++++++++++++++++++++
+ iridium/trknotify.h                                | 20 ++++++++
+ net/url_request/url_request.cc                     |  7 +++
+ net/url_request/url_request.h                      |  2 +
+ url/gurl.cc                                        | 21 ++++++++
+ url/gurl.h                                         |  3 ++
  url/url_constants.cc                               |  1 +
  url/url_constants.h                                |  1 +
- 13 files changed, 99 insertions(+), 7 deletions(-)
+ 22 files changed, 269 insertions(+), 7 deletions(-)
+ create mode 100644 iridium/iridium.gyp
+ create mode 100644 iridium/trkbar.cpp
+ create mode 100644 iridium/trkbar.h
+ create mode 100644 iridium/trknotify.cpp
+ create mode 100644 iridium/trknotify.h
 
+diff --git a/chrome/app/chrome_main.cc b/chrome/app/chrome_main.cc
+index 360b7e5..be923ad 100644
+--- a/chrome/app/chrome_main.cc
++++ b/chrome/app/chrome_main.cc
+@@ -5,6 +5,10 @@
+ #include "chrome/app/chrome_main_delegate.h"
+ 
+ #include "content/public/app/content_main.h"
++#if !defined(CHROME_MULTIPLE_DLL_CHILD)
++#	include "net/url_request/url_request.h"
++#	include "iridium/trknotify.h"
++#endif
+ 
+ #if defined(OS_WIN)
+ #include "base/debug/dump_without_crashing.h"
+@@ -25,6 +29,17 @@ int ChromeMain(int argc, const char** argv);
+ }
+ #endif
+ 
++#if !defined(CHROME_MULTIPLE_DLL_CHILD)
++static void trace_url_request(const std::string &caller, const GURL &url)
++{
++	iridium::log_url_request(caller, url);
++	if (url.scheme() != url::kTraceScheme)
++		/* Do not show infobar for non-trk URLs */
++		return;
++	iridium::trace_url_request(caller, url);
++}
++#endif
++
+ #if defined(OS_WIN)
+ DLLEXPORT int __cdecl ChromeMain(HINSTANCE instance,
+                                  sandbox::SandboxInterfaceInfo* sandbox_info) {
+@@ -63,6 +78,9 @@ int ChromeMain(int argc, const char** argv) {
+   params.argv = argv;
+ #endif
+ 
++#if !defined(CHROME_MULTIPLE_DLL_CHILD)
++  net::trace_urlreq_cb = &trace_url_request;
++#endif
+   int rv = content::ContentMain(params);
+ 
+ #if defined(OS_WIN)
 diff --git a/chrome/browser/autocomplete/chrome_autocomplete_scheme_classifier.cc b/chrome/browser/autocomplete/chrome_autocomplete_scheme_classifier.cc
 index c64520f..47b3b12 100644
 --- a/chrome/browser/autocomplete/chrome_autocomplete_scheme_classifier.cc
@@ -113,6 +170,30 @@ index 60cf852..cd58a4b 100644
        continue;
  
      GURL rewritten_tab_url = tab_url;
+diff --git a/chrome/chrome_dll.gypi b/chrome/chrome_dll.gypi
+index 29d91f6..25de3ba 100644
+--- a/chrome/chrome_dll.gypi
++++ b/chrome/chrome_dll.gypi
+@@ -92,6 +92,7 @@
+             'app/delay_load_hook_win.h',
+           ],
+           'dependencies': [
++            '../iridium/iridium.gyp:trknotify',
+             '<@(chromium_browser_dependencies)',
+             '../content/content.gyp:content_app_browser',
+           ],
+diff --git a/chrome/chrome_exe.gypi b/chrome/chrome_exe.gypi
+index 6c3c0ba..e1a7c6a 100644
+--- a/chrome/chrome_exe.gypi
++++ b/chrome/chrome_exe.gypi
+@@ -213,6 +213,7 @@
+             'app/chrome_main_delegate.h',
+           ],
+           'dependencies': [
++            '../iridium/iridium.gyp:trknotify',
+             # On Linux, link the dependencies (libraries) that make up actual
+             # Chromium functionality directly into the executable.
+             '<@(chromium_browser_dependencies)',
 diff --git a/components/omnibox/autocomplete_input.cc b/components/omnibox/autocomplete_input.cc
 index 2c6982b..997d26f 100644
 --- a/components/omnibox/autocomplete_input.cc
@@ -141,10 +222,14 @@ index 2c6982b..997d26f 100644
  }
  
 diff --git a/content/browser/browser_url_handler_impl.cc b/content/browser/browser_url_handler_impl.cc
-index 438feb3..3b143ed 100644
+index 438feb3..d91a631 100644
 --- a/content/browser/browser_url_handler_impl.cc
 +++ b/content/browser/browser_url_handler_impl.cc
-@@ -13,6 +13,36 @@
+@@ -10,9 +10,28 @@
+ #include "content/public/browser/content_browser_client.h"
+ #include "content/public/common/url_constants.h"
+ #include "url/gurl.h"
++#include "net/url_request/url_request.h"
  
  namespace content {
  
@@ -152,20 +237,8 @@ index 438feb3..3b143ed 100644
 +{
 +	if (!url->SchemeIs(url::kTraceScheme))
 +		return false;
-+#ifdef __linux__
-+	bool tty = isatty(fileno(stderr));
-+#else
-+	bool tty = false;
-+#endif
-+	/*
-+	 * This function normally should not be called anymore
-+	 * (unless you manually enter a trk: URL). Leave it in, maybe it does
-+	 * happen again.
-+	 */
-+	const char *xhi    = tty ? "\033[1;32;45m" : ""; // ]
-+	const char *xreset = tty ? "\033[0m" : ""; // ]
-+	fprintf(stderr, "%s*** handle_trace_scheme(%s)%s\n",
-+	        xhi, url->possibly_invalid_spec().c_str(), xreset);
++	if (net::trace_urlreq_cb != NULL)
++		(*net::trace_urlreq_cb)("handle_trace_scheme", *url);
 +	*url = url->strip_trk();
 +	return false;
 +}
@@ -181,7 +254,7 @@ index 438feb3..3b143ed 100644
  // Handles rewriting view-source URLs for what we'll actually load.
  static bool HandleViewSource(GURL* url, BrowserContext* browser_context) {
    if (url->SchemeIs(kViewSourceScheme)) {
-@@ -96,6 +126,7 @@ BrowserURLHandlerImpl::BrowserURLHandlerImpl() :
+@@ -96,6 +115,7 @@ BrowserURLHandlerImpl::BrowserURLHandlerImpl() :
  
    // view-source:
    AddHandlerPair(&HandleViewSource, &ReverseViewSource);
@@ -227,35 +300,244 @@ index 34caa5a..0ccdc7f 100644
  
        return CanRequestURL(child_id, child_url);
      }
-diff --git a/net/url_request/url_request.cc b/net/url_request/url_request.cc
-index 4a1e093..6d30e1d 100644
---- a/net/url_request/url_request.cc
-+++ b/net/url_request/url_request.cc
-@@ -552,6 +552,24 @@ URLRequest::URLRequest(const GURL& url,
-   DCHECK(base::MessageLoop::current())
-       << "The current base::MessageLoop must exist";
- 
+diff --git a/iridium/iridium.gyp b/iridium/iridium.gyp
+new file mode 100644
+index 0000000..a1fee8f
+--- /dev/null
++++ b/iridium/iridium.gyp
+@@ -0,0 +1,19 @@
++{
++	'targets': [
++		{
++			'target_name': 'trknotify',
++			'type': 'static_library',
++			'sources': [
++				'trknotify.cpp',
++				'trknotify.h',
++				'trkbar.cpp',
++				'trkbar.h',
++			],
++			'include_dirs': [
++				'..',
++				'../third_party/skia/include/config',
++				'../third_party/skia/include/core',
++			],
++		},
++	],
++}
+diff --git a/iridium/trkbar.cpp b/iridium/trkbar.cpp
+new file mode 100644
+index 0000000..bf0139c
+--- /dev/null
++++ b/iridium/trkbar.cpp
+@@ -0,0 +1,40 @@
++/*
++ * Copyright 2015 The Iridium Authors
++ *
++ * Use of this source code is governed by a BSD-style license that can be
++ * found in the LICENSE file.
++ */
++#include "base/strings/utf_string_conversions.h"
++#include "components/infobars/core/infobar.h"
++#include "iridium/trkbar.h"
++
++namespace content {
++
++void TrkBar::Create(InfoBarService *s, const GURL &url)
++{
++	s->AddInfoBar(s->CreateConfirmInfoBar(
++		scoped_ptr<ConfirmInfoBarDelegate>(new TrkBar(url))
++	));
++}
++
++bool TrkBar::ShouldExpire(const NavigationDetails &) const
++{
++	return false;
++}
++
++TrkBar::TrkBar(const GURL &url) :
++	ConfirmInfoBarDelegate(), m_url(url)
++{
++}
++
++base::string16 TrkBar::GetMessageText(void) const
++{
++	return base::ASCIIToUTF16("Loading traced URL: " + m_url.spec());
++}
++
++int TrkBar::GetButtons(void) const
++{
++	return BUTTON_NONE;
++}
++
++}; /* namespace content */
+diff --git a/iridium/trkbar.h b/iridium/trkbar.h
+new file mode 100644
+index 0000000..ade2eb7
+--- /dev/null
++++ b/iridium/trkbar.h
+@@ -0,0 +1,32 @@
++/*
++ * Copyright 2015 The Iridium Authors.
++ *
++ * Use of this source code is governed by a BSD-style license that can be
++ * found in the LICENSE file.
++ */
++#ifndef IRIDIUM_TRKBAR_H
++#define IRIDIUM_TRKBAR_H 1
++
++#include "chrome/browser/infobars/infobar_service.h"
++#include "components/infobars/core/confirm_infobar_delegate.h"
++#include "url/gurl.h"
++
++namespace content {
++
++class TrkBar : public ConfirmInfoBarDelegate {
++	public:
++	static void Create(InfoBarService *, const GURL &);
++	bool ShouldExpire(const NavigationDetails &) const override;
++
++	private:
++	TrkBar(const GURL &);
++	base::string16 GetMessageText(void) const override;
++	int GetButtons(void) const override;
++
++	GURL m_url;
++	DISALLOW_COPY_AND_ASSIGN(TrkBar);
++};
++
++}; /* namespace content */
++
++#endif /* IRIDIUM_TRKBAR_H */
+diff --git a/iridium/trknotify.cpp b/iridium/trknotify.cpp
+new file mode 100644
+index 0000000..16fdbfe
+--- /dev/null
++++ b/iridium/trknotify.cpp
+@@ -0,0 +1,59 @@
++/*
++ * Copyright 2015 The Iridium Authors.
++ *
++ * Use of this source code is governed by a BSD-style license that can be
++ * found in the LICENSE file.
++ */
++#include <cstdio>
++#ifdef __linux__
++#	include <unistd.h>
++#endif
++#include "chrome/browser/infobars/infobar_service.h"
++#include "chrome/browser/ui/browser.h"
++#include "chrome/browser/ui/browser_finder.h"
++#include "chrome/browser/ui/tabs/tab_strip_model.h"
++#include "content/public/browser/browser_thread.h"
++#include "url/url_constants.h"
++#include "iridium/trkbar.h"
++#include "iridium/trknotify.h"
++
++namespace iridium {
++
++void log_url_request(const std::string &caller, const GURL &url)
++{
 +#ifdef __linux__
 +	bool tty = isatty(fileno(stderr));
 +#else
 +	bool tty = false;
 +#endif
 +	const char *xred   = tty ? "\033[1;37;41m" : ""; // ]
-+	const char *xfruit = tty ? "\033[33m" : ""; // ]
-+	const char *xdark  = tty ? "\033[1;30m" : ""; // ]
-+	const char *xreset = tty ? "\033[0m" : ""; //]
-+	if (url.scheme() == url::kTraceScheme) {
-+		fprintf(stderr, "%s*** URLRequest(%s)%s\n",
-+			xred, url.possibly_invalid_spec().c_str(), xreset);
-+		url_chain_ = {1, url.strip_trk()};
-+	} else {
-+		fprintf(stderr, "%s***%s URLRequest(%s)%s\n",
-+		        xfruit, xdark, url.possibly_invalid_spec().c_str(), xreset);
-+	}
++	const char *xfruit = tty ? "\033[33m"      : ""; // ]
++	const char *xdark  = tty ? "\033[1;30m"    : ""; // ]
++	const char *xreset = tty ? "\033[0m"       : ""; // ]
++
++	if (url.scheme() == url::kTraceScheme)
++		fprintf(stderr, "%s*** %s(%s)%s\n", xred, caller.c_str(),
++		        url.possibly_invalid_spec().c_str(), xreset);
++	else
++		fprintf(stderr, "%s***%s %s(%s)%s\n", xfruit, xdark,
++		        caller.c_str(), url.possibly_invalid_spec().c_str(),
++		        xreset);
++}
++
++static void __trace_url_request(const std::string &caller, const GURL &url)
++{
++	auto browser = chrome::FindLastActiveWithHostDesktopType(chrome::GetActiveDesktop());
++	if (browser == NULL)
++		return;
++
++	auto service = InfoBarService::FromWebContents(browser->tab_strip_model()->GetActiveWebContents());
++	content::TrkBar::Create(service, url);
++}
++
++void trace_url_request(const std::string &caller, const GURL &url)
++{
++	content::BrowserThread::PostTask(content::BrowserThread::UI, FROM_HERE,
++		base::Bind(&__trace_url_request, caller, url));
++}
++
++}; /* namespace iridium */
+diff --git a/iridium/trknotify.h b/iridium/trknotify.h
+new file mode 100644
+index 0000000..3c58d22
+--- /dev/null
++++ b/iridium/trknotify.h
+@@ -0,0 +1,20 @@
++/*
++ * Copyright 2015 The Iridium Authors.
++ *
++ * Use of this source code is governed by a BSD-style license that can be
++ * found in the LICENSE file.
++ */
++#ifndef IRIDIUM_TRKNOTIFY_H
++#define IRIDIUM_TRKNOTIFY_H 1
++
++#include <string>
++#include "url/gurl.h"
++
++namespace iridium {
++
++extern void log_url_request(const std::string &, const GURL &);
++extern void trace_url_request(const std::string &, const GURL &);
++
++}; /* namespace iridium */
++
++#endif /* IRIDIUM_TRKNOTIFY_H */
+diff --git a/net/url_request/url_request.cc b/net/url_request/url_request.cc
+index 4a1e093..9a8d918 100644
+--- a/net/url_request/url_request.cc
++++ b/net/url_request/url_request.cc
+@@ -45,6 +45,8 @@ using std::string;
+ 
+ namespace net {
+ 
++void (*trace_urlreq_cb)(const std::string &, const GURL &);
++
+ namespace {
+ 
+ // Max number of http redirects to follow.  Same number as gecko.
+@@ -552,6 +554,11 @@ URLRequest::URLRequest(const GURL& url,
+   DCHECK(base::MessageLoop::current())
+       << "The current base::MessageLoop must exist";
+ 
++	if (trace_urlreq_cb != NULL)
++		(*trace_urlreq_cb)("URLRequest", url);
++	if (url.scheme() == url::kTraceScheme)
++		url_chain_[0] = url.strip_trk();
 +
    context->url_requests()->insert(this);
    net_log_.BeginEvent(NetLog::TYPE_REQUEST_ALIVE);
  }
+diff --git a/net/url_request/url_request.h b/net/url_request/url_request.h
+index e623c20..7dd1989 100644
+--- a/net/url_request/url_request.h
++++ b/net/url_request/url_request.h
+@@ -821,6 +821,8 @@ class NET_EXPORT URLRequest : NON_EXPORTED_BASE(public base::NonThreadSafe),
+   DISALLOW_COPY_AND_ASSIGN(URLRequest);
+ };
+ 
++extern void NET_EXPORT (*trace_urlreq_cb)(const std::string &, const GURL &);
++
+ }  // namespace net
+ 
+ #endif  // NET_URL_REQUEST_URL_REQUEST_H_
 diff --git a/url/gurl.cc b/url/gurl.cc
 index 46ca408..b639228 100644
 --- a/url/gurl.cc
@@ -333,5 +615,5 @@ index c48dafc..18770d0 100644
  URL_EXPORT extern const char kWssScheme[];
  
 -- 
-2.4.0
+2.4.3
 

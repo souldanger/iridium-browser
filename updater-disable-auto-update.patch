@@ -1,7 +1,7 @@
-From 025fc80cf09aa1e5e2b5bf069a874c5342485966 Mon Sep 17 00:00:00 2001
+From 77a30634639b2ccd91962b176499764de5e2f358 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Fri, 13 Feb 2015 00:59:04 +0100
-Subject: [PATCH 37/50] updater: disable auto-update
+Subject: [PATCH 37/49] updater: disable auto-update
 
 As per http://www.chromium.org/administrators/turning-off-auto-updates ,
 the auto update function is decidedly disabled on Linux, i.e.
@@ -28,5 +28,5 @@ index e888d39..5b2f02c 100644
      CFPreferencesSetAppValue(checkInterval, value, app);
      CFPreferencesAppSynchronize(app);
 -- 
-2.4.0
+2.4.3
 

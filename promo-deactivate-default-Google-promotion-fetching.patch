@@ -1,7 +1,7 @@
-From 2703d7941678bdc6a931dbf126e642cdb8027c7e Mon Sep 17 00:00:00 2001
+From f6d8f24f335075c316b0223276978aaa3e00f21a Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sun, 9 Nov 2014 01:54:27 +0100
-Subject: [PATCH 24/50] promo: deactivate default Google promotion fetching
+Subject: [PATCH 24/49] promo: deactivate default Google promotion fetching
 
 Documentation is scarce, and sprinkled with misleading acronyms.
 NTP is not NTP, for example. FWIW:
@@ -37,5 +37,5 @@ index a71c0e7..f40f6ae 100644
  // The name of the preference that stores the promotion object.
  const char kPrefPromoObject[] = "promo";
 -- 
-2.4.0
+2.4.3
 

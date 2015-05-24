@@ -1,18 +1,29 @@
-From d8faff3d2ed3d51140c3c49b0191bec8ec9871a9 Mon Sep 17 00:00:00 2001
+From 8fa950f27210b5ec6b3fbb21a00d166e9541ff20 Mon Sep 17 00:00:00 2001
 From: Joachim Bauch <jojo@struktur.de>
 Date: Mon, 1 Jun 2015 17:14:34 +0200
-Subject: [PATCH 46/50] google-cloud-messaging: disable experiment status check
+Subject: [PATCH 46/49] google-cloud-messaging: disable experiment status check
 
 This avoids trk:263 from triggering.
 ---
- components/gcm_driver/gcm_channel_status_request.cc | 4 ++++
- 1 file changed, 4 insertions(+)
+ components/gcm_driver/gcm_channel_status_request.cc | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
 diff --git a/components/gcm_driver/gcm_channel_status_request.cc b/components/gcm_driver/gcm_channel_status_request.cc
-index d609f55..c608295 100644
+index d609f55..fd0244b 100644
 --- a/components/gcm_driver/gcm_channel_status_request.cc
 +++ b/components/gcm_driver/gcm_channel_status_request.cc
-@@ -53,6 +53,7 @@ int GCMChannelStatusRequest::min_poll_interval_seconds() {
+@@ -19,8 +19,10 @@ namespace gcm {
+ 
+ namespace {
+ 
++#if 0
+ const char kRequestContentType[] = "application/octet-stream";
+ const char kGCMChannelTag[] = "gcm_channel";
++#endif
+ const int kDefaultPollIntervalSeconds = 60 * 60;  // 60 minutes.
+ const int kMinPollIntervalSeconds = 30 * 60;  // 30 minutes.
+ 
+@@ -53,6 +55,7 @@ int GCMChannelStatusRequest::min_poll_interval_seconds() {
  }
  
  void GCMChannelStatusRequest::Start() {
@@ -20,7 +31,7 @@ index d609f55..c608295 100644
    DCHECK(!url_fetcher_.get());
  
    GURL request_url(channel_status_request_url_);
-@@ -72,6 +73,9 @@ void GCMChannelStatusRequest::Start() {
+@@ -72,6 +75,9 @@ void GCMChannelStatusRequest::Start() {
    url_fetcher_->SetLoadFlags(net::LOAD_DO_NOT_SEND_COOKIES |
                               net::LOAD_DO_NOT_SAVE_COOKIES);
    url_fetcher_->Start();
@@ -31,5 +42,5 @@ index d609f55..c608295 100644
  
  void GCMChannelStatusRequest::OnURLFetchComplete(
 -- 
-2.4.0
+2.4.3
 

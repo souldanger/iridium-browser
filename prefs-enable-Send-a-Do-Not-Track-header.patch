@@ -1,7 +1,7 @@
-From 036a6dd2733f6984b4c32fcbb00a080c34d4017a Mon Sep 17 00:00:00 2001
+From 620c1dcf5e371edfb75254ba907ef298aa4edb36 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sat, 13 Sep 2014 15:06:39 +0200
-Subject: [PATCH 05/50] prefs: enable "Send a Do-Not-Track header"
+Subject: [PATCH 05/49] prefs: enable "Send a Do-Not-Track header"
 
 Set enable_do_not_track to true by default.
 
@@ -36,5 +36,5 @@ index 9edc021..20848f0 100644
  #if defined(ENABLE_WEBRTC)
    registry->RegisterBooleanPref(
 -- 
-2.4.0
+2.4.3
 

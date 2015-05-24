@@ -1,7 +1,7 @@
-From 93c1695755f766b5b0379a6de7355e426dd8dbbe Mon Sep 17 00:00:00 2001
+From 1616d26c9705c4bbba85818a0c53c3990d5ec9c1 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sat, 13 Sep 2014 16:55:12 +0200
-Subject: [PATCH 08/50] prefs: disable Cloud Print
+Subject: [PATCH 08/49] prefs: disable Cloud Print
 
 Cloud Print is usually autodisabled if no printers are shared.
 So what exactly am I turning off? Simon, can you tell?
@@ -24,5 +24,5 @@ index 20848f0..5c70c06 100644
    registry->RegisterBooleanPref(
        prefs::kDevToolsDisabled,
 -- 
-2.4.0
+2.4.3
 

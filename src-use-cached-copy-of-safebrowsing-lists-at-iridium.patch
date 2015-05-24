@@ -1,7 +1,7 @@
-From f5bc1ab588cb7b36761afd1194bbc8d54f801cb8 Mon Sep 17 00:00:00 2001
+From d6da5263442ac40d084ab730945c064ffa8ffdd3 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Mon, 26 Jan 2015 13:57:44 +0100
-Subject: [PATCH 33/50] src: use cached copy of safebrowsing lists at
+Subject: [PATCH 33/49] src: use cached copy of safebrowsing lists at
  iridiumbrowser.de
 
 To avoid contacing Google, let the UA use safebrowsing lists hosted at
@@ -27,5 +27,5 @@ index 09f44b9..eba2c51 100644
  struct ClientSideDetectionService::ClientReportInfo {
    ClientReportPhishingRequestCallback callback;
 -- 
-2.4.0
+2.4.3
 

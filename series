@@ -44,7 +44,6 @@ Remove-EV-certificates.patch
 src-add-comments-for-evil-looking-code.patch
 spellchecker-flag-downloading-dictionary-from-Google.patch
 google-cloud-messaging-disable-experiment-status-che.patch
-iridium-help-identify-possibly-evil-hardcoded-URLs.patch
-iridium-graphic-output-on-trk-URL.patch
+net-help-identify-URLs-being-retrieved.patch
 src-flag-evil-connections.patch
 common-set-Iridium-version-and-change-User-Agent-acc.patch

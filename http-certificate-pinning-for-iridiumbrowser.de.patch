@@ -1,7 +1,7 @@
-From ee0f9a8c197a8f6037851fdb01a8dd9f1605b0db Mon Sep 17 00:00:00 2001
+From 353798fea6e7d2ba8d42c9e88fc13194a7a8f348 Mon Sep 17 00:00:00 2001
 From: Joachim Bauch <bauch@struktur.de>
 Date: Tue, 9 Dec 2014 16:51:31 +0100
-Subject: [PATCH 27/50] http: certificate pinning for iridiumbrowser.de
+Subject: [PATCH 27/49] http: certificate pinning for iridiumbrowser.de
 
 The second pin is a backup pin as per
 https://tools.ietf.org/html/draft-ietf-websec-key-pinning-21#section-4.3
@@ -3129,5 +3129,5 @@ index 4880e8e..b179d27 100644
      "ANDROID_COM",
      "GOOGLE_ANALYTICS_COM",
 -- 
-2.4.0
+2.4.3
 
