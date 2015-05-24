@@ -1,4 +1,4 @@
-From 89684b11198785e6bc0cd3bb22f762c97a54c05c Mon Sep 17 00:00:00 2001
+From 3170eb72c1aa7597c80d660b03814a699618612a Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Wed, 20 May 2015 01:34:50 +0200
 Subject: [PATCH 47/50] iridium: help identify possibly evil hardcoded URLs

@@ -1,4 +1,4 @@
-From f0038424583403c11508e364b2b234c5bcfc137a Mon Sep 17 00:00:00 2001
+From 1341c296aa48e316eb5e945ca2f521be3ab1c5fb Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Wed, 6 May 2015 14:13:00 +0200
 Subject: [PATCH 44/50] src: add comments for evil-looking code

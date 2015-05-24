@@ -1,4 +1,4 @@
-From 0e7a0a9f2a0e658be366ee096eae2cd062c6fffb Mon Sep 17 00:00:00 2001
+From d8faff3d2ed3d51140c3c49b0191bec8ec9871a9 Mon Sep 17 00:00:00 2001
 From: Joachim Bauch <jojo@struktur.de>
 Date: Mon, 1 Jun 2015 17:14:34 +0200
 Subject: [PATCH 46/50] google-cloud-messaging: disable experiment status check

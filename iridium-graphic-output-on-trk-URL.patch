@@ -1,4 +1,4 @@
-From ce5a4a549d660615ef08a756ad674b41ad88c241 Mon Sep 17 00:00:00 2001
+From 6e796e5e13116a9e31fa942f939c0a6e8907d01b Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sun, 24 May 2015 14:54:37 +0200
 Subject: [PATCH 48/50] iridium: graphic output on trk: URL
