@@ -1,7 +1,7 @@
-From 3d0426989357a61ed9d1fde964ab4d4667d2e168 Mon Sep 17 00:00:00 2001
+From bd90a5a28299dcb5786a0c3bbbcc1c89b0ea756c Mon Sep 17 00:00:00 2001
 From: Joachim Bauch <jojo@struktur.de>
 Date: Mon, 10 Nov 2014 10:54:29 +0100
-Subject: [PATCH 26/43] webrtc: disable WebRTC identity store
+Subject: [PATCH 25/46] webrtc: disable WebRTC identity store
 
 By default, WebRTC identities (i.e. keypairs/certificates) are cached
 for 30 days and stored in a SQLite database in the users home
@@ -19,7 +19,7 @@ connection.
  1 file changed, 8 insertions(+), 13 deletions(-)
 
 diff --git a/content/browser/media/webrtc_identity_store.cc b/content/browser/media/webrtc_identity_store.cc
-index 419cb96..4225acd 100644
+index 2cf8fb1..0e7dc75 100644
 --- a/content/browser/media/webrtc_identity_store.cc
 +++ b/content/browser/media/webrtc_identity_store.cc
 @@ -192,13 +192,13 @@ base::Closure WebRTCIdentityStore::RequestIdentity(
@@ -45,7 +45,7 @@ index 419cb96..4225acd 100644
      }
 @@ -272,12 +272,7 @@ void WebRTCIdentityStore::GenerateIdentityCallback(
      WebRTCIdentityRequestResult* result) {
-   DCHECK(BrowserThread::CurrentlyOn(BrowserThread::IO));
+   DCHECK_CURRENTLY_ON(BrowserThread::IO);
    if (result->error == net::OK) {
 -    DVLOG(2) << "New identity generated and added to the backend.";
 -    backend_->AddIdentity(request->origin_,

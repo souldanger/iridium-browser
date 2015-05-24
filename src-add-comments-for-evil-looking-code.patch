@@ -1,0 +1,32 @@
+From 12e7d1cd250732d83f3e78f3490e88cfdd903722 Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Wed, 6 May 2015 14:13:00 +0200
+Subject: [PATCH 42/46] src: add comments for evil-looking code
+
+---
+ components/google/core/browser/google_url_tracker.cc | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/components/google/core/browser/google_url_tracker.cc b/components/google/core/browser/google_url_tracker.cc
+index dd72e35..46d1f0c 100644
+--- a/components/google/core/browser/google_url_tracker.cc
++++ b/components/google/core/browser/google_url_tracker.cc
+@@ -16,6 +16,15 @@
+ #include "net/url_request/url_request_status.h"
+ 
+ 
++/*
++ * Developer "evmar" writes on
++ * http://neugierig.org/software/chromium/notes/2009/12/iron.html :
++ *
++ * “the GoogleURLTracker class. This unforutnately-named class figures out
++ * whether to use google.com or google.es for searches from the URL bar,”
++ *
++ * (So the naming problem was spotted, yet remains unfixed even today…)
++ */
+ const char GoogleURLTracker::kDefaultGoogleHomepage[] =
+     "https://www.google.com/";
+ const char GoogleURLTracker::kSearchDomainCheckURL[] =
+-- 
+2.4.0
+

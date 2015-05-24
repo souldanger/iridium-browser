@@ -1,7 +1,7 @@
-From 246007db494d21c901488cc0da66859829575f6e Mon Sep 17 00:00:00 2001
+From 6bd0494f746803246c4f29a38b6d33a6ebd7bbda Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Fri, 13 Feb 2015 01:04:21 +0100
-Subject: [PATCH 14/43] prefs: always prompt for download directory by default
+Subject: [PATCH 13/46] prefs: always prompt for download directory by default
 
 If the user opens a link, one of two things might happen. The URI
 resolves to a "web page" and will be displayed, then everything is
@@ -24,22 +24,22 @@ place.
 
 TLDR: Do not let files sneak onto the disk too easily.
 ---
- chrome/browser/download/download_dir_policy_handler.cc | 2 +-
+ chrome/browser/download/download_prefs.cc | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/chrome/browser/download/download_dir_policy_handler.cc b/chrome/browser/download/download_dir_policy_handler.cc
-index be9ea9d..0a1c63f 100644
---- a/chrome/browser/download/download_dir_policy_handler.cc
-+++ b/chrome/browser/download/download_dir_policy_handler.cc
-@@ -105,7 +105,7 @@ void DownloadDirPolicyHandler::ApplyPolicySettingsWithParameters(
-   // Otherwise, it would enable a user to bypass the mandatory policy.
-   if (policies.Get(policy_name())->level == policy::POLICY_LEVEL_MANDATORY) {
-     prefs->SetValue(prefs::kPromptForDownload,
--                    new base::FundamentalValue(false));
-+                    new base::FundamentalValue(true));
- #if defined(OS_CHROMEOS)
-     if (download_to_drive) {
-       prefs->SetValue(prefs::kDisableDrive,
+diff --git a/chrome/browser/download/download_prefs.cc b/chrome/browser/download/download_prefs.cc
+index 9597aac..e3a5522 100644
+--- a/chrome/browser/download/download_prefs.cc
++++ b/chrome/browser/download/download_prefs.cc
+@@ -181,7 +181,7 @@ void DownloadPrefs::RegisterProfilePrefs(
+     user_prefs::PrefRegistrySyncable* registry) {
+   registry->RegisterBooleanPref(
+       prefs::kPromptForDownload,
+-      false,
++      true,
+       user_prefs::PrefRegistrySyncable::SYNCABLE_PREF);
+   registry->RegisterStringPref(
+       prefs::kDownloadExtensionsToOpen,
 -- 
 2.4.0
 

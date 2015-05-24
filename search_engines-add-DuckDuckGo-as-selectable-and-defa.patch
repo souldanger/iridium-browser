@@ -1,7 +1,7 @@
-From 0667f31ab12f28e2e5534a08271f6dbd868030ff Mon Sep 17 00:00:00 2001
+From 9e0a0250de2baf9ed14aefd57975cf1dbb6d4e19 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sun, 19 Oct 2014 14:49:10 +0200
-Subject: [PATCH 20/43] search_engines: add DuckDuckGo as selectable and
+Subject: [PATCH 19/46] search_engines: add DuckDuckGo as selectable and
  default search engine
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8

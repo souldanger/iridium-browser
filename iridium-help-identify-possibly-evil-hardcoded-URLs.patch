@@ -1,0 +1,277 @@
+From dbcd77e58f492e844bd3f80c1d75990d6bbaadbe Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Wed, 20 May 2015 01:34:50 +0200
+Subject: [PATCH 43/46] iridium: help identify possibly evil hardcoded URLs
+
+The Chromium codebase has left us with a number of suspect URLs, and
+we want to know if the browser attempts to contact those sites.
+
+This patch introduces a new scheme, "trk:", which, when attempted to
+being processed, will dump a warning onto the screen as the resource
+is loaded. All URLs we think are suspect are "blacklisted" by
+prepending the new scheme to an existing URL:
+
+	trk:https://iridiumbrowser.de/
+
+At seeing a warning, we then know that investigation needs to be done,
+either to (a) whitelist the URL, that is, remove the trk: prefix and
+not show the warning, and/or (b) disable the particular feature which
+caused the loading of the URL in the first place, by default.
+
+Implementation:
+
+Tried a few; we are using a hook in the URL fixer now.
+The scheme handler is unused, but preserved for one release as
+historic reference.
+---
+ .../chrome_autocomplete_scheme_classifier.cc       |  1 +
+ chrome/browser/history/history_utils.cc            |  1 +
+ chrome/browser/ui/browser_command_controller.cc    |  3 ++-
+ chrome/browser/ui/browser_navigator.cc             | 11 +++++++++++
+ chrome/browser/ui/singleton_tabs.cc                |  3 ++-
+ components/omnibox/autocomplete_input.cc           |  7 +++++--
+ components/url_fixer/url_fixer.cc                  |  8 ++++++++
+ content/browser/browser_url_handler_impl.cc        | 22 ++++++++++++++++++++++
+ .../browser/child_process_security_policy_impl.cc  |  7 +++++--
+ content/public/common/url_constants.cc             |  1 +
+ content/public/common/url_constants.h              |  2 +-
+ 11 files changed, 59 insertions(+), 7 deletions(-)
+
+diff --git a/chrome/browser/autocomplete/chrome_autocomplete_scheme_classifier.cc b/chrome/browser/autocomplete/chrome_autocomplete_scheme_classifier.cc
+index c64520f..539e31e 100644
+--- a/chrome/browser/autocomplete/chrome_autocomplete_scheme_classifier.cc
++++ b/chrome/browser/autocomplete/chrome_autocomplete_scheme_classifier.cc
+@@ -26,6 +26,7 @@ ChromeAutocompleteSchemeClassifier::GetInputTypeForScheme(
+   if (base::IsStringASCII(scheme) &&
+       (ProfileIOData::IsHandledProtocol(scheme) ||
+        LowerCaseEqualsASCII(scheme, content::kViewSourceScheme) ||
++       LowerCaseEqualsASCII(scheme, content::kTraceScheme) ||
+        LowerCaseEqualsASCII(scheme, url::kJavaScriptScheme) ||
+        LowerCaseEqualsASCII(scheme, url::kDataScheme))) {
+     return metrics::OmniboxInputType::URL;
+diff --git a/chrome/browser/history/history_utils.cc b/chrome/browser/history/history_utils.cc
+index 1bc5e8d..274dd89 100644
+--- a/chrome/browser/history/history_utils.cc
++++ b/chrome/browser/history/history_utils.cc
+@@ -19,6 +19,7 @@ bool CanAddURLToHistory(const GURL& url) {
+       url.SchemeIs(content::kChromeDevToolsScheme) ||
+       url.SchemeIs(content::kChromeUIScheme) ||
+       url.SchemeIs(content::kViewSourceScheme) ||
++      url.SchemeIs(content::kTraceScheme) ||
+       url.SchemeIs(chrome::kChromeNativeScheme) ||
+       url.SchemeIs(chrome::kChromeSearchScheme) ||
+       url.SchemeIs(dom_distiller::kDomDistillerScheme))
+diff --git a/chrome/browser/ui/browser_command_controller.cc b/chrome/browser/ui/browser_command_controller.cc
+index a7b5229..1a52769 100644
+--- a/chrome/browser/ui/browser_command_controller.cc
++++ b/chrome/browser/ui/browser_command_controller.cc
+@@ -103,7 +103,8 @@ bool HasInternalURL(const NavigationEntry* entry) {
+ 
+   // If the |virtual_url()| isn't a chrome:// URL, check if it's actually
+   // view-source: of a chrome:// URL.
+-  if (entry->GetVirtualURL().SchemeIs(content::kViewSourceScheme))
++  if (entry->GetVirtualURL().SchemeIs(content::kViewSourceScheme) ||
++      entry->GetVirtualURL().SchemeIs(content::kTraceScheme))
+     return entry->GetURL().SchemeIs(content::kChromeUIScheme);
+ 
+   return false;
+diff --git a/chrome/browser/ui/browser_navigator.cc b/chrome/browser/ui/browser_navigator.cc
+index 4a51584..17e30ac 100644
+--- a/chrome/browser/ui/browser_navigator.cc
++++ b/chrome/browser/ui/browser_navigator.cc
+@@ -732,6 +732,17 @@ bool IsURLAllowedInIncognito(const GURL& url,
+     return stripped_url.is_valid() &&
+         IsURLAllowedInIncognito(stripped_url, browser_context);
+   }
++
++	if (url.scheme() == content::kTraceScheme) {
++		/* Same as view-source:, strip prefix and re-check. */
++		std::string spec = url.spec();
++		DCHECK_GT(spec.size(), strlen(content::kTraceScheme));
++		spec.erase(0, strlen(content::kTraceScheme) + 1);
++		GURL url(spec);
++		return url.is_valid() &&
++		       IsURLAllowedInIncognito(url, browser_context);
++	}
++
+   // Most URLs are allowed in incognito; the following are exceptions.
+   // chrome://extensions is on the list because it redirects to
+   // chrome://settings.
+diff --git a/chrome/browser/ui/singleton_tabs.cc b/chrome/browser/ui/singleton_tabs.cc
+index 60cf852..dba4028 100644
+--- a/chrome/browser/ui/singleton_tabs.cc
++++ b/chrome/browser/ui/singleton_tabs.cc
+@@ -98,7 +98,8 @@ int GetIndexOfSingletonTab(NavigateParams* params) {
+ 
+     // Skip view-source tabs. This is needed because RewriteURLIfNecessary
+     // removes the "view-source:" scheme which leads to incorrect matching.
+-    if (tab_url.SchemeIs(content::kViewSourceScheme))
++    if (tab_url.SchemeIs(content::kViewSourceScheme) ||
++        tab_url.SchemeIs(content::kTraceScheme))
+       continue;
+ 
+     GURL rewritten_tab_url = tab_url;
+diff --git a/components/omnibox/autocomplete_input.cc b/components/omnibox/autocomplete_input.cc
+index 2c6982b..0df8a2a 100644
+--- a/components/omnibox/autocomplete_input.cc
++++ b/components/omnibox/autocomplete_input.cc
+@@ -18,6 +18,7 @@ namespace {
+ 
+ // Hardcode constant to avoid any dependencies on content/.
+ const char kViewSourceScheme[] = "view-source";
++const char kTraceScheme[] = "trk";
+ 
+ void AdjustCursorPositionIfNecessary(size_t num_leading_chars_removed,
+                                      size_t* cursor_position) {
+@@ -421,7 +422,8 @@ void AutocompleteInput::ParseForEmphasizeComponents(
+   int after_scheme_and_colon = parts.scheme.end() + 1;
+   // For the view-source scheme, we should emphasize the scheme and host of the
+   // URL qualified by the view-source prefix.
+-  if (LowerCaseEqualsASCII(scheme_str, kViewSourceScheme) &&
++  if ((LowerCaseEqualsASCII(scheme_str, kViewSourceScheme) ||
++       LowerCaseEqualsASCII(scheme_str, kTraceScheme)) &&
+       (static_cast<int>(text.length()) > after_scheme_and_colon)) {
+     // Obtain the URL prefixed by view-source and parse it.
+     base::string16 real_url(text.substr(after_scheme_and_colon));
+@@ -488,7 +490,8 @@ int AutocompleteInput::NumNonHostComponents(const url::Parsed& parts) {
+ bool AutocompleteInput::HasHTTPScheme(const base::string16& input) {
+   std::string utf8_input(base::UTF16ToUTF8(input));
+   url::Component scheme;
+-  if (url::FindAndCompareScheme(utf8_input, kViewSourceScheme, &scheme)) {
++  if (url::FindAndCompareScheme(utf8_input, kViewSourceScheme, &scheme) ||
++      url::FindAndCompareScheme(utf8_input, kTraceScheme, &scheme)) {
+     utf8_input.erase(0, scheme.end() + 1);
+   }
+   return url::FindAndCompareScheme(utf8_input, url::kHttpScheme, NULL);
+diff --git a/components/url_fixer/url_fixer.cc b/components/url_fixer/url_fixer.cc
+index f10958a..918b231 100644
+--- a/components/url_fixer/url_fixer.cc
++++ b/components/url_fixer/url_fixer.cc
+@@ -30,6 +30,7 @@ namespace {
+ const char kChromeUIScheme[] = "chrome";
+ const char kChromeUIDefaultHost[] = "version";
+ const char kViewSourceScheme[] = "view-source";
++const char kTraceScheme[] = "trk";
+ 
+ // TODO(estade): Remove these ugly, ugly functions. They are only used in
+ // SegmentURL. A url::Parsed object keeps track of a bunch of indices into
+@@ -522,6 +523,13 @@ GURL url_fixer::FixupURL(const std::string& text,
+   url::Parsed parts;
+   std::string scheme(SegmentURLInternal(&trimmed, &parts));
+ 
++	if (scheme == kTraceScheme) {
++		fprintf(stderr, "TRK: Seen traced URL in fixer: %s\n",
++		        text.c_str());
++		return GURL(FixupURL(trimmed.substr(scheme.length() + 1),
++		            desired_tld).possibly_invalid_spec());
++	}
++
+   // For view-source: URLs, we strip "view-source:", do fixup, and stick it back
+   // on.  This allows us to handle things like "view-source:google.com".
+   if (scheme == kViewSourceScheme) {
+diff --git a/content/browser/browser_url_handler_impl.cc b/content/browser/browser_url_handler_impl.cc
+index 438feb3..c1a97d9 100644
+--- a/content/browser/browser_url_handler_impl.cc
++++ b/content/browser/browser_url_handler_impl.cc
+@@ -13,6 +13,27 @@
+ 
+ namespace content {
+ 
++/* Since the URL Fixer removes the trk: prefix, this code is unused for now. */
++static bool handle_trace_scheme(GURL *url, BrowserContext *)
++{
++	if (!url->SchemeIs(kTraceScheme))
++		return false;
++	fprintf(stderr, "*** WARNING: Seen traced URL in HandleTrkScheme: %s\n",
++	        url->possibly_invalid_spec().c_str());
++	*url = GURL(url->spec().substr(strlen(kTraceScheme) + 1));
++	fprintf(stderr, "*** INFO: Replaced by %s\n",
++	        url->possibly_invalid_spec().c_str());
++	return false;
++}
++
++static bool trace_scheme_revlookup(GURL *url, BrowserContext *)
++{
++	if (url->SchemeIs(kTraceScheme))
++		return false;
++	*url = GURL(kTraceScheme + std::string(":") + url->spec());
++	return true;
++}
++
+ // Handles rewriting view-source URLs for what we'll actually load.
+ static bool HandleViewSource(GURL* url, BrowserContext* browser_context) {
+   if (url->SchemeIs(kViewSourceScheme)) {
+@@ -96,6 +117,7 @@ BrowserURLHandlerImpl::BrowserURLHandlerImpl() :
+ 
+   // view-source:
+   AddHandlerPair(&HandleViewSource, &ReverseViewSource);
++  AddHandlerPair(&handle_trace_scheme, &trace_scheme_revlookup);
+ }
+ 
+ BrowserURLHandlerImpl::~BrowserURLHandlerImpl() {
+diff --git a/content/browser/child_process_security_policy_impl.cc b/content/browser/child_process_security_policy_impl.cc
+index 34caa5a..2e9e313 100644
+--- a/content/browser/child_process_security_policy_impl.cc
++++ b/content/browser/child_process_security_policy_impl.cc
+@@ -320,6 +320,7 @@ ChildProcessSecurityPolicyImpl::ChildProcessSecurityPolicyImpl() {
+   RegisterPseudoScheme(url::kAboutScheme);
+   RegisterPseudoScheme(url::kJavaScriptScheme);
+   RegisterPseudoScheme(kViewSourceScheme);
++  RegisterPseudoScheme(kTraceScheme);
+ }
+ 
+ ChildProcessSecurityPolicyImpl::~ChildProcessSecurityPolicyImpl() {
+@@ -408,7 +409,7 @@ void ChildProcessSecurityPolicyImpl::GrantRequestURL(
+   if (IsPseudoScheme(url.scheme())) {
+     // The view-source scheme is a special case of a pseudo-URL that eventually
+     // results in requesting its embedded URL.
+-    if (url.SchemeIs(kViewSourceScheme)) {
++    if (url.SchemeIs(kViewSourceScheme) || url.SchemeIs(kTraceScheme)) {
+       // URLs with the view-source scheme typically look like:
+       //   view-source:http://www.google.com/a
+       // In order to request these URLs, the child_id needs to be able to
+@@ -607,13 +608,15 @@ bool ChildProcessSecurityPolicyImpl::CanRequestURL(
+   if (IsPseudoScheme(url.scheme())) {
+     // There are a number of special cases for pseudo schemes.
+ 
+-    if (url.SchemeIs(kViewSourceScheme)) {
++    if (url.SchemeIs(kViewSourceScheme) || url.SchemeIs(kTraceScheme)) {
+       // A view-source URL is allowed if the child process is permitted to
+       // request the embedded URL. Careful to avoid pointless recursion.
+       GURL child_url(url.GetContent());
+       if (child_url.SchemeIs(kViewSourceScheme) &&
+           url.SchemeIs(kViewSourceScheme))
+           return false;
++      if (child_url.SchemeIs(kTraceScheme) && url.SchemeIs(kTraceScheme))
++          return false;
+ 
+       return CanRequestURL(child_id, child_url);
+     }
+diff --git a/content/public/common/url_constants.cc b/content/public/common/url_constants.cc
+index fb7d9d6..fa53a65 100644
+--- a/content/public/common/url_constants.cc
++++ b/content/public/common/url_constants.cc
+@@ -14,6 +14,7 @@ const char kGuestScheme[] = "chrome-guest";
+ const char kMetadataScheme[] = "metadata";
+ const char kSwappedOutScheme[] = "swappedout";
+ const char kViewSourceScheme[] = "view-source";
++const char kTraceScheme[] = "trk";
+ #if defined(OS_CHROMEOS)
+ const char kExternalFileScheme[] = "externalfile";
+ #endif
+diff --git a/content/public/common/url_constants.h b/content/public/common/url_constants.h
+index d04328d..825accb 100644
+--- a/content/public/common/url_constants.h
++++ b/content/public/common/url_constants.h
+@@ -20,7 +20,7 @@ CONTENT_EXPORT extern const char kChromeUIScheme[];  // Used for WebUIs.
+ CONTENT_EXPORT extern const char kGuestScheme[];
+ CONTENT_EXPORT extern const char kMetadataScheme[];
+ CONTENT_EXPORT extern const char kSwappedOutScheme[];
+-CONTENT_EXPORT extern const char kViewSourceScheme[];
++CONTENT_EXPORT extern const char kViewSourceScheme[], kTraceScheme[];
+ #if defined(OS_CHROMEOS)
+ CONTENT_EXPORT extern const char kExternalFileScheme[];
+ #endif
+-- 
+2.4.0
+

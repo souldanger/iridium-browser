@@ -1,14 +1,14 @@
-From f390376c4f4548f0c9e8c85b1a4478d0c53386bf Mon Sep 17 00:00:00 2001
+From 85408a77aebf7adb094cf2c11186c3371de8013f Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Wed, 10 Dec 2014 12:44:49 +0100
-Subject: [PATCH 30/43] ui: update product description for Iridium
+Subject: [PATCH 29/46] ui: update product description for Iridium
 
 ---
  chrome/app/chromium_strings.grd | 22 +++++++++++-----------
  1 file changed, 11 insertions(+), 11 deletions(-)
 
 diff --git a/chrome/app/chromium_strings.grd b/chrome/app/chromium_strings.grd
-index 67cbffe..5824a11 100644
+index a7218b7..a714041 100644
 --- a/chrome/app/chromium_strings.grd
 +++ b/chrome/app/chromium_strings.grd
 @@ -215,17 +215,17 @@ be available for now. -->

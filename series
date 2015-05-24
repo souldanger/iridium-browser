@@ -1,4 +1,3 @@
-common-set-Iridium-version-and-change-User-Agent-acc.patch
 base-make-MSVC-happy-with-__PRETTY_FUNCTION__.patch
 prefs-disable-autofill-by-default.patch
 prefs-disable-Use-a-web-service-to-help-resolve-navi.patch
@@ -29,7 +28,6 @@ http-certificate-pinning-for-iridiumbrowser.de.patch
 browser-ui-disable-warning-about-missing-API-keys.patch
 ui-update-product-description-for-Iridium.patch
 ui-update-strings-to-read-Iridium-instead.patch
-src-flag-evil-connections.patch
 build-fix-OSX-branded-build-crashes-on-OSX.patch
 icons-change-sad-plugin-icon.patch
 src-use-cached-copy-of-safebrowsing-lists-at-iridium.patch
@@ -41,3 +39,8 @@ plugin-only-load-plugins-from-user-s-domain-on-Mac-O.patch
 MacOS-updates.patch
 plugins-use-cached-copy-of-plugin-description-list-a.patch
 Remove-EV-certificates.patch
+src-add-comments-for-evil-looking-code.patch
+iridium-help-identify-possibly-evil-hardcoded-URLs.patch
+iridium-graphic-output-on-trk-URL.patch
+src-flag-evil-connections.patch
+common-set-Iridium-version-and-change-User-Agent-acc.patch

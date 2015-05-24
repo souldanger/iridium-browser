@@ -1,7 +1,7 @@
-From ee5de06dda2ea2af2a65399365d7d58e4e7289a3 Mon Sep 17 00:00:00 2001
+From bb964f0d1a886b50dcdbee78ca229b585719e287 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Thu, 29 Jan 2015 10:46:40 +0100
-Subject: [PATCH 38/43] openSUSE patch exclude_ymp.diff
+Subject: [PATCH 36/46] openSUSE patch exclude_ymp.diff
 
 YMPs are plaintext XML, and not very interesting in themselves.
 ---
@@ -9,7 +9,7 @@ YMPs are plaintext XML, and not very interesting in themselves.
  1 file changed, 1 insertion(+)
 
 diff --git a/net/base/mime_util.cc b/net/base/mime_util.cc
-index 7b51b41..e9dd161 100644
+index 0b42b85..a6c5674 100644
 --- a/net/base/mime_util.cc
 +++ b/net/base/mime_util.cc
 @@ -417,6 +417,7 @@ static const char* const unsupported_text_types[] = {

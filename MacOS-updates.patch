@@ -1,7 +1,7 @@
-From 19e1b4e41592d73628812beaa72aa8d7e0dd9765 Mon Sep 17 00:00:00 2001
+From c4667e98588db0e931fb480cb052b45879440834 Mon Sep 17 00:00:00 2001
 From: Yuriy Shevchuk <yuriy@struktur.de>
 Date: Mon, 2 Mar 2015 14:42:10 +0100
-Subject: [PATCH 41/43] MacOS updates
+Subject: [PATCH 39/46] MacOS updates
 
 - changes for first launch start page
 - some OS X related branding
@@ -102,7 +102,7 @@ index acac8d7..0441f59 100644
  
  FilePath GetHomeDir() {
 diff --git a/base/files/file_util_posix.cc b/base/files/file_util_posix.cc
-index dad8edd..2875c17 100644
+index b4a64ba..b4d37d1 100644
 --- a/base/files/file_util_posix.cc
 +++ b/base/files/file_util_posix.cc
 @@ -138,7 +138,7 @@ std::string TempFileName() {
@@ -115,7 +115,7 @@ index dad8edd..2875c17 100644
  }
  
 diff --git a/base/mac/foundation_util.mm b/base/mac/foundation_util.mm
-index 2895b66..d4e5075 100644
+index 27d6e7c..36d7540 100644
 --- a/base/mac/foundation_util.mm
 +++ b/base/mac/foundation_util.mm
 @@ -238,7 +238,7 @@ const char* BaseBundleID() {
@@ -128,10 +128,10 @@ index 2895b66..d4e5075 100644
  }
  
 diff --git a/base/memory/shared_memory_posix.cc b/base/memory/shared_memory_posix.cc
-index fd26ad1..b31119b 100644
+index d6c290f..35d3ba3 100644
 --- a/base/memory/shared_memory_posix.cc
 +++ b/base/memory/shared_memory_posix.cc
-@@ -412,7 +412,7 @@ bool SharedMemory::FilePathForMemoryName(const std::string& mem_name,
+@@ -435,7 +435,7 @@ bool SharedMemory::FilePathForMemoryName(const std::string& mem_name,
  #if defined(GOOGLE_CHROME_BUILD)
    std::string name_base = std::string("com.google.Chrome");
  #else
@@ -158,7 +158,7 @@ index e9c7535..3fb5b71 100644
          ],  # conditions
        }],  # OS=="mac"
 diff --git a/build/mac/tweak_info_plist.py b/build/mac/tweak_info_plist.py
-index af49e63..86769fd 100755
+index 2057bac..71c08fa 100755
 --- a/build/mac/tweak_info_plist.py
 +++ b/build/mac/tweak_info_plist.py
 @@ -80,7 +80,7 @@ def _AddVersionKeys(plist, version=None):
@@ -217,10 +217,10 @@ index 7e6d04db..62f209f 100644
        'postbuilds' : [
          {
 diff --git a/chrome/browser/app_controller_mac.mm b/chrome/browser/app_controller_mac.mm
-index 2caffc1..83d1d87 100644
+index 5b2f02c..f28c0b3 100644
 --- a/chrome/browser/app_controller_mac.mm
 +++ b/chrome/browser/app_controller_mac.mm
-@@ -170,7 +170,7 @@ CFStringRef BaseBundleID_CFString() {
+@@ -160,7 +160,7 @@ CFStringRef BaseBundleID_CFString() {
    return base::mac::NSToCFCast(base_bundle_id);
  }
  
@@ -348,10 +348,10 @@ index 355fbe3..558d3c8 100644
  
    if (signin::ShouldShowPromoAtStartup(profile_, is_first_run_)) {
 diff --git a/chrome/common/chrome_constants.cc b/chrome/common/chrome_constants.cc
-index 4c68e22..e564403 100644
+index bc39298..5f8e39c 100644
 --- a/chrome/common/chrome_constants.cc
 +++ b/chrome/common/chrome_constants.cc
-@@ -173,7 +173,12 @@ const base::FilePath::CharType kSingletonCookieFilename[] =
+@@ -177,7 +177,12 @@ const base::FilePath::CharType kSingletonCookieFilename[] =
      FPL("SingletonCookie");
  const base::FilePath::CharType kSingletonLockFilename[] = FPL("SingletonLock");
  const base::FilePath::CharType kSingletonSocketFilename[] =
@@ -406,7 +406,7 @@ index 2ce10cd..76a67ff 100644
  
    UInt32 password_length = 0;
 diff --git a/content/browser/accessibility/browser_accessibility_cocoa.mm b/content/browser/accessibility/browser_accessibility_cocoa.mm
-index 83f7512..aa4469c 100644
+index 9781913..4fe99f1 100644
 --- a/content/browser/accessibility/browser_accessibility_cocoa.mm
 +++ b/content/browser/accessibility/browser_accessibility_cocoa.mm
 @@ -18,10 +18,12 @@
@@ -433,7 +433,7 @@ index 83f7512..aa4469c 100644
    }
  }
 diff --git a/content/browser/device_monitor_mac.mm b/content/browser/device_monitor_mac.mm
-index c437426..2800f32 100644
+index c3c713c..75ef28a 100644
 --- a/content/browser/device_monitor_mac.mm
 +++ b/content/browser/device_monitor_mac.mm
 @@ -4,7 +4,10 @@
@@ -447,7 +447,7 @@ index c437426..2800f32 100644
  
  #include <set>
  
-@@ -149,6 +152,7 @@ class QTKitMonitorImpl : public DeviceMonitorMacImpl {
+@@ -150,6 +153,7 @@ class QTKitMonitorImpl : public DeviceMonitorMacImpl {
  
  QTKitMonitorImpl::QTKitMonitorImpl(content::DeviceMonitorMac* monitor)
      : DeviceMonitorMacImpl(monitor) {
@@ -455,7 +455,7 @@ index c437426..2800f32 100644
    NSNotificationCenter* nc = [NSNotificationCenter defaultCenter];
    device_arrival_ =
        [nc addObserverForName:QTCaptureDeviceWasConnectedNotification
-@@ -168,27 +172,32 @@ QTKitMonitorImpl::QTKitMonitorImpl(content::DeviceMonitorMac* monitor)
+@@ -169,27 +173,32 @@ QTKitMonitorImpl::QTKitMonitorImpl(content::DeviceMonitorMac* monitor)
                         queue:nil
                    usingBlock:^(NSNotification* notification) {
                        OnAttributeChanged(notification);}];
@@ -489,7 +489,7 @@ index c437426..2800f32 100644
    NSArray* devices = [QTCaptureDevice inputDevices];
    for (QTCaptureDevice* device in devices) {
      DeviceInfo::DeviceType device_type = DeviceInfo::kUnknown;
-@@ -210,6 +219,7 @@ void QTKitMonitorImpl::OnDeviceChanged() {
+@@ -211,6 +220,7 @@ void QTKitMonitorImpl::OnDeviceChanged() {
      snapshot_devices.push_back(
          DeviceInfo([[device uniqueID] UTF8String], device_type));
    }
@@ -497,7 +497,7 @@ index c437426..2800f32 100644
    ConsolidateDevicesListAndNotify(snapshot_devices);
  }
  
-@@ -544,7 +554,9 @@ void DeviceMonitorMac::NotifyDeviceChanged(
+@@ -555,7 +565,9 @@ void DeviceMonitorMac::NotifyDeviceChanged(
      base::SystemMonitor::DeviceType type) {
    DCHECK(thread_checker_.CalledOnValidThread());
    // TODO(xians): Remove the global variable for SystemMonitor.
@@ -526,10 +526,10 @@ index 0e0eec8..f02a78a 100644
  
  void MachBroker::RegisterNotifications() {
 diff --git a/content/browser/renderer_host/render_widget_host_view_mac.mm b/content/browser/renderer_host/render_widget_host_view_mac.mm
-index efe3a5c..af369b671 100644
+index 537e7c3..4632d40 100644
 --- a/content/browser/renderer_host/render_widget_host_view_mac.mm
 +++ b/content/browser/renderer_host/render_widget_host_view_mac.mm
-@@ -2944,9 +2944,12 @@ static const NSTrackingRectTag kTrackingRectTag = 0xBADFACE;
+@@ -2972,9 +2972,12 @@ static const NSTrackingRectTag kTrackingRectTag = 0xBADFACE;
  // Since this implementation doesn't have to wait any IPC calls, this doesn't
  // make any key-typing jank. --hbono 7/23/09
  //
@@ -542,7 +542,7 @@ index efe3a5c..af369b671 100644
  
  - (NSArray *)validAttributesForMarkedText {
    // This code is just copied from WebKit except renaming variables.
-@@ -2955,7 +2958,9 @@ extern NSString *NSTextInputReplacementRangeAttributeName;
+@@ -2983,7 +2986,9 @@ extern NSString *NSTextInputReplacementRangeAttributeName;
          NSUnderlineStyleAttributeName,
          NSUnderlineColorAttributeName,
          NSMarkedClauseSegmentAttributeName,
@@ -623,7 +623,7 @@ index 7986346..99d380b 100644
    case VideoCaptureDevice::Name::DECKLINK:
      DVLOG(1) << "Enumerating video capture capabilities " << device.name();
 diff --git a/media/video/capture/mac/video_capture_device_mac.mm b/media/video/capture/mac/video_capture_device_mac.mm
-index e0bb96e..4f9a323 100644
+index b35729d..abdb4ad 100644
 --- a/media/video/capture/mac/video_capture_device_mac.mm
 +++ b/media/video/capture/mac/video_capture_device_mac.mm
 @@ -19,7 +19,9 @@
@@ -686,7 +686,7 @@ index c1af697..cfbe1c9 100644
 +
 +#endif
 diff --git a/media/video/capture/mac/video_capture_device_qtkit_mac.mm b/media/video/capture/mac/video_capture_device_qtkit_mac.mm
-index 126439e..282f3bf 100644
+index a8492d5..b932603 100644
 --- a/media/video/capture/mac/video_capture_device_qtkit_mac.mm
 +++ b/media/video/capture/mac/video_capture_device_qtkit_mac.mm
 @@ -2,6 +2,8 @@

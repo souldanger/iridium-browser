@@ -1,7 +1,7 @@
-From 2bd55680d35a44504d47133e4c45f1235aaaff9c Mon Sep 17 00:00:00 2001
+From 20dd326882998a319a069275f6797c59ca9c4b3f Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Mon, 5 Jan 2015 22:04:26 +0100
-Subject: [PATCH 34/43] icons: change sad plugin icon
+Subject: [PATCH 32/46] icons: change sad plugin icon
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit

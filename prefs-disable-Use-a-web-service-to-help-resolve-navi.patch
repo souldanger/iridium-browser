@@ -1,7 +1,7 @@
-From 705330eacd78fffcc0f40921a98b4f9459e48558 Mon Sep 17 00:00:00 2001
+From b42b8d521766d3452e40bbb787bdd843a636014c Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Thu, 11 Sep 2014 16:35:12 +0200
-Subject: [PATCH 04/43] prefs: disable "Use a web service to help resolve
+Subject: [PATCH 03/46] prefs: disable "Use a web service to help resolve
  navigation errors"
 
 This goes towards reducing promiscuous outbound requests to

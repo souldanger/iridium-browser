@@ -1,7 +1,7 @@
-From e05f83aef333d18affb4acf833d559b427308f50 Mon Sep 17 00:00:00 2001
+From 211b77186f4b3e748fa93902ca1114656e9c2179 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Tue, 9 Dec 2014 17:54:48 +0100
-Subject: [PATCH 31/43] ui: update strings to read "Iridium" instead
+Subject: [PATCH 30/46] ui: update strings to read "Iridium" instead
 
 ---
  chrome/app/chromium_strings.grd                    | 340 ++++++++++-----------
@@ -84,7 +84,7 @@ Subject: [PATCH 31/43] ui: update strings to read "Iridium" instead
  77 files changed, 198 insertions(+), 246 deletions(-)
 
 diff --git a/chrome/app/chromium_strings.grd b/chrome/app/chromium_strings.grd
-index 5824a11..b6703c9 100644
+index a714041..32c3d4b 100644
 --- a/chrome/app/chromium_strings.grd
 +++ b/chrome/app/chromium_strings.grd
 @@ -212,7 +212,7 @@ be available for now. -->
@@ -773,7 +773,7 @@ index 5824a11..b6703c9 100644
          </message>
        </if>
        <if expr="chromeos">
-@@ -951,31 +951,31 @@ Signing in anyway will merge Chromium information like bookmarks, history, and o
+@@ -951,24 +951,24 @@ Signing in anyway will merge Chromium information like bookmarks, history, and o
  
        <if expr="is_macosx">
          <message name="IDS_OPTIONS_PASSWORDS_MAC_WARNING" desc="The warning for OS X that passwords are shared across profiles in the keychain.">
@@ -802,8 +802,9 @@ index 5824a11..b6703c9 100644
 -        You must upgrade Chromium to use Google Wallet [<ph name="ERROR_CODE">$1<ex>54</ex></ph>].
 +        You must upgrade Iridium to use Google Wallet [<ph name="ERROR_CODE">$1<ex>54</ex></ph>].
        </message>
- 
-       <!-- Network Error Pages -->
+       <message name="IDS_AUTOFILL_DESCRIBE_LOCAL_COPY" desc="Text label that described a Wallet credit card which has been copied to the local Chrome instance.">
+         Copied to Chromium
+@@ -978,7 +978,7 @@ Signing in anyway will merge Chromium information like bookmarks, history, and o
        <if expr="not is_android">
          <message name="IDS_ERRORPAGES_SUGGESTION_NETWORK_PREDICTION_BODY" desc="When a page fails to load, sometimes we suggest disabling predicting network actions.  These are details below a header for non Android devices.">
            Go to
@@ -812,7 +813,7 @@ index 5824a11..b6703c9 100644
            <ph name="SETTINGS_TITLE">&lt;span jscontent="settingsTitle"&gt;&lt;/span&gt;<ex>Settings</ex></ph>
            &gt;
            <ph name="ADVANCED_TITLE">&lt;span jscontent="advancedTitle"&gt;&lt;/span&gt;<ex>Under the Hood</ex></ph>
-@@ -986,14 +986,14 @@ Signing in anyway will merge Chromium information like bookmarks, history, and o
+@@ -989,14 +989,14 @@ Signing in anyway will merge Chromium information like bookmarks, history, and o
        </if>
        <if expr="is_android">
          <message name="IDS_ERRORPAGES_SUGGESTION_NETWORK_PREDICTION_BODY" desc="When a page fails to load, sometimes we suggest disabling predicting network actions.  These are details below a header for Android devices.  Note that on devices without mobile network (3G) capability, the setting is a checkbox, while on other devices, it is a list of three items.  The words _disable_ and _re-enabling_ can be used for both cases.">
@@ -829,7 +830,7 @@ index 5824a11..b6703c9 100644
          settings.
        </message>
        <if expr="is_macosx">
-@@ -1010,7 +1010,7 @@ Signing in anyway will merge Chromium information like bookmarks, history, and o
+@@ -1013,7 +1013,7 @@ Signing in anyway will merge Chromium information like bookmarks, history, and o
        <if expr="not chromeos and is_posix and not is_macosx and not is_android and not is_ios">
          <message name="IDS_ERRORPAGES_SUGGESTION_PROXY_DISABLE_PLATFORM" desc="Linux instructions for disabling use of a proxy server.">
            Go to
@@ -838,7 +839,7 @@ index 5824a11..b6703c9 100644
            <ph name="SETTINGS_TITLE">&lt;span jscontent="settingsTitle"&gt;&lt;/span&gt;<ex>Settings</ex></ph>
            &gt;
            <ph name="ADVANCED_TITLE">&lt;span jscontent="advancedTitle"&gt;&lt;/span&gt;<ex>Under the Hood</ex></ph>
-@@ -1022,7 +1022,7 @@ Signing in anyway will merge Chromium information like bookmarks, history, and o
+@@ -1025,7 +1025,7 @@ Signing in anyway will merge Chromium information like bookmarks, history, and o
        <if expr="is_win">
          <message name="IDS_ERRORPAGES_SUGGESTION_PROXY_DISABLE_PLATFORM" desc="Windows instructions for disabling use of a proxy server.">
            Go to
@@ -847,7 +848,7 @@ index 5824a11..b6703c9 100644
            <ph name="SETTINGS_TITLE">&lt;span jscontent="settingsTitle"&gt;&lt;/span&gt;<ex>Settings</ex></ph>
            &gt;
            <ph name="ADVANCED_TITLE">&lt;span jscontent="advancedTitle"&gt;&lt;/span&gt;<ex>Under the Hood</ex></ph>
-@@ -1037,7 +1037,7 @@ Signing in anyway will merge Chromium information like bookmarks, history, and o
+@@ -1040,7 +1040,7 @@ Signing in anyway will merge Chromium information like bookmarks, history, and o
        <!-- Chrome OS keyboard overlay-->
        <if expr="chromeos">
          <message name="IDS_KEYBOARD_OVERLAY_SHOW_WRENCH_MENU" desc="The text in the keyboard overlay to explain the shortcut that opens the main Chrome menu.">
@@ -856,7 +857,7 @@ index 5824a11..b6703c9 100644
          </message>
        </if>
  
-@@ -1052,19 +1052,19 @@ Signing in anyway will merge Chromium information like bookmarks, history, and o
+@@ -1055,19 +1055,19 @@ Signing in anyway will merge Chromium information like bookmarks, history, and o
            </message>
          </if>
          <message name="IDS_APP_LIST_SIGNIN_HEADING" desc="Heading for when the launcher needs to sign in.">
@@ -880,7 +881,7 @@ index 5824a11..b6703c9 100644
            </message>
          </if>
        </if>
-@@ -1080,7 +1080,7 @@ Signing in anyway will merge Chromium information like bookmarks, history, and o
+@@ -1083,7 +1083,7 @@ Signing in anyway will merge Chromium information like bookmarks, history, and o
        <!-- Chrome Conflicts bubble -->
        <if expr="is_win">
          <message name="IDS_OPTIONS_CONFLICTING_MODULE" desc="Shown in a bubble when a conflict has been detected.">
@@ -889,7 +890,7 @@ index 5824a11..b6703c9 100644
          </message>
        </if>
  
-@@ -1098,114 +1098,114 @@ Signing in anyway will merge Chromium information like bookmarks, history, and o
+@@ -1101,99 +1101,99 @@ Signing in anyway will merge Chromium information like bookmarks, history, and o
              Chromium Notification Center
            </message>
            <message name="IDS_MESSAGE_CENTER_BALLOON_TEXT" desc="Body text for the the first run notification ballon describing the notification center.">
@@ -1011,6 +1012,8 @@ index 5824a11..b6703c9 100644
 +        ''' It also controls what page is shown when you start Iridium or search from the Omnibox. '''
        </message>
  
+       <!-- Website Settings bubble -->
+@@ -1204,16 +1204,16 @@ Signing in anyway will merge Chromium information like bookmarks, history, and o
        <!-- Windows firewall rule strings. -->
        <if expr="is_win">
          <message name="IDS_INBOUND_MDNS_RULE_NAME" desc="The name of the firewall rule allowing inbound mDNS traffic.">
@@ -1031,7 +1034,7 @@ index 5824a11..b6703c9 100644
          </message>
        </if>
  
-@@ -1231,26 +1231,26 @@ Signing in anyway will merge Chromium information like bookmarks, history, and o
+@@ -1239,26 +1239,26 @@ Signing in anyway will merge Chromium information like bookmarks, history, and o
  
        <!-- Update bubble -->
        <message name="IDS_REINSTALL_APP" desc="Text for the button the user clicks to reinstall the app.">
@@ -1064,7 +1067,7 @@ index 5824a11..b6703c9 100644
        </message>
  
        <!-- Upgrade recovery bubble -->
-@@ -1277,7 +1277,7 @@ Signing in anyway will merge Chromium information like bookmarks, history, and o
+@@ -1285,7 +1285,7 @@ Signing in anyway will merge Chromium information like bookmarks, history, and o
  
        <!-- SSL Interstitial V2 strings -->
        <message name="IDS_SSL_NONOVERRIDABLE_MORE_INVALID_SP3" desc="Body text for the explanation shown if the user clicks on the details windows, the certificate is invalid and the user has an old version of Windows (before WINDOWS XP SP3) running.">
@@ -1073,7 +1076,7 @@ index 5824a11..b6703c9 100644
        </message>
        <message name="IDS_SSL_NONOVERRIDABLE_MORE" desc="Body text for the explanation shown if user clicks on the Details button.">
          <ph name="SITE">$1<ex>google.com</ex></ph> normally uses encryption to protect your information. When Chromium tried to connect to <ph name="SITE">$1<ex>google.com</ex></ph> this time, the website sent back unusual
-@@ -1293,20 +1293,20 @@ and incorrect credentials. Either an attacker is trying to pretend to be <ph nam
+@@ -1301,20 +1301,20 @@ and incorrect credentials. Either an attacker is trying to pretend to be <ph nam
        <!-- Offline interstitial  -->
        <if expr="not is_android and not is_ios">
          <message name="IDS_ERRORPAGES_SUMMARY_INTERNET_DISCONNECTED" desc="Summary of the error page when the network connection failed. May be followed by platform dependent instructions.">
@@ -1099,10 +1102,10 @@ index 5824a11..b6703c9 100644
          <message name="IDS_EULA_SCREEN_ACCESSIBLE_TITLE" desc="Title to be spoken on opening the OOBE EULA screen">
            Chromium OS terms
 diff --git a/chrome/app/resources/chromium_strings_am.xtb b/chrome/app/resources/chromium_strings_am.xtb
-index 3d6f3ac..072a769 100644
+index 64f34e7..fbcebe1 100644
 --- a/chrome/app/resources/chromium_strings_am.xtb
 +++ b/chrome/app/resources/chromium_strings_am.xtb
-@@ -263,7 +263,6 @@ Chromium ቅንብሮችዎን ማስመለስ አልቻለም።</translation>
+@@ -264,7 +264,6 @@ Chromium ቅንብሮችዎን ማስመለስ አልቻለም።</translation>
  <translation id="8823523095753232532">የChromium ውሂቤን ከዚህ መለያ ጋር አገናኝ</translation>
  <translation id="1808667845054772817">Chromiumን ዳግም ጫን</translation>
  <translation id="1221340462641866827">Chromium ስርዓተ ክወና የ<ph name="SCHEME"/> አገናኞችን ለማስተናገድ የውጫዊ መተግበሪያዎችን ማስጀመር አይደግፍም። የተጠየቀው አገናኝ <ph name="PROTOLINK"/> ነው።</translation>
@@ -1111,10 +1114,10 @@ index 3d6f3ac..072a769 100644
  <translation id="5032989939245619637">ዝርዝሮችን Chromium ውስጥ አስቀምጥ</translation>
  <translation id="8803635938069941624">የChromium OS ውል</translation>
 diff --git a/chrome/app/resources/chromium_strings_ar.xtb b/chrome/app/resources/chromium_strings_ar.xtb
-index ebee567..1430590 100644
+index 7d8e7dc..007af3a 100644
 --- a/chrome/app/resources/chromium_strings_ar.xtb
 +++ b/chrome/app/resources/chromium_strings_ar.xtb
-@@ -259,7 +259,6 @@
+@@ -260,7 +260,6 @@
  <translation id="8823523095753232532">‏ربط بياناتي في Chromium بهذا الحساب</translation>
  <translation id="1808667845054772817">‏إعادة تثبيت Chromium</translation>
  <translation id="1221340462641866827">‏لا يتيح نظام التشغيل Chromium إمكانية تشغيل تطبيق خارجي للتعامل مع روابط <ph name="SCHEME"/>. والرابط المطلوب هو <ph name="PROTOLINK"/>.</translation>
@@ -1136,10 +1139,10 @@ index 5f594b7..2ce655b 100644
  </translationbundle>
 \ No newline at end of file
 diff --git a/chrome/app/resources/chromium_strings_bn.xtb b/chrome/app/resources/chromium_strings_bn.xtb
-index 642cd4d..c176b9d 100644
+index 629a0f9..d3fb1f1 100644
 --- a/chrome/app/resources/chromium_strings_bn.xtb
 +++ b/chrome/app/resources/chromium_strings_bn.xtb
-@@ -258,7 +258,6 @@ Chromium আপনার সেটিংস পুনরুদ্ধার ক
+@@ -259,7 +259,6 @@ Chromium আপনার সেটিংস পুনরুদ্ধার ক
  <translation id="8823523095753232532">এই অ্যাকাউন্টে আমার Chromium ডেটা লিঙ্ক করুন</translation>
  <translation id="1808667845054772817">Chromium পুনরায় ইন্সটল করুন</translation>
  <translation id="1221340462641866827">Chromium OS  <ph name="SCHEME"/> সংযোগগুলি নিয়ন্ত্রণে একটি বহিঃস্থ অ্যাপ্লিকেশন চালু করা সমর্থন করে না৷ অনুরোধকৃত লিংকটি হল <ph name="PROTOLINK"/>৷</translation>
@@ -1203,10 +1206,10 @@ index cf49724..739e0ae 100644
  </translationbundle>
 \ No newline at end of file
 diff --git a/chrome/app/resources/chromium_strings_el.xtb b/chrome/app/resources/chromium_strings_el.xtb
-index f36371d..d023394 100644
+index fe79ac3..d99b177 100644
 --- a/chrome/app/resources/chromium_strings_el.xtb
 +++ b/chrome/app/resources/chromium_strings_el.xtb
-@@ -263,7 +263,7 @@
+@@ -264,7 +264,7 @@
  <translation id="8823523095753232532">Σύνδεση των δεδομένων μου στο Chromium σε αυτόν το λογαριασμό</translation>
  <translation id="1808667845054772817">Επανεγκατάσταση του Chromium</translation>
  <translation id="1221340462641866827">Το Chromium OS δεν υποστηρίζει την εκκίνηση μιας εξωτερικής εφαρμογής για τον χειρισμό συνδέσμων <ph name="SCHEME"/>. Ο σύνδεσμος που απαιτείται είναι ο <ph name="PROTOLINK"/>.</translation>
@@ -1216,10 +1219,10 @@ index f36371d..d023394 100644
  <translation id="5032989939245619637">Αποθήκευση λεπτομερειών στο Chromium</translation>
  <translation id="8803635938069941624">Όροι του Chromium OS</translation>
 diff --git a/chrome/app/resources/chromium_strings_en-GB.xtb b/chrome/app/resources/chromium_strings_en-GB.xtb
-index 123f7dc..b72a1df 100644
+index 2b673f9..84fc692 100644
 --- a/chrome/app/resources/chromium_strings_en-GB.xtb
 +++ b/chrome/app/resources/chromium_strings_en-GB.xtb
-@@ -264,7 +264,7 @@ Google Chrome is unable to recover your settings.</translation>
+@@ -265,7 +265,7 @@ Google Chrome is unable to recover your settings.</translation>
  <translation id="8823523095753232532">Link my Chromium data to this account</translation>
  <translation id="1808667845054772817">Reinstall Chromium</translation>
  <translation id="1221340462641866827">Chromium OS does not support launching an external application to handle <ph name="SCHEME"/> links. The link requested is <ph name="PROTOLINK"/>.</translation>
@@ -1229,10 +1232,10 @@ index 123f7dc..b72a1df 100644
  <translation id="5032989939245619637">Save details in Chromium</translation>
  <translation id="8803635938069941624">Chromium OS terms</translation>
 diff --git a/chrome/app/resources/chromium_strings_es-419.xtb b/chrome/app/resources/chromium_strings_es-419.xtb
-index da0e16e..a5b2b96 100644
+index 5532ac3..8964368 100644
 --- a/chrome/app/resources/chromium_strings_es-419.xtb
 +++ b/chrome/app/resources/chromium_strings_es-419.xtb
-@@ -254,7 +254,7 @@ Si accedes de todos modos, se fusionará la información de Chromium, como los m
+@@ -255,7 +255,7 @@ Si accedes de todos modos, se fusionará la información de Chromium, como los m
  <translation id="8823523095753232532">Vincular mis datos de Chromium con esta cuenta</translation>
  <translation id="1808667845054772817">Reinstalar Chromium</translation>
  <translation id="1221340462641866827">Chromium OS no admite la inicialización de una aplicación externa para utilizar vínculos <ph name="SCHEME"/>. El vínculo solicitado es <ph name="PROTOLINK"/>.</translation>
@@ -1269,10 +1272,10 @@ index a93083a..9bb0b80 100644
  </translationbundle>
 \ No newline at end of file
 diff --git a/chrome/app/resources/chromium_strings_fa.xtb b/chrome/app/resources/chromium_strings_fa.xtb
-index daa6345..3026e5b 100644
+index 5451d8f..021db5e 100644
 --- a/chrome/app/resources/chromium_strings_fa.xtb
 +++ b/chrome/app/resources/chromium_strings_fa.xtb
-@@ -259,7 +259,6 @@ Chromium قادر به بازیابی تنظیمات شما نیست.</translati
+@@ -260,7 +260,6 @@ Chromium قادر به بازیابی تنظیمات شما نیست.</translati
  <translation id="8823523095753232532">‏مرتبط کردن داده‌های Chromium به این حساب</translation>
  <translation id="1808667845054772817">‏نصب مجدد Chromium</translation>
  <translation id="1221340462641866827">‏سیستم عامل Chromium از راه‌اندازی یک برنامهٔ کاربردی خارجی برای کار با پیوندهای <ph name="SCHEME"/> پشتیبانی نمی‌کند. پیوند موردنیاز، <ph name="PROTOLINK"/> است.</translation>
@@ -1294,10 +1297,10 @@ index b7ea071..af4eb32 100644
  </translationbundle>
 \ No newline at end of file
 diff --git a/chrome/app/resources/chromium_strings_fil.xtb b/chrome/app/resources/chromium_strings_fil.xtb
-index 647b256..2eb2ac6 100644
+index 76e7882..13328e4 100644
 --- a/chrome/app/resources/chromium_strings_fil.xtb
 +++ b/chrome/app/resources/chromium_strings_fil.xtb
-@@ -264,7 +264,6 @@ Hindi mabawi ng Chromium ang iyong mga setting.</translation>
+@@ -265,7 +265,6 @@ Hindi mabawi ng Chromium ang iyong mga setting.</translation>
  <translation id="8823523095753232532">I-link ang aking data sa Chromium sa account na ito</translation>
  <translation id="1808667845054772817">Muling i-install ang Chromium</translation>
  <translation id="1221340462641866827">Hindi sinusuportahan ng Chromium OS ang paglulunsad ng panlabas na application upang mangasiwa ng mga <ph name="SCHEME"/> na link. Ang hinihiling na link ay <ph name="PROTOLINK"/>.</translation>
@@ -1320,10 +1323,10 @@ index e62e830..0f76af8 100644
  </translationbundle>
 \ No newline at end of file
 diff --git a/chrome/app/resources/chromium_strings_gu.xtb b/chrome/app/resources/chromium_strings_gu.xtb
-index df66d4a..2bd3c3c 100644
+index 8b679fc..ab3fe976 100644
 --- a/chrome/app/resources/chromium_strings_gu.xtb
 +++ b/chrome/app/resources/chromium_strings_gu.xtb
-@@ -261,7 +261,6 @@ Chromium તમારી સેટિંગ્સને પુનઃપ્રા
+@@ -262,7 +262,6 @@ Chromium તમારી સેટિંગ્સને પુનઃપ્રા
  <translation id="8823523095753232532">આ એકાઉન્ટ સાથે મારા Chromium ડેટાને લિંક કરો</translation>
  <translation id="1808667845054772817">Chromium ફરીથી ઇન્સ્ટોલ કરો</translation>
  <translation id="1221340462641866827">Chromium OS <ph name="SCHEME"/> લિંક્સને હેન્ડલ કરવા માટે કોઈ બાહ્ય એપ્લિકેશન શરૂ કરવાને સપોર્ટ કરતું નથી. વિનંતી કરેલી લિંક <ph name="PROTOLINK"/> છે.</translation>
@@ -1332,10 +1335,10 @@ index df66d4a..2bd3c3c 100644
  <translation id="5032989939245619637">Chromium માં વિગતો સાચવો</translation>
  <translation id="8803635938069941624">Chromium OS શરતો</translation>
 diff --git a/chrome/app/resources/chromium_strings_hi.xtb b/chrome/app/resources/chromium_strings_hi.xtb
-index 20e1192..bedfed1 100644
+index 07556d3..425af3d 100644
 --- a/chrome/app/resources/chromium_strings_hi.xtb
 +++ b/chrome/app/resources/chromium_strings_hi.xtb
-@@ -261,7 +261,6 @@
+@@ -262,7 +262,6 @@
  <translation id="8823523095753232532">मेरे क्रोमियम डेटा को इस खाते से लिंक करें</translation>
  <translation id="1808667845054772817">क्रोमियम को फिर से इंस्टॉल करें</translation>
  <translation id="1221340462641866827">क्रोमियम OS <ph name="SCHEME"/> लिंक प्रबंधित करने के लिए बाहरी ऐप्‍लिकेशन लॉन्‍च करने का समर्थन नहीं करता है. अनुरोध की गई लिंक <ph name="PROTOLINK"/> है.</translation>
@@ -1344,10 +1347,10 @@ index 20e1192..bedfed1 100644
  <translation id="5032989939245619637">क्रोमियम में विवरण सहेजें</translation>
  <translation id="8803635938069941624">क्रोमियम OS शर्तें</translation>
 diff --git a/chrome/app/resources/chromium_strings_hr.xtb b/chrome/app/resources/chromium_strings_hr.xtb
-index c08e9ee..2c60396 100644
+index 40d3533..8d21d2b 100644
 --- a/chrome/app/resources/chromium_strings_hr.xtb
 +++ b/chrome/app/resources/chromium_strings_hr.xtb
-@@ -260,7 +260,6 @@ Chromium ne može oporaviti vaše postavke.</translation>
+@@ -261,7 +261,6 @@ Chromium ne može oporaviti vaše postavke.</translation>
  <translation id="8823523095753232532">Poveži moje podatke sustava Chromium s ovim računom</translation>
  <translation id="1808667845054772817">Ponovo instaliraj Chromium</translation>
  <translation id="1221340462641866827">OS Chromium ne podržava pokretanje vanjske aplikacije za obradu veza <ph name="SCHEME"/>. Zatražena je veza <ph name="PROTOLINK"/>.</translation>
@@ -1356,10 +1359,10 @@ index c08e9ee..2c60396 100644
  <translation id="5032989939245619637">Spremi pojedinosti u sustavu Chromium</translation>
  <translation id="8803635938069941624">Uvjeti OS-a Chromium</translation>
 diff --git a/chrome/app/resources/chromium_strings_hu.xtb b/chrome/app/resources/chromium_strings_hu.xtb
-index 3861440..7d584c5 100644
+index 59393ec..308d654 100644
 --- a/chrome/app/resources/chromium_strings_hu.xtb
 +++ b/chrome/app/resources/chromium_strings_hu.xtb
-@@ -256,7 +256,6 @@ A Chromium nem tudja visszaállítani a beállításait.</translation>
+@@ -257,7 +257,6 @@ A Chromium nem tudja visszaállítani a beállításait.</translation>
  <translation id="8823523095753232532">Chromium-adataim társítása ehhez a fiókhoz</translation>
  <translation id="1808667845054772817">A Chromium újratelepítése</translation>
  <translation id="1221340462641866827">A Chromium OS nem támogatja külső alkalmazás indítását a(z) <ph name="SCHEME"/> linkek kezeléséhez. A kért link: <ph name="PROTOLINK"/>.</translation>
@@ -1422,10 +1425,10 @@ index 6930b08..9c09e3b 100644
  </translationbundle>
 \ No newline at end of file
 diff --git a/chrome/app/resources/chromium_strings_kn.xtb b/chrome/app/resources/chromium_strings_kn.xtb
-index c99569a..6bfc7dd 100644
+index 35b3812..c005bde 100644
 --- a/chrome/app/resources/chromium_strings_kn.xtb
 +++ b/chrome/app/resources/chromium_strings_kn.xtb
-@@ -255,7 +255,6 @@
+@@ -256,7 +256,6 @@
  <translation id="8823523095753232532">ಈ ಖಾತೆಗೆ ನನ್ನ Chromium ಡೇಟಾವನ್ನು ಲಿಂಕ್ ಮಾಡಿ</translation>
  <translation id="1808667845054772817">Chromium ಅನ್ನು ಮರುಸ್ಥಾಪಿಸು</translation>
  <translation id="1221340462641866827"><ph name="SCHEME"/> ಲಿಂಕ್‌ಗಳನ್ನು ನಿರ್ವಹಿಸಲು ಹೆಚ್ಚುವರಿ ಅಪ್ಲಿಕೇಶನ್ ಅನ್ನು ಸ್ಥಾಪಿಸುವುದಕ್ಕೆ Chromium OS ಬೆಂಬಲ ನೀಡುತ್ತಿಲ್ಲ. <ph name="PROTOLINK"/> ಲಿಂಕ್‌ನ ವಿನಂತಿಯಾಗಿದೆ.</translation>
@@ -1434,10 +1437,10 @@ index c99569a..6bfc7dd 100644
  <translation id="5032989939245619637">Chromium ನಲ್ಲಿ ವಿವರಣೆಗಳನ್ನು ಉಳಿಸಿ</translation>
  <translation id="8803635938069941624">Chromium OS ನಿಯಮಗಳು</translation>
 diff --git a/chrome/app/resources/chromium_strings_ko.xtb b/chrome/app/resources/chromium_strings_ko.xtb
-index 8dab1d3..e1ad3b3 100644
+index a616330..8f40287 100644
 --- a/chrome/app/resources/chromium_strings_ko.xtb
 +++ b/chrome/app/resources/chromium_strings_ko.xtb
-@@ -260,7 +260,6 @@ Chromium에서 설정을 복구할 수 없습니다.</translation>
+@@ -261,7 +261,6 @@ Chromium에서 설정을 복구할 수 없습니다.</translation>
  <translation id="8823523095753232532">내 Chromium 데이터를 이 계정에 연결</translation>
  <translation id="1808667845054772817">Chromium 재설치</translation>
  <translation id="1221340462641866827">Chromium OS는 외부 애플리케이션 실행을 통한 <ph name="SCHEME"/> 링크 처리를 지원하지 않습니다. 요청된 링크는 <ph name="PROTOLINK"/>입니다.</translation>
@@ -1459,10 +1462,10 @@ index 8ed58d7..e67c30f 100644
  </translationbundle>
 \ No newline at end of file
 diff --git a/chrome/app/resources/chromium_strings_lv.xtb b/chrome/app/resources/chromium_strings_lv.xtb
-index 111f440..580b0e9 100644
+index 7ff89fe..0435252 100644
 --- a/chrome/app/resources/chromium_strings_lv.xtb
 +++ b/chrome/app/resources/chromium_strings_lv.xtb
-@@ -259,7 +259,6 @@ Ja pierakstīsieties tik un tā, Chromium informācija, piemēram, grāmatzīmes
+@@ -260,7 +260,6 @@ Ja pierakstīsieties tik un tā, Chromium informācija, piemēram, grāmatzīmes
  <translation id="8823523095753232532">Saistīt manus Chromium datus ar šo kontu</translation>
  <translation id="1808667845054772817">Pārinstalēt Chromium</translation>
  <translation id="1221340462641866827">Chromium OS neatbalsta ārējas lietojumprogrammas palaišanu, lai rīkotos ar <ph name="SCHEME"/> saitēm. Pieprasītā saite ir <ph name="PROTOLINK"/>.</translation>
@@ -1471,10 +1474,10 @@ index 111f440..580b0e9 100644
  <translation id="5032989939245619637">Saglabāt informāciju operētājsistēmā Chromium</translation>
  <translation id="8803635938069941624">Chromium OS noteikumi</translation>
 diff --git a/chrome/app/resources/chromium_strings_ml.xtb b/chrome/app/resources/chromium_strings_ml.xtb
-index 20cf23e..73b8183 100644
+index 9ba2d93..8deb1cb 100644
 --- a/chrome/app/resources/chromium_strings_ml.xtb
 +++ b/chrome/app/resources/chromium_strings_ml.xtb
-@@ -260,7 +260,6 @@
+@@ -261,7 +261,6 @@
  <translation id="8823523095753232532">എന്റെ Chromium ഡാറ്റ ഈ അക്കൗണ്ടുമായി ലിങ്കുചെയ്യുക</translation>
  <translation id="1808667845054772817">Chromium വീണ്ടും ഇൻസ്‌റ്റാളുചെയ്യുക</translation>
  <translation id="1221340462641866827"><ph name="SCHEME"/> ലിങ്കുകൾ കൈകാര്യം ചെയ്യുന്നതിന് ഒരു ബാഹ്യ അപ്ലിക്കേഷൻ സമാരംഭിക്കുന്നതിനെ Chromium OS പിന്തുണയ്‌ക്കുന്നില്ല. ലിങ്ക് അഭ്യർത്ഥിച്ചത് <ph name="PROTOLINK"/> ആണ്.</translation>
@@ -1483,10 +1486,10 @@ index 20cf23e..73b8183 100644
  <translation id="5032989939245619637">Chromium-ൽ വിശദാംശങ്ങൾ സംരക്ഷിക്കുക</translation>
  <translation id="8803635938069941624">Chromium OS നിബന്ധനകൾ</translation>
 diff --git a/chrome/app/resources/chromium_strings_mr.xtb b/chrome/app/resources/chromium_strings_mr.xtb
-index fe8d7b9..1cbf3f2 100644
+index 63d2387f..ca4fc78 100644
 --- a/chrome/app/resources/chromium_strings_mr.xtb
 +++ b/chrome/app/resources/chromium_strings_mr.xtb
-@@ -260,7 +260,6 @@ Chromium आपली सेटिंग्ज पुनर्प्राप्
+@@ -261,7 +261,6 @@ Chromium आपली सेटिंग्ज पुनर्प्राप्
  <translation id="8823523095753232532">या खात्यावर माझ्या Chromium डेटा चा दुवा साधा</translation>
  <translation id="1808667845054772817">Chromium पुनर्स्थापित करा</translation>
  <translation id="1221340462641866827">Chromium OS ला <ph name="SCHEME"/> दुवे हाताळण्‍यासाठी बाह्य अनुप्रयोग लाँच करणे आवश्‍यक आहे. विनंती केलेला दुवा <ph name="PROTOLINK"/> हा आहे.</translation>
@@ -1536,10 +1539,10 @@ index c6bff8a..9e89bcc 100644
  </translationbundle>
 \ No newline at end of file
 diff --git a/chrome/app/resources/chromium_strings_pl.xtb b/chrome/app/resources/chromium_strings_pl.xtb
-index 5a7afad..84021fe 100644
+index b8cffef..dee27bc 100644
 --- a/chrome/app/resources/chromium_strings_pl.xtb
 +++ b/chrome/app/resources/chromium_strings_pl.xtb
-@@ -259,7 +259,6 @@ Chromium nie może odzyskać ustawień.</translation>
+@@ -260,7 +260,6 @@ Chromium nie może odzyskać ustawień.</translation>
  <translation id="8823523095753232532">Połącz moje dane Chromium z tym kontem</translation>
  <translation id="1808667845054772817">Ponownie zainstaluj Chromium</translation>
  <translation id="1221340462641866827">System operacyjny Chromium nie umożliwia uruchamiania zewnętrznej aplikacji w celu obsługi linków typu <ph name="SCHEME"/>. Żądany link to <ph name="PROTOLINK"/>.</translation>
@@ -1562,10 +1565,10 @@ index fc16d66..8aa57f7 100644
  </translationbundle>
 \ No newline at end of file
 diff --git a/chrome/app/resources/chromium_strings_pt-PT.xtb b/chrome/app/resources/chromium_strings_pt-PT.xtb
-index 6ed2bc7..7f0e300 100644
+index 51a2b6f..8d69d37 100644
 --- a/chrome/app/resources/chromium_strings_pt-PT.xtb
 +++ b/chrome/app/resources/chromium_strings_pt-PT.xtb
-@@ -259,7 +259,7 @@ O Chromium não consegue recuperar as suas definições.</translation>
+@@ -260,7 +260,7 @@ O Chromium não consegue recuperar as suas definições.</translation>
  <translation id="8823523095753232532">Associar os meus dados do Chromium a esta conta</translation>
  <translation id="1808667845054772817">Reinstalar Chromium</translation>
  <translation id="1221340462641866827">O SO Chromium não suporta a abertura de uma aplicação externa para processar links de <ph name="SCHEME"/>. O link solicitado é <ph name="PROTOLINK"/>.</translation>
@@ -1575,10 +1578,10 @@ index 6ed2bc7..7f0e300 100644
  <translation id="5032989939245619637">Guardar os detalhes no Chromium</translation>
  <translation id="8803635938069941624">Termos do SO Chromium</translation>
 diff --git a/chrome/app/resources/chromium_strings_ro.xtb b/chrome/app/resources/chromium_strings_ro.xtb
-index 50ecc51..9fa4550 100644
+index 9fdd5ef..ac5f6f5 100644
 --- a/chrome/app/resources/chromium_strings_ro.xtb
 +++ b/chrome/app/resources/chromium_strings_ro.xtb
-@@ -261,7 +261,6 @@ Chromium nu poate recupera setările.</translation>
+@@ -262,7 +262,6 @@ Chromium nu poate recupera setările.</translation>
  <translation id="8823523095753232532">Conectați-vă datele Chromium cu acest cont</translation>
  <translation id="1808667845054772817">Reinstalați Chromium</translation>
  <translation id="1221340462641866827">Sistemul de operare Chromium nu acceptă lansarea unei aplicații externe pentru a gestiona linkuri <ph name="SCHEME"/>. Linkul solicitat este <ph name="PROTOLINK"/>.</translation>
@@ -1601,10 +1604,10 @@ index 3deb02e..e6941cd 100644
  </translationbundle>
 \ No newline at end of file
 diff --git a/chrome/app/resources/chromium_strings_sk.xtb b/chrome/app/resources/chromium_strings_sk.xtb
-index f87aa4a..73a92a8 100644
+index c2015a1..9c865a1 100644
 --- a/chrome/app/resources/chromium_strings_sk.xtb
 +++ b/chrome/app/resources/chromium_strings_sk.xtb
-@@ -262,7 +262,6 @@ Prehliadač Chromium nedokáže obnoviť vaše nastavenia.</translation>
+@@ -263,7 +263,6 @@ Prehliadač Chromium nedokáže obnoviť vaše nastavenia.</translation>
  <translation id="8823523095753232532">Prepojiť moje údaje prehliadača Chromium s týmto účtom</translation>
  <translation id="1808667845054772817">Preinštalovať prehliadač Chromium</translation>
  <translation id="1221340462641866827">Systém Chromium OS nepodporuje spustenie externej aplikácie na spracovanie odkazov typu <ph name="SCHEME"/>. Typ požadovaného odkazu: <ph name="PROTOLINK"/>.</translation>
@@ -1653,10 +1656,10 @@ index 3085369..bd8dc6a 100644
  </translationbundle>
 \ No newline at end of file
 diff --git a/chrome/app/resources/chromium_strings_sw.xtb b/chrome/app/resources/chromium_strings_sw.xtb
-index f29675c..24694dc 100644
+index c731f25..1f93a4b 100644
 --- a/chrome/app/resources/chromium_strings_sw.xtb
 +++ b/chrome/app/resources/chromium_strings_sw.xtb
-@@ -258,7 +258,6 @@ Chromium haiwezi kufufua mipangilio yako.</translation>
+@@ -259,7 +259,6 @@ Chromium haiwezi kufufua mipangilio yako.</translation>
  <translation id="8823523095753232532">Unganisha data yangu ya Chromium kwenye akaunti hii</translation>
  <translation id="1808667845054772817">Sakinisha Chromium Upya</translation>
  <translation id="1221340462641866827">Chromium OS haihimili kuzindua programu ya nje ili kushughulikia viungo vya <ph name="SCHEME"/>. Kiungo kilichoombwa ni <ph name="PROTOLINK"/>.</translation>
@@ -1665,10 +1668,10 @@ index f29675c..24694dc 100644
  <translation id="5032989939245619637">Hifadhi maelezo katika Chromium</translation>
  <translation id="8803635938069941624">Masharti ya Chromium OS</translation>
 diff --git a/chrome/app/resources/chromium_strings_ta.xtb b/chrome/app/resources/chromium_strings_ta.xtb
-index 0427b50..fd55b8e 100644
+index 65d78fa..95b2170 100644
 --- a/chrome/app/resources/chromium_strings_ta.xtb
 +++ b/chrome/app/resources/chromium_strings_ta.xtb
-@@ -255,7 +255,6 @@
+@@ -256,7 +256,6 @@
  <translation id="8823523095753232532">எனது Chromium தரவை இந்தக் கணக்குடன் இணை</translation>
  <translation id="1808667845054772817">Chromium ஐ மீண்டும்நிறுவு</translation>
  <translation id="1221340462641866827"><ph name="SCHEME"/> இணைப்புகளைக் கையாள ஒரு வெளிப்புற பயன்பாட்டை தொடங்குவதை Chromium ஆதரிக்காது. கோரப்பட்ட இணைப்பு <ph name="PROTOLINK"/> ஆகும்.</translation>
@@ -1677,10 +1680,10 @@ index 0427b50..fd55b8e 100644
  <translation id="5032989939245619637">விவரங்களை Chromium இல் சேமி</translation>
  <translation id="8803635938069941624">Chromium OS விதிமுறைகள்</translation>
 diff --git a/chrome/app/resources/chromium_strings_te.xtb b/chrome/app/resources/chromium_strings_te.xtb
-index fec4986..2c6ebec 100644
+index b01ffa5..b314d28 100644
 --- a/chrome/app/resources/chromium_strings_te.xtb
 +++ b/chrome/app/resources/chromium_strings_te.xtb
-@@ -254,7 +254,6 @@
+@@ -255,7 +255,6 @@
  <translation id="8823523095753232532">నా Chromium డేటాను ఈ ఖాతాకు లింక్ చేయి</translation>
  <translation id="1808667845054772817">Chromiumను మళ్లీ ఇన్‌స్టాల్ చేయి</translation>
  <translation id="1221340462641866827"><ph name="SCHEME"/> లింక్‌లను నిర్వహించడానికి బాహ్య అనువర్తనాన్ని ప్రారంభించడానికి Chromium OS మద్దతు ఇవ్వదు. అభ్యర్థించిన లింక్ <ph name="PROTOLINK"/>.</translation>
@@ -1689,10 +1692,10 @@ index fec4986..2c6ebec 100644
  <translation id="5032989939245619637">వివరాలను Chromiumలో సేవ్ చేయి</translation>
  <translation id="8803635938069941624">Chromium OS నిబంధనలు</translation>
 diff --git a/chrome/app/resources/chromium_strings_th.xtb b/chrome/app/resources/chromium_strings_th.xtb
-index 9881f51..632dd19 100644
+index a759802..0b6f242 100644
 --- a/chrome/app/resources/chromium_strings_th.xtb
 +++ b/chrome/app/resources/chromium_strings_th.xtb
-@@ -262,7 +262,6 @@ Chromium ไม่สามารถกู้คืนการตั้งค
+@@ -263,7 +263,6 @@ Chromium ไม่สามารถกู้คืนการตั้งค
  <translation id="8823523095753232532">เชื่อมโยงข้อมูล Chromium ของฉันกับบัญชีนี้</translation>
  <translation id="1808667845054772817">ติดตั้ง Chromium ใหม่</translation>
  <translation id="1221340462641866827">Chromium OS ไม่สนับสนุนการเปิดแอปพลิเคชันภายนอกเพื่อจัดการกับลิงก์ <ph name="SCHEME"/> ลิงก์ที่ร้องขอคือ <ph name="PROTOLINK"/></translation>
@@ -1701,10 +1704,10 @@ index 9881f51..632dd19 100644
  <translation id="5032989939245619637">บันทึกรายละเอียดใน Chromium</translation>
  <translation id="8803635938069941624">ข้อกำหนดของ Chromium OS</translation>
 diff --git a/chrome/app/resources/chromium_strings_tr.xtb b/chrome/app/resources/chromium_strings_tr.xtb
-index 9f0ef17..6b78761 100644
+index d6a28a4..dec2f25 100644
 --- a/chrome/app/resources/chromium_strings_tr.xtb
 +++ b/chrome/app/resources/chromium_strings_tr.xtb
-@@ -255,7 +255,6 @@ Chromium ayarlarınızı kurtaramıyor.</translation>
+@@ -256,7 +256,6 @@ Chromium ayarlarınızı kurtaramıyor.</translation>
  <translation id="8823523095753232532">Chromium verilerimi bu hesaba bağla</translation>
  <translation id="1808667845054772817">Chromium'u yeniden yükle</translation>
  <translation id="1221340462641866827">Chromium OS, <ph name="SCHEME"/> bağlantılarını kullanmak için harici uygulama başlatmayı desteklemiyor. İstenen bağlantı: <ph name="PROTOLINK"/>.</translation>
@@ -1713,10 +1716,10 @@ index 9f0ef17..6b78761 100644
  <translation id="5032989939245619637">Ayrıntıları Chromium'a kaydet</translation>
  <translation id="8803635938069941624">Chromium OS şartları</translation>
 diff --git a/chrome/app/resources/chromium_strings_uk.xtb b/chrome/app/resources/chromium_strings_uk.xtb
-index 3d8591f..e5bdef5 100644
+index 2e0cef4..77b4575 100644
 --- a/chrome/app/resources/chromium_strings_uk.xtb
 +++ b/chrome/app/resources/chromium_strings_uk.xtb
-@@ -262,7 +262,6 @@ Chromium не може відновити ваші налаштування.</tr
+@@ -263,7 +263,6 @@ Chromium не може відновити ваші налаштування.</tr
  <translation id="8823523095753232532">Пов’язати мої дані Chromium із цим обліковим записом</translation>
  <translation id="1808667845054772817">Перевстановити Chromium</translation>
  <translation id="1221340462641866827">ОС Chromium не підтримує запуск зовнішньої програми обробки посилань типу <ph name="SCHEME"/>. Потрібний тип посилання: <ph name="PROTOLINK"/>.</translation>
@@ -1764,10 +1767,10 @@ index b7e8cf5..b177bef 100644
  </translationbundle>
 \ No newline at end of file
 diff --git a/third_party/launchpad_translations/chromium_strings_bg.xtb b/third_party/launchpad_translations/chromium_strings_bg.xtb
-index 23a82f4..45ee38e 100644
+index 53215a8..d4521f2 100644
 --- a/third_party/launchpad_translations/chromium_strings_bg.xtb
 +++ b/third_party/launchpad_translations/chromium_strings_bg.xtb
-@@ -256,7 +256,6 @@
+@@ -257,7 +257,6 @@
  <translation id="8823523095753232532">Свързване на данните ми в Chromium с този профил</translation>
  <translation id="1808667845054772817">Повторно инсталиране на Chromium</translation>
  <translation id="1221340462641866827">Chromium OS не поддържа стартирането на външно приложение, за да обработва връзки от тип <ph name="SCHEME"/>. Заявената връзка е <ph name="PROTOLINK"/>.</translation>
@@ -1776,10 +1779,10 @@ index 23a82f4..45ee38e 100644
  <translation id="5032989939245619637">Подробностите да се запазват в Chromium</translation>
  <translation id="8803635938069941624">Общи условия на Chromium OS</translation>
 diff --git a/third_party/launchpad_translations/chromium_strings_ca.xtb b/third_party/launchpad_translations/chromium_strings_ca.xtb
-index 66bfcbb..2efe231 100644
+index c06556b..f58de91 100644
 --- a/third_party/launchpad_translations/chromium_strings_ca.xtb
 +++ b/third_party/launchpad_translations/chromium_strings_ca.xtb
-@@ -260,7 +260,7 @@ Chromium no pot recuperar la configuració.</translation>
+@@ -261,7 +261,7 @@ Chromium no pot recuperar la configuració.</translation>
  <translation id="8823523095753232532">Enllaça les meves dades de Chromium amb aquest compte</translation>
  <translation id="1808667845054772817">Torna a instal·lar Chromium</translation>
  <translation id="1221340462641866827">Chromium OS no és compatible amb l'inici d'una aplicació externa per gestionar els enllaços <ph name="SCHEME"/>. L'enllaç sol·licitat és <ph name="PROTOLINK"/>.</translation>
@@ -1789,10 +1792,10 @@ index 66bfcbb..2efe231 100644
  <translation id="5032989939245619637">Desa els detalls a Chromium</translation>
  <translation id="8803635938069941624">Condicions de Chromium OS</translation>
 diff --git a/third_party/launchpad_translations/chromium_strings_cs.xtb b/third_party/launchpad_translations/chromium_strings_cs.xtb
-index 0c02a62..e010f44 100644
+index 6cef2d8..f41355ca 100644
 --- a/third_party/launchpad_translations/chromium_strings_cs.xtb
 +++ b/third_party/launchpad_translations/chromium_strings_cs.xtb
-@@ -253,7 +253,6 @@ Chromium nemůže vaše nastavení obnovit.</translation>
+@@ -254,7 +254,6 @@ Chromium nemůže vaše nastavení obnovit.</translation>
  <translation id="8823523095753232532">Propojit má data prohlížeče Chromium s tímto účtem</translation>
  <translation id="1808667845054772817">Přeinstalovat Chromium</translation>
  <translation id="1221340462641866827">Chromium OS nepodporuje spouštění externích aplikací pro práci s odkazy typu <ph name="SCHEME"/>. Požadovaný odkaz je <ph name="PROTOLINK"/>.</translation>
@@ -1801,10 +1804,10 @@ index 0c02a62..e010f44 100644
  <translation id="5032989939245619637">Ukládat údaje do prohlížeče Chromium</translation>
  <translation id="8803635938069941624">Smluvní podmínky systému Chromium OS</translation>
 diff --git a/third_party/launchpad_translations/chromium_strings_da.xtb b/third_party/launchpad_translations/chromium_strings_da.xtb
-index 6370510..101501f 100644
+index 4601c27..710aeac 100644
 --- a/third_party/launchpad_translations/chromium_strings_da.xtb
 +++ b/third_party/launchpad_translations/chromium_strings_da.xtb
-@@ -261,7 +261,7 @@ Chromium kan ikke gendanne dine præferencer.</translation>
+@@ -262,7 +262,7 @@ Chromium kan ikke gendanne dine præferencer.</translation>
  <translation id="8823523095753232532">Knyt mine Chromium-data til denne konto</translation>
  <translation id="1808667845054772817">Geninstaller Chromium</translation>
  <translation id="1221340462641866827">Chromium OS understøtter ikke start af en ekstern applikation til at håndtere <ph name="SCHEME"/>-links. Det link, der er anmodet om, er <ph name="PROTOLINK"/>.</translation>
@@ -1814,10 +1817,10 @@ index 6370510..101501f 100644
  <translation id="5032989939245619637">Gem oplysninger i Chromium</translation>
  <translation id="8803635938069941624">Vilkår for Chromium OS</translation>
 diff --git a/third_party/launchpad_translations/chromium_strings_de.xtb b/third_party/launchpad_translations/chromium_strings_de.xtb
-index c51b087..bd058a7 100644
+index b234e0c..781272f 100644
 --- a/third_party/launchpad_translations/chromium_strings_de.xtb
 +++ b/third_party/launchpad_translations/chromium_strings_de.xtb
-@@ -242,7 +242,7 @@ Chromium kann Ihre Einstellungen nicht wiederherstellen.</translation>
+@@ -243,7 +243,7 @@ Chromium kann Ihre Einstellungen nicht wiederherstellen.</translation>
  <translation id="8823523095753232532">Meine Chromium-Daten mit diesem Konto verknüpfen</translation>
  <translation id="1808667845054772817">Chromium neu installieren</translation>
  <translation id="1221340462641866827">Chromium unterstützt keine externe App zur Verarbeitung von <ph name="SCHEME"/>-Links. Der angeforderte Link ist <ph name="PROTOLINK"/>.</translation>
@@ -1827,10 +1830,10 @@ index c51b087..bd058a7 100644
  <translation id="5032989939245619637">Details in Chromium speichern</translation>
  <translation id="8803635938069941624">Chromium OS-Nutzungsbedingungen</translation>
 diff --git a/third_party/launchpad_translations/chromium_strings_es.xtb b/third_party/launchpad_translations/chromium_strings_es.xtb
-index 52e80d8..b116605 100644
+index a3ba8ad..5e90646 100644
 --- a/third_party/launchpad_translations/chromium_strings_es.xtb
 +++ b/third_party/launchpad_translations/chromium_strings_es.xtb
-@@ -262,7 +262,7 @@ Chromium no puede recuperar tu configuración.</translation>
+@@ -263,7 +263,7 @@ Chromium no puede recuperar tu configuración.</translation>
  <translation id="8823523095753232532">Vincular mis datos de Chromium a esta cuenta</translation>
  <translation id="1808667845054772817">Reinstalar Chromium</translation>
  <translation id="1221340462641866827">Chromium OS no puede iniciar una aplicación externa para gestionar enlaces <ph name="SCHEME"/>. El enlace solicitado es <ph name="PROTOLINK"/>.</translation>
@@ -1840,10 +1843,10 @@ index 52e80d8..b116605 100644
  <translation id="5032989939245619637">Guardar detalles en Chromium</translation>
  <translation id="8803635938069941624">Condiciones de Chromium OS</translation>
 diff --git a/third_party/launchpad_translations/chromium_strings_et.xtb b/third_party/launchpad_translations/chromium_strings_et.xtb
-index 37c2405..f04af72 100644
+index fe462a0..655702a7 100644
 --- a/third_party/launchpad_translations/chromium_strings_et.xtb
 +++ b/third_party/launchpad_translations/chromium_strings_et.xtb
-@@ -262,7 +262,6 @@ Chromium ei saa teie seadeid taastada.</translation>
+@@ -263,7 +263,6 @@ Chromium ei saa teie seadeid taastada.</translation>
  <translation id="8823523095753232532">Lingi minu Chromiumi andmed selle kontoga</translation>
  <translation id="1808667845054772817">Installi Chromium uuesti</translation>
  <translation id="1221340462641866827">Chromium OS ei toeta rakenduse <ph name="SCHEME"/> linkide käsitlemiseks välisrakenduste käivitamist. Taotletud link on <ph name="PROTOLINK"/>.</translation>
@@ -1852,10 +1855,10 @@ index 37c2405..f04af72 100644
  <translation id="5032989939245619637">Salvesta üksikasjad Chromiumi</translation>
  <translation id="8803635938069941624">Chromium OS-i tingimused</translation>
 diff --git a/third_party/launchpad_translations/chromium_strings_fi.xtb b/third_party/launchpad_translations/chromium_strings_fi.xtb
-index 90cadd8..a9498b7 100644
+index eb66f8d..72d05a4 100644
 --- a/third_party/launchpad_translations/chromium_strings_fi.xtb
 +++ b/third_party/launchpad_translations/chromium_strings_fi.xtb
-@@ -260,7 +260,6 @@ Chromium ei voi palauttaa asetuksiasi.</translation>
+@@ -261,7 +261,6 @@ Chromium ei voi palauttaa asetuksiasi.</translation>
  <translation id="8823523095753232532">Linkitä Chromium-tietoni tähän tiliin</translation>
  <translation id="1808667845054772817">Asenna Chromium uudelleen</translation>
  <translation id="1221340462641866827">Chromium-käyttöjärjestelmä ei tue ulkopuolisten sovellusten käynnistämistä <ph name="SCHEME"/>-linkkien käsittelyä varten. Pyyntöön liittyvä linkki on <ph name="PROTOLINK"/>.</translation>
@@ -1864,10 +1867,10 @@ index 90cadd8..a9498b7 100644
  <translation id="5032989939245619637">Tallenna tiedot Chromiumiin</translation>
  <translation id="8803635938069941624">Chromium-käyttöjärjestelmän käyttöehdot</translation>
 diff --git a/third_party/launchpad_translations/chromium_strings_fr.xtb b/third_party/launchpad_translations/chromium_strings_fr.xtb
-index 3d0d63e..430b076 100644
+index 4462c4d..32da00d 100644
 --- a/third_party/launchpad_translations/chromium_strings_fr.xtb
 +++ b/third_party/launchpad_translations/chromium_strings_fr.xtb
-@@ -262,7 +262,7 @@ Chromium ne peut pas récupérer vos paramètres.</translation>
+@@ -263,7 +263,7 @@ Chromium ne peut pas récupérer vos paramètres.</translation>
  <translation id="8823523095753232532">Lier mes données Chromium à ce compte</translation>
  <translation id="1808667845054772817">Réinstaller Chromium</translation>
  <translation id="1221340462641866827">Chromium OS ne permet pas le lancement d'une application externe pour gérer les liens <ph name="SCHEME"/>. Le lien requis est <ph name="PROTOLINK"/>.</translation>
@@ -1877,10 +1880,10 @@ index 3d0d63e..430b076 100644
  <translation id="5032989939245619637">Enregistrer les détails dans Chromium</translation>
  <translation id="8803635938069941624">Conditions d'utilisation de Chromium OS</translation>
 diff --git a/third_party/launchpad_translations/chromium_strings_id.xtb b/third_party/launchpad_translations/chromium_strings_id.xtb
-index 218fc07..58c44ff 100644
+index b3b992e..33fb418 100644
 --- a/third_party/launchpad_translations/chromium_strings_id.xtb
 +++ b/third_party/launchpad_translations/chromium_strings_id.xtb
-@@ -263,7 +263,7 @@ Chromium tidak dapat memulihkan setelan Anda.</translation>
+@@ -264,7 +264,7 @@ Chromium tidak dapat memulihkan setelan Anda.</translation>
  <translation id="1808667845054772817">Pasang ulang Chromium</translation>
  <translation id="1221340462641866827">OS Chromium tidak mendukung peluncuran aplikasi eksternal untuk menangani tautan <ph name="SCHEME"/>. Tautan yang diminta adalah <ph name="PROTOLINK"/>.</translation>
  <translation id="328888136576916638">Kunci API Google tidak ada. Beberapa fungsi Chromium tidak akan berfungsi.</translation>
@@ -1891,10 +1894,10 @@ index 218fc07..58c44ff 100644
  </translationbundle>
 \ No newline at end of file
 diff --git a/third_party/launchpad_translations/chromium_strings_it.xtb b/third_party/launchpad_translations/chromium_strings_it.xtb
-index fbeb442..1d7ad85 100644
+index 0031113..670c7e0 100644
 --- a/third_party/launchpad_translations/chromium_strings_it.xtb
 +++ b/third_party/launchpad_translations/chromium_strings_it.xtb
-@@ -253,7 +253,7 @@ Chromium non è in grado di recuperare le impostazioni.</translation>
+@@ -254,7 +254,7 @@ Chromium non è in grado di recuperare le impostazioni.</translation>
  <translation id="8823523095753232532">Collega i miei dati Chromium a questo account</translation>
  <translation id="1808667845054772817">Reinstalla Chromium</translation>
  <translation id="1221340462641866827">Chromium OS non supporta l'avvio di un'applicazione esterna per la gestione dei link <ph name="SCHEME"/>. Il link richiesto è <ph name="PROTOLINK"/>.</translation>
@@ -1904,10 +1907,10 @@ index fbeb442..1d7ad85 100644
  <translation id="5032989939245619637">Salva dati in Chromium</translation>
  <translation id="8803635938069941624">Termini di Chromium OS</translation>
 diff --git a/third_party/launchpad_translations/chromium_strings_ja.xtb b/third_party/launchpad_translations/chromium_strings_ja.xtb
-index 815e81d..0675c3e 100644
+index 72a86f9..3bfb7e7 100644
 --- a/third_party/launchpad_translations/chromium_strings_ja.xtb
 +++ b/third_party/launchpad_translations/chromium_strings_ja.xtb
-@@ -260,7 +260,7 @@
+@@ -261,7 +261,7 @@
  <translation id="8823523095753232532">Chromium データをこのアカウントにリンクする</translation>
  <translation id="1808667845054772817">Chromium を再インストール</translation>
  <translation id="1221340462641866827">Chromium OS では、<ph name="SCHEME"/> リンクの処理に必要な外部アプリケーションの起動がサポートされていません。リクエストされたリンクは <ph name="PROTOLINK"/> です。</translation>
@@ -1917,10 +1920,10 @@ index 815e81d..0675c3e 100644
  <translation id="5032989939245619637">Chromium で詳細を保存する</translation>
  <translation id="8803635938069941624">Chromium OS 利用規約</translation>
 diff --git a/third_party/launchpad_translations/chromium_strings_lt.xtb b/third_party/launchpad_translations/chromium_strings_lt.xtb
-index 6dce968..dbdb5a1 100644
+index 1e9f24c..78528a5 100644
 --- a/third_party/launchpad_translations/chromium_strings_lt.xtb
 +++ b/third_party/launchpad_translations/chromium_strings_lt.xtb
-@@ -263,7 +263,6 @@ Prisijungus bet kuriuo būdu, „Chromium“ informacija, pvz., žymės, istorij
+@@ -264,7 +264,6 @@ Prisijungus bet kuriuo būdu, „Chromium“ informacija, pvz., žymės, istorij
  <translation id="8823523095753232532">Susisieti mano „Chromium“ duomenis su šia paskyra</translation>
  <translation id="1808667845054772817">Iš naujo įdiegti „Chromium“</translation>
  <translation id="1221340462641866827">„Chromium“ OS nepalaikomas išorinės programos, skirtos „<ph name="SCHEME"/>“ nuorodoms tvarkyti, paleidimas. Nuoroda, dėl kurios pateikta užklausa, yra <ph name="PROTOLINK"/>.</translation>
@@ -1929,10 +1932,10 @@ index 6dce968..dbdb5a1 100644
  <translation id="5032989939245619637">Išsaugoti išsamią informaciją „Chromium“</translation>
  <translation id="8803635938069941624">„Chromium“ OS sąlygos</translation>
 diff --git a/third_party/launchpad_translations/chromium_strings_ms.xtb b/third_party/launchpad_translations/chromium_strings_ms.xtb
-index 48ba36b..b0742ff 100644
+index eca8e54..1c29ba9 100644
 --- a/third_party/launchpad_translations/chromium_strings_ms.xtb
 +++ b/third_party/launchpad_translations/chromium_strings_ms.xtb
-@@ -261,7 +261,6 @@ Chromium tidak dapat mengembalikan tetapan anda.</translation>
+@@ -262,7 +262,6 @@ Chromium tidak dapat mengembalikan tetapan anda.</translation>
  <translation id="8823523095753232532">Pautkan data Chromium saya ke akaun ini</translation>
  <translation id="1808667845054772817">Pasang semula Chromium</translation>
  <translation id="1221340462641866827">Chromium OS tidak menyokong pelancaran aplikasi luaran untuk mengendalikan pautan <ph name="SCHEME"/>. Pautan yang diminta adalah <ph name="PROTOLINK"/>.</translation>
@@ -1941,10 +1944,10 @@ index 48ba36b..b0742ff 100644
  <translation id="5032989939245619637">Simpan butiran di Chromium</translation>
  <translation id="8803635938069941624">Syarat Chromium OS</translation>
 diff --git a/third_party/launchpad_translations/chromium_strings_nl.xtb b/third_party/launchpad_translations/chromium_strings_nl.xtb
-index c99a5b6..d705588 100644
+index 4a1644f3..5d29815 100644
 --- a/third_party/launchpad_translations/chromium_strings_nl.xtb
 +++ b/third_party/launchpad_translations/chromium_strings_nl.xtb
-@@ -257,7 +257,7 @@ Chromium kan je instellingen niet herstellen.</translation>
+@@ -258,7 +258,7 @@ Chromium kan je instellingen niet herstellen.</translation>
  <translation id="8823523095753232532">Mijn Chromium-gegevens koppelen aan dit account</translation>
  <translation id="1808667845054772817">Chromium opnieuw installeren</translation>
  <translation id="1221340462641866827">Chromium OS ondersteunt het starten van een externe applicatie voor het verwerken van <ph name="SCHEME"/>-links niet. De opgevraagde link is <ph name="PROTOLINK"/>.</translation>
@@ -1954,10 +1957,10 @@ index c99a5b6..d705588 100644
  <translation id="5032989939245619637">Details opslaan in Chromium</translation>
  <translation id="8803635938069941624">Voorwaarden van Chromium OS</translation>
 diff --git a/third_party/launchpad_translations/chromium_strings_no.xtb b/third_party/launchpad_translations/chromium_strings_no.xtb
-index 8af9f5b..585f76b 100644
+index 3d64e16..f4cf0a5 100644
 --- a/third_party/launchpad_translations/chromium_strings_no.xtb
 +++ b/third_party/launchpad_translations/chromium_strings_no.xtb
-@@ -259,7 +259,7 @@ Chromium kan ikke gjenopprette innstillingen dine.</translation>
+@@ -260,7 +260,7 @@ Chromium kan ikke gjenopprette innstillingen dine.</translation>
  <translation id="8823523095753232532">Koble Chromium-dataene mine til denne kontoen.</translation>
  <translation id="1808667845054772817">Installer Chromium på nytt</translation>
  <translation id="1221340462641866827">Chromium OS støtter ikke start av et eksternt program for å håndtere <ph name="SCHEME"/>-linker. Den påkrevde linken er <ph name="PROTOLINK"/>.</translation>
@@ -1967,10 +1970,10 @@ index 8af9f5b..585f76b 100644
  <translation id="5032989939245619637">Lagre detaljer i Chromium</translation>
  <translation id="8803635938069941624">Vilkår for Chromium OS</translation>
 diff --git a/third_party/launchpad_translations/chromium_strings_pt-BR.xtb b/third_party/launchpad_translations/chromium_strings_pt-BR.xtb
-index 266e1f9..0dec4ce 100644
+index 717a89c..8defd17 100644
 --- a/third_party/launchpad_translations/chromium_strings_pt-BR.xtb
 +++ b/third_party/launchpad_translations/chromium_strings_pt-BR.xtb
-@@ -256,7 +256,6 @@ Se você decidir fazer login assim mesmo, as informações do Chromium, como fav
+@@ -257,7 +257,6 @@ Se você decidir fazer login assim mesmo, as informações do Chromium, como fav
  <translation id="8823523095753232532">Vincular meus dados do Chromium a esta conta</translation>
  <translation id="1808667845054772817">Reinstalar o Chromium</translation>
  <translation id="1221340462641866827">O Chromium OS não suporta a inicialização de um aplicativo externo para lidar com links <ph name="SCHEME"/>. O link solicitado é <ph name="PROTOLINK"/>.</translation>
@@ -1979,10 +1982,10 @@ index 266e1f9..0dec4ce 100644
  <translation id="5032989939245619637">Salvar detalhes no Chromium</translation>
  <translation id="8803635938069941624">Termos do Chromium OS</translation>
 diff --git a/third_party/launchpad_translations/chromium_strings_ru.xtb b/third_party/launchpad_translations/chromium_strings_ru.xtb
-index 03edc2a..326249b 100644
+index 08b3645..170237f 100644
 --- a/third_party/launchpad_translations/chromium_strings_ru.xtb
 +++ b/third_party/launchpad_translations/chromium_strings_ru.xtb
-@@ -246,7 +246,7 @@
+@@ -247,7 +247,7 @@
  <translation id="8823523095753232532">Связать данные Chromium с этим аккаунтом</translation>
  <translation id="1808667845054772817">Переустановить Chromium</translation>
  <translation id="1221340462641866827">Chromium OS не поддерживает внешних приложений для обработки ссылок <ph name="SCHEME"/>. Запрашиваемая ссылка: <ph name="PROTOLINK"/>.</translation>
@@ -1992,10 +1995,10 @@ index 03edc2a..326249b 100644
  <translation id="5032989939245619637">Сохранять данные в Chromium</translation>
  <translation id="8803635938069941624">Условия использования Chromium OS</translation>
 diff --git a/third_party/launchpad_translations/chromium_strings_sl.xtb b/third_party/launchpad_translations/chromium_strings_sl.xtb
-index 7c53fab..d691975 100644
+index e447945..b1e76d6 100644
 --- a/third_party/launchpad_translations/chromium_strings_sl.xtb
 +++ b/third_party/launchpad_translations/chromium_strings_sl.xtb
-@@ -263,7 +263,6 @@ Chromium ne more obnoviti vaših nastavitev.</translation>
+@@ -264,7 +264,6 @@ Chromium ne more obnoviti vaših nastavitev.</translation>
  <translation id="8823523095753232532">Poveži moje podatke v Chromiumu s tem računom</translation>
  <translation id="1808667845054772817">Vnovična namestitev Chromiuma</translation>
  <translation id="1221340462641866827">Chromium OS ne podpira zagona zunanjega programa za obdelavo povezav <ph name="SCHEME"/>. Zahtevana povezava je <ph name="PROTOLINK"/>.</translation>
@@ -2004,10 +2007,10 @@ index 7c53fab..d691975 100644
  <translation id="5032989939245619637">Shrani podrobnosti v Chromium</translation>
  <translation id="8803635938069941624">Pogoji za Chromium OS</translation>
 diff --git a/third_party/launchpad_translations/chromium_strings_sr.xtb b/third_party/launchpad_translations/chromium_strings_sr.xtb
-index a0d23f2..8d934d9 100644
+index 57ff41d..c0b9b16 100644
 --- a/third_party/launchpad_translations/chromium_strings_sr.xtb
 +++ b/third_party/launchpad_translations/chromium_strings_sr.xtb
-@@ -262,7 +262,6 @@ Chromium не може да врати подешавања.</translation>
+@@ -263,7 +263,6 @@ Chromium не може да врати подешавања.</translation>
  <translation id="8823523095753232532">Повежи моје Chromium податке са овим налогом</translation>
  <translation id="1808667845054772817">Поново инсталирај Chromium</translation>
  <translation id="1221340462641866827">Chromium ОС не подржава покретање спољне апликације за обраду <ph name="SCHEME"/> веза. Захтевана веза је <ph name="PROTOLINK"/>.</translation>
@@ -2016,10 +2019,10 @@ index a0d23f2..8d934d9 100644
  <translation id="5032989939245619637">Сачувај детаље у Chromium-у</translation>
  <translation id="8803635938069941624">Chromium ОС услови</translation>
 diff --git a/third_party/launchpad_translations/chromium_strings_sv.xtb b/third_party/launchpad_translations/chromium_strings_sv.xtb
-index 9baa4cb..012f8d6 100644
+index 4b94f61..44fed6b 100644
 --- a/third_party/launchpad_translations/chromium_strings_sv.xtb
 +++ b/third_party/launchpad_translations/chromium_strings_sv.xtb
-@@ -263,7 +263,7 @@ Chromium kan inte återställa dina inställningar.</translation>
+@@ -264,7 +264,7 @@ Chromium kan inte återställa dina inställningar.</translation>
  <translation id="8823523095753232532">Koppla mina uppgifter i Chromium till det här kontot</translation>
  <translation id="1808667845054772817">Installera om Chromium</translation>
  <translation id="1221340462641866827">Chromium OS stöder inte att ett externt program startas för att hantera <ph name="SCHEME"/>-länkar. Den länk som efterfrågas är <ph name="PROTOLINK"/>.</translation>
@@ -2029,10 +2032,10 @@ index 9baa4cb..012f8d6 100644
  <translation id="5032989939245619637">Spara information i Chromium</translation>
  <translation id="8803635938069941624">Villkor för Chromium OS</translation>
 diff --git a/third_party/launchpad_translations/chromium_strings_vi.xtb b/third_party/launchpad_translations/chromium_strings_vi.xtb
-index 79290b6..84a2a73 100644
+index 7f1c2a4..830d116 100644
 --- a/third_party/launchpad_translations/chromium_strings_vi.xtb
 +++ b/third_party/launchpad_translations/chromium_strings_vi.xtb
-@@ -261,7 +261,6 @@ Chromium không thể khôi phục cài đặt của bạn.</translation>
+@@ -262,7 +262,6 @@ Chromium không thể khôi phục cài đặt của bạn.</translation>
  <translation id="8823523095753232532">Liên kết dữ liệu Chromium của tôi với tài khoản này</translation>
  <translation id="1808667845054772817">Cài đặt lại Chromium</translation>
  <translation id="1221340462641866827">Chromium OS không hỗ trợ chạy ứng dụng bên ngoài để xử lý các liên kết <ph name="SCHEME"/>. Liên kết được yêu cầu là <ph name="PROTOLINK"/>.</translation>
@@ -2041,10 +2044,10 @@ index 79290b6..84a2a73 100644
  <translation id="5032989939245619637">Lưu chi tiết trong Chromium</translation>
  <translation id="8803635938069941624">Điều khoản Chromium OS</translation>
 diff --git a/third_party/launchpad_translations/chromium_strings_zh-CN.xtb b/third_party/launchpad_translations/chromium_strings_zh-CN.xtb
-index 4d82d02..bcd2cf2 100644
+index 24af464..94a90a6 100644
 --- a/third_party/launchpad_translations/chromium_strings_zh-CN.xtb
 +++ b/third_party/launchpad_translations/chromium_strings_zh-CN.xtb
-@@ -233,7 +233,6 @@ Chromium 无法恢复您的设置。</translation>
+@@ -234,7 +234,6 @@ Chromium 无法恢复您的设置。</translation>
  <translation id="8823523095753232532">将我的 Chromium 数据与此帐户关联</translation>
  <translation id="1808667845054772817">重新安装Chromium</translation>
  <translation id="1221340462641866827">Chromium 操作系统不支持启动外部应用处理 <ph name="SCHEME"/> 链接。请求的链接是 <ph name="PROTOLINK"/>。</translation>
@@ -2053,10 +2056,10 @@ index 4d82d02..bcd2cf2 100644
  <translation id="5032989939245619637">在 Chromium 中保存详细信息</translation>
  <translation id="8803635938069941624">Chromium操作系统条款</translation>
 diff --git a/third_party/launchpad_translations/chromium_strings_zh-TW.xtb b/third_party/launchpad_translations/chromium_strings_zh-TW.xtb
-index 0880945..912b419 100644
+index 224b5c93..645957d 100644
 --- a/third_party/launchpad_translations/chromium_strings_zh-TW.xtb
 +++ b/third_party/launchpad_translations/chromium_strings_zh-TW.xtb
-@@ -261,7 +261,6 @@ Chromium 無法復原您的設定。</translation>
+@@ -262,7 +262,6 @@ Chromium 無法復原您的設定。</translation>
  <translation id="8823523095753232532">將我的 Chromium 資料連結至這個帳戶</translation>
  <translation id="1808667845054772817">重新安裝 Chromium</translation>
  <translation id="1221340462641866827">Chromium 作業系統不支援啟用外部應用程式以處理 <ph name="SCHEME"/> 連結。所要求的連結為 <ph name="PROTOLINK"/>。</translation>

@@ -1,7 +1,7 @@
-From e6774846ba27042c976aac90c6e2d984590f7441 Mon Sep 17 00:00:00 2001
+From daa5287db6d46fd0d74cee93c5d8c7b9c2897465 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sat, 13 Sep 2014 16:59:10 +0200
-Subject: [PATCH 10/43] prefs: disable background mode by default
+Subject: [PATCH 09/46] prefs: disable background mode by default
 
 If I tell the browser to quit, I mean it. Relinquish the memory,
 do not linger around, do not possibly collect data somewhere.

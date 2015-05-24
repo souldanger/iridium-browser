@@ -1,14 +1,14 @@
-From 6616804b86dd6659ed6d97db1335fdaefa883d0a Mon Sep 17 00:00:00 2001
+From 626b1b3d43dba9d2dd56197e9b0965ffdab3fff5 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Thu, 29 Jan 2015 10:39:51 +0100
-Subject: [PATCH 37/43] openSUSE patch chromium-sandbox-pie.patch
+Subject: [PATCH 35/46] openSUSE patch chromium-sandbox-pie.patch
 
 ---
  sandbox/linux/sandbox_linux.gypi | 5 ++++-
  1 file changed, 4 insertions(+), 1 deletion(-)
 
 diff --git a/sandbox/linux/sandbox_linux.gypi b/sandbox/linux/sandbox_linux.gypi
-index a623971..c7f6e4c 100644
+index 4305b41..af1de02 100644
 --- a/sandbox/linux/sandbox_linux.gypi
 +++ b/sandbox/linux/sandbox_linux.gypi
 @@ -205,7 +205,10 @@

@@ -1,7 +1,7 @@
-From 1d4a48b6841a1b225a47d97cf9a2621218755f07 Mon Sep 17 00:00:00 2001
+From eaa6691a122e4a0513d19a6dc58f8ba6fd223cd6 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sat, 13 Sep 2014 17:03:17 +0200
-Subject: [PATCH 11/43] prefs: disable hyperlink auditing
+Subject: [PATCH 10/46] prefs: disable hyperlink auditing
 
 "Disable sending hyperlink auditing pings", i.e. pings to
 URLs in <a ping="..."> when clicked.
@@ -15,10 +15,10 @@ https://html.spec.whatwg.org/multipage/semantics.html#hyperlink-auditing .
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/chrome/browser/chrome_content_browser_client.cc b/chrome/browser/chrome_content_browser_client.cc
-index 4b4d4e4..e94fc00 100644
+index c644b41..972fb7e 100644
 --- a/chrome/browser/chrome_content_browser_client.cc
 +++ b/chrome/browser/chrome_content_browser_client.cc
-@@ -725,7 +725,7 @@ void ChromeContentBrowserClient::RegisterProfilePrefs(
+@@ -620,7 +620,7 @@ void ChromeContentBrowserClient::RegisterProfilePrefs(
        user_prefs::PrefRegistrySyncable::UNSYNCABLE_PREF);
    registry->RegisterBooleanPref(
        prefs::kEnableHyperlinkAuditing,

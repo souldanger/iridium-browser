@@ -1,7 +1,7 @@
-From a278b9152e4e9349d8f774568deba9f3814002d7 Mon Sep 17 00:00:00 2001
+From e929b9b75e9f2a251c196a6dba4beee51b4a62bd Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sat, 13 Sep 2014 17:25:47 +0200
-Subject: [PATCH 13/43] prefs: only keep cookies until exit
+Subject: [PATCH 12/46] prefs: only keep cookies until exit
 
 Out with all those tracking cookies!
 ---
@@ -9,18 +9,18 @@ Out with all those tracking cookies!
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/components/content_settings/core/browser/content_settings_default_provider.cc b/components/content_settings/core/browser/content_settings_default_provider.cc
-index bd0f474..e00966c 100644
+index 6ac3b651..bb3d4c1 100644
 --- a/components/content_settings/core/browser/content_settings_default_provider.cc
 +++ b/components/content_settings/core/browser/content_settings_default_provider.cc
-@@ -26,7 +26,7 @@ namespace {
- 
- // The default setting for each content type.
- const ContentSetting kDefaultSettings[] = {
--  CONTENT_SETTING_ALLOW,    // CONTENT_SETTINGS_TYPE_COOKIES
-+  CONTENT_SETTING_SESSION_ONLY,    // CONTENT_SETTINGS_TYPE_COOKIES
-   CONTENT_SETTING_ALLOW,    // CONTENT_SETTINGS_TYPE_IMAGES
-   CONTENT_SETTING_ALLOW,    // CONTENT_SETTINGS_TYPE_JAVASCRIPT
-   CONTENT_SETTING_ALLOW,    // CONTENT_SETTINGS_TYPE_PLUGINS
+@@ -39,7 +39,7 @@ struct DefaultContentSettingInfo {
+ // default content setting. This array must be kept in sync with the enum
+ // |ContentSettingsType|.
+ const DefaultContentSettingInfo kDefaultSettings[] = {
+-    {prefs::kDefaultCookiesSetting, CONTENT_SETTING_ALLOW, true},
++    {prefs::kDefaultCookiesSetting, CONTENT_SETTING_SESSION_ONLY, true},
+     {prefs::kDefaultImagesSetting, CONTENT_SETTING_ALLOW, true},
+     {prefs::kDefaultJavaScriptSetting, CONTENT_SETTING_ALLOW, true},
+     {prefs::kDefaultPluginsSetting, CONTENT_SETTING_ALLOW, true},
 -- 
 2.4.0
 

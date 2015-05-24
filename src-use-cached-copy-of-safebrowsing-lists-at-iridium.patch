@@ -1,34 +1,28 @@
-From 11284573330f31de53e0f2507d9f1d588b52d5e3 Mon Sep 17 00:00:00 2001
+From 213ee2f5236cc72aae97f64ebe856ed315aa5c60 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Mon, 26 Jan 2015 13:57:44 +0100
-Subject: [PATCH 35/43] src: use cached copy of safebrowsing lists at
+Subject: [PATCH 33/46] src: use cached copy of safebrowsing lists at
  iridiumbrowser.de
 
 To avoid contacing Google, let the UA use safebrowsing lists hosted at
 iridiumbrowser. The Iridium project re-gathers these lists on a
 regular basis.
 ---
- chrome/browser/safe_browsing/client_side_detection_service.cc | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ chrome/browser/safe_browsing/client_side_detection_service.cc | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/chrome/browser/safe_browsing/client_side_detection_service.cc b/chrome/browser/safe_browsing/client_side_detection_service.cc
-index b5e2e75..321369e 100644
+index 09f44b9..eba2c51 100644
 --- a/chrome/browser/safe_browsing/client_side_detection_service.cc
 +++ b/chrome/browser/safe_browsing/client_side_detection_service.cc
-@@ -75,12 +75,12 @@ const int ClientSideDetectionService::kReportsIntervalDays = 1;
- const int ClientSideDetectionService::kNegativeCacheIntervalDays = 1;
- const int ClientSideDetectionService::kPositiveCacheIntervalMinutes = 30;
- 
--const char ClientSideDetectionService::kClientReportPhishingUrl[] =
-+const char ClientSideDetectionService::kClientReportPhishingUrl[] = /* POST */
-     "https://trk-148.iridiumbrowser.de/sb-ssl.google.com/safebrowsing/clientreport/phishing";
--const char ClientSideDetectionService::kClientReportMalwareUrl[] =
-+const char ClientSideDetectionService::kClientReportMalwareUrl[] = /* POST */
-     "https://trk-149.iridiumbrowser.de/sb-ssl.google.com/safebrowsing/clientreport/malware-check";
+@@ -79,8 +79,8 @@ const char ClientSideDetectionService::kClientReportPhishingUrl[] =
+     "https://sb-ssl.google.com/safebrowsing/clientreport/phishing";
+ const char ClientSideDetectionService::kClientReportMalwareUrl[] =
+     "https://sb-ssl.google.com/safebrowsing/clientreport/malware-check";
 -const char ClientSideDetectionService::kClientModelUrl[] =
--    "https://trk-150.iridiumbrowser.de/ssl.gstatic.com/safebrowsing/csd/client_model_v5.pb";
+-    "https://ssl.gstatic.com/safebrowsing/csd/client_model_v5.pb";
 +const char ClientSideDetectionService::kClientModelUrl[] = /* GET */
-+    "https://safebrowsing.iridiumbrowser.de/client_model_v5.pb";
++    "https://cache.iridiumbrowser.de/client_model_v5.pb";
  
  struct ClientSideDetectionService::ClientReportInfo {
    ClientReportPhishingRequestCallback callback;

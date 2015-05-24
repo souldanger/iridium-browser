@@ -1,7 +1,7 @@
-From 4f9459dc1843b56db18da1dff979fe9454e3e2a8 Mon Sep 17 00:00:00 2001
+From 45d650b6b8cbcbdb23ac1e9ac9d984d78bbd1202 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sun, 9 Nov 2014 01:54:27 +0100
-Subject: [PATCH 25/43] promo: deactivate default Google promotion fetching
+Subject: [PATCH 24/46] promo: deactivate default Google promotion fetching
 
 Documentation is scarce, and sprinkled with misleading acronyms.
 NTP is not NTP, for example. FWIW:
@@ -24,10 +24,10 @@ Check failed: original_url_.is_valid().
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/chrome/browser/web_resource/notification_promo.cc b/chrome/browser/web_resource/notification_promo.cc
-index 8999dd8..744b580 100644
+index a71c0e7..f40f6ae 100644
 --- a/chrome/browser/web_resource/notification_promo.cc
 +++ b/chrome/browser/web_resource/notification_promo.cc
-@@ -33,7 +33,7 @@ namespace {
+@@ -34,7 +34,7 @@ namespace {
  
  const int kDefaultGroupSize = 100;
  

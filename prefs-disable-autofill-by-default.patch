@@ -1,7 +1,7 @@
-From f11f558b6e5033885f4e7c2b6b0208ee64910f93 Mon Sep 17 00:00:00 2001
+From d0a613deabcbd60cb6e4b11c250617dddce29d93 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Thu, 11 Sep 2014 16:37:32 +0200
-Subject: [PATCH 03/43] prefs: disable autofill by default
+Subject: [PATCH 02/46] prefs: disable autofill by default
 
 With Autofill, I argue, users are tempted to be lazy and fill forms
 with more data than is perhaps really required for a particular
@@ -15,10 +15,10 @@ to enter.
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/components/autofill/core/browser/autofill_manager.cc b/components/autofill/core/browser/autofill_manager.cc
-index ca6399a..9cdb132 100644
+index 47d518b..f81d0e7 100644
 --- a/components/autofill/core/browser/autofill_manager.cc
 +++ b/components/autofill/core/browser/autofill_manager.cc
-@@ -176,7 +176,7 @@ void AutofillManager::RegisterProfilePrefs(
+@@ -164,7 +164,7 @@ void AutofillManager::RegisterProfilePrefs(
      user_prefs::PrefRegistrySyncable* registry) {
    registry->RegisterBooleanPref(
        prefs::kAutofillEnabled,
