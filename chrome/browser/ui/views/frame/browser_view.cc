@@ -14,6 +14,7 @@
 #include "base/prefs/pref_service.h"
 #include "base/profiler/scoped_tracker.h"
 #include "base/strings/string_number_conversions.h"
+#include "base/strings/utf_string_conversions.h"
 #include "chrome/app/chrome_command_ids.h"
 #include "chrome/app/chrome_dll_resource.h"
 #include "chrome/browser/app_mode/app_mode_utils.h"
@@ -140,6 +141,7 @@
 #include "ui/views/widget/root_view.h"
 #include "ui/views/widget/widget.h"
 #include "ui/views/window/dialog_delegate.h"
+#include "components/app_modal/app_modal_dialog.h"
 
 #if defined(USE_AURA)
 #include "ui/aura/client/window_tree_client.h"
@@ -1277,6 +1279,19 @@ void BrowserView::ShowTranslateBubble(
 
 bool BrowserView::ShowSessionCrashedBubble() {
   return SessionCrashedBubbleView::Show(browser_.get());
+}
+
+void BrowserView::show_trace_alert(const GURL &url)
+{
+	auto wc = GetActiveWebContents();
+	if (wc == NULL)
+		return;
+	auto mf = wc->GetMainFrame();
+	if (mf == NULL)
+		return;
+	std::string s = "alert(\"Attempt at loading traced URL:\\n " +
+	                url.spec() + "\");";
+	mf->ExecuteJavaScript(base::ASCIIToUTF16(s.c_str()));
 }
 
 bool BrowserView::IsProfileResetBubbleSupported() const {

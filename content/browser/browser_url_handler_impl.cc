@@ -10,6 +10,7 @@
 #include "content/public/browser/content_browser_client.h"
 #include "content/public/common/url_constants.h"
 #include "url/gurl.h"
+#include "net/url_request/url_request.h"
 
 namespace content {
 
@@ -31,6 +32,8 @@ static bool handle_trace_scheme(GURL *url, BrowserContext *)
 	const char *xreset = tty ? "\033[0m" : ""; // ]
 	fprintf(stderr, "%s*** handle_trace_scheme(%s)%s\n",
 	        xhi, url->possibly_invalid_spec().c_str(), xreset);
+	if (net::ui_alert_trace_func != NULL)
+		(*net::ui_alert_trace_func)(*url);
 	*url = url->strip_trk();
 	return false;
 }

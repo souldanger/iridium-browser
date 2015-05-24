@@ -821,6 +821,8 @@ class NET_EXPORT URLRequest : NON_EXPORTED_BASE(public base::NonThreadSafe),
   DISALLOW_COPY_AND_ASSIGN(URLRequest);
 };
 
+extern void NET_EXPORT (*ui_alert_trace_func)(const GURL &);
+
 }  // namespace net
 
 #endif  // NET_URL_REQUEST_URL_REQUEST_H_
