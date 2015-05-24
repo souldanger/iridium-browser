@@ -8,7 +8,7 @@ profile-resetter-do-not-tick-send-settings-by-defaul.patch
 browser-ui-disable-warning-about-missing-API-keys.patch
 mime_util-force-text-x-suse-ymp-to-be-downloaded.patch
 icons-change-sad-plugin-icon.patch
-prefs-disable-autofill-by-default.patch
+autofill-disable-autofill-entry-and-autofill-downloa.patch
 prefs-disable-Use-a-web-service-to-help-resolve-navi.patch
 prefs-disable-Use-a-prediction-service-to-help-compl.patch
 prefs-enable-Send-a-Do-Not-Track-header.patch
@@ -42,9 +42,13 @@ Remove-EV-certificates.patch
 src-add-comments-for-evil-looking-code.patch
 spellchecker-flag-downloading-dictionary-from-Google.patch
 google-cloud-messaging-disable-experiment-status-che.patch
-net-help-identify-URLs-being-retrieved.patch
-src-flag-evil-connections.patch
-promo-deactivate-default-Google-promotion-fetching.patch
+net-add-trk-scheme-and-help-identify-URLs-being-retr.patch
+safe_browsing-disable-incident-reporting.patch
+safe_browsing-disable-reporting-of-safebrowsing-over.patch
+safe_browsing-support-trk-prefix.patch
+safe_browsing-use-cached-lists-from-iridiumbrowser.d.patch
+all-add-trk-prefixes-to-possibly-evil-connections.patch
+promo-disable-Google-promotion-fetching.patch
 hotword-disable-at-build-time-by-default.patch
 google_now-disable-this.patch
 search-show-blank-tab-for-new-tab-page.patch

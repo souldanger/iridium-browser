@@ -1,7 +1,8 @@
-From e1971a232ac9476eefdd4382d54965c5bea162ab Mon Sep 17 00:00:00 2001
+From d1ef253e1077ac99a6156f45582e545c0578c0fe Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Wed, 20 May 2015 01:34:50 +0200
-Subject: [PATCH 45/53] net: help identify URLs being retrieved
+Subject: [PATCH 45/57] net: add "trk:" scheme and help identify URLs being
+ retrieved
 
 The Chromium codebase has left us with a number of suspect URLs, and
 we want to know if the browser attempts to contact those sites.
@@ -11,8 +12,9 @@ being processed, will dump a warning onto the screen as the resource
 is loaded. All URLs we think are suspect are "blacklisted" by
 prepending the new scheme to an existing URL:
 
-	trk:1234:https://clients4.google.com/ (or)
-	trk:https://clients4.google.com/
+	trk:1234:https://clients4.google.com/
+	trk:https://clients4.google.com/ (unnumbered old variant)
+	trk:0.1234:https://... (stderr only, no UI reporting)
 
 Upon seeing a warning, we then know to investigate further, and either
 (a) whitelist the URL, that is, remove the trk: prefix and not show
@@ -23,11 +25,9 @@ Implementation:
 
 We hack up the URLFetcher class which sits in the network stack, and
 most of the URL that get loaded pass through here. The trk: prefix is
-stripped and processing continues with the inner URL. There is also a
-browser-level scheme handler for trk:, not sure if we still need it
-(relict from 43.0~test2). It might trigger.
+stripped and processing continues with the inner URL.
 ---
- chrome/app/chrome_main.cc                          | 18 +++++++
+ chrome/app/chrome_main.cc                          | 20 ++++++++
  .../chrome_autocomplete_scheme_classifier.cc       |  1 +
  chrome/browser/history/history_utils.cc            |  1 +
  chrome/browser/ui/browser_command_controller.cc    |  3 +-
@@ -45,11 +45,11 @@ browser-level scheme handler for trk:, not sure if we still need it
  iridium/trknotify.h                                | 20 ++++++++
  net/url_request/url_request.cc                     |  7 +++
  net/url_request/url_request.h                      |  2 +
- url/gurl.cc                                        | 21 ++++++++
- url/gurl.h                                         |  3 ++
+ url/gurl.cc                                        | 35 +++++++++++++
+ url/gurl.h                                         |  5 ++
  url/url_constants.cc                               |  1 +
  url/url_constants.h                                |  1 +
- 22 files changed, 269 insertions(+), 7 deletions(-)
+ 22 files changed, 287 insertions(+), 7 deletions(-)
  create mode 100644 iridium/iridium.gyp
  create mode 100644 iridium/trkbar.cpp
  create mode 100644 iridium/trkbar.h
@@ -57,7 +57,7 @@ browser-level scheme handler for trk:, not sure if we still need it
  create mode 100644 iridium/trknotify.h
 
 diff --git a/chrome/app/chrome_main.cc b/chrome/app/chrome_main.cc
-index 360b7e5..be923ad 100644
+index 360b7e5..5193c3a 100644
 --- a/chrome/app/chrome_main.cc
 +++ b/chrome/app/chrome_main.cc
 @@ -5,6 +5,10 @@
@@ -71,7 +71,7 @@ index 360b7e5..be923ad 100644
  
  #if defined(OS_WIN)
  #include "base/debug/dump_without_crashing.h"
-@@ -25,6 +29,17 @@ int ChromeMain(int argc, const char** argv);
+@@ -25,6 +29,19 @@ int ChromeMain(int argc, const char** argv);
  }
  #endif
  
@@ -82,6 +82,8 @@ index 360b7e5..be923ad 100644
 +	if (url.scheme() != url::kTraceScheme)
 +		/* Do not show infobar for non-trk URLs */
 +		return;
++	if (url.is_trq())
++		return;
 +	iridium::trace_url_request(caller, url);
 +}
 +#endif
@@ -89,7 +91,7 @@ index 360b7e5..be923ad 100644
  #if defined(OS_WIN)
  DLLEXPORT int __cdecl ChromeMain(HINSTANCE instance,
                                   sandbox::SandboxInterfaceInfo* sandbox_info) {
-@@ -63,6 +78,9 @@ int ChromeMain(int argc, const char** argv) {
+@@ -63,6 +80,9 @@ int ChromeMain(int argc, const char** argv) {
    params.argv = argv;
  #endif
  
@@ -539,10 +541,10 @@ index e623c20..7dd1989 100644
  
  #endif  // NET_URL_REQUEST_URL_REQUEST_H_
 diff --git a/url/gurl.cc b/url/gurl.cc
-index 46ca408..b639228 100644
+index 46ca408..16fcfb9 100644
 --- a/url/gurl.cc
 +++ b/url/gurl.cc
-@@ -544,6 +544,27 @@ void GURL::Swap(GURL* other) {
+@@ -544,6 +544,41 @@ void GURL::Swap(GURL* other) {
    inner_url_.swap(other->inner_url_);
  }
  
@@ -559,6 +561,13 @@ index 46ca408..b639228 100644
 +	return s.erase(0, pos + 1);
 +}
 +
++bool gurl_is_trq(const std::string &s)
++{
++	auto slen = strlen(url::kTraceScheme);
++	/* trk:0.nnn:http:// makes for a quiet one */
++	return s[slen+1] == '0' && s[slen+2] == '.';
++}
++
 +GURL GURL::strip_trk(void) const
 +{
 +	if (!SchemeIs(url::kTraceScheme))
@@ -567,27 +576,36 @@ index 46ca408..b639228 100644
 +	return GURL(gurl_strip_trk(s));
 +}
 +
++bool GURL::is_trq(void) const
++{
++	if (!SchemeIs(url::kTraceScheme))
++		return false;
++	return gurl_is_trq(spec());
++}
++
  std::ostream& operator<<(std::ostream& out, const GURL& url) {
    return out << url.possibly_invalid_spec();
  }
 diff --git a/url/gurl.h b/url/gurl.h
-index 566fc5e..d5d9daa 100644
+index 566fc5e..da5a288 100644
 --- a/url/gurl.h
 +++ b/url/gurl.h
-@@ -361,6 +361,8 @@ class URL_EXPORT GURL {
+@@ -361,6 +361,9 @@ class URL_EXPORT GURL {
      return inner_url_.get();
    }
  
 +  GURL strip_trk(void) const;
++  bool is_trq(void) const;
 +
   private:
    // Variant of the string parsing constructor that allows the caller to elect
    // retain trailing whitespace, if any, on the passed URL spec but only  if the
-@@ -401,5 +403,6 @@ class URL_EXPORT GURL {
+@@ -401,5 +404,7 @@ class URL_EXPORT GURL {
  
  // Stream operator so GURL can be used in assertion statements.
  URL_EXPORT std::ostream& operator<<(std::ostream& out, const GURL& url);
 +URL_EXPORT std::string &gurl_strip_trk(std::string &);
++URL_EXPORT bool gurl_is_trq(const std::string &);
  
  #endif  // URL_GURL_H_
 diff --git a/url/url_constants.cc b/url/url_constants.cc

@@ -1,30 +1,53 @@
-From cae1b002a302f4c0fc5833ff959901c69d267bb2 Mon Sep 17 00:00:00 2001
-From: Jan Engelhardt <jengelh@inai.de>
-Date: Mon, 6 Jul 2015 04:24:35 +0200
-Subject: [PATCH 50/53] search: show blank tab for new tab page
+From c0da2f72fc8a2fef8a851ec82386c8de67f6b07d Mon Sep 17 00:00:00 2001
+From: Joachim Bauch <jojo@struktur.de>
+Date: Mon, 6 Jul 2015 17:17:20 +0200
+Subject: [PATCH 54/57] search: show blank tab for new tab page
 
-Since the New Tab Page prefers to show Search somehow,
-use a blank page for new tabs.
+Avoid loading the search page everytime, just show a blank one instead.
 
 References: https://github.com/iridium-browser/iridium-browser/issues/32
-References: https://github.com/iridium-browser/iridium-browser/issues/33
 ---
- chrome/browser/search/search.cc | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ chrome/browser/search/search.cc | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
 diff --git a/chrome/browser/search/search.cc b/chrome/browser/search/search.cc
-index 21254bc..18d3515 100644
+index 21254bc..20be11a 100644
 --- a/chrome/browser/search/search.cc
 +++ b/chrome/browser/search/search.cc
-@@ -296,7 +296,7 @@ struct NewTabURLDetails {
-         return NewTabURLDetails(GURL(), state);
-       default:
+@@ -257,6 +257,7 @@ bool IsURLAllowedForSupervisedUser(const GURL& url, Profile* profile) {
+   return true;
+ }
+ 
++#if 0
+ // Returns whether |new_tab_url| can be used as a URL for the New Tab page.
+ // NEW_TAB_URL_VALID means a valid URL; other enum values imply an invalid URL.
+ NewTabURLState IsValidNewTabURL(Profile* profile, const GURL& new_tab_url) {
+@@ -270,6 +271,7 @@ NewTabURLState IsValidNewTabURL(Profile* profile, const GURL& new_tab_url) {
+     return NEW_TAB_URL_BLOCKED;
+   return NEW_TAB_URL_VALID;
+ }
++#endif
+ 
+ // Used to look up the URL to use for the New Tab page. Also tracks how we
+ // arrived at that URL so it can be logged with UMA.
+@@ -278,6 +280,9 @@ struct NewTabURLDetails {
+       : url(url), state(state) {}
+ 
+   static NewTabURLDetails ForProfile(Profile* profile) {
++#if 1
++    return NewTabURLDetails(GURL("about:blank"), NEW_TAB_URL_VALID);
++#else
+     const GURL local_url(chrome::kChromeSearchLocalNtpUrl);
+     TemplateURL* template_url = GetDefaultSearchProviderTemplateURL(profile);
+     if (!profile || !template_url)
+@@ -298,6 +303,7 @@ struct NewTabURLDetails {
          // Use the local New Tab otherwise.
--        return NewTabURLDetails(local_url, state);
-+        return NewTabURLDetails(GURL("about:blank"), state);
+         return NewTabURLDetails(local_url, state);
      }
++#endif
    }
  
+   GURL url;
 -- 
 2.4.3
 

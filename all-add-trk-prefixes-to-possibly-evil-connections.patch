@@ -1,7 +1,7 @@
-From 5ff833f2f280cc718a28e01549294aa17bf90f20 Mon Sep 17 00:00:00 2001
+From 7061ebc4403083069877cd40d475d600b5908f8d Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Mon, 3 Nov 2014 10:52:56 +0100
-Subject: [PATCH 46/53] src: flag evil connections
+Subject: [PATCH 50/57] all: add trk: prefixes to possibly evil connections
 
 Prefix URLs to Google services with trk: so that whenever something
 tries to load them, the developer will be informed via printf and
@@ -36,8 +36,6 @@ by default.
  .../browser/resources/default_apps/external_extensions.json  |  4 ++--
  .../browser/safe_browsing/client_side_detection_service.cc   |  4 ++--
  chrome/browser/safe_browsing/download_feedback.cc            |  2 +-
- chrome/browser/safe_browsing/safe_browsing_blocking_page.cc  |  8 ++++----
- chrome/browser/safe_browsing/safe_browsing_service.cc        |  8 ++++----
  chrome/browser/safe_browsing/srt_global_error_win.cc         |  2 +-
  chrome/browser/services/gcm/gcm_account_tracker.cc           |  4 ++--
  .../browser/spellchecker/spellcheck_hunspell_dictionary.cc   |  2 +-
@@ -59,7 +57,6 @@ by default.
  cloud_print/gcp20/prototype/cloud_print_requester.cc         |  2 +-
  cloud_print/service/service_state.cc                         |  2 +-
  cloud_print/virtual_driver/win/install/setup.cc              |  2 +-
- .../autofill/core/browser/autofill_download_manager.cc       |  2 +-
  components/cloud_devices/common/cloud_devices_urls.cc        | 12 ++++++------
  components/copresence/rpc/rpc_handler.cc                     |  2 +-
  components/crash/app/breakpad_linux.cc                       |  2 +-
@@ -79,6 +76,7 @@ by default.
  components/search_engines/prepopulated_engines.json          |  2 +-
  components/signin/core/browser/signin_account_id_helper.cc   |  2 +-
  components/translate/core/browser/translate_url_fetcher.cc   |  1 +
+ components/translate/core/common/translate_util.cc           |  2 +-
  content/browser/speech/google_one_shot_remote_engine.cc      |  2 +-
  content/browser/speech/google_streaming_remote_engine.cc     |  2 +-
  content/shell/browser/shell_browser_main_parts.cc            |  2 +-
@@ -94,7 +92,7 @@ by default.
  sync/tools/sync_client.cc                                    |  2 +-
  ui/app_list/demo/app_list_demo_views.cc                      |  2 +-
  ui/views/examples/webview_example.cc                         |  2 +-
- 83 files changed, 127 insertions(+), 126 deletions(-)
+ 81 files changed, 119 insertions(+), 118 deletions(-)
 
 diff --git a/build/mac/tweak_info_plist.py b/build/mac/tweak_info_plist.py
 index 71c08fa..c66d334 100755
@@ -448,10 +446,10 @@ index 52aa500..f0bcdaf 100644
  }
  
 diff --git a/chrome/browser/safe_browsing/client_side_detection_service.cc b/chrome/browser/safe_browsing/client_side_detection_service.cc
-index eba2c51..0443a74 100644
+index dc5fa5b..da07f2c 100644
 --- a/chrome/browser/safe_browsing/client_side_detection_service.cc
 +++ b/chrome/browser/safe_browsing/client_side_detection_service.cc
-@@ -76,9 +76,9 @@ const int ClientSideDetectionService::kNegativeCacheIntervalDays = 1;
+@@ -78,9 +78,9 @@ const int ClientSideDetectionService::kNegativeCacheIntervalDays = 1;
  const int ClientSideDetectionService::kPositiveCacheIntervalMinutes = 30;
  
  const char ClientSideDetectionService::kClientReportPhishingUrl[] =
@@ -476,62 +474,6 @@ index 27f4008..1e2c88a 100644
  
  // static
  DownloadFeedbackFactory* DownloadFeedback::factory_ = NULL;
-diff --git a/chrome/browser/safe_browsing/safe_browsing_blocking_page.cc b/chrome/browser/safe_browsing/safe_browsing_blocking_page.cc
-index b6f5276..66391db 100644
---- a/chrome/browser/safe_browsing/safe_browsing_blocking_page.cc
-+++ b/chrome/browser/safe_browsing/safe_browsing_blocking_page.cc
-@@ -56,17 +56,17 @@ namespace {
- // diagnostic page.
- #if defined(GOOGLE_CHROME_BUILD)
- const char kSbDiagnosticUrl[] =
--    "http://safebrowsing.clients.google.com/safebrowsing/diagnostic?site=%s&client=googlechrome";
-+    "trk:227:http://safebrowsing.clients.google.com/safebrowsing/diagnostic?site=%s&client=googlechrome";
- #else
- const char kSbDiagnosticUrl[] =
--    "http://safebrowsing.clients.google.com/safebrowsing/diagnostic?site=%s&client=chromium";
-+    "trk:228:http://safebrowsing.clients.google.com/safebrowsing/diagnostic?site=%s&client=chromium";
- #endif
- 
- // URL for malware and phishing, V2.
- const char kLearnMoreMalwareUrlV2[] =
--    "https://www.google.com/transparencyreport/safebrowsing/";
-+    "trk:225:https://www.google.com/transparencyreport/safebrowsing/";
- const char kLearnMorePhishingUrlV2[] =
--    "https://www.google.com/transparencyreport/safebrowsing/";
-+    "trk:226:https://www.google.com/transparencyreport/safebrowsing/";
- 
- // After a malware interstitial where the user opted-in to the report
- // but clicked "proceed anyway", we delay the call to
-diff --git a/chrome/browser/safe_browsing/safe_browsing_service.cc b/chrome/browser/safe_browsing/safe_browsing_service.cc
-index 637993a..99290f5 100644
---- a/chrome/browser/safe_browsing/safe_browsing_service.cc
-+++ b/chrome/browser/safe_browsing/safe_browsing_service.cc
-@@ -71,21 +71,21 @@ const base::FilePath::CharType kCookiesFile[] = FILE_PATH_LITERAL(" Cookies");
- // The default URL prefix where browser fetches chunk updates, hashes,
- // and reports safe browsing hits and malware details.
- const char* const kSbDefaultURLPrefix =
--    "https://safebrowsing.google.com/safebrowsing";
-+    "trk:165:https://safebrowsing.google.com/safebrowsing";
- 
- // The backup URL prefix used when there are issues establishing a connection
- // with the server at the primary URL.
- const char* const kSbBackupConnectErrorURLPrefix =
--    "https://alt1-safebrowsing.google.com/safebrowsing";
-+    "trk:166:https://alt1-safebrowsing.google.com/safebrowsing";
- 
- // The backup URL prefix used when there are HTTP-specific issues with the
- // server at the primary URL.
- const char* const kSbBackupHttpErrorURLPrefix =
--    "https://alt2-safebrowsing.google.com/safebrowsing";
-+    "trk:167:https://alt2-safebrowsing.google.com/safebrowsing";
- 
- // The backup URL prefix used when there are local network specific issues.
- const char* const kSbBackupNetworkErrorURLPrefix =
--    "https://alt3-safebrowsing.google.com/safebrowsing";
-+    "trk:168:https://alt3-safebrowsing.google.com/safebrowsing";
- 
- base::FilePath CookieFilePath() {
-   return base::FilePath(
 diff --git a/chrome/browser/safe_browsing/srt_global_error_win.cc b/chrome/browser/safe_browsing/srt_global_error_win.cc
 index 74d38d5..ae48bf2 100644
 --- a/chrome/browser/safe_browsing/srt_global_error_win.cc
@@ -866,19 +808,6 @@ index 64b68c2..18bd30a 100644
  
  const wchar_t kDataFileName[] = L"gcp_driver.gpd";
  const wchar_t kDriverName[] = L"MXDWDRV.DLL";
-diff --git a/components/autofill/core/browser/autofill_download_manager.cc b/components/autofill/core/browser/autofill_download_manager.cc
-index afe5679..8f83e87 100644
---- a/components/autofill/core/browser/autofill_download_manager.cc
-+++ b/components/autofill/core/browser/autofill_download_manager.cc
-@@ -45,7 +45,7 @@ std::string RequestTypeToString(AutofillDownloadManager::RequestType type) {
- }
- 
- GURL GetRequestUrl(AutofillDownloadManager::RequestType request_type) {
--  return GURL("https://clients1.google.com/tbproxy/af/" +
-+  return GURL("trk:158:https://clients1.google.com/tbproxy/af/" +
-               RequestTypeToString(request_type) + "?client=" + kClientName);
- }
- 
 diff --git a/components/cloud_devices/common/cloud_devices_urls.cc b/components/cloud_devices/common/cloud_devices_urls.cc
 index 1b875b1..0b0ca0e 100644
 --- a/components/cloud_devices/common/cloud_devices_urls.cc
@@ -1180,6 +1109,19 @@ index 09704fd..d89497f 100644
    fetcher_->Start();
  
    return true;
+diff --git a/components/translate/core/common/translate_util.cc b/components/translate/core/common/translate_util.cc
+index 35c54a9..78242748 100644
+--- a/components/translate/core/common/translate_util.cc
++++ b/components/translate/core/common/translate_util.cc
+@@ -73,7 +73,7 @@ const LanguageCodePair kLanguageCodeChineseCompatiblePairs[] = {
+   {"zh-CN", "zh-SG"},
+ };
+ 
+-const char kSecurityOrigin[] = "https://translate.googleapis.com/";
++const char kSecurityOrigin[] = "trk:220:https://translate.googleapis.com/";
+ 
+ void ToTranslateLanguageSynonym(std::string* language) {
+   for (size_t i = 0; i < arraysize(kLanguageCodeSimilitudes); ++i) {
 diff --git a/content/browser/speech/google_one_shot_remote_engine.cc b/content/browser/speech/google_one_shot_remote_engine.cc
 index a74a60d..00d0532 100644
 --- a/content/browser/speech/google_one_shot_remote_engine.cc

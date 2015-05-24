@@ -1,7 +1,7 @@
-From d7f96ddcd41fd6c68fd07c54a2d2ca421103bce6 Mon Sep 17 00:00:00 2001
+From 4403be29c7a2821ca31d4f528a37c9184b8705d6 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Wed, 10 Dec 2014 12:44:49 +0100
-Subject: [PATCH 29/53] ui: update product description for Iridium
+Subject: [PATCH 29/57] ui: update product description for Iridium
 
 ---
  chrome/app/chromium_strings.grd | 22 +++++++++++-----------

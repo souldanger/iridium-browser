@@ -1,7 +1,7 @@
-From 761e6fe4137a12334e6a5dcbb419a5e8108ff357 Mon Sep 17 00:00:00 2001
+From ce80023647c43d1db11cf0f331b9745a4bc7e840 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sun, 9 Nov 2014 01:54:27 +0100
-Subject: [PATCH 47/53] promo: deactivate default Google promotion fetching
+Subject: [PATCH 51/57] promo: disable Google promotion fetching
 
 Documentation is scarce, and sprinkled with misleading acronyms.
 NTP is not NTP, for example. FWIW:
@@ -14,11 +14,28 @@ NTP is not NTP, for example. FWIW:
 
 Whatever it is that it downloads, deactivate the one that leads to
 Google.
+
+References: https://github.com/iridium-browser/iridium-browser/issues/33
 ---
+ chrome/browser/browser_process_impl.cc            | 2 ++
  chrome/browser/signin/signin_promo.cc             | 5 +++--
  chrome/browser/web_resource/notification_promo.cc | 2 +-
- 2 files changed, 4 insertions(+), 3 deletions(-)
+ 3 files changed, 6 insertions(+), 3 deletions(-)
 
+diff --git a/chrome/browser/browser_process_impl.cc b/chrome/browser/browser_process_impl.cc
+index b373810..673f54e 100644
+--- a/chrome/browser/browser_process_impl.cc
++++ b/chrome/browser/browser_process_impl.cc
+@@ -1054,7 +1054,9 @@ void BrowserProcessImpl::PreMainMessageLoopRun() {
+   if (!command_line.HasSwitch(switches::kDisableWebResources)) {
+     DCHECK(!promo_resource_service_.get());
+     promo_resource_service_.reset(new PromoResourceService);
++#if 0
+     promo_resource_service_->StartAfterDelay();
++#endif
+   }
+ 
+ #if !defined(OS_ANDROID) && !defined(OS_IOS)
 diff --git a/chrome/browser/signin/signin_promo.cc b/chrome/browser/signin/signin_promo.cc
 index a3404a9..5cc4285 100644
 --- a/chrome/browser/signin/signin_promo.cc

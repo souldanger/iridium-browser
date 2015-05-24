@@ -1,7 +1,7 @@
-From 525fcba9fc10be61f687491f8c59d71e59250cbb Mon Sep 17 00:00:00 2001
+From 87e130b1c249ac04118a3f83f3dde331ce9e43a0 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Tue, 9 Dec 2014 17:54:48 +0100
-Subject: [PATCH 30/53] ui/translation: update strings to read "Iridium"
+Subject: [PATCH 30/57] ui/translation: update strings to read "Iridium"
  instead
 
 ---

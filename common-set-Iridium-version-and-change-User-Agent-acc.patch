@@ -1,7 +1,7 @@
-From 4098c19baa39d83a534c4ff7e867353502387806 Mon Sep 17 00:00:00 2001
+From 19dee758bfca7f9186c0021c82bbc942945deda1 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sun, 24 May 2015 15:08:18 +0200
-Subject: [PATCH 53/53] common: set Iridium version and change User-Agent
+Subject: [PATCH 57/57] common: set Iridium version and change User-Agent
  accordingly
 
 Reduced version number:

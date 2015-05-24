@@ -1,0 +1,62 @@
+From 9ead8a45864041c282cfa484bfb864aee4500157 Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Thu, 11 Sep 2014 16:37:32 +0200
+Subject: [PATCH 11/57] autofill: disable autofill entry and autofill download
+ manager
+
+With Autofill, I argue, users are tempted to be lazy and fill forms
+with more data than is perhaps really required for a particular
+service.
+
+The thought here is that the user should be readily subconciously
+reminded about it through every keystroke of information he is about
+to enter.
+
+Disables the autofill download manager (trk:158).
+---
+ components/autofill/core/browser/autofill_download_manager.cc | 2 +-
+ components/autofill/core/browser/autofill_manager.cc          | 4 +++-
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/components/autofill/core/browser/autofill_download_manager.cc b/components/autofill/core/browser/autofill_download_manager.cc
+index afe5679..8f83e87 100644
+--- a/components/autofill/core/browser/autofill_download_manager.cc
++++ b/components/autofill/core/browser/autofill_download_manager.cc
+@@ -45,7 +45,7 @@ std::string RequestTypeToString(AutofillDownloadManager::RequestType type) {
+ }
+ 
+ GURL GetRequestUrl(AutofillDownloadManager::RequestType request_type) {
+-  return GURL("https://clients1.google.com/tbproxy/af/" +
++  return GURL("trk:158:https://clients1.google.com/tbproxy/af/" +
+               RequestTypeToString(request_type) + "?client=" + kClientName);
+ }
+ 
+diff --git a/components/autofill/core/browser/autofill_manager.cc b/components/autofill/core/browser/autofill_manager.cc
+index 47d518b..dcdf299 100644
+--- a/components/autofill/core/browser/autofill_manager.cc
++++ b/components/autofill/core/browser/autofill_manager.cc
+@@ -151,10 +151,12 @@ AutofillManager::AutofillManager(
+       external_delegate_(NULL),
+       test_delegate_(NULL),
+       weak_ptr_factory_(this) {
++#if 0
+   if (enable_download_manager == ENABLE_AUTOFILL_DOWNLOAD_MANAGER) {
+     download_manager_.reset(
+         new AutofillDownloadManager(driver, client_->GetPrefs(), this));
+   }
++#endif
+ }
+ 
+ AutofillManager::~AutofillManager() {}
+@@ -164,7 +166,7 @@ void AutofillManager::RegisterProfilePrefs(
+     user_prefs::PrefRegistrySyncable* registry) {
+   registry->RegisterBooleanPref(
+       prefs::kAutofillEnabled,
+-      true,
++      false,
+       user_prefs::PrefRegistrySyncable::SYNCABLE_PREF);
+   registry->RegisterBooleanPref(
+       prefs::kAutofillWalletSyncExperimentEnabled,
+-- 
+2.4.3
+
