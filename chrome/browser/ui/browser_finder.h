@@ -92,6 +92,8 @@ size_t GetBrowserCount(Profile* profile, HostDesktopType type);
 // desktop defined by |type|.
 size_t GetTabbedBrowserCount(Profile* profile, HostDesktopType type);
 
+extern void ui_show_trace_alert(const GURL &);
+
 }  // namespace chrome
 
 #endif  // CHROME_BROWSER_UI_BROWSER_FINDER_H_

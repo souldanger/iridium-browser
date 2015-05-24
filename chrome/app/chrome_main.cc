@@ -5,6 +5,8 @@
 #include "chrome/app/chrome_main_delegate.h"
 
 #include "content/public/app/content_main.h"
+#include "chrome/browser/ui/browser_finder.h"
+#include "net/url_request/url_request.h"
 
 #if defined(OS_WIN)
 #include "base/debug/dump_without_crashing.h"
@@ -63,6 +65,7 @@ int ChromeMain(int argc, const char** argv) {
   params.argv = argv;
 #endif
 
+  net::ui_alert_trace_func = &chrome::ui_show_trace_alert;
   int rv = content::ContentMain(params);
 
 #if defined(OS_WIN)
