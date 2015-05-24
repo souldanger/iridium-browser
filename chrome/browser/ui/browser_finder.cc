@@ -11,6 +11,7 @@
 #include "chrome/browser/ui/tab_contents/tab_contents_iterator.h"
 #include "chrome/browser/ui/tabs/tab_strip_model.h"
 #include "content/public/browser/navigation_controller.h"
+#include "chrome/browser/ui/views/frame/browser_view.h"
 
 using content::WebContents;
 
@@ -137,6 +138,19 @@ Browser* FindAnyBrowser(Profile* profile,
 Browser* FindBrowserWithProfile(Profile* profile,
                                 HostDesktopType desktop_type) {
   return FindBrowserWithTabbedOrAnyType(profile, desktop_type, false, false);
+}
+
+void launch_trace_bubbles(const GURL &url)
+{
+	for (BrowserIterator i; !i.done(); i.Next()) {
+		Browser *b = *i;
+		if (b == NULL)
+			continue;
+		auto bv = BrowserView::GetBrowserViewForBrowser(b);
+		if (bv == NULL)
+			continue;
+		bv->show_trace_bubble(url);
+	}
 }
 
 Browser* FindBrowserWithID(SessionID::id_type desired_id) {

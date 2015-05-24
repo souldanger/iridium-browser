@@ -2,6 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+#include "base/strings/utf_string_conversions.h"
 #include "chrome/browser/ui/views/session_crashed_bubble_view.h"
 
 #include <vector>
@@ -44,6 +45,7 @@
 #include "ui/views/layout/grid_layout.h"
 #include "ui/views/layout/layout_constants.h"
 #include "ui/views/widget/widget.h"
+#include "ui/views/layout/box_layout.h"
 
 using views::GridLayout;
 
@@ -104,6 +106,54 @@ bool IsBubbleUIEnabled() {
 }
 
 }  // namespace
+
+TraceBubble::TraceBubble(const GURL &url, BrowserView *bv) :
+	views::BubbleDelegateView(bv->toolbar()->app_menu(), views::BubbleBorder::TOP_RIGHT),
+	m_url(url), m_brview(bv)
+{
+	set_color(SkColorSetRGB(96, 0, 0));
+}
+
+TraceBubble *TraceBubble::Show(const GURL &url, Browser *browser)
+{
+	DCHECK(content::BrowserThread::CurrentlyOn(content::BrowserThread::UI));
+	auto bv = BrowserView::GetBrowserViewForBrowser(browser);
+	auto bubble = new TraceBubble(url, bv);
+	views::BubbleDelegateView::CreateBubble(bubble)->Show();
+	return bubble;
+}
+
+void TraceBubble::Init(void)
+{
+	std::wstring text =
+		L"Marked URL retrieved: " +
+		base::UTF8ToWide(m_url.possibly_invalid_spec());
+
+	auto title = new views::Label(base::WideToUTF16(text));
+	title->SetEnabledColor(SkColorSetRGB(224, 224, 224));
+	auto grid = views::GridLayout::CreatePanel(this);
+	SetLayoutManager(grid);
+	auto cset = grid->AddColumnSet(0);
+	cset->AddColumn(views::GridLayout::LEADING, views::GridLayout::LEADING, 0, views::GridLayout::USE_PREF, 0, 0);
+	grid->StartRow(0, 0);
+	grid->AddView(title);
+
+	set_margins(gfx::Insets(1, 0, 1, 0));
+	Layout();
+}
+
+void TraceBubble::OnWidgetDestroying(views::Widget *widget)
+{
+	m_brview->m_trace_bubble = NULL;
+	BubbleDelegateView::OnWidgetDestroying(widget);
+}
+
+void TraceBubble::Close(void)
+{
+	auto w = GetWidget();
+	if (w != NULL)
+		w->Close();
+}
 
 // A helper class that listens to browser removal event.
 class SessionCrashedBubbleView::BrowserRemovalObserver

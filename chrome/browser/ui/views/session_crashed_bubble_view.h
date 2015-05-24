@@ -27,6 +27,24 @@ class RenderViewHost;
 }
 
 class Browser;
+class BrowserView;
+
+class TraceBubble final : public views::BubbleDelegateView {
+	public:
+	static TraceBubble *Show(const GURL &, Browser *);
+	void Close(void);
+
+	protected:
+	void Init(void) override;
+
+	private:
+	TraceBubble(const GURL &, BrowserView *);
+	void OnWidgetDestroying(views::Widget *) override;
+
+	GURL m_url;
+	BrowserView *m_brview;
+	DISALLOW_COPY_AND_ASSIGN(TraceBubble);
+};
 
 // It creates a session restore request bubble when the previous session has
 // crashed. It also presents an option to enable metrics reporting, if it not

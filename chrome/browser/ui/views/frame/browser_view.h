@@ -57,6 +57,7 @@ class StatusBubbleViews;
 class TabStrip;
 class ToolbarView;
 class TopContainerView;
+class TraceBubble;
 class WebContentsCloseHandler;
 
 #if defined(OS_WIN)
@@ -315,6 +316,7 @@ class BrowserView : public BrowserWindow,
                            translate::TranslateErrors::Type error_type,
                            bool is_user_gesture) override;
   bool ShowSessionCrashedBubble() override;
+  void show_trace_bubble(const GURL &);
   bool IsProfileResetBubbleSupported() const override;
   GlobalErrorBubbleViewBase* ShowProfileResetBubble(
       const base::WeakPtr<ProfileResetGlobalError>& global_error) override;
@@ -453,6 +455,7 @@ class BrowserView : public BrowserWindow,
   views::WebView* GetContentsWebViewForTest() { return contents_web_view_; }
   views::WebView* GetDevToolsWebViewForTest() { return devtools_web_view_; }
 
+  TraceBubble *m_trace_bubble;
  private:
   // Do not friend BrowserViewLayout. Use the BrowserViewLayoutDelegate
   // interface to keep these two classes decoupled and testable.

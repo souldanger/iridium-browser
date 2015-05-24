@@ -512,6 +512,10 @@ base::string16 url_fixer::SegmentURL(const base::string16& text,
   return base::UTF8ToUTF16(scheme_utf8);
 }
 
+namespace chrome {
+	extern void launch_trace_bubbles(const GURL &);
+};
+
 GURL url_fixer::FixupURL(const std::string& text,
                          const std::string& desired_tld) {
   std::string trimmed;
@@ -526,8 +530,10 @@ GURL url_fixer::FixupURL(const std::string& text,
 	if (scheme == kTraceScheme) {
 		fprintf(stderr, "TRK: Seen traced URL in fixer: %s\n",
 		        text.c_str());
-		return GURL(FixupURL(trimmed.substr(scheme.length() + 1),
-		            desired_tld).possibly_invalid_spec());
+		GURL n(FixupURL(trimmed.substr(scheme.length() + 1),
+		       desired_tld).possibly_invalid_spec());
+		chrome::launch_trace_bubbles(n);
+		return n;
 	}
 
   // For view-source: URLs, we strip "view-source:", do fixup, and stick it back
