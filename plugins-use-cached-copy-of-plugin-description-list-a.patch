@@ -1,7 +1,7 @@
-From 4a4ecf1ce776c89faad80291ecae7ddbd06716ac Mon Sep 17 00:00:00 2001
+From e244fe7b0f4889a270306fc33fcc5a94072a6e4b Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Thu, 2 Apr 2015 12:44:23 +0200
-Subject: [PATCH 40/46] plugins: use cached copy of plugin description list at
+Subject: [PATCH 42/50] plugins: use cached copy of plugin description list at
  iridiumbrowsing.de
 
 The list contains mimetype-to-plugin mappins, as well as blacklists

@@ -1,10 +1,11 @@
-From 65a005e1ffc85f259dcc8ea42a1fb38f6c7cb81f Mon Sep 17 00:00:00 2001
+From 8bec79ecbf3a81c8c44dbd5b361ad0d2df940452 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Mon, 4 May 2015 15:27:37 +0200
-Subject: [PATCH 20/46] search_engines: add Qwant as selectable and default
+Subject: [PATCH 20/50] search_engines: add Qwant as selectable and default
  search engine
 
-New this month: Supplant DDG with Qwant.
+Per https://github.com/iridium-browser/iridium-browser/issues/4
+we will be setting about:blank as new_tab_url.
 ---
  .../search_engines/prepopulated_engines.json       |  10 +
  components/search_engines/search_engine_type.h     |   1 +
@@ -12,7 +13,7 @@ New this month: Supplant DDG with Qwant.
  3 files changed, 120 insertions(+), 109 deletions(-)
 
 diff --git a/components/search_engines/prepopulated_engines.json b/components/search_engines/prepopulated_engines.json
-index b68037f..d844070 100644
+index cc39694..f52ab26 100644
 --- a/components/search_engines/prepopulated_engines.json
 +++ b/components/search_engines/prepopulated_engines.json
 @@ -36,6 +36,16 @@
@@ -25,7 +26,7 @@ index b68037f..d844070 100644
 +      "favicon_url": "https://qwant.com/favicon.ico",
 +      "search_url": "https://qwant.com/?q={searchTerms}",
 +      "suggest_url": "https://qwant.com/?q={searchTerms}&language={language}&kac=1",
-+      "new_tab_url": "https://qwant.com/",
++      "new_tab_url": "about:blank",
 +      "type": "SEARCH_ENGINE_QWANT",
 +      "id": 12
 +    },

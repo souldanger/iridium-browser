@@ -1,7 +1,7 @@
-From 89bace9b3a1c3818c483068efba158594ce01c7b Mon Sep 17 00:00:00 2001
+From 89684b11198785e6bc0cd3bb22f762c97a54c05c Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Wed, 20 May 2015 01:34:50 +0200
-Subject: [PATCH 43/46] iridium: help identify possibly evil hardcoded URLs
+Subject: [PATCH 47/50] iridium: help identify possibly evil hardcoded URLs
 
 The Chromium codebase has left us with a number of suspect URLs, and
 we want to know if the browser attempts to contact those sites.
@@ -141,7 +141,7 @@ index 2c6982b..997d26f 100644
  }
  
 diff --git a/content/browser/browser_url_handler_impl.cc b/content/browser/browser_url_handler_impl.cc
-index 438feb3..8e29b9a 100644
+index 438feb3..3b143ed 100644
 --- a/content/browser/browser_url_handler_impl.cc
 +++ b/content/browser/browser_url_handler_impl.cc
 @@ -13,6 +13,36 @@
@@ -162,8 +162,8 @@ index 438feb3..8e29b9a 100644
 +	 * (unless you manually enter a trk: URL). Leave it in, maybe it does
 +	 * happen again.
 +	 */
-+	const char *xhi    = tty ? "\e[1;32;45m" : ""; // ]
-+	const char *xreset = tty ? "\e[0m" : ""; // ]
++	const char *xhi    = tty ? "\033[1;32;45m" : ""; // ]
++	const char *xreset = tty ? "\033[0m" : ""; // ]
 +	fprintf(stderr, "%s*** handle_trace_scheme(%s)%s\n",
 +	        xhi, url->possibly_invalid_spec().c_str(), xreset);
 +	*url = url->strip_trk();
@@ -228,7 +228,7 @@ index 34caa5a..0ccdc7f 100644
        return CanRequestURL(child_id, child_url);
      }
 diff --git a/net/url_request/url_request.cc b/net/url_request/url_request.cc
-index 4a1e093..c7b2c115 100644
+index 4a1e093..6d30e1d 100644
 --- a/net/url_request/url_request.cc
 +++ b/net/url_request/url_request.cc
 @@ -552,6 +552,24 @@ URLRequest::URLRequest(const GURL& url,
@@ -240,10 +240,10 @@ index 4a1e093..c7b2c115 100644
 +#else
 +	bool tty = false;
 +#endif
-+	const char *xred   = tty ? "\e[1;37;41m" : ""; // ]
-+	const char *xfruit = tty ? "\e[33m" : ""; // ]
-+	const char *xdark  = tty ? "\e[1;30m" : ""; // ]
-+	const char *xreset = tty ? "\e[0m" : ""; //]
++	const char *xred   = tty ? "\033[1;37;41m" : ""; // ]
++	const char *xfruit = tty ? "\033[33m" : ""; // ]
++	const char *xdark  = tty ? "\033[1;30m" : ""; // ]
++	const char *xreset = tty ? "\033[0m" : ""; //]
 +	if (url.scheme() == url::kTraceScheme) {
 +		fprintf(stderr, "%s*** URLRequest(%s)%s\n",
 +			xred, url.possibly_invalid_spec().c_str(), xreset);

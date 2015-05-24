@@ -1,7 +1,7 @@
 From 4ae9b4278bc2ba30743df92fef590fe1ce66cf11 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Thu, 2 Apr 2015 11:39:20 +0200
-Subject: [PATCH 01/46] base: make MSVC happy with __PRETTY_FUNCTION__
+Subject: [PATCH 01/50] base: make MSVC happy with __PRETTY_FUNCTION__
 
 In patches further down the line, we emit some debug statements to
 stdout/stderr for developers, and do so with the function name in it.

@@ -1,7 +1,7 @@
-From cfa831711c8c7d20dac14f2e6b0a69bdde04d4d8 Mon Sep 17 00:00:00 2001
+From 6d29b4874bc92764563c16346a13811235ba0f0e Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sun, 24 May 2015 15:08:18 +0200
-Subject: [PATCH 46/46] common: set Iridium version and change User-Agent
+Subject: [PATCH 50/50] common: set Iridium version and change User-Agent
  accordingly
 
 Reduced version number:
@@ -36,7 +36,7 @@ index 72faf97..7c0f43d 100644
  
  #endif  // ANDROID_WEBVIEW_COMMON_AW_VERSION_INFO_VALUES_H_
 diff --git a/chrome/VERSION b/chrome/VERSION
-index 4187657..c560041 100644
+index 4187657..acd919b 100644
 --- a/chrome/VERSION
 +++ b/chrome/VERSION
 @@ -1,4 +1,4 @@
@@ -44,7 +44,7 @@ index 4187657..c560041 100644
 -MINOR=0
 -BUILD=2357
 -PATCH=83
-+MINOR=1
++MINOR=2
 +BUILD=0
 +PATCH=0
 diff --git a/chrome/common/chrome_version_info.cc b/chrome/common/chrome_version_info.cc
@@ -74,7 +74,7 @@ index dde5a42..26f350a 100644
  #define IS_OFFICIAL_BUILD @OFFICIAL_BUILD@
  
 diff --git a/content/common/user_agent.cc b/content/common/user_agent.cc
-index f3e113d..83626d1 100644
+index f3e113d..f6012f0 100644
 --- a/content/common/user_agent.cc
 +++ b/content/common/user_agent.cc
 @@ -209,6 +209,8 @@ std::string BuildUserAgentFromOSAndProduct(const std::string& os_info,
@@ -82,7 +82,7 @@ index f3e113d..83626d1 100644
        WEBKIT_VERSION_MAJOR,
        WEBKIT_VERSION_MINOR);
 +  if (strncmp(product.c_str(), "Iridium/", 8) == 0)
-+  	base::StringAppendF(&user_agent, " Chrome/43.0.2357.84");
++  	base::StringAppendF(&user_agent, " Chrome/43.0.2357.83");
    return user_agent;
  }
  

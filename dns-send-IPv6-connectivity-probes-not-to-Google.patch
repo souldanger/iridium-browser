@@ -1,7 +1,7 @@
 From fcbacf30d2eb6923755bd9b4a762d7b673420cbf Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Mon, 15 Sep 2014 10:58:42 +0200
-Subject: [PATCH 15/46] dns: send IPv6 connectivity probes not to Google
+Subject: [PATCH 15/50] dns: send IPv6 connectivity probes not to Google
 
 Short of disabling the code (we may do that in a subsequent patch
 anyway), avoid sending to Google.

@@ -1,0 +1,49 @@
+From 371d234845bd93a8fc8e453a09a779c3af7b0c8b Mon Sep 17 00:00:00 2001
+From: Joachim Bauch <bauch@struktur.de>
+Date: Wed, 15 Apr 2015 15:19:21 +0200
+Subject: [PATCH 39/50] plugin: do not load any system-provided plugins on
+ Windows
+
+---
+ content/common/plugin_list_win.cc | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/content/common/plugin_list_win.cc b/content/common/plugin_list_win.cc
+index ccc994b..de284b3 100644
+--- a/content/common/plugin_list_win.cc
++++ b/content/common/plugin_list_win.cc
+@@ -314,6 +314,7 @@ void PluginList::GetPluginDirectories(
+   // Load from the executable area
+   GetExeDirectory(&dirs);
+ 
++#if 0 /* NOTE: Iridium is not to load any system-provided plugins */
+   // Load Java
+   GetJavaDirectory(&dirs);
+ 
+@@ -326,6 +327,7 @@ void PluginList::GetPluginDirectories(
+   GetAcrobatDirectory(&dirs);
+   GetQuicktimeDirectory(&dirs);
+   GetWindowsMediaDirectory(&dirs);
++#endif
+ 
+   for (std::set<base::FilePath>::iterator i = dirs.begin(); i != dirs.end(); ++i)
+     plugin_dirs->push_back(*i);
+@@ -362,6 +364,7 @@ void PluginList::GetPluginPathsFromRegistry(
+ 
+   std::set<base::FilePath> plugin_dirs;
+ 
++#if 0 /* NOTE: Iridium is not to load any system-provided plugins */
+   // Search for plugins from HKCU and HKLM.  THis will only find plugins that
+   // are correctly registered in the correct WOW64 registry hive.
+   GetPluginsInRegistryDirectory(HKEY_CURRENT_USER,
+@@ -372,6 +375,7 @@ void PluginList::GetPluginPathsFromRegistry(
+                                 kRegistryMozillaPlugins,
+                                 0,
+                                 &plugin_dirs);
++#endif
+ 
+   for (std::set<base::FilePath>::iterator i = plugin_dirs.begin();
+        i != plugin_dirs.end(); ++i) {
+-- 
+2.4.0
+

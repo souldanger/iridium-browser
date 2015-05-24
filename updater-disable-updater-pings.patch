@@ -1,0 +1,53 @@
+From 4bb745c939faf06ba0068a2200ca23a707029acc Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Tue, 2 Jun 2015 11:01:50 +0200
+Subject: [PATCH 38/50] updater: disable updater pings
+
+Despite auto-updater being arguably disabled (see previous commit),
+Chromium would still send background requests. Kill it.
+(trk:170, trk:171)
+---
+ .../component_updater/chrome_component_updater_configurator.cc    | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/chrome/browser/component_updater/chrome_component_updater_configurator.cc b/chrome/browser/component_updater/chrome_component_updater_configurator.cc
+index 36f602d..971a0b5 100644
+--- a/chrome/browser/component_updater/chrome_component_updater_configurator.cc
++++ b/chrome/browser/component_updater/chrome_component_updater_configurator.cc
+@@ -60,6 +60,10 @@ const char kSwitchUrlSource[] = "url-source";
+ // --component-updater=url-source=someurl.
+ const char kDefaultUrlSource[] = "https:" COMPONENT_UPDATER_SERVICE_ENDPOINT;
+ const char kAltUrlSource[] = "http:" COMPONENT_UPDATER_SERVICE_ENDPOINT;
++#if 0
++static const char kUpdateUrlSource[]  = "trk:170:https:" COMPONENT_UPDATER_SERVICE_ENDPOINT;
++static const char kPingUrlSource[]  = "trk:171:https:" COMPONENT_UPDATER_SERVICE_ENDPOINT;
++#endif
+ 
+ // Disables differential updates.
+ const char kSwitchDisableDeltaUpdates[] = "disable-delta-updates";
+@@ -166,7 +170,9 @@ ChromeConfigurator::ChromeConfigurator(
+            ",",
+            &switch_values);
+   fast_update_ = HasSwitchValue(switch_values, kSwitchFastUpdate);
++#if 0
+   pings_enabled_ = !HasSwitchValue(switch_values, kSwitchDisablePings);
++#endif
+   deltas_enabled_ = !HasSwitchValue(switch_values, kSwitchDisableDeltaUpdates);
+ 
+ #if defined(OS_WIN)
+@@ -218,10 +224,12 @@ std::vector<GURL> ChromeConfigurator::UpdateUrl() const {
+   if (url_source_override_.is_valid()) {
+     urls.push_back(GURL(url_source_override_));
+   } else {
++#if 0
+     urls.push_back(GURL(kDefaultUrlSource));
+     if (fallback_to_alt_source_url_enabled_) {
+       urls.push_back(GURL(kAltUrlSource));
+     }
++#endif
+   }
+   return urls;
+ }
+-- 
+2.4.0
+

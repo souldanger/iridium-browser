@@ -1,7 +1,7 @@
-From c71f0272f952227933f3970c7ef126f4ac54efc4 Mon Sep 17 00:00:00 2001
+From 077c3f96125f48dade32911fd47cde78b7ce790a Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Mon, 3 Nov 2014 10:52:56 +0100
-Subject: [PATCH 45/46] src: flag evil connections
+Subject: [PATCH 49/50] src: flag evil connections
 
 Prefix URLs to Google services with trk: so that whenever something
 tries to load them, the developer will be informed via printf and
@@ -11,90 +11,90 @@ If you see such dialog, we know that (a) either the URL needs to be
 whitelisted, or (b) the feature that triggered it needs to be disabled
 by default.
 ---
- build/mac/tweak_info_plist.py                      |  4 ++--
- chrome/browser/chrome_process_finder_win.cc        |  2 +-
- .../customization/customization_document.cc        |  2 +-
- .../chromeos/dbus/printer_service_provider.cc      |  2 +-
- .../extensions/file_manager/private_api_drive.cc   |  2 +-
- .../extensions/file_manager/private_api_misc.cc    |  2 +-
- .../extensions/file_manager/private_api_strings.cc | 12 +++++------
- .../chromeos/login/signin/oauth2_login_manager.cc  |  2 +-
- .../chrome_component_updater_configurator.cc       | 23 +++++++++++++++-------
- chrome/browser/drive/drive_api_service.cc          |  8 ++++----
- chrome/browser/extensions/install_signer.cc        |  2 +-
- chrome/browser/first_run/try_chrome_dialog_view.cc |  2 +-
- chrome/browser/gpu/three_d_api_observer.cc         |  2 +-
- .../infobars/insecure_content_infobar_delegate.cc  |  2 +-
- chrome/browser/media/webrtc_log_uploader.cc        |  2 +-
- .../metrics/variations/variations_service.cc       |  2 +-
- chrome/browser/nacl_host/nacl_infobar_delegate.cc  |  2 +-
- .../net/chrome_fraudulent_certificate_reporter.cc  |  2 +-
- chrome/browser/net/predictor.cc                    |  2 +-
- chrome/browser/plugins/plugin_infobar_delegates.cc |  4 ++--
- chrome/browser/prerender/prerender_field_trial.cc  |  2 +-
- .../chromevox/chromevox/background/prefs.js        |  4 ++--
- .../default_apps/external_extensions.json          |  4 ++--
- .../safe_browsing/client_side_detection_service.cc |  4 ++--
- chrome/browser/safe_browsing/download_feedback.cc  |  2 +-
- .../safe_browsing/safe_browsing_blocking_page.cc   |  8 ++++----
- .../browser/safe_browsing/safe_browsing_service.cc |  8 ++++----
- .../browser/safe_browsing/srt_global_error_win.cc  |  2 +-
- chrome/browser/services/gcm/gcm_account_tracker.cc |  4 ++--
- .../spellchecker/spellcheck_hunspell_dictionary.cc |  2 +-
- .../spellchecker/spelling_service_client.cc        |  2 +-
- .../supervised_user_async_url_checker.cc           |  2 +-
- chrome/browser/sync/profile_sync_service.cc        |  4 ++--
- .../ui/app_list/search/people/people_provider.cc   |  4 ++--
- .../ui/startup/obsolete_system_infobar_delegate.cc |  2 +-
- .../ui/views/outdated_upgrade_bubble_view.cc       |  2 +-
- .../mock_permission_bubble_request.cc              |  6 +++---
- chrome/browser/ui/webui/ntp/ntp_resource_cache.cc  |  8 ++++----
- chrome/common/extensions/extension_constants.cc    |  2 +-
- chrome/common/localized_error.cc                   |  2 +-
- chrome/common/url_constants.cc                     |  6 +++---
- .../installer/util/google_chrome_distribution.cc   |  2 +-
- chrome/installer/util/user_experiment.cc           |  2 +-
- chromecast/browser/service/cast_service_simple.cc  |  2 +-
- .../geolocation/simple_geolocation_provider.cc     |  2 +-
- .../gcp20/prototype/cloud_print_requester.cc       |  2 +-
- cloud_print/service/service_state.cc               |  2 +-
- cloud_print/virtual_driver/win/install/setup.cc    |  2 +-
- .../core/browser/autofill_download_manager.cc      |  2 +-
- .../cloud_devices/common/cloud_devices_urls.cc     | 12 +++++------
- components/copresence/rpc/rpc_handler.cc           |  2 +-
- components/crash/app/breakpad_linux.cc             |  2 +-
- components/crash/tools/crash_service.cc            |  2 +-
- .../bookmark_server_cluster_service.cc             |  2 +-
- .../bookmark_server_search_service.cc              |  2 +-
- components/feedback/feedback_uploader.cc           |  2 +-
- .../google/core/browser/google_url_tracker.cc      |  4 ++--
- .../history/core/browser/web_history_service.cc    |  6 +++---
- components/invalidation/gcm_network_channel.cc     |  2 +-
- components/invalidation/p2p_invalidator.cc         |  2 +-
- components/metrics/url_constants.cc                |  2 +-
- .../core/browser/password_store.cc                 |  8 ++++----
- components/policy/core/common/policy_loader_win.cc |  2 +-
- components/policy/resources/policy_templates.json  |  6 +++---
- components/rappor/rappor_service.cc                |  2 +-
- .../search_engines/prepopulated_engines.json       |  2 +-
- .../core/browser/signin_account_id_helper.cc       |  2 +-
- .../core/browser/translate_url_fetcher.cc          |  1 +
- components/update_client/update_checker.cc         |  4 ++++
- .../speech/google_one_shot_remote_engine.cc        |  2 +-
- .../speech/google_streaming_remote_engine.cc       |  2 +-
- content/shell/browser/shell_browser_main_parts.cc  |  2 +-
- extensions/common/update_manifest.cc               |  2 +-
- google_apis/gaia/gaia_constants.cc                 |  2 +-
- google_apis/gaia/google_service_auth_error.cc      |  2 +-
- jingle/notifier/base/gaia_token_pre_xmpp_auth.cc   |  2 +-
- remoting/protocol/jingle_messages.cc               |  2 +-
- remoting/webapp/crd/js/feedback.js                 |  2 +-
- remoting/webapp/crd/js/xmpp_login_handler.js       |  2 +-
- rlz/lib/lib_values.cc                              |  2 +-
- sync/tools/sync_client.cc                          |  2 +-
- ui/app_list/demo/app_list_demo_views.cc            |  2 +-
- ui/views/examples/webview_example.cc               |  2 +-
- 83 files changed, 143 insertions(+), 129 deletions(-)
+ build/mac/tweak_info_plist.py                                |  4 ++--
+ chrome/browser/chrome_process_finder_win.cc                  |  2 +-
+ .../browser/chromeos/customization/customization_document.cc |  2 +-
+ chrome/browser/chromeos/dbus/printer_service_provider.cc     |  2 +-
+ .../chromeos/extensions/file_manager/private_api_drive.cc    |  2 +-
+ .../chromeos/extensions/file_manager/private_api_misc.cc     |  2 +-
+ .../chromeos/extensions/file_manager/private_api_strings.cc  | 12 ++++++------
+ chrome/browser/chromeos/login/signin/oauth2_login_manager.cc |  2 +-
+ .../chrome_component_updater_configurator.cc                 |  6 ++++--
+ chrome/browser/drive/drive_api_service.cc                    |  8 ++++----
+ chrome/browser/extensions/install_signer.cc                  |  2 +-
+ chrome/browser/first_run/try_chrome_dialog_view.cc           |  2 +-
+ chrome/browser/gpu/three_d_api_observer.cc                   |  2 +-
+ chrome/browser/infobars/insecure_content_infobar_delegate.cc |  2 +-
+ chrome/browser/media/webrtc_log_uploader.cc                  |  2 +-
+ chrome/browser/metrics/variations/variations_service.cc      |  2 +-
+ chrome/browser/nacl_host/nacl_infobar_delegate.cc            |  2 +-
+ chrome/browser/net/chrome_fraudulent_certificate_reporter.cc |  2 +-
+ chrome/browser/net/predictor.cc                              |  2 +-
+ chrome/browser/plugins/plugin_infobar_delegates.cc           |  4 ++--
+ chrome/browser/prerender/prerender_field_trial.cc            |  2 +-
+ .../chromeos/chromevox/chromevox/background/prefs.js         |  4 ++--
+ .../browser/resources/default_apps/external_extensions.json  |  4 ++--
+ .../browser/safe_browsing/client_side_detection_service.cc   |  4 ++--
+ chrome/browser/safe_browsing/download_feedback.cc            |  2 +-
+ chrome/browser/safe_browsing/safe_browsing_blocking_page.cc  |  8 ++++----
+ chrome/browser/safe_browsing/safe_browsing_service.cc        |  8 ++++----
+ chrome/browser/safe_browsing/srt_global_error_win.cc         |  2 +-
+ chrome/browser/services/gcm/gcm_account_tracker.cc           |  4 ++--
+ .../browser/spellchecker/spellcheck_hunspell_dictionary.cc   |  2 +-
+ chrome/browser/spellchecker/spelling_service_client.cc       |  2 +-
+ .../experimental/supervised_user_async_url_checker.cc        |  2 +-
+ chrome/browser/sync/profile_sync_service.cc                  |  4 ++--
+ chrome/browser/ui/app_list/search/people/people_provider.cc  |  4 ++--
+ .../browser/ui/startup/obsolete_system_infobar_delegate.cc   |  2 +-
+ chrome/browser/ui/views/outdated_upgrade_bubble_view.cc      |  2 +-
+ .../ui/website_settings/mock_permission_bubble_request.cc    |  6 +++---
+ chrome/browser/ui/webui/ntp/ntp_resource_cache.cc            |  8 ++++----
+ chrome/common/extensions/extension_constants.cc              |  2 +-
+ chrome/common/localized_error.cc                             |  2 +-
+ chrome/common/url_constants.cc                               |  6 +++---
+ chrome/installer/util/google_chrome_distribution.cc          |  2 +-
+ chrome/installer/util/user_experiment.cc                     |  2 +-
+ chromecast/browser/service/cast_service_simple.cc            |  2 +-
+ chromeos/geolocation/simple_geolocation_provider.cc          |  2 +-
+ cloud_print/gcp20/prototype/cloud_print_requester.cc         |  2 +-
+ cloud_print/service/service_state.cc                         |  2 +-
+ cloud_print/virtual_driver/win/install/setup.cc              |  2 +-
+ .../autofill/core/browser/autofill_download_manager.cc       |  2 +-
+ components/cloud_devices/common/cloud_devices_urls.cc        | 12 ++++++------
+ components/copresence/rpc/rpc_handler.cc                     |  2 +-
+ components/crash/app/breakpad_linux.cc                       |  2 +-
+ components/crash/tools/crash_service.cc                      |  2 +-
+ .../enhanced_bookmarks/bookmark_server_cluster_service.cc    |  2 +-
+ .../enhanced_bookmarks/bookmark_server_search_service.cc     |  2 +-
+ components/feedback/feedback_uploader.cc                     |  2 +-
+ components/google/core/browser/google_url_tracker.cc         |  2 +-
+ components/history/core/browser/web_history_service.cc       |  6 +++---
+ components/invalidation/gcm_network_channel.cc               |  2 +-
+ components/invalidation/p2p_invalidator.cc                   |  2 +-
+ components/metrics/url_constants.cc                          |  2 +-
+ components/password_manager/core/browser/password_store.cc   |  8 ++++----
+ components/policy/core/common/policy_loader_win.cc           |  2 +-
+ components/policy/resources/policy_templates.json            |  6 +++---
+ components/rappor/rappor_service.cc                          |  2 +-
+ components/search_engines/prepopulated_engines.json          |  2 +-
+ components/signin/core/browser/signin_account_id_helper.cc   |  2 +-
+ components/translate/core/browser/translate_url_fetcher.cc   |  1 +
+ components/update_client/update_checker.cc                   |  4 ++++
+ content/browser/speech/google_one_shot_remote_engine.cc      |  2 +-
+ content/browser/speech/google_streaming_remote_engine.cc     |  2 +-
+ content/shell/browser/shell_browser_main_parts.cc            |  2 +-
+ extensions/common/update_manifest.cc                         |  2 +-
+ google_apis/gaia/gaia_constants.cc                           |  2 +-
+ google_apis/gaia/google_service_auth_error.cc                |  2 +-
+ jingle/notifier/base/gaia_token_pre_xmpp_auth.cc             |  2 +-
+ remoting/protocol/jingle_messages.cc                         |  2 +-
+ remoting/webapp/crd/js/feedback.js                           |  2 +-
+ remoting/webapp/crd/js/xmpp_login_handler.js                 |  2 +-
+ rlz/lib/lib_values.cc                                        |  2 +-
+ sync/tools/sync_client.cc                                    |  2 +-
+ ui/app_list/demo/app_list_demo_views.cc                      |  2 +-
+ ui/views/examples/webview_example.cc                         |  2 +-
+ 83 files changed, 130 insertions(+), 123 deletions(-)
 
 diff --git a/build/mac/tweak_info_plist.py b/build/mac/tweak_info_plist.py
 index 71c08fa..c66d334 100755
@@ -234,10 +234,10 @@ index c1157f3..37b394d 100644
  
  }  // namespace
 diff --git a/chrome/browser/component_updater/chrome_component_updater_configurator.cc b/chrome/browser/component_updater/chrome_component_updater_configurator.cc
-index 36f602d..02bf3fd 100644
+index 971a0b5..604541d 100644
 --- a/chrome/browser/component_updater/chrome_component_updater_configurator.cc
 +++ b/chrome/browser/component_updater/chrome_component_updater_configurator.cc
-@@ -58,8 +58,10 @@ const char kSwitchUrlSource[] = "url-source";
+@@ -58,8 +58,8 @@ const char kSwitchUrlSource[] = "url-source";
  // the request to the default URL source fails.
  // The value of |kDefaultUrlSource| can be overridden with
  // --component-updater=url-source=someurl.
@@ -245,47 +245,18 @@ index 36f602d..02bf3fd 100644
 -const char kAltUrlSource[] = "http:" COMPONENT_UPDATER_SERVICE_ENDPOINT;
 +const char kDefaultUrlSource[] = "trk:02:https:" COMPONENT_UPDATER_SERVICE_ENDPOINT;
 +const char kAltUrlSource[] = "trk:172:http:" COMPONENT_UPDATER_SERVICE_ENDPOINT;
-+static const char kUpdateUrlSource[]  = "trk:170:https:" COMPONENT_UPDATER_SERVICE_ENDPOINT;
-+static const char kPingUrlSource[]  = "trk:171:https:" COMPONENT_UPDATER_SERVICE_ENDPOINT;
- 
- // Disables differential updates.
- const char kSwitchDisableDeltaUpdates[] = "disable-delta-updates";
-@@ -168,6 +170,8 @@ ChromeConfigurator::ChromeConfigurator(
-   fast_update_ = HasSwitchValue(switch_values, kSwitchFastUpdate);
+ #if 0
+ static const char kUpdateUrlSource[]  = "trk:170:https:" COMPONENT_UPDATER_SERVICE_ENDPOINT;
+ static const char kPingUrlSource[]  = "trk:171:https:" COMPONENT_UPDATER_SERVICE_ENDPOINT;
+@@ -174,6 +174,8 @@ ChromeConfigurator::ChromeConfigurator(
    pings_enabled_ = !HasSwitchValue(switch_values, kSwitchDisablePings);
+ #endif
    deltas_enabled_ = !HasSwitchValue(switch_values, kSwitchDisableDeltaUpdates);
 +  fprintf(stderr, "%s: fast_update=%d pings_enabled=%d deltas_enabled=%d\n",
 +  	__PRETTY_FUNCTION__, fast_update_, pings_enabled_, deltas_enabled_);
  
  #if defined(OS_WIN)
    background_downloads_enabled_ =
-@@ -218,16 +222,21 @@ std::vector<GURL> ChromeConfigurator::UpdateUrl() const {
-   if (url_source_override_.is_valid()) {
-     urls.push_back(GURL(url_source_override_));
-   } else {
--    urls.push_back(GURL(kDefaultUrlSource));
--    if (fallback_to_alt_source_url_enabled_) {
--      urls.push_back(GURL(kAltUrlSource));
--    }
-+    urls.push_back(GURL(kUpdateUrlSource));
-   }
-   return urls;
- }
- 
- std::vector<GURL> ChromeConfigurator::PingUrl() const {
--  return pings_enabled_ ? UpdateUrl() : std::vector<GURL>();
-+	if (!pings_enabled_)
-+		return std::vector<GURL>();
-+	std::vector<GURL> urls;
-+	if (url_source_override_.is_valid()) {
-+		urls.push_back(GURL(url_source_override_));
-+		return urls;
-+	}
-+	urls.push_back(GURL(kPingUrlSource));
-+	return urls;
- }
- 
- base::Version ChromeConfigurator::GetBrowserVersion() const {
 diff --git a/chrome/browser/drive/drive_api_service.cc b/chrome/browser/drive/drive_api_service.cc
 index 4bd5713..8497fb9 100644
 --- a/chrome/browser/drive/drive_api_service.cc
@@ -1032,21 +1003,18 @@ index b79ece2..a0223b6 100644
  const int64 kRetryDelayMinutes = 60;
  
 diff --git a/components/google/core/browser/google_url_tracker.cc b/components/google/core/browser/google_url_tracker.cc
-index 46d1f0c..90b0f37 100644
+index f19243e..45e45dc4 100644
 --- a/components/google/core/browser/google_url_tracker.cc
 +++ b/components/google/core/browser/google_url_tracker.cc
-@@ -26,9 +26,9 @@
+@@ -26,7 +26,7 @@
   * (So the naming problem was spotted, yet remains unfixed even today…)
   */
  const char GoogleURLTracker::kDefaultGoogleHomepage[] =
 -    "https://www.google.com/";
 +    "trk:192:https://www.google.com/";
  const char GoogleURLTracker::kSearchDomainCheckURL[] =
--    "https://www.google.com/searchdomaincheck?format=domain&type=chrome";
-+    "trk:193:https://www.google.com/searchdomaincheck?format=domain&type=chrome";
+ /* trk:193: */ "https://www.google.com/searchdomaincheck?format=domain&type=chrome";
  
- GoogleURLTracker::GoogleURLTracker(scoped_ptr<GoogleURLTrackerClient> client,
-                                    Mode mode)
 diff --git a/components/history/core/browser/web_history_service.cc b/components/history/core/browser/web_history_service.cc
 index 91b498c..2dd479e 100644
 --- a/components/history/core/browser/web_history_service.cc
@@ -1184,7 +1152,7 @@ index 7fc4fce..11bce08 100644
  GURL GetServerUrl() {
    std::string server_url = variations::GetVariationParamValue(
 diff --git a/components/search_engines/prepopulated_engines.json b/components/search_engines/prepopulated_engines.json
-index d844070..2f28f00 100644
+index f52ab26..5c84a17 100644
 --- a/components/search_engines/prepopulated_engines.json
 +++ b/components/search_engines/prepopulated_engines.json
 @@ -129,7 +129,7 @@

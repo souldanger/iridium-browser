@@ -1,9 +1,10 @@
-From bb964f0d1a886b50dcdbee78ca229b585719e287 Mon Sep 17 00:00:00 2001
+From e0e8155b116a3e7ec42333ef4c227d9c029f087c Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Thu, 29 Jan 2015 10:46:40 +0100
-Subject: [PATCH 36/46] openSUSE patch exclude_ymp.diff
+Subject: [PATCH 36/50] mime_util: force text/x-suse-ymp to be downloaded
 
-YMPs are plaintext XML, and not very interesting in themselves.
+YMP files (YaST One Click Install) are plaintext XML, but also not
+very interesting in themselves. Force them to be stored.
 ---
  net/base/mime_util.cc | 1 +
  1 file changed, 1 insertion(+)
