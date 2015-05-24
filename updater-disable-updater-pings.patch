@@ -1,21 +1,33 @@
-From a3b2355d16417d8b529f649ac487346f18362087 Mon Sep 17 00:00:00 2001
+From 865f1547440f5fd2c107df9e31181b7e0e72dfc4 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Tue, 2 Jun 2015 11:01:50 +0200
-Subject: [PATCH 38/50] updater: disable updater pings
+Subject: [PATCH 36/50] updater: disable updater pings
 
 Despite auto-updater being arguably disabled (see previous commit),
 Chromium would still send background requests. Kill it.
 (trk:170, trk:171)
 ---
- .../chrome_component_updater_configurator.cc              |  8 ++++++++
+ .../chrome_component_updater_configurator.cc              | 10 ++++++++++
  components/update_client/update_checker.cc                | 15 ++++++++++++---
- 2 files changed, 20 insertions(+), 3 deletions(-)
+ 2 files changed, 22 insertions(+), 3 deletions(-)
 
 diff --git a/chrome/browser/component_updater/chrome_component_updater_configurator.cc b/chrome/browser/component_updater/chrome_component_updater_configurator.cc
-index 36f602d..0a83842 100644
+index 36f602d..9121308 100644
 --- a/chrome/browser/component_updater/chrome_component_updater_configurator.cc
 +++ b/chrome/browser/component_updater/chrome_component_updater_configurator.cc
-@@ -58,8 +58,12 @@ const char kSwitchUrlSource[] = "url-source";
+@@ -43,9 +43,11 @@ const char kSwitchFastUpdate[] = "fast-update";
+ // Add "testrequest=1" attribute to the update check request.
+ const char kSwitchRequestParam[] = "test-request";
+ 
++#if 0
+ // Disables pings. Pings are the requests sent to the update server that report
+ // the success or the failure of component install or update attempts.
+ extern const char kSwitchDisablePings[] = "disable-pings";
++#endif
+ 
+ // Sets the URL for updates.
+ const char kSwitchUrlSource[] = "url-source";
+@@ -58,8 +60,12 @@ const char kSwitchUrlSource[] = "url-source";
  // the request to the default URL source fails.
  // The value of |kDefaultUrlSource| can be overridden with
  // --component-updater=url-source=someurl.
@@ -28,7 +40,7 @@ index 36f602d..0a83842 100644
  
  // Disables differential updates.
  const char kSwitchDisableDeltaUpdates[] = "disable-delta-updates";
-@@ -166,7 +170,9 @@ ChromeConfigurator::ChromeConfigurator(
+@@ -166,7 +172,9 @@ ChromeConfigurator::ChromeConfigurator(
             ",",
             &switch_values);
    fast_update_ = HasSwitchValue(switch_values, kSwitchFastUpdate);
@@ -38,7 +50,7 @@ index 36f602d..0a83842 100644
    deltas_enabled_ = !HasSwitchValue(switch_values, kSwitchDisableDeltaUpdates);
  
  #if defined(OS_WIN)
-@@ -218,10 +224,12 @@ std::vector<GURL> ChromeConfigurator::UpdateUrl() const {
+@@ -218,10 +226,12 @@ std::vector<GURL> ChromeConfigurator::UpdateUrl() const {
    if (url_source_override_.is_valid()) {
      urls.push_back(GURL(url_source_override_));
    } else {

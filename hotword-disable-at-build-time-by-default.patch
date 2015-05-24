@@ -1,7 +1,7 @@
-From b9c64081e96b82db63dad40d8874fc94ef8630bf Mon Sep 17 00:00:00 2001
+From 5e7950751a80eb1bb467f6c0f73a2cfdb1b2a58d Mon Sep 17 00:00:00 2001
 From: amistry <amistry@chromium.org>
 Date: Tue, 9 Jun 2015 12:18:39 -0700
-Subject: [PATCH 49/50] hotword: disable at build time by default
+Subject: [PATCH 48/50] hotword: disable at build time by default
 
 Commit f269d3b548203e217e8c0080c2e22e7ae3efb51e upstream:
 
@@ -20,10 +20,11 @@ Hard-disable hotwording by default even on a build level.
 ---
  build/common.gypi                                 | 4 ++++
  chrome/browser/BUILD.gn                           | 9 +++++++++
+ chrome/browser/extensions/component_loader.cc     | 4 ++++
  chrome/browser/search/hotword_service.cc          | 5 ++++-
  chrome/browser/search/hotword_service_unittest.cc | 4 ++++
  chrome/chrome_browser.gypi                        | 3 +++
- 5 files changed, 24 insertions(+), 1 deletion(-)
+ 6 files changed, 28 insertions(+), 1 deletion(-)
 
 diff --git a/build/common.gypi b/build/common.gypi
 index 1801536..ee7d7f6 100644
@@ -74,6 +75,32 @@ index 3a429c0..216a5b7 100644
    if (is_linux) {
      deps += [
        "//device/media_transfer_protocol",
+diff --git a/chrome/browser/extensions/component_loader.cc b/chrome/browser/extensions/component_loader.cc
+index af44282..1851057 100644
+--- a/chrome/browser/extensions/component_loader.cc
++++ b/chrome/browser/extensions/component_loader.cc
+@@ -334,17 +334,21 @@ void ComponentLoader::AddHangoutServicesExtension() {
+ }
+ 
+ void ComponentLoader::AddHotwordAudioVerificationApp() {
++#if 0
+   if (HotwordServiceFactory::IsAlwaysOnAvailable()) {
+     Add(IDR_HOTWORD_AUDIO_VERIFICATION_MANIFEST,
+         base::FilePath(FILE_PATH_LITERAL("hotword_audio_verification")));
+   }
++#endif
+ }
+ 
+ void ComponentLoader::AddHotwordHelperExtension() {
++#if 0
+   if (HotwordServiceFactory::IsHotwordAllowed(browser_context_)) {
+     Add(IDR_HOTWORD_MANIFEST,
+         base::FilePath(FILE_PATH_LITERAL("hotword")));
+   }
++#endif
+ }
+ 
+ void ComponentLoader::AddImageLoaderExtension() {
 diff --git a/chrome/browser/search/hotword_service.cc b/chrome/browser/search/hotword_service.cc
 index 3247a00..de1d17e 100644
 --- a/chrome/browser/search/hotword_service.cc

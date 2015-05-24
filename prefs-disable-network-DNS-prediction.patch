@@ -1,13 +1,14 @@
-From c5657ed43043485da334054e9f405ce8942d4b8e Mon Sep 17 00:00:00 2001
+From 233d5c9f1f58d13d145a5d80c384470766b1ca87 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sat, 13 Sep 2014 15:20:11 +0200
-Subject: [PATCH 06/50] prefs: disable network/DNS prediction
+Subject: [PATCH 15/50] prefs: disable network/DNS prediction
 
 Stop wasting my bandwidth (however little), and also don't tell others
 what I am about to visit.
 ---
  chrome/browser/net/net_pref_observer.cc | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ chrome/browser/net/prediction_options.h | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/chrome/browser/net/net_pref_observer.cc b/chrome/browser/net/net_pref_observer.cc
 index 8046e4d..813b846 100644
@@ -22,6 +23,19 @@ index 8046e4d..813b846 100644
        user_prefs::PrefRegistrySyncable::SYNCABLE_PREF);
    registry->RegisterBooleanPref(
        prefs::kDisableSpdy,
+diff --git a/chrome/browser/net/prediction_options.h b/chrome/browser/net/prediction_options.h
+index 928c128..582477d 100644
+--- a/chrome/browser/net/prediction_options.h
++++ b/chrome/browser/net/prediction_options.h
+@@ -21,7 +21,7 @@ enum NetworkPredictionOptions {
+   NETWORK_PREDICTION_ALWAYS,
+   NETWORK_PREDICTION_WIFI_ONLY,
+   NETWORK_PREDICTION_NEVER,
+-  NETWORK_PREDICTION_DEFAULT = NETWORK_PREDICTION_WIFI_ONLY,
++  NETWORK_PREDICTION_DEFAULT = NETWORK_PREDICTION_NEVER,
+ };
+ 
+ void RegisterPredictionOptionsProfilePrefs(
 -- 
 2.4.3
 

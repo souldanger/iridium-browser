@@ -1,13 +1,8 @@
-From 2327f764b74debfe161370fe731b820a0bae1c59 Mon Sep 17 00:00:00 2001
+From dc821514ce8320dc4bb35de4f9eacc8410e80c6c Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sun, 19 Oct 2014 14:49:10 +0200
-Subject: [PATCH 19/50] search_engines: add DuckDuckGo as selectable and
+Subject: [PATCH 24/50] search_engines: add DuckDuckGo as selectable and
  default search engine
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
-Continue the “As long as it isn't Google…” series :-)
 
 There is a lot of code pertaining to DefaultSearchEngine,
 default_search_engine, profile resetting, etc. etc.
@@ -15,9 +10,6 @@ default_search_engine, profile resetting, etc. etc.
 The default default's seem to default to index 0 in the
 "engines_default" (or language-specific engines_XX) array, so
 prepending &duckduckgo yields the desired result, for now at least.
-
-Per https://github.com/iridium-browser/iridium-browser/issues/4
-we will be setting about:blank as new_tab_url.
 ---
  .../search_engines/prepopulated_engines.json       |  11 ++
  components/search_engines/search_engine_type.h     |   1 +
@@ -25,7 +17,7 @@ we will be setting about:blank as new_tab_url.
  3 files changed, 121 insertions(+), 109 deletions(-)
 
 diff --git a/components/search_engines/prepopulated_engines.json b/components/search_engines/prepopulated_engines.json
-index 8037f57..cc39694 100644
+index 8037f57..b68037f 100644
 --- a/components/search_engines/prepopulated_engines.json
 +++ b/components/search_engines/prepopulated_engines.json
 @@ -36,6 +36,17 @@
@@ -38,7 +30,7 @@ index 8037f57..cc39694 100644
 +      "favicon_url": "https://duckduckgo.com/favicon.ico",
 +      "search_url": "https://duckduckgo.com/?q={searchTerms}",
 +      "suggest_url": "https://duckduckgo.com/?q={searchTerms}&language={language}&kac=1",
-+      "new_tab_url": "about:blank",
++      "new_tab_url": "https://duckduckgo.com/",
 +      "type": "SEARCH_ENGINE_DUCKDUCKGO",
 +      "id": 11
 +    },

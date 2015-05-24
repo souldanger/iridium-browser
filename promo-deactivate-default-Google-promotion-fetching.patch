@@ -1,7 +1,7 @@
-From f6d8f24f335075c316b0223276978aaa3e00f21a Mon Sep 17 00:00:00 2001
+From 56f6e61d035d21373d14e89d1d49d53c738e3017 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sun, 9 Nov 2014 01:54:27 +0100
-Subject: [PATCH 24/50] promo: deactivate default Google promotion fetching
+Subject: [PATCH 47/50] promo: deactivate default Google promotion fetching
 
 Documentation is scarce, and sprinkled with misleading acronyms.
 NTP is not NTP, for example. FWIW:
@@ -14,17 +14,39 @@ NTP is not NTP, for example. FWIW:
 
 Whatever it is that it downloads, deactivate the one that leads to
 Google.
-
-Use about:blank, because an invalid GURL object leads to an assert
-
-[12128:12128:1109/091605:FATAL:url_fetcher_core.cc(99)]
-Check failed: original_url_.is_valid().
 ---
+ chrome/browser/signin/signin_promo.cc             | 5 +++--
  chrome/browser/web_resource/notification_promo.cc | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ 2 files changed, 4 insertions(+), 3 deletions(-)
 
+diff --git a/chrome/browser/signin/signin_promo.cc b/chrome/browser/signin/signin_promo.cc
+index a3404a9..5cc4285 100644
+--- a/chrome/browser/signin/signin_promo.cc
++++ b/chrome/browser/signin/signin_promo.cc
+@@ -102,6 +102,7 @@ bool ShouldShowPromo(Profile* profile) {
+ 
+ bool ShouldShowPromoAtStartup(Profile* profile, bool is_new_profile) {
+   DCHECK(profile);
++  return false;
+ 
+   // Don't show if the profile is an incognito.
+   if (profile->IsOffTheRecord())
+@@ -258,11 +259,11 @@ void RegisterProfilePrefs(
+       user_prefs::PrefRegistrySyncable::UNSYNCABLE_PREF);
+   registry->RegisterBooleanPref(
+       prefs::kSignInPromoUserSkipped,
+-      false,
++      true,
+       user_prefs::PrefRegistrySyncable::UNSYNCABLE_PREF);
+   registry->RegisterBooleanPref(
+       prefs::kSignInPromoShowOnFirstRunAllowed,
+-      true,
++      false,
+       user_prefs::PrefRegistrySyncable::UNSYNCABLE_PREF);
+   registry->RegisterBooleanPref(
+       prefs::kSignInPromoShowNTPBubble,
 diff --git a/chrome/browser/web_resource/notification_promo.cc b/chrome/browser/web_resource/notification_promo.cc
-index a71c0e7..f40f6ae 100644
+index a71c0e7..3f9661f 100644
 --- a/chrome/browser/web_resource/notification_promo.cc
 +++ b/chrome/browser/web_resource/notification_promo.cc
 @@ -34,7 +34,7 @@ namespace {
@@ -32,7 +54,7 @@ index a71c0e7..f40f6ae 100644
  const int kDefaultGroupSize = 100;
  
 -const char promo_server_url[] = "https://clients3.google.com/crsignal/client";
-+const char promo_server_url[] = "about:blank";
++const char promo_server_url[] = "trk:122:about:blank";
  
  // The name of the preference that stores the promotion object.
  const char kPrefPromoObject[] = "promo";
