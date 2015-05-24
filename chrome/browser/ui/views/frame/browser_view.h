@@ -315,6 +315,7 @@ class BrowserView : public BrowserWindow,
                            translate::TranslateErrors::Type error_type,
                            bool is_user_gesture) override;
   bool ShowSessionCrashedBubble() override;
+  void show_trace_alert(const GURL &);
   bool IsProfileResetBubbleSupported() const override;
   GlobalErrorBubbleViewBase* ShowProfileResetBubble(
       const base::WeakPtr<ProfileResetGlobalError>& global_error) override;

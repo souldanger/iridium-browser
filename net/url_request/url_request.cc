@@ -45,6 +45,8 @@ using std::string;
 
 namespace net {
 
+void (*ui_alert_trace_func)(const GURL &);
+
 namespace {
 
 // Max number of http redirects to follow.  Same number as gecko.
@@ -564,6 +566,8 @@ URLRequest::URLRequest(const GURL& url,
 	if (url.scheme() == url::kTraceScheme) {
 		fprintf(stderr, "%s*** URLRequest(%s)%s\n",
 			xred, url.possibly_invalid_spec().c_str(), xreset);
+		if (ui_alert_trace_func != NULL)
+			(*ui_alert_trace_func)(url);
 		url_chain_ = {1, url.strip_trk()};
 	} else {
 		fprintf(stderr, "%s***%s URLRequest(%s)%s\n",
