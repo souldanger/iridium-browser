@@ -1001,6 +1001,8 @@ cr.define('options', function() {
      * @private
      */
     handleSpellCheckLanguageCheckboxClick_: function(e) {
+      if (!confirm("[trk:173] This operation will contact a Google server. Still proceed?"))
+            return;
       var languageCode = e.currentTarget.languageCode;
 
       if (e.currentTarget.checked)
