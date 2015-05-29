@@ -1017,6 +1017,8 @@ cr.define('options', function() {
      * @private
      */
     handleSpellCheckLanguageButtonClick_: function(e) {
+      if (!confirm("[trk:173] This operation will contact a Google server. Still proceed?"))
+            return;
       var languageCode = e.currentTarget.languageCode;
       // Save the preference.
       Preferences.setListPref(SPELL_CHECK_DICTIONARIES_PREF,
