@@ -53,6 +53,7 @@ int GCMChannelStatusRequest::min_poll_interval_seconds() {
 }
 
 void GCMChannelStatusRequest::Start() {
+#if 0
   DCHECK(!url_fetcher_.get());
 
   GURL request_url(channel_status_request_url_);
@@ -72,6 +73,9 @@ void GCMChannelStatusRequest::Start() {
   url_fetcher_->SetLoadFlags(net::LOAD_DO_NOT_SEND_COOKIES |
                              net::LOAD_DO_NOT_SAVE_COOKIES);
   url_fetcher_->Start();
+#endif
+  // Simulate an empty response and disable GCM.
+  callback_.Run(false, false, 0);
 }
 
 void GCMChannelStatusRequest::OnURLFetchComplete(
