@@ -128,12 +128,21 @@ bool UpdateCheckerImpl::CheckForUpdates(
 void UpdateCheckerImpl::OnRequestSenderComplete(const net::URLFetcher* source) {
   DCHECK(thread_checker_.CalledOnValidThread());
 
-  const GURL original_url(source->GetOriginalURL());
-  VLOG(1) << "Update check request went to: " << original_url.spec();
-
   int error = 0;
   std::string error_message;
   UpdateResponse update_response;
+
+  if (source == NULL) {
+    VLOG(1) << "Update request disabled";
+    request_sender_.reset();
+    const GURL tmp_url;
+    update_check_callback_.Run(tmp_url, error, error_message,
+                               update_response.results());
+    return;
+  }
+
+  const GURL original_url(source->GetOriginalURL());
+  VLOG(1) << "Update check request went to: " << original_url.spec();
 
   if (FetchSuccess(*source)) {
     std::string xml;
