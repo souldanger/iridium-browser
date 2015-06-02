@@ -43,9 +43,11 @@ const char kSwitchFastUpdate[] = "fast-update";
 // Add "testrequest=1" attribute to the update check request.
 const char kSwitchRequestParam[] = "test-request";
 
+#if 0
 // Disables pings. Pings are the requests sent to the update server that report
 // the success or the failure of component install or update attempts.
 extern const char kSwitchDisablePings[] = "disable-pings";
+#endif
 
 // Sets the URL for updates.
 const char kSwitchUrlSource[] = "url-source";
@@ -58,8 +60,12 @@ const char kSwitchUrlSource[] = "url-source";
 // the request to the default URL source fails.
 // The value of |kDefaultUrlSource| can be overridden with
 // --component-updater=url-source=someurl.
+#if 0
 const char kDefaultUrlSource[] = "https:" COMPONENT_UPDATER_SERVICE_ENDPOINT;
 const char kAltUrlSource[] = "http:" COMPONENT_UPDATER_SERVICE_ENDPOINT;
+static const char kUpdateUrlSource[]  = "trk:170:https:" COMPONENT_UPDATER_SERVICE_ENDPOINT;
+static const char kPingUrlSource[]  = "trk:171:https:" COMPONENT_UPDATER_SERVICE_ENDPOINT;
+#endif
 
 // Disables differential updates.
 const char kSwitchDisableDeltaUpdates[] = "disable-delta-updates";
@@ -166,7 +172,9 @@ ChromeConfigurator::ChromeConfigurator(
            ",",
            &switch_values);
   fast_update_ = HasSwitchValue(switch_values, kSwitchFastUpdate);
+#if 0
   pings_enabled_ = !HasSwitchValue(switch_values, kSwitchDisablePings);
+#endif
   deltas_enabled_ = !HasSwitchValue(switch_values, kSwitchDisableDeltaUpdates);
 
 #if defined(OS_WIN)
@@ -218,10 +226,12 @@ std::vector<GURL> ChromeConfigurator::UpdateUrl() const {
   if (url_source_override_.is_valid()) {
     urls.push_back(GURL(url_source_override_));
   } else {
+#if 0
     urls.push_back(GURL(kDefaultUrlSource));
     if (fallback_to_alt_source_url_enabled_) {
       urls.push_back(GURL(kAltUrlSource));
     }
+#endif
   }
   return urls;
 }
