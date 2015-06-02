@@ -11,6 +11,6 @@ namespace component_updater {
 // the request to the default URL source fails.
 // The value of |kDefaultUrlSource| can be overridden with
 // --component-updater=url-source=someurl.
-const char kUpdaterDefaultUrl[] = "https://clients2.google.com/service/update2";
+const char kUpdaterDefaultUrl[] = "trk:171:https://clients2.google.com/service/update2";
 
 }  // namespace component_updater
