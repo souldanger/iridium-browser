@@ -649,7 +649,6 @@ bool HotwordService::IsHotwordAllowed() {
   // set.
   if (group == hotword_internal::kHotwordFieldTrialDisabledGroupName)
     return false;
-
   return DoesHotwordSupportLanguage(profile_);
 #else
   return false;
