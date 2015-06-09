@@ -17,6 +17,11 @@ if (is_desktop_linux) {
   import("//build/config/linux/pkg_config.gni")
 }
 
+declare_args() {
+  # 'Ok Google' hotwording is NOT enabled.
+  enable_hotwording = false
+}
+
 about_credits_file = "$target_gen_dir/about_credits.html"
 additional_modules_list_file =
     "$root_gen_dir/chrome/browser/internal/additional_modules_list.txt"
@@ -437,6 +442,10 @@ static_library("browser") {
     } else if (safe_browsing_mode == 2) {
       defines += [ "MOBILE_SAFE_BROWSING" ]
     }
+  }
+
+  if (enable_hotwording) {
+    defines += [ "ENABLE_HOTWORDING" ]
   }
 
   if (is_linux) {
