@@ -25,7 +25,8 @@ declare_args() {
   # 'Ok Google' hotwording is disabled by default. Set to true to enable. (This
   # will download a closed-source NaCl module at startup.) Chrome-branded
   # ChromeOS builds have this enabled by default.
-  enable_hotwording = is_chrome_branded && is_chromeos
+  # OFFOFFOFFOFFOFFOFFOFF
+  enable_hotwording = false
 }
 
 additional_modules_list_file =
