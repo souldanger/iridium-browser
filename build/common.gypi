@@ -505,7 +505,7 @@
       'enable_extensions%': 1,
 
       # Enable Google Now.
-      'enable_google_now%': 1,
+      'enable_google_now%': 0,
 
       # Enable basic printing support and UI.
       'enable_basic_printing%': 1,
