@@ -14,7 +14,7 @@
       'variables': {
         'buildflag_header_path': 'chrome/common/features.h',
         'buildflag_flags': [
-          'ENABLE_GOOGLE_NOW=<(enable_google_now)',
+          'ENABLE_GOOGLE_NOW=0',
           'ANDROID_JAVA_UI=<(android_java_ui)',
           'USE_VULCANIZE=<(use_vulcanize)',
         ],
