@@ -1697,6 +1697,7 @@ int ChromeBrowserMainParts::PreMainMessageLoopRunImpl() {
         !base::FeatureList::IsEnabled(features::kDisableFirstRunAutoImportWin);
 #endif  // defined(OS_WIN)
 
+    auto_import = false; /* IRIDIUM */
     if (auto_import) {
       first_run::AutoImport(profile_, master_prefs_->homepage_defined,
                             master_prefs_->do_import_items,
