@@ -349,6 +349,7 @@ bool Extension::ShouldDisplayInExtensionSettings() const {
 }
 
 bool Extension::ShouldNotBeVisible() const {
+#if 0
   // Don't show component extensions because they are only extensions as an
   // implementation detail of Chrome.
   if (extensions::Manifest::IsComponentLocation(location()) &&
@@ -365,6 +366,7 @@ bool Extension::ShouldNotBeVisible() const {
   if (is_app() && !ShouldDisplayInAppLauncher() && !ShouldDisplayInNewTabPage())
     return true;
 
+#endif
   return false;
 }
 
