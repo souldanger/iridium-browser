@@ -233,6 +233,7 @@ bool IsURLAllowedForSupervisedUser(const GURL& url, Profile* profile) {
   return true;
 }
 
+#if 0
 // Returns whether |new_tab_url| can be used as a URL for the New Tab page.
 // NEW_TAB_URL_VALID means a valid URL; other enum values imply an invalid URL.
 NewTabURLState IsValidNewTabURL(Profile* profile, const GURL& new_tab_url) {
@@ -246,6 +247,7 @@ NewTabURLState IsValidNewTabURL(Profile* profile, const GURL& new_tab_url) {
     return NEW_TAB_URL_BLOCKED;
   return NEW_TAB_URL_VALID;
 }
+#endif
 
 // Used to look up the URL to use for the New Tab page. Also tracks how we
 // arrived at that URL so it can be logged with UMA.
@@ -254,6 +256,9 @@ struct NewTabURLDetails {
       : url(url), state(state) {}
 
   static NewTabURLDetails ForProfile(Profile* profile) {
+#if 1
+    return NewTabURLDetails(GURL("about:blank"), NEW_TAB_URL_VALID);
+#else
     const GURL local_url(chrome::kChromeSearchLocalNtpUrl);
 
     base::CommandLine* command_line = base::CommandLine::ForCurrentProcess();
@@ -279,6 +284,7 @@ struct NewTabURLDetails {
         // Use the local New Tab otherwise.
         return NewTabURLDetails(local_url, state);
     }
+#endif
   }
 
   GURL url;
