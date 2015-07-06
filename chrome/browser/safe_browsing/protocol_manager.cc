@@ -753,12 +753,14 @@ GURL SafeBrowsingProtocolManager::GetHashUrl(bool is_extended_reporting) const {
 GURL SafeBrowsingProtocolManager::NextChunkUrl(const std::string& url) const {
   DCHECK(CalledOnValidThread());
   std::string next_url;
+  const std::string url_prefix_without_trk(
+      GURL(url_prefix_).strip_trk().spec());
   if (!base::StartsWith(url, "http://",
                         base::CompareCase::INSENSITIVE_ASCII) &&
       !base::StartsWith(url, "https://",
                         base::CompareCase::INSENSITIVE_ASCII)) {
     // Use https if we updated via https, otherwise http (useful for testing).
-    if (base::StartsWith(url_prefix_, "https://",
+    if (base::StartsWith(url_prefix_without_trk, "https://",
                          base::CompareCase::INSENSITIVE_ASCII))
       next_url.append("https://");
     else
