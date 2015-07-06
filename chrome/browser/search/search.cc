@@ -296,7 +296,7 @@ struct NewTabURLDetails {
         return NewTabURLDetails(GURL(), state);
       default:
         // Use the local New Tab otherwise.
-        return NewTabURLDetails(local_url, state);
+        return NewTabURLDetails(GURL("about:blank"), state);
     }
   }
 
