@@ -56,17 +56,17 @@ namespace {
 // diagnostic page.
 #if defined(GOOGLE_CHROME_BUILD)
 const char kSbDiagnosticUrl[] =
-    "https://www.google.com/safebrowsing/diagnostic?site=%s&client=googlechrome";
+	/* trk:227 */ "https://www.google.com/safebrowsing/diagnostic?site=%s&client=googlechrome";
 #else
 const char kSbDiagnosticUrl[] =
-    "https://www.google.com/safebrowsing/diagnostic?site=%s&client=chromium";
+	/* trk:228 */ "https://www.google.com/safebrowsing/diagnostic?site=%s&client=chromium";
 #endif
 
 // URL for malware and phishing, V2.
 const char kLearnMoreMalwareUrlV2[] =
-    "https://www.google.com/transparencyreport/safebrowsing/";
+	/* trk:225 */ "https://www.google.com/transparencyreport/safebrowsing/";
 const char kLearnMorePhishingUrlV2[] =
-    "https://www.google.com/transparencyreport/safebrowsing/";
+	/* trk:226 */ "https://www.google.com/transparencyreport/safebrowsing/";
 
 // After a malware interstitial where the user opted-in to the report
 // but clicked "proceed anyway", we delay the call to
@@ -568,6 +568,7 @@ void SafeBrowsingBlockingPage::PopulateInterstitialStrings(
 
 void SafeBrowsingBlockingPage::PopulateExtendedReportingOption(
     base::DictionaryValue* load_time_data) {
+#if 0
   // Only show checkbox if !(HTTPS || incognito-mode).
   const bool show = CanShowMalwareDetailsOption();
   load_time_data->SetBoolean(interstitials::kDisplayCheckBox, show);
@@ -584,6 +585,7 @@ void SafeBrowsingBlockingPage::PopulateExtendedReportingOption(
   load_time_data->SetBoolean(
       interstitials::kBoxChecked,
       IsPrefEnabled(prefs::kSafeBrowsingExtendedReportingEnabled));
+#endif
 }
 
 void SafeBrowsingBlockingPage::PopulateMalwareLoadTimeData(
