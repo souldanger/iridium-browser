@@ -24,10 +24,12 @@ const char kLearnMore[] = "https://support.google.com/chrome/answer/99020";
 // For malware interstitial pages, we link the problematic URL to Google's
 // diagnostic page.
 #if defined(GOOGLE_CHROME_BUILD)
+// trk:227
 const char kSbDiagnosticUrl[] =
     "https://www.google.com/safebrowsing/"
     "diagnostic?site=%s&client=googlechrome";
 #else
+// trk:228
 const char kSbDiagnosticUrl[] =
     "https://www.google.com/safebrowsing/diagnostic?site=%s&client=chromium";
 #endif
