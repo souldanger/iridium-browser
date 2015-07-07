@@ -100,9 +100,12 @@ base::FilePath CookieFilePath() {
 #if defined(FULL_SAFE_BROWSING)
 // Returns true if the incident reporting service is enabled via a field trial.
 bool IsIncidentReportingServiceEnabled() {
+  return false;
+#if 0
   const std::string group_name = base::FieldTrialList::FindFullName(
       "SafeBrowsingIncidentReportingService");
   return group_name == "Enabled";
+#endif
 }
 #endif  // defined(FULL_SAFE_BROWSING)
 
@@ -395,9 +398,11 @@ SafeBrowsingDatabaseManager* SafeBrowsingService::CreateDatabaseManager() {
 
 void SafeBrowsingService::RegisterAllDelayedAnalysis() {
 #if defined(FULL_SAFE_BROWSING)
+#if 0
   safe_browsing::RegisterBinaryIntegrityAnalysis();
   safe_browsing::RegisterBlacklistLoadAnalysis();
   safe_browsing::RegisterVariationsSeedSignatureAnalysis();
+#endif
 #else
   NOTREACHED();
 #endif
