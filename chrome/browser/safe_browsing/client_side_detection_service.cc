@@ -54,11 +54,13 @@ namespace {
     REPORT_RESULT_MAX
   };
 
+#if 0
   void UpdateEnumUMAHistogram(MalwareReportTypes report_type) {
     DCHECK(report_type >= 0 && report_type < REPORT_RESULT_MAX);
     UMA_HISTOGRAM_ENUMERATION("SBClientMalware.SentReports",
                               report_type, REPORT_RESULT_MAX);
   }
+#endif
 
 }  // namespace
 
@@ -275,6 +277,10 @@ void ClientSideDetectionService::StartClientReportPhishingRequest(
     return;
   }
 
+#if 1
+  if (!callback.is_null())
+    callback.Run(GURL(request->url()), false);
+#else
   // Fill in metadata about which model we used.
   if (is_extended_reporting) {
     request->set_model_filename(model_loader_extended_->name());
@@ -314,6 +320,7 @@ void ClientSideDetectionService::StartClientReportPhishingRequest(
 
   // Record that we made a request
   phishing_report_times_.push(base::Time::Now());
+#endif
 }
 
 void ClientSideDetectionService::StartClientReportMalwareRequest(
@@ -328,6 +335,10 @@ void ClientSideDetectionService::StartClientReportMalwareRequest(
     return;
   }
 
+#if 1
+  if (!callback.is_null())
+    callback.Run(GURL(request->url()), GURL(request->url()), false);
+#else
   std::string request_data;
   if (!request->SerializeToString(&request_data)) {
     UpdateEnumUMAHistogram(REPORT_FAILED_SERIALIZATION);
@@ -361,6 +372,7 @@ void ClientSideDetectionService::StartClientReportMalwareRequest(
 
   // Record that we made a malware request
   malware_report_times_.push(base::Time::Now());
+#endif
 }
 
 
