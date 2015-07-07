@@ -19,7 +19,7 @@ namespace safe_browsing {
 namespace {
 
 const char kSbIncidentReportUrl[] =
-    "https://sb-ssl.google.com/safebrowsing/clientreport/incident";
+    "trk:268:https://sb-ssl.google.com/safebrowsing/clientreport/incident";
 
 }  // namespace
 
