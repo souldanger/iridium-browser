@@ -448,10 +448,12 @@ SafeBrowsingService::CreateIncidentReportingService() {
 
 void SafeBrowsingService::RegisterAllDelayedAnalysis() {
 #if defined(FULL_SAFE_BROWSING)
+#if 0
   RegisterBinaryIntegrityAnalysis();
   RegisterBlacklistLoadAnalysis();
   RegisterModuleLoadAnalysis(database_manager_);
   RegisterVariationsSeedSignatureAnalysis();
+#endif
 #else
   NOTREACHED();
 #endif
