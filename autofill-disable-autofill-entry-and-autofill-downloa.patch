@@ -1,7 +1,7 @@
 From 482cf89bb8549b10288c7699f6ace65d52020aa8 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Thu, 11 Sep 2014 16:37:32 +0200
-Subject: [PATCH 11/57] autofill: disable autofill entry and autofill download
+Subject: [PATCH 11/56] autofill: disable autofill entry and autofill download
  manager
 
 With Autofill, I argue, users are tempted to be lazy and fill forms

@@ -1,7 +1,7 @@
 From d82d79fd6e35e14fdc52f5b9da9183866908817a Mon Sep 17 00:00:00 2001
 From: Joachim Bauch <jojo@struktur.de>
 Date: Mon, 1 Jun 2015 17:14:34 +0200
-Subject: [PATCH 44/57] google-cloud-messaging: disable experiment status check
+Subject: [PATCH 44/56] google-cloud-messaging: disable experiment status check
 
 This avoids trk:263 from triggering.
 ---

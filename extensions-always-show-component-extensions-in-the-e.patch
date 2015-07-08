@@ -1,7 +1,7 @@
-From 68448411851dfa47bf4730f1e2de52a0cb8ea432 Mon Sep 17 00:00:00 2001
+From 0db36f0881f121bdfba794a5e248eaeca4409dcd Mon Sep 17 00:00:00 2001
 From: Joachim Bauch <jojo@struktur.de>
 Date: Thu, 25 Jun 2015 15:34:10 +0200
-Subject: [PATCH 56/57] extensions: always show component extensions in the ext
+Subject: [PATCH 55/56] extensions: always show component extensions in the ext
  list
 
 The attached patch makes sure that component extensions are always

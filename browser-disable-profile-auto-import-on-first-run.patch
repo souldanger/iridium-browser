@@ -1,7 +1,7 @@
-From b2bd783502dde55b4d153c38e9e2d470691bd462 Mon Sep 17 00:00:00 2001
+From c074602d2869f28c2987d038e55392cf98ecad6d Mon Sep 17 00:00:00 2001
 From: Joachim Bauch <jojo@struktur.de>
 Date: Thu, 25 Jun 2015 15:51:59 +0200
-Subject: [PATCH 55/57] browser: disable profile auto-import on first run
+Subject: [PATCH 54/56] browser: disable profile auto-import on first run
 
 ---
  chrome/browser/chrome_browser_main.cc | 2 ++

@@ -46,7 +46,6 @@ net-add-trk-scheme-and-help-identify-URLs-being-retr.patch
 safe_browsing-disable-incident-reporting.patch
 safe_browsing-disable-reporting-of-safebrowsing-over.patch
 safe_browsing-support-trk-prefix.patch
-safe_browsing-use-cached-lists-from-iridiumbrowser.d.patch
 all-add-trk-prefixes-to-possibly-evil-connections.patch
 promo-disable-Google-promotion-fetching.patch
 hotword-disable-at-build-time-by-default.patch

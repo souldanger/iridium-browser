@@ -1,7 +1,7 @@
 From a5e1790b2a279c493f46fc5e71c896a9d6b4dff6 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Fri, 29 May 2015 15:55:42 +0200
-Subject: [PATCH 43/57] spellchecker: flag downloading dictionary from Google
+Subject: [PATCH 43/56] spellchecker: flag downloading dictionary from Google
 
 ---
  chrome/browser/resources/options/language_options.js | 3 +++

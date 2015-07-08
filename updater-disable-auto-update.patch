@@ -1,7 +1,7 @@
 From e659026a40135f544a02dd5857f739296160a55e Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Fri, 13 Feb 2015 00:59:04 +0100
-Subject: [PATCH 35/57] updater: disable auto-update
+Subject: [PATCH 35/56] updater: disable auto-update
 
 As per http://www.chromium.org/administrators/turning-off-auto-updates ,
 the auto update function is decidedly disabled on Linux, i.e.
