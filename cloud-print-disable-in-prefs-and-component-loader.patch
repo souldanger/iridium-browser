@@ -1,7 +1,7 @@
-From 7eb94fb544d19cc8bfd915caf8519aee1d1ef7c2 Mon Sep 17 00:00:00 2001
+From dc7c8adfe68488dcc4467c32904bd34d98011130 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sat, 13 Sep 2014 16:55:12 +0200
-Subject: [PATCH 16/58] cloud-print: disable in prefs and component loader
+Subject: [PATCH 16/56] cloud-print: disable in prefs and component loader
 
 Cloud Print should normally be autodisabled if no printers are shared.
 But maybe that is not enough(?) Probably also needs to gain a checkbox
@@ -33,7 +33,7 @@ index e92e237..d4f347b 100644
    if (!skip_session_components) {
      AddWebStoreApp();
 diff --git a/chrome/browser/ui/browser_ui_prefs.cc b/chrome/browser/ui/browser_ui_prefs.cc
-index bc6d0a5..41813f5 100644
+index d9741ec..c4b2204 100644
 --- a/chrome/browser/ui/browser_ui_prefs.cc
 +++ b/chrome/browser/ui/browser_ui_prefs.cc
 @@ -86,7 +86,7 @@ void RegisterBrowserUserPrefs(user_prefs::PrefRegistrySyncable* registry) {

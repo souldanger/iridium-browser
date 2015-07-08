@@ -1,7 +1,7 @@
-From 98209bebf1417947f662dd18d64536468e9f774f Mon Sep 17 00:00:00 2001
+From f3c364bb9cf7cc6fbc67daf02820f79827f7800b Mon Sep 17 00:00:00 2001
 From: Yuriy Shevchuk <yuriy@struktur.de>
 Date: Tue, 23 Dec 2014 16:54:56 +0100
-Subject: [PATCH 29/58] build: fix OSX branded build crashes on OSX
+Subject: [PATCH 29/56] build: fix OSX branded build crashes on OSX
 
 ---
  build/common.gypi                  |  2 +-
@@ -10,7 +10,7 @@ Subject: [PATCH 29/58] build: fix OSX branded build crashes on OSX
  3 files changed, 10 insertions(+), 10 deletions(-)
 
 diff --git a/build/common.gypi b/build/common.gypi
-index ad84093..4eb81af 100644
+index cce7b3c..7c526c1 100644
 --- a/build/common.gypi
 +++ b/build/common.gypi
 @@ -1945,7 +1945,7 @@
@@ -42,10 +42,10 @@ index f1e9946..1e39207 100644
 +PRODUCT_INSTALLER_SHORTNAME=Iridium Installer
 +COPYRIGHT=Copyright 2015 the browser authors. Some rights reserved.
 diff --git a/chrome/common/chrome_constants.cc b/chrome/common/chrome_constants.cc
-index e41e836..1adf4ec 100644
+index 4a1610f..47fcfc2 100644
 --- a/chrome/common/chrome_constants.cc
 +++ b/chrome/common/chrome_constants.cc
-@@ -9,11 +9,11 @@
+@@ -7,11 +7,11 @@
  #define FPL FILE_PATH_LITERAL
  
  #if defined(OS_MACOSX)

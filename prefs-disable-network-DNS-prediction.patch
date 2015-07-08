@@ -1,30 +1,44 @@
-From ecee8554892e803188135d738be04840e865850b Mon Sep 17 00:00:00 2001
+From de96c208f8a9a457798d2a309379fcae91e34838 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sat, 13 Sep 2014 15:20:11 +0200
-Subject: [PATCH 14/58] prefs: disable network/DNS prediction
+Subject: [PATCH 14/56] prefs: disable network/DNS prediction
 
 Stop wasting my bandwidth (however little), and also don't tell others
 what I am about to visit.
 ---
- chrome/browser/net/net_pref_observer.cc | 2 +-
- chrome/browser/net/prediction_options.h | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ .../chromium/chrome/browser/preferences/NetworkPredictionOptions.java   | 2 +-
+ chrome/browser/net/prediction_options.cc                                | 2 +-
+ chrome/browser/net/prediction_options.h                                 | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/chrome/browser/net/net_pref_observer.cc b/chrome/browser/net/net_pref_observer.cc
-index 09c36d3..20fdf56 100644
---- a/chrome/browser/net/net_pref_observer.cc
-+++ b/chrome/browser/net/net_pref_observer.cc
-@@ -41,7 +41,7 @@ void NetPrefObserver::RegisterProfilePrefs(
-     user_prefs::PrefRegistrySyncable* registry) {
-   registry->RegisterBooleanPref(
-       prefs::kNetworkPredictionEnabled,
--      true,
-+      false,
-       user_prefs::PrefRegistrySyncable::SYNCABLE_PREF);
-   registry->RegisterBooleanPref(prefs::kDisableSpdy, false);
- }
+diff --git a/chrome/android/java/src/org/chromium/chrome/browser/preferences/NetworkPredictionOptions.java b/chrome/android/java/src/org/chromium/chrome/browser/preferences/NetworkPredictionOptions.java
+index fc8b585..bf8b350 100644
+--- a/chrome/android/java/src/org/chromium/chrome/browser/preferences/NetworkPredictionOptions.java
++++ b/chrome/android/java/src/org/chromium/chrome/browser/preferences/NetworkPredictionOptions.java
+@@ -16,7 +16,7 @@ public enum NetworkPredictionOptions {
+     NETWORK_PREDICTION_WIFI_ONLY,
+     NETWORK_PREDICTION_NEVER;
+ 
+-    public static final NetworkPredictionOptions DEFAULT = NETWORK_PREDICTION_WIFI_ONLY;
++    public static final NetworkPredictionOptions DEFAULT = NETWORK_PREDICTION_NEVER;
+ 
+     /**
+      * @return The number of choices offered for the user.
+diff --git a/chrome/browser/net/prediction_options.cc b/chrome/browser/net/prediction_options.cc
+index 40abb5a..511435b 100644
+--- a/chrome/browser/net/prediction_options.cc
++++ b/chrome/browser/net/prediction_options.cc
+@@ -25,7 +25,7 @@ bool CanPrefetchAndPrerender(int network_prediction_options) {
+     case NETWORK_PREDICTION_NEVER:
+       return false;
+     default:
+-      DCHECK_EQ(NETWORK_PREDICTION_WIFI_ONLY, network_prediction_options);
++      //DCHECK_EQ(NETWORK_PREDICTION_WIFI_ONLY, network_prediction_options);
+       return !net::NetworkChangeNotifier::IsConnectionCellular(
+                  net::NetworkChangeNotifier::GetConnectionType());
+   }
 diff --git a/chrome/browser/net/prediction_options.h b/chrome/browser/net/prediction_options.h
-index 928c128..582477d 100644
+index 6a2f8df..2edb2cd 100644
 --- a/chrome/browser/net/prediction_options.h
 +++ b/chrome/browser/net/prediction_options.h
 @@ -21,7 +21,7 @@ enum NetworkPredictionOptions {

@@ -1,16 +1,17 @@
-From 0fecc518a622a486434020ca724d963fb0dc8edb Mon Sep 17 00:00:00 2001
+From fffc7e171d7ee5f80360fb8e37da838c46e8c2de Mon Sep 17 00:00:00 2001
 From: Joachim Bauch <jojo@struktur.de>
 Date: Tue, 7 Jul 2015 17:02:09 +0200
-Subject: [PATCH 43/58] safe_browsing: disable incident reporting
+Subject: [PATCH 43/56] safe_browsing: disable incident reporting
 
 Disables the safebrowsing incident reporting where you could upload
 information about a blocked URL to Google (also added a trk prefix to
 the URL so we get notified if this happens again in the future).
 ---
  .../incident_reporting/incident_report_uploader_impl.cc        |  2 +-
+ .../incident_reporting/incident_reporting_service.cc           |  3 +++
  chrome/browser/safe_browsing/safe_browsing_blocking_page.cc    | 10 ++++++----
- chrome/browser/safe_browsing/safe_browsing_service.cc          |  5 +++++
- 3 files changed, 12 insertions(+), 5 deletions(-)
+ chrome/browser/safe_browsing/safe_browsing_service.cc          |  2 ++
+ 4 files changed, 12 insertions(+), 5 deletions(-)
 
 diff --git a/chrome/browser/safe_browsing/incident_reporting/incident_report_uploader_impl.cc b/chrome/browser/safe_browsing/incident_reporting/incident_report_uploader_impl.cc
 index b5e7684..01627a4 100644
@@ -25,8 +26,29 @@ index b5e7684..01627a4 100644
  
  }  // namespace
  
+diff --git a/chrome/browser/safe_browsing/incident_reporting/incident_reporting_service.cc b/chrome/browser/safe_browsing/incident_reporting/incident_reporting_service.cc
+index 9dc0c27..35fbcd4 100644
+--- a/chrome/browser/safe_browsing/incident_reporting/incident_reporting_service.cc
++++ b/chrome/browser/safe_browsing/incident_reporting/incident_reporting_service.cc
+@@ -284,6 +284,8 @@ IncidentReportingService::UploadContext::~UploadContext() {
+ 
+ // static
+ bool IncidentReportingService::IsEnabledForProfile(Profile* profile) {
++  return false;
++#if 0
+   if (profile->IsOffTheRecord())
+     return false;
+   if (!profile->GetPrefs()->GetBoolean(prefs::kSafeBrowsingEnabled))
+@@ -292,6 +294,7 @@ bool IncidentReportingService::IsEnabledForProfile(Profile* profile) {
+     return true;
+   return profile->GetPrefs()->GetBoolean(
+       prefs::kSafeBrowsingExtendedReportingEnabled);
++#endif
+ }
+ 
+ IncidentReportingService::IncidentReportingService(
 diff --git a/chrome/browser/safe_browsing/safe_browsing_blocking_page.cc b/chrome/browser/safe_browsing/safe_browsing_blocking_page.cc
-index c74fb7a..7cd07b8 100644
+index 342e59d..ddac6f2 100644
 --- a/chrome/browser/safe_browsing/safe_browsing_blocking_page.cc
 +++ b/chrome/browser/safe_browsing/safe_browsing_blocking_page.cc
 @@ -56,17 +56,17 @@ namespace {
@@ -51,7 +73,7 @@ index c74fb7a..7cd07b8 100644
  
  // Constants for the V4 phishing string upgrades.
  const char kSocialEngineeringTrial[] = "SafeBrowsingSocialEngineeringStrings";
-@@ -613,6 +613,7 @@ void SafeBrowsingBlockingPage::PopulateInterstitialStrings(
+@@ -616,6 +616,7 @@ void SafeBrowsingBlockingPage::PopulateInterstitialStrings(
  
  void SafeBrowsingBlockingPage::PopulateExtendedReportingOption(
      base::DictionaryValue* load_time_data) {
@@ -59,7 +81,7 @@ index c74fb7a..7cd07b8 100644
    // Only show checkbox if !(HTTPS || incognito-mode).
    const bool show = CanShowMalwareDetailsOption();
    load_time_data->SetBoolean(interstitials::kDisplayCheckBox, show);
-@@ -629,6 +630,7 @@ void SafeBrowsingBlockingPage::PopulateExtendedReportingOption(
+@@ -632,6 +633,7 @@ void SafeBrowsingBlockingPage::PopulateExtendedReportingOption(
    load_time_data->SetBoolean(
        interstitials::kBoxChecked,
        IsPrefEnabled(prefs::kSafeBrowsingExtendedReportingEnabled));
@@ -68,23 +90,10 @@ index c74fb7a..7cd07b8 100644
  
  void SafeBrowsingBlockingPage::PopulateMalwareLoadTimeData(
 diff --git a/chrome/browser/safe_browsing/safe_browsing_service.cc b/chrome/browser/safe_browsing/safe_browsing_service.cc
-index 0ae7ba6..41c776d 100644
+index d01f175..835107e 100644
 --- a/chrome/browser/safe_browsing/safe_browsing_service.cc
 +++ b/chrome/browser/safe_browsing/safe_browsing_service.cc
-@@ -99,9 +99,12 @@ base::FilePath CookieFilePath() {
- #if defined(FULL_SAFE_BROWSING)
- // Returns true if the incident reporting service is enabled via a field trial.
- bool IsIncidentReportingServiceEnabled() {
-+  return false;
-+#if 0
-   const std::string group_name = base::FieldTrialList::FindFullName(
-       "SafeBrowsingIncidentReportingService");
-   return group_name == "Enabled";
-+#endif
- }
- #endif  // defined(FULL_SAFE_BROWSING)
- 
-@@ -429,9 +432,11 @@ SafeBrowsingDatabaseManager* SafeBrowsingService::CreateDatabaseManager() {
+@@ -400,9 +400,11 @@ SafeBrowsingService::CreateIncidentReportingService() {
  
  void SafeBrowsingService::RegisterAllDelayedAnalysis() {
  #if defined(FULL_SAFE_BROWSING)

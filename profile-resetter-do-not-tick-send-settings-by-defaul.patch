@@ -1,7 +1,7 @@
-From 6ac0a5229d4a2b2c1742696926655bef8c9bff1d Mon Sep 17 00:00:00 2001
+From ccb41c8f24498af2610fbf4daccc1ac439fb98b7 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Tue, 28 Oct 2014 18:45:19 +0100
-Subject: [PATCH 06/58] profile-resetter: do not tick send-settings by default
+Subject: [PATCH 06/56] profile-resetter: do not tick send-settings by default
 
 When the user wishes to reset his preferences, Chromium would suggest
 to send over the old settings to Google. I presume that this is for

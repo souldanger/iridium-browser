@@ -1,7 +1,7 @@
-From c80e5dee55ecc2dda265b78b5bc1cfe02ca925d4 Mon Sep 17 00:00:00 2001
+From 95ffd1d9f9e484b50ff8ffba898d9ee303573ae5 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Thu, 30 Oct 2014 22:04:24 +0100
-Subject: [PATCH 25/58] prefs: disable translation service
+Subject: [PATCH 25/56] prefs: disable translation service
 
 When translation is enabled, the translation manager will request a
 list of supported languages from translate.googleapis.com.
@@ -13,7 +13,7 @@ instead to request translations via Google.
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/chrome/browser/ui/browser_ui_prefs.cc b/chrome/browser/ui/browser_ui_prefs.cc
-index 41813f5..e1f7348 100644
+index c4b2204..fa40ad3 100644
 --- a/chrome/browser/ui/browser_ui_prefs.cc
 +++ b/chrome/browser/ui/browser_ui_prefs.cc
 @@ -82,7 +82,7 @@ void RegisterBrowserUserPrefs(user_prefs::PrefRegistrySyncable* registry) {

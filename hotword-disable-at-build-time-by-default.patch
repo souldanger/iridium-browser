@@ -1,7 +1,7 @@
-From 10b72759cf91bb69c547b91d537f0ef7b84daa5c Mon Sep 17 00:00:00 2001
+From 7fe2903e71b37f8d238ca925b8c0827ebbbea1e3 Mon Sep 17 00:00:00 2001
 From: amistry <amistry@chromium.org>
 Date: Tue, 9 Jun 2015 12:18:39 -0700
-Subject: [PATCH 49/58] hotword: disable at build time by default
+Subject: [PATCH 49/56] hotword: disable at build time by default
 
 Commit f269d3b548203e217e8c0080c2e22e7ae3efb51e upstream:
 
@@ -24,7 +24,7 @@ Hard-disable hotwording by default even on a build level.
  3 files changed, 10 insertions(+), 1 deletion(-)
 
 diff --git a/chrome/browser/BUILD.gn b/chrome/browser/BUILD.gn
-index 37307c5..90f187a 100644
+index ee23e48..91f92b5 100644
 --- a/chrome/browser/BUILD.gn
 +++ b/chrome/browser/BUILD.gn
 @@ -23,7 +23,8 @@ declare_args() {
@@ -36,7 +36,7 @@ index 37307c5..90f187a 100644
 +  enable_hotwording = false
  }
  
- about_credits_file = "$target_gen_dir/about_credits.html"
+ additional_modules_list_file =
 diff --git a/chrome/browser/extensions/component_loader.cc b/chrome/browser/extensions/component_loader.cc
 index d4f347b..1e9b948 100644
 --- a/chrome/browser/extensions/component_loader.cc

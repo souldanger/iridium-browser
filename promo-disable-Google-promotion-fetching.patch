@@ -1,7 +1,7 @@
-From 7244be0f1c9113a4fb57142ed4d9e2d789cf12d1 Mon Sep 17 00:00:00 2001
+From 9cb2d521effb9d66a5fa5578b5a49d102ea5e249 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sun, 9 Nov 2014 01:54:27 +0100
-Subject: [PATCH 48/58] promo: disable Google promotion fetching
+Subject: [PATCH 48/56] promo: disable Google promotion fetching
 
 Documentation is scarce, and sprinkled with misleading acronyms.
 NTP is not NTP, for example. FWIW:
@@ -17,19 +17,19 @@ Google.
 
 References: https://github.com/iridium-browser/iridium-browser/issues/33
 ---
- chrome/browser/browser_process_impl.cc            | 2 ++
- chrome/browser/signin/signin_promo.cc             | 5 +++--
- chrome/browser/web_resource/notification_promo.cc | 2 +-
+ chrome/browser/browser_process_impl.cc        | 2 ++
+ chrome/browser/signin/signin_promo.cc         | 5 +++--
+ components/web_resource/notification_promo.cc | 2 +-
  3 files changed, 6 insertions(+), 3 deletions(-)
 
 diff --git a/chrome/browser/browser_process_impl.cc b/chrome/browser/browser_process_impl.cc
-index 756c066..4dc04ba 100644
+index fecf890..ae52be8 100644
 --- a/chrome/browser/browser_process_impl.cc
 +++ b/chrome/browser/browser_process_impl.cc
-@@ -1068,7 +1068,9 @@ void BrowserProcessImpl::PreMainMessageLoopRun() {
-   if (!command_line.HasSwitch(switches::kDisableWebResources)) {
-     DCHECK(!promo_resource_service_.get());
-     promo_resource_service_.reset(new PromoResourceService);
+@@ -1082,7 +1082,9 @@ void BrowserProcessImpl::PreMainMessageLoopRun() {
+         local_state(), chrome::GetChannel(), GetApplicationLocale(),
+         system_request_context(), switches::kDisableBackgroundNetworking,
+         base::Bind(safe_json::SafeJsonParser::Parse)));
 +#if 0
      promo_resource_service_->StartAfterDelay();
 +#endif
@@ -37,7 +37,7 @@ index 756c066..4dc04ba 100644
  
  #if !defined(OS_ANDROID) && !defined(OS_IOS)
 diff --git a/chrome/browser/signin/signin_promo.cc b/chrome/browser/signin/signin_promo.cc
-index b4c5f2f..b3b1fc1 100644
+index 9db75c8..3ae6455a 100644
 --- a/chrome/browser/signin/signin_promo.cc
 +++ b/chrome/browser/signin/signin_promo.cc
 @@ -105,6 +105,7 @@ bool ShouldShowPromo(Profile* profile) {
@@ -48,7 +48,7 @@ index b4c5f2f..b3b1fc1 100644
  
    // Don't show if the profile is an incognito.
    if (profile->IsOffTheRecord())
-@@ -266,8 +267,8 @@ void ForceWebBasedSigninFlowForTesting(bool force) {
+@@ -262,8 +263,8 @@ void ForceWebBasedSigninFlowForTesting(bool force) {
  void RegisterProfilePrefs(
      user_prefs::PrefRegistrySyncable* registry) {
    registry->RegisterIntegerPref(prefs::kSignInPromoStartupCount, 0);
@@ -59,11 +59,11 @@ index b4c5f2f..b3b1fc1 100644
    registry->RegisterBooleanPref(prefs::kSignInPromoShowNTPBubble, false);
  }
  
-diff --git a/chrome/browser/web_resource/notification_promo.cc b/chrome/browser/web_resource/notification_promo.cc
-index 09c6ac6..d70d267 100644
---- a/chrome/browser/web_resource/notification_promo.cc
-+++ b/chrome/browser/web_resource/notification_promo.cc
-@@ -35,7 +35,7 @@ namespace {
+diff --git a/components/web_resource/notification_promo.cc b/components/web_resource/notification_promo.cc
+index 73e7d4b..2f526b5 100644
+--- a/components/web_resource/notification_promo.cc
++++ b/components/web_resource/notification_promo.cc
+@@ -30,7 +30,7 @@ namespace {
  
  const int kDefaultGroupSize = 100;
  

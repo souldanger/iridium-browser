@@ -52,7 +52,5 @@ search-show-blank-tab-for-new-tab-page.patch
 browser-disable-profile-auto-import-on-first-run.patch
 extensions-always-show-component-extensions-in-the-e.patch
 battery_status_service-disable-more-privacy-nightmar.patch
-avatar_menu-disable.patch
 translate-disable-fetching-of-translate-languages-fr.patch
-wrench_menu-remove-Sign-in-from-wrench-menu.patch
 common-set-Iridium-version-and-change-User-Agent-acc.patch
