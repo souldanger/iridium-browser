@@ -1,4 +1,4 @@
-From 7b202d3ed43c52188740fa5e4efef0c4823ae48b Mon Sep 17 00:00:00 2001
+From 339999c31a0aacba032d6ca1711a68de0b23d528 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sun, 19 Oct 2014 14:49:10 +0200
 Subject: [PATCH 23/57] search_engines: add DuckDuckGo as selectable and

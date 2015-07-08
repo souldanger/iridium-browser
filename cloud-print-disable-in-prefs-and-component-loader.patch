@@ -1,4 +1,4 @@
-From f28e370afb5007430d250d658a348e317d17315b Mon Sep 17 00:00:00 2001
+From 02a961e7b6076db222529427a08ebf16957115df Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sat, 13 Sep 2014 16:55:12 +0200
 Subject: [PATCH 16/57] cloud-print: disable in prefs and component loader
@@ -33,10 +33,10 @@ index cdb717b..6194f27 100644
    if (!skip_session_components) {
      AddWebStoreApp();
 diff --git a/chrome/browser/ui/browser_ui_prefs.cc b/chrome/browser/ui/browser_ui_prefs.cc
-index b55cd1d..3e4507f 100644
+index b83d417..09ce5f9 100644
 --- a/chrome/browser/ui/browser_ui_prefs.cc
 +++ b/chrome/browser/ui/browser_ui_prefs.cc
-@@ -87,7 +87,7 @@ void RegisterBrowserUserPrefs(user_prefs::PrefRegistrySyncable* registry) {
+@@ -97,7 +97,7 @@ void RegisterBrowserUserPrefs(user_prefs::PrefRegistrySyncable* registry) {
        user_prefs::PrefRegistrySyncable::SYNCABLE_PREF);
    registry->RegisterStringPref(prefs::kCloudPrintEmail, std::string());
    registry->RegisterBooleanPref(prefs::kCloudPrintProxyEnabled, true);

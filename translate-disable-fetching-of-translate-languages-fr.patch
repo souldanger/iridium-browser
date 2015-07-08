@@ -1,4 +1,4 @@
-From 0baae1095241d9d1adf049d28162fbabaeab60e1 Mon Sep 17 00:00:00 2001
+From cbbb36721e55f241a85ebc3da3a524670596c24b Mon Sep 17 00:00:00 2001
 From: Simon Eisenmann <simon@struktur.de>
 Date: Mon, 26 Oct 2015 14:18:05 +0100
 Subject: [PATCH 55/57] translate: disable fetching of translate languages from

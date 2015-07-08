@@ -1,4 +1,4 @@
-From 5a353e349ce0095b41fe1b414de49b51455b6ca6 Mon Sep 17 00:00:00 2001
+From 8e9d203f83e7318e8c19bd79e55baaba0515df8e Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Mon, 15 Sep 2014 10:58:42 +0200
 Subject: [PATCH 04/57] dns: send IPv6 connectivity probes to RIPE DNS rather

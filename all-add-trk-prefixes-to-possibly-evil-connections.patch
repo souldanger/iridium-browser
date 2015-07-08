@@ -1,4 +1,4 @@
-From e3c66da9cd05dd305084412dcc6771e484820693 Mon Sep 17 00:00:00 2001
+From 07d0ae272bb8b2a1f8f10025ae4a0d5a48682261 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Mon, 3 Nov 2014 10:52:56 +0100
 Subject: [PATCH 47/57] all: add trk: prefixes to possibly evil connections
@@ -190,7 +190,7 @@ index 1e6fe65..a69d206 100644
  // Location of the help page for low space warning in the downloads directory.
  const int kDownloadsLowSpaceWarningHelpNumber = 1061547;
 diff --git a/chrome/browser/chromeos/login/signin/oauth2_login_manager.cc b/chrome/browser/chromeos/login/signin/oauth2_login_manager.cc
-index 8b79b2f..de4db5a 100644
+index 8a817cd..12ecccf1 100644
 --- a/chrome/browser/chromeos/login/signin/oauth2_login_manager.cc
 +++ b/chrome/browser/chromeos/login/signin/oauth2_login_manager.cc
 @@ -31,7 +31,7 @@ namespace chromeos {

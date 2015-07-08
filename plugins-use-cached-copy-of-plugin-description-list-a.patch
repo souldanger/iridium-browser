@@ -1,4 +1,4 @@
-From 2bd735a36bae3d34c6748c38d18535c635005f23 Mon Sep 17 00:00:00 2001
+From 8a7bccf053db7a3844d587caf0ec5d7f9e944dc6 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Thu, 2 Apr 2015 12:44:23 +0200
 Subject: [PATCH 36/57] plugins: use cached copy of plugin description list at

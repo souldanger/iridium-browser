@@ -1,4 +1,4 @@
-From 32a6eed5bd6ec4e150b5de6e6434f45d16b78779 Mon Sep 17 00:00:00 2001
+From e46e42d12ce986c828e3ae116dbb67fa40229f3b Mon Sep 17 00:00:00 2001
 From: Yuriy Shevchuk <yuriy@struktur.de>
 Date: Tue, 23 Dec 2014 16:54:56 +0100
 Subject: [PATCH 29/57] build: fix OSX branded build crashes on OSX

@@ -1,4 +1,4 @@
-From a7ec39cd9a16b69a07f945903118a4c9bbf7d392 Mon Sep 17 00:00:00 2001
+From 1d60cdf20a4d679eb22232e08a6a0d3b40f1c47c Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Tue, 2 Jun 2015 11:01:50 +0200
 Subject: [PATCH 42/57] updater: disable updater pings

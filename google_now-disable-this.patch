@@ -1,4 +1,4 @@
-From 9f763eb555ab31da5325eff2d5b9664acda7ec64 Mon Sep 17 00:00:00 2001
+From b30e416d1a87492c3edbbb418aa9892ee4fcf95b Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Fri, 19 Jun 2015 19:20:39 +0200
 Subject: [PATCH 50/57] google_now: disable this

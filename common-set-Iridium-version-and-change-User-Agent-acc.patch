@@ -1,4 +1,4 @@
-From 1a0c265569fb35a981ea2812850eb5c825aa29a3 Mon Sep 17 00:00:00 2001
+From acc1dae123b1e7050fcc5844f13a0156ac983e6e Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Wed, 8 Jul 2015 15:08:32 +0200
 Subject: [PATCH 57/57] common: set Iridium version and change User-Agent
@@ -16,12 +16,12 @@ Note to self:
 Update "Chromium/*" in UA string when updating chrome/version.
 ---
  android_webview/common/aw_version_info_values.h.version | 2 +-
- chrome/VERSION                                          | 4 ++--
+ chrome/VERSION                                          | 6 +++---
  components/version_info/version_info.cc                 | 2 +-
  components/version_info/version_info_values.h.version   | 2 +-
  content/common/user_agent.cc                            | 2 ++
  extensions/shell/common/version.h.in                    | 2 +-
- 6 files changed, 8 insertions(+), 6 deletions(-)
+ 6 files changed, 9 insertions(+), 7 deletions(-)
 
 diff --git a/android_webview/common/aw_version_info_values.h.version b/android_webview/common/aw_version_info_values.h.version
 index 72faf97..7c0f43d 100644
@@ -36,14 +36,15 @@ index 72faf97..7c0f43d 100644
  
  #endif  // ANDROID_WEBVIEW_COMMON_AW_VERSION_INFO_VALUES_H_
 diff --git a/chrome/VERSION b/chrome/VERSION
-index 691bbc5..e458951 100644
+index f09c7d2..3d84949 100644
 --- a/chrome/VERSION
 +++ b/chrome/VERSION
 @@ -1,4 +1,4 @@
  MAJOR=48
- MINOR=0
+-MINOR=0
 -BUILD=2564
--PATCH=48
+-PATCH=109
++MINOR=1
 +BUILD=0
 +PATCH=0
 diff --git a/components/version_info/version_info.cc b/components/version_info/version_info.cc
@@ -73,7 +74,7 @@ index 6232e35..3cf4fee 100644
  #define IS_OFFICIAL_BUILD @OFFICIAL_BUILD@
  
 diff --git a/content/common/user_agent.cc b/content/common/user_agent.cc
-index d6f3aaa..5adc8e3 100644
+index d6f3aaa..46b817f 100644
 --- a/content/common/user_agent.cc
 +++ b/content/common/user_agent.cc
 @@ -197,6 +197,8 @@ std::string BuildUserAgentFromOSAndProduct(const std::string& os_info,
@@ -81,7 +82,7 @@ index d6f3aaa..5adc8e3 100644
        WEBKIT_VERSION_MAJOR,
        WEBKIT_VERSION_MINOR);
 +  if (strncmp(product.c_str(), "Chrome/", 7) != 0)
-+	base::StringAppendF(&user_agent, " Chrome/47.0.2526.106");
++	base::StringAppendF(&user_agent, " Chrome/48.0.2564.109");
    return user_agent;
  }
  

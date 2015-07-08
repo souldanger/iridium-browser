@@ -1,4 +1,4 @@
-From 258ac6ddb12bd049d80ef141af7d060228164420 Mon Sep 17 00:00:00 2001
+From fdd9be3ae89d3bd63fca03c9a883008fca1a3922 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sat, 13 Sep 2014 16:59:10 +0200
 Subject: [PATCH 17/57] prefs: disable background mode by default

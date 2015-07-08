@@ -1,4 +1,4 @@
-From 866a1b29c8df18965445def5b2968f6f2f226f65 Mon Sep 17 00:00:00 2001
+From c6ee2c96cbf218b3edb5f0e715cfc4b2cfaa1e4d Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Thu, 11 Sep 2014 16:37:32 +0200
 Subject: [PATCH 10/57] autofill: disable autofill download manager
@@ -23,7 +23,7 @@ index 17ffec1..9ee68ad 100644
  }
  
 diff --git a/components/autofill/core/browser/autofill_manager.cc b/components/autofill/core/browser/autofill_manager.cc
-index 50640f16..d81283e 100644
+index 64d7313..5723a9a 100644
 --- a/components/autofill/core/browser/autofill_manager.cc
 +++ b/components/autofill/core/browser/autofill_manager.cc
 @@ -157,10 +157,12 @@ AutofillManager::AutofillManager(

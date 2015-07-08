@@ -1,4 +1,4 @@
-From 95ca286f68f4efb26326a522a82154bc983ff53b Mon Sep 17 00:00:00 2001
+From 34f0e0c5be983b701e2b957e1683a5c1d20428a8 Mon Sep 17 00:00:00 2001
 From: Joachim Bauch <bauch@struktur.de>
 Date: Wed, 15 Apr 2015 15:19:21 +0200
 Subject: [PATCH 34/57] plugin: do not load any system-provided plugins on

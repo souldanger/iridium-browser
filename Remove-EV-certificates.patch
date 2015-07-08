@@ -1,4 +1,4 @@
-From 610313e3cc94189d10ec4b5589e661674c130769 Mon Sep 17 00:00:00 2001
+From 1bd4e11cf70e845d6707f7b7a1150507115f2c7b Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Mon, 2 Mar 2015 11:28:26 +0100
 Subject: [PATCH 37/57] Remove EV certificates

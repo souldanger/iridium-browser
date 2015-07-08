@@ -1,4 +1,4 @@
-From 7fcab038d7c3cf63c59f85769c6daf908c612342 Mon Sep 17 00:00:00 2001
+From ff87d0faf79f4c97c3719b2670696093f779e9f4 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Tue, 28 Oct 2014 18:45:19 +0100
 Subject: [PATCH 06/57] profile-resetter: do not tick send-settings by default

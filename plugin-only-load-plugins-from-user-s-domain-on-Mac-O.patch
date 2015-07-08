@@ -1,4 +1,4 @@
-From 9289b680af5be3211fd92ab9734af74c33388b9f Mon Sep 17 00:00:00 2001
+From b69a6dec94aa79f50b471585e0e9bd6e1914c240 Mon Sep 17 00:00:00 2001
 From: Ivan Sein <ivan@struktur.de>
 Date: Wed, 25 Mar 2015 17:00:59 +0100
 Subject: [PATCH 35/57] plugin: only load plugins from user's domain on Mac OS

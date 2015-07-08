@@ -1,4 +1,4 @@
-From 904f41c10ed85a3a778d524398709ec05b5edd6a Mon Sep 17 00:00:00 2001
+From 33b942ac1827596324204033455f8b637986b73f Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Fri, 29 May 2015 15:55:42 +0200
 Subject: [PATCH 39/57] spellchecker: flag downloading dictionary from Google

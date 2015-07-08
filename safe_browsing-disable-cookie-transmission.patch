@@ -1,4 +1,4 @@
-From 79e540c7368b0b2053caf40a33b8e2d763db4dde Mon Sep 17 00:00:00 2001
+From b2d4bf2ceef45949d196672860199d38ee610845 Mon Sep 17 00:00:00 2001
 From: Joachim Bauch <jojo@struktur.de>
 Date: Wed, 22 Jul 2015 12:24:15 +0200
 Subject: [PATCH 46/57] safe_browsing: disable cookie transmission
@@ -57,7 +57,7 @@ index b667456..96cf441 100644
      fetcher_->SetRequestContext(service_->request_context_getter_.get());
      fetcher_->SetUploadData("application/octet-stream",
 diff --git a/chrome/browser/safe_browsing/protocol_manager.cc b/chrome/browser/safe_browsing/protocol_manager.cc
-index a1718c6a..c17153d 100644
+index 0aae3fa..dfff7a46 100644
 --- a/chrome/browser/safe_browsing/protocol_manager.cc
 +++ b/chrome/browser/safe_browsing/protocol_manager.cc
 @@ -223,7 +223,9 @@ void SafeBrowsingProtocolManager::GetFullHash(

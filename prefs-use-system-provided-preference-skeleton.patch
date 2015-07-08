@@ -1,4 +1,4 @@
-From 4b6d2de750bdfaedf0a377a873dafb49e605e4bc Mon Sep 17 00:00:00 2001
+From f258e9861ef59da0eda52303f7476baeb614c715 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Thu, 29 Jan 2015 10:36:43 +0100
 Subject: [PATCH 31/57] prefs: use system-provided preference skeleton

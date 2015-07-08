@@ -1,4 +1,4 @@
-From 152ef7e967f182e4fdad18c7563e0b67cee4afbc Mon Sep 17 00:00:00 2001
+From 39b6118ac98f5f0a41c77f9db24351334ec886cc Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sat, 13 Sep 2014 17:25:47 +0200
 Subject: [PATCH 20/57] prefs: only keep cookies until exit
