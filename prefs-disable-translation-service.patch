@@ -1,4 +1,4 @@
-From f176b82290321e1348efbe7fc65bcf4c634e36c4 Mon Sep 17 00:00:00 2001
+From 78145ccda60c3feead5712fc438ce3fb00ac7cbe Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Thu, 30 Oct 2014 22:04:24 +0100
 Subject: [PATCH 26/56] prefs: disable translation service
@@ -13,18 +13,18 @@ instead to request translations via Google.
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/chrome/browser/ui/browser_ui_prefs.cc b/chrome/browser/ui/browser_ui_prefs.cc
-index 5c70c06..adafd7f 100644
+index 41813f5..e1f7348 100644
 --- a/chrome/browser/ui/browser_ui_prefs.cc
 +++ b/chrome/browser/ui/browser_ui_prefs.cc
-@@ -102,7 +102,7 @@ void RegisterBrowserUserPrefs(user_prefs::PrefRegistrySyncable* registry) {
-       user_prefs::PrefRegistrySyncable::UNSYNCABLE_PREF);
+@@ -82,7 +82,7 @@ void RegisterBrowserUserPrefs(user_prefs::PrefRegistrySyncable* registry) {
+   registry->RegisterBooleanPref(prefs::kWebAppCreateInQuickLaunchBar, true);
    registry->RegisterBooleanPref(
        prefs::kEnableTranslate,
 -      true,
 +      false,
        user_prefs::PrefRegistrySyncable::SYNCABLE_PREF);
-   registry->RegisterStringPref(
-       prefs::kCloudPrintEmail,
+   registry->RegisterStringPref(prefs::kCloudPrintEmail, std::string());
+   registry->RegisterBooleanPref(prefs::kCloudPrintProxyEnabled, true);
 -- 
 2.4.3
 

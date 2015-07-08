@@ -33,7 +33,6 @@ src-use-cached-copy-of-safebrowsing-lists-at-iridium.patch
 prefs-use-system-provided-preference-skeleton.patch
 build-build-the-sandbox-with-PIE.patch
 updater-disable-auto-update.patch
-updater-disable-updater-pings.patch
 plugin-do-not-load-any-system-provided-plugins-on-Wi.patch
 plugin-only-load-plugins-from-user-s-domain-on-Mac-O.patch
 MacOS-updates.patch
@@ -43,6 +42,7 @@ src-add-comments-for-evil-looking-code.patch
 spellchecker-flag-downloading-dictionary-from-Google.patch
 google-cloud-messaging-disable-experiment-status-che.patch
 net-add-trk-scheme-and-help-identify-URLs-being-retr.patch
+updater-disable-updater-pings.patch
 safe_browsing-disable-incident-reporting.patch
 safe_browsing-disable-reporting-of-safebrowsing-over.patch
 safe_browsing-support-trk-prefix.patch

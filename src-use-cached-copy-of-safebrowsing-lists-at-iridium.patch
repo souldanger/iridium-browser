@@ -1,4 +1,4 @@
-From 9dfd66f4675599aee4a9f321ef25eaf4fadfd454 Mon Sep 17 00:00:00 2001
+From 7af4c793fb198483dda96746ee2253e067966c47 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Mon, 26 Jan 2015 13:57:44 +0100
 Subject: [PATCH 32/56] src: use cached copy of safebrowsing lists at
@@ -12,7 +12,7 @@ regular basis.
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/chrome/browser/safe_browsing/client_side_detection_service.cc b/chrome/browser/safe_browsing/client_side_detection_service.cc
-index 09f44b9..eba2c51 100644
+index e7fab2f..e151ef3 100644
 --- a/chrome/browser/safe_browsing/client_side_detection_service.cc
 +++ b/chrome/browser/safe_browsing/client_side_detection_service.cc
 @@ -79,8 +79,8 @@ const char ClientSideDetectionService::kClientReportPhishingUrl[] =

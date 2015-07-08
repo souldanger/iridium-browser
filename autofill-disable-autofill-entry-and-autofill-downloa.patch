@@ -1,4 +1,4 @@
-From 482cf89bb8549b10288c7699f6ace65d52020aa8 Mon Sep 17 00:00:00 2001
+From cc1665216bf13a6423d1e766225748048172e312 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Thu, 11 Sep 2014 16:37:32 +0200
 Subject: [PATCH 11/56] autofill: disable autofill entry and autofill download
@@ -19,7 +19,7 @@ Disables the autofill download manager (trk:158).
  2 files changed, 4 insertions(+), 2 deletions(-)
 
 diff --git a/components/autofill/core/browser/autofill_download_manager.cc b/components/autofill/core/browser/autofill_download_manager.cc
-index afe5679..8f83e87 100644
+index 8774234..36501b4 100644
 --- a/components/autofill/core/browser/autofill_download_manager.cc
 +++ b/components/autofill/core/browser/autofill_download_manager.cc
 @@ -45,7 +45,7 @@ std::string RequestTypeToString(AutofillDownloadManager::RequestType type) {
@@ -32,7 +32,7 @@ index afe5679..8f83e87 100644
  }
  
 diff --git a/components/autofill/core/browser/autofill_manager.cc b/components/autofill/core/browser/autofill_manager.cc
-index 47d518b..dcdf299 100644
+index 5df3ca1..6e8620a 100644
 --- a/components/autofill/core/browser/autofill_manager.cc
 +++ b/components/autofill/core/browser/autofill_manager.cc
 @@ -151,10 +151,12 @@ AutofillManager::AutofillManager(
@@ -55,8 +55,8 @@ index 47d518b..dcdf299 100644
 -      true,
 +      false,
        user_prefs::PrefRegistrySyncable::SYNCABLE_PREF);
-   registry->RegisterBooleanPref(
-       prefs::kAutofillWalletSyncExperimentEnabled,
+   registry->RegisterBooleanPref(prefs::kAutofillWalletSyncExperimentEnabled,
+                                 false);
 -- 
 2.4.3
 

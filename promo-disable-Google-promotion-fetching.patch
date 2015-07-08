@@ -1,4 +1,4 @@
-From fb5860595c3db8825e1db352941156027f4f9c24 Mon Sep 17 00:00:00 2001
+From af2dc2ecb86cfd870f2ad2c382dd3c9161d635be Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sun, 9 Nov 2014 01:54:27 +0100
 Subject: [PATCH 50/56] promo: disable Google promotion fetching
@@ -23,10 +23,10 @@ References: https://github.com/iridium-browser/iridium-browser/issues/33
  3 files changed, 6 insertions(+), 3 deletions(-)
 
 diff --git a/chrome/browser/browser_process_impl.cc b/chrome/browser/browser_process_impl.cc
-index b373810..673f54e 100644
+index 8d651f2..eaef098 100644
 --- a/chrome/browser/browser_process_impl.cc
 +++ b/chrome/browser/browser_process_impl.cc
-@@ -1054,7 +1054,9 @@ void BrowserProcessImpl::PreMainMessageLoopRun() {
+@@ -1063,7 +1063,9 @@ void BrowserProcessImpl::PreMainMessageLoopRun() {
    if (!command_line.HasSwitch(switches::kDisableWebResources)) {
      DCHECK(!promo_resource_service_.get());
      promo_resource_service_.reset(new PromoResourceService);
@@ -37,10 +37,10 @@ index b373810..673f54e 100644
  
  #if !defined(OS_ANDROID) && !defined(OS_IOS)
 diff --git a/chrome/browser/signin/signin_promo.cc b/chrome/browser/signin/signin_promo.cc
-index a3404a9..5cc4285 100644
+index 0f0c1e0d..2de1c7b 100644
 --- a/chrome/browser/signin/signin_promo.cc
 +++ b/chrome/browser/signin/signin_promo.cc
-@@ -102,6 +102,7 @@ bool ShouldShowPromo(Profile* profile) {
+@@ -106,6 +106,7 @@ bool ShouldShowPromo(Profile* profile) {
  
  bool ShouldShowPromoAtStartup(Profile* profile, bool is_new_profile) {
    DCHECK(profile);
@@ -48,22 +48,19 @@ index a3404a9..5cc4285 100644
  
    // Don't show if the profile is an incognito.
    if (profile->IsOffTheRecord())
-@@ -258,11 +259,11 @@ void RegisterProfilePrefs(
-       user_prefs::PrefRegistrySyncable::UNSYNCABLE_PREF);
-   registry->RegisterBooleanPref(
-       prefs::kSignInPromoUserSkipped,
--      false,
-+      true,
-       user_prefs::PrefRegistrySyncable::UNSYNCABLE_PREF);
-   registry->RegisterBooleanPref(
-       prefs::kSignInPromoShowOnFirstRunAllowed,
--      true,
-+      false,
-       user_prefs::PrefRegistrySyncable::UNSYNCABLE_PREF);
-   registry->RegisterBooleanPref(
-       prefs::kSignInPromoShowNTPBubble,
+@@ -263,8 +264,8 @@ void ForceWebBasedSigninFlowForTesting(bool force) {
+ void RegisterProfilePrefs(
+     user_prefs::PrefRegistrySyncable* registry) {
+   registry->RegisterIntegerPref(prefs::kSignInPromoStartupCount, 0);
+-  registry->RegisterBooleanPref(prefs::kSignInPromoUserSkipped, false);
+-  registry->RegisterBooleanPref(prefs::kSignInPromoShowOnFirstRunAllowed, true);
++  registry->RegisterBooleanPref(prefs::kSignInPromoUserSkipped, true);
++  registry->RegisterBooleanPref(prefs::kSignInPromoShowOnFirstRunAllowed, false);
+   registry->RegisterBooleanPref(prefs::kSignInPromoShowNTPBubble, false);
+ }
+ 
 diff --git a/chrome/browser/web_resource/notification_promo.cc b/chrome/browser/web_resource/notification_promo.cc
-index a71c0e7..3f9661f 100644
+index cdae454..60c425f 100644
 --- a/chrome/browser/web_resource/notification_promo.cc
 +++ b/chrome/browser/web_resource/notification_promo.cc
 @@ -34,7 +34,7 @@ namespace {

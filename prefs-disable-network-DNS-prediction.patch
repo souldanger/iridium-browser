@@ -1,4 +1,4 @@
-From 7fdda1d42b1e3ad5c2615e52a4e581aef3f56581 Mon Sep 17 00:00:00 2001
+From 58b6cc4433eb1161add0f72b34626a60703988fe Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sat, 13 Sep 2014 15:20:11 +0200
 Subject: [PATCH 15/56] prefs: disable network/DNS prediction
@@ -11,7 +11,7 @@ what I am about to visit.
  2 files changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/chrome/browser/net/net_pref_observer.cc b/chrome/browser/net/net_pref_observer.cc
-index 8046e4d..813b846 100644
+index 09c36d3..20fdf56 100644
 --- a/chrome/browser/net/net_pref_observer.cc
 +++ b/chrome/browser/net/net_pref_observer.cc
 @@ -41,7 +41,7 @@ void NetPrefObserver::RegisterProfilePrefs(
@@ -21,8 +21,8 @@ index 8046e4d..813b846 100644
 -      true,
 +      false,
        user_prefs::PrefRegistrySyncable::SYNCABLE_PREF);
-   registry->RegisterBooleanPref(
-       prefs::kDisableSpdy,
+   registry->RegisterBooleanPref(prefs::kDisableSpdy, false);
+ }
 diff --git a/chrome/browser/net/prediction_options.h b/chrome/browser/net/prediction_options.h
 index 928c128..582477d 100644
 --- a/chrome/browser/net/prediction_options.h

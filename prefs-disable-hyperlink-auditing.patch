@@ -1,4 +1,4 @@
-From 4a57689d3d33bdef5bd1c5b2c2085e2eabfbf3da Mon Sep 17 00:00:00 2001
+From 13a4f471f13e6a8ab9872fdd12e591a90eee88a2 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sat, 13 Sep 2014 17:03:17 +0200
 Subject: [PATCH 19/56] prefs: disable hyperlink auditing
@@ -15,18 +15,18 @@ https://html.spec.whatwg.org/multipage/semantics.html#hyperlink-auditing .
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/chrome/browser/chrome_content_browser_client.cc b/chrome/browser/chrome_content_browser_client.cc
-index c644b41..972fb7e 100644
+index e07ea7a..03aa079 100644
 --- a/chrome/browser/chrome_content_browser_client.cc
 +++ b/chrome/browser/chrome_content_browser_client.cc
-@@ -620,7 +620,7 @@ void ChromeContentBrowserClient::RegisterProfilePrefs(
-       user_prefs::PrefRegistrySyncable::UNSYNCABLE_PREF);
-   registry->RegisterBooleanPref(
-       prefs::kEnableHyperlinkAuditing,
--      true,
-+      false, /* default setting for HL-A */
-       user_prefs::PrefRegistrySyncable::UNSYNCABLE_PREF);
-   registry->RegisterListPref(
-       prefs::kEnableDeprecatedWebPlatformFeatures,
+@@ -639,7 +639,7 @@ ChromeContentBrowserClient::~ChromeContentBrowserClient() {
+ void ChromeContentBrowserClient::RegisterProfilePrefs(
+     user_prefs::PrefRegistrySyncable* registry) {
+   registry->RegisterBooleanPref(prefs::kDisable3DAPIs, false);
+-  registry->RegisterBooleanPref(prefs::kEnableHyperlinkAuditing, true);
++  registry->RegisterBooleanPref(prefs::kEnableHyperlinkAuditing, false);
+   registry->RegisterListPref(prefs::kEnableDeprecatedWebPlatformFeatures);
+ }
+ 
 -- 
 2.4.3
 

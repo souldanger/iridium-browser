@@ -1,4 +1,4 @@
-From e39d840acb4d7ceb5909de3281637d2b94db5f39 Mon Sep 17 00:00:00 2001
+From 3dca9541a8f10ea05b126948c10ba2b3fc3d9850 Mon Sep 17 00:00:00 2001
 From: Joachim Bauch <jojo@struktur.de>
 Date: Tue, 7 Jul 2015 18:28:46 +0200
 Subject: [PATCH 47/56] safe_browsing: disable reporting of safebrowsing
@@ -12,7 +12,7 @@ This prevents trk:148 (phishing) and trk:149 (malware).
  1 file changed, 12 insertions(+)
 
 diff --git a/chrome/browser/safe_browsing/client_side_detection_service.cc b/chrome/browser/safe_browsing/client_side_detection_service.cc
-index eba2c51..dc5fa5b 100644
+index e151ef3..be94ec0 100644
 --- a/chrome/browser/safe_browsing/client_side_detection_service.cc
 +++ b/chrome/browser/safe_browsing/client_side_detection_service.cc
 @@ -56,11 +56,13 @@ namespace {

@@ -1,4 +1,4 @@
-From 0c09e1c37e7c136123a49abbb09daed27d206c1d Mon Sep 17 00:00:00 2001
+From 14859a23fb6c262e38db72ea1f0a8f9513382cee Mon Sep 17 00:00:00 2001
 From: amistry <amistry@chromium.org>
 Date: Tue, 9 Jun 2015 12:18:39 -0700
 Subject: [PATCH 51/56] hotword: disable at build time by default
@@ -18,68 +18,34 @@ Cr-Commit-Position: refs/heads/master@{#333548}
 
 Hard-disable hotwording by default even on a build level.
 ---
- build/common.gypi                                 | 4 ++++
- chrome/browser/BUILD.gn                           | 9 +++++++++
+ chrome/browser/BUILD.gn                           | 6 ++----
  chrome/browser/extensions/component_loader.cc     | 4 ++++
- chrome/browser/search/hotword_service.cc          | 5 ++++-
+ chrome/browser/search/hotword_service.cc          | 1 -
  chrome/browser/search/hotword_service_unittest.cc | 4 ++++
- chrome/chrome_browser.gypi                        | 3 +++
- 6 files changed, 28 insertions(+), 1 deletion(-)
+ 4 files changed, 10 insertions(+), 5 deletions(-)
 
-diff --git a/build/common.gypi b/build/common.gypi
-index 1801536..ee7d7f6 100644
---- a/build/common.gypi
-+++ b/build/common.gypi
-@@ -372,6 +372,9 @@
-       # Web speech is enabled by default. Set to 0 to disable.
-       'enable_web_speech%': 1,
- 
-+      # 'Ok Google' hotwording is enabled by default. Set to 0 to disable.
-+      'enable_hotwording%': 0,
-+
-       # Notifications are compiled in by default. Set to 0 to disable.
-       'notifications%' : 1,
- 
-@@ -1150,6 +1153,7 @@
-     'configuration_policy%': '<(configuration_policy)',
-     'safe_browsing%': '<(safe_browsing)',
-     'enable_web_speech%': '<(enable_web_speech)',
-+    'enable_hotwording%': '<(enable_hotwording)',
-     'notifications%': '<(notifications)',
-     'clang_use_chrome_plugins%': '<(clang_use_chrome_plugins)',
-     'mac_want_real_dsym%': '<(mac_want_real_dsym)',
 diff --git a/chrome/browser/BUILD.gn b/chrome/browser/BUILD.gn
-index 3a429c0..216a5b7 100644
+index 8b7e0fe..5345ca2 100644
 --- a/chrome/browser/BUILD.gn
 +++ b/chrome/browser/BUILD.gn
-@@ -17,6 +17,11 @@ if (is_desktop_linux) {
-   import("//build/config/linux/pkg_config.gni")
+@@ -19,10 +19,8 @@ if (is_desktop_linux) {
  }
  
-+declare_args() {
+ declare_args() {
+-  # 'Ok Google' hotwording is disabled by default in open source builds. Set to
+-  # true to enable. (This will download a closed-source NaCl module at startup.)
+-  # Chrome-branded builds have this enabled by default.
+-  enable_hotwording = is_chrome_branded
 +  # 'Ok Google' hotwording is NOT enabled.
 +  enable_hotwording = false
-+}
-+
- about_credits_file = "$target_gen_dir/about_credits.html"
- additional_modules_list_file =
-     "$root_gen_dir/chrome/browser/internal/additional_modules_list.txt"
-@@ -439,6 +444,10 @@ static_library("browser") {
-     }
-   }
+ }
  
-+  if (enable_hotwording) {
-+    defines += [ "ENABLE_HOTWORDING" ]
-+  }
-+
-   if (is_linux) {
-     deps += [
-       "//device/media_transfer_protocol",
+ about_credits_file = "$target_gen_dir/about_credits.html"
 diff --git a/chrome/browser/extensions/component_loader.cc b/chrome/browser/extensions/component_loader.cc
-index af44282..1851057 100644
+index 029ad1e..0ff6842 100644
 --- a/chrome/browser/extensions/component_loader.cc
 +++ b/chrome/browser/extensions/component_loader.cc
-@@ -334,17 +334,21 @@ void ComponentLoader::AddHangoutServicesExtension() {
+@@ -347,17 +347,21 @@ void ComponentLoader::AddHangoutServicesExtension() {
  }
  
  void ComponentLoader::AddHotwordAudioVerificationApp() {
@@ -102,41 +68,30 @@ index af44282..1851057 100644
  
  void ComponentLoader::AddImageLoaderExtension() {
 diff --git a/chrome/browser/search/hotword_service.cc b/chrome/browser/search/hotword_service.cc
-index 3247a00..de1d17e 100644
+index e93789b..b5a056a 100644
 --- a/chrome/browser/search/hotword_service.cc
 +++ b/chrome/browser/search/hotword_service.cc
-@@ -632,14 +632,17 @@ bool HotwordService::IsServiceAvailable() {
- }
- 
- bool HotwordService::IsHotwordAllowed() {
-+#if defined(ENABLE_HOTWORDING)
-   std::string group = base::FieldTrialList::FindFullName(
-       hotword_internal::kHotwordFieldTrialName);
-   // Allow hotwording by default, and only disable if the field trial has been
+@@ -649,7 +649,6 @@ bool HotwordService::IsHotwordAllowed() {
    // set.
    if (group == hotword_internal::kHotwordFieldTrialDisabledGroupName)
      return false;
 -
    return DoesHotwordSupportLanguage(profile_);
-+#else
-+  return false;
-+#endif
- }
- 
- bool HotwordService::IsOptedIntoAudioLogging() {
+ #else
+   return false;
 diff --git a/chrome/browser/search/hotword_service_unittest.cc b/chrome/browser/search/hotword_service_unittest.cc
-index a3aef47..b0b5927 100644
+index 521bb7b..585cfab 100644
 --- a/chrome/browser/search/hotword_service_unittest.cc
 +++ b/chrome/browser/search/hotword_service_unittest.cc
-@@ -216,6 +216,7 @@ TEST_P(HotwordServiceTest, IsHotwordAllowedInvalidFieldTrial) {
- }
+@@ -219,6 +219,7 @@ TEST_P(HotwordServiceTest, DISABLED_IsHotwordAllowedInvalidFieldTrial) {
  
- TEST_P(HotwordServiceTest, IsHotwordAllowedLocale) {
+ // Disabled due to http://crbug.com/503963.
+ TEST_P(HotwordServiceTest, DISABLED_IsHotwordAllowedLocale) {
 +#if defined(ENABLE_HOTWORDING)
    TestingProfile::Builder profile_builder;
    scoped_ptr<TestingProfile> profile = profile_builder.Build();
  
-@@ -246,6 +247,7 @@ TEST_P(HotwordServiceTest, IsHotwordAllowedLocale) {
+@@ -260,6 +261,7 @@ TEST_P(HotwordServiceTest, DISABLED_IsHotwordAllowedLocale) {
    Profile* otr_profile = profile->GetOffTheRecordProfile();
    SetApplicationLocale(otr_profile, "en");
    EXPECT_FALSE(HotwordServiceFactory::IsHotwordAllowed(otr_profile));
@@ -144,7 +99,7 @@ index a3aef47..b0b5927 100644
  }
  
  TEST_P(HotwordServiceTest, ShouldReinstallExtension) {
-@@ -302,6 +304,7 @@ TEST_P(HotwordServiceTest, PreviousLanguageSetOnInstall) {
+@@ -316,6 +318,7 @@ TEST_P(HotwordServiceTest, PreviousLanguageSetOnInstall) {
  }
  
  TEST_P(HotwordServiceTest, UninstallReinstallTriggeredCorrectly) {
@@ -152,28 +107,14 @@ index a3aef47..b0b5927 100644
    InitializeEmptyExtensionService();
    service_->Init();
  
-@@ -372,6 +375,7 @@ TEST_P(HotwordServiceTest, UninstallReinstallTriggeredCorrectly) {
-   EXPECT_TRUE(HotwordServiceFactory::IsHotwordAllowed(profile()));
+@@ -396,6 +399,7 @@ TEST_P(HotwordServiceTest, UninstallReinstallTriggeredCorrectly) {
+ #endif
    EXPECT_FALSE(hotword_service->MaybeReinstallHotwordExtension());
    EXPECT_EQ(1, hotword_service->uninstall_count());  // no change
 +#endif  // defined(ENABLE_HOTWORDING)
  }
  
  TEST_P(HotwordServiceTest, DisableAlwaysOnOnLanguageChange) {
-diff --git a/chrome/chrome_browser.gypi b/chrome/chrome_browser.gypi
-index 9d9ff0b..8bc7f4a 100644
---- a/chrome/chrome_browser.gypi
-+++ b/chrome/chrome_browser.gypi
-@@ -3450,6 +3450,9 @@
-         ['enable_session_service==1', {
-           'sources': [ '<@(chrome_browser_session_service_sources)' ],
-         }],
-+        ['enable_hotwording==1', {
-+          'defines': [ 'ENABLE_HOTWORDING' ],
-+        }],
-         ['OS!="android" and OS!="ios" and chromeos==0', {
-           'sources': [ '<@(chrome_browser_desktop_sources)' ],
-         }],
 -- 
 2.4.3
 

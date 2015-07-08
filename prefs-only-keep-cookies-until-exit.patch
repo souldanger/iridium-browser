@@ -1,4 +1,4 @@
-From 36f9aef840094ced7ce4d9a3665f1cd3c073c098 Mon Sep 17 00:00:00 2001
+From 98378a6fa0768829e002503afdf34b20e33d984b Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sat, 13 Sep 2014 17:25:47 +0200
 Subject: [PATCH 21/56] prefs: only keep cookies until exit
@@ -9,18 +9,18 @@ Out with all those tracking cookies!
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/components/content_settings/core/browser/content_settings_default_provider.cc b/components/content_settings/core/browser/content_settings_default_provider.cc
-index 6ac3b651..bb3d4c1 100644
+index d85a28e..2a3d8e6 100644
 --- a/components/content_settings/core/browser/content_settings_default_provider.cc
 +++ b/components/content_settings/core/browser/content_settings_default_provider.cc
-@@ -39,7 +39,7 @@ struct DefaultContentSettingInfo {
+@@ -40,7 +40,7 @@ struct DefaultContentSettingInfo {
  // default content setting. This array must be kept in sync with the enum
  // |ContentSettingsType|.
  const DefaultContentSettingInfo kDefaultSettings[] = {
--    {prefs::kDefaultCookiesSetting, CONTENT_SETTING_ALLOW, true},
-+    {prefs::kDefaultCookiesSetting, CONTENT_SETTING_SESSION_ONLY, true},
-     {prefs::kDefaultImagesSetting, CONTENT_SETTING_ALLOW, true},
-     {prefs::kDefaultJavaScriptSetting, CONTENT_SETTING_ALLOW, true},
-     {prefs::kDefaultPluginsSetting, CONTENT_SETTING_ALLOW, true},
+-  {prefs::kDefaultCookiesSetting, CONTENT_SETTING_ALLOW},
++  {prefs::kDefaultCookiesSetting, CONTENT_SETTING_SESSION_ONLY},
+   {prefs::kDefaultImagesSetting, CONTENT_SETTING_ALLOW},
+   {prefs::kDefaultJavaScriptSetting, CONTENT_SETTING_ALLOW},
+   {prefs::kDefaultPluginsSetting, CONTENT_SETTING_DEFAULT},
 -- 
 2.4.3
 

@@ -1,21 +1,22 @@
-From a2f92e48a58acf0a95152a58ef8cc3c3fc1b07f6 Mon Sep 17 00:00:00 2001
+From 6740eb674034c0c6c92e5b8d889680b7c41ef4d8 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Tue, 2 Jun 2015 11:01:50 +0200
-Subject: [PATCH 36/56] updater: disable updater pings
+Subject: [PATCH 45/56] updater: disable updater pings
 
 Despite auto-updater being arguably disabled (see previous commit),
 Chromium would still send background requests. Kill it.
 (trk:170, trk:171)
 ---
- .../chrome_component_updater_configurator.cc              | 10 ++++++++++
+ .../chrome_component_updater_configurator.cc              |  9 ++++++---
+ .../component_updater/component_updater_url_constants.cc  |  4 ++--
  components/update_client/update_checker.cc                | 15 ++++++++++++---
- 2 files changed, 22 insertions(+), 3 deletions(-)
+ 3 files changed, 20 insertions(+), 8 deletions(-)
 
 diff --git a/chrome/browser/component_updater/chrome_component_updater_configurator.cc b/chrome/browser/component_updater/chrome_component_updater_configurator.cc
-index 36f602d..9121308 100644
+index 687f0e7..65e26dc 100644
 --- a/chrome/browser/component_updater/chrome_component_updater_configurator.cc
 +++ b/chrome/browser/component_updater/chrome_component_updater_configurator.cc
-@@ -43,9 +43,11 @@ const char kSwitchFastUpdate[] = "fast-update";
+@@ -44,9 +44,11 @@ const char kSwitchFastUpdate[] = "fast-update";
  // Add "testrequest=1" attribute to the update check request.
  const char kSwitchRequestParam[] = "test-request";
  
@@ -27,20 +28,7 @@ index 36f602d..9121308 100644
  
  // Sets the URL for updates.
  const char kSwitchUrlSource[] = "url-source";
-@@ -58,8 +60,12 @@ const char kSwitchUrlSource[] = "url-source";
- // the request to the default URL source fails.
- // The value of |kDefaultUrlSource| can be overridden with
- // --component-updater=url-source=someurl.
-+#if 0
- const char kDefaultUrlSource[] = "https:" COMPONENT_UPDATER_SERVICE_ENDPOINT;
- const char kAltUrlSource[] = "http:" COMPONENT_UPDATER_SERVICE_ENDPOINT;
-+static const char kUpdateUrlSource[]  = "trk:170:https:" COMPONENT_UPDATER_SERVICE_ENDPOINT;
-+static const char kPingUrlSource[]  = "trk:171:https:" COMPONENT_UPDATER_SERVICE_ENDPOINT;
-+#endif
- 
- // Disables differential updates.
- const char kSwitchDisableDeltaUpdates[] = "disable-delta-updates";
-@@ -166,7 +172,9 @@ ChromeConfigurator::ChromeConfigurator(
+@@ -159,7 +161,9 @@ ChromeConfigurator::ChromeConfigurator(
             ",",
             &switch_values);
    fast_update_ = HasSwitchValue(switch_values, kSwitchFastUpdate);
@@ -50,19 +38,39 @@ index 36f602d..9121308 100644
    deltas_enabled_ = !HasSwitchValue(switch_values, kSwitchDisableDeltaUpdates);
  
  #if defined(OS_WIN)
-@@ -218,10 +226,12 @@ std::vector<GURL> ChromeConfigurator::UpdateUrl() const {
+@@ -215,10 +219,9 @@ std::vector<GURL> ChromeConfigurator::UpdateUrl() const {
    if (url_source_override_.is_valid()) {
      urls.push_back(GURL(url_source_override_));
    } else {
 +#if 0
-     urls.push_back(GURL(kDefaultUrlSource));
-     if (fallback_to_alt_source_url_enabled_) {
-       urls.push_back(GURL(kAltUrlSource));
-     }
+     urls.push_back(GURL(kUpdaterDefaultUrl));
+-    if (fallback_to_alt_source_url_enabled_) {
+-      urls.push_back(GURL(kUpdaterAltUrl));
+-    }
 +#endif
    }
    return urls;
  }
+diff --git a/chrome/browser/component_updater/component_updater_url_constants.cc b/chrome/browser/component_updater/component_updater_url_constants.cc
+index ce6a861..3663c36 100644
+--- a/chrome/browser/component_updater/component_updater_url_constants.cc
++++ b/chrome/browser/component_updater/component_updater_url_constants.cc
+@@ -7,13 +7,13 @@
+ namespace component_updater {
+ 
+ // The alternative URL for the v3 protocol service endpoint.
+-const char kUpdaterAltUrl[] = "http://clients2.google.com/service/update2";
++const char kUpdaterAltUrl[] = "trk:170:http://clients2.google.com/service/update2";
+ 
+ // The default URL for the v3 protocol service endpoint. In some cases, the
+ // component updater is allowed to fall back to and alternate URL source, if
+ // the request to the default URL source fails.
+ // The value of |kDefaultUrlSource| can be overridden with
+ // --component-updater=url-source=someurl.
+-const char kUpdaterDefaultUrl[] = "https://clients2.google.com/service/update2";
++const char kUpdaterDefaultUrl[] = "trk:171:https://clients2.google.com/service/update2";
+ 
+ }  // namespace component_updater
 diff --git a/components/update_client/update_checker.cc b/components/update_client/update_checker.cc
 index 9a38a5a..6fe620b 100644
 --- a/components/update_client/update_checker.cc

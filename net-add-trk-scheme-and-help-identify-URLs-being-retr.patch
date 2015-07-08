@@ -1,7 +1,7 @@
-From 802f07491317a0714a573aa4c462f1847d57b6bd Mon Sep 17 00:00:00 2001
+From 8f3ad2d3597a59056f44aadc9a706cf4e8a91108 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Wed, 20 May 2015 01:34:50 +0200
-Subject: [PATCH 45/56] net: add "trk:" scheme and help identify URLs being
+Subject: [PATCH 44/56] net: add "trk:" scheme and help identify URLs being
  retrieved
 
 The Chromium codebase has left us with a number of suspect URLs, and
@@ -126,7 +126,7 @@ index 1bc5e8d..6e7210a 100644
        url.SchemeIs(chrome::kChromeSearchScheme) ||
        url.SchemeIs(dom_distiller::kDomDistillerScheme))
 diff --git a/chrome/browser/ui/browser_command_controller.cc b/chrome/browser/ui/browser_command_controller.cc
-index a7b5229..10ee382 100644
+index ab25a9a..8eaf577 100644
 --- a/chrome/browser/ui/browser_command_controller.cc
 +++ b/chrome/browser/ui/browser_command_controller.cc
 @@ -103,7 +103,8 @@ bool HasInternalURL(const NavigationEntry* entry) {
@@ -140,10 +140,10 @@ index a7b5229..10ee382 100644
  
    return false;
 diff --git a/chrome/browser/ui/browser_navigator.cc b/chrome/browser/ui/browser_navigator.cc
-index 4a51584..2820adf 100644
+index 8c10fe0..8f48f6e 100644
 --- a/chrome/browser/ui/browser_navigator.cc
 +++ b/chrome/browser/ui/browser_navigator.cc
-@@ -732,6 +732,14 @@ bool IsURLAllowedInIncognito(const GURL& url,
+@@ -717,6 +717,14 @@ bool IsURLAllowedInIncognito(const GURL& url,
      return stripped_url.is_valid() &&
          IsURLAllowedInIncognito(stripped_url, browser_context);
    }
@@ -173,7 +173,7 @@ index 60cf852..cd58a4b 100644
  
      GURL rewritten_tab_url = tab_url;
 diff --git a/chrome/chrome_dll.gypi b/chrome/chrome_dll.gypi
-index 29d91f6..25de3ba 100644
+index 94a61a6..e1b03ec 100644
 --- a/chrome/chrome_dll.gypi
 +++ b/chrome/chrome_dll.gypi
 @@ -92,6 +92,7 @@
@@ -185,10 +185,10 @@ index 29d91f6..25de3ba 100644
              '../content/content.gyp:content_app_browser',
            ],
 diff --git a/chrome/chrome_exe.gypi b/chrome/chrome_exe.gypi
-index 6c3c0ba..e1a7c6a 100644
+index 8e12ce5..38e97fb 100644
 --- a/chrome/chrome_exe.gypi
 +++ b/chrome/chrome_exe.gypi
-@@ -213,6 +213,7 @@
+@@ -205,6 +205,7 @@
              'app/chrome_main_delegate.h',
            ],
            'dependencies': [
@@ -197,10 +197,10 @@ index 6c3c0ba..e1a7c6a 100644
              # Chromium functionality directly into the executable.
              '<@(chromium_browser_dependencies)',
 diff --git a/components/omnibox/autocomplete_input.cc b/components/omnibox/autocomplete_input.cc
-index 2c6982b..997d26f 100644
+index 30af0d2..72060d2 100644
 --- a/components/omnibox/autocomplete_input.cc
 +++ b/components/omnibox/autocomplete_input.cc
-@@ -421,7 +421,8 @@ void AutocompleteInput::ParseForEmphasizeComponents(
+@@ -435,7 +435,8 @@ void AutocompleteInput::ParseForEmphasizeComponents(
    int after_scheme_and_colon = parts.scheme.end() + 1;
    // For the view-source scheme, we should emphasize the scheme and host of the
    // URL qualified by the view-source prefix.
@@ -210,7 +210,7 @@ index 2c6982b..997d26f 100644
        (static_cast<int>(text.length()) > after_scheme_and_colon)) {
      // Obtain the URL prefixed by view-source and parse it.
      base::string16 real_url(text.substr(after_scheme_and_colon));
-@@ -488,9 +489,10 @@ int AutocompleteInput::NumNonHostComponents(const url::Parsed& parts) {
+@@ -502,9 +503,10 @@ int AutocompleteInput::NumNonHostComponents(const url::Parsed& parts) {
  bool AutocompleteInput::HasHTTPScheme(const base::string16& input) {
    std::string utf8_input(base::UTF16ToUTF8(input));
    url::Component scheme;
@@ -224,7 +224,7 @@ index 2c6982b..997d26f 100644
  }
  
 diff --git a/content/browser/browser_url_handler_impl.cc b/content/browser/browser_url_handler_impl.cc
-index 438feb3..d91a631 100644
+index 63ddf49..7d8a52f 100644
 --- a/content/browser/browser_url_handler_impl.cc
 +++ b/content/browser/browser_url_handler_impl.cc
 @@ -10,9 +10,28 @@
@@ -503,7 +503,7 @@ index 0000000..3c58d22
 +
 +#endif /* IRIDIUM_TRKNOTIFY_H */
 diff --git a/net/url_request/url_request.cc b/net/url_request/url_request.cc
-index 4a1e093..9a8d918 100644
+index c40c7dd..f469dd1 100644
 --- a/net/url_request/url_request.cc
 +++ b/net/url_request/url_request.cc
 @@ -45,6 +45,8 @@ using std::string;
@@ -515,7 +515,7 @@ index 4a1e093..9a8d918 100644
  namespace {
  
  // Max number of http redirects to follow.  Same number as gecko.
-@@ -552,6 +554,11 @@ URLRequest::URLRequest(const GURL& url,
+@@ -562,6 +564,11 @@ URLRequest::URLRequest(const GURL& url,
    DCHECK(base::MessageLoop::current())
        << "The current base::MessageLoop must exist";
  
@@ -528,10 +528,10 @@ index 4a1e093..9a8d918 100644
    net_log_.BeginEvent(NetLog::TYPE_REQUEST_ALIVE);
  }
 diff --git a/net/url_request/url_request.h b/net/url_request/url_request.h
-index e623c20..7dd1989 100644
+index a2b2f6b..8bcbca0 100644
 --- a/net/url_request/url_request.h
 +++ b/net/url_request/url_request.h
-@@ -821,6 +821,8 @@ class NET_EXPORT URLRequest : NON_EXPORTED_BASE(public base::NonThreadSafe),
+@@ -827,6 +827,8 @@ class NET_EXPORT URLRequest : NON_EXPORTED_BASE(public base::NonThreadSafe),
    DISALLOW_COPY_AND_ASSIGN(URLRequest);
  };
  
@@ -587,10 +587,10 @@ index 46ca408..16fcfb9 100644
    return out << url.possibly_invalid_spec();
  }
 diff --git a/url/gurl.h b/url/gurl.h
-index 566fc5e..da5a288 100644
+index b9136b8..f86fcad 100644
 --- a/url/gurl.h
 +++ b/url/gurl.h
-@@ -361,6 +361,9 @@ class URL_EXPORT GURL {
+@@ -382,6 +382,9 @@ class URL_EXPORT GURL {
      return inner_url_.get();
    }
  
@@ -600,7 +600,7 @@ index 566fc5e..da5a288 100644
   private:
    // Variant of the string parsing constructor that allows the caller to elect
    // retain trailing whitespace, if any, on the passed URL spec but only  if the
-@@ -401,5 +404,7 @@ class URL_EXPORT GURL {
+@@ -422,5 +425,7 @@ class URL_EXPORT GURL {
  
  // Stream operator so GURL can be used in assertion statements.
  URL_EXPORT std::ostream& operator<<(std::ostream& out, const GURL& url);

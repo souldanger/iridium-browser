@@ -1,4 +1,4 @@
-From 08ca9ecbe6b6e330fcd6cbc56802b4f02698bcfb Mon Sep 17 00:00:00 2001
+From baeccdada26d7dd57817fa625a91b3732340fd6c Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Fri, 19 Jun 2015 19:20:39 +0200
 Subject: [PATCH 52/56] google_now: disable this
@@ -15,10 +15,10 @@ Get off my lawn!
  2 files changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/build/common.gypi b/build/common.gypi
-index ee7d7f6..cb586a6 100644
+index 083bba9..7830b51 100644
 --- a/build/common.gypi
 +++ b/build/common.gypi
-@@ -494,7 +494,7 @@
+@@ -505,7 +505,7 @@
        'enable_extensions%': 1,
  
        # Enable Google Now.
@@ -28,10 +28,10 @@ index ee7d7f6..cb586a6 100644
        # Enable basic printing support and UI.
        'enable_basic_printing%': 1,
 diff --git a/build/config/features.gni b/build/config/features.gni
-index 98b3572..d121dfe 100644
+index 82b7d06..7218979 100644
 --- a/build/config/features.gni
 +++ b/build/config/features.gni
-@@ -69,7 +69,7 @@ declare_args() {
+@@ -76,7 +76,7 @@ declare_args() {
  
    enable_autofill_dialog = !is_ios
  

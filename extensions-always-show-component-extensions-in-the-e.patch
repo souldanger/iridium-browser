@@ -1,4 +1,4 @@
-From 0db36f0881f121bdfba794a5e248eaeca4409dcd Mon Sep 17 00:00:00 2001
+From 4354c534cd9b3089844aed73cb6703d8dcf70eb4 Mon Sep 17 00:00:00 2001
 From: Joachim Bauch <jojo@struktur.de>
 Date: Thu, 25 Jun 2015 15:34:10 +0200
 Subject: [PATCH 55/56] extensions: always show component extensions in the ext
