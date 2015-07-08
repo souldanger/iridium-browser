@@ -1,7 +1,7 @@
-From 8773861560a1246cc4f7bed2279ae3dfd863a5dd Mon Sep 17 00:00:00 2001
+From cf0a54069133f9df4535e154900a36cc12b1c929 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sat, 13 Sep 2014 16:40:17 +0200
-Subject: [PATCH 22/57] first_run: barf if metrics_reporting is activated
+Subject: [PATCH 21/57] first_run: barf if metrics_reporting is activated
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit

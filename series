@@ -6,7 +6,6 @@ http-certificate-pinning-for-iridiumbrowser.de.patch
 profile-resetter-do-not-tick-send-settings-by-defaul.patch
 browser-ui-disable-warning-about-missing-API-keys.patch
 mime_util-force-text-x-suse-ymp-to-be-downloaded.patch
-icons-change-sad-plugin-icon.patch
 autofill-disable-autofill-download-manager.patch
 prefs-disable-Use-a-web-service-to-help-resolve-navi.patch
 prefs-disable-Use-a-prediction-service-to-help-compl.patch
@@ -54,4 +53,5 @@ extensions-always-show-component-extensions-in-the-e.patch
 battery_status_service-disable-more-privacy-nightmar.patch
 translate-disable-fetching-of-translate-languages-fr.patch
 build-use-Wl-no-keep-memory.patch
+icons-iridium-icons.patch
 common-set-Iridium-version-and-change-User-Agent-acc.patch

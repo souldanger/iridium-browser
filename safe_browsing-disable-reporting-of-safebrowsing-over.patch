@@ -1,7 +1,7 @@
-From bdddf99ea90f992bf9ca6c87f9fc0a7d8821efe7 Mon Sep 17 00:00:00 2001
+From 7b1b98f0ad43d405374c6613e2517d6c5f7ecbf7 Mon Sep 17 00:00:00 2001
 From: Joachim Bauch <jojo@struktur.de>
 Date: Tue, 7 Jul 2015 18:28:46 +0200
-Subject: [PATCH 44/57] safe_browsing: disable reporting of safebrowsing
+Subject: [PATCH 43/57] safe_browsing: disable reporting of safebrowsing
  override
 
 Disables reporting of the safebrowsing override, i.e. the report sent

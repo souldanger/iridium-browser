@@ -1,4 +1,4 @@
-From 956b58485c82bc3954bd0680f6f17e96a33d8e0d Mon Sep 17 00:00:00 2001
+From 2e0016bbc9c5bee59ab1f6df01281c6d7d296e06 Mon Sep 17 00:00:00 2001
 From: Joachim Bauch <jojo@struktur.de>
 Date: Mon, 10 Nov 2014 16:19:32 +0100
 Subject: [PATCH 03/57] webrtc: generate "real" ephemeral keys
@@ -13,7 +13,7 @@ We obviously do not want that.
  1 file changed, 12 insertions(+), 30 deletions(-)
 
 diff --git a/net/third_party/nss/ssl/ssl3ecc.c b/net/third_party/nss/ssl/ssl3ecc.c
-index 31e0774..44cfffc 100644
+index ab5ab14..f8365b62 100644
 --- a/net/third_party/nss/ssl/ssl3ecc.c
 +++ b/net/third_party/nss/ssl/ssl3ecc.c
 @@ -155,6 +155,7 @@ static const Bits2Curve bits2curve [] = {

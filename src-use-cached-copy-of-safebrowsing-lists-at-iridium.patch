@@ -1,7 +1,7 @@
-From c760cda17c59a428853da0dab53835451a4936ea Mon Sep 17 00:00:00 2001
+From f3e67266d403e972cb6856a28d4486f40458ea82 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Mon, 26 Jan 2015 13:57:44 +0100
-Subject: [PATCH 30/57] src: use cached copy of safebrowsing lists at
+Subject: [PATCH 29/57] src: use cached copy of safebrowsing lists at
  iridiumbrowser.de
 
 To avoid contacing Google, let the UA use safebrowsing lists hosted at
@@ -12,7 +12,7 @@ regular basis.
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/chrome/browser/safe_browsing/client_side_model_loader.cc b/chrome/browser/safe_browsing/client_side_model_loader.cc
-index 863f820..a37dc8c 100644
+index 81a2d87..3a834ab 100644
 --- a/chrome/browser/safe_browsing/client_side_model_loader.cc
 +++ b/chrome/browser/safe_browsing/client_side_model_loader.cc
 @@ -31,7 +31,7 @@ namespace safe_browsing {
