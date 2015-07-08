@@ -1,7 +1,7 @@
-From 6b019aeba9ce440e13a71467260159998c60f5fb Mon Sep 17 00:00:00 2001
+From a311540b02ff000ea64c3538bd17991ca60b1db3 Mon Sep 17 00:00:00 2001
 From: Joachim Bauch <jojo@struktur.de>
 Date: Thu, 25 Jun 2015 15:34:10 +0200
-Subject: [PATCH 54/57] extensions: always show component extensions in the ext
+Subject: [PATCH 53/56] extensions: always show component extensions in the ext
  list
 
 The attached patch makes sure that component extensions are always
@@ -18,10 +18,10 @@ References: https://github.com/iridium-browser/iridium-browser/issues/28
  1 file changed, 2 insertions(+)
 
 diff --git a/extensions/common/extension.cc b/extensions/common/extension.cc
-index d42fce6..814dd10 100644
+index 8aefc6a..e322522 100644
 --- a/extensions/common/extension.cc
 +++ b/extensions/common/extension.cc
-@@ -342,6 +342,7 @@ bool Extension::ShouldDisplayInExtensionSettings() const {
+@@ -348,6 +348,7 @@ bool Extension::ShouldDisplayInExtensionSettings() const {
  }
  
  bool Extension::ShouldNotBeVisible() const {
@@ -29,7 +29,7 @@ index d42fce6..814dd10 100644
    // Don't show component extensions because they are only extensions as an
    // implementation detail of Chrome.
    if (extensions::Manifest::IsComponentLocation(location()) &&
-@@ -358,6 +359,7 @@ bool Extension::ShouldNotBeVisible() const {
+@@ -364,6 +365,7 @@ bool Extension::ShouldNotBeVisible() const {
    if (is_app() && !ShouldDisplayInAppLauncher() && !ShouldDisplayInNewTabPage())
      return true;
  

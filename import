@@ -17,7 +17,7 @@ if [ ! -e series ]; then
 	exit 1
 fi
 rm -fv ./*.patch series
-git format-patch "$1..$2"
+git format-patch "$1..$2" || exit 1
 ls -1 *.patch | perl -lpe 's{^\d+-}{}' >series
 mmv "????-*.patch" "#5.patch"
 git add -A .

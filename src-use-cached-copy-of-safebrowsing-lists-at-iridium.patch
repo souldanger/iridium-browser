@@ -1,7 +1,7 @@
-From cb2b2f0d5e99acaf24790897debe3f95df23426d Mon Sep 17 00:00:00 2001
+From 348de04a8e7412280df20dc47017df3382f132b1 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Mon, 26 Jan 2015 13:57:44 +0100
-Subject: [PATCH 30/57] src: use cached copy of safebrowsing lists at
+Subject: [PATCH 30/56] src: use cached copy of safebrowsing lists at
  iridiumbrowser.de
 
 To avoid contacing Google, let the UA use safebrowsing lists hosted at

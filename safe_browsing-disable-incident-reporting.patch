@@ -1,7 +1,7 @@
-From fa418741adeef57d50c17c4e37874985ac67f8cf Mon Sep 17 00:00:00 2001
+From 6ec1aa8d67b0350f50c1312caf13bda68ea87319 Mon Sep 17 00:00:00 2001
 From: Joachim Bauch <jojo@struktur.de>
 Date: Tue, 7 Jul 2015 17:02:09 +0200
-Subject: [PATCH 44/57] safe_browsing: disable incident reporting
+Subject: [PATCH 43/56] safe_browsing: disable incident reporting
 
 Disables the safebrowsing incident reporting where you could upload
 information about a blocked URL to Google (also added a trk prefix to
@@ -26,7 +26,7 @@ index b5e7684..01627a4 100644
  }  // namespace
  
 diff --git a/chrome/browser/safe_browsing/safe_browsing_blocking_page.cc b/chrome/browser/safe_browsing/safe_browsing_blocking_page.cc
-index 90d5004..636bd1c 100644
+index c74fb7a..7cd07b8 100644
 --- a/chrome/browser/safe_browsing/safe_browsing_blocking_page.cc
 +++ b/chrome/browser/safe_browsing/safe_browsing_blocking_page.cc
 @@ -56,17 +56,17 @@ namespace {
@@ -51,7 +51,7 @@ index 90d5004..636bd1c 100644
  
  // Constants for the V4 phishing string upgrades.
  const char kSocialEngineeringTrial[] = "SafeBrowsingSocialEngineeringStrings";
-@@ -590,6 +590,7 @@ void SafeBrowsingBlockingPage::PopulateInterstitialStrings(
+@@ -613,6 +613,7 @@ void SafeBrowsingBlockingPage::PopulateInterstitialStrings(
  
  void SafeBrowsingBlockingPage::PopulateExtendedReportingOption(
      base::DictionaryValue* load_time_data) {
@@ -59,7 +59,7 @@ index 90d5004..636bd1c 100644
    // Only show checkbox if !(HTTPS || incognito-mode).
    const bool show = CanShowMalwareDetailsOption();
    load_time_data->SetBoolean(interstitials::kDisplayCheckBox, show);
-@@ -606,6 +607,7 @@ void SafeBrowsingBlockingPage::PopulateExtendedReportingOption(
+@@ -629,6 +630,7 @@ void SafeBrowsingBlockingPage::PopulateExtendedReportingOption(
    load_time_data->SetBoolean(
        interstitials::kBoxChecked,
        IsPrefEnabled(prefs::kSafeBrowsingExtendedReportingEnabled));
@@ -68,10 +68,10 @@ index 90d5004..636bd1c 100644
  
  void SafeBrowsingBlockingPage::PopulateMalwareLoadTimeData(
 diff --git a/chrome/browser/safe_browsing/safe_browsing_service.cc b/chrome/browser/safe_browsing/safe_browsing_service.cc
-index c78ff00..2a716d8 100644
+index 313b715..8f0489b 100644
 --- a/chrome/browser/safe_browsing/safe_browsing_service.cc
 +++ b/chrome/browser/safe_browsing/safe_browsing_service.cc
-@@ -98,9 +98,12 @@ base::FilePath CookieFilePath() {
+@@ -99,9 +99,12 @@ base::FilePath CookieFilePath() {
  #if defined(FULL_SAFE_BROWSING)
  // Returns true if the incident reporting service is enabled via a field trial.
  bool IsIncidentReportingServiceEnabled() {
@@ -84,7 +84,7 @@ index c78ff00..2a716d8 100644
  }
  #endif  // defined(FULL_SAFE_BROWSING)
  
-@@ -407,9 +410,11 @@ SafeBrowsingDatabaseManager* SafeBrowsingService::CreateDatabaseManager() {
+@@ -419,9 +422,11 @@ SafeBrowsingDatabaseManager* SafeBrowsingService::CreateDatabaseManager() {
  
  void SafeBrowsingService::RegisterAllDelayedAnalysis() {
  #if defined(FULL_SAFE_BROWSING)

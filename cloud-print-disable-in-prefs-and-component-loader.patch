@@ -1,7 +1,7 @@
-From d7ab65c093376f9fdcf5f1f33fbb4f126dfbddca Mon Sep 17 00:00:00 2001
+From a0ddc80d16603056c107313d8e79e887cf7cf47f Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sat, 13 Sep 2014 16:55:12 +0200
-Subject: [PATCH 16/57] cloud-print: disable in prefs and component loader
+Subject: [PATCH 16/56] cloud-print: disable in prefs and component loader
 
 Cloud Print should normally be autodisabled if no printers are shared.
 But maybe that is not enough(?) Probably also needs to gain a checkbox
@@ -16,10 +16,10 @@ be off by default.
  3 files changed, 3 insertions(+), 5 deletions(-)
 
 diff --git a/chrome/browser/extensions/component_loader.cc b/chrome/browser/extensions/component_loader.cc
-index 666a263..5506656 100644
+index e92e237..d4f347b 100644
 --- a/chrome/browser/extensions/component_loader.cc
 +++ b/chrome/browser/extensions/component_loader.cc
-@@ -554,10 +554,12 @@ void ComponentLoader::AddDefaultComponentExtensions(
+@@ -555,10 +555,12 @@ void ComponentLoader::AddDefaultComponentExtensions(
    DCHECK(!skip_session_components);
    Add(IDR_BOOKMARKS_MANIFEST,
        base::FilePath(FILE_PATH_LITERAL("bookmark_manager")));

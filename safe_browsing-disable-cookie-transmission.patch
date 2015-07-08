@@ -1,7 +1,7 @@
-From 7fc764dd6ae7cf25b51182d6514b8ff803a161e6 Mon Sep 17 00:00:00 2001
+From c30f73e29d6bbc0dc1056e9e2ec2d0f93b096448 Mon Sep 17 00:00:00 2001
 From: Joachim Bauch <jojo@struktur.de>
 Date: Wed, 22 Jul 2015 12:24:15 +0200
-Subject: [PATCH 47/57] safe_browsing: disable cookie transmission
+Subject: [PATCH 46/56] safe_browsing: disable cookie transmission
 
 Disables sending/setting cookies for Safebrowsing requests. This
 prevents the long-living tracking cookie from being set.
@@ -42,10 +42,10 @@ index c749294..ef3186b 100644
    fetcher->SetUploadData("application/octet-stream", request_data);
    fetcher->Start();
 diff --git a/chrome/browser/safe_browsing/download_protection_service.cc b/chrome/browser/safe_browsing/download_protection_service.cc
-index 2196a76..88ff2bb 100644
+index 3c03a2b..d486867 100644
 --- a/chrome/browser/safe_browsing/download_protection_service.cc
 +++ b/chrome/browser/safe_browsing/download_protection_service.cc
-@@ -734,7 +734,9 @@ class DownloadProtectionService::CheckClientDownloadRequest
+@@ -812,7 +812,9 @@ class DownloadProtectionService::CheckClientDownloadRequest
      fetcher_ = net::URLFetcher::Create(0 /* ID used for testing */,
                                         GetDownloadRequestUrl(),
                                         net::URLFetcher::POST, this);
@@ -71,7 +71,7 @@ index d70fb11..9ab2b5a 100644
    current_fetch_->Start();  // OnURLFetchComplete will be called when done.
  }
 diff --git a/chrome/browser/safe_browsing/protocol_manager.cc b/chrome/browser/safe_browsing/protocol_manager.cc
-index 7afa29a..07ee076 100644
+index 09566fe..4605482 100644
 --- a/chrome/browser/safe_browsing/protocol_manager.cc
 +++ b/chrome/browser/safe_browsing/protocol_manager.cc
 @@ -195,7 +195,9 @@ void SafeBrowsingProtocolManager::GetFullHash(
@@ -107,8 +107,8 @@ index 7afa29a..07ee076 100644
    request_->SetRequestContext(request_context_getter_.get());
    chunk_request_start_ = base::Time::Now();
    request_->Start();
-@@ -647,7 +653,9 @@ void SafeBrowsingProtocolManager::OnGetChunksComplete(
-   GURL update_url = UpdateUrl();
+@@ -649,7 +655,9 @@ void SafeBrowsingProtocolManager::OnGetChunksComplete(
+   GURL update_url = UpdateUrl(is_extended_reporting);
    request_ = net::URLFetcher::Create(url_fetcher_id_++, update_url,
                                       net::URLFetcher::POST, this);
 -  request_->SetLoadFlags(net::LOAD_DISABLE_CACHE);
@@ -119,10 +119,10 @@ index 7afa29a..07ee076 100644
    request_->SetUploadData("text/plain", update_list_data_);
    request_->Start();
 diff --git a/chrome/browser/safe_browsing/srt_fetcher_win.cc b/chrome/browser/safe_browsing/srt_fetcher_win.cc
-index 9a9a8a3..12ff486 100644
+index 966cbe8..3f2ed38 100644
 --- a/chrome/browser/safe_browsing/srt_fetcher_win.cc
 +++ b/chrome/browser/safe_browsing/srt_fetcher_win.cc
-@@ -95,7 +95,9 @@ class SRTFetcher : public net::URLFetcherDelegate {
+@@ -176,7 +176,9 @@ class SRTFetcher : public net::URLFetcherDelegate {
                                               GURL(GetSRTDownloadURL()),
                                               net::URLFetcher::GET,
                                               this)) {

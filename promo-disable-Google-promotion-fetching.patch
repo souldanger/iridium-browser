@@ -1,7 +1,7 @@
-From 522880e3795524c0cb7a1c9537b35f73248fa198 Mon Sep 17 00:00:00 2001
+From 622520b8b0f1d7774dc7bba0ff14c8306c6f6c35 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sun, 9 Nov 2014 01:54:27 +0100
-Subject: [PATCH 49/57] promo: disable Google promotion fetching
+Subject: [PATCH 48/56] promo: disable Google promotion fetching
 
 Documentation is scarce, and sprinkled with misleading acronyms.
 NTP is not NTP, for example. FWIW:
@@ -23,10 +23,10 @@ References: https://github.com/iridium-browser/iridium-browser/issues/33
  3 files changed, 6 insertions(+), 3 deletions(-)
 
 diff --git a/chrome/browser/browser_process_impl.cc b/chrome/browser/browser_process_impl.cc
-index 53d73e9..6624579 100644
+index 756c066..4dc04ba 100644
 --- a/chrome/browser/browser_process_impl.cc
 +++ b/chrome/browser/browser_process_impl.cc
-@@ -1078,7 +1078,9 @@ void BrowserProcessImpl::PreMainMessageLoopRun() {
+@@ -1068,7 +1068,9 @@ void BrowserProcessImpl::PreMainMessageLoopRun() {
    if (!command_line.HasSwitch(switches::kDisableWebResources)) {
      DCHECK(!promo_resource_service_.get());
      promo_resource_service_.reset(new PromoResourceService);
@@ -37,10 +37,10 @@ index 53d73e9..6624579 100644
  
  #if !defined(OS_ANDROID) && !defined(OS_IOS)
 diff --git a/chrome/browser/signin/signin_promo.cc b/chrome/browser/signin/signin_promo.cc
-index 0f0c1e0d..2de1c7b 100644
+index b4c5f2f..b3b1fc1 100644
 --- a/chrome/browser/signin/signin_promo.cc
 +++ b/chrome/browser/signin/signin_promo.cc
-@@ -106,6 +106,7 @@ bool ShouldShowPromo(Profile* profile) {
+@@ -105,6 +105,7 @@ bool ShouldShowPromo(Profile* profile) {
  
  bool ShouldShowPromoAtStartup(Profile* profile, bool is_new_profile) {
    DCHECK(profile);
@@ -48,7 +48,7 @@ index 0f0c1e0d..2de1c7b 100644
  
    // Don't show if the profile is an incognito.
    if (profile->IsOffTheRecord())
-@@ -263,8 +264,8 @@ void ForceWebBasedSigninFlowForTesting(bool force) {
+@@ -266,8 +267,8 @@ void ForceWebBasedSigninFlowForTesting(bool force) {
  void RegisterProfilePrefs(
      user_prefs::PrefRegistrySyncable* registry) {
    registry->RegisterIntegerPref(prefs::kSignInPromoStartupCount, 0);
@@ -60,10 +60,10 @@ index 0f0c1e0d..2de1c7b 100644
  }
  
 diff --git a/chrome/browser/web_resource/notification_promo.cc b/chrome/browser/web_resource/notification_promo.cc
-index cdae454..60c425f 100644
+index 09c6ac6..d70d267 100644
 --- a/chrome/browser/web_resource/notification_promo.cc
 +++ b/chrome/browser/web_resource/notification_promo.cc
-@@ -34,7 +34,7 @@ namespace {
+@@ -35,7 +35,7 @@ namespace {
  
  const int kDefaultGroupSize = 100;
  

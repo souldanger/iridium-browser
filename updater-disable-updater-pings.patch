@@ -1,59 +1,20 @@
-From 39323e97aa4b316d9b71c73dd70088b520e6a10c Mon Sep 17 00:00:00 2001
+From 991a8e4af40a00b5be80edf5d6b9a6b5d36d433b Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Tue, 2 Jun 2015 11:01:50 +0200
-Subject: [PATCH 43/57] updater: disable updater pings
+Subject: [PATCH 42/56] updater: disable updater pings
 
 Despite auto-updater being arguably disabled (see previous commit),
 Chromium would still send background requests. Kill it.
 (trk:170, trk:171)
 ---
- .../component_updater/chrome_component_updater_configurator.cc   | 9 ++++++---
- .../browser/component_updater/component_updater_url_constants.cc | 4 ++--
- 2 files changed, 8 insertions(+), 5 deletions(-)
+ components/component_updater/component_updater_url_constants.cc | 4 ++--
+ components/component_updater/configurator_impl.cc               | 6 ++++++
+ 2 files changed, 8 insertions(+), 2 deletions(-)
 
-diff --git a/chrome/browser/component_updater/chrome_component_updater_configurator.cc b/chrome/browser/component_updater/chrome_component_updater_configurator.cc
-index 320b117..52c50aeb 100644
---- a/chrome/browser/component_updater/chrome_component_updater_configurator.cc
-+++ b/chrome/browser/component_updater/chrome_component_updater_configurator.cc
-@@ -46,9 +46,11 @@ const char kSwitchFastUpdate[] = "fast-update";
- // Add "testrequest=1" attribute to the update check request.
- const char kSwitchRequestParam[] = "test-request";
- 
-+#if 0
- // Disables pings. Pings are the requests sent to the update server that report
- // the success or the failure of component install or update attempts.
- extern const char kSwitchDisablePings[] = "disable-pings";
-+#endif
- 
- // Sets the URL for updates.
- const char kSwitchUrlSource[] = "url-source";
-@@ -157,7 +159,9 @@ ChromeConfigurator::ChromeConfigurator(
-       cmdline->GetSwitchValueASCII(switches::kComponentUpdater),
-       ",", base::KEEP_WHITESPACE, base::SPLIT_WANT_NONEMPTY);
-   fast_update_ = HasSwitchValue(switch_values, kSwitchFastUpdate);
-+#if 0
-   pings_enabled_ = !HasSwitchValue(switch_values, kSwitchDisablePings);
-+#endif
-   deltas_enabled_ = !HasSwitchValue(switch_values, kSwitchDisableDeltaUpdates);
- 
- #if defined(OS_WIN)
-@@ -205,10 +209,9 @@ std::vector<GURL> ChromeConfigurator::UpdateUrl() const {
-   if (url_source_override_.is_valid()) {
-     urls.push_back(GURL(url_source_override_));
-   } else {
-+#if 0
-     urls.push_back(GURL(kUpdaterDefaultUrl));
--    if (fallback_to_alt_source_url_enabled_) {
--      urls.push_back(GURL(kUpdaterAltUrl));
--    }
-+#endif
-   }
-   return urls;
- }
-diff --git a/chrome/browser/component_updater/component_updater_url_constants.cc b/chrome/browser/component_updater/component_updater_url_constants.cc
-index ce6a861..3663c36 100644
---- a/chrome/browser/component_updater/component_updater_url_constants.cc
-+++ b/chrome/browser/component_updater/component_updater_url_constants.cc
+diff --git a/components/component_updater/component_updater_url_constants.cc b/components/component_updater/component_updater_url_constants.cc
+index 7c78f64b..7dfdc89 100644
+--- a/components/component_updater/component_updater_url_constants.cc
++++ b/components/component_updater/component_updater_url_constants.cc
 @@ -7,13 +7,13 @@
  namespace component_updater {
  
@@ -70,6 +31,43 @@ index ce6a861..3663c36 100644
 +const char kUpdaterDefaultUrl[] = "trk:171:https://clients2.google.com/service/update2";
  
  }  // namespace component_updater
+diff --git a/components/component_updater/configurator_impl.cc b/components/component_updater/configurator_impl.cc
+index cc6d7f0..b6d3ed3 100644
+--- a/components/component_updater/configurator_impl.cc
++++ b/components/component_updater/configurator_impl.cc
+@@ -37,7 +37,9 @@ const char kSwitchRequestParam[] = "test-request";
+ 
+ // Disables pings. Pings are the requests sent to the update server that report
+ // the success or the failure of component install or update attempts.
++#if 0
+ extern const char kSwitchDisablePings[] = "disable-pings";
++#endif
+ 
+ // Sets the URL for updates.
+ const char kSwitchUrlSource[] = "url-source";
+@@ -106,7 +108,9 @@ ConfiguratorImpl::ConfiguratorImpl(
+       cmdline->GetSwitchValueASCII(switches::kComponentUpdater), ",",
+       base::KEEP_WHITESPACE, base::SPLIT_WANT_NONEMPTY);
+   fast_update_ = HasSwitchValue(switch_values, kSwitchFastUpdate);
++#if 0
+   pings_enabled_ = !HasSwitchValue(switch_values, kSwitchDisablePings);
++#endif
+   deltas_enabled_ = !HasSwitchValue(switch_values, kSwitchDisableDeltaUpdates);
+ 
+ #if defined(OS_WIN)
+@@ -156,10 +160,12 @@ std::vector<GURL> ConfiguratorImpl::UpdateUrl() const {
+   if (url_source_override_.is_valid()) {
+     urls.push_back(GURL(url_source_override_));
+   } else {
++#if 0
+     urls.push_back(GURL(kUpdaterDefaultUrl));
+     if (fallback_to_alt_source_url_enabled_) {
+       urls.push_back(GURL(kUpdaterAltUrl));
+     }
++#endif
+   }
+   return urls;
+ }
 -- 
 2.4.3
 

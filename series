@@ -33,7 +33,6 @@ build-build-the-sandbox-with-PIE.patch
 updater-disable-auto-update.patch
 plugin-do-not-load-any-system-provided-plugins-on-Wi.patch
 plugin-only-load-plugins-from-user-s-domain-on-Mac-O.patch
-MacOS-updates.patch
 plugins-use-cached-copy-of-plugin-description-list-a.patch
 Remove-EV-certificates.patch
 src-add-comments-for-evil-looking-code.patch

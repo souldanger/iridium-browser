@@ -1,19 +1,19 @@
-From 1e4210794d42f0aeb35d0e21ebaed23b6859390e Mon Sep 17 00:00:00 2001
+From ac247ed0387d18ad194417650d775bc3b2514a04 Mon Sep 17 00:00:00 2001
 From: Yuriy Shevchuk <yuriy@struktur.de>
 Date: Tue, 23 Dec 2014 16:54:56 +0100
-Subject: [PATCH 29/57] build: fix OSX branded build crashes on OSX
+Subject: [PATCH 29/56] build: fix OSX branded build crashes on OSX
 
 ---
- build/common.gypi                  | 2 +-
- chrome/app/theme/chromium/BRANDING | 8 ++++----
- chrome/common/chrome_constants.cc  | 4 ++--
- 3 files changed, 7 insertions(+), 7 deletions(-)
+ build/common.gypi                  |  2 +-
+ chrome/app/theme/chromium/BRANDING | 14 +++++++-------
+ chrome/common/chrome_constants.cc  |  4 ++--
+ 3 files changed, 10 insertions(+), 10 deletions(-)
 
 diff --git a/build/common.gypi b/build/common.gypi
-index 9b2e27c..c4b86bd 100644
+index ad84093..4eb81af 100644
 --- a/build/common.gypi
 +++ b/build/common.gypi
-@@ -1916,7 +1916,7 @@
+@@ -1945,7 +1945,7 @@
            ['branding=="Chrome"', {
              'mac_product_name%': 'Google Chrome',
            }, { # else: branding!="Chrome"
@@ -23,23 +23,26 @@ index 9b2e27c..c4b86bd 100644
            # Official mac builds require a specific OS X SDK, but iOS and
            # non-official mac builds do not.
 diff --git a/chrome/app/theme/chromium/BRANDING b/chrome/app/theme/chromium/BRANDING
-index c5659ff..9ad44a9 100644
+index f1e9946..1e39207 100644
 --- a/chrome/app/theme/chromium/BRANDING
 +++ b/chrome/app/theme/chromium/BRANDING
 @@ -1,7 +1,7 @@
- COMPANY_FULLNAME=The Chromium Authors
- COMPANY_SHORTNAME=The Chromium Authors
+-COMPANY_FULLNAME=The Chromium Authors
+-COMPANY_SHORTNAME=The Chromium Authors
 -PRODUCT_FULLNAME=Chromium
 -PRODUCT_SHORTNAME=Chromium
 -PRODUCT_INSTALLER_FULLNAME=Chromium Installer
 -PRODUCT_INSTALLER_SHORTNAME=Chromium Installer
+-COPYRIGHT=Copyright 2015 The Chromium Authors. All rights reserved.
++COMPANY_FULLNAME=The browser authors
++COMPANY_SHORTNAME=The browser authors
 +PRODUCT_FULLNAME=Iridium
 +PRODUCT_SHORTNAME=Iridium
 +PRODUCT_INSTALLER_FULLNAME=Iridium Installer
 +PRODUCT_INSTALLER_SHORTNAME=Iridium Installer
- COPYRIGHT=Copyright 2014 The Chromium Authors. All rights reserved.
++COPYRIGHT=Copyright 2015 the browser authors. Some rights reserved.
 diff --git a/chrome/common/chrome_constants.cc b/chrome/common/chrome_constants.cc
-index bab2b24..ea21d02 100644
+index e41e836..1adf4ec 100644
 --- a/chrome/common/chrome_constants.cc
 +++ b/chrome/common/chrome_constants.cc
 @@ -9,11 +9,11 @@

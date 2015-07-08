@@ -1,7 +1,7 @@
-From 785768c13c648fe0b0a0796251be3d4278cd53c7 Mon Sep 17 00:00:00 2001
+From a9e35a176d92674acda7eea8de927f149cfc0b08 Mon Sep 17 00:00:00 2001
 From: Joachim Bauch <bauch@struktur.de>
 Date: Wed, 15 Apr 2015 15:19:21 +0200
-Subject: [PATCH 34/57] plugin: do not load any system-provided plugins on
+Subject: [PATCH 34/56] plugin: do not load any system-provided plugins on
  Windows
 
 ---
@@ -9,10 +9,10 @@ Subject: [PATCH 34/57] plugin: do not load any system-provided plugins on
  1 file changed, 4 insertions(+)
 
 diff --git a/content/common/plugin_list_win.cc b/content/common/plugin_list_win.cc
-index 6c95a0d..f9e9fb8 100644
+index 4b20953..fc40e1e 100644
 --- a/content/common/plugin_list_win.cc
 +++ b/content/common/plugin_list_win.cc
-@@ -313,6 +313,7 @@ void PluginList::GetPluginDirectories(
+@@ -316,6 +316,7 @@ void PluginList::GetPluginDirectories(
    // Load from the executable area
    GetExeDirectory(&dirs);
  
@@ -20,7 +20,7 @@ index 6c95a0d..f9e9fb8 100644
    // Load Java
    GetJavaDirectory(&dirs);
  
-@@ -325,6 +326,7 @@ void PluginList::GetPluginDirectories(
+@@ -328,6 +329,7 @@ void PluginList::GetPluginDirectories(
    GetAcrobatDirectory(&dirs);
    GetQuicktimeDirectory(&dirs);
    GetWindowsMediaDirectory(&dirs);
@@ -28,7 +28,7 @@ index 6c95a0d..f9e9fb8 100644
  
    for (std::set<base::FilePath>::iterator i = dirs.begin(); i != dirs.end(); ++i)
      plugin_dirs->push_back(*i);
-@@ -361,6 +363,7 @@ void PluginList::GetPluginPathsFromRegistry(
+@@ -364,6 +366,7 @@ void PluginList::GetPluginPathsFromRegistry(
  
    std::set<base::FilePath> plugin_dirs;
  
@@ -36,7 +36,7 @@ index 6c95a0d..f9e9fb8 100644
    // Search for plugins from HKCU and HKLM.  THis will only find plugins that
    // are correctly registered in the correct WOW64 registry hive.
    GetPluginsInRegistryDirectory(HKEY_CURRENT_USER,
-@@ -371,6 +374,7 @@ void PluginList::GetPluginPathsFromRegistry(
+@@ -374,6 +377,7 @@ void PluginList::GetPluginPathsFromRegistry(
                                  kRegistryMozillaPlugins,
                                  0,
                                  &plugin_dirs);

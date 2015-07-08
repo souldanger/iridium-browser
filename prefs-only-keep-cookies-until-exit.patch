@@ -1,26 +1,26 @@
-From 9cda94c8f0173e5bfc65ea9e83aaaaa9b299ed47 Mon Sep 17 00:00:00 2001
+From 16f0b16abbca8f7a11e3b0c5efc73f4088496cd8 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sat, 13 Sep 2014 17:25:47 +0200
-Subject: [PATCH 20/57] prefs: only keep cookies until exit
+Subject: [PATCH 20/56] prefs: only keep cookies until exit
 
 Out with all those tracking cookies!
 ---
- .../content_settings/core/browser/content_settings_default_provider.cc  | 2 +-
+ components/content_settings/core/browser/website_settings_registry.cc | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/components/content_settings/core/browser/content_settings_default_provider.cc b/components/content_settings/core/browser/content_settings_default_provider.cc
-index 0bf7514..42f3bdc 100644
---- a/components/content_settings/core/browser/content_settings_default_provider.cc
-+++ b/components/content_settings/core/browser/content_settings_default_provider.cc
-@@ -39,7 +39,7 @@ struct DefaultContentSettingInfo {
- // The corresponding preference and default value for each default content
- // setting. This array must be kept in sync with the enum |ContentSettingsType|.
- const DefaultContentSettingInfo kDefaultSettings[] = {
--  {prefs::kDefaultCookiesSetting, CONTENT_SETTING_ALLOW},
-+  {prefs::kDefaultCookiesSetting, CONTENT_SETTING_SESSION_ONLY},
-   {prefs::kDefaultImagesSetting, CONTENT_SETTING_ALLOW},
-   {prefs::kDefaultJavaScriptSetting, CONTENT_SETTING_ALLOW},
-   {prefs::kDefaultPluginsSetting, CONTENT_SETTING_DEFAULT},
+diff --git a/components/content_settings/core/browser/website_settings_registry.cc b/components/content_settings/core/browser/website_settings_registry.cc
+index b8df7af..7cc95b6 100644
+--- a/components/content_settings/core/browser/website_settings_registry.cc
++++ b/components/content_settings/core/browser/website_settings_registry.cc
+@@ -35,7 +35,7 @@ WebsiteSettingsRegistry::WebsiteSettingsRegistry() {
+ 
+   // Content settings (those with allow/block/ask/etc. values).
+   RegisterContentSetting(CONTENT_SETTINGS_TYPE_COOKIES, "cookies",
+-                         CONTENT_SETTING_ALLOW, WebsiteSettingsInfo::SYNCABLE);
++                         CONTENT_SETTING_SESSION_ONLY, WebsiteSettingsInfo::SYNCABLE);
+   RegisterContentSetting(CONTENT_SETTINGS_TYPE_IMAGES, "images",
+                          CONTENT_SETTING_ALLOW, WebsiteSettingsInfo::SYNCABLE);
+   RegisterContentSetting(CONTENT_SETTINGS_TYPE_JAVASCRIPT, "javascript",
 -- 
 2.4.3
 
