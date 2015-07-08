@@ -1,7 +1,7 @@
-From c30f73e29d6bbc0dc1056e9e2ec2d0f93b096448 Mon Sep 17 00:00:00 2001
+From 94ffcbe76617475b912ec73373dd1e07400b06d4 Mon Sep 17 00:00:00 2001
 From: Joachim Bauch <jojo@struktur.de>
 Date: Wed, 22 Jul 2015 12:24:15 +0200
-Subject: [PATCH 46/56] safe_browsing: disable cookie transmission
+Subject: [PATCH 46/58] safe_browsing: disable cookie transmission
 
 Disables sending/setting cookies for Safebrowsing requests. This
 prevents the long-living tracking cookie from being set.

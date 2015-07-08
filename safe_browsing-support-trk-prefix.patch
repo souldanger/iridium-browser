@@ -1,7 +1,7 @@
-From 5868c24b8a9ed1b5c903bdb9d15b66ba0086b11f Mon Sep 17 00:00:00 2001
+From e5083c174e3aea24ab3e2f1d931500e409fc03db Mon Sep 17 00:00:00 2001
 From: Joachim Bauch <jojo@struktur.de>
 Date: Mon, 6 Jul 2015 18:18:03 +0200
-Subject: [PATCH 45/56] safe_browsing: support trk: prefix
+Subject: [PATCH 45/58] safe_browsing: support trk: prefix
 
 ---
  chrome/browser/safe_browsing/protocol_manager.cc | 4 +++-

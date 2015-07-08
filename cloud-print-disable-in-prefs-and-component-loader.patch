@@ -1,7 +1,7 @@
-From a0ddc80d16603056c107313d8e79e887cf7cf47f Mon Sep 17 00:00:00 2001
+From 7eb94fb544d19cc8bfd915caf8519aee1d1ef7c2 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sat, 13 Sep 2014 16:55:12 +0200
-Subject: [PATCH 16/56] cloud-print: disable in prefs and component loader
+Subject: [PATCH 16/58] cloud-print: disable in prefs and component loader
 
 Cloud Print should normally be autodisabled if no printers are shared.
 But maybe that is not enough(?) Probably also needs to gain a checkbox

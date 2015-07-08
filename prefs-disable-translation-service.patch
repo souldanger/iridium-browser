@@ -1,7 +1,7 @@
-From 478091053d96b2f92372d67104766a7c8b1224c3 Mon Sep 17 00:00:00 2001
+From c80e5dee55ecc2dda265b78b5bc1cfe02ca925d4 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Thu, 30 Oct 2014 22:04:24 +0100
-Subject: [PATCH 25/56] prefs: disable translation service
+Subject: [PATCH 25/58] prefs: disable translation service
 
 When translation is enabled, the translation manager will request a
 list of supported languages from translate.googleapis.com.

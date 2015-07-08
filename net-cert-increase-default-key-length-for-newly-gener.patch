@@ -1,7 +1,7 @@
-From fe6b494a55667ad48145b66fa0f05feaf655cca0 Mon Sep 17 00:00:00 2001
+From 623414645da0c514638997a140f193b6497de3c8 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Mon, 15 Sep 2014 10:52:32 +0200
-Subject: [PATCH 01/56] net/cert: increase default key length for
+Subject: [PATCH 01/58] net/cert: increase default key length for
  newly-generated RSA keys
 
 Should we add something for chrome://settings, or just leave

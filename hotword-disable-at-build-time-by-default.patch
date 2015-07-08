@@ -1,7 +1,7 @@
-From dd8e87ffb615221b0f4d613b5495ff37aa281dc7 Mon Sep 17 00:00:00 2001
+From 10b72759cf91bb69c547b91d537f0ef7b84daa5c Mon Sep 17 00:00:00 2001
 From: amistry <amistry@chromium.org>
 Date: Tue, 9 Jun 2015 12:18:39 -0700
-Subject: [PATCH 49/56] hotword: disable at build time by default
+Subject: [PATCH 49/58] hotword: disable at build time by default
 
 Commit f269d3b548203e217e8c0080c2e22e7ae3efb51e upstream:
 

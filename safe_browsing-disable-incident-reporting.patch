@@ -1,7 +1,7 @@
-From 6ec1aa8d67b0350f50c1312caf13bda68ea87319 Mon Sep 17 00:00:00 2001
+From 0fecc518a622a486434020ca724d963fb0dc8edb Mon Sep 17 00:00:00 2001
 From: Joachim Bauch <jojo@struktur.de>
 Date: Tue, 7 Jul 2015 17:02:09 +0200
-Subject: [PATCH 43/56] safe_browsing: disable incident reporting
+Subject: [PATCH 43/58] safe_browsing: disable incident reporting
 
 Disables the safebrowsing incident reporting where you could upload
 information about a blocked URL to Google (also added a trk prefix to
@@ -68,7 +68,7 @@ index c74fb7a..7cd07b8 100644
  
  void SafeBrowsingBlockingPage::PopulateMalwareLoadTimeData(
 diff --git a/chrome/browser/safe_browsing/safe_browsing_service.cc b/chrome/browser/safe_browsing/safe_browsing_service.cc
-index 313b715..8f0489b 100644
+index 0ae7ba6..41c776d 100644
 --- a/chrome/browser/safe_browsing/safe_browsing_service.cc
 +++ b/chrome/browser/safe_browsing/safe_browsing_service.cc
 @@ -99,9 +99,12 @@ base::FilePath CookieFilePath() {
@@ -84,7 +84,7 @@ index 313b715..8f0489b 100644
  }
  #endif  // defined(FULL_SAFE_BROWSING)
  
-@@ -419,9 +422,11 @@ SafeBrowsingDatabaseManager* SafeBrowsingService::CreateDatabaseManager() {
+@@ -429,9 +432,11 @@ SafeBrowsingDatabaseManager* SafeBrowsingService::CreateDatabaseManager() {
  
  void SafeBrowsingService::RegisterAllDelayedAnalysis() {
  #if defined(FULL_SAFE_BROWSING)

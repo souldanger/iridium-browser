@@ -1,7 +1,7 @@
-From ac247ed0387d18ad194417650d775bc3b2514a04 Mon Sep 17 00:00:00 2001
+From 98209bebf1417947f662dd18d64536468e9f774f Mon Sep 17 00:00:00 2001
 From: Yuriy Shevchuk <yuriy@struktur.de>
 Date: Tue, 23 Dec 2014 16:54:56 +0100
-Subject: [PATCH 29/56] build: fix OSX branded build crashes on OSX
+Subject: [PATCH 29/58] build: fix OSX branded build crashes on OSX
 
 ---
  build/common.gypi                  |  2 +-

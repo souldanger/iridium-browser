@@ -1,7 +1,7 @@
-From 63213cd762bee8922f10436a2c10416499d3f3fc Mon Sep 17 00:00:00 2001
+From 84504f1bb5490506a9bbeba6b7a539a2d8b556b0 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Fri, 13 Feb 2015 01:04:21 +0100
-Subject: [PATCH 21/56] prefs: always prompt for download directory by default
+Subject: [PATCH 21/58] prefs: always prompt for download directory by default
 
 If the user opens a link, one of two things might happen. The URI
 resolves to a "web page" and will be displayed, then everything is

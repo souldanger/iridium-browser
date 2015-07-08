@@ -1,7 +1,7 @@
-From 216f074142bad8e9ddb57f1b6cc6ee096eec5368 Mon Sep 17 00:00:00 2001
+From c56ca8ebfbcb95d49eee0ebd448955fb55eab704 Mon Sep 17 00:00:00 2001
 From: Joachim Bauch <jojo@struktur.de>
 Date: Mon, 10 Nov 2014 10:54:29 +0100
-Subject: [PATCH 02/56] webrtc: disable WebRTC identity store
+Subject: [PATCH 02/58] webrtc: disable WebRTC identity store
 
 By default, WebRTC identities (i.e. keypairs/certificates) are cached
 for 30 days and stored in a SQLite database in the users home

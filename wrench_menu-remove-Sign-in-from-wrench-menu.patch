@@ -1,0 +1,34 @@
+From e93e4847b6601123694299aea3150c5acf671f38 Mon Sep 17 00:00:00 2001
+From: Simon Eisenmann <simon@struktur.de>
+Date: Mon, 26 Oct 2015 13:47:35 +0100
+Subject: [PATCH 57/58] wrench_menu: remove "Sign in" from wrench menu.
+
+It relies on Google services, and we never provided our own endpoint for it.
+Fixes GH #23.
+---
+ chrome/browser/ui/toolbar/wrench_menu_model.cc | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/chrome/browser/ui/toolbar/wrench_menu_model.cc b/chrome/browser/ui/toolbar/wrench_menu_model.cc
+index 5f9ca12..c89c933 100644
+--- a/chrome/browser/ui/toolbar/wrench_menu_model.cc
++++ b/chrome/browser/ui/toolbar/wrench_menu_model.cc
+@@ -931,6 +931,7 @@ void WrenchMenuModel::Build() {
+ 
+   AddItemWithStringId(IDC_OPTIONS, IDS_SETTINGS);
+ #if !defined(OS_CHROMEOS)
++#if 0
+   if (!switches::IsNewAvatarMenu()) {
+     // No "Sign in to Chromium..." menu item on ChromeOS.
+     SigninManager* signin = SigninManagerFactory::GetForProfile(
+@@ -961,6 +962,7 @@ void WrenchMenuModel::Build() {
+     AddCheckItemWithStringId(IDC_TOGGLE_REQUEST_TABLET_SITE,
+                              IDS_TOGGLE_REQUEST_TABLET_SITE);
+ #endif
++#endif
+ 
+ #if defined(OS_WIN)
+   int command_id = IDC_WIN_DESKTOP_RESTART;
+-- 
+2.4.3
+
