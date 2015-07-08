@@ -1,7 +1,7 @@
-From 7f962937d65e08f7ddf90cdd0ad6a0506ebda251 Mon Sep 17 00:00:00 2001
+From 07680d73606df9078518706823792919caaa19d5 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Thu, 29 Jan 2015 10:36:43 +0100
-Subject: [PATCH 30/57] prefs: use system-provided preference skeleton
+Subject: [PATCH 30/55] prefs: use system-provided preference skeleton
 
 This patch makes it possible for distributions to have a global
 default preferences file in /etc/iridium-browser/preferences that get

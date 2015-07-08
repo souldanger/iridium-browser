@@ -1,17 +1,17 @@
-From 60d343cb0f27be90bad1edc188c4e534f4b181b4 Mon Sep 17 00:00:00 2001
+From 284a956dcbc80d2253f537b1e6240cd8f1694601 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Wed, 10 Dec 2014 12:44:49 +0100
-Subject: [PATCH 27/57] ui/translation: update strings to read "Iridium"
+Subject: [PATCH 27/55] ui/translation: update strings to read "Iridium"
  instead
 
 ---
- chrome/app/chromium_strings.grd                | 378 ++++++++++++-------------
+ chrome/app/chromium_strings.grd                | 370 ++++++++++++-------------
  chrome/browser/resources/chrome-logo-faded.png | Bin 896 -> 1267 bytes
  components/components_chromium_strings.grd     |  18 +-
- 3 files changed, 198 insertions(+), 198 deletions(-)
+ 3 files changed, 194 insertions(+), 194 deletions(-)
 
 diff --git a/chrome/app/chromium_strings.grd b/chrome/app/chromium_strings.grd
-index 2c493a8..6de8d65 100644
+index 5afc96f..f20f6e8 100644
 --- a/chrome/app/chromium_strings.grd
 +++ b/chrome/app/chromium_strings.grd
 @@ -134,20 +134,20 @@ If you update this file, be sure also to update google_chrome_strings.grd. -->
@@ -327,8 +327,8 @@ index 2c493a8..6de8d65 100644
 +          Installation failed due to unspecified error. Please download the browser again.
          </message>
          <message name="IDS_INSTALL_OS_NOT_SUPPORTED" desc="Error displayed if OS is not supported">
--          Chromium requires Windows 7 or higher.
-+          The browser requires Windows 7 or higher.
+-          Chromium requires Windows Vista or Windows XP with SP2 or higher.
++          The browser requires Windows Vista or Windows XP with SP2 or higher.
          </message>
          <message name="IDS_INSTALL_OS_ERROR" desc="Error displayed when any Windows API call fails and we do not have more specific information.">
 -          An operating system error occurred during installation. Please download Chromium again.
@@ -469,7 +469,7 @@ index 2c493a8..6de8d65 100644
          </message>
        </if>
  
-@@ -562,12 +562,12 @@ Chromium is unable to recover your settings.
+@@ -562,18 +562,18 @@ Chromium is unable to recover your settings.
  
        <!-- Obsolete System info bar -->
        <message name="IDS_SYSTEM_OBSOLETE_MESSAGE" desc="Message shown when your OS is no longer supported. This message is followed by a 'Learn more' link.">
@@ -483,25 +483,6 @@ index 2c493a8..6de8d65 100644
 +        Google API keys are not present. Some Google functions are disabled.
        </message>
  
-       <!-- about:memory -->
-@@ -575,21 +575,21 @@ Chromium is unable to recover your settings.
-         <message name="IDS_MEMORY_USAGE_SUMMARY_DESC" desc="Describes the browser summary table in the about memory page, which shows memory usage for Chromium and any other active browsers." translateable="false">
- Summary of memory used by currently active browsers. For browsers which use multiple processes, memory reflects aggregate memory used across all browser processes.
- 
--For Chromium, processes used to display diagnostics information (such as this "about:memory") are excluded.
-+For Iridium, processes used to display diagnostics information (such as this "about:memory") are excluded.
-         </message>
-       </if>
-       <if expr="is_android">
-         <message name="IDS_MEMORY_USAGE_SUMMARY_DESC" desc="Describes the browser summary table in the about memory page, which shows memory usage for Chromium." translateable="false">
--Summary of memory used by Chromium. Since Chromium uses multiple processes, memory reflects aggregate memory used across all browser processes.
-+Summary of memory used by the browser. Since multiple processes are used, memory reflects aggregate memory used across all browser processes.
- 
--For Chromium, processes used to display diagnostics information (such as this "about:memory") are excluded.
-+For Iridium, processes used to display diagnostics information (such as this "about:memory") are excluded.
-         </message>
-       </if>
- 
        <!-- About Chrome page -->
        <if expr="not chromeos">
          <message name="IDS_UPGRADE_SUCCESSFUL_RELAUNCH" desc="Status label: Successfully updated Chromium">
@@ -510,7 +491,7 @@ index 2c493a8..6de8d65 100644
          </message>
        </if>
        <if expr="chromeos">
-@@ -604,7 +604,7 @@ For Chromium, processes used to display diagnostics information (such as this "a
+@@ -588,7 +588,7 @@ Chromium is unable to recover your settings.
        </if>
        <if expr="not chromeos">
          <message name="IDS_UPGRADE_UP_TO_DATE" desc="Status label: Already up to date (Chromium)">
@@ -519,7 +500,7 @@ index 2c493a8..6de8d65 100644
          </message>
        </if>
        <if expr="chromeos">
-@@ -614,7 +614,7 @@ For Chromium, processes used to display diagnostics information (such as this "a
+@@ -598,7 +598,7 @@ Chromium is unable to recover your settings.
        </if>
        <if expr="not chromeos">
          <message name="IDS_UPGRADE_UPDATING" desc="Status label: Updating Chromium">
@@ -528,7 +509,7 @@ index 2c493a8..6de8d65 100644
          </message>
        </if>
        <if expr="chromeos">
-@@ -630,30 +630,30 @@ For Chromium, processes used to display diagnostics information (such as this "a
+@@ -614,30 +614,30 @@ Chromium is unable to recover your settings.
  
        <!-- Extension/App install prompt -->
        <message name="IDS_EXTENSION_INLINE_INSTALL_PROMPT_TITLE" desc="Titlebar of the extension or app inline installation prompt window">
@@ -564,7 +545,7 @@ index 2c493a8..6de8d65 100644
            </message>
          </if>
        </if>
-@@ -665,40 +665,40 @@ For Chromium, processes used to display diagnostics information (such as this "a
+@@ -649,40 +649,40 @@ Chromium is unable to recover your settings.
  
        <!-- chrome://settings/extensions page -->
        <message name="IDS_EXTENSIONS_INCOGNITO_WARNING" desc="Warns the user that Chromium cannot prevent extensions from recording history in incognito mode. Displayed in extensions management UI after an extension is selected to be run in incognito mode.">
@@ -614,7 +595,7 @@ index 2c493a8..6de8d65 100644
          </message>
        </if>
        <if expr="chromeos">
-@@ -712,7 +712,7 @@ For Chromium, processes used to display diagnostics information (such as this "a
+@@ -696,7 +696,7 @@ Chromium is unable to recover your settings.
  
        <if expr="is_macosx">
          <message name="IDS_APP_MENU_PRODUCT_NAME" desc="The application's short name, used for the Mac's application menu, activity monitor, etc. This should be less than 16 characters. Example: Chrome, not Google Chrome.">
@@ -623,7 +604,7 @@ index 2c493a8..6de8d65 100644
          </message>
          <message name="IDS_HELPER_NAME" desc="The helper application's name.  Should contain the Chrome application name (IDS_PRODUCT_NAME). Example: Google Chrome Helper.">
            Chromium Helper
-@@ -724,68 +724,68 @@ For Chromium, processes used to display diagnostics information (such as this "a
+@@ -708,68 +708,68 @@ Chromium is unable to recover your settings.
  
        <!-- Chrome sign-in page -->
        <message name="IDS_CHROME_SIGNIN_TITLE" desc="Title on the about:chrome-signin page">
@@ -709,7 +690,7 @@ index 2c493a8..6de8d65 100644
          </message>
        </if>
  
-@@ -793,35 +793,35 @@ Signing in anyway will merge Chromium information like bookmarks, history, and o
+@@ -777,35 +777,35 @@ Signing in anyway will merge Chromium information like bookmarks, history, and o
        <!-- TODO(dconnelly): remove "new-style" once the old dialog is gone. -->
        <if expr="toolkit_views or is_macosx">
          <message name="IDS_ENTERPRISE_SIGNIN_TITLE_NEW_STYLE" desc="The title of the dialog to confirm linking the browser profile with the signed-in enterprise account">
@@ -753,7 +734,7 @@ index 2c493a8..6de8d65 100644
          </message>
        </if>
        <if expr="chromeos">
-@@ -841,73 +841,73 @@ Signing in anyway will merge Chromium information like bookmarks, history, and o
+@@ -825,54 +825,54 @@ Signing in anyway will merge Chromium information like bookmarks, history, and o
  
        <if expr="is_macosx">
          <message name="IDS_OPTIONS_PASSWORDS_MAC_WARNING" desc="The warning for OS X that passwords are shared across profiles in the keychain.">
@@ -771,12 +752,8 @@ index 2c493a8..6de8d65 100644
 +        Save details in the browser
        </message>
        <message name="IDS_AUTOFILL_DIALOG_SAVE_LOCALLY_TOOLTIP" desc="Tooltip which explains function of checkbox that controls whether info the user types into the autofill dialog is saved by chrome.">
--        Chromium will securely store your information so you don't need to type it in again, but you will still need to verify your card's security code for future payments.
-+        The browser will store your information so you do not need to type it in again, but you will still need to verify your card's security code for future payments.
-       </message>
-       <message name="IDS_AUTOFILL_NEW_CREDIT_CARD_BUBBLE_TITLE" desc="Title text of the new credit card bubble informing a user their billing information has been saved in chrome.">
--        Your billing details have been saved in Chromium.
-+        Your billing details have been saved in the browser.
+-        Chromium will securely store your personal details so you don't need to type them in again.
++        The browser will store your personal details so you do not need to type them in again.
        </message>
        <message name="IDS_AUTOFILL_DESCRIBE_LOCAL_COPY" desc="Text label that described a Wallet credit card which has been copied to the local Chrome instance.">
 -        Copied to Chromium
@@ -823,7 +800,8 @@ index 2c493a8..6de8d65 100644
 +            Remove from browser…
            </message>
          </if>
-       </if>
+         <if expr="not chromeos">
+@@ -887,16 +887,16 @@ Signing in anyway will merge Chromium information like bookmarks, history, and o
  
        <!-- App shortcuts -->
        <message name="IDS_APP_SHORTCUTS_SUBDIR_NAME" desc="Name for the Chromium Apps Start Menu folder name.">
@@ -843,7 +821,7 @@ index 2c493a8..6de8d65 100644
          </message>
        </if>
  
-@@ -922,102 +922,102 @@ Signing in anyway will merge Chromium information like bookmarks, history, and o
+@@ -911,102 +911,102 @@ Signing in anyway will merge Chromium information like bookmarks, history, and o
        <if expr="enable_notifications">
          <if expr="is_win">
            <message name="IDS_MESSAGE_CENTER_BALLOON_TITLE" desc="Title of the first run notification ballon describing the notification center.">
@@ -970,7 +948,7 @@ index 2c493a8..6de8d65 100644
        </message>
  
        <!-- Website Settings bubble -->
-@@ -1033,16 +1033,16 @@ Signing in anyway will merge Chromium information like bookmarks, history, and o
+@@ -1022,16 +1022,16 @@ Signing in anyway will merge Chromium information like bookmarks, history, and o
        <!-- Windows firewall rule strings. -->
        <if expr="is_win">
          <message name="IDS_INBOUND_MDNS_RULE_NAME" desc="The name of the firewall rule allowing inbound mDNS traffic.">
@@ -991,7 +969,7 @@ index 2c493a8..6de8d65 100644
          </message>
        </if>
  
-@@ -1077,37 +1077,37 @@ Signing in anyway will merge Chromium information like bookmarks, history, and o
+@@ -1066,37 +1066,37 @@ Signing in anyway will merge Chromium information like bookmarks, history, and o
  
        <!-- Update bubble -->
        <message name="IDS_REINSTALL_APP" desc="Text for the button the user clicks to reinstall the app.">
@@ -1037,7 +1015,7 @@ index 2c493a8..6de8d65 100644
        </message>
        <message name="IDS_RECOVERY_BUBBLE_TEXT" desc="Text for the chrome recovery bubble view full description.">
          Important security improvements and new features are available in the latest version.
-@@ -1123,7 +1123,7 @@ Signing in anyway will merge Chromium information like bookmarks, history, and o
+@@ -1112,7 +1112,7 @@ Signing in anyway will merge Chromium information like bookmarks, history, and o
  
        <!-- Page Information Window -->
        <message name="IDS_PAGE_INFO_SECURITY_TAB_SECURE_IDENTITY_NO_CT" desc="The text of the identity section when the page is secure and no Certificate Transparency information is present.">
@@ -1046,7 +1024,7 @@ index 2c493a8..6de8d65 100644
        </message>
        <message name="IDS_PAGE_INFO_SECURITY_TAB_SECURE_IDENTITY_CT_VERIFIED" desc="The text of the identity section when the page is secure and a Signed Certificate Timestamp from a known Certificate Transparency log is present and valid.">
          Chromium verified that <ph name="ISSUER">$1<ex>VeriSign</ex></ph> issued this website's certificate. The server supplied valid Certificate Transparency information.
-@@ -1157,13 +1157,13 @@ Signing in anyway will merge Chromium information like bookmarks, history, and o
+@@ -1146,13 +1146,13 @@ Signing in anyway will merge Chromium information like bookmarks, history, and o
        <!-- OOBE -->
        <if expr="chromeos">
          <message name="IDS_INSTALLING_UPDATE" desc="Label shown on the updates installation screen during OOBE">
@@ -1063,7 +1041,7 @@ index 2c493a8..6de8d65 100644
          </message>
          <message name="IDS_EULA_SCREEN_ACCESSIBLE_TITLE" desc="Title to be spoken on opening the OOBE EULA screen">
            Chromium OS terms
-@@ -1174,15 +1174,15 @@ Signing in anyway will merge Chromium information like bookmarks, history, and o
+@@ -1163,15 +1163,15 @@ Signing in anyway will merge Chromium information like bookmarks, history, and o
        <if expr="is_win">
          <message name="IDS_METRO_FLOW_TAB_TITLE"
                   desc="The dialog window title.">

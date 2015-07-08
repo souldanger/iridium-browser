@@ -1,7 +1,7 @@
-From f755d9d9395743ba9a808f14cecdcc7143761369 Mon Sep 17 00:00:00 2001
+From 42499fcbb5a489ae192e431115d83000dd24fc2e Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Mon, 7 Mar 2016 00:56:09 +0100
-Subject: [PATCH 56/57] icons: iridium icons
+Subject: [PATCH 54/55] icons: iridium icons
 
 ---
  chrome/app/theme/chromium/product_logo_128.png      | Bin 8366 -> 7826 bytes
