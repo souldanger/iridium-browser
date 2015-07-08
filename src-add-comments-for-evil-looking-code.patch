@@ -1,7 +1,7 @@
-From 606f27028b55192d91b80872c849c519807a53dd Mon Sep 17 00:00:00 2001
+From 32b4efdfd1c25c0d9989467bcaeb8aca65e6cd4d Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Wed, 6 May 2015 14:13:00 +0200
-Subject: [PATCH 38/56] src: add comments for evil-looking code
+Subject: [PATCH 38/57] src: add comments for evil-looking code
 
 A trk:193 alert would show whenever the Omnibar is set to use Google
 as search engine. When it does, it tries to find the most suitable TLD
@@ -39,5 +39,5 @@ index fa0d140..3def0c2 100644
  GoogleURLTracker::GoogleURLTracker(scoped_ptr<GoogleURLTrackerClient> client,
                                     Mode mode)
 -- 
-2.4.3
+2.7.0
 

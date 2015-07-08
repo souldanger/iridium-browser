@@ -1,7 +1,7 @@
-From 6b43f8be2683861236c864df55a15c21a8117b9e Mon Sep 17 00:00:00 2001
+From e3c66da9cd05dd305084412dcc6771e484820693 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Mon, 3 Nov 2014 10:52:56 +0100
-Subject: [PATCH 47/56] all: add trk: prefixes to possibly evil connections
+Subject: [PATCH 47/57] all: add trk: prefixes to possibly evil connections
 
 Prefix URLs to Google services with trk: so that whenever something
 tries to load them, the developer will be informed via printf and
@@ -37,7 +37,6 @@ by default.
  .../experimental/supervised_user_async_url_checker.cc  |  2 +-
  .../browser/supervised_user/supervised_user_service.cc |  2 +-
  .../ui/app_list/search/people/people_provider.cc       |  4 ++--
- .../ui/startup/obsolete_system_infobar_delegate.cc     |  2 +-
  .../browser/ui/views/outdated_upgrade_bubble_view.cc   |  2 +-
  .../website_settings/mock_permission_bubble_request.cc |  6 +++---
  chrome/browser/ui/webui/ntp/ntp_resource_cache.cc      |  8 ++++----
@@ -90,7 +89,7 @@ by default.
  sync/tools/sync_client.cc                              |  2 +-
  ui/app_list/demo/app_list_demo_views.cc                |  2 +-
  ui/views/examples/webview_example.cc                   |  2 +-
- 79 files changed, 131 insertions(+), 130 deletions(-)
+ 78 files changed, 130 insertions(+), 129 deletions(-)
 
 diff --git a/build/mac/tweak_info_plist.py b/build/mac/tweak_info_plist.py
 index 2057bac..72d1604 100755
@@ -141,7 +140,7 @@ index caec650..8bacb20 100644
    auth_service_.reset(
        new google_apis::AuthService(oauth2_token_service,
 diff --git a/chrome/browser/chromeos/extensions/file_manager/private_api_misc.cc b/chrome/browser/chromeos/extensions/file_manager/private_api_misc.cc
-index 23d2ab6..b786e2a 100644
+index c1c54cb..fbf5a2c 100644
 --- a/chrome/browser/chromeos/extensions/file_manager/private_api_misc.cc
 +++ b/chrome/browser/chromeos/extensions/file_manager/private_api_misc.cc
 @@ -56,7 +56,7 @@
@@ -154,7 +153,7 @@ index 23d2ab6..b786e2a 100644
  // Obtains the current app window.
  AppWindow* GetCurrentAppWindow(ChromeSyncExtensionFunction* function) {
 diff --git a/chrome/browser/chromeos/extensions/file_manager/private_api_strings.cc b/chrome/browser/chromeos/extensions/file_manager/private_api_strings.cc
-index 6a9c6b7..5a46fab 100644
+index 1e6fe65..a69d206 100644
 --- a/chrome/browser/chromeos/extensions/file_manager/private_api_strings.cc
 +++ b/chrome/browser/chromeos/extensions/file_manager/private_api_strings.cc
 @@ -19,26 +19,26 @@ namespace {
@@ -191,10 +190,10 @@ index 6a9c6b7..5a46fab 100644
  // Location of the help page for low space warning in the downloads directory.
  const int kDownloadsLowSpaceWarningHelpNumber = 1061547;
 diff --git a/chrome/browser/chromeos/login/signin/oauth2_login_manager.cc b/chrome/browser/chromeos/login/signin/oauth2_login_manager.cc
-index 5e046a4..10467c7 100644
+index 8b79b2f..de4db5a 100644
 --- a/chrome/browser/chromeos/login/signin/oauth2_login_manager.cc
 +++ b/chrome/browser/chromeos/login/signin/oauth2_login_manager.cc
-@@ -30,7 +30,7 @@ namespace chromeos {
+@@ -31,7 +31,7 @@ namespace chromeos {
  namespace {
  
  static const char kServiceScopeGetUserInfo[] =
@@ -232,7 +231,7 @@ index 6b7aa35..c68317b 100644
  const char kPublicKeyPEM[] =                                            \
      "-----BEGIN PUBLIC KEY-----"                                        \
 diff --git a/chrome/browser/first_run/try_chrome_dialog_view.cc b/chrome/browser/first_run/try_chrome_dialog_view.cc
-index 47666e6..5f4f9dc 100644
+index 5918776..dfdadf0 100644
 --- a/chrome/browser/first_run/try_chrome_dialog_view.cc
 +++ b/chrome/browser/first_run/try_chrome_dialog_view.cc
 @@ -36,7 +36,7 @@
@@ -305,10 +304,10 @@ index c435a8c..af77d4f 100644
    return urls;
  }
 diff --git a/chrome/browser/plugins/plugin_infobar_delegates.cc b/chrome/browser/plugins/plugin_infobar_delegates.cc
-index 87e5fba..730c252 100644
+index 92b4640..a2174bc 100644
 --- a/chrome/browser/plugins/plugin_infobar_delegates.cc
 +++ b/chrome/browser/plugins/plugin_infobar_delegates.cc
-@@ -273,8 +273,8 @@ base::string16 PluginMetroModeInfoBarDelegate::GetLinkText() const {
+@@ -277,8 +277,8 @@ base::string16 PluginMetroModeInfoBarDelegate::GetLinkText() const {
  GURL PluginMetroModeInfoBarDelegate::GetLinkURL() const {
    return GURL(
        (mode_ == MISSING_PLUGIN)
@@ -401,10 +400,10 @@ index 27f4008..1e2c88a 100644
  // static
  DownloadFeedbackFactory* DownloadFeedback::factory_ = NULL;
 diff --git a/chrome/browser/safe_browsing/srt_global_error_win.cc b/chrome/browser/safe_browsing/srt_global_error_win.cc
-index 5f1cd48..f81e694 100644
+index 68cc85c..d47dca6 100644
 --- a/chrome/browser/safe_browsing/srt_global_error_win.cc
 +++ b/chrome/browser/safe_browsing/srt_global_error_win.cc
-@@ -34,7 +34,7 @@ namespace {
+@@ -36,7 +36,7 @@ namespace {
  // Used as a backup plan in case the SRT executable was not successfully
  // downloaded or run.
  const char kSRTDownloadURL[] =
@@ -440,7 +439,7 @@ index 888af4a..0cc1781 100644
  // The location of spellcheck suggestions in JSON response from spelling
  // service.
 diff --git a/chrome/browser/supervised_user/experimental/supervised_user_async_url_checker.cc b/chrome/browser/supervised_user/experimental/supervised_user_async_url_checker.cc
-index f2501b4..c72673f 100644
+index 2c379c2..507b6bc 100644
 --- a/chrome/browser/supervised_user/experimental/supervised_user_async_url_checker.cc
 +++ b/chrome/browser/supervised_user/experimental/supervised_user_async_url_checker.cc
 @@ -30,7 +30,7 @@ using net::URLRequestStatus;
@@ -453,10 +452,10 @@ index f2501b4..c72673f 100644
  const char kDataFormat[] = "key=%s&urls=%s";
  
 diff --git a/chrome/browser/supervised_user/supervised_user_service.cc b/chrome/browser/supervised_user/supervised_user_service.cc
-index 1e2f005..8dfe102 100644
+index 432e404..5133fd8 100644
 --- a/chrome/browser/supervised_user/supervised_user_service.cc
 +++ b/chrome/browser/supervised_user/supervised_user_service.cc
-@@ -78,7 +78,7 @@ namespace {
+@@ -81,7 +81,7 @@ namespace {
  
  // The URL from which to download a host blacklist if no local one exists yet.
  const char kBlacklistURL[] =
@@ -483,18 +482,6 @@ index 1677b18..47446f4 100644
  
  }  // namespace
  
-diff --git a/chrome/browser/ui/startup/obsolete_system_infobar_delegate.cc b/chrome/browser/ui/startup/obsolete_system_infobar_delegate.cc
-index 379f62e..fab6b0b 100644
---- a/chrome/browser/ui/startup/obsolete_system_infobar_delegate.cc
-+++ b/chrome/browser/ui/startup/obsolete_system_infobar_delegate.cc
-@@ -58,6 +58,6 @@ GURL ObsoleteSystemInfoBarDelegate::GetLinkURL() const {
- #if defined(OS_MACOSX)
-   return GURL(chrome::kMac32BitDeprecationURL);
- #else
--  return GURL("https://support.google.com/chrome/answer/95411");
-+  return GURL("trk:241:https://support.google.com/chrome/answer/95411");
- #endif
- }
 diff --git a/chrome/browser/ui/views/outdated_upgrade_bubble_view.cc b/chrome/browser/ui/views/outdated_upgrade_bubble_view.cc
 index 81972b0..6c4a5c0 100644
 --- a/chrome/browser/ui/views/outdated_upgrade_bubble_view.cc
@@ -540,10 +527,10 @@ index 0cfd934..ca35584 100644
  
  MockPermissionBubbleRequest::~MockPermissionBubbleRequest() {}
 diff --git a/chrome/browser/ui/webui/ntp/ntp_resource_cache.cc b/chrome/browser/ui/webui/ntp/ntp_resource_cache.cc
-index 0fb8d9e..1ae1f91 100644
+index 5215c67..6a016c3 100644
 --- a/chrome/browser/ui/webui/ntp/ntp_resource_cache.cc
 +++ b/chrome/browser/ui/webui/ntp/ntp_resource_cache.cc
-@@ -77,17 +77,17 @@ namespace {
+@@ -78,17 +78,17 @@ namespace {
  // The URL for the the Learn More page shown on incognito new tab.
  const char kLearnMoreIncognitoUrl[] =
  #if defined(OS_CHROMEOS)
@@ -566,10 +553,10 @@ index 0fb8d9e..1ae1f91 100644
  
  std::string SkColorToRGBAString(SkColor color) {
 diff --git a/chrome/chrome_watcher/chrome_watcher_main.cc b/chrome/chrome_watcher/chrome_watcher_main.cc
-index 6219bec..44c7bae 100644
+index db578d6..3bd7e17 100644
 --- a/chrome/chrome_watcher/chrome_watcher_main.cc
 +++ b/chrome/chrome_watcher/chrome_watcher_main.cc
-@@ -380,7 +380,7 @@ extern "C" int WatcherMain(const base::char16* registry_path,
+@@ -339,7 +339,7 @@ extern "C" int WatcherMain(const base::char16* registry_path,
  #ifdef KASKO
    bool launched_kasko = kasko::api::InitializeReporter(
        GetKaskoEndpoint(process.Pid()).c_str(),
@@ -608,10 +595,10 @@ index 8e8a0f9..67ff558 100644
  }  // namespace
  
 diff --git a/chrome/common/localized_error.cc b/chrome/common/localized_error.cc
-index 6fde4f5..14ecc17 100644
+index 84a9191..7b6f005 100644
 --- a/chrome/common/localized_error.cc
 +++ b/chrome/common/localized_error.cc
-@@ -45,7 +45,7 @@ const unsigned int kErrorPagesNoDetails = 0;
+@@ -46,7 +46,7 @@ const unsigned int kErrorPagesNoDetails = 0;
  namespace {
  
  static const char kRedirectLoopLearnMoreUrl[] =
@@ -619,12 +606,12 @@ index 6fde4f5..14ecc17 100644
 +    "trk:249:https://support.google.com/chrome/answer/95626";
  static const char kWeakDHKeyLearnMoreUrl[] =
      "https://support.google.com/chrome?p=dh_error";
- static const char kCachedCopyButtonFieldTrial[] =
+ static const int kGoogleCachedCopySuggestionType = 0;
 diff --git a/chrome/common/url_constants.cc b/chrome/common/url_constants.cc
-index df69fef..d65a9de 100644
+index b325599..c570874 100644
 --- a/chrome/common/url_constants.cc
 +++ b/chrome/common/url_constants.cc
-@@ -302,7 +302,7 @@ const char kChromeUIVoiceSearchHost[] = "voicesearch";
+@@ -304,7 +304,7 @@ const char kChromeUIVoiceSearchHost[] = "voicesearch";
  const char kEULAPathFormat[] = "/usr/share/chromeos-assets/eula/%s/eula.html";
  const char kOemEulaURLPath[] = "oem";
  const char kOnlineEulaURLPath[] =
@@ -633,7 +620,7 @@ index df69fef..d65a9de 100644
  
  const char kChromeOSCreditsPath[] =
      "/opt/google/chrome/resources/about_os_credits.html";
-@@ -363,7 +363,7 @@ const char kExtensionResourceInvalidRequestURL[] =
+@@ -367,7 +367,7 @@ const char kExtensionResourceInvalidRequestURL[] =
      "chrome-extension-resource://invalid/";
  
  const char kSyncGoogleDashboardURL[] =
@@ -642,7 +629,7 @@ index df69fef..d65a9de 100644
  
  const char kPasswordManagerLearnMoreURL[] =
  #if defined(OS_CHROMEOS)
-@@ -554,7 +554,7 @@ const char kCloudPrintLearnMoreURL[] =
+@@ -559,7 +559,7 @@ const char kCloudPrintLearnMoreURL[] =
  #endif
  
  const char kCloudPrintNoDestinationsLearnMoreURL[] =
@@ -717,7 +704,7 @@ index cbfdae4..3ed5a164 100644
  namespace {
  
 diff --git a/cloud_print/service/service_state.cc b/cloud_print/service/service_state.cc
-index 070d4ef7..9699f19 100644
+index 471b939..821ebd9 100644
 --- a/cloud_print/service/service_state.cc
 +++ b/cloud_print/service/service_state.cc
 @@ -33,7 +33,7 @@ const char kRobotTokenOptionName[] = "robot_refresh_token";
@@ -792,10 +779,10 @@ index 22be6e2..a50565d 100644
  // UrlSafe is defined as:
  // '/' represented by a '_' and '+' represented by a '-'
 diff --git a/components/crash/content/app/breakpad_linux.cc b/components/crash/content/app/breakpad_linux.cc
-index f93dda7..ba0b28c 100644
+index 7a5c5dd..5e54543 100644
 --- a/components/crash/content/app/breakpad_linux.cc
 +++ b/components/crash/content/app/breakpad_linux.cc
-@@ -82,7 +82,7 @@ namespace breakpad {
+@@ -83,7 +83,7 @@ namespace breakpad {
  namespace {
  
  #if !defined(OS_CHROMEOS)
@@ -805,7 +792,7 @@ index f93dda7..ba0b28c 100644
  
  bool g_is_crash_reporter_enabled = false;
 diff --git a/components/crash/content/tools/crash_service.cc b/components/crash/content/tools/crash_service.cc
-index ed55bbf..48e8060 100644
+index cdb6a50..7010589 100644
 --- a/components/crash/content/tools/crash_service.cc
 +++ b/components/crash/content/tools/crash_service.cc
 @@ -24,7 +24,7 @@ namespace {
@@ -953,10 +940,10 @@ index 55d9e13..5f17829 100644
  
  } // namespace metrics
 diff --git a/components/password_manager/core/browser/password_store.cc b/components/password_manager/core/browser/password_store.cc
-index 4eef17c..c63d484 100644
+index 560a2928..084fd74 100644
 --- a/components/password_manager/core/browser/password_store.cc
 +++ b/components/password_manager/core/browser/password_store.cc
-@@ -140,10 +140,10 @@ void PasswordStore::GetLogins(const PasswordForm& form,
+@@ -160,10 +160,10 @@ void PasswordStore::GetLogins(const PasswordForm& form,
    // TODO(mdm): actually delete them at some point, say M24 or so.
    base::Time ignore_logins_cutoff;  // the null time
    if (form.scheme == PasswordForm::SCHEME_HTML &&
@@ -985,10 +972,10 @@ index 0ed6714..40206ae 100644
  const char kBlockedExtensionPrefix[] = "[BLOCKED]";
  
 diff --git a/components/policy/resources/policy_templates.json b/components/policy/resources/policy_templates.json
-index 273f7a8..a01734a 100644
+index b9c578c..905b7f1 100644
 --- a/components/policy/resources/policy_templates.json
 +++ b/components/policy/resources/policy_templates.json
-@@ -1843,7 +1843,7 @@
+@@ -2005,7 +2005,7 @@
              'dynamic_refresh': True,
              'per_profile': True,
            },
@@ -996,8 +983,8 @@ index 273f7a8..a01734a 100644
 +          'example_value': ['gbchcmhmhahfdphkhkmpfmihenigjmpp;trk:16:https://clients2.google.com/service/update2/crx'],
            'id': 34,
            'caption': '''Configure the list of force-installed apps and extensions''',
-           'desc': '''
-@@ -1885,7 +1885,7 @@
+           'tags': ['full-admin-access'],
+@@ -2048,7 +2048,7 @@
            URL indicated in the extension's manifest.
  
            For example, <ph
@@ -1006,7 +993,7 @@ index 273f7a8..a01734a 100644
            installs the <ph name="EXTENSION_POLICY_EXAMPLE_EXTENSION_NAME">Chrome
            Remote Desktop</ph> app from the standard Chrome Web Store "update"
            URL. For more information about hosting extensions, see: <ph
-@@ -4703,7 +4703,7 @@
+@@ -5035,7 +5035,7 @@
        'features': {
          'dynamic_refresh': True,
        },
@@ -1014,9 +1001,9 @@ index 273f7a8..a01734a 100644
 +      'example_value': [ { "extension-id": "khgabmflimjjbclkmljlpmgaleanedem", "update-url": "trk:18:https://clients2.google.com/service/update2/crx" } ],
        'id': 135,
        'caption': '''List of AppPack extensions''',
-       'desc': '''This policy is active in retail mode only.
+       'tags': [],
 diff --git a/components/rappor/rappor_service.cc b/components/rappor/rappor_service.cc
-index e266232..548806a 100644
+index 31ae1d0..9aede2e 100644
 --- a/components/rappor/rappor_service.cc
 +++ b/components/rappor/rappor_service.cc
 @@ -35,7 +35,7 @@ const char kRapporRolloutFieldTrialName[] = "RapporRollout";
@@ -1029,7 +1016,7 @@ index e266232..548806a 100644
  GURL GetServerUrl() {
    std::string server_url = variations::GetVariationParamValue(
 diff --git a/components/search_engines/prepopulated_engines.json b/components/search_engines/prepopulated_engines.json
-index 0bbab112..5e059ec 100644
+index 50162bb..ca19b28 100644
 --- a/components/search_engines/prepopulated_engines.json
 +++ b/components/search_engines/prepopulated_engines.json
 @@ -128,7 +128,7 @@
@@ -1228,7 +1215,7 @@ index b8a2b15..c3d9f2c 100644
          NS_GOOGLE_AUTH_PROTOCOL, "allow-generated-jid");
      const buzz::QName QN_GOOGLE_AUTH_CLIENT_USES_FULL_BIND_RESULT(
 diff --git a/net/cert/ct_known_logs_static.h b/net/cert/ct_known_logs_static.h
-index d67b9fd..b83c8aa 100644
+index e87e5c4..8b62398 100644
 --- a/net/cert/ct_known_logs_static.h
 +++ b/net/cert/ct_known_logs_static.h
 @@ -22,7 +22,7 @@ const CTLogInfo kCTLogList[] = {
@@ -1299,7 +1286,7 @@ index 1dbd11f..579bfd5 100644
    }
  
 diff --git a/remoting/protocol/jingle_messages.cc b/remoting/protocol/jingle_messages.cc
-index 9896b27..ff6b252 100644
+index 2b73007..e298349 100644
 --- a/remoting/protocol/jingle_messages.cc
 +++ b/remoting/protocol/jingle_messages.cc
 @@ -23,7 +23,7 @@ const char kJabberNamespace[] = "jabber:client";
@@ -1338,7 +1325,7 @@ index 397668b..b060edd 100644
  
  // Ping times in 100-nanosecond intervals.
 diff --git a/sync/tools/sync_client.cc b/sync/tools/sync_client.cc
-index d8653ec..6ded535 100644
+index dbb1421..201c28a 100644
 --- a/sync/tools/sync_client.cc
 +++ b/sync/tools/sync_client.cc
 @@ -66,7 +66,7 @@ const char kXmppHostPortSwitch[] = "xmpp-host-port";
@@ -1351,7 +1338,7 @@ index d8653ec..6ded535 100644
  // Needed to use a real host resolver.
  class MyTestURLRequestContext : public net::TestURLRequestContext {
 diff --git a/ui/app_list/demo/app_list_demo_views.cc b/ui/app_list/demo/app_list_demo_views.cc
-index dc71701..4659ce3 100644
+index c13278d..752d3b6 100644
 --- a/ui/app_list/demo/app_list_demo_views.cc
 +++ b/ui/app_list/demo/app_list_demo_views.cc
 @@ -95,7 +95,7 @@ views::View* DemoAppListViewDelegate::CreateStartPageWebView(
@@ -1377,5 +1364,5 @@ index ccde6d7..c14a13a 100644
  }
  
 -- 
-2.4.3
+2.7.0
 

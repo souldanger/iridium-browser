@@ -1,7 +1,7 @@
-From 154892fb970b8e2a40dbb645822f5fa4533e9a30 Mon Sep 17 00:00:00 2001
+From 7eafe308293d9ca5a3b3798706cdb5eaea4bd088 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Fri, 13 Feb 2015 01:04:21 +0100
-Subject: [PATCH 21/56] prefs: always prompt for download directory by default
+Subject: [PATCH 21/57] prefs: always prompt for download directory by default
 
 If the user opens a link, one of two things might happen. The URI
 resolves to a "web page" and will be displayed, then everything is
@@ -41,5 +41,5 @@ index f6a3209..3c53280 100644
    registry->RegisterStringPref(prefs::kDownloadExtensionsToOpen, std::string());
    registry->RegisterBooleanPref(prefs::kDownloadDirUpgraded, false);
 -- 
-2.4.3
+2.7.0
 

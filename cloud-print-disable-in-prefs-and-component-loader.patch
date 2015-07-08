@@ -1,7 +1,7 @@
-From dc7c8adfe68488dcc4467c32904bd34d98011130 Mon Sep 17 00:00:00 2001
+From f28e370afb5007430d250d658a348e317d17315b Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sat, 13 Sep 2014 16:55:12 +0200
-Subject: [PATCH 16/56] cloud-print: disable in prefs and component loader
+Subject: [PATCH 16/57] cloud-print: disable in prefs and component loader
 
 Cloud Print should normally be autodisabled if no printers are shared.
 But maybe that is not enough(?) Probably also needs to gain a checkbox
@@ -16,10 +16,10 @@ be off by default.
  3 files changed, 3 insertions(+), 5 deletions(-)
 
 diff --git a/chrome/browser/extensions/component_loader.cc b/chrome/browser/extensions/component_loader.cc
-index e92e237..d4f347b 100644
+index cdb717b..6194f27 100644
 --- a/chrome/browser/extensions/component_loader.cc
 +++ b/chrome/browser/extensions/component_loader.cc
-@@ -555,10 +555,12 @@ void ComponentLoader::AddDefaultComponentExtensions(
+@@ -556,10 +556,12 @@ void ComponentLoader::AddDefaultComponentExtensions(
    DCHECK(!skip_session_components);
    Add(IDR_BOOKMARKS_MANIFEST,
        base::FilePath(FILE_PATH_LITERAL("bookmark_manager")));
@@ -33,10 +33,10 @@ index e92e237..d4f347b 100644
    if (!skip_session_components) {
      AddWebStoreApp();
 diff --git a/chrome/browser/ui/browser_ui_prefs.cc b/chrome/browser/ui/browser_ui_prefs.cc
-index d9741ec..c4b2204 100644
+index b55cd1d..3e4507f 100644
 --- a/chrome/browser/ui/browser_ui_prefs.cc
 +++ b/chrome/browser/ui/browser_ui_prefs.cc
-@@ -86,7 +86,7 @@ void RegisterBrowserUserPrefs(user_prefs::PrefRegistrySyncable* registry) {
+@@ -87,7 +87,7 @@ void RegisterBrowserUserPrefs(user_prefs::PrefRegistrySyncable* registry) {
        user_prefs::PrefRegistrySyncable::SYNCABLE_PREF);
    registry->RegisterStringPref(prefs::kCloudPrintEmail, std::string());
    registry->RegisterBooleanPref(prefs::kCloudPrintProxyEnabled, true);
@@ -61,5 +61,5 @@ index eda0cdc..15cde3c 100644
        user_prefs::PrefRegistrySyncable::SYNCABLE_PREF);
  }
 -- 
-2.4.3
+2.7.0
 

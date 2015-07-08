@@ -1,7 +1,7 @@
-From a6bb3ea85d6abc5507938db5ded06e5eb36017b7 Mon Sep 17 00:00:00 2001
+From 7b202d3ed43c52188740fa5e4efef0c4823ae48b Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sun, 19 Oct 2014 14:49:10 +0200
-Subject: [PATCH 23/56] search_engines: add DuckDuckGo as selectable and
+Subject: [PATCH 23/57] search_engines: add DuckDuckGo as selectable and
  default search engine
 
 There is a lot of code pertaining to DefaultSearchEngine,
@@ -17,7 +17,7 @@ prepending &duckduckgo yields the desired result, for now at least.
  3 files changed, 121 insertions(+), 109 deletions(-)
 
 diff --git a/components/search_engines/prepopulated_engines.json b/components/search_engines/prepopulated_engines.json
-index 7a4eefe..16a336b 100644
+index 64c3b87..b8385c5 100644
 --- a/components/search_engines/prepopulated_engines.json
 +++ b/components/search_engines/prepopulated_engines.json
 @@ -36,6 +36,17 @@
@@ -51,7 +51,7 @@ index d49c046..7dba2a7 100644
  };
  
 diff --git a/components/search_engines/template_url_prepopulate_data.cc b/components/search_engines/template_url_prepopulate_data.cc
-index 1efa944..3eb2a61 100644
+index eed0465..91cb0a8 100644
 --- a/components/search_engines/template_url_prepopulate_data.cc
 +++ b/components/search_engines/template_url_prepopulate_data.cc
 @@ -48,441 +48,441 @@ namespace {
@@ -128,8 +128,8 @@ index 1efa944..3eb2a61 100644
  
  // Belarus
  const PrepopulatedEngine* engines_BY[] =
--    { &google, &yahoo_ru, &bing, };
-+    { &duckduckgo, &google, &yahoo_ru, &bing, };
+-    { &google, &yandex_by, &mail_ru, };
++    { &duckduckgo, &google, &yandex_by, &mail_ru, };
  
  // Belize
  const PrepopulatedEngine* engines_BZ[] =
@@ -333,8 +333,8 @@ index 1efa944..3eb2a61 100644
  
  // Kazakhstan
  const PrepopulatedEngine* engines_KZ[] =
--    { &google, &bing, &yahoo, };
-+    { &duckduckgo, &google, &bing, &yahoo, };
+-    { &google, &mail_ru, &yandex_kz, };
++    { &duckduckgo, &google, &mail_ru, &yandex_kz, };
  
  // Lebanon
  const PrepopulatedEngine* engines_LB[] =
@@ -606,5 +606,5 @@ index 1efa944..3eb2a61 100644
    &vinden,       &virgilio,     &yahoo,        &yahoo_ar,     &yahoo_at,
    &yahoo_au,     &yahoo_br,     &yahoo_ca,     &yahoo_ch,     &yahoo_cl,
 -- 
-2.4.3
+2.7.0
 

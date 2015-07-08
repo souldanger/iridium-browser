@@ -1,7 +1,7 @@
-From 9cb2d521effb9d66a5fa5578b5a49d102ea5e249 Mon Sep 17 00:00:00 2001
+From 3cbb86beb00a57d4c7199f11419ad783a8f39a09 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sun, 9 Nov 2014 01:54:27 +0100
-Subject: [PATCH 48/56] promo: disable Google promotion fetching
+Subject: [PATCH 48/57] promo: disable Google promotion fetching
 
 Documentation is scarce, and sprinkled with misleading acronyms.
 NTP is not NTP, for example. FWIW:
@@ -23,10 +23,10 @@ References: https://github.com/iridium-browser/iridium-browser/issues/33
  3 files changed, 6 insertions(+), 3 deletions(-)
 
 diff --git a/chrome/browser/browser_process_impl.cc b/chrome/browser/browser_process_impl.cc
-index fecf890..ae52be8 100644
+index 047ff60..4999213 100644
 --- a/chrome/browser/browser_process_impl.cc
 +++ b/chrome/browser/browser_process_impl.cc
-@@ -1082,7 +1082,9 @@ void BrowserProcessImpl::PreMainMessageLoopRun() {
+@@ -1092,7 +1092,9 @@ void BrowserProcessImpl::PreMainMessageLoopRun() {
          local_state(), chrome::GetChannel(), GetApplicationLocale(),
          system_request_context(), switches::kDisableBackgroundNetworking,
          base::Bind(safe_json::SafeJsonParser::Parse)));
@@ -73,5 +73,5 @@ index 73e7d4b..2f526b5 100644
  // The name of the preference that stores the promotion object.
  const char kPrefPromoObject[] = "promo";
 -- 
-2.4.3
+2.7.0
 

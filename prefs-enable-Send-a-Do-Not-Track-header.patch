@@ -1,7 +1,7 @@
-From 6cb9014cba36bd4d626c11a79f2324fb1a42203a Mon Sep 17 00:00:00 2001
+From 48d2283172ca4b3397a933884c69f6cdd958ce5a Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sat, 13 Sep 2014 15:06:39 +0200
-Subject: [PATCH 13/56] prefs: enable "Send a Do-Not-Track header"
+Subject: [PATCH 13/57] prefs: enable "Send a Do-Not-Track header"
 
 Set enable_do_not_track to true by default.
 
@@ -23,10 +23,10 @@ OPT-OUT.]
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/chrome/browser/ui/browser_ui_prefs.cc b/chrome/browser/ui/browser_ui_prefs.cc
-index 1b25184..d9741ec 100644
+index 6fef9f7..b55cd1d 100644
 --- a/chrome/browser/ui/browser_ui_prefs.cc
 +++ b/chrome/browser/ui/browser_ui_prefs.cc
-@@ -99,7 +99,7 @@ void RegisterBrowserUserPrefs(user_prefs::PrefRegistrySyncable* registry) {
+@@ -100,7 +100,7 @@ void RegisterBrowserUserPrefs(user_prefs::PrefRegistrySyncable* registry) {
    registry->RegisterBooleanPref(prefs::kImportSearchEngine, true);
    registry->RegisterBooleanPref(
        prefs::kEnableDoNotTrack,
@@ -34,7 +34,7 @@ index 1b25184..d9741ec 100644
 +      true,
        user_prefs::PrefRegistrySyncable::SYNCABLE_PREF);
  #if defined(ENABLE_WEBRTC)
-   registry->RegisterBooleanPref(prefs::kWebRTCMultipleRoutesEnabled, true);
+   // TODO(guoweis): Remove next 2 options at M50.
 -- 
-2.4.3
+2.7.0
 

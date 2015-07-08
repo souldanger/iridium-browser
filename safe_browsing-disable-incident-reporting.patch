@@ -1,7 +1,7 @@
-From fffc7e171d7ee5f80360fb8e37da838c46e8c2de Mon Sep 17 00:00:00 2001
+From eea3c975e0d208abf4e9cb55fc07605be084e4dc Mon Sep 17 00:00:00 2001
 From: Joachim Bauch <jojo@struktur.de>
 Date: Tue, 7 Jul 2015 17:02:09 +0200
-Subject: [PATCH 43/56] safe_browsing: disable incident reporting
+Subject: [PATCH 43/57] safe_browsing: disable incident reporting
 
 Disables the safebrowsing incident reporting where you could upload
 information about a blocked URL to Google (also added a trk prefix to
@@ -27,10 +27,10 @@ index b5e7684..01627a4 100644
  }  // namespace
  
 diff --git a/chrome/browser/safe_browsing/incident_reporting/incident_reporting_service.cc b/chrome/browser/safe_browsing/incident_reporting/incident_reporting_service.cc
-index 9dc0c27..35fbcd4 100644
+index 14bddec..8cbaacf 100644
 --- a/chrome/browser/safe_browsing/incident_reporting/incident_reporting_service.cc
 +++ b/chrome/browser/safe_browsing/incident_reporting/incident_reporting_service.cc
-@@ -284,6 +284,8 @@ IncidentReportingService::UploadContext::~UploadContext() {
+@@ -285,6 +285,8 @@ IncidentReportingService::UploadContext::~UploadContext() {
  
  // static
  bool IncidentReportingService::IsEnabledForProfile(Profile* profile) {
@@ -39,7 +39,7 @@ index 9dc0c27..35fbcd4 100644
    if (profile->IsOffTheRecord())
      return false;
    if (!profile->GetPrefs()->GetBoolean(prefs::kSafeBrowsingEnabled))
-@@ -292,6 +294,7 @@ bool IncidentReportingService::IsEnabledForProfile(Profile* profile) {
+@@ -293,6 +295,7 @@ bool IncidentReportingService::IsEnabledForProfile(Profile* profile) {
      return true;
    return profile->GetPrefs()->GetBoolean(
        prefs::kSafeBrowsingExtendedReportingEnabled);
@@ -48,10 +48,10 @@ index 9dc0c27..35fbcd4 100644
  
  IncidentReportingService::IncidentReportingService(
 diff --git a/chrome/browser/safe_browsing/safe_browsing_blocking_page.cc b/chrome/browser/safe_browsing/safe_browsing_blocking_page.cc
-index 342e59d..ddac6f2 100644
+index 02533fa..74fb1b7a 100644
 --- a/chrome/browser/safe_browsing/safe_browsing_blocking_page.cc
 +++ b/chrome/browser/safe_browsing/safe_browsing_blocking_page.cc
-@@ -56,17 +56,17 @@ namespace {
+@@ -58,17 +58,17 @@ namespace {
  // diagnostic page.
  #if defined(GOOGLE_CHROME_BUILD)
  const char kSbDiagnosticUrl[] =
@@ -73,15 +73,15 @@ index 342e59d..ddac6f2 100644
  
  // Constants for the V4 phishing string upgrades.
  const char kSocialEngineeringTrial[] = "SafeBrowsingSocialEngineeringStrings";
-@@ -616,6 +616,7 @@ void SafeBrowsingBlockingPage::PopulateInterstitialStrings(
+@@ -630,6 +630,7 @@ void SafeBrowsingBlockingPage::PopulateInterstitialStrings(
  
  void SafeBrowsingBlockingPage::PopulateExtendedReportingOption(
      base::DictionaryValue* load_time_data) {
 +#if 0
    // Only show checkbox if !(HTTPS || incognito-mode).
-   const bool show = CanShowMalwareDetailsOption();
+   const bool show = CanShowThreatDetailsOption();
    load_time_data->SetBoolean(interstitials::kDisplayCheckBox, show);
-@@ -632,6 +633,7 @@ void SafeBrowsingBlockingPage::PopulateExtendedReportingOption(
+@@ -646,6 +647,7 @@ void SafeBrowsingBlockingPage::PopulateExtendedReportingOption(
    load_time_data->SetBoolean(
        interstitials::kBoxChecked,
        IsPrefEnabled(prefs::kSafeBrowsingExtendedReportingEnabled));
@@ -90,21 +90,21 @@ index 342e59d..ddac6f2 100644
  
  void SafeBrowsingBlockingPage::PopulateMalwareLoadTimeData(
 diff --git a/chrome/browser/safe_browsing/safe_browsing_service.cc b/chrome/browser/safe_browsing/safe_browsing_service.cc
-index d01f175..835107e 100644
+index 0f32155b..73d1d15 100644
 --- a/chrome/browser/safe_browsing/safe_browsing_service.cc
 +++ b/chrome/browser/safe_browsing/safe_browsing_service.cc
-@@ -400,9 +400,11 @@ SafeBrowsingService::CreateIncidentReportingService() {
+@@ -398,9 +398,11 @@ SafeBrowsingService::CreateIncidentReportingService() {
  
  void SafeBrowsingService::RegisterAllDelayedAnalysis() {
  #if defined(FULL_SAFE_BROWSING)
 +#if 0
-   safe_browsing::RegisterBinaryIntegrityAnalysis();
-   safe_browsing::RegisterBlacklistLoadAnalysis();
-   safe_browsing::RegisterVariationsSeedSignatureAnalysis();
+   RegisterBinaryIntegrityAnalysis();
+   RegisterBlacklistLoadAnalysis();
+   RegisterVariationsSeedSignatureAnalysis();
 +#endif
  #else
    NOTREACHED();
  #endif
 -- 
-2.4.3
+2.7.0
 

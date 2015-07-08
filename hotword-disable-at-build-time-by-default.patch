@@ -1,7 +1,7 @@
-From 7fe2903e71b37f8d238ca925b8c0827ebbbea1e3 Mon Sep 17 00:00:00 2001
+From 53819216c91162fbdc3f1e642643ccd291797450 Mon Sep 17 00:00:00 2001
 From: amistry <amistry@chromium.org>
 Date: Tue, 9 Jun 2015 12:18:39 -0700
-Subject: [PATCH 49/56] hotword: disable at build time by default
+Subject: [PATCH 49/57] hotword: disable at build time by default
 
 Commit f269d3b548203e217e8c0080c2e22e7ae3efb51e upstream:
 
@@ -24,10 +24,10 @@ Hard-disable hotwording by default even on a build level.
  3 files changed, 10 insertions(+), 1 deletion(-)
 
 diff --git a/chrome/browser/BUILD.gn b/chrome/browser/BUILD.gn
-index ee23e48..91f92b5 100644
+index f008f51..75fda32 100644
 --- a/chrome/browser/BUILD.gn
 +++ b/chrome/browser/BUILD.gn
-@@ -23,7 +23,8 @@ declare_args() {
+@@ -24,7 +24,8 @@ declare_args() {
    # 'Ok Google' hotwording is disabled by default. Set to true to enable. (This
    # will download a closed-source NaCl module at startup.) Chrome-branded
    # ChromeOS builds have this enabled by default.
@@ -38,10 +38,10 @@ index ee23e48..91f92b5 100644
  
  additional_modules_list_file =
 diff --git a/chrome/browser/extensions/component_loader.cc b/chrome/browser/extensions/component_loader.cc
-index d4f347b..1e9b948 100644
+index 6194f27..3a85973 100644
 --- a/chrome/browser/extensions/component_loader.cc
 +++ b/chrome/browser/extensions/component_loader.cc
-@@ -358,17 +358,21 @@ void ComponentLoader::AddHangoutServicesExtension() {
+@@ -359,17 +359,21 @@ void ComponentLoader::AddHangoutServicesExtension() {
  }
  
  void ComponentLoader::AddHotwordAudioVerificationApp() {
@@ -100,5 +100,5 @@ index c1571fb..e02ce43 100644
  
  TEST_P(HotwordServiceTest, DisableAlwaysOnOnLanguageChange) {
 -- 
-2.4.3
+2.7.0
 

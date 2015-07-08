@@ -1,7 +1,7 @@
-From 072f26722b1a0a19f0c56e477346d9a90f6c85a1 Mon Sep 17 00:00:00 2001
+From 7d760dfff3854eea36280c3db7fe8fe790ea56b1 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sat, 13 Sep 2014 16:40:17 +0200
-Subject: [PATCH 22/56] first_run: barf if metrics_reporting is activated
+Subject: [PATCH 22/57] first_run: barf if metrics_reporting is activated
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -17,13 +17,13 @@ disabled, as no message is emitted.
  1 file changed, 2 insertions(+)
 
 diff --git a/chrome/browser/first_run/first_run_internal_posix.cc b/chrome/browser/first_run/first_run_internal_posix.cc
-index 6e97dd8..a5dc39b 100644
+index eec6d16..1e2aa68 100644
 --- a/chrome/browser/first_run/first_run_internal_posix.cc
 +++ b/chrome/browser/first_run/first_run_internal_posix.cc
 @@ -17,6 +17,7 @@
- #include "chrome/installer/util/google_update_settings.h"
  #include "chrome/installer/util/master_preferences.h"
- #include "components/startup_metric_utils/startup_metric_utils.h"
+ #include "components/metrics/metrics_pref_names.h"
+ #include "components/startup_metric_utils/browser/startup_metric_utils.h"
 +#include <cstdio>
  
  namespace first_run {
@@ -37,5 +37,5 @@ index 6e97dd8..a5dc39b 100644
          metrics::prefs::kMetricsReportingEnabled, true);
    }
 -- 
-2.4.3
+2.7.0
 

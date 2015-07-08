@@ -1,7 +1,7 @@
-From fc752e717533de4a950648bf9e910dc0ac3d1657 Mon Sep 17 00:00:00 2001
+From ad0d8bff9600cb20f43288e2eaf5367bf871bb2f Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Wed, 20 May 2015 01:34:50 +0200
-Subject: [PATCH 41/56] net: add "trk:" scheme and help identify URLs being
+Subject: [PATCH 41/57] net: add "trk:" scheme and help identify URLs being
  retrieved
 
 The Chromium codebase has left us with a number of suspect URLs, and
@@ -126,10 +126,10 @@ index 1bc5e8d..6e7210a 100644
        url.SchemeIs(chrome::kChromeSearchScheme) ||
        url.SchemeIs(dom_distiller::kDomDistillerScheme))
 diff --git a/chrome/browser/ui/browser_command_controller.cc b/chrome/browser/ui/browser_command_controller.cc
-index 395cdc9..ba793c7 100644
+index c78428c..ddc7f95 100644
 --- a/chrome/browser/ui/browser_command_controller.cc
 +++ b/chrome/browser/ui/browser_command_controller.cc
-@@ -103,7 +103,8 @@ bool HasInternalURL(const NavigationEntry* entry) {
+@@ -105,7 +105,8 @@ bool HasInternalURL(const NavigationEntry* entry) {
  
    // If the |virtual_url()| isn't a chrome:// URL, check if it's actually
    // view-source: of a chrome:// URL.
@@ -140,10 +140,10 @@ index 395cdc9..ba793c7 100644
  
    return false;
 diff --git a/chrome/browser/ui/browser_navigator.cc b/chrome/browser/ui/browser_navigator.cc
-index d5573b1..65baf5c 100644
+index 0bbf877..f09fa56 100644
 --- a/chrome/browser/ui/browser_navigator.cc
 +++ b/chrome/browser/ui/browser_navigator.cc
-@@ -623,6 +623,14 @@ bool IsURLAllowedInIncognito(const GURL& url,
+@@ -624,6 +624,14 @@ bool IsURLAllowedInIncognito(const GURL& url,
      return stripped_url.is_valid() &&
          IsURLAllowedInIncognito(stripped_url, browser_context);
    }
@@ -173,10 +173,10 @@ index 870e8df..bdea535 100644
  
      GURL rewritten_tab_url = tab_url;
 diff --git a/chrome/chrome_dll.gypi b/chrome/chrome_dll.gypi
-index d246635..c8007cf 100644
+index 67f9b1b..8044503 100644
 --- a/chrome/chrome_dll.gypi
 +++ b/chrome/chrome_dll.gypi
-@@ -92,6 +92,7 @@
+@@ -122,6 +122,7 @@
              'app/delay_load_hook_win.h',
            ],
            'dependencies': [
@@ -185,10 +185,10 @@ index d246635..c8007cf 100644
              '../content/content.gyp:content_app_browser',
            ],
 diff --git a/chrome/chrome_exe.gypi b/chrome/chrome_exe.gypi
-index 6865227..8ed0547 100644
+index a107569..6ee281d 100644
 --- a/chrome/chrome_exe.gypi
 +++ b/chrome/chrome_exe.gypi
-@@ -196,6 +196,7 @@
+@@ -197,6 +197,7 @@
              'app/chrome_main_delegate.h',
            ],
            'dependencies': [
@@ -503,7 +503,7 @@ index 0000000..3c58d22
 +
 +#endif /* IRIDIUM_TRKNOTIFY_H */
 diff --git a/net/url_request/url_request.cc b/net/url_request/url_request.cc
-index 03f3f02..ac61270 100644
+index cff804c..9a9c322 100644
 --- a/net/url_request/url_request.cc
 +++ b/net/url_request/url_request.cc
 @@ -45,6 +45,8 @@ using std::string;
@@ -515,7 +515,7 @@ index 03f3f02..ac61270 100644
  namespace {
  
  // Max number of http redirects to follow.  Same number as gecko.
-@@ -576,6 +578,11 @@ URLRequest::URLRequest(const GURL& url,
+@@ -565,6 +567,11 @@ URLRequest::URLRequest(const GURL& url,
    DCHECK(base::MessageLoop::current())
        << "The current base::MessageLoop must exist";
  
@@ -528,10 +528,10 @@ index 03f3f02..ac61270 100644
    net_log_.BeginEvent(NetLog::TYPE_REQUEST_ALIVE);
  }
 diff --git a/net/url_request/url_request.h b/net/url_request/url_request.h
-index 9209697..37e9d6b 100644
+index f685cf7..70940c8 100644
 --- a/net/url_request/url_request.h
 +++ b/net/url_request/url_request.h
-@@ -853,6 +853,8 @@ class NET_EXPORT URLRequest : NON_EXPORTED_BASE(public base::NonThreadSafe),
+@@ -858,6 +858,8 @@ class NET_EXPORT URLRequest : NON_EXPORTED_BASE(public base::NonThreadSafe),
    DISALLOW_COPY_AND_ASSIGN(URLRequest);
  };
  
@@ -633,5 +633,5 @@ index c48dafc..18770d0 100644
  URL_EXPORT extern const char kWssScheme[];
  
 -- 
-2.4.3
+2.7.0
 

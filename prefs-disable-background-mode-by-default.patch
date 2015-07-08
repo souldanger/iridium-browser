@@ -1,7 +1,7 @@
-From 627762c2c770fc9eca5a4169a1af5560eef43ad3 Mon Sep 17 00:00:00 2001
+From 258ac6ddb12bd049d80ef141af7d060228164420 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sat, 13 Sep 2014 16:59:10 +0200
-Subject: [PATCH 17/56] prefs: disable background mode by default
+Subject: [PATCH 17/57] prefs: disable background mode by default
 
 If I tell the browser to quit, I mean it. Relinquish the memory,
 do not linger around, do not possibly collect data somewhere.
@@ -10,10 +10,10 @@ do not linger around, do not possibly collect data somewhere.
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/chrome/browser/background/background_mode_manager.cc b/chrome/browser/background/background_mode_manager.cc
-index 5bd2c6c..465fe13 100644
+index 7cd7467..99f5318 100644
 --- a/chrome/browser/background/background_mode_manager.cc
 +++ b/chrome/browser/background/background_mode_manager.cc
-@@ -387,7 +387,7 @@ void BackgroundModeManager::RegisterPrefs(PrefRegistrySimple* registry) {
+@@ -349,7 +349,7 @@ void BackgroundModeManager::RegisterPrefs(PrefRegistrySimple* registry) {
    registry->RegisterBooleanPref(prefs::kChromeCreatedLoginItem, false);
    registry->RegisterBooleanPref(prefs::kMigratedLoginItemPref, false);
  #endif
@@ -23,5 +23,5 @@ index 5bd2c6c..465fe13 100644
  
  void BackgroundModeManager::RegisterProfile(Profile* profile) {
 -- 
-2.4.3
+2.7.0
 
