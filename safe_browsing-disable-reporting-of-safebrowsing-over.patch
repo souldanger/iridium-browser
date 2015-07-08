@@ -1,4 +1,4 @@
-From 813e6ff87bc5f33c1453f62ee47ac3ed3d71769a Mon Sep 17 00:00:00 2001
+From e39d840acb4d7ceb5909de3281637d2b94db5f39 Mon Sep 17 00:00:00 2001
 From: Joachim Bauch <jojo@struktur.de>
 Date: Tue, 7 Jul 2015 18:28:46 +0200
 Subject: [PATCH 47/57] safe_browsing: disable reporting of safebrowsing

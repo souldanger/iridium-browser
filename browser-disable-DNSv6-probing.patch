@@ -1,4 +1,4 @@
-From dfeabe1f3500795ceb8175108fa4f1d16b397816 Mon Sep 17 00:00:00 2001
+From f3c6acdccf3eb8fd59c56ea1756cfa88f647b86f Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Mon, 22 Sep 2014 10:36:32 +0200
 Subject: [PATCH 05/57] browser: disable DNSv6 probing

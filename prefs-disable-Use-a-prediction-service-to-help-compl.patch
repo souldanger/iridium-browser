@@ -1,4 +1,4 @@
-From 5b9b1b7b02798ca9c887598fbf87429936b0361a Mon Sep 17 00:00:00 2001
+From 634c7268bbeb4f26d67519903a50b92faf0ba284 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sat, 13 Sep 2014 15:06:39 +0200
 Subject: [PATCH 13/57] prefs: disable "Use a prediction service to help

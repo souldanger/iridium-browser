@@ -1,4 +1,4 @@
-From ad5318a9f3424fedb2389359a1a1f863f637befd Mon Sep 17 00:00:00 2001
+From 7fdda1d42b1e3ad5c2615e52a4e581aef3f56581 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sat, 13 Sep 2014 15:20:11 +0200
 Subject: [PATCH 15/57] prefs: disable network/DNS prediction

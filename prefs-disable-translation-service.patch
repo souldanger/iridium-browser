@@ -1,4 +1,4 @@
-From 5f15e6279cc8d6ff7ea94980d1fd191a6aaea9bd Mon Sep 17 00:00:00 2001
+From f176b82290321e1348efbe7fc65bcf4c634e36c4 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Thu, 30 Oct 2014 22:04:24 +0100
 Subject: [PATCH 26/57] prefs: disable translation service

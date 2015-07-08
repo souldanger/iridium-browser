@@ -1,4 +1,4 @@
-From 35168cdd93c6d5b504d026ef1524f7e395e2af1d Mon Sep 17 00:00:00 2001
+From db5dbe3287e7f8def5de2035b9ad322cee7761b8 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Fri, 13 Feb 2015 01:04:21 +0100
 Subject: [PATCH 22/57] prefs: always prompt for download directory by default

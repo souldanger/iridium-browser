@@ -1,4 +1,4 @@
-From 36fad67d6956bf93d9dd66d2ca78ca70150abeb2 Mon Sep 17 00:00:00 2001
+From 7251e0d04e34accb66d75f05026f7ad997789dd1 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sat, 13 Sep 2014 17:12:43 +0200
 Subject: [PATCH 28/57] first_run: deactivate autoupdate globally

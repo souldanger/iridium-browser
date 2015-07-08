@@ -1,4 +1,4 @@
-From bc68b96b1717f97e55d520dc7990d26609598ea3 Mon Sep 17 00:00:00 2001
+From e659026a40135f544a02dd5857f739296160a55e Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Fri, 13 Feb 2015 00:59:04 +0100
 Subject: [PATCH 35/57] updater: disable auto-update

@@ -1,4 +1,4 @@
-From 074603c7bba34b33407dcbc4f0ede757eb133234 Mon Sep 17 00:00:00 2001
+From f0f70ee94608d46c9562ee98814095cd8454623d Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sat, 13 Sep 2014 16:55:12 +0200
 Subject: [PATCH 17/57] cloud-print: disable in prefs and component loader

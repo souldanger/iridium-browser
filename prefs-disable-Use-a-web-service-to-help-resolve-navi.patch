@@ -1,4 +1,4 @@
-From 681d80d69a1666e2cb3a52a7fdb7b372efe8460c Mon Sep 17 00:00:00 2001
+From 35a822249fab7e4a18e0decf0cd8efee3fb3fb3b Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Thu, 11 Sep 2014 16:35:12 +0200
 Subject: [PATCH 12/57] prefs: disable "Use a web service to help resolve

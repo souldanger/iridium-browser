@@ -1,4 +1,4 @@
-From 992d853d86df9e8aaff3eb3d30d5bedebfe0cada Mon Sep 17 00:00:00 2001
+From 025f0ed58f6921d52d60ddb0926f663e38cad47c Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Thu, 29 Jan 2015 10:46:40 +0100
 Subject: [PATCH 09/57] mime_util: force text/x-suse-ymp to be downloaded

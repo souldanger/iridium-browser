@@ -1,4 +1,4 @@
-From 1cc9b2a75582af8110f9e177281fd8190011eba7 Mon Sep 17 00:00:00 2001
+From 25288dda732a00886b35259bcbb900a9e1a350a6 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sat, 13 Sep 2014 16:43:55 +0200
 Subject: [PATCH 16/57] prefs: block third-party cookies by default

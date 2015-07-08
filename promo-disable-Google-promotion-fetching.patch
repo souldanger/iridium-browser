@@ -1,4 +1,4 @@
-From ce80023647c43d1db11cf0f331b9745a4bc7e840 Mon Sep 17 00:00:00 2001
+From 2482fda9222b0b18880ec25f31920e3e6453c894 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sun, 9 Nov 2014 01:54:27 +0100
 Subject: [PATCH 51/57] promo: disable Google promotion fetching

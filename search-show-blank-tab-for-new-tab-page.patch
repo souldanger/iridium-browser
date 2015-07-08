@@ -1,4 +1,4 @@
-From c0da2f72fc8a2fef8a851ec82386c8de67f6b07d Mon Sep 17 00:00:00 2001
+From 9389bc66d7918cde62618da6ca696457778115d3 Mon Sep 17 00:00:00 2001
 From: Joachim Bauch <jojo@struktur.de>
 Date: Mon, 6 Jul 2015 17:17:20 +0200
 Subject: [PATCH 54/57] search: show blank tab for new tab page
