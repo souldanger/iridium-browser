@@ -1,7 +1,7 @@
-From b162fdab41fdda0613275830add84ea142ab6b33 Mon Sep 17 00:00:00 2001
+From 2702fe0db19898273e6ab852fbe3a0a709cb189c Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
-Date: Tue, 9 Dec 2014 17:54:48 +0100
-Subject: [PATCH 30/56] ui/translation: update strings to read "Iridium"
+Date: Wed, 10 Dec 2014 12:44:49 +0100
+Subject: [PATCH 29/57] ui/translation: update strings to read "Iridium"
  instead
 
 ---
@@ -48,7 +48,8 @@ Subject: [PATCH 30/56] ui/translation: update strings to read "Iridium"
  .../translations/android_chrome_strings_vi.xtb     |   2 +-
  .../translations/android_chrome_strings_zh-CN.xtb  |   2 +-
  .../translations/android_chrome_strings_zh-TW.xtb  |   2 +-
- chrome/app/chromium_strings.grd                    | 336 ++++++++++-----------
+ chrome/app/chromium_strings.grd                    | 358 ++++++++++-----------
+ chrome/app/generated_resources.grd                 |  20 +-
  chrome/app/resources/chromium_strings_am.xtb       |   1 -
  chrome/app/resources/chromium_strings_ar.xtb       |   1 -
  chrome/app/resources/chromium_strings_bg.xtb       |   1 -
@@ -177,7 +178,7 @@ Subject: [PATCH 30/56] ui/translation: update strings to read "Iridium"
  .../launchpad_translations/chromium_strings_vi.xtb |   1 -
  .../chromium_strings_zh-CN.xtb                     |   1 -
  .../chromium_strings_zh-TW.xtb                     |   1 -
- 172 files changed, 291 insertions(+), 339 deletions(-)
+ 173 files changed, 312 insertions(+), 360 deletions(-)
 
 diff --git a/chrome/android/java/strings/translations/android_chrome_strings_am.xtb b/chrome/android/java/strings/translations/android_chrome_strings_am.xtb
 index 2aecb2f11..6b2dd59 100644
@@ -739,10 +740,10 @@ index 9bd1f80..7b1ffae 100644
  <translation id="7998918019931843664">重新開啟先前關閉的分頁</translation>
  <translation id="4996978546172906250">分享方式：</translation>
 diff --git a/chrome/app/chromium_strings.grd b/chrome/app/chromium_strings.grd
-index fc65c1f..f47d4fa 100644
+index cde0be6..f47d4fa 100644
 --- a/chrome/app/chromium_strings.grd
 +++ b/chrome/app/chromium_strings.grd
-@@ -212,7 +212,7 @@ be available for now. -->
+@@ -212,20 +212,20 @@ be available for now. -->
    <release seq="1" allow_pseudo="false">
      <messages fallback_to_english="true">
        <message name="IDS_PROFILES_DISCONNECT_MANAGED_PROFILE_TEXT" desc="Message explaining to the user what will happen if they disconnect the managed profile.">
@@ -750,7 +751,33 @@ index fc65c1f..f47d4fa 100644
 +        Disconnecting <ph name="USERNAME">$1<ex>someone@example.com</ex></ph> will clear your history, bookmarks, settings, and other Iridium data stored on this device. Data stored in your Google Account will not be cleared and can be managed on <ph name="GOOGLE_DASHBOARD_LINK">&lt;a target="_blank" href="$2"&gt;</ph>Google Dashboard<ph name="END_GOOGLE_DASHBOARD_LINK">&lt;/a&gt;</ph>.
        </message>
        <message name="IDS_PRODUCT_NAME" desc="The Chrome application name">
-         Iridium
+-        Chromium
++        Iridium
+       </message>
+       <message name="IDS_SHORT_PRODUCT_NAME" desc="The Chrome application short name.">
+-        Chromium
++        Iridium
+       </message>
+       <if expr="is_win">
+         <message name="IDS_SXS_SHORTCUT_NAME" desc="The Chrome short cut name for SxS channel">
+-          Chromium
++          Iridium
+         </message>
+         <message name="IDS_PRODUCT_DESCRIPTION" desc="Browser description">
+-          Chromium is a web browser that runs webpages and applications with lightning speed. It's fast, stable, and easy to use. Browse the web more safely with malware and phishing protection built into Chromium.
++          Iridium is a free, open, and libre browser modification of the Chromium code base, with privacy being enhanced in several key areas. Automatic transmission of partial queries, keywords, metrics to central services inhibited and only occurs with consent. In addition, all our builds are reproducible, and modifications are auditable, setting the project ahead of other secure browser providers.
+         </message>
+       </if>
+       <if expr="chromeos">
+@@ -241,7 +241,7 @@ be available for now. -->
+           Chromium App Launcher
+         </message>
+         <message name="IDS_PRODUCT_BINARIES_NAME" desc="The Chrome Binaries application name">
+-          Chromium Binaries
++          Iridium Binaries
+         </message>
+         <message name="IDS_CHROME_FRAME_TURNDOWN_LEARN_MORE_URL" desc="Link to knowledge-base article about Chromium Frame's turndown">
+           https://support.google.com/chrome/?p=ib_chromeframe
 @@ -258,7 +258,7 @@ be available for now. -->
        </if>
        <if expr="is_ios">
@@ -760,7 +787,24 @@ index fc65c1f..f47d4fa 100644
          </message>
        </if>
        <if expr="is_android">
-@@ -286,7 +286,7 @@ be available for now. -->
+@@ -272,21 +272,21 @@ be available for now. -->
+         </message>
+       </if>
+       <message name="IDS_TASK_MANAGER_TITLE" desc="The title of the Task Manager window">
+-        Task Manager - Chromium
++        Task Manager - Iridium
+       </message>
+       <message name="IDS_SESSION_CRASHED_VIEW_MESSAGE" desc="Message shown when the last session didn't exit cleanly.">
+-        Chromium didn't shut down correctly.
++        Iridium did not shut down correctly.
+       </message>
+       <message name="IDS_SESSION_CRASHED_VIEW_UMA_OPTIN" desc="Text besides the checkbox to let users optin to UMA in the restore from previous crash bubble.">
+         Help make Chromium better by sending crash reports and <ph name="UMA_LINK">$1<ex>usage statistics</ex></ph> to Google
+       </message>
+       <!-- Browser Window Title Format -->
+       <message name="IDS_BROWSER_WINDOW_TITLE_FORMAT" desc="The format for titles displayed in tabs and popup windows">
+-        <ph name="PAGE_TITLE">$1<ex>Google</ex></ph> - Chromium
++        <ph name="PAGE_TITLE">$1<ex>Google</ex></ph> – Iridium
        </message>
        <if expr="not chromeos">
          <message name="IDS_GET_HELP_USING_CHROME" desc="Text of the button which takes the user to the Chrome help page.">
@@ -1235,7 +1279,7 @@ index fc65c1f..f47d4fa 100644
          </message>
  
          <!-- Extension context menu -->
-@@ -780,24 +780,24 @@ For Chromium, processes used to display diagnostics information (such as this "a
+@@ -780,40 +780,40 @@ For Chromium, processes used to display diagnostics information (such as this "a
  
        <!-- chrome://settings/extensions page -->
        <message name="IDS_EXTENSIONS_INCOGNITO_WARNING" desc="Warns the user that Chromium cannot prevent extensions from recording history in incognito mode. Displayed in extensions management UI after an extension is selected to be run in incognito mode.">
@@ -1265,8 +1309,9 @@ index fc65c1f..f47d4fa 100644
        </message>
  
        <if expr="use_titlecase and not chromeos">
-@@ -805,7 +805,7 @@ For Chromium, processes used to display diagnostics information (such as this "a
-           About &amp;Iridium
+         <message name="IDS_ABOUT" desc="In Title Case: The text label of the About Chrome menu item">
+-          About &amp;Chromium
++          About &amp;Iridium
          </message>
          <message name="IDS_UPDATE_NOW" desc="In Title Case: The text label of the Update Chrome Now menu item">
 -          Update &amp;Chromium
@@ -1274,8 +1319,9 @@ index fc65c1f..f47d4fa 100644
          </message>
        </if>
        <if expr="not use_titlecase and not chromeos">
-@@ -813,7 +813,7 @@ For Chromium, processes used to display diagnostics information (such as this "a
-           About &amp;Iridium
+         <message name="IDS_ABOUT" desc="The text label of the About Chrome menu item">
+-          About &amp;Chromium
++          About &amp;Iridium
          </message>
          <message name="IDS_UPDATE_NOW" desc="The text label of the Update Chrome Now menu item">
 -          Update &amp;Chromium
@@ -1283,6 +1329,15 @@ index fc65c1f..f47d4fa 100644
          </message>
        </if>
        <if expr="chromeos">
+@@ -827,7 +827,7 @@ For Chromium, processes used to display diagnostics information (such as this "a
+ 
+       <if expr="is_macosx">
+         <message name="IDS_APP_MENU_PRODUCT_NAME" desc="The application's short name, used for the Mac's application menu, activity monitor, etc. This should be less than 16 characters. Example: Chrome, not Google Chrome.">
+-          Chromium
++          Iridium
+         </message>
+         <message name="IDS_HELPER_NAME" desc="The helper application's name.  Should contain the Chrome application name (IDS_PRODUCT_NAME). Example: Google Chrome Helper.">
+           Chromium Helper
 @@ -839,68 +839,68 @@ For Chromium, processes used to display diagnostics information (such as this "a
  
        <!-- Chrome sign-in page -->
@@ -1744,6 +1799,72 @@ index fc65c1f..f47d4fa 100644
          </message>
          <message name="IDS_EULA_SCREEN_ACCESSIBLE_TITLE" desc="Title to be spoken on opening the OOBE EULA screen">
            Chromium OS terms
+diff --git a/chrome/app/generated_resources.grd b/chrome/app/generated_resources.grd
+index aba76e8..4b08947 100644
+--- a/chrome/app/generated_resources.grd
++++ b/chrome/app/generated_resources.grd
+@@ -14635,11 +14635,11 @@ After you create a new supervised user, you can manage their settings at any tim
+       <if expr="is_win">
+         <message name="IDS_METRO_FLOW_TAB_TITLE"
+                  desc="The dialog window title.">
+-          Welcome to Chrome
++          Welcome to Iridium
+         </message>
+         <message name="IDS_METRO_FLOW_TITLE_SHORT"
+                  desc="The title at the top of the window guiding user through making Chrome default in Metro.">
+-          Chrome is almost ready.
++          Iridium is almost ready.
+         </message>
+         <message name="IDS_METRO_FLOW_DESCRIPTION"
+                  desc="Wordy description of what the set-Chrome-as-Metro flow is all about.">
+@@ -14651,7 +14651,7 @@ After you create a new supervised user, you can manage their settings at any tim
+         </message>
+         <message name="IDS_METRO_FLOW_LOGO_STRING_ALT"
+                  desc="Alt text for the faded Chrome logo image.">
+-            Chrome logo
++            Iridium logo
+         </message>
+         <message name="IDS_METRO_MISSING_PLUGIN_PROMPT"
+                  desc="Info Bar message to let user do something about the missing plugin">
+@@ -14671,31 +14671,31 @@ After you create a new supervised user, you can manage their settings at any tim
+         </message>
+         <message name="IDS_WIN_DESKTOP_OPEN"
+                  desc="Text for the infobar button to open Chrome in desktop mode.">
+-          Open Chrome on the desktop
++          Open Iridium on the desktop
+         </message>
+         <message name="IDS_WIN_DESKTOP_RESTART"
+                  desc="Text for the menu item to restart Chrome in desktop mode. Applies to Windows 8 only">
+-          Relaunch Chrome on the desktop
++          Relaunch Iridium on the desktop
+         </message>
+         <message name="IDS_WIN8_METRO_RESTART"
+                  desc="Text for the menu item to restart Chrome in metro. Applies to Windows 8 only">
+-          Relaunch Chrome in Windows 8 mode
++          Relaunch Iridium in Windows 8 mode
+         </message>
+         <message name="IDS_WIN8_PROMPT_TO_CLOSE_APPS_FOR_METRO"
+                  desc="Modal message box prompt shown to the user after requesting to relaunch in Windows 8 mode while packaged apps are running, which will require all packaged apps to be closed and then restarted. Dialog is shown with choices: OK, Cancel.">
+-          Relaunching in Windows 8 mode will close and relaunch your Chrome apps.
++          Relaunching in Windows 8 mode will close and relaunch your Iridium apps.
+         </message>
+         <message name="IDS_WIN_CHROMEOS_RESTART"
+                  desc="Text for the menu item to restart chrome in chrome os. Aplies to Windows 7 only">
+-          Relaunch in Chrome immersive mode
++          Relaunch in Iridium immersive mode
+         </message>
+         <message name="IDS_WIN_PROMPT_TO_CLOSE_APPS_FOR_CHROMEOS"
+                  desc="Modal message box prompt shown to the user after requesting to relaunch in Windows Chrome OS mode while packaged apps are running, which will require all packaged apps to be closed and then restarted. Dialog is shown with choices: OK, Cancel.">
+-          Relaunching in Chrome immersive mode will close and relaunch your Chrome apps.
++          Relaunching in Iridium immersive mode will close and relaunch your Iridium apps.
+         </message>
+         <message name="IDS_WIN_PROMPT_TO_CLOSE_APPS_FOR_DESKTOP"
+                  desc="Modal message box prompt shown to the user after requesting to relaunch in Desktop mode while packaged apps are running, which will require all packaged apps to be closed and then restarted. Dialog is shown with choices: OK, Cancel.">
+-          Relaunching in Desktop mode will close and relaunch your Chrome apps.
++          Relaunching in Desktop mode will close and relaunch your Iridium apps.
+         </message>
+       </if>
+ 
 diff --git a/chrome/app/resources/chromium_strings_am.xtb b/chrome/app/resources/chromium_strings_am.xtb
 index b4685db..b9b1cc6 100644
 --- a/chrome/app/resources/chromium_strings_am.xtb

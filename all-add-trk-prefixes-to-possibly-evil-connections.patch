@@ -1,7 +1,7 @@
-From 9d298581a7293905eaebf1dced03548d9c6d62ee Mon Sep 17 00:00:00 2001
+From 9a8aca531465b54af5928dbddd3cd0954e52b2b2 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Mon, 3 Nov 2014 10:52:56 +0100
-Subject: [PATCH 49/56] all: add trk: prefixes to possibly evil connections
+Subject: [PATCH 49/57] all: add trk: prefixes to possibly evil connections
 
 Prefix URLs to Google services with trk: so that whenever something
 tries to load them, the developer will be informed via printf and
@@ -20,6 +20,7 @@ by default.
  .../extensions/file_manager/private_api_strings.cc     | 12 ++++++------
  .../chromeos/login/signin/oauth2_login_manager.cc      |  2 +-
  chrome/browser/drive/drive_api_service.cc              |  8 ++++----
+ .../api/cryptotoken_private/cryptotoken_private_api.cc |  4 ++--
  chrome/browser/extensions/install_signer.cc            |  2 +-
  chrome/browser/first_run/try_chrome_dialog_view.cc     |  2 +-
  chrome/browser/gpu/three_d_api_observer.cc             |  2 +-
@@ -29,6 +30,7 @@ by default.
  chrome/browser/nacl_host/nacl_infobar_delegate.cc      |  2 +-
  chrome/browser/net/predictor.cc                        |  2 +-
  chrome/browser/plugins/plugin_infobar_delegates.cc     |  4 ++--
+ chrome/browser/profiles/profile_avatar_downloader.cc   |  2 +-
  .../chromeos/chromevox/chromevox/background/prefs.js   |  4 ++--
  .../resources/default_apps/external_extensions.json    |  4 ++--
  .../safe_browsing/client_side_detection_service.cc     |  4 ++--
@@ -39,6 +41,7 @@ by default.
  chrome/browser/spellchecker/spelling_service_client.cc |  2 +-
  .../ssl/chrome_fraudulent_certificate_reporter.cc      |  2 +-
  .../experimental/supervised_user_async_url_checker.cc  |  2 +-
+ .../browser/supervised_user/supervised_user_service.cc |  2 +-
  chrome/browser/sync/profile_sync_service.cc            |  4 ++--
  .../ui/app_list/search/people/people_provider.cc       |  4 ++--
  .../ui/startup/obsolete_system_infobar_delegate.cc     |  2 +-
@@ -46,6 +49,7 @@ by default.
  .../website_settings/mock_permission_bubble_request.cc |  6 +++---
  chrome/browser/ui/webui/ntp/ntp_resource_cache.cc      |  8 ++++----
  chrome/chrome_watcher/chrome_watcher_main.cc           |  2 +-
+ chrome/common/extensions/chrome_extensions_client.cc   |  4 ++--
  chrome/common/extensions/extension_constants.cc        |  2 +-
  chrome/common/localized_error.cc                       |  2 +-
  chrome/common/url_constants.cc                         |  6 +++---
@@ -92,7 +96,7 @@ by default.
  sync/tools/sync_client.cc                              |  2 +-
  ui/app_list/demo/app_list_demo_views.cc                |  2 +-
  ui/views/examples/webview_example.cc                   |  2 +-
- 81 files changed, 132 insertions(+), 131 deletions(-)
+ 85 files changed, 138 insertions(+), 137 deletions(-)
 
 diff --git a/build/mac/tweak_info_plist.py b/build/mac/tweak_info_plist.py
 index 71c08fa..c66d334 100755
@@ -251,6 +255,21 @@ index db3ae2c..8deeb0a 100644
  
  // Mime type to create a directory.
  const char kFolderMimeType[] = "application/vnd.google-apps.folder";
+diff --git a/chrome/browser/extensions/api/cryptotoken_private/cryptotoken_private_api.cc b/chrome/browser/extensions/api/cryptotoken_private/cryptotoken_private_api.cc
+index d16fdb4..4c4091d 100644
+--- a/chrome/browser/extensions/api/cryptotoken_private/cryptotoken_private_api.cc
++++ b/chrome/browser/extensions/api/cryptotoken_private/cryptotoken_private_api.cc
+@@ -12,8 +12,8 @@ namespace api {
+ 
+ const char kGoogleDotCom[] = "google.com";
+ const char* kGoogleGstaticAppIds[] = {
+-  "https://www.gstatic.com/securitykey/origins.json",
+-  "https://www.gstatic.com/securitykey/a/google.com/origins.json"
++  "trk:273:https://www.gstatic.com/securitykey/origins.json",
++  "trk:274:https://www.gstatic.com/securitykey/a/google.com/origins.json"
+ };
+ 
+ CryptotokenPrivateCanOriginAssertAppIdFunction::
 diff --git a/chrome/browser/extensions/install_signer.cc b/chrome/browser/extensions/install_signer.cc
 index 1fca16a..010468d 100644
 --- a/chrome/browser/extensions/install_signer.cc
@@ -368,6 +387,19 @@ index 198777e..51cada0 100644
            content::Referrer(),
            (disposition == CURRENT_TAB) ? NEW_FOREGROUND_TAB : disposition,
            ui::PAGE_TRANSITION_LINK, false));
+diff --git a/chrome/browser/profiles/profile_avatar_downloader.cc b/chrome/browser/profiles/profile_avatar_downloader.cc
+index fad384a..15bb4b3 100644
+--- a/chrome/browser/profiles/profile_avatar_downloader.cc
++++ b/chrome/browser/profiles/profile_avatar_downloader.cc
+@@ -13,7 +13,7 @@
+ 
+ namespace {
+ const char kHighResAvatarDownloadUrlPrefix[] =
+-    "https://www.gstatic.com/chrome/profile_avatars/";
++    "trk:271:https://www.gstatic.com/chrome/profile_avatars/";
+ }
+ 
+ ProfileAvatarDownloader::ProfileAvatarDownloader(
 diff --git a/chrome/browser/resources/chromeos/chromevox/chromevox/background/prefs.js b/chrome/browser/resources/chromeos/chromevox/chromevox/background/prefs.js
 index 15f2938..a0aa0c7 100644
 --- a/chrome/browser/resources/chromeos/chromevox/chromevox/background/prefs.js
@@ -403,7 +435,7 @@ index 52aa500..f0bcdaf 100644
  }
  
 diff --git a/chrome/browser/safe_browsing/client_side_detection_service.cc b/chrome/browser/safe_browsing/client_side_detection_service.cc
-index be94ec0..cdb6e90 100644
+index 23599b3..64d8f81 100644
 --- a/chrome/browser/safe_browsing/client_side_detection_service.cc
 +++ b/chrome/browser/safe_browsing/client_side_detection_service.cc
 @@ -78,9 +78,9 @@ const int ClientSideDetectionService::kNegativeCacheIntervalDays = 1;
@@ -511,6 +543,19 @@ index 8a0e73f..9214cd2 100644
 +const char kQueryFormat[] = "trk:238:https://www.googleapis.com/customsearch/v1"
      "?cx=017993620680222980993%%3A1wdumejvx5i&key=%s&q=inurl%%3A%s";
  const char kQuerySafeParam[] = "&safe=high";
+ 
+diff --git a/chrome/browser/supervised_user/supervised_user_service.cc b/chrome/browser/supervised_user/supervised_user_service.cc
+index 182d415..2f506f8 100644
+--- a/chrome/browser/supervised_user/supervised_user_service.cc
++++ b/chrome/browser/supervised_user/supervised_user_service.cc
+@@ -75,7 +75,7 @@ namespace {
+ 
+ // The URL from which to download a host blacklist if no local one exists yet.
+ const char kBlacklistURL[] =
+-    "https://www.gstatic.com/chrome/supervised_user/blacklist-20141001-1k.bin";
++    "trk:272:https://www.gstatic.com/chrome/supervised_user/blacklist-20141001-1k.bin";
+ // The filename under which we'll store the blacklist (in the user data dir).
+ const char kBlacklistFilename[] = "su-blacklist.bin";
  
 diff --git a/chrome/browser/sync/profile_sync_service.cc b/chrome/browser/sync/profile_sync_service.cc
 index 5f0bffd..be7cba1 100644
@@ -643,6 +688,22 @@ index 562d6b9..0168418 100644
        base::FilePath(browser_data_directory)
            .Append(L"Crash Reports")
            .value()
+diff --git a/chrome/common/extensions/chrome_extensions_client.cc b/chrome/common/extensions/chrome_extensions_client.cc
+index 7d88608..7b6b068 100644
+--- a/chrome/common/extensions/chrome_extensions_client.cc
++++ b/chrome/common/extensions/chrome_extensions_client.cc
+@@ -57,9 +57,9 @@ namespace {
+ 
+ // TODO(battre): Delete the HTTP URL once the blacklist is downloaded via HTTPS.
+ const char kExtensionBlocklistUrlPrefix[] =
+-    "http://www.gstatic.com/chrome/extensions/blacklist";
++    "trk:269:http://www.gstatic.com/chrome/extensions/blacklist";
+ const char kExtensionBlocklistHttpsUrlPrefix[] =
+-    "https://www.gstatic.com/chrome/extensions/blacklist";
++    "trk:270:https://www.gstatic.com/chrome/extensions/blacklist";
+ 
+ const char kThumbsWhiteListedExtension[] = "khopmbdjffemhegeeobelklnbglcdgfh";
+ 
 diff --git a/chrome/common/extensions/extension_constants.cc b/chrome/common/extensions/extension_constants.cc
 index 341814d..ff08048 100644
 --- a/chrome/common/extensions/extension_constants.cc

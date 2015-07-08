@@ -26,7 +26,6 @@ search_engines-add-Qwant-as-selectable-and-default-s.patch
 prefs-disable-translation-service.patch
 prefs-use-separate-directory-for-config.patch
 first_run-deactivate-autoupdate-globally.patch
-ui-update-product-description-for-Iridium.patch
 ui-translation-update-strings-to-read-Iridium-instea.patch
 build-fix-OSX-branded-build-crashes-on-OSX.patch
 src-use-cached-copy-of-safebrowsing-lists-at-iridium.patch
@@ -46,6 +45,7 @@ updater-disable-updater-pings.patch
 safe_browsing-disable-incident-reporting.patch
 safe_browsing-disable-reporting-of-safebrowsing-over.patch
 safe_browsing-support-trk-prefix.patch
+safe_browsing-disable-cookie-transmission.patch
 all-add-trk-prefixes-to-possibly-evil-connections.patch
 promo-disable-Google-promotion-fetching.patch
 hotword-disable-at-build-time-by-default.patch
@@ -53,4 +53,5 @@ google_now-disable-this.patch
 search-show-blank-tab-for-new-tab-page.patch
 browser-disable-profile-auto-import-on-first-run.patch
 extensions-always-show-component-extensions-in-the-e.patch
+battery_status_service-disable-more-privacy-nightmar.patch
 common-set-Iridium-version-and-change-User-Agent-acc.patch
