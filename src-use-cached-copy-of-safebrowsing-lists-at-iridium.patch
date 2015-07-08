@@ -1,31 +1,29 @@
-From 45d7000932efbef2a281fb2052106a3ffa3831be Mon Sep 17 00:00:00 2001
+From cb2b2f0d5e99acaf24790897debe3f95df23426d Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Mon, 26 Jan 2015 13:57:44 +0100
-Subject: [PATCH 31/58] src: use cached copy of safebrowsing lists at
+Subject: [PATCH 30/57] src: use cached copy of safebrowsing lists at
  iridiumbrowser.de
 
 To avoid contacing Google, let the UA use safebrowsing lists hosted at
 iridiumbrowser. The Iridium project re-gathers these lists on a
 regular basis.
 ---
- chrome/browser/safe_browsing/client_side_detection_service.cc | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ chrome/browser/safe_browsing/client_side_model_loader.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/chrome/browser/safe_browsing/client_side_detection_service.cc b/chrome/browser/safe_browsing/client_side_detection_service.cc
-index e7fab2f..e151ef3 100644
---- a/chrome/browser/safe_browsing/client_side_detection_service.cc
-+++ b/chrome/browser/safe_browsing/client_side_detection_service.cc
-@@ -79,8 +79,8 @@ const char ClientSideDetectionService::kClientReportPhishingUrl[] =
-     "https://sb-ssl.google.com/safebrowsing/clientreport/phishing";
- const char ClientSideDetectionService::kClientReportMalwareUrl[] =
-     "https://sb-ssl.google.com/safebrowsing/clientreport/malware-check";
--const char ClientSideDetectionService::kClientModelUrl[] =
--    "https://ssl.gstatic.com/safebrowsing/csd/client_model_v5.pb";
-+const char ClientSideDetectionService::kClientModelUrl[] = /* GET */
-+    "https://cache.iridiumbrowser.de/client_model_v5.pb";
- 
- struct ClientSideDetectionService::ClientReportInfo {
-   ClientReportPhishingRequestCallback callback;
+diff --git a/chrome/browser/safe_browsing/client_side_model_loader.cc b/chrome/browser/safe_browsing/client_side_model_loader.cc
+index c73019e..03497d0 100644
+--- a/chrome/browser/safe_browsing/client_side_model_loader.cc
++++ b/chrome/browser/safe_browsing/client_side_model_loader.cc
+@@ -30,7 +30,7 @@ namespace safe_browsing {
+ const size_t ModelLoader::kMaxModelSizeBytes = 150 * 1024;
+ const int ModelLoader::kClientModelFetchIntervalMs = 3600 * 1000;
+ const char ModelLoader::kClientModelUrlPrefix[] =
+-    "https://ssl.gstatic.com/safebrowsing/csd/";
++    "https://cache.iridiumbrowser.de/";
+ const char ModelLoader::kClientModelNamePattern[] =
+     "client_model_v5%s_variation_%d.pb";
+ const char ModelLoader::kClientModelFinchExperiment[] =
 -- 
 2.4.3
 

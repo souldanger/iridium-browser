@@ -2,7 +2,6 @@ net-cert-increase-default-key-length-for-newly-gener.patch
 webrtc-disable-WebRTC-identity-store.patch
 webrtc-generate-real-ephemeral-keys.patch
 dns-send-IPv6-connectivity-probes-to-RIPE-DNS-rather.patch
-browser-disable-DNSv6-probing.patch
 http-certificate-pinning-for-iridiumbrowser.de.patch
 profile-resetter-do-not-tick-send-settings-by-defaul.patch
 browser-ui-disable-warning-about-missing-API-keys.patch

@@ -1,38 +1,51 @@
-From b58ef3dbe99d184ef5dc8a95cc02bdb44afd3a5d Mon Sep 17 00:00:00 2001
+From 7fc764dd6ae7cf25b51182d6514b8ff803a161e6 Mon Sep 17 00:00:00 2001
 From: Joachim Bauch <jojo@struktur.de>
 Date: Wed, 22 Jul 2015 12:24:15 +0200
-Subject: [PATCH 48/58] safe_browsing: disable cookie transmission
+Subject: [PATCH 47/57] safe_browsing: disable cookie transmission
 
 Disables sending/setting cookies for Safebrowsing requests. This
 prevents the long-living tracking cookie from being set.
 
 References: https://github.com/iridium-browser/iridium-browser/issues/37
 ---
- .../safe_browsing/client_side_detection_service.cc       |  2 ++
+ .../safe_browsing/client_side_detection_service.cc       |  8 ++++++--
  .../browser/safe_browsing/download_protection_service.cc |  4 +++-
  chrome/browser/safe_browsing/malware_details_cache.cc    |  3 ++-
  chrome/browser/safe_browsing/protocol_manager.cc         | 16 ++++++++++++----
  chrome/browser/safe_browsing/srt_fetcher_win.cc          |  4 +++-
- 5 files changed, 22 insertions(+), 7 deletions(-)
+ 5 files changed, 26 insertions(+), 9 deletions(-)
 
 diff --git a/chrome/browser/safe_browsing/client_side_detection_service.cc b/chrome/browser/safe_browsing/client_side_detection_service.cc
-index be94ec0..23599b3 100644
+index c749294..ef3186b 100644
 --- a/chrome/browser/safe_browsing/client_side_detection_service.cc
 +++ b/chrome/browser/safe_browsing/client_side_detection_service.cc
-@@ -278,6 +278,8 @@ void ClientSideDetectionService::StartFetchModel() {
-     model_fetcher_ = net::URLFetcher::Create(0 /* ID used for testing */,
-                                              GURL(kClientModelUrl),
-                                              net::URLFetcher::GET, this);
-+    model_fetcher_->SetLoadFlags(net::LOAD_DO_NOT_SAVE_COOKIES |
-+                                 net::LOAD_DO_NOT_SEND_COOKIES);
-     model_fetcher_->SetRequestContext(request_context_getter_.get());
-     model_fetcher_->Start();
-   }
+@@ -314,7 +314,9 @@ void ClientSideDetectionService::StartClientReportPhishingRequest(
+   info->phishing_url = GURL(request->url());
+   client_phishing_reports_[fetcher] = info;
+ 
+-  fetcher->SetLoadFlags(net::LOAD_DISABLE_CACHE);
++  fetcher->SetLoadFlags(net::LOAD_DO_NOT_SAVE_COOKIES |
++                        net::LOAD_DO_NOT_SEND_COOKIES |
++                        net::LOAD_DISABLE_CACHE);
+   fetcher->SetRequestContext(request_context_getter_.get());
+   fetcher->SetUploadData("application/octet-stream", request_data);
+   fetcher->Start();
+@@ -360,7 +362,9 @@ void ClientSideDetectionService::StartClientReportMalwareRequest(
+   info->original_url = GURL(request->url());
+   client_malware_reports_[fetcher] = info;
+ 
+-  fetcher->SetLoadFlags(net::LOAD_DISABLE_CACHE);
++  fetcher->SetLoadFlags(net::LOAD_DO_NOT_SAVE_COOKIES |
++                        net::LOAD_DO_NOT_SEND_COOKIES |
++                        net::LOAD_DISABLE_CACHE);
+   fetcher->SetRequestContext(request_context_getter_.get());
+   fetcher->SetUploadData("application/octet-stream", request_data);
+   fetcher->Start();
 diff --git a/chrome/browser/safe_browsing/download_protection_service.cc b/chrome/browser/safe_browsing/download_protection_service.cc
-index 794d6f5..8d7e209 100644
+index 2196a76..88ff2bb 100644
 --- a/chrome/browser/safe_browsing/download_protection_service.cc
 +++ b/chrome/browser/safe_browsing/download_protection_service.cc
-@@ -826,7 +826,9 @@ class DownloadProtectionService::CheckClientDownloadRequest
+@@ -734,7 +734,9 @@ class DownloadProtectionService::CheckClientDownloadRequest
      fetcher_ = net::URLFetcher::Create(0 /* ID used for testing */,
                                         GetDownloadRequestUrl(),
                                         net::URLFetcher::POST, this);
@@ -44,7 +57,7 @@ index 794d6f5..8d7e209 100644
      fetcher_->SetRequestContext(service_->request_context_getter_.get());
      fetcher_->SetUploadData("application/octet-stream",
 diff --git a/chrome/browser/safe_browsing/malware_details_cache.cc b/chrome/browser/safe_browsing/malware_details_cache.cc
-index 4e8ae12..6cbbadc 100644
+index d70fb11..9ab2b5a 100644
 --- a/chrome/browser/safe_browsing/malware_details_cache.cc
 +++ b/chrome/browser/safe_browsing/malware_details_cache.cc
 @@ -83,7 +83,8 @@ void MalwareDetailsCacheCollector::OpenEntry() {
@@ -58,7 +71,7 @@ index 4e8ae12..6cbbadc 100644
    current_fetch_->Start();  // OnURLFetchComplete will be called when done.
  }
 diff --git a/chrome/browser/safe_browsing/protocol_manager.cc b/chrome/browser/safe_browsing/protocol_manager.cc
-index 115f9c7..ace58fc 100644
+index 7afa29a..07ee076 100644
 --- a/chrome/browser/safe_browsing/protocol_manager.cc
 +++ b/chrome/browser/safe_browsing/protocol_manager.cc
 @@ -195,7 +195,9 @@ void SafeBrowsingProtocolManager::GetFullHash(
@@ -106,10 +119,10 @@ index 115f9c7..ace58fc 100644
    request_->SetUploadData("text/plain", update_list_data_);
    request_->Start();
 diff --git a/chrome/browser/safe_browsing/srt_fetcher_win.cc b/chrome/browser/safe_browsing/srt_fetcher_win.cc
-index bbb40bb..909efaa 100644
+index 9a9a8a3..12ff486 100644
 --- a/chrome/browser/safe_browsing/srt_fetcher_win.cc
 +++ b/chrome/browser/safe_browsing/srt_fetcher_win.cc
-@@ -77,7 +77,9 @@ class SRTFetcher : public net::URLFetcherDelegate {
+@@ -95,7 +95,9 @@ class SRTFetcher : public net::URLFetcherDelegate {
                                               GURL(GetSRTDownloadURL()),
                                               net::URLFetcher::GET,
                                               this)) {

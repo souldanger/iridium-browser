@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -x
 
 if ! which mmv >/dev/null 2>/dev/null || ! which git >/dev/null 2>/dev/null; then
 	echo "mmv and git need to be installed."

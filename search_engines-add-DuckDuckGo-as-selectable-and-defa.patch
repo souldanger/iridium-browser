@@ -1,7 +1,7 @@
-From 4c2ad5c1a3b0d778b8405e30d16ef9a773e75911 Mon Sep 17 00:00:00 2001
+From 6b350bc41ef7e790fcb4a9162c8c95e6d0944dd4 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sun, 19 Oct 2014 14:49:10 +0200
-Subject: [PATCH 24/58] search_engines: add DuckDuckGo as selectable and
+Subject: [PATCH 23/57] search_engines: add DuckDuckGo as selectable and
  default search engine
 
 There is a lot of code pertaining to DefaultSearchEngine,
@@ -17,7 +17,7 @@ prepending &duckduckgo yields the desired result, for now at least.
  3 files changed, 121 insertions(+), 109 deletions(-)
 
 diff --git a/components/search_engines/prepopulated_engines.json b/components/search_engines/prepopulated_engines.json
-index 8037f57..b68037f 100644
+index 7a4eefe..16a336b 100644
 --- a/components/search_engines/prepopulated_engines.json
 +++ b/components/search_engines/prepopulated_engines.json
 @@ -36,6 +36,17 @@
@@ -51,10 +51,10 @@ index d49c046..7dba2a7 100644
  };
  
 diff --git a/components/search_engines/template_url_prepopulate_data.cc b/components/search_engines/template_url_prepopulate_data.cc
-index e66a22f..d999960 100644
+index 1efa944..3eb2a61 100644
 --- a/components/search_engines/template_url_prepopulate_data.cc
 +++ b/components/search_engines/template_url_prepopulate_data.cc
-@@ -49,441 +49,441 @@ namespace {
+@@ -48,441 +48,441 @@ namespace {
  
  // Default (for countries with no better engine set)
  const PrepopulatedEngine* engines_default[] =

@@ -1,7 +1,7 @@
-From 83c75d60f6665e2af120f80174fcc6699fbc3e1e Mon Sep 17 00:00:00 2001
+From 47844585fb6093fa502fb245d2bb8205ecf92294 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Wed, 8 Jul 2015 15:08:32 +0200
-Subject: [PATCH 58/58] common: set Iridium version and change User-Agent
+Subject: [PATCH 57/57] common: set Iridium version and change User-Agent
  accordingly
 
 Reduced version number:
@@ -16,12 +16,12 @@ Note to self:
 Update "Chromium/*" in UA string when updating chrome/version.
 ---
  android_webview/common/aw_version_info_values.h.version | 2 +-
- chrome/VERSION                                          | 6 +++---
+ chrome/VERSION                                          | 4 ++--
  chrome/common/chrome_version_info.cc                    | 2 +-
  chrome/common/chrome_version_info_values.h.version      | 2 +-
  content/common/user_agent.cc                            | 2 ++
  extensions/shell/common/version.h.in                    | 2 +-
- 6 files changed, 9 insertions(+), 7 deletions(-)
+ 6 files changed, 8 insertions(+), 6 deletions(-)
 
 diff --git a/android_webview/common/aw_version_info_values.h.version b/android_webview/common/aw_version_info_values.h.version
 index 72faf97..7c0f43d 100644
@@ -36,15 +36,14 @@ index 72faf97..7c0f43d 100644
  
  #endif  // ANDROID_WEBVIEW_COMMON_AW_VERSION_INFO_VALUES_H_
 diff --git a/chrome/VERSION b/chrome/VERSION
-index 3143dcb..a85cff29 100644
+index d22eda2..b3beed2 100644
 --- a/chrome/VERSION
 +++ b/chrome/VERSION
 @@ -1,4 +1,4 @@
- MAJOR=44
--MINOR=0
--BUILD=2403
--PATCH=157
-+MINOR=1
+ MAJOR=45
+ MINOR=0
+-BUILD=2454
+-PATCH=93
 +BUILD=0
 +PATCH=0
 diff --git a/chrome/common/chrome_version_info.cc b/chrome/common/chrome_version_info.cc

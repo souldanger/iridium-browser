@@ -1,7 +1,7 @@
-From 41cf6c5d17a023a9c8a2306e4fc8623f1f22fe65 Mon Sep 17 00:00:00 2001
+From 6c2e5c1e984642d283549031eebeb7e9dd0f0882 Mon Sep 17 00:00:00 2001
 From: Joachim Bauch <jojo@struktur.de>
 Date: Mon, 10 Nov 2014 10:54:29 +0100
-Subject: [PATCH 02/58] webrtc: disable WebRTC identity store
+Subject: [PATCH 02/57] webrtc: disable WebRTC identity store
 
 By default, WebRTC identities (i.e. keypairs/certificates) are cached
 for 30 days and stored in a SQLite database in the users home
@@ -15,48 +15,39 @@ sqlite> select origin, identity_name, common_name,
 With this change, a new identity is created for every WebRTC
 connection.
 ---
- content/browser/media/webrtc_identity_store.cc | 21 ++++++++-------------
- 1 file changed, 8 insertions(+), 13 deletions(-)
+ content/browser/media/webrtc_identity_store.cc | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
 diff --git a/content/browser/media/webrtc_identity_store.cc b/content/browser/media/webrtc_identity_store.cc
-index 2cf8fb1..0e7dc75 100644
+index 9867a2f..5fa5980 100644
 --- a/content/browser/media/webrtc_identity_store.cc
 +++ b/content/browser/media/webrtc_identity_store.cc
-@@ -192,13 +192,13 @@ base::Closure WebRTCIdentityStore::RequestIdentity(
-   if (!request) {
-     request = new WebRTCIdentityRequest(origin, identity_name, common_name);
-     // |request| will delete itself after the result is posted.
--    if (!backend_->FindIdentity(
--            origin,
--            identity_name,
--            common_name,
--            base::Bind(
--                &WebRTCIdentityStore::BackendFindCallback, this, request))) {
--      // Bail out if the backend failed to start the task.
-+    if (!BrowserThread::PostTask(
-+          BrowserThread::IO,
-+          FROM_HERE,
-+          base::Bind(base::Bind(
-+                &WebRTCIdentityStore::BackendFindCallback, this, request),
-+                net::ERR_FILE_NOT_FOUND, "", ""))) {
-+      // Bail out if the task could not be started.
-       delete request;
-       return base::Closure();
-     }
-@@ -272,12 +272,7 @@ void WebRTCIdentityStore::GenerateIdentityCallback(
+@@ -82,7 +82,7 @@ class WebRTCIdentityRequest {
+       : origin_(origin),
+         identity_name_(identity_name),
+         common_name_(common_name),
+-        enable_cache_(enable_cache) {}
++        enable_cache_(false) {}
+ 
+   void Cancel(WebRTCIdentityRequestHandle* handle) {
+     DCHECK_CURRENTLY_ON(BrowserThread::IO);
+@@ -191,6 +191,7 @@ base::Closure WebRTCIdentityStore::RequestIdentity(
+     const CompletionCallback& callback,
+     bool enable_cache) {
+   DCHECK_CURRENTLY_ON(BrowserThread::IO);
++  enable_cache = false;
+   WebRTCIdentityRequest* request =
+       FindRequest(origin, identity_name, common_name);
+   // If there is no identical request in flight, create a new one, queue it,
+@@ -264,6 +265,8 @@ void WebRTCIdentityStore::GenerateIdentityCallback(
+     WebRTCIdentityRequest* request,
      WebRTCIdentityRequestResult* result) {
    DCHECK_CURRENTLY_ON(BrowserThread::IO);
-   if (result->error == net::OK) {
--    DVLOG(2) << "New identity generated and added to the backend.";
--    backend_->AddIdentity(request->origin_,
--                          request->identity_name_,
--                          request->common_name_,
--                          result->certificate,
--                          result->private_key);
-+    DVLOG(2) << "New identity generated.";
-   }
-   PostRequestResult(request, *result);
- }
++  if (result->error == net::OK)
++  	DVLOG(2) << "New identity generated.";
+   if (result->error == net::OK && request->enable_cache()) {
+     DVLOG(2) << "New identity generated and added to the backend.";
+     backend_->AddIdentity(request->origin_,
 -- 
 2.4.3
 

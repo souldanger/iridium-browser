@@ -1,22 +1,21 @@
-From 625d631d8df6a51c5a5aa571f18a37415b3f7c0b Mon Sep 17 00:00:00 2001
+From 39323e97aa4b316d9b71c73dd70088b520e6a10c Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Tue, 2 Jun 2015 11:01:50 +0200
-Subject: [PATCH 44/58] updater: disable updater pings
+Subject: [PATCH 43/57] updater: disable updater pings
 
 Despite auto-updater being arguably disabled (see previous commit),
 Chromium would still send background requests. Kill it.
 (trk:170, trk:171)
 ---
- .../chrome_component_updater_configurator.cc              |  9 ++++++---
- .../component_updater/component_updater_url_constants.cc  |  4 ++--
- components/update_client/update_checker.cc                | 15 ++++++++++++---
- 3 files changed, 20 insertions(+), 8 deletions(-)
+ .../component_updater/chrome_component_updater_configurator.cc   | 9 ++++++---
+ .../browser/component_updater/component_updater_url_constants.cc | 4 ++--
+ 2 files changed, 8 insertions(+), 5 deletions(-)
 
 diff --git a/chrome/browser/component_updater/chrome_component_updater_configurator.cc b/chrome/browser/component_updater/chrome_component_updater_configurator.cc
-index 687f0e7..65e26dc 100644
+index 320b117..52c50aeb 100644
 --- a/chrome/browser/component_updater/chrome_component_updater_configurator.cc
 +++ b/chrome/browser/component_updater/chrome_component_updater_configurator.cc
-@@ -44,9 +44,11 @@ const char kSwitchFastUpdate[] = "fast-update";
+@@ -46,9 +46,11 @@ const char kSwitchFastUpdate[] = "fast-update";
  // Add "testrequest=1" attribute to the update check request.
  const char kSwitchRequestParam[] = "test-request";
  
@@ -28,9 +27,9 @@ index 687f0e7..65e26dc 100644
  
  // Sets the URL for updates.
  const char kSwitchUrlSource[] = "url-source";
-@@ -159,7 +161,9 @@ ChromeConfigurator::ChromeConfigurator(
-            ",",
-            &switch_values);
+@@ -157,7 +159,9 @@ ChromeConfigurator::ChromeConfigurator(
+       cmdline->GetSwitchValueASCII(switches::kComponentUpdater),
+       ",", base::KEEP_WHITESPACE, base::SPLIT_WANT_NONEMPTY);
    fast_update_ = HasSwitchValue(switch_values, kSwitchFastUpdate);
 +#if 0
    pings_enabled_ = !HasSwitchValue(switch_values, kSwitchDisablePings);
@@ -38,7 +37,7 @@ index 687f0e7..65e26dc 100644
    deltas_enabled_ = !HasSwitchValue(switch_values, kSwitchDisableDeltaUpdates);
  
  #if defined(OS_WIN)
-@@ -215,10 +219,9 @@ std::vector<GURL> ChromeConfigurator::UpdateUrl() const {
+@@ -205,10 +209,9 @@ std::vector<GURL> ChromeConfigurator::UpdateUrl() const {
    if (url_source_override_.is_valid()) {
      urls.push_back(GURL(url_source_override_));
    } else {
@@ -71,36 +70,6 @@ index ce6a861..3663c36 100644
 +const char kUpdaterDefaultUrl[] = "trk:171:https://clients2.google.com/service/update2";
  
  }  // namespace component_updater
-diff --git a/components/update_client/update_checker.cc b/components/update_client/update_checker.cc
-index 9a38a5a..6fe620b 100644
---- a/components/update_client/update_checker.cc
-+++ b/components/update_client/update_checker.cc
-@@ -128,13 +128,22 @@ bool UpdateCheckerImpl::CheckForUpdates(
- void UpdateCheckerImpl::OnRequestSenderComplete(const net::URLFetcher* source) {
-   DCHECK(thread_checker_.CalledOnValidThread());
- 
--  const GURL original_url(source->GetOriginalURL());
--  VLOG(1) << "Update check request went to: " << original_url.spec();
--
-   int error = 0;
-   std::string error_message;
-   UpdateResponse update_response;
- 
-+  if (source == NULL) {
-+    VLOG(1) << "Update request disabled";
-+    request_sender_.reset();
-+    const GURL tmp_url;
-+    update_check_callback_.Run(tmp_url, error, error_message,
-+                               update_response.results());
-+    return;
-+  }
-+
-+  const GURL original_url(source->GetOriginalURL());
-+  VLOG(1) << "Update check request went to: " << original_url.spec();
-+
-   if (FetchSuccess(*source)) {
-     std::string xml;
-     source->GetResponseAsString(&xml);
 -- 
 2.4.3
 

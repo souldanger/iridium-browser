@@ -1,7 +1,7 @@
-From ef6d3817af04d7210fffcb513fb26f95fadaded6 Mon Sep 17 00:00:00 2001
+From c307ec4552a0d1cfd76b3d5cd215fb07819d5da5 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Wed, 20 May 2015 01:34:50 +0200
-Subject: [PATCH 43/58] net: add "trk:" scheme and help identify URLs being
+Subject: [PATCH 42/57] net: add "trk:" scheme and help identify URLs being
  retrieved
 
 The Chromium codebase has left us with a number of suspect URLs, and
@@ -35,7 +35,7 @@ stripped and processing continues with the inner URL.
  chrome/browser/ui/singleton_tabs.cc                |  3 +-
  chrome/chrome_dll.gypi                             |  1 +
  chrome/chrome_exe.gypi                             |  1 +
- components/omnibox/autocomplete_input.cc           |  8 +--
+ components/omnibox/browser/autocomplete_input.cc   |  8 +--
  content/browser/browser_url_handler_impl.cc        | 20 ++++++++
  .../browser/child_process_security_policy_impl.cc  |  7 ++-
  iridium/iridium.gyp                                | 19 +++++++
@@ -102,16 +102,16 @@ index 360b7e5..5193c3a 100644
  
  #if defined(OS_WIN)
 diff --git a/chrome/browser/autocomplete/chrome_autocomplete_scheme_classifier.cc b/chrome/browser/autocomplete/chrome_autocomplete_scheme_classifier.cc
-index c64520f..47b3b12 100644
+index 61e5f32..b01574e 100644
 --- a/chrome/browser/autocomplete/chrome_autocomplete_scheme_classifier.cc
 +++ b/chrome/browser/autocomplete/chrome_autocomplete_scheme_classifier.cc
 @@ -26,6 +26,7 @@ ChromeAutocompleteSchemeClassifier::GetInputTypeForScheme(
    if (base::IsStringASCII(scheme) &&
        (ProfileIOData::IsHandledProtocol(scheme) ||
-        LowerCaseEqualsASCII(scheme, content::kViewSourceScheme) ||
-+       LowerCaseEqualsASCII(scheme, url::kTraceScheme) ||
-        LowerCaseEqualsASCII(scheme, url::kJavaScriptScheme) ||
-        LowerCaseEqualsASCII(scheme, url::kDataScheme))) {
+        base::LowerCaseEqualsASCII(scheme, content::kViewSourceScheme) ||
++       base::LowerCaseEqualsASCII(scheme, url::kTraceScheme) ||
+        base::LowerCaseEqualsASCII(scheme, url::kJavaScriptScheme) ||
+        base::LowerCaseEqualsASCII(scheme, url::kDataScheme))) {
      return metrics::OmniboxInputType::URL;
 diff --git a/chrome/browser/history/history_utils.cc b/chrome/browser/history/history_utils.cc
 index 1bc5e8d..6e7210a 100644
@@ -140,10 +140,10 @@ index ab25a9a..8eaf577 100644
  
    return false;
 diff --git a/chrome/browser/ui/browser_navigator.cc b/chrome/browser/ui/browser_navigator.cc
-index 8c10fe0..8f48f6e 100644
+index fbd9415..99b6b20 100644
 --- a/chrome/browser/ui/browser_navigator.cc
 +++ b/chrome/browser/ui/browser_navigator.cc
-@@ -717,6 +717,14 @@ bool IsURLAllowedInIncognito(const GURL& url,
+@@ -720,6 +720,14 @@ bool IsURLAllowedInIncognito(const GURL& url,
      return stripped_url.is_valid() &&
          IsURLAllowedInIncognito(stripped_url, browser_context);
    }
@@ -173,7 +173,7 @@ index 60cf852..cd58a4b 100644
  
      GURL rewritten_tab_url = tab_url;
 diff --git a/chrome/chrome_dll.gypi b/chrome/chrome_dll.gypi
-index 94a61a6..e1b03ec 100644
+index 76171b2..9458be1 100644
 --- a/chrome/chrome_dll.gypi
 +++ b/chrome/chrome_dll.gypi
 @@ -92,6 +92,7 @@
@@ -196,21 +196,21 @@ index 8e12ce5..38e97fb 100644
              # On Linux, link the dependencies (libraries) that make up actual
              # Chromium functionality directly into the executable.
              '<@(chromium_browser_dependencies)',
-diff --git a/components/omnibox/autocomplete_input.cc b/components/omnibox/autocomplete_input.cc
-index 30af0d2..72060d2 100644
---- a/components/omnibox/autocomplete_input.cc
-+++ b/components/omnibox/autocomplete_input.cc
-@@ -435,7 +435,8 @@ void AutocompleteInput::ParseForEmphasizeComponents(
+diff --git a/components/omnibox/browser/autocomplete_input.cc b/components/omnibox/browser/autocomplete_input.cc
+index d254b61..cdfc7f6 100644
+--- a/components/omnibox/browser/autocomplete_input.cc
++++ b/components/omnibox/browser/autocomplete_input.cc
+@@ -471,7 +471,8 @@ void AutocompleteInput::ParseForEmphasizeComponents(
    int after_scheme_and_colon = parts.scheme.end() + 1;
    // For the view-source scheme, we should emphasize the scheme and host of the
    // URL qualified by the view-source prefix.
--  if (LowerCaseEqualsASCII(scheme_str, kViewSourceScheme) &&
-+  if ((LowerCaseEqualsASCII(scheme_str, kViewSourceScheme) ||
-+       LowerCaseEqualsASCII(scheme_str, url::kTraceScheme)) &&
+-  if (base::LowerCaseEqualsASCII(scheme_str, kViewSourceScheme) &&
++  if ((base::LowerCaseEqualsASCII(scheme_str, kViewSourceScheme) ||
++       base::LowerCaseEqualsASCII(scheme_str, url::kTraceScheme)) &&
        (static_cast<int>(text.length()) > after_scheme_and_colon)) {
      // Obtain the URL prefixed by view-source and parse it.
      base::string16 real_url(text.substr(after_scheme_and_colon));
-@@ -502,9 +503,10 @@ int AutocompleteInput::NumNonHostComponents(const url::Parsed& parts) {
+@@ -538,9 +539,10 @@ int AutocompleteInput::NumNonHostComponents(const url::Parsed& parts) {
  bool AutocompleteInput::HasHTTPScheme(const base::string16& input) {
    std::string utf8_input(base::UTF16ToUTF8(input));
    url::Component scheme;
@@ -265,10 +265,10 @@ index 63ddf49..7d8a52f 100644
  
  BrowserURLHandlerImpl::~BrowserURLHandlerImpl() {
 diff --git a/content/browser/child_process_security_policy_impl.cc b/content/browser/child_process_security_policy_impl.cc
-index 34caa5a..0ccdc7f 100644
+index bb4a3e2..24eebd2 100644
 --- a/content/browser/child_process_security_policy_impl.cc
 +++ b/content/browser/child_process_security_policy_impl.cc
-@@ -320,6 +320,7 @@ ChildProcessSecurityPolicyImpl::ChildProcessSecurityPolicyImpl() {
+@@ -300,6 +300,7 @@ ChildProcessSecurityPolicyImpl::ChildProcessSecurityPolicyImpl() {
    RegisterPseudoScheme(url::kAboutScheme);
    RegisterPseudoScheme(url::kJavaScriptScheme);
    RegisterPseudoScheme(kViewSourceScheme);
@@ -276,7 +276,7 @@ index 34caa5a..0ccdc7f 100644
  }
  
  ChildProcessSecurityPolicyImpl::~ChildProcessSecurityPolicyImpl() {
-@@ -408,7 +409,7 @@ void ChildProcessSecurityPolicyImpl::GrantRequestURL(
+@@ -388,7 +389,7 @@ void ChildProcessSecurityPolicyImpl::GrantRequestURL(
    if (IsPseudoScheme(url.scheme())) {
      // The view-source scheme is a special case of a pseudo-URL that eventually
      // results in requesting its embedded URL.
@@ -285,7 +285,7 @@ index 34caa5a..0ccdc7f 100644
        // URLs with the view-source scheme typically look like:
        //   view-source:http://www.google.com/a
        // In order to request these URLs, the child_id needs to be able to
-@@ -607,13 +608,15 @@ bool ChildProcessSecurityPolicyImpl::CanRequestURL(
+@@ -587,13 +588,15 @@ bool ChildProcessSecurityPolicyImpl::CanRequestURL(
    if (IsPseudoScheme(url.scheme())) {
      // There are a number of special cases for pseudo schemes.
  
@@ -503,7 +503,7 @@ index 0000000..3c58d22
 +
 +#endif /* IRIDIUM_TRKNOTIFY_H */
 diff --git a/net/url_request/url_request.cc b/net/url_request/url_request.cc
-index c40c7dd..f469dd1 100644
+index 95cd201..39084f6 100644
 --- a/net/url_request/url_request.cc
 +++ b/net/url_request/url_request.cc
 @@ -45,6 +45,8 @@ using std::string;
@@ -528,7 +528,7 @@ index c40c7dd..f469dd1 100644
    net_log_.BeginEvent(NetLog::TYPE_REQUEST_ALIVE);
  }
 diff --git a/net/url_request/url_request.h b/net/url_request/url_request.h
-index a2b2f6b..8bcbca0 100644
+index 4176689..14a5572 100644
 --- a/net/url_request/url_request.h
 +++ b/net/url_request/url_request.h
 @@ -827,6 +827,8 @@ class NET_EXPORT URLRequest : NON_EXPORTED_BASE(public base::NonThreadSafe),
@@ -541,10 +541,10 @@ index a2b2f6b..8bcbca0 100644
  
  #endif  // NET_URL_REQUEST_URL_REQUEST_H_
 diff --git a/url/gurl.cc b/url/gurl.cc
-index 46ca408..16fcfb9 100644
+index 52aad73..ebda7e9 100644
 --- a/url/gurl.cc
 +++ b/url/gurl.cc
-@@ -544,6 +544,41 @@ void GURL::Swap(GURL* other) {
+@@ -545,6 +545,41 @@ void GURL::Swap(GURL* other) {
    inner_url_.swap(other->inner_url_);
  }
  
@@ -587,10 +587,10 @@ index 46ca408..16fcfb9 100644
    return out << url.possibly_invalid_spec();
  }
 diff --git a/url/gurl.h b/url/gurl.h
-index b9136b8..f86fcad 100644
+index bafafd8..b3e0599 100644
 --- a/url/gurl.h
 +++ b/url/gurl.h
-@@ -382,6 +382,9 @@ class URL_EXPORT GURL {
+@@ -383,6 +383,9 @@ class URL_EXPORT GURL {
      return inner_url_.get();
    }
  
@@ -600,7 +600,7 @@ index b9136b8..f86fcad 100644
   private:
    // Variant of the string parsing constructor that allows the caller to elect
    // retain trailing whitespace, if any, on the passed URL spec but only  if the
-@@ -422,5 +425,7 @@ class URL_EXPORT GURL {
+@@ -423,5 +426,7 @@ class URL_EXPORT GURL {
  
  // Stream operator so GURL can be used in assertion statements.
  URL_EXPORT std::ostream& operator<<(std::ostream& out, const GURL& url);

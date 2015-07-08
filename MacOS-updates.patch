@@ -1,7 +1,7 @@
-From ee724c662b4f9025c89db5686bf2b3d9b712a1dd Mon Sep 17 00:00:00 2001
+From eb576529c5100a355a169b29b5240c1eadf0e6c8 Mon Sep 17 00:00:00 2001
 From: Yuriy Shevchuk <yuriy@struktur.de>
 Date: Mon, 2 Mar 2015 14:42:10 +0100
-Subject: [PATCH 37/58] MacOS updates
+Subject: [PATCH 36/57] MacOS updates
 
 - changes for first launch start page
 - some OS X related branding
@@ -31,13 +31,13 @@ Mac App Store)
  content/browser/mach_broker_mac.mm                 |  6 ++++
  .../renderer_host/render_widget_host_view_mac.mm   |  5 ++++
  content/common/sandbox_mac.mm                      |  5 ++++
- .../mac/video_capture_device_factory_mac.mm        |  7 +++++
+ .../mac/video_capture_device_factory_mac.mm        |  6 ++++
  .../video/capture/mac/video_capture_device_mac.mm  | 10 +++++++
  .../capture/mac/video_capture_device_qtkit_mac.h   |  4 +++
  .../capture/mac/video_capture_device_qtkit_mac.mm  |  4 +++
  remoting/branding_Chromium                         |  2 +-
  ui/shell_dialogs/select_file_dialog_mac.mm         |  2 ++
- 29 files changed, 161 insertions(+), 20 deletions(-)
+ 29 files changed, 160 insertions(+), 20 deletions(-)
 
 diff --git a/base/files/file_util.h b/base/files/file_util.h
 index 7f169f1..08e1516 100644
@@ -56,7 +56,7 @@ index 7f169f1..08e1516 100644
  // function returns true if was successful in creating the file. The file will
  // be empty and all handles closed after this function returns.
 diff --git a/base/files/file_util_mac.mm b/base/files/file_util_mac.mm
-index acac8d7..0441f59 100644
+index a701bad..c6097f2 100644
 --- a/base/files/file_util_mac.mm
 +++ b/base/files/file_util_mac.mm
 @@ -24,11 +24,41 @@ bool CopyFile(const FilePath& from_path, const FilePath& to_path) {
@@ -102,7 +102,7 @@ index acac8d7..0441f59 100644
  
  FilePath GetHomeDir() {
 diff --git a/base/files/file_util_posix.cc b/base/files/file_util_posix.cc
-index b4a64ba..b4d37d1 100644
+index a8c5d44..1916a6b 100644
 --- a/base/files/file_util_posix.cc
 +++ b/base/files/file_util_posix.cc
 @@ -138,7 +138,7 @@ std::string TempFileName() {
@@ -128,18 +128,18 @@ index 27d6e7c..36d7540 100644
  }
  
 diff --git a/base/memory/shared_memory_posix.cc b/base/memory/shared_memory_posix.cc
-index d6c290f..35d3ba3 100644
+index 2e66b34..6b2bacd 100644
 --- a/base/memory/shared_memory_posix.cc
 +++ b/base/memory/shared_memory_posix.cc
-@@ -435,7 +435,7 @@ bool SharedMemory::FilePathForMemoryName(const std::string& mem_name,
+@@ -455,7 +455,7 @@ bool SharedMemory::FilePathForMemoryName(const std::string& mem_name,
  #if defined(GOOGLE_CHROME_BUILD)
    std::string name_base = std::string("com.google.Chrome");
  #else
 -  std::string name_base = std::string("org.chromium.Chromium");
 +  std::string name_base = std::string("de.iridiumbrowser");
  #endif
- #else  // OS_MACOSX
-   std::string name_base = std::string(base::mac::BaseBundleID());
+   *path = temp_dir.AppendASCII(name_base + ".shmem." + mem_name);
+   return true;
 diff --git a/build/chrome_settings.gypi b/build/chrome_settings.gypi
 index e9c7535..3fb5b71 100644
 --- a/build/chrome_settings.gypi
@@ -217,7 +217,7 @@ index 7e6d04db..62f209f 100644
        'postbuilds' : [
          {
 diff --git a/chrome/browser/app_controller_mac.mm b/chrome/browser/app_controller_mac.mm
-index 762d03b..ce60135 100644
+index 96d8696..9f5cd0b 100644
 --- a/chrome/browser/app_controller_mac.mm
 +++ b/chrome/browser/app_controller_mac.mm
 @@ -160,7 +160,7 @@ CFStringRef BaseBundleID_CFString() {
@@ -230,10 +230,10 @@ index 762d03b..ce60135 100644
  void PrefsSyncCallback() {
    if (!CFPreferencesAppSynchronize(BaseBundleID_CFString()))
 diff --git a/chrome/browser/apps/app_shim/app_shim_host_manager_browsertest_mac.mm b/chrome/browser/apps/app_shim/app_shim_host_manager_browsertest_mac.mm
-index c48de0d..1bc92a3 100644
+index e76f5aa..cffc088 100644
 --- a/chrome/browser/apps/app_shim/app_shim_host_manager_browsertest_mac.mm
 +++ b/chrome/browser/apps/app_shim/app_shim_host_manager_browsertest_mac.mm
-@@ -243,7 +243,7 @@ bool AppShimHostManagerBrowserTestSocketFiles::SetUpUserDataDirectory() {
+@@ -242,7 +242,7 @@ bool AppShimHostManagerBrowserTestSocketFiles::SetUpUserDataDirectory() {
    symlink_path_ = user_data_dir.Append(app_mode::kAppShimSocketSymlinkName);
    base::FilePath temp_dir;
    PathService::Get(base::DIR_TEMP, &temp_dir);
@@ -243,10 +243,10 @@ index c48de0d..1bc92a3 100644
  
    // Create an invalid RunningChromeVersion file.
 diff --git a/chrome/browser/apps/app_shim/app_shim_host_manager_mac.mm b/chrome/browser/apps/app_shim/app_shim_host_manager_mac.mm
-index 0e3465d..e895873 100644
+index d8f95b3..8b884ba 100644
 --- a/chrome/browser/apps/app_shim/app_shim_host_manager_mac.mm
 +++ b/chrome/browser/apps/app_shim/app_shim_host_manager_mac.mm
-@@ -36,9 +36,9 @@ base::FilePath GetDirectoryInTmpTemplate(const base::FilePath& user_data_dir) {
+@@ -37,9 +37,9 @@ base::FilePath GetDirectoryInTmpTemplate(const base::FilePath& user_data_dir) {
    base::FilePath temp_dir;
    CHECK(PathService::Get(base::DIR_TEMP, &temp_dir));
    // Check that it's shorter than the IPC socket length (104) minus the
@@ -260,10 +260,10 @@ index 0e3465d..e895873 100644
  
  void DeleteSocketFiles(const base::FilePath& directory_in_tmp,
 diff --git a/chrome/browser/process_singleton_posix.cc b/chrome/browser/process_singleton_posix.cc
-index 05e1499..944c9c2 100644
+index 6ccc265..c1c82b1 100644
 --- a/chrome/browser/process_singleton_posix.cc
 +++ b/chrome/browser/process_singleton_posix.cc
-@@ -742,7 +742,23 @@ ProcessSingleton::ProcessSingleton(
+@@ -741,7 +741,23 @@ ProcessSingleton::ProcessSingleton(
      : notification_callback_(notification_callback),
        current_pid_(base::GetCurrentProcId()),
        watcher_(new LinuxWatcher(this)) {
@@ -287,7 +287,7 @@ index 05e1499..944c9c2 100644
    lock_path_ = user_data_dir.Append(chrome::kSingletonLockFilename);
    cookie_path_ = user_data_dir.Append(chrome::kSingletonCookieFilename);
  
-@@ -983,14 +999,21 @@ bool ProcessSingleton::Create() {
+@@ -982,14 +998,21 @@ bool ProcessSingleton::Create() {
        << "Temp directory mode is not 700: " << std::oct << dir_mode;
  
    // Setup the socket symlink and the two cookies.
@@ -310,7 +310,7 @@ index 05e1499..944c9c2 100644
        !SymlinkPath(cookie, cookie_path_) ||
        !SymlinkPath(cookie, remote_cookie_path)) {
      // We've already locked things, so we can't have lost the startup race,
-@@ -1001,10 +1024,18 @@ bool ProcessSingleton::Create() {
+@@ -1000,10 +1023,18 @@ bool ProcessSingleton::Create() {
      return false;
    }
  
@@ -330,10 +330,10 @@ index 05e1499..944c9c2 100644
      return false;
    }
 diff --git a/chrome/browser/ui/startup/startup_browser_creator_impl.cc b/chrome/browser/ui/startup/startup_browser_creator_impl.cc
-index 14b3356..5eac3eb 100644
+index 9f4d085..dd999a6 100644
 --- a/chrome/browser/ui/startup/startup_browser_creator_impl.cc
 +++ b/chrome/browser/ui/startup/startup_browser_creator_impl.cc
-@@ -914,11 +914,15 @@ void StartupBrowserCreatorImpl::AddStartupURLs(
+@@ -913,11 +913,15 @@ void StartupBrowserCreatorImpl::AddStartupURLs(
    // at the front or back as indicated by welcome_run_type_), or the set of URLs
    // specified on the command line.
    if (startup_urls->empty()) {
@@ -408,7 +408,7 @@ index 2ce10cd..76a67ff 100644
  
    UInt32 password_length = 0;
 diff --git a/content/browser/accessibility/browser_accessibility_cocoa.mm b/content/browser/accessibility/browser_accessibility_cocoa.mm
-index 3e72cb1..35e6108 100644
+index c76d2c4..b1e10fa 100644
 --- a/content/browser/accessibility/browser_accessibility_cocoa.mm
 +++ b/content/browser/accessibility/browser_accessibility_cocoa.mm
 @@ -19,10 +19,12 @@
@@ -528,10 +528,10 @@ index 3efec6b..28f0a8f 100644
  
  void MachBroker::RegisterNotifications() {
 diff --git a/content/browser/renderer_host/render_widget_host_view_mac.mm b/content/browser/renderer_host/render_widget_host_view_mac.mm
-index c173466..637b754 100644
+index b060993..300cc39 100644
 --- a/content/browser/renderer_host/render_widget_host_view_mac.mm
 +++ b/content/browser/renderer_host/render_widget_host_view_mac.mm
-@@ -2991,9 +2991,12 @@ static const NSTrackingRectTag kTrackingRectTag = 0xBADFACE;
+@@ -2797,9 +2797,12 @@ void RenderWidgetHostViewMac::OnDisplayMetricsChanged(
  // Since this implementation doesn't have to wait any IPC calls, this doesn't
  // make any key-typing jank. --hbono 7/23/09
  //
@@ -544,7 +544,7 @@ index c173466..637b754 100644
  
  - (NSArray *)validAttributesForMarkedText {
    // This code is just copied from WebKit except renaming variables.
-@@ -3002,7 +3005,9 @@ extern NSString *NSTextInputReplacementRangeAttributeName;
+@@ -2808,7 +2811,9 @@ extern NSString *NSTextInputReplacementRangeAttributeName;
          NSUnderlineStyleAttributeName,
          NSUnderlineColorAttributeName,
          NSMarkedClauseSegmentAttributeName,
@@ -555,10 +555,10 @@ index c173466..637b754 100644
    }
    return validAttributesForMarkedText_.get();
 diff --git a/content/common/sandbox_mac.mm b/content/common/sandbox_mac.mm
-index a13aaf7..940e06a 100644
+index 6466b04..d95dc12 100644
 --- a/content/common/sandbox_mac.mm
 +++ b/content/common/sandbox_mac.mm
-@@ -605,6 +605,7 @@ bool Sandbox::EnableSandbox(int sandbox_type,
+@@ -612,6 +612,7 @@ bool Sandbox::EnableSandbox(int sandbox_type,
      return false;
    }
  
@@ -566,7 +566,7 @@ index a13aaf7..940e06a 100644
    // Initialize sandbox.
    char* error_buff = NULL;
    int error = sandbox_init(final_sandbox_profile_str.c_str(), 0, &error_buff);
-@@ -614,6 +615,10 @@ bool Sandbox::EnableSandbox(int sandbox_type,
+@@ -621,6 +622,10 @@ bool Sandbox::EnableSandbox(int sandbox_type,
                             << " "
                             << error_buff;
    sandbox_free_error(error_buff);
@@ -578,21 +578,20 @@ index a13aaf7..940e06a 100644
    return success;
  }
 diff --git a/media/video/capture/mac/video_capture_device_factory_mac.mm b/media/video/capture/mac/video_capture_device_factory_mac.mm
-index 7986346..99d380b 100644
+index 76e14c6..609d727 100644
 --- a/media/video/capture/mac/video_capture_device_factory_mac.mm
 +++ b/media/video/capture/mac/video_capture_device_factory_mac.mm
-@@ -15,7 +15,10 @@
+@@ -15,7 +15,9 @@
  #import "media/video/capture/mac/video_capture_device_avfoundation_mac.h"
- #include "media/video/capture/mac/video_capture_device_mac.h"
  #import "media/video/capture/mac/video_capture_device_decklink_mac.h"
-+
+ #include "media/video/capture/mac/video_capture_device_mac.h"
 +#ifndef MAC_APP_STORE
  #import "media/video/capture/mac/video_capture_device_qtkit_mac.h"
 +#endif
  
  namespace media {
  
-@@ -53,6 +56,7 @@ EnumerateDevicesUsingQTKit() {
+@@ -53,6 +55,7 @@ EnumerateDevicesUsingQTKit() {
  
    scoped_ptr<VideoCaptureDevice::Names> device_names(
          new VideoCaptureDevice::Names());
@@ -600,7 +599,7 @@ index 7986346..99d380b 100644
    NSMutableDictionary* capture_devices =
        [[[NSMutableDictionary alloc] init] autorelease];
    [VideoCaptureDeviceQTKit getDeviceNames:capture_devices];
-@@ -64,6 +68,7 @@ EnumerateDevicesUsingQTKit() {
+@@ -64,6 +67,7 @@ EnumerateDevicesUsingQTKit() {
        name.set_is_blacklisted(true);
      device_names->push_back(name);
    }
@@ -608,7 +607,7 @@ index 7986346..99d380b 100644
    return device_names.Pass();
  }
  
-@@ -178,6 +183,7 @@ void VideoCaptureDeviceFactoryMac::GetDeviceSupportedFormats(
+@@ -178,6 +182,7 @@ void VideoCaptureDeviceFactoryMac::GetDeviceSupportedFormats(
                               supportedFormats:supported_formats];
      break;
    case VideoCaptureDevice::Name::QTKIT:
@@ -616,7 +615,7 @@ index 7986346..99d380b 100644
      // Blacklisted cameras provide their own supported format(s), otherwise no
      // such information is provided for QTKit devices.
      if (device.is_blacklisted()) {
-@@ -193,6 +199,7 @@ void VideoCaptureDeviceFactoryMac::GetDeviceSupportedFormats(
+@@ -194,6 +199,7 @@ void VideoCaptureDeviceFactoryMac::GetDeviceSupportedFormats(
          }
        }
      }

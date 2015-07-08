@@ -1,7 +1,7 @@
-From 3122a6046e5679d1b71367596f74a8d3d6e999d4 Mon Sep 17 00:00:00 2001
+From d64af4a23f6f45596ab90b5a67602ea4067dbf04 Mon Sep 17 00:00:00 2001
 From: amistry <amistry@chromium.org>
 Date: Tue, 9 Jun 2015 12:18:39 -0700
-Subject: [PATCH 51/58] hotword: disable at build time by default
+Subject: [PATCH 50/57] hotword: disable at build time by default
 
 Commit f269d3b548203e217e8c0080c2e22e7ae3efb51e upstream:
 
@@ -20,15 +20,14 @@ Hard-disable hotwording by default even on a build level.
 ---
  chrome/browser/BUILD.gn                           | 6 ++----
  chrome/browser/extensions/component_loader.cc     | 4 ++++
- chrome/browser/search/hotword_service.cc          | 1 -
  chrome/browser/search/hotword_service_unittest.cc | 4 ++++
- 4 files changed, 10 insertions(+), 5 deletions(-)
+ 3 files changed, 10 insertions(+), 4 deletions(-)
 
 diff --git a/chrome/browser/BUILD.gn b/chrome/browser/BUILD.gn
-index 8b7e0fe..5345ca2 100644
+index 353cc37..a0a7d76 100644
 --- a/chrome/browser/BUILD.gn
 +++ b/chrome/browser/BUILD.gn
-@@ -19,10 +19,8 @@ if (is_desktop_linux) {
+@@ -20,10 +20,8 @@ if (is_desktop_linux) {
  }
  
  declare_args() {
@@ -42,10 +41,10 @@ index 8b7e0fe..5345ca2 100644
  
  about_credits_file = "$target_gen_dir/about_credits.html"
 diff --git a/chrome/browser/extensions/component_loader.cc b/chrome/browser/extensions/component_loader.cc
-index 029ad1e..0ff6842 100644
+index 5506656..b610740 100644
 --- a/chrome/browser/extensions/component_loader.cc
 +++ b/chrome/browser/extensions/component_loader.cc
-@@ -347,17 +347,21 @@ void ComponentLoader::AddHangoutServicesExtension() {
+@@ -357,17 +357,21 @@ void ComponentLoader::AddHangoutServicesExtension() {
  }
  
  void ComponentLoader::AddHotwordAudioVerificationApp() {
@@ -59,7 +58,7 @@ index 029ad1e..0ff6842 100644
  
  void ComponentLoader::AddHotwordHelperExtension() {
 +#if 0
-   if (HotwordServiceFactory::IsHotwordAllowed(browser_context_)) {
+   if (HotwordServiceFactory::IsHotwordAllowed(profile_)) {
      Add(IDR_HOTWORD_MANIFEST,
          base::FilePath(FILE_PATH_LITERAL("hotword")));
    }
@@ -67,23 +66,11 @@ index 029ad1e..0ff6842 100644
  }
  
  void ComponentLoader::AddImageLoaderExtension() {
-diff --git a/chrome/browser/search/hotword_service.cc b/chrome/browser/search/hotword_service.cc
-index e93789b..b5a056a 100644
---- a/chrome/browser/search/hotword_service.cc
-+++ b/chrome/browser/search/hotword_service.cc
-@@ -649,7 +649,6 @@ bool HotwordService::IsHotwordAllowed() {
-   // set.
-   if (group == hotword_internal::kHotwordFieldTrialDisabledGroupName)
-     return false;
--
-   return DoesHotwordSupportLanguage(profile_);
- #else
-   return false;
 diff --git a/chrome/browser/search/hotword_service_unittest.cc b/chrome/browser/search/hotword_service_unittest.cc
-index 521bb7b..585cfab 100644
+index c1571fb..e02ce43 100644
 --- a/chrome/browser/search/hotword_service_unittest.cc
 +++ b/chrome/browser/search/hotword_service_unittest.cc
-@@ -219,6 +219,7 @@ TEST_P(HotwordServiceTest, DISABLED_IsHotwordAllowedInvalidFieldTrial) {
+@@ -160,6 +160,7 @@ INSTANTIATE_TEST_CASE_P(HotwordServiceTests,
  
  // Disabled due to http://crbug.com/503963.
  TEST_P(HotwordServiceTest, DISABLED_IsHotwordAllowedLocale) {
@@ -91,7 +78,7 @@ index 521bb7b..585cfab 100644
    TestingProfile::Builder profile_builder;
    scoped_ptr<TestingProfile> profile = profile_builder.Build();
  
-@@ -260,6 +261,7 @@ TEST_P(HotwordServiceTest, DISABLED_IsHotwordAllowedLocale) {
+@@ -201,6 +202,7 @@ TEST_P(HotwordServiceTest, DISABLED_IsHotwordAllowedLocale) {
    Profile* otr_profile = profile->GetOffTheRecordProfile();
    SetApplicationLocale(otr_profile, "en");
    EXPECT_FALSE(HotwordServiceFactory::IsHotwordAllowed(otr_profile));
@@ -99,7 +86,7 @@ index 521bb7b..585cfab 100644
  }
  
  TEST_P(HotwordServiceTest, ShouldReinstallExtension) {
-@@ -316,6 +318,7 @@ TEST_P(HotwordServiceTest, PreviousLanguageSetOnInstall) {
+@@ -257,6 +259,7 @@ TEST_P(HotwordServiceTest, PreviousLanguageSetOnInstall) {
  }
  
  TEST_P(HotwordServiceTest, UninstallReinstallTriggeredCorrectly) {
@@ -107,7 +94,7 @@ index 521bb7b..585cfab 100644
    InitializeEmptyExtensionService();
    service_->Init();
  
-@@ -396,6 +399,7 @@ TEST_P(HotwordServiceTest, UninstallReinstallTriggeredCorrectly) {
+@@ -337,6 +340,7 @@ TEST_P(HotwordServiceTest, UninstallReinstallTriggeredCorrectly) {
  #endif
    EXPECT_FALSE(hotword_service->MaybeReinstallHotwordExtension());
    EXPECT_EQ(1, hotword_service->uninstall_count());  // no change

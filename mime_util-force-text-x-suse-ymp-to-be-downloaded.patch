@@ -1,7 +1,7 @@
-From 95a80f5e3a93d2a0d7d0ab8807ed336809aa5178 Mon Sep 17 00:00:00 2001
+From c5f1de6b04c3c5532d4c576aa42cb40b30309cd8 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Thu, 29 Jan 2015 10:46:40 +0100
-Subject: [PATCH 09/58] mime_util: force text/x-suse-ymp to be downloaded
+Subject: [PATCH 08/57] mime_util: force text/x-suse-ymp to be downloaded
 
 YMP files (YaST One Click Install) are plaintext XML, but also not
 very interesting in themselves. Force them to be stored.
@@ -10,10 +10,10 @@ very interesting in themselves. Force them to be stored.
  1 file changed, 1 insertion(+)
 
 diff --git a/components/mime_util/mime_util.cc b/components/mime_util/mime_util.cc
-index a017f45..e6a5f2a 100644
+index 3841fbb..2f57acd 100644
 --- a/components/mime_util/mime_util.cc
 +++ b/components/mime_util/mime_util.cc
-@@ -79,6 +79,7 @@ static const char* const kUnsupportedTextTypes[] = {
+@@ -84,6 +84,7 @@ static const char* const kUnsupportedTextTypes[] = {
      "text/x-csv",
      "text/x-vcf",
      "text/rtf",

@@ -1,25 +1,25 @@
-From 2ce8b53f2076ea82b4ae1d04d4c437cb47b900a6 Mon Sep 17 00:00:00 2001
+From 67b842179793eaf6d9bf43447d7279b6f1e68e17 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sat, 13 Sep 2014 16:43:55 +0200
-Subject: [PATCH 16/58] prefs: block third-party cookies by default
+Subject: [PATCH 15/57] prefs: block third-party cookies by default
 
 Reject extra cookies which are likely used for tracking and whatnot.
 There are very few websites which require this, and if you do visit
 some, static exceptions can be defined.
 ---
- chrome/browser/content_settings/cookie_settings.cc | 2 +-
+ components/content_settings/core/browser/cookie_settings.cc | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/chrome/browser/content_settings/cookie_settings.cc b/chrome/browser/content_settings/cookie_settings.cc
-index 6783ae8..a6e0c6f 100644
---- a/chrome/browser/content_settings/cookie_settings.cc
-+++ b/chrome/browser/content_settings/cookie_settings.cc
-@@ -68,7 +68,7 @@ void CookieSettings::Factory::RegisterProfilePrefs(
+diff --git a/components/content_settings/core/browser/cookie_settings.cc b/components/content_settings/core/browser/cookie_settings.cc
+index 94ffb39..0325ef4 100644
+--- a/components/content_settings/core/browser/cookie_settings.cc
++++ b/components/content_settings/core/browser/cookie_settings.cc
+@@ -82,7 +82,7 @@ void CookieSettings::GetCookieSettings(
+ void CookieSettings::RegisterProfilePrefs(
      user_prefs::PrefRegistrySyncable* registry) {
    registry->RegisterBooleanPref(
-       prefs::kBlockThirdPartyCookies,
--      false,
-+      true,
+-      prefs::kBlockThirdPartyCookies, false,
++      prefs::kBlockThirdPartyCookies, true,
        user_prefs::PrefRegistrySyncable::SYNCABLE_PREF);
  }
  

@@ -1,7 +1,7 @@
-From 687a3e96f9af843a264774511471ee7b7d4c6fc3 Mon Sep 17 00:00:00 2001
+From 31e21203ec91dbda7eccc8a7e528a0db4311af05 Mon Sep 17 00:00:00 2001
 From: Joachim Bauch <jojo@struktur.de>
 Date: Tue, 7 Jul 2015 18:28:46 +0200
-Subject: [PATCH 46/58] safe_browsing: disable reporting of safebrowsing
+Subject: [PATCH 45/57] safe_browsing: disable reporting of safebrowsing
  override
 
 Disables reporting of the safebrowsing override, i.e. the report sent
@@ -12,10 +12,10 @@ This prevents trk:148 (phishing) and trk:149 (malware).
  1 file changed, 12 insertions(+)
 
 diff --git a/chrome/browser/safe_browsing/client_side_detection_service.cc b/chrome/browser/safe_browsing/client_side_detection_service.cc
-index e151ef3..be94ec0 100644
+index 6f431e5..c749294 100644
 --- a/chrome/browser/safe_browsing/client_side_detection_service.cc
 +++ b/chrome/browser/safe_browsing/client_side_detection_service.cc
-@@ -56,11 +56,13 @@ namespace {
+@@ -55,11 +55,13 @@ namespace {
      REPORT_RESULT_MAX
    };
  
@@ -29,7 +29,7 @@ index e151ef3..be94ec0 100644
  
  }  // namespace
  
-@@ -317,6 +319,10 @@ void ClientSideDetectionService::StartClientReportPhishingRequest(
+@@ -276,6 +278,10 @@ void ClientSideDetectionService::StartClientReportPhishingRequest(
      return;
    }
  
@@ -37,10 +37,10 @@ index e151ef3..be94ec0 100644
 +  if (!callback.is_null())
 +    callback.Run(GURL(request->url()), false);
 +#else
-   std::string request_data;
-   if (!request->SerializeToString(&request_data)) {
-     UMA_HISTOGRAM_COUNTS("SBClientPhishing.RequestNotSerialized", 1);
-@@ -344,6 +350,7 @@ void ClientSideDetectionService::StartClientReportPhishingRequest(
+   // Fill in metadata about which model we used.
+   if (is_extended_reporting) {
+     request->set_model_filename(model_loader_extended_->name());
+@@ -315,6 +321,7 @@ void ClientSideDetectionService::StartClientReportPhishingRequest(
  
    // Record that we made a request
    phishing_report_times_.push(base::Time::Now());
@@ -48,7 +48,7 @@ index e151ef3..be94ec0 100644
  }
  
  void ClientSideDetectionService::StartClientReportMalwareRequest(
-@@ -358,6 +365,10 @@ void ClientSideDetectionService::StartClientReportMalwareRequest(
+@@ -329,6 +336,10 @@ void ClientSideDetectionService::StartClientReportMalwareRequest(
      return;
    }
  
@@ -59,14 +59,14 @@ index e151ef3..be94ec0 100644
    std::string request_data;
    if (!request->SerializeToString(&request_data)) {
      UpdateEnumUMAHistogram(REPORT_FAILED_SERIALIZATION);
-@@ -391,6 +402,7 @@ void ClientSideDetectionService::StartClientReportMalwareRequest(
+@@ -362,6 +373,7 @@ void ClientSideDetectionService::StartClientReportMalwareRequest(
  
    // Record that we made a malware request
    malware_report_times_.push(base::Time::Now());
 +#endif
  }
  
- void ClientSideDetectionService::HandleModelResponse(
+ 
 -- 
 2.4.3
 

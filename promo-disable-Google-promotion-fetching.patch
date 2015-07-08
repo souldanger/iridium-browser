@@ -1,7 +1,7 @@
-From 1bfaa29f310b844198312a52c0a1b6152a399d92 Mon Sep 17 00:00:00 2001
+From 522880e3795524c0cb7a1c9537b35f73248fa198 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sun, 9 Nov 2014 01:54:27 +0100
-Subject: [PATCH 50/58] promo: disable Google promotion fetching
+Subject: [PATCH 49/57] promo: disable Google promotion fetching
 
 Documentation is scarce, and sprinkled with misleading acronyms.
 NTP is not NTP, for example. FWIW:
@@ -23,10 +23,10 @@ References: https://github.com/iridium-browser/iridium-browser/issues/33
  3 files changed, 6 insertions(+), 3 deletions(-)
 
 diff --git a/chrome/browser/browser_process_impl.cc b/chrome/browser/browser_process_impl.cc
-index 8d651f2..eaef098 100644
+index 53d73e9..6624579 100644
 --- a/chrome/browser/browser_process_impl.cc
 +++ b/chrome/browser/browser_process_impl.cc
-@@ -1063,7 +1063,9 @@ void BrowserProcessImpl::PreMainMessageLoopRun() {
+@@ -1078,7 +1078,9 @@ void BrowserProcessImpl::PreMainMessageLoopRun() {
    if (!command_line.HasSwitch(switches::kDisableWebResources)) {
      DCHECK(!promo_resource_service_.get());
      promo_resource_service_.reset(new PromoResourceService);

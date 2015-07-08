@@ -1,30 +1,32 @@
-From 92c5b89f320422fffa1709a0f70463f7a94d3538 Mon Sep 17 00:00:00 2001
+From 98abae53dd10c8e5cb6c47c658c7827e415ff258 Mon Sep 17 00:00:00 2001
 From: Joachim Bauch <jojo@struktur.de>
 Date: Mon, 6 Jul 2015 18:18:03 +0200
-Subject: [PATCH 47/58] safe_browsing: support trk: prefix
+Subject: [PATCH 46/57] safe_browsing: support trk: prefix
 
 ---
  chrome/browser/safe_browsing/protocol_manager.cc | 4 +++-
  1 file changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/chrome/browser/safe_browsing/protocol_manager.cc b/chrome/browser/safe_browsing/protocol_manager.cc
-index b1910d1..115f9c7 100644
+index 8415327..7afa29a 100644
 --- a/chrome/browser/safe_browsing/protocol_manager.cc
 +++ b/chrome/browser/safe_browsing/protocol_manager.cc
-@@ -749,10 +749,12 @@ GURL SafeBrowsingProtocolManager::GetHashUrl() const {
+@@ -749,12 +749,14 @@ GURL SafeBrowsingProtocolManager::GetHashUrl() const {
  GURL SafeBrowsingProtocolManager::NextChunkUrl(const std::string& url) const {
    DCHECK(CalledOnValidThread());
    std::string next_url;
 +  const std::string url_prefix_without_trk(
 +      GURL(url_prefix_).strip_trk().spec());
-   if (!StartsWithASCII(url, "http://", false) &&
-       !StartsWithASCII(url, "https://", false)) {
+   if (!base::StartsWith(url, "http://",
+                         base::CompareCase::INSENSITIVE_ASCII) &&
+       !base::StartsWith(url, "https://",
+                         base::CompareCase::INSENSITIVE_ASCII)) {
      // Use https if we updated via https, otherwise http (useful for testing).
--    if (StartsWithASCII(url_prefix_, "https://", false))
-+    if (StartsWithASCII(url_prefix_without_trk, "https://", false))
+-    if (base::StartsWith(url_prefix_, "https://",
++    if (base::StartsWith(url_prefix_without_trk, "https://",
+                          base::CompareCase::INSENSITIVE_ASCII))
        next_url.append("https://");
      else
-       next_url.append("http://");
 -- 
 2.4.3
 
