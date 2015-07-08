@@ -18,7 +18,7 @@
 namespace chrome {
 
 std::string VersionInfo::ProductNameAndVersionForUserAgent() const {
-  return "Chrome/" + Version();
+  return "Iridium/" + Version();
 }
 
 VersionInfo::VersionInfo() {
