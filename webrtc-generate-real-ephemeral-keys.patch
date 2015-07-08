@@ -1,4 +1,4 @@
-From 713aacfa58361dd41252e8069645c9ae598a0478 Mon Sep 17 00:00:00 2001
+From 956b58485c82bc3954bd0680f6f17e96a33d8e0d Mon Sep 17 00:00:00 2001
 From: Joachim Bauch <jojo@struktur.de>
 Date: Mon, 10 Nov 2014 16:19:32 +0100
 Subject: [PATCH 03/57] webrtc: generate "real" ephemeral keys
@@ -116,5 +116,5 @@ index 31e0774..44cfffc 100644
  
  SECStatus
 -- 
-2.7.0
+2.6.2
 

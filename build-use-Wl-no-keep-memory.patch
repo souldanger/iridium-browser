@@ -1,4 +1,4 @@
-From be58db264a4c8371a4c9961ecd1c4ee163ba2009 Mon Sep 17 00:00:00 2001
+From e3aac70cd8bc8df9bca11a7e92b011751f37fb7f Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sun, 20 Dec 2015 11:12:00 +0100
 Subject: [PATCH 56/57] build: use -Wl,--no-keep-memory
@@ -27,5 +27,5 @@ index 6ee281d..118dfb2 100644
          'app/app-Info.plist',
        ],
 -- 
-2.7.0
+2.6.2
 

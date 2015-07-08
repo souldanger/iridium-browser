@@ -1,4 +1,4 @@
-From 83f4684512b7516f6cf6b30ad8f31da420248032 Mon Sep 17 00:00:00 2001
+From 409b55bb305d2e9c20dc1a9e9d3b99581b6741b7 Mon Sep 17 00:00:00 2001
 From: Joachim Bauch <jojo@struktur.de>
 Date: Thu, 25 Jun 2015 15:51:59 +0200
 Subject: [PATCH 52/57] browser: disable profile auto-import on first run
@@ -26,5 +26,5 @@ index c9342a5..0866c6f 100644
      // Note: this can pop the first run consent dialog on linux.
      first_run::DoPostImportTasks(profile_,
 -- 
-2.7.0
+2.6.2
 

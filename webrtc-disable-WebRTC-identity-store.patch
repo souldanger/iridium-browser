@@ -1,4 +1,4 @@
-From a2eb012419de1a65619ad334e7c1fd129cf63675 Mon Sep 17 00:00:00 2001
+From d25727ff436f5bd0de0a7ad072719a27f92fdcce Mon Sep 17 00:00:00 2001
 From: Joachim Bauch <jojo@struktur.de>
 Date: Mon, 10 Nov 2014 10:54:29 +0100
 Subject: [PATCH 02/57] webrtc: disable WebRTC identity store
@@ -49,5 +49,5 @@ index 9867a2f..5fa5980 100644
      DVLOG(2) << "New identity generated and added to the backend.";
      backend_->AddIdentity(request->origin_,
 -- 
-2.7.0
+2.6.2
 

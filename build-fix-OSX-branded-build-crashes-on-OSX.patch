@@ -1,4 +1,4 @@
-From e46e42d12ce986c828e3ae116dbb67fa40229f3b Mon Sep 17 00:00:00 2001
+From c7e1fe70e38975998a95e1464ec5a063e38850b3 Mon Sep 17 00:00:00 2001
 From: Yuriy Shevchuk <yuriy@struktur.de>
 Date: Tue, 23 Dec 2014 16:54:56 +0100
 Subject: [PATCH 29/57] build: fix OSX branded build crashes on OSX
@@ -60,5 +60,5 @@ index 49e4009..fa9985f 100644
  #error Unknown branding
  #endif
 -- 
-2.7.0
+2.6.2
 

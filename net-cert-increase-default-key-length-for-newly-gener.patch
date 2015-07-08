@@ -1,4 +1,4 @@
-From 4f6214aca9137cbe318cb017fd615e5a26f9ede9 Mon Sep 17 00:00:00 2001
+From 1602f1c962bb9f19695128b1a6882db997b56605 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Mon, 15 Sep 2014 10:52:32 +0200
 Subject: [PATCH 01/57] net/cert: increase default key length for
@@ -24,5 +24,5 @@ index bbdc194..eff3b51 100644
  // Certificates made by CreateKeyAndSelfSignedCert and
  //  CreateKeyAndChannelIDEC will be signed using this digest algorithm.
 -- 
-2.7.0
+2.6.2
 

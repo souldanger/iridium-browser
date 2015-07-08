@@ -1,4 +1,4 @@
-From 9ea7d5843c0198098d8c29fc3ddafa0d165e7c9a Mon Sep 17 00:00:00 2001
+From 4aa18f80499102b649b3ad978cddce7e9d504146 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sat, 13 Sep 2014 15:06:39 +0200
 Subject: [PATCH 12/57] prefs: disable "Use a prediction service to help
@@ -29,5 +29,5 @@ index 04d5e9f..cdf59a1 100644
  #if defined(OS_ANDROID)
    registry->RegisterStringPref(
 -- 
-2.7.0
+2.6.2
 

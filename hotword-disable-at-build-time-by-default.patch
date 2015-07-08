@@ -1,4 +1,4 @@
-From d80d15b5b55edea98321598e18f641f1943b3d47 Mon Sep 17 00:00:00 2001
+From f3241889ad08392e0d0ec7ef02091d430a3ace4e Mon Sep 17 00:00:00 2001
 From: amistry <amistry@chromium.org>
 Date: Tue, 9 Jun 2015 12:18:39 -0700
 Subject: [PATCH 49/57] hotword: disable at build time by default
@@ -100,5 +100,5 @@ index c1571fb..e02ce43 100644
  
  TEST_P(HotwordServiceTest, DisableAlwaysOnOnLanguageChange) {
 -- 
-2.7.0
+2.6.2
 

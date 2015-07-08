@@ -1,4 +1,4 @@
-From 339999c31a0aacba032d6ca1711a68de0b23d528 Mon Sep 17 00:00:00 2001
+From 7072b78b59044ca98cc7a1984eea3b7d7a02c8e6 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sun, 19 Oct 2014 14:49:10 +0200
 Subject: [PATCH 23/57] search_engines: add DuckDuckGo as selectable and
@@ -606,5 +606,5 @@ index eed0465..91cb0a8 100644
    &vinden,       &virgilio,     &yahoo,        &yahoo_ar,     &yahoo_at,
    &yahoo_au,     &yahoo_br,     &yahoo_ca,     &yahoo_ch,     &yahoo_cl,
 -- 
-2.7.0
+2.6.2
 

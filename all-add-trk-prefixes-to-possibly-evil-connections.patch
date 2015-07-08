@@ -1,4 +1,4 @@
-From 07d0ae272bb8b2a1f8f10025ae4a0d5a48682261 Mon Sep 17 00:00:00 2001
+From eed90b382be861c93d48dcf1a5649fb52b695993 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Mon, 3 Nov 2014 10:52:56 +0100
 Subject: [PATCH 47/57] all: add trk: prefixes to possibly evil connections
@@ -1364,5 +1364,5 @@ index ccde6d7..c14a13a 100644
  }
  
 -- 
-2.7.0
+2.6.2
 

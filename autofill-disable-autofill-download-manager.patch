@@ -1,4 +1,4 @@
-From c6ee2c96cbf218b3edb5f0e715cfc4b2cfaa1e4d Mon Sep 17 00:00:00 2001
+From 91f8f8b6b42239cceecc2b7e2881c352fcb5d31c Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Thu, 11 Sep 2014 16:37:32 +0200
 Subject: [PATCH 10/57] autofill: disable autofill download manager
@@ -40,5 +40,5 @@ index 64d7313..5723a9a 100644
  
  AutofillManager::~AutofillManager() {}
 -- 
-2.7.0
+2.6.2
 

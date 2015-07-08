@@ -1,4 +1,4 @@
-From 02a961e7b6076db222529427a08ebf16957115df Mon Sep 17 00:00:00 2001
+From 099889c2c6697be4a64eb7a88e607624a5bc57e8 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sat, 13 Sep 2014 16:55:12 +0200
 Subject: [PATCH 16/57] cloud-print: disable in prefs and component loader
@@ -61,5 +61,5 @@ index eda0cdc..15cde3c 100644
        user_prefs::PrefRegistrySyncable::SYNCABLE_PREF);
  }
 -- 
-2.7.0
+2.6.2
 

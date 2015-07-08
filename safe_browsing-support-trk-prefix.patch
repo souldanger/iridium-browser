@@ -1,4 +1,4 @@
-From 6d626001a983afad93aa3bf5dfb4146ff02eafa0 Mon Sep 17 00:00:00 2001
+From b2cce5399d2c02c448f87882c48d959462f837f0 Mon Sep 17 00:00:00 2001
 From: Joachim Bauch <jojo@struktur.de>
 Date: Mon, 6 Jul 2015 18:18:03 +0200
 Subject: [PATCH 45/57] safe_browsing: support trk: prefix
@@ -29,5 +29,5 @@ index ada474d..0aae3fa 100644
        next_url.append("https://");
      else
 -- 
-2.7.0
+2.6.2
 

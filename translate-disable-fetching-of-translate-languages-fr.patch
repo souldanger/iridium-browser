@@ -1,4 +1,4 @@
-From cbbb36721e55f241a85ebc3da3a524670596c24b Mon Sep 17 00:00:00 2001
+From 9d3b39fb616f5c77efbe78fea719e06b67bae48d Mon Sep 17 00:00:00 2001
 From: Simon Eisenmann <simon@struktur.de>
 Date: Mon, 26 Oct 2015 14:18:05 +0100
 Subject: [PATCH 55/57] translate: disable fetching of translate languages from
@@ -43,5 +43,5 @@ index fab5fe9..c24f72a 100644
  
  void TranslateLanguageList::SetResourceRequestsAllowed(bool allowed) {
 -- 
-2.7.0
+2.6.2
 

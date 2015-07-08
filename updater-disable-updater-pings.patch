@@ -1,4 +1,4 @@
-From 1d60cdf20a4d679eb22232e08a6a0d3b40f1c47c Mon Sep 17 00:00:00 2001
+From 1b23bdd782f962a592c00f1566275959b25340bc Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Tue, 2 Jun 2015 11:01:50 +0200
 Subject: [PATCH 42/57] updater: disable updater pings
@@ -69,5 +69,5 @@ index fb8f1db..d4d1ddb 100644
    return urls;
  }
 -- 
-2.7.0
+2.6.2
 

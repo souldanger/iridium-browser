@@ -1,4 +1,4 @@
-From 13054ff1d59aa0927944e91fe4b6d7f91dbb4e99 Mon Sep 17 00:00:00 2001
+From 7f9344931bab0848b7b70e2a7967c9cc51bbd3e2 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Thu, 29 Jan 2015 10:39:51 +0100
 Subject: [PATCH 32/57] build: build the sandbox with PIE
@@ -26,5 +26,5 @@ index f5b3e0f..f57fbf3 100644
        'include_dirs': [
          '../..',
 -- 
-2.7.0
+2.6.2
 

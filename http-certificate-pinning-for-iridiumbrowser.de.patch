@@ -1,4 +1,4 @@
-From 32d8e554a562c9aab01b03c664ab840f5f0f6743 Mon Sep 17 00:00:00 2001
+From b3114c667b00b79bf7b251310b893c17d7a6084a Mon Sep 17 00:00:00 2001
 From: Joachim Bauch <bauch@struktur.de>
 Date: Tue, 9 Dec 2014 16:51:31 +0100
 Subject: [PATCH 05/57] http: certificate pinning for iridiumbrowser.de
@@ -5774,5 +5774,5 @@ index be6f41e..3d1e6df 100644
      "ANDROID_COM",
      "GOOGLE_ANALYTICS_COM",
 -- 
-2.7.0
+2.6.2
 

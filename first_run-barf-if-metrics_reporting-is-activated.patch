@@ -1,4 +1,4 @@
-From a18f31ee23e885db652d1de15ef95ab1b8699c97 Mon Sep 17 00:00:00 2001
+From 8773861560a1246cc4f7bed2279ae3dfd863a5dd Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sat, 13 Sep 2014 16:40:17 +0200
 Subject: [PATCH 22/57] first_run: barf if metrics_reporting is activated
@@ -37,5 +37,5 @@ index eec6d16..1e2aa68 100644
          metrics::prefs::kMetricsReportingEnabled, true);
    }
 -- 
-2.7.0
+2.6.2
 

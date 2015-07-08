@@ -1,4 +1,4 @@
-From 056c02c28aeff89e9891fcffc082e5708a427c84 Mon Sep 17 00:00:00 2001
+From f87a7a9966b833028d87c0b874df4e5ff38fb75f Mon Sep 17 00:00:00 2001
 From: Joachim Bauch <jojo@struktur.de>
 Date: Mon, 1 Jun 2015 17:14:34 +0200
 Subject: [PATCH 40/57] google-cloud-messaging: disable experiment status check
@@ -42,5 +42,5 @@ index bafaee3..3167562 100644
  
  void GCMChannelStatusRequest::OnURLFetchComplete(
 -- 
-2.7.0
+2.6.2
 

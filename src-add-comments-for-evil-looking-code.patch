@@ -1,4 +1,4 @@
-From 34c76a733dc09da98b3f116e0d1a6b4f19d21000 Mon Sep 17 00:00:00 2001
+From e39d377de2fab2bdc1dcb9396d2f1d72219e6314 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Wed, 6 May 2015 14:13:00 +0200
 Subject: [PATCH 38/57] src: add comments for evil-looking code
@@ -39,5 +39,5 @@ index fa0d140..3def0c2 100644
  GoogleURLTracker::GoogleURLTracker(scoped_ptr<GoogleURLTrackerClient> client,
                                     Mode mode)
 -- 
-2.7.0
+2.6.2
 

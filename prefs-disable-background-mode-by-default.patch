@@ -1,4 +1,4 @@
-From fdd9be3ae89d3bd63fca03c9a883008fca1a3922 Mon Sep 17 00:00:00 2001
+From 30426780b9d2ce6e07f9cae0df075484fe438c5b Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sat, 13 Sep 2014 16:59:10 +0200
 Subject: [PATCH 17/57] prefs: disable background mode by default
@@ -23,5 +23,5 @@ index 7cd7467..99f5318 100644
  
  void BackgroundModeManager::RegisterProfile(Profile* profile) {
 -- 
-2.7.0
+2.6.2
 

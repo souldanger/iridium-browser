@@ -1,4 +1,4 @@
-From 39b6118ac98f5f0a41c77f9db24351334ec886cc Mon Sep 17 00:00:00 2001
+From f06cbd97df6483fbd08d4dead5074a537c0f7e64 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sat, 13 Sep 2014 17:25:47 +0200
 Subject: [PATCH 20/57] prefs: only keep cookies until exit
@@ -22,5 +22,5 @@ index faa5f83..95ee72c 100644
             WhitelistedSchemes(kChromeUIScheme, kChromeDevToolsScheme),
             ValidSettings(CONTENT_SETTING_ALLOW, CONTENT_SETTING_BLOCK,
 -- 
-2.7.0
+2.6.2
 

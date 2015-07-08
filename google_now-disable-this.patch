@@ -1,4 +1,4 @@
-From b30e416d1a87492c3edbbb418aa9892ee4fcf95b Mon Sep 17 00:00:00 2001
+From d1197bc91caddf893eb9bd6053ca552c21b78676 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Fri, 19 Jun 2015 19:20:39 +0200
 Subject: [PATCH 50/57] google_now: disable this
@@ -41,5 +41,5 @@ index d8ddb47..da6f22e 100644
    enable_one_click_signin = is_win || is_mac || (is_linux && !is_chromeos)
  
 -- 
-2.7.0
+2.6.2
 

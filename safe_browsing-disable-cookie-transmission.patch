@@ -1,4 +1,4 @@
-From b2d4bf2ceef45949d196672860199d38ee610845 Mon Sep 17 00:00:00 2001
+From 63ecb475f77004c3557836c238fd4db96b89bdb6 Mon Sep 17 00:00:00 2001
 From: Joachim Bauch <jojo@struktur.de>
 Date: Wed, 22 Jul 2015 12:24:15 +0200
 Subject: [PATCH 46/57] safe_browsing: disable cookie transmission
@@ -134,5 +134,5 @@ index 9f170cd..38e2a8a 100644
    current_fetch_->Start();  // OnURLFetchComplete will be called when done.
  }
 -- 
-2.7.0
+2.6.2
 

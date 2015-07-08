@@ -1,4 +1,4 @@
-From d7a438a64b0f7aa36b61155fa902ed3af757c1e8 Mon Sep 17 00:00:00 2001
+From c760cda17c59a428853da0dab53835451a4936ea Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Mon, 26 Jan 2015 13:57:44 +0100
 Subject: [PATCH 30/57] src: use cached copy of safebrowsing lists at
@@ -25,5 +25,5 @@ index 863f820..a37dc8c 100644
      "client_model_v5%s_variation_%d.pb";
  const char ModelLoader::kClientModelFinchExperiment[] =
 -- 
-2.7.0
+2.6.2
 

@@ -1,4 +1,4 @@
-From 16ad605a519c104eadf715235251c3005179d66a Mon Sep 17 00:00:00 2001
+From 9f3465fb02b0e9dd7fe998252d6581c6bb555393 Mon Sep 17 00:00:00 2001
 From: Joachim Bauch <jojo@struktur.de>
 Date: Tue, 4 Aug 2015 15:15:53 +0200
 Subject: [PATCH 54/57] battery_status_service: disable more privacy nightmares
@@ -46,5 +46,5 @@ index 453adb7..33430c2 100644
    return callback_list_.Add(callback);
  }
 -- 
-2.7.0
+2.6.2
 

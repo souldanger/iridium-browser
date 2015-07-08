@@ -1,4 +1,4 @@
-From f59ca79e27498643365d6d01ca1318f1b9a40323 Mon Sep 17 00:00:00 2001
+From 31ed004e1739f43d84b8c9b8bcb6500b8beedfd0 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Wed, 10 Dec 2014 12:44:49 +0100
 Subject: [PATCH 28/57] ui/translation: update strings to read "Iridium"
@@ -1124,5 +1124,5 @@ index b78ef6f..be09a15 100644
        </if>
        <if expr="chromeos">
 -- 
-2.7.0
+2.6.2
 

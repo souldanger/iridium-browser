@@ -1,4 +1,4 @@
-From 34f0e0c5be983b701e2b957e1683a5c1d20428a8 Mon Sep 17 00:00:00 2001
+From 81d691a21815b73c693f55d643aa13ce6de1a965 Mon Sep 17 00:00:00 2001
 From: Joachim Bauch <bauch@struktur.de>
 Date: Wed, 15 Apr 2015 15:19:21 +0200
 Subject: [PATCH 34/57] plugin: do not load any system-provided plugins on
@@ -45,5 +45,5 @@ index 4b20953..fc40e1e 100644
    for (std::set<base::FilePath>::iterator i = plugin_dirs.begin();
         i != plugin_dirs.end(); ++i) {
 -- 
-2.7.0
+2.6.2
 

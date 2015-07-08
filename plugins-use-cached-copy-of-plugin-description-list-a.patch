@@ -1,4 +1,4 @@
-From 8a7bccf053db7a3844d587caf0ec5d7f9e944dc6 Mon Sep 17 00:00:00 2001
+From 69987cf66b416cb405519effb5dcc40df0e78731 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Thu, 2 Apr 2015 12:44:23 +0200
 Subject: [PATCH 36/57] plugins: use cached copy of plugin description list at
@@ -28,5 +28,5 @@ index 4dee543..338fe09 100644
  GURL GetPluginsServerURL() {
    std::string filename;
 -- 
-2.7.0
+2.6.2
 

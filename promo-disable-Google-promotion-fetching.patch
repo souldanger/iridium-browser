@@ -1,4 +1,4 @@
-From b99fcb5bc79c3e261b7105a0328cbca402656147 Mon Sep 17 00:00:00 2001
+From e37f79d8f6e594d62e993bce6de9be9f0a73ca53 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sun, 9 Nov 2014 01:54:27 +0100
 Subject: [PATCH 48/57] promo: disable Google promotion fetching
@@ -73,5 +73,5 @@ index 73e7d4b..2f526b5 100644
  // The name of the preference that stores the promotion object.
  const char kPrefPromoObject[] = "promo";
 -- 
-2.7.0
+2.6.2
 

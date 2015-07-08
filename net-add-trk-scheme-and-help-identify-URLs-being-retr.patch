@@ -1,4 +1,4 @@
-From 8e0a5949963b1411fb2e1cd0c8ae4f58fa686f3b Mon Sep 17 00:00:00 2001
+From 50c0e6f483815c9fca8caadabbce7e48b7e5d795 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Wed, 20 May 2015 01:34:50 +0200
 Subject: [PATCH 41/57] net: add "trk:" scheme and help identify URLs being
@@ -633,5 +633,5 @@ index c48dafc..18770d0 100644
  URL_EXPORT extern const char kWssScheme[];
  
 -- 
-2.7.0
+2.6.2
 
