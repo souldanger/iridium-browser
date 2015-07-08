@@ -1,7 +1,7 @@
-From 511d9e840cc7bd81082abdd8ae593b5c695cdae0 Mon Sep 17 00:00:00 2001
+From ef6d3817af04d7210fffcb513fb26f95fadaded6 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Wed, 20 May 2015 01:34:50 +0200
-Subject: [PATCH 43/57] net: add "trk:" scheme and help identify URLs being
+Subject: [PATCH 43/58] net: add "trk:" scheme and help identify URLs being
  retrieved
 
 The Chromium codebase has left us with a number of suspect URLs, and

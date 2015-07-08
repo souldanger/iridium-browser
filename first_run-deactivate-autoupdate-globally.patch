@@ -1,7 +1,7 @@
-From 31c4a38db82bf4fcc806d53f5ded68dc57e1c6e5 Mon Sep 17 00:00:00 2001
+From 3ab5d37cf0915e738348c25df419f03be001021d Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sat, 13 Sep 2014 17:12:43 +0200
-Subject: [PATCH 28/57] first_run: deactivate autoupdate globally
+Subject: [PATCH 28/58] first_run: deactivate autoupdate globally
 
 We currently do not have any update service infrastructure in place
 (i.e. on our webserver), and sending update requests to Google also

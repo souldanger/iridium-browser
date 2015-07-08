@@ -1,7 +1,7 @@
-From 13a4f471f13e6a8ab9872fdd12e591a90eee88a2 Mon Sep 17 00:00:00 2001
+From e9b6de0edfbb3b9c27959b787ff147f24df84218 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sat, 13 Sep 2014 17:03:17 +0200
-Subject: [PATCH 19/57] prefs: disable hyperlink auditing
+Subject: [PATCH 19/58] prefs: disable hyperlink auditing
 
 "Disable sending hyperlink auditing pings", i.e. pings to
 URLs in <a ping="..."> when clicked.

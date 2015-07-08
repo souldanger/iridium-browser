@@ -1,7 +1,7 @@
-From cda5cd7f3cef62b8e34852d46a127b6d2fadccfe Mon Sep 17 00:00:00 2001
+From 4c3ccec36b7f00c93c16adc3c058af0dcbb18084 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Mon, 2 Mar 2015 11:28:26 +0100
-Subject: [PATCH 39/57] Remove EV certificates
+Subject: [PATCH 39/58] Remove EV certificates
 
 The team chose to let EV certificates appear just like normal
 certificates. The web of trust is considered a failure in itself, so

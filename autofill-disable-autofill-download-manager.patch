@@ -1,22 +1,13 @@
-From cc1665216bf13a6423d1e766225748048172e312 Mon Sep 17 00:00:00 2001
+From d66054b9671d4c1361fc9adf5457fa885a67ed3c Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Thu, 11 Sep 2014 16:37:32 +0200
-Subject: [PATCH 11/57] autofill: disable autofill entry and autofill download
- manager
-
-With Autofill, I argue, users are tempted to be lazy and fill forms
-with more data than is perhaps really required for a particular
-service.
-
-The thought here is that the user should be readily subconciously
-reminded about it through every keystroke of information he is about
-to enter.
+Subject: [PATCH 11/58] autofill: disable autofill download manager
 
 Disables the autofill download manager (trk:158).
 ---
  components/autofill/core/browser/autofill_download_manager.cc | 2 +-
- components/autofill/core/browser/autofill_manager.cc          | 4 +++-
- 2 files changed, 4 insertions(+), 2 deletions(-)
+ components/autofill/core/browser/autofill_manager.cc          | 2 ++
+ 2 files changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/components/autofill/core/browser/autofill_download_manager.cc b/components/autofill/core/browser/autofill_download_manager.cc
 index 8774234..36501b4 100644
@@ -32,7 +23,7 @@ index 8774234..36501b4 100644
  }
  
 diff --git a/components/autofill/core/browser/autofill_manager.cc b/components/autofill/core/browser/autofill_manager.cc
-index 5df3ca1..6e8620a 100644
+index 5df3ca1..c605377 100644
 --- a/components/autofill/core/browser/autofill_manager.cc
 +++ b/components/autofill/core/browser/autofill_manager.cc
 @@ -151,10 +151,12 @@ AutofillManager::AutofillManager(
@@ -48,15 +39,6 @@ index 5df3ca1..6e8620a 100644
  }
  
  AutofillManager::~AutofillManager() {}
-@@ -164,7 +166,7 @@ void AutofillManager::RegisterProfilePrefs(
-     user_prefs::PrefRegistrySyncable* registry) {
-   registry->RegisterBooleanPref(
-       prefs::kAutofillEnabled,
--      true,
-+      false,
-       user_prefs::PrefRegistrySyncable::SYNCABLE_PREF);
-   registry->RegisterBooleanPref(prefs::kAutofillWalletSyncExperimentEnabled,
-                                 false);
 -- 
 2.4.3
 

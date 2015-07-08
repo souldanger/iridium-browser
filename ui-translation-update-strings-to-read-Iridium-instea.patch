@@ -1,7 +1,7 @@
-From 2702fe0db19898273e6ab852fbe3a0a709cb189c Mon Sep 17 00:00:00 2001
+From 80d7e045698d0f0097bde3b7b3d99dabc20aacb3 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Wed, 10 Dec 2014 12:44:49 +0100
-Subject: [PATCH 29/57] ui/translation: update strings to read "Iridium"
+Subject: [PATCH 29/58] ui/translation: update strings to read "Iridium"
  instead
 
 ---
@@ -154,6 +154,7 @@ Subject: [PATCH 29/57] ui/translation: update strings to read "Iridium"
  chrome/app/resources/generated_resources_vi.xtb    |   2 +-
  chrome/app/resources/generated_resources_zh-CN.xtb |   2 +-
  chrome/app/resources/generated_resources_zh-TW.xtb |   2 +-
+ chrome/browser/resources/chrome-logo-faded.png     | Bin 896 -> 1267 bytes
  .../launchpad_translations/chromium_strings_bg.xtb |   1 -
  .../launchpad_translations/chromium_strings_ca.xtb |   2 +-
  .../launchpad_translations/chromium_strings_cs.xtb |   1 -
@@ -178,7 +179,7 @@ Subject: [PATCH 29/57] ui/translation: update strings to read "Iridium"
  .../launchpad_translations/chromium_strings_vi.xtb |   1 -
  .../chromium_strings_zh-CN.xtb                     |   1 -
  .../chromium_strings_zh-TW.xtb                     |   1 -
- 173 files changed, 312 insertions(+), 360 deletions(-)
+ 174 files changed, 312 insertions(+), 360 deletions(-)
 
 diff --git a/chrome/android/java/strings/translations/android_chrome_strings_am.xtb b/chrome/android/java/strings/translations/android_chrome_strings_am.xtb
 index 2aecb2f11..6b2dd59 100644
@@ -3206,6 +3207,56 @@ index 5c35352..dad77c6 100644
  <translation id="7445762425076701745">您所連線的伺服器身分無法完全驗證，該伺服器所使用的名稱僅在您的網路中有效，無法驗證外部憑證授權單位的擁有權。即使某些憑證授權單位會核發這些憑證，不過無法就此確保您所連上的網站是正確的，而不會遭到網路攻擊。</translation>
  <translation id="1556537182262721003">無法將擴充功能目錄移至設定檔。</translation>
  <translation id="2946640296642327832">啟用藍牙</translation>
+diff --git a/chrome/browser/resources/chrome-logo-faded.png b/chrome/browser/resources/chrome-logo-faded.png
+index cc35d42313dc039acea7ef2800b62d1ff0ba20b9..e5f424757cc0c022d741636131a867d6261fd972 100644
+GIT binary patch
+delta 1248
+zcmV<61Rwi=2lEM#BYyw^b5ch_0Itp)=>Px#0%A)?L;(MXkIcUS000SaNLh0L01FcU
+z01FcV0GgZ_00007bV*G`2j2%C2`V19?=m6)00ehQL_t(o!`0Ybj9g_I2k_r}=FH5_
+z?skhUwz4aR`a%4_7`^WWF)<|e1SPT3q+(RM1tcL_2}P2{EPpq}7&Y2NyCR8-tzv9Q
+z4v1pXn-XHYF<fv#NLdox1+>B1PIqVKe0j0c?JnIycjaRDxjE<k=b87s|9QUO;4Sjg
+z(NDxMZ(fk)x6axS5|%CwhTRjh6T?xdkSmatoyk`w@2@r#k-whYzN0hNQ>cp+GIKg|
+z#Y{21cjtO1Qh&Sfa^lFgFZM=)VFPM%9dk-SB#h)A_}u7|Pp)qw(Zb`IBhB%s+GMK%
+z4Vg@(p`j@jgen?8dgO9jq=(Wfy?qt<O=*=r_I4U;CUW@XRpVDzLt#)5)U>p0GOVR8
+zh?HTd%E$k3a-GM>!EoEF<=B7-0~X>scUH%|p7S!5o`2lgnVD-3y$fNV-sEY&P4>R)
+zuJyHv=2*{prItY>w%9E6<D`p7B_NEwcVZn|<cZO(uZF0hX^YL`zCHfwj5&ourc}yx
+zoD-MvwYSe+8Vl~TFL{LYuy6W|yY2C&gKoHhlQw+IS6ye?L(W{V$dX_F+<tqK-z~A(
+z?~_|ee}CYBPuphFC;iLMlJAq=<sR?%l82LH7f%t7#6=XT4BLdDP<Y+ENF-B;ReB-}
+zE2BQsx046mj4>~}VUcRXpWO&P?wH3{`Dfqa0THhAaGJZ?{oqrMrbV*2SClI>ZP8F-
+z&VT${SI|+2HPu8y-@zhR5F&|h7;=5`+!E{_H-CE59`Er{kJ-ISBH#6EJ6z>^c+dd{
+zY;%p{7++!$Vgq^_+S)3Wp31zsx=bloqEKq-Tr4}6m%k*B;-zKSetao8fiu36ZkDWy
+z$n(CQRHP5N({?{jehBHkZt>wI!9J*khSO%9Gp{34YH120R5H0rQ|5|N)+I?g9rGbG
+z$$yDO;1{d3$e)r5lF}=9s*lcMV2MRCk>J1mDjut83QA?)r7}T7kS|n}cmC|_mms5f
+zdCB_4RT8<lW8Nol;oUOV>ggy2r4f-vzx@hwUAekaZXwDWS3)Ga1gYNAoJQ~1_cfN`
+z-DRuG93g7wb7dh`8bYK{s8r^ZnrbLTYJY0#LK)?2NbxiHNP6*@A6!AFT;?e6TSGxi
+zX3tJ`WSW9XuB+#~u2`fJi#5cW>Vk4|_Zp^?<TWqY?&d|{jun*J_}Jp=3#<Q1%&E!i
+z_iY-B<mx(dH4$R5N~Ka$*Hx)z{xP}6vil>C_)Yq4$8C16T`OiL?n?jWY1g>VXMfk!
+zqC8Nwrn|aT+v$Ea4`Q)}@oFJjiYhlSz2;8qQAZ7%a@r|(IJ|<!ai<LVqdBMS^PM$z
+zzq@w6F*O&u)dGotp0+vXWO_1XCA6nLzvkg8sqA&9=gpgTx1X$_F>j||dc(ZG+vV8*
+zF(LlyNNc<)R`hKVDFqCQMP8fw@>%{3GwM#A+`7Y9P1Y}kO)U*Ud!{#?tou=S+2unO
+zo|x!P6j8&Vn!27^*_(WJ^3cY*d{~gjN89nR;eJkR<;e!Q4*DO-UaD_%lNn|J0000<
+KMNUMnLSTZ5EqKKM
+
+delta 874
+zcmV-w1C{*q34jNXBYy)&Nkl<ZcwW_*%ZnUU6o>D?%pizb;u8&|;yfTA*c-uxi(2>x
+zv>=GY!BQg#gQVk(>(s`TNbiGE<71(Sme}sgo!=r*#2!qd;@~)9RInk*5LC!XbGRIG
+z=s=1@v72vm&gD}4KI%TIJBWj2jx%7J-7(t?*kDz{ED*%t5r5v{BI4l^CCf7;!gKtF
+z7@prbG9x0qhTMQ-?F8tMk!bbbay=2AMp}@!5~&fg|4ZZv{&E5r`IggsqnwTm`HK6d
+zT7;t#c*`VyW}O(AITo4MTDz%!Bdqc_N4T9m)%cnRnCB=ZTfEAh64>NZJ~9qXugC_%
+zk1X&a!XEc?n13@!<P49o!Ue?GoCuy$P*Kw-Cy^*Jrl6*xM}i9INJ>Ia$J030*RIfB
+zp&%!a$7f~)?MiA&?IQXlokK@O7-+x~5*V_{BHtqz<8INNXalc7?q;V^q(+QU3|Sy_
+z*&)s(p>nhGC?Ygt#OS%MA2m9R{4o^Rj@$bnkMkg}Ab%cS<{tK~+jbh6jujd!qi0J?
+zC^denAxaY&Y2cKMKp&yeDp5(Hqavn7LTNGyfgXZrm8eFcD<Ic83+y7w#~R~9#KV>Z
+z&RMtXL@I=0a*t5k9_b+LXk}rQ1VP+_5-JnPZQS01(ja6}sj?IWLTMsg;VB7xfOse+
+z@ZI%A(0?$KBIH_G6dzUTBGd#UwRv7pcbxCyXxFWaT9;Pjl!VEpMb5qKTQ~F~$PG>{
+zFH&gbyNDABEkryL7`Xkgz*(npmIb%jznB`4hWc6pZy?5b9%6-|^+O)zZhk?G*Z(Dv
+z9HF`;k!<opyo?y9IKUihoE-B4cS+!F#Mo!aiGS=MbZ<(egD@hvJ=3%nDG|!aPn7o&
+z_f|G|Sc4ppz+v_g<6R$G!!;zaOWKN9sM5}`Mm5`tWd0+TlyqFM#Gi=cGC%MW?@8bj
+z_p9Wf7l{EzRFu?6dl9?R8Vbr-g|;H`77`lzRGOhsBc4Yl_=l7y-N-Xhz^iBsrD-Q(
+zq+?WeuNNfkMU<`zC{$!I5F3bxHzj~|S6H8wpSo-Off#$-#+r4%^6V`A`LMzkmk{M8
+z?%=#u7dXiw2{R*NGROIn&zNJKb9~M*J#c4$t8}Q{OOh7e_W%F@07*qoM6N<$f&k#4
+A2LJ#7
+
 diff --git a/third_party/launchpad_translations/chromium_strings_bg.xtb b/third_party/launchpad_translations/chromium_strings_bg.xtb
 index 2ec8eab..abe1eb4 100644
 --- a/third_party/launchpad_translations/chromium_strings_bg.xtb

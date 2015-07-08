@@ -1,7 +1,7 @@
-From 28056efad5093a389f03a54f01b8b4dcc996cd76 Mon Sep 17 00:00:00 2001
+From 9c3abcb3b938e410df517b9779c6088ea6664f2a Mon Sep 17 00:00:00 2001
 From: Joachim Bauch <jojo@struktur.de>
 Date: Mon, 6 Jul 2015 17:17:20 +0200
-Subject: [PATCH 53/57] search: show blank tab for new tab page
+Subject: [PATCH 53/58] search: show blank tab for new tab page
 
 Avoid loading the search page everytime, just show a blank one instead.
 

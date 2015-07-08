@@ -1,0 +1,31 @@
+From 4571191919f2f90daddc7c432be7ad39047c9301 Mon Sep 17 00:00:00 2001
+From: Joachim Bauch <jojo@struktur.de>
+Date: Wed, 12 Aug 2015 16:28:50 +0200
+Subject: [PATCH 57/58] avatar_menu: disable
+
+Enforces using the old-style avatar menu. Users hate it.
+
+With that, prevent trk:271 from being loaded on browser start
+as well.
+
+References: https://code.google.com/p/chromium/issues/detail?id=513899
+References: https://github.com/iridium-browser/iridium-browser/issues/41
+---
+ components/signin/core/common/profile_management_switches.cc | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/components/signin/core/common/profile_management_switches.cc b/components/signin/core/common/profile_management_switches.cc
+index 6d58837..706fa51 100644
+--- a/components/signin/core/common/profile_management_switches.cc
++++ b/components/signin/core/common/profile_management_switches.cc
+@@ -41,6 +41,7 @@ State GetProcessState() {
+   bool not_consistent_identity =
+       base::CommandLine::ForCurrentProcess()->HasSwitch(
+           switches::kDisableAccountConsistency);
++  not_new_avatar_menu = true;
+   int count_args = (is_new_avatar_menu ? 1 : 0) +
+       (is_new_profile_management ? 1 : 0) +
+       (is_consistent_identity ? 1 : 0) +
+-- 
+2.4.3
+

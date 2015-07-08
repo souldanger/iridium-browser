@@ -1,7 +1,7 @@
-From 81b5cdce3b0bbdd25e16221c87834555a35be6b3 Mon Sep 17 00:00:00 2001
+From ee724c662b4f9025c89db5686bf2b3d9b712a1dd Mon Sep 17 00:00:00 2001
 From: Yuriy Shevchuk <yuriy@struktur.de>
 Date: Mon, 2 Mar 2015 14:42:10 +0100
-Subject: [PATCH 37/57] MacOS updates
+Subject: [PATCH 37/58] MacOS updates
 
 - changes for first launch start page
 - some OS X related branding
@@ -330,10 +330,10 @@ index 05e1499..944c9c2 100644
      return false;
    }
 diff --git a/chrome/browser/ui/startup/startup_browser_creator_impl.cc b/chrome/browser/ui/startup/startup_browser_creator_impl.cc
-index 0c5c78f..2ca630b 100644
+index 14b3356..5eac3eb 100644
 --- a/chrome/browser/ui/startup/startup_browser_creator_impl.cc
 +++ b/chrome/browser/ui/startup/startup_browser_creator_impl.cc
-@@ -909,11 +909,15 @@ void StartupBrowserCreatorImpl::AddStartupURLs(
+@@ -914,11 +914,15 @@ void StartupBrowserCreatorImpl::AddStartupURLs(
    // at the front or back as indicated by welcome_run_type_), or the set of URLs
    // specified on the command line.
    if (startup_urls->empty()) {

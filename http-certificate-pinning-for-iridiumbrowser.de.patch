@@ -1,7 +1,7 @@
-From cbcfb1e0f3832f138db2d90d8149bad36ddc9d2b Mon Sep 17 00:00:00 2001
+From 795a687164b04fa3c9b68e28d41caf7eb8a2e25c Mon Sep 17 00:00:00 2001
 From: Joachim Bauch <bauch@struktur.de>
 Date: Tue, 9 Dec 2014 16:51:31 +0100
-Subject: [PATCH 06/57] http: certificate pinning for iridiumbrowser.de
+Subject: [PATCH 06/58] http: certificate pinning for iridiumbrowser.de
 
 The second pin is a backup pin as per
 https://tools.ietf.org/html/draft-ietf-websec-key-pinning-21#section-4.3
