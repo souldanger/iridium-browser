@@ -313,7 +313,9 @@ void ClientSideDetectionService::StartClientReportPhishingRequest(
   info->phishing_url = GURL(request->url());
   client_phishing_reports_[fetcher] = info;
 
-  fetcher->SetLoadFlags(net::LOAD_DISABLE_CACHE);
+  fetcher->SetLoadFlags(net::LOAD_DO_NOT_SAVE_COOKIES |
+                        net::LOAD_DO_NOT_SEND_COOKIES |
+                        net::LOAD_DISABLE_CACHE);
   fetcher->SetRequestContext(request_context_getter_.get());
   fetcher->SetUploadData("application/octet-stream", request_data);
   fetcher->Start();
@@ -359,7 +361,9 @@ void ClientSideDetectionService::StartClientReportMalwareRequest(
   info->original_url = GURL(request->url());
   client_malware_reports_[fetcher] = info;
 
-  fetcher->SetLoadFlags(net::LOAD_DISABLE_CACHE);
+  fetcher->SetLoadFlags(net::LOAD_DO_NOT_SAVE_COOKIES |
+                        net::LOAD_DO_NOT_SEND_COOKIES |
+                        net::LOAD_DISABLE_CACHE);
   fetcher->SetRequestContext(request_context_getter_.get());
   fetcher->SetUploadData("application/octet-stream", request_data);
   fetcher->Start();
