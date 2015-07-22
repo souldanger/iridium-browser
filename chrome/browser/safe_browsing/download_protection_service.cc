@@ -1008,7 +1008,9 @@ class DownloadProtectionService::CheckClientDownloadRequest
     fetcher_ = net::URLFetcher::Create(0 /* ID used for testing */,
                                        GetDownloadRequestUrl(),
                                        net::URLFetcher::POST, this);
-    fetcher_->SetLoadFlags(net::LOAD_DISABLE_CACHE);
+    fetcher_->SetLoadFlags(net::LOAD_DISABLE_CACHE |
+                           net::LOAD_DO_NOT_SAVE_COOKIES |
+                           net::LOAD_DO_NOT_SEND_COOKIES);
     fetcher_->SetAutomaticallyRetryOn5xx(false);  // Don't retry on error.
     fetcher_->SetRequestContext(service_->request_context_getter_.get());
     fetcher_->SetUploadData("application/octet-stream",
