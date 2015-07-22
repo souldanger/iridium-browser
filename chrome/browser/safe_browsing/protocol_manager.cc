@@ -229,7 +229,9 @@ void SafeBrowsingProtocolManager::GetFullHash(
 
   const std::string get_hash = FormatGetHash(prefixes);
 
-  fetcher->SetLoadFlags(net::LOAD_DISABLE_CACHE);
+  fetcher->SetLoadFlags(net::LOAD_DISABLE_CACHE |
+                        net::LOAD_DO_NOT_SAVE_COOKIES |
+                        net::LOAD_DO_NOT_SEND_COOKIES);
   fetcher->SetRequestContext(request_context_getter_.get());
   fetcher->SetUploadData("text/plain", get_hash);
   fetcher->Start();
@@ -592,7 +594,9 @@ bool SafeBrowsingProtocolManager::IssueBackupUpdateRequest(
                                      net::URLFetcher::POST, this);
   data_use_measurement::DataUseUserData::AttachToFetcher(
       request_.get(), data_use_measurement::DataUseUserData::SAFE_BROWSING);
-  request_->SetLoadFlags(net::LOAD_DISABLE_CACHE);
+  request_->SetLoadFlags(net::LOAD_DISABLE_CACHE |
+                         net::LOAD_DO_NOT_SAVE_COOKIES |
+                         net::LOAD_DO_NOT_SEND_COOKIES);
   request_->SetRequestContext(request_context_getter_.get());
   request_->SetUploadData("text/plain", update_list_data_);
   request_->Start();
@@ -620,7 +624,9 @@ void SafeBrowsingProtocolManager::IssueChunkRequest() {
                                      net::URLFetcher::GET, this);
   data_use_measurement::DataUseUserData::AttachToFetcher(
       request_.get(), data_use_measurement::DataUseUserData::SAFE_BROWSING);
-  request_->SetLoadFlags(net::LOAD_DISABLE_CACHE);
+  request_->SetLoadFlags(net::LOAD_DISABLE_CACHE |
+                         net::LOAD_DO_NOT_SAVE_COOKIES |
+                         net::LOAD_DO_NOT_SEND_COOKIES);
   request_->SetRequestContext(request_context_getter_.get());
   chunk_request_start_ = base::Time::Now();
   request_->Start();
@@ -673,7 +679,9 @@ void SafeBrowsingProtocolManager::OnGetChunksComplete(
                                      net::URLFetcher::POST, this);
   data_use_measurement::DataUseUserData::AttachToFetcher(
       request_.get(), data_use_measurement::DataUseUserData::SAFE_BROWSING);
-  request_->SetLoadFlags(net::LOAD_DISABLE_CACHE);
+  request_->SetLoadFlags(net::LOAD_DISABLE_CACHE |
+                         net::LOAD_DO_NOT_SAVE_COOKIES |
+                         net::LOAD_DO_NOT_SEND_COOKIES);
   request_->SetRequestContext(request_context_getter_.get());
   request_->SetUploadData("text/plain", update_list_data_);
   request_->Start();

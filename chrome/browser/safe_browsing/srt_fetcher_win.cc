@@ -603,7 +603,9 @@ class SRTFetcher : public net::URLFetcherDelegate {
     data_use_measurement::DataUseUserData::AttachToFetcher(
         url_fetcher_.get(),
         data_use_measurement::DataUseUserData::SAFE_BROWSING);
-    url_fetcher_->SetLoadFlags(net::LOAD_DISABLE_CACHE);
+    url_fetcher_->SetLoadFlags(net::LOAD_DISABLE_CACHE |
+                               net::LOAD_DO_NOT_SAVE_COOKIES |
+                               net::LOAD_DO_NOT_SEND_COOKIES);
     url_fetcher_->SetMaxRetriesOn5xx(3);
     url_fetcher_->SaveResponseToTemporaryFile(
         BrowserThread::GetTaskRunnerForThread(BrowserThread::FILE));
