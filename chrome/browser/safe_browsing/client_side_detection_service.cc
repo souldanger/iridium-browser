@@ -278,6 +278,8 @@ void ClientSideDetectionService::StartFetchModel() {
     model_fetcher_ = net::URLFetcher::Create(0 /* ID used for testing */,
                                              GURL(kClientModelUrl),
                                              net::URLFetcher::GET, this);
+    model_fetcher_->SetLoadFlags(net::LOAD_DO_NOT_SAVE_COOKIES |
+                                 net::LOAD_DO_NOT_SEND_COOKIES);
     model_fetcher_->SetRequestContext(request_context_getter_.get());
     model_fetcher_->Start();
   }
