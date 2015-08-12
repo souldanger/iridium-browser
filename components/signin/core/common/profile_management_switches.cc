@@ -41,6 +41,7 @@ State GetProcessState() {
   bool not_consistent_identity =
       base::CommandLine::ForCurrentProcess()->HasSwitch(
           switches::kDisableAccountConsistency);
+  not_new_avatar_menu = true;
   int count_args = (is_new_avatar_menu ? 1 : 0) +
       (is_new_profile_management ? 1 : 0) +
       (is_consistent_identity ? 1 : 0) +
