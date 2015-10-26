@@ -931,6 +931,7 @@ void WrenchMenuModel::Build() {
 
   AddItemWithStringId(IDC_OPTIONS, IDS_SETTINGS);
 #if !defined(OS_CHROMEOS)
+#if 0
   if (!switches::IsNewAvatarMenu()) {
     // No "Sign in to Chromium..." menu item on ChromeOS.
     SigninManager* signin = SigninManagerFactory::GetForProfile(
@@ -960,6 +961,7 @@ void WrenchMenuModel::Build() {
           chromeos::switches::kEnableRequestTabletSite))
     AddCheckItemWithStringId(IDC_TOGGLE_REQUEST_TABLET_SITE,
                              IDS_TOGGLE_REQUEST_TABLET_SITE);
+#endif
 #endif
 
 #if defined(OS_WIN)
