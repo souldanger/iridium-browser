@@ -126,10 +126,12 @@ const char* const kDefaultSupportedLanguages[] = {
 // Constant URL string to fetch server supporting language list.
 const char kLanguageListFetchPath[] = "translate_a/l?client=chrome";
 
+#if 0
 // Used in kTranslateScriptURL to request supporting languages list including
 // "alpha languages".
 const char kAlphaLanguageQueryName[] = "alpha";
 const char kAlphaLanguageQueryValue[] = "1";
+#endif
 
 // Represent if the language list updater is disabled.
 // Android does not handle well language updates, leading to bugs
@@ -207,6 +209,7 @@ GURL TranslateLanguageList::TranslateLanguageUrl() {
 }
 
 void TranslateLanguageList::RequestLanguageList() {
+#if 0
   // If resource requests are not allowed, we'll get a callback when they are.
   if (!resource_requests_allowed_) {
     request_pending_ = true;
@@ -236,6 +239,7 @@ void TranslateLanguageList::RequestLanguageList() {
     if (!result)
       NotifyEvent(__LINE__, "Request is omitted due to retry limit");
   }
+#endif
 }
 
 void TranslateLanguageList::SetResourceRequestsAllowed(bool allowed) {
