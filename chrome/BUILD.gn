@@ -221,6 +221,7 @@ if (!is_android && !is_mac) {
     } else if (use_aura) {
       # Non-Windows aura entrypoint.
       sources += [ "app/chrome_exe_main_aura.cc" ]
+      ldflags = [ "-Wl,--no-keep-memory" ]
     }
 
     if (is_linux) {
@@ -253,7 +254,7 @@ if (!is_android && !is_mac) {
         "//chrome/common:features",
       ]
 
-      ldflags = [ "-pie" ]
+      ldflags += [ "-pie", "-Wl,--no-keep-memory" ]
 
       if (use_pango || use_cairo) {
         # Needed for chrome_main.cc initialization of libraries.
