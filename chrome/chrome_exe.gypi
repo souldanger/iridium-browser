@@ -75,6 +75,14 @@
         'app/signature_validator_win.cc',
         'app/signature_validator_win.h',
       ],
+      # Hey, I know what would be an awesome idea.
+      # Let us statically compile EVERYTHING into one giant
+      # freaking executable. Too bad this means we can't build
+      # natively on an IA32 machine. If only someone would
+      # invent shared library objects. Idiots.
+      'ldflags': [
+        '-Wl,--no-keep-memory'
+      ],
       'mac_bundle_resources': [
         'app/app-Info.plist',
       ],
