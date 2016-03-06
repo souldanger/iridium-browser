@@ -29,7 +29,7 @@ body.hide-fakebox-logo #fakebox {
 }
 
 #logo {
-  background-image: url(../../../../ui/webui/resources/images/google_logo.svg);
+  background-image: url(../../../../ui/webui/resources/images/iridium_text.svg);
   background-repeat: no-repeat;
   height: 92px;
   margin-bottom: 24px;
@@ -43,7 +43,7 @@ body.hide-fakebox-logo #fakebox {
 
 body.alternate-logo #logo {
   -webkit-mask-image:
-      url(../../../../ui/webui/resources/images/google_logo.svg);
+      url(../../../../ui/webui/resources/images/iridium_text.svg);
   -webkit-mask-repeat: no-repeat;
   -webkit-mask-size: 100%;
   background: #eee;
