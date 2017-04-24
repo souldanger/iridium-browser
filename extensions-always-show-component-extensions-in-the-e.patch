@@ -1,7 +1,7 @@
-From 651e3bd88ac23abccbc0585f166b0c649747c965 Mon Sep 17 00:00:00 2001
+From f3d9644d4a4bdea3426fa0b8ede07b2d3a692b47 Mon Sep 17 00:00:00 2001
 From: Joachim Bauch <jojo@struktur.de>
 Date: Thu, 25 Jun 2015 15:34:10 +0200
-Subject: [PATCH 45/52] extensions: always show component extensions in the ext
+Subject: [PATCH 51/60] extensions: always show component extensions in the ext
  list
 
 The attached patch makes sure that component extensions are always
@@ -14,29 +14,26 @@ Currently these are
 
 References: https://github.com/iridium-browser/iridium-browser/issues/28
 ---
- extensions/common/extension.cc | 2 ++
- 1 file changed, 2 insertions(+)
+ extensions/common/extension.cc | 3 +++
+ 1 file changed, 3 insertions(+)
 
 diff --git a/extensions/common/extension.cc b/extensions/common/extension.cc
-index 2f5e2d6..e600ad9 100644
+index 2022263db349..1e383faf6c9c 100644
 --- a/extensions/common/extension.cc
 +++ b/extensions/common/extension.cc
-@@ -352,6 +352,7 @@ bool Extension::ShouldDisplayInExtensionSettings() const {
+@@ -364,9 +364,12 @@ bool Extension::ShouldDisplayInExtensionSettings() const {
  }
  
- bool Extension::ShouldNotBeVisible() const {
+ bool Extension::ShouldExposeViaManagementAPI() const {
 +#if 0
-   // Don't show component extensions because they are only extensions as an
+   // Hide component extensions because they are only extensions as an
    // implementation detail of Chrome.
-   if (extensions::Manifest::IsComponentLocation(location()) &&
-@@ -368,6 +369,7 @@ bool Extension::ShouldNotBeVisible() const {
-   if (is_app() && !ShouldDisplayInAppLauncher() && !ShouldDisplayInNewTabPage())
-     return true;
- 
+   return !extensions::Manifest::IsComponentLocation(location());
 +#endif
-   return false;
++  return false;
  }
  
+ Extension::ManifestData* Extension::GetManifestData(const std::string& key)
 -- 
-2.6.6
+2.12.2
 

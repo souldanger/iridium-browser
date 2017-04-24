@@ -1,7 +1,7 @@
-From 3d56503340e8b020c29bdafa02b3082b1bc84fba Mon Sep 17 00:00:00 2001
+From 0ed3a85f872df278abe1958d44b1d26019ddbb94 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Wed, 8 Jul 2015 15:08:32 +0200
-Subject: [PATCH 50/52] common: set Iridium version and change User-Agent
+Subject: [PATCH 56/60] common: set Iridium version and change User-Agent
  accordingly
 
 Reduced version number:
@@ -24,7 +24,7 @@ Update "Chromium/*" in UA string when updating chrome/version.
  6 files changed, 8 insertions(+), 6 deletions(-)
 
 diff --git a/android_webview/common/aw_version_info_values.h.version b/android_webview/common/aw_version_info_values.h.version
-index 72faf97..7c0f43d 100644
+index 72faf9743fde..7c0f43d1a1ab 100644
 --- a/android_webview/common/aw_version_info_values.h.version
 +++ b/android_webview/common/aw_version_info_values.h.version
 @@ -5,6 +5,6 @@
@@ -36,18 +36,18 @@ index 72faf97..7c0f43d 100644
  
  #endif  // ANDROID_WEBVIEW_COMMON_AW_VERSION_INFO_VALUES_H_
 diff --git a/chrome/VERSION b/chrome/VERSION
-index dd27ce9..e86e049 100644
+index 7232b93c2a47..7467cd265051 100644
 --- a/chrome/VERSION
 +++ b/chrome/VERSION
 @@ -1,4 +1,4 @@
- MAJOR=54
+ MAJOR=58
  MINOR=0
--BUILD=2840
--PATCH=71
+-BUILD=3029
+-PATCH=81
 +BUILD=0
 +PATCH=0
 diff --git a/components/version_info/version_info.cc b/components/version_info/version_info.cc
-index 7065778..1041f92 100644
+index b12ad0ff687c..a187dda0bbba 100644
 --- a/components/version_info/version_info.cc
 +++ b/components/version_info/version_info.cc
 @@ -15,7 +15,7 @@
@@ -60,7 +60,7 @@ index 7065778..1041f92 100644
  
  std::string GetProductName() {
 diff --git a/components/version_info/version_info_values.h.version b/components/version_info/version_info_values.h.version
-index 6232e35..3cf4fee 100644
+index 6232e359ef20..3cf4fee096c0 100644
 --- a/components/version_info/version_info_values.h.version
 +++ b/components/version_info/version_info_values.h.version
 @@ -6,7 +6,7 @@
@@ -73,7 +73,7 @@ index 6232e35..3cf4fee 100644
  #define IS_OFFICIAL_BUILD @OFFICIAL_BUILD@
  
 diff --git a/content/common/user_agent.cc b/content/common/user_agent.cc
-index 5602261..771fee0 100644
+index 5602261f6818..53226d46d495 100644
 --- a/content/common/user_agent.cc
 +++ b/content/common/user_agent.cc
 @@ -191,6 +191,8 @@ std::string BuildUserAgentFromOSAndProduct(const std::string& os_info,
@@ -81,12 +81,12 @@ index 5602261..771fee0 100644
        WEBKIT_VERSION_MAJOR,
        WEBKIT_VERSION_MINOR);
 +  if (strncmp(product.c_str(), "Chrome/", 7) != 0)
-+	base::StringAppendF(&user_agent, " Chrome/54.0.2840.71");
++	base::StringAppendF(&user_agent, " Chrome/58.0.3029.81");
    return user_agent;
  }
  
 diff --git a/extensions/shell/common/version.h.in b/extensions/shell/common/version.h.in
-index c4627fe..bf7d274 100644
+index c4627fe512a1..bf7d27484e99 100644
 --- a/extensions/shell/common/version.h.in
 +++ b/extensions/shell/common/version.h.in
 @@ -7,7 +7,7 @@
@@ -99,5 +99,5 @@ index c4627fe..bf7d274 100644
  
  #endif  // EXTENSIONS_SHELL_COMMON_VERSION_H_
 -- 
-2.6.6
+2.12.2
 

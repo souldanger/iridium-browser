@@ -1,7 +1,7 @@
-From 248cfac7aaacaa6e88db463044a55d99a36d24be Mon Sep 17 00:00:00 2001
+From d4c79107a31fbf3288d3623f6d54499eb5e53dbc Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Thu, 2 Apr 2015 12:44:23 +0200
-Subject: [PATCH 29/52] plugins: use cached copy of plugin description list at
+Subject: [PATCH 34/60] plugins: use cached copy of plugin description list at
  iridiumbrowsing.de
 
 The list contains mimetype-to-plugin mappins, as well as blacklists
@@ -15,7 +15,7 @@ regular basis.
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/chrome/browser/plugins/plugins_resource_service.cc b/chrome/browser/plugins/plugins_resource_service.cc
-index 2910e39..37a8d87 100644
+index 2910e395cab4..37a8d8784ee7 100644
 --- a/chrome/browser/plugins/plugins_resource_service.cc
 +++ b/chrome/browser/plugins/plugins_resource_service.cc
 @@ -25,7 +25,7 @@ const int kStartResourceFetchDelayMs = 60 * 1000;
@@ -28,5 +28,5 @@ index 2910e39..37a8d87 100644
  GURL GetPluginsServerURL() {
    std::string filename;
 -- 
-2.6.6
+2.12.2
 

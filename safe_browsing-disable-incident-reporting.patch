@@ -1,23 +1,24 @@
-From 83b9381786f29d0cfedda36486891bbcb46d2666 Mon Sep 17 00:00:00 2001
+From 8b1106f9fbe64b8af9afc19216f1bd2890683566 Mon Sep 17 00:00:00 2001
 From: Joachim Bauch <jojo@struktur.de>
 Date: Tue, 7 Jul 2015 17:02:09 +0200
-Subject: [PATCH 36/52] safe_browsing: disable incident reporting
+Subject: [PATCH 41/60] safe_browsing: disable incident reporting
 
 Disables the safebrowsing incident reporting where you could upload
 information about a blocked URL to Google (also added a trk prefix to
 the URL so we get notified if this happens again in the future).
 ---
- .../incident_reporting/incident_report_uploader_impl.cc             | 2 +-
- .../safe_browsing/incident_reporting/incident_reporting_service.cc  | 3 +++
- chrome/browser/safe_browsing/safe_browsing_blocking_page.cc         | 6 ++++--
- chrome/browser/safe_browsing/safe_browsing_service.cc               | 2 ++
- 4 files changed, 10 insertions(+), 3 deletions(-)
+ .../safe_browsing/incident_reporting/incident_report_uploader_impl.cc | 2 +-
+ .../safe_browsing/incident_reporting/incident_reporting_service.cc    | 3 +++
+ chrome/browser/safe_browsing/safe_browsing_blocking_page.cc           | 4 ++--
+ chrome/browser/safe_browsing/safe_browsing_service.cc                 | 2 ++
+ components/security_interstitials/core/safe_browsing_error_ui.cc      | 2 ++
+ 5 files changed, 10 insertions(+), 3 deletions(-)
 
 diff --git a/chrome/browser/safe_browsing/incident_reporting/incident_report_uploader_impl.cc b/chrome/browser/safe_browsing/incident_reporting/incident_report_uploader_impl.cc
-index 004793d..4666f4a 100644
+index 59e1ee3b1e99..223535fab432 100644
 --- a/chrome/browser/safe_browsing/incident_reporting/incident_report_uploader_impl.cc
 +++ b/chrome/browser/safe_browsing/incident_reporting/incident_report_uploader_impl.cc
-@@ -19,7 +19,7 @@ namespace safe_browsing {
+@@ -20,7 +20,7 @@ namespace safe_browsing {
  namespace {
  
  const char kSbIncidentReportUrl[] =
@@ -27,10 +28,10 @@ index 004793d..4666f4a 100644
  }  // namespace
  
 diff --git a/chrome/browser/safe_browsing/incident_reporting/incident_reporting_service.cc b/chrome/browser/safe_browsing/incident_reporting/incident_reporting_service.cc
-index d510557..f65cf5a 100644
+index 2444e83e060f..cc5a758a10fb 100644
 --- a/chrome/browser/safe_browsing/incident_reporting/incident_reporting_service.cc
 +++ b/chrome/browser/safe_browsing/incident_reporting/incident_reporting_service.cc
-@@ -322,6 +322,8 @@ IncidentReportingService::UploadContext::~UploadContext() {
+@@ -298,11 +298,14 @@ IncidentReportingService::UploadContext::~UploadContext() {
  
  // static
  bool IncidentReportingService::IsEnabledForProfile(Profile* profile) {
@@ -39,65 +40,62 @@ index d510557..f65cf5a 100644
    if (profile->IsOffTheRecord())
      return false;
    if (!profile->GetPrefs()->GetBoolean(prefs::kSafeBrowsingEnabled))
-@@ -330,6 +332,7 @@ bool IncidentReportingService::IsEnabledForProfile(Profile* profile) {
-     return true;
-   return profile->GetPrefs()->GetBoolean(
-       prefs::kSafeBrowsingExtendedReportingEnabled);
+     return false;
+   return IsExtendedReportingEnabled(*profile->GetPrefs());
 +#endif
  }
  
  IncidentReportingService::IncidentReportingService(
 diff --git a/chrome/browser/safe_browsing/safe_browsing_blocking_page.cc b/chrome/browser/safe_browsing/safe_browsing_blocking_page.cc
-index 00d9522..462d545 100644
+index 2b9c9b017503..279aea6dd1a2 100644
 --- a/chrome/browser/safe_browsing/safe_browsing_blocking_page.cc
 +++ b/chrome/browser/safe_browsing/safe_browsing_blocking_page.cc
-@@ -62,10 +62,10 @@ namespace {
- // diagnostic page.
- #if defined(GOOGLE_CHROME_BUILD)
- const char kSbDiagnosticUrl[] =
--    "https://www.google.com/safebrowsing/diagnostic?site=%s&client=googlechrome";
-+	/* trk:227 */ "https://www.google.com/safebrowsing/diagnostic?site=%s&client=googlechrome";
- #else
- const char kSbDiagnosticUrl[] =
--    "https://www.google.com/safebrowsing/diagnostic?site=%s&client=chromium";
-+	/* trk:228 */ "https://www.google.com/safebrowsing/diagnostic?site=%s&client=chromium";
- #endif
+@@ -56,8 +56,8 @@ class SafeBrowsingBlockingPageFactoryImpl
+     PrefService* prefs =
+         Profile::FromBrowserContext(web_contents->GetBrowserContext())
+             ->GetPrefs();
+-    bool is_extended_reporting_opt_in_allowed =
+-        prefs->GetBoolean(prefs::kSafeBrowsingExtendedReportingOptInAllowed);
++    bool is_extended_reporting_opt_in_allowed = false;
++//        prefs->GetBoolean(prefs::kSafeBrowsingExtendedReportingOptInAllowed);
+     bool is_proceed_anyway_disabled =
+         prefs->GetBoolean(prefs::kSafeBrowsingProceedAnywayDisabled);
  
- // URL for the Help Center article on Safe Browsing warnings.
-@@ -645,6 +645,7 @@ void SafeBrowsingBlockingPage::PopulateInterstitialStrings(
- 
- void SafeBrowsingBlockingPage::PopulateExtendedReportingOption(
-     base::DictionaryValue* load_time_data) {
-+#if 0
-   // Only show checkbox if !(HTTPS || incognito-mode).
-   const bool show = CanShowThreatDetailsOption();
-   load_time_data->SetBoolean(security_interstitials::kDisplayCheckBox, show);
-@@ -662,6 +663,7 @@ void SafeBrowsingBlockingPage::PopulateExtendedReportingOption(
-   load_time_data->SetBoolean(
-       security_interstitials::kBoxChecked,
-       IsPrefEnabled(prefs::kSafeBrowsingExtendedReportingEnabled));
-+#endif
- }
- 
- void SafeBrowsingBlockingPage::PopulateMalwareLoadTimeData(
 diff --git a/chrome/browser/safe_browsing/safe_browsing_service.cc b/chrome/browser/safe_browsing/safe_browsing_service.cc
-index 4083537..6952564 100644
+index 635ea1556faf..2d8ef9bae53b 100644
 --- a/chrome/browser/safe_browsing/safe_browsing_service.cc
 +++ b/chrome/browser/safe_browsing/safe_browsing_service.cc
-@@ -451,11 +451,13 @@ SafeBrowsingDatabaseManager* SafeBrowsingService::CreateDatabaseManager() {
+@@ -502,11 +502,13 @@ SafeBrowsingDatabaseManager* SafeBrowsingService::CreateDatabaseManager() {
  
  void SafeBrowsingService::RegisterAllDelayedAnalysis() {
  #if defined(FULL_SAFE_BROWSING)
 +#if 0
    RegisterBinaryIntegrityAnalysis();
    RegisterBlacklistLoadAnalysis();
-   RegisterModuleLoadAnalysis(database_manager_);
+   RegisterModuleLoadAnalysis(database_manager());
    RegisterVariationsSeedSignatureAnalysis();
  #endif
 +#endif
  }
  
  SafeBrowsingProtocolConfig SafeBrowsingService::GetProtocolConfig() const {
+diff --git a/components/security_interstitials/core/safe_browsing_error_ui.cc b/components/security_interstitials/core/safe_browsing_error_ui.cc
+index 06dfd42f8cb5..3b0a6d18d13b 100644
+--- a/components/security_interstitials/core/safe_browsing_error_ui.cc
++++ b/components/security_interstitials/core/safe_browsing_error_ui.cc
+@@ -24,10 +24,12 @@ const char kLearnMore[] = "https://support.google.com/chrome/answer/99020";
+ // For malware interstitial pages, we link the problematic URL to Google's
+ // diagnostic page.
+ #if defined(GOOGLE_CHROME_BUILD)
++// trk:227
+ const char kSbDiagnosticUrl[] =
+     "https://www.google.com/safebrowsing/"
+     "diagnostic?site=%s&client=googlechrome";
+ #else
++// trk:228
+ const char kSbDiagnosticUrl[] =
+     "https://www.google.com/safebrowsing/diagnostic?site=%s&client=chromium";
+ #endif
 -- 
-2.6.6
+2.12.2
 

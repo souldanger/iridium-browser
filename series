@@ -1,3 +1,8 @@
+build-remove-calling-untrusted-hooks.patch
+build-select-default-toolchain.patch
+build-chromium-last-commit-position-r0.patch.patch
+build-resolve-undefined-macro-in-Widevine.patch
+build-fix-gn-bootstrap-braindamaged-build-system-aga.patch
 net-cert-increase-default-key-length-for-newly-gener.patch
 dns-send-IPv6-connectivity-probes-to-RIPE-DNS-rather.patch
 profile-resetter-do-not-tick-send-settings-by-defaul.patch
@@ -41,6 +46,7 @@ promo-disable-Google-promotion-fetching.patch
 hotword-disable-at-build-time-by-default.patch
 google_now-disable-this.patch
 search-show-blank-tab-for-new-tab-page.patch
+Make-default-welcome-page-be-blank.patch
 browser-disable-profile-auto-import-on-first-run.patch
 extensions-always-show-component-extensions-in-the-e.patch
 battery_status_service-disable-more-privacy-nightmar.patch
@@ -50,3 +56,5 @@ icons-iridium-icons.patch
 common-set-Iridium-version-and-change-User-Agent-acc.patch
 first_run-barf-if-metrics_reporting-is-activated.patch
 all-add-trk-prefixes-to-possibly-evil-connections.patch
+doc-add-README.md-for-github.patch
+Disable-smooth-scrolling-on-Linux.patch

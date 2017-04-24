@@ -1,7 +1,7 @@
-From f592b04f35cb0d8b89f78661ddc6c4a2390ce531 Mon Sep 17 00:00:00 2001
+From 801b4f386842637b52e522c48c130e15721d36de Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Sat, 13 Sep 2014 17:12:43 +0200
-Subject: [PATCH 22/52] first_run: deactivate autoupdate globally
+Subject: [PATCH 27/60] first_run: deactivate autoupdate globally
 
 We currently do not have any update service infrastructure in place
 (i.e. on our webserver), and sending update requests to Google also
@@ -14,10 +14,10 @@ turn it back on.
  1 file changed, 3 insertions(+)
 
 diff --git a/chrome/browser/extensions/extension_system_impl.cc b/chrome/browser/extensions/extension_system_impl.cc
-index 7ad271f..45fb476 100644
+index 602711d7151d..d8438f59aeec 100644
 --- a/chrome/browser/extensions/extension_system_impl.cc
 +++ b/chrome/browser/extensions/extension_system_impl.cc
-@@ -188,6 +188,9 @@ void ExtensionSystemImpl::Shared::Init(bool extensions_enabled) {
+@@ -208,6 +208,9 @@ void ExtensionSystemImpl::Shared::Init(bool extensions_enabled) {
  
    bool autoupdate_enabled = !profile_->IsGuestSession() &&
                              !profile_->IsSystemProfile();
@@ -28,5 +28,5 @@ index 7ad271f..45fb476 100644
    if (!extensions_enabled)
      autoupdate_enabled = false;
 -- 
-2.6.6
+2.12.2
 
