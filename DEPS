@@ -174,7 +174,7 @@ deps = {
   'src/third_party/webpagereplay':
     (Var("chromium_git")) + '/external/github.com/chromium/web-page-replay.git@3cd3a3f6f06a1b87b14b9162c7eb16d23d141241',
   'src/third_party/webrtc':
-    (Var("chromium_git")) + '/external/webrtc/trunk/webrtc.git@f17e7774d7316fc4dda87c5e7d759ac33b20a52f',
+    (Var("chromium_git")) + '/external/webrtc/trunk/webrtc.git@a7461e3086866272cb69fbfa23c7fc8b0321a425',
   'src/third_party/yasm/source/patched-yasm':
     (Var("chromium_git")) + '/chromium/deps/yasm/patched-yasm.git@7da28c6c7c6a1387217352ce02b31754deb54d2a',
   'src/tools/gyp':
